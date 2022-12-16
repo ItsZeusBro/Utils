@@ -57,12 +57,12 @@ export class EncodingTest{
             console.log('frmtByts(', mode,')')
             for(var i = 0; i<=10000; i++){
                 var byt = r.bytsRng(i, i, mode, standard)
-                if(this.verbose){ console.log(e.byts2Dec(e.frmtByts(byt, mode, standard), mode), i) }
+                if(this.verbose){ console.log(e.byts2Dec(e.frmtByts(byt, mode, standard), mode), byt) }
                 assert.equal(e.byts2Dec(e.frmtByts(byt, mode, standard), mode), i)
             }
             for(var i = Number.MAX_SAFE_INTEGER-10000; i<=Number.MAX_SAFE_INTEGER; i++){
                 var byt = r.bytsRng(i, i, mode, standard)
-                if(this.verbose){ console.log(e.byts2Dec(e.frmtByts(byt, mode, standard), mode), i) }
+                if(this.verbose){ console.log(e.byts2Dec(e.frmtByts(byt, mode, standard), mode), byt) }
                 assert.equal(e.byts2Dec(e.frmtByts(byt, mode, standard), mode), i)
             }
             mode = mode.charCodeAt(0)+32
