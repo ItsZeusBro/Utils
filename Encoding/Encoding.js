@@ -1,158 +1,158 @@
+import {Types} from "../Types/Types.js"
 export class Encoding{
 
-	bytes2BytesBuffer(bytes){
-		var buffer=[]
+	byts2BytsBuff(byts){
+		var buff=[]
 		var string=''
-		for(var i=1; i<=bytes.length; i++){
-			string = string.concat(bytes[i-1])
+		for(var i=1; i<=byts.length; i++){
+			string = string.concat(byts[i-1])
 			if(i%8==0){
-				buffer.push(string.slice())
+				buff.push(string.slice())
 				string=''
 			}
 		}
-		return buffer
+		return buff
 	}
 
-	bytes2HexBufferBE(bytes){
-		var buffer=[]
+	byts2HexBuff_E(byts){
+		var buff=[]
 		var string=''
-		for(var i=1; i<=bytes.length; i++){
-			string = string.concat(bytes[i-1])
+		for(var i=1; i<=byts.length; i++){
+			string = string.concat(byts[i-1])
 			if(i%8==0){
-				buffer.push(this.bytes2HexBE(string.slice()))
+				buff.push(this.byts2Hex_E(string.slice()))
 				string=''
 			}
 		}
-		return buffer
+		return buff
 	}
 
-	bytes2HexBufferLE(bytes){
-		var buffer=[]
+	byts2HexBuff_e(byts){
+		var buff=[]
 		var string=''
-		for(var i=1; i<=bytes.length; i++){
-			string = string.concat(bytes[i-1])
+		for(var i=1; i<=byts.length; i++){
+			string = string.concat(byts[i-1])
 			if(i%8==0){
-				buffer.push(this.bytes2HexLE(string.slice()))
+				buff.push(this.byts2Hex_e(string.slice()))
 				string=''
 			}
 		}
-		return buffer
+		return buff
 	}
 
-	hexBuffer2StringBE(buffer){
-		//assume the buffer is an array of big endian hexidecimal codes
+	hexBuff2Str_E(buff){
+		//assume the buff is an array of big endian hex codes
 		var string=''
-		for(var i=0; i<buffer.length; i++){
-			string+=this.hex2CharBE(buffer[i])
+		for(var i=0; i<buff.length; i++){
+			string+=this.hex2Char_E(buff[i])
 		}
 		return string
 	}
 
-	hexBuffer2StringLE(buffer){
-		//assume the buffer is an array of big endian hexidecimal codes
+	hexBuff2Str_e(buff){
+		//assume the buff is an array of big endian hexidec codes
 		var string=''
-		for(var i=0; i<buffer.length; i++){
-			string+=this.hex2CharLE(buffer[i])
+		for(var i=0; i<buff.length; i++){
+			string+=this.hex2Char_e(buff[i])
 		}
 		return string
 	}
 
-	hex2CharBE(hex){
-		//a hex should be 2 hex chars to represent a byte, if its not, format it
-
-		var decimal = this.hex2DecimalBE(this.formatHexBE(hex))
-		return String.fromCharCode(decimal)
+	hex2Char_E(hex){
+		//a hex should be 2 hex chars to represent a byt, if its not, frmt it
+		var dec = this.hex2Dec_E(this.frmtHex_E(hex))
+		return String.fromCharCode(dec)
 	}
 
-	hex2CharLE(hex){
-		var decimal = this.hex2DecimalLE(hex)
-		return String.fromCharCode(decimal)
+	hex2Char_e(hex){
+		var dec = this.hex2Dec_e(hex)
+		return String.fromCharCode(dec)
 	}
 
-	char2HexBE(char){
-		var decimal = char.charCodeAt(0)
+	char2Hex_E(char){
+		var dec = char.charCodeAt(0)
 		
-		return this.decimal2HexBE(decimal)
+		return this.dec2Hex_E(dec)
 	}
 
-	char2HexLE(char){
-		var decimal = char.charCodeAt(0)
-		return this.decimal2HexLE(decimal)
+	char2Hex_e(char){
+		var dec = char.charCodeAt(0)
+		return this.dec2Hex_e(dec)
 	}
 
-	decimal2HexBE(decimal){
-		var bytes = this.decimal2BytesBE(decimal)
-		return this.bytes2HexBE(bytes)
+	dec2Hex_E(dec){
+		var byts = this.dec2Byts_E(dec)
+		return this.byts2Hex_E(byts)
 	}
 
-	decimal2BytesBE(decimal){
+	dec2Byts_E(dec){
 		var bin=''
-		var decimal2=decimal
-		if(decimal==0){return '00000000'}
-		while(decimal!=0){
-			if(this.isInt(decimal/2)){
+		var dec2=dec
+		if(dec==0){return '00000000'}
+		while(dec!=0){
+			if(new Types().isInt(dec/2)){
 				bin = '0'.concat(bin)
 			}else{
 				bin = '1'.concat(bin)
 			}
-			decimal=Math.floor(decimal/2)
+			dec=Math.floor(dec/2)
 		}
-		return this.formatBytesBE(bin)
+		return this.frmtByts_E(bin)
 	}
 
-	bytes2DecimalBE(bin){
-		bin=this.stripBytesBE(bin)
-		var decimal=0
+	byts2Dec_E(bin){
+		bin=this.stripByts_E(bin)
+		var dec=0
 		var j = bin.length-1
 		for(var i = 0; i<bin.length; i++){
 			if(bin[i]=='1'){
-				decimal+=Math.pow(2, j)
+				dec+=Math.pow(2, j)
 			}
 			j--
 		}		
 
-		return decimal
+		return dec
 	}
 
-	bytes2DecimalLE(bin){
-		bin =this.stripBytesLE(bin)
+	byts2Dec_e(bin){
+		bin =this.stripByts_e(bin)
 		var i = 0
-		var decimal=0
+		var dec=0
 		while(i<bin.length){
 			if(bin[i]=='1'){
-				decimal+=Math.pow(2, i)
+				dec+=Math.pow(2, i)
 			}
 			i++
 		}
-		return decimal
+		return dec
 	}
 
-	decimal2BytesLE(decimal){
+	dec2Byts_e(dec){
 		var bin=''
-		if(decimal==0){return '00000000'}
-		while(decimal!=0){
-			if(this.isInt(decimal/2)){
+		if(dec==0){return '00000000'}
+		while(dec!=0){
+			if(new Types().isInt(dec/2)){
 				bin = '0'.concat(bin)
 			}else{
 				bin = '1'.concat(bin)
 			}
-			decimal=Math.floor(decimal/2)
+			dec=Math.floor(dec/2)
 		}
-		return this.formatBytesLE(bin.split('').reverse().join(''))
+		return this.frmtByts_e(bin.split('').reverse().join(''))
 	}
 	
-	decimal2HexLE(decimal){
-		var bytes = this.decimal2BytesLE(decimal)
-		return this.bytes2HexLE(bytes)
+	dec2Hex_e(dec){
+		var byts = this.dec2Byts_e(dec)
+		return this.byts2Hex_e(byts)
 	}
 
-	decimal2Char(decimal){
-        return String.fromCodePoint(decimal)
+	dec2Char(dec){
+        return String.fromCodePoint(dec)
     }
 
-	hex2BytesBE(hex){
+	hex2Byts_E(hex){
 		//https://stackoverflow.com/questions/45053624/convert-hex-to-binary-in-javascript
-		hex = this.formatHexBE(hex)
+		hex = this.frmtHex_E(hex)
 		var out = "";
 		for(var c of hex) {
 			switch(c) {
@@ -178,49 +178,49 @@ export class Encoding{
 		return out
 	}
 
-	hex2DecimalBE(hex){
-		var bytes = this.hex2BytesBE(hex)
-		return this.bytes2DecimalBE(bytes)
+	hex2Dec_E(hex){
+		var byts = this.hex2Byts_E(hex)
+		return this.byts2Dec_E(byts)
 	}
 
-	hex2StringBE(hex){
+	hex2Str_E(hex){
 		if(hex.length%2!==0){
-			throw Error('hex2StringBE cannot use a hex string that is not byte divisible')
+			throw Error('hex2StrB cannot use a hex string that is not byt divisible')
 		}
-		var hexBuffer=[]
+		var hexBuff=[]
 		for(var i = 2; i<=hex.length; i++){
 			if(i%2==0){
-				hexBuffer.push(hex[i-2]+hex[i-1])
+				hexBuff.push(hex[i-2]+hex[i-1])
 			}
 		}
-		return this.hexBuffer2StringBE(hexBuffer)
+		return this.hexBuff2Str_E(hexBuff)
 	}
 
-	hex2StringLE(hex){
+	hex2Str_e(hex){
 		if(hex.length%2!==0){
-			throw Error('hex2StringLE cannot use a hex string that is not byte divisible')
+			throw Error('hex2StrL cannot use a hex string that is not byt divisible')
 		}
-		var hexBuffer=[]
+		var hexBuff=[]
 		for(var i = 2; i<=hex.length; i++){
 			if(i%2==0){
-				hexBuffer.push(hex[i-2]+hex[i-1])
+				hexBuff.push(hex[i-2]+hex[i-1])
 			}
 		}
-		return this.hexBuffer2StringLE(hexBuffer)
+		return this.hexBuff2Str_e(hexBuff)
 	}
 
-	string2HexBE(string){
-		var buffer = this.string2HexBufferBE(string)
-		return buffer.join('')
+	str2Hex_E(string){
+		var buff = this.str2HexBuff_E(string)
+		return buff.join('')
 	}
 
-	string2HexLE(string){
-		var buffer = this.string2HexBufferLE(string)
-		return buffer.join('')
+	str2Hex_e(string){
+		var buff = this.str2HexBuff_e(string)
+		return buff.join('')
 	}
 
-	hex2BytesLE(hex){
-		hex = this.formatHexLE(hex)
+	hex2Byts_e(hex){
+		hex = this.frmtHex_e(hex)
 		var out = "";
 		for(var c of hex) {
 			switch(c) {
@@ -247,14 +247,13 @@ export class Encoding{
 	}
 
 	
-	hex2DecimalLE(hex){
-		var bytes = this.hex2BytesLE(hex)
-		return this.bytes2DecimalLE(bytes)
+	hex2Dec_e(hex){
+		var byts = this.hex2Byts_e(hex)
+		return this.byts2Dec_e(byts)
 	}
 
-
-	bytes2HexBE(bin){
-		bin = this.formatBytesBE(bin)
+	byts2Hex_E(bin){
+		bin = this.frmtByts_E(bin)
 		var out = "";
 		var accumulator=''
 		for(var c = 1; c<=bin.length; c++) {
@@ -285,8 +284,8 @@ export class Encoding{
 		return out
 	}
 
-	bytes2HexLE(bin){
-		bin = this.formatBytesLE(bin)
+	byts2Hex_e(bin){
+		bin = this.frmtByts_e(bin)
 		var out = "";
 		var accumulator=''
 		for(var c = 1; c<=bin.length; c++) {
@@ -317,138 +316,137 @@ export class Encoding{
 		return out
 	}
 
-	bytes2StringBE(bytes){
-		if(bytes.length%8!==0){
-			throw Error('hex2StringBE cannot use a hex string that is not byte divisible')
+	byts2Str_E(byts){
+		if(byts.length%8!==0){
+			throw Error('hex2StrB cannot use a hex string that is not byt divisible')
 		}
-		var byteBuffer=[]
-		for(var i = 8; i<=bytes.length; i++){
-			var bytesStr=''
+		var bytBuff=[]
+		for(var i = 8; i<=byts.length; i++){
+			var bytsStr=''
 			if(i%8==0){
 				for(var j = i-8; j<i; j++){
-					bytesStr+=bytes[j]
+					bytsStr+=byts[j]
 				}
-				byteBuffer.push(bytesStr)
+				bytBuff.push(bytsStr)
 			}
 		}
 
-		return this.byteBuffer2StringBE(byteBuffer)
+		return this.bytBuff2Str_E(bytBuff)
 	}
 
-	bytes2StringLE(bytes){
-		if(bytes.length%8!==0){
-			throw Error('hex2StringLE cannot use a hex string that is not byte divisible')
+	byts2Str_e(byts){
+		if(byts.length%8!==0){
+			throw Error('hex2StrL cannot use a hex string that is not byt divisible')
 		}
-		var byteBuffer=[]
-		for(var i = 8; i<=bytes.length; i++){
-			var bytesStr=''
+		var bytBuff=[]
+		for(var i = 8; i<=byts.length; i++){
+			var bytsStr=''
 			if(i%8==0){
 				for(var j = i-8; j<i; j++){
-					bytesStr+=bytes[j]
+					bytsStr+=byts[j]
 				}
-				byteBuffer.push(bytesStr)
+				bytBuff.push(bytsStr)
 			}
 		}
-		return this.byteBuffer2StringLE(byteBuffer)
+		return this.bytBuff2Str_e(bytBuff)
 	}
 
-	string2BytesBE(string){
-		var buffer = this.string2BytesBufferBE(string)
-		return buffer.join('')
+	str2Byts_E(string){
+		var buff = this.str2BytsBuff_E(string)
+		return buff.join('')
 	}
 
-	string2BytesLE(string){
-		var buffer = this.string2BytesBufferLE(string)
-		return buffer.join('')
+	str2Byts_e(string){
+		var buff = this.str2BytsBuff_e(string)
+		return buff.join('')
 	}
 
-
-    byteBuffer2StringBE(buffer){
+    bytBuff2Str_E(buff){
 		var str=''
-		for(var i = 0; i<buffer.length; i++){
-			var byte = buffer[i]
-			str+= this.decimal2Char(this.bytes2DecimalBE(byte))
+		for(var i = 0; i<buff.length; i++){
+			var byt = buff[i]
+			str+= this.dec2Char(this.byts2Dec_E(byt))
 		}
 		return str
     }
 
-	byteBuffer2StringLE(buffer){
+	bytBuff2Str_e(buff){
 		var str=''
-		for(var i = 0; i<buffer.length; i++){
-			var byte = buffer[i]
-			str+= this.decimal2Char(this.bytes2DecimalLE(byte))
+		for(var i = 0; i<buff.length; i++){
+			var byt = buff[i]
+			str+= this.dec2Char(this.byts2Dec_e(byt))
 		}
 		return str
     }
 
-	bytesBuffer2Bytes(buffer){
-		var bytes=''
-		for(var i = 0; i<buffer.length; i++){
-			bytes+=buffer[i]
+	bytsBuff2Byts(buff){
+		var byts=''
+		for(var i = 0; i<buff.length; i++){
+			byts+=buff[i]
 		}
-		return bytes
+		return byts
 	}
 
-	string2BytesBufferBE(string){
-		var buffer=[]
+	str2BytsBuff_E(string){
+		var buff=[]
 		for(var i = 0; i<string.length; i++){
-			buffer.push(this.hex2BytesBE(this.char2HexBE(string[i])))
+			buff.push(this.hex2Byts_E(this.char2Hex_E(string[i])))
 		}
-		return buffer
+		return buff
 	}
 
-	string2BytesBufferLE(string){
-		var buffer=[]
+	str2BytsBuff_e(string){
+		var buff=[]
 		for(var i = 0; i<string.length; i++){
-			buffer.push(this.hex2BytesLE(this.char2HexLE(string[i])))
+			buff.push(this.hex2Byts_e(this.char2Hex_e(string[i])))
 		}
-		return buffer
+		return buff
 	}	
 
-	string2HexBufferBE(string){
-		var buffer=[]
+	str2HexBuff_E(string){
+		var buff=[]
 		for(var i = 0; i<string.length; i++){
-			buffer.push(this.char2HexBE(string[i]))
+			buff.push(this.char2Hex_E(string[i]))
 		}
-		return buffer
+		return buff
 	}
 
-	string2HexBufferLE(string){
-		var buffer=[]
+	str2HexBuff_e(string){
+		var buff=[]
 		for(var i = 0; i<string.length; i++){
-			buffer.push(this.char2HexLE(string[i]))
+			buff.push(this.char2Hex_e(string[i]))
 		}
-		return buffer
+		return buff
 	}	
 
-	stripBytesBE(bytes){
-		var bytes2=bytes
-		for(var i=0; i<bytes.length; i++){
-			if(bytes[i]=='1'){
-				return bytes2
+	stripByts_E(byts){
+		var byts2=byts
+		for(var i=0; i<byts.length; i++){
+			if(byts[i]=='1'){
+				return byts2
 			}else{
-				bytes2=bytes2.slice(1)
+				byts2=byts2.slice(1)
 			}
 		}
-		if(bytes2==''){return '0'}
-		return bytes2
+		if(byts2==''){return '0'}
+		return byts2
 	}
 
-	stripBytesLE(bytes){
-		var bytes2=bytes
-		for(var i=bytes.length-1; i>=0; i--){
-			if(bytes[i]=='1'){
-				return bytes2
+	stripByts_e(byts){
+		var byts2=byts
+		for(var i=byts.length-1; i>=0; i--){
+			if(byts[i]=='1'){
+				return byts2
 			}else{
-				bytes2=bytes2.slice(0, -1)
+				byts2=byts2.slice(0, -1)
 			}
 		}
-		if(bytes2==''){return '0'}
-		return bytes2
+		if(byts2==''){return '0'}
+		return byts2
 	}
 
-	formatBytesBE(bin){
-		bin = this.stripBytesBE(bin)
+	frmtByts_E(bin){
+		bin = this.stripByts_E(bin)
 
 		while(true){
 			if(bin.length%8==0){
@@ -460,8 +458,8 @@ export class Encoding{
 		return bin
 	}
 	
-	formatBytesLE(bin){
-		bin = this.stripBytesLE(bin)
+	frmtByts_e(bin){
+		bin = this.stripByts_e(bin)
 		while(true){
 			if(bin.length%8==0){
 				break
@@ -472,18 +470,17 @@ export class Encoding{
 		return bin
 	}
 
-	formatHexBE(hex){
+	frmtHex_E(hex){
 		if(hex.length%2!=0){
 			hex = '0'.concat(hex)
 		}
 		return hex
 	}
 	
-	formatHexLE(hex){
+	frmtHex_e(hex){
 		if(hex.length%2!=0){
 			hex = hex.concat('0')
 		}
 		return hex
 	}
-
 }

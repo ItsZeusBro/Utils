@@ -1,16 +1,17 @@
+import { Encoding } from "../Encoding/Encoding.js";
 export class Rand{
     constructor(){
         this.rand=this
     }
 
-	range(min, max){
+	rng(min, max){
 		if(min==max){return min}
 		min = Math.ceil(min);	//these are needed to make max and min inclusive
 		max = Math.floor(max);
 		return Math.floor(Math.random() * (max - min + 1) + min)
 	}
 
-    str(min, max){return this.rand._str(this.rand.range(min, max))}
+    str(min, max){return this.rand._str(this.rand.rng(min, max))}
 
     _str(len, chars=this.latin().join('')){
         //programiz.com
@@ -27,55 +28,55 @@ export class Rand{
 		return latin
 	}
 
-	hexRangeBE(min, max){
-		//take in decimal numbers min and max, and return a random hexidecimal number between them
-		var decimal = new Rand().range(min, max)
-		var bin = new Encoding().decimal2BytesBE(decimal)
-		return new Encoding().formatHexBE(new Encoding().bytes2HexBE(bin))
+	hexRng_E(min, max){
+		//take in dec numbers min and max, and return a random hexidec number between them
+		var dec = new Rand().rng(min, max)
+		var bin = new Encoding().dec2Byts_E(dec)
+		return new Encoding().frmtHex_E(new Encoding().byts2Hex_E(bin))
 	}
-	hexRangeLE(min, max){
-		//take in decimal numbers min and max, and return a random hexidecimal number between them
-		var decimal = new Rand().range(min, max)
-		var bin = new Encoding().decimal2BytesLE(decimal)
-		return new Encoding().formatHexLE(new Encoding().bytes2HexLE(bin))
-	}
-
-	bytesRangeBE(min, max){
-		//take in decimal numbers min and max, and return a random hexidecimal number between them
-		var decimal = new Rand().range(min, max)
-		return new Encoding().formatBytesBE(new Encoding().decimal2BytesBE(decimal))
-	}
-	bytesRangeLE(min, max){
-		//take in decimal numbers min and max, and return a random hexidecimal number between them
-		var decimal = new Rand().range(min, max)
-		return new Encoding().formatBytesLE(new Encoding().decimal2BytesLE(decimal))
+	hexRng_e(min, max){
+		//take in dec numbers min and max, and return a random hexidec number between them
+		var dec = new Rand().rng(min, max)
+		var bin = new Encoding().dec2Byts_e(dec)
+		return new Encoding().frmtHex_e(new Encoding().byts2Hex_e(bin))
 	}
 
-	codeMapRange(min, max){
+	bytsRng_E(min, max){
+		//take in dec numbers min and max, and return a random hexidec number between them
+		var dec = new Rand().rng(min, max)
+		return new Encoding().frmtByts_E(new Encoding().dec2Byts_E(dec))
+	}
+	bytsRng_e(min, max){
+		//take in dec numbers min and max, and return a random hexidec number between them
+		var dec = new Rand().rng(min, max)
+		return new Encoding().frmtByts_e(new Encoding().dec2Byts_e(dec))
+	}
+
+	codeMapRng(min, max){
 		var unicode={}
 		for(var i = min; i<=max; i++){
 			unicode[String.fromCharCode(i)]={
 				'codePoint':i,
-				'bin':new Encoding().decimal2BytesBE(i),
-				'hexBE':new Encoding().decimal2HexBE(i)
+				'bin':new Encoding().dec2Byts_E(i),
+				'hex_E':new Encoding().dec2Hex_E(i)
 			}
 		}
 		return unicode
     }
 
-    codePointMapRange(min, max){
+    codePointMapRng(min, max){
         var unicode={}
 		for(var i = min; i<=max; i++){
 			unicode[i]={
 				'code':String.fromCharCode(i),
-				'bin':new Encoding().formatBytesBE(new Encoding().decimal2BytesBE(i)),
-				'hexBE':new Encoding().decimal2HexBE(i)
+				'bin':new Encoding().frmtByts_E(new Encoding().dec2Byts_E(i)),
+				'hex_E':new Encoding().dec2Hex_E(i)
 			}
 		}
 		return unicode
     }
 
-    int(n){return this.rand.range(0,n)}
+    int(n){return this.rand.rng(0,n)}
     arr(n){var arr=[]; for(var i=0;i<n;i++){arr.push(this.rand.thing())}; return arr}
     thing(){
         return[
