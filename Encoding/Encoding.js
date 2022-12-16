@@ -14,120 +14,44 @@ export class Encoding{
 		return buff
 	}
 
-	byts2HexBuff_E(byts){
+	byts2HexBuff(byts, endian, type){
 		var buff=[]
 		var string=''
 		for(var i=1; i<=byts.length; i++){
 			string = string.concat(byts[i-1])
 			if(i%8==0){
-				buff.push(this.byts2Hex_E(string.slice()))
+				buff.push(this.byts2Hex(string.slice(), endian, type))
 				string=''
 			}
 		}
 		return buff
 	}
 
-	byts2HexBuff_e(byts){
-		var buff=[]
-		var string=''
-		for(var i=1; i<=byts.length; i++){
-			string = string.concat(byts[i-1])
-			if(i%8==0){
-				buff.push(this.byts2Hex_e(string.slice()))
-				string=''
-			}
-		}
-		return buff
-	}
-
-	hexBuff2Str_E(buff){
-		//assume the buff is an array of big endian hex codes
+	hexBuff2Str(buff, endian, type){
 		var string=''
 		for(var i=0; i<buff.length; i++){
-			string+=this.hex2Char_E(buff[i])
+			string+=this.hex2Char(buff[i], endian, type)
 		}
 		return string
 	}
 
-	hexBuff2Str_e(buff){
-		//assume the buff is an array of big endian hexidec codes
-		var string=''
-		for(var i=0; i<buff.length; i++){
-			string+=this.hex2Char_e(buff[i])
-		}
-		return string
-	}
-
-	hex2Char_E(hex){
+	hex2Char(hex, endian, type){
 		//a hex should be 2 hex chars to represent a byt, if its not, frmt it
-		var dec = this.hex2Dec_E(this.frmtHex_E(hex))
+		var dec = this.hex2Dec(this.frmtHex(hex, endian, type), endian, type)
 		return String.fromCharCode(dec)
 	}
 
-	hex2Char_e(hex){
-		var dec = this.hex2Dec_e(hex)
-		return String.fromCharCode(dec)
-	}
-
-	char2Hex_E(char){
+	char2Hex(char, endian, type){
 		var dec = char.charCodeAt(0)
-		
-		return this.dec2Hex_E(dec)
+		return this.dec2Hex(dec, endian, type)
 	}
 
-	char2Hex_e(char){
-		var dec = char.charCodeAt(0)
-		return this.dec2Hex_e(dec)
+	dec2Hex(dec, endian, type){
+		var byts = this.dec2Byts(dec, endian, type)
+		return this.byts2Hex(byts, endian, type)
 	}
 
-	dec2Hex_E(dec){
-		var byts = this.dec2Byts_E(dec)
-		return this.byts2Hex_E(byts)
-	}
-
-	dec2Byts_E(dec){
-		var bin=''
-		var dec2=dec
-		if(dec==0){return '00000000'}
-		while(dec!=0){
-			if(new Types().isInt(dec/2)){
-				bin = '0'.concat(bin)
-			}else{
-				bin = '1'.concat(bin)
-			}
-			dec=Math.floor(dec/2)
-		}
-		return this.frmtByts_E(bin)
-	}
-
-	byts2Dec_E(bin){
-		bin=this.stripByts_E(bin)
-		var dec=0
-		var j = bin.length-1
-		for(var i = 0; i<bin.length; i++){
-			if(bin[i]=='1'){
-				dec+=Math.pow(2, j)
-			}
-			j--
-		}		
-
-		return dec
-	}
-
-	byts2Dec_e(bin){
-		bin =this.stripByts_e(bin)
-		var i = 0
-		var dec=0
-		while(i<bin.length){
-			if(bin[i]=='1'){
-				dec+=Math.pow(2, i)
-			}
-			i++
-		}
-		return dec
-	}
-
-	dec2Byts_e(dec){
+	dec2Byts(dec, endian, type){
 		var bin=''
 		if(dec==0){return '00000000'}
 		while(dec!=0){
@@ -138,54 +62,110 @@ export class Encoding{
 			}
 			dec=Math.floor(dec/2)
 		}
-		return this.frmtByts_e(bin.split('').reverse().join(''))
+		if(endian='E'){
+			return this.frmtByts(bin, endian, type)
+		}else{
+			return this.frmtByts(bin.split('').reverse().join(''), endian, type)
+		}
 	}
-	
-	dec2Hex_e(dec){
-		var byts = this.dec2Byts_e(dec)
-		return this.byts2Hex_e(byts)
+
+	byts2Dec(bin, endian, type){
+		if(endian=='E'){
+			bin=this.stripByts(bin, endian, type)
+			var dec=0
+			var j = bin.length-1
+			for(var i = 0; i<bin.length; i++){
+				if(bin[i]=='1'){
+					dec+=Math.pow(2, j)
+				}
+				j--
+			}		
+			return dec
+		}else{
+			bin =this.stripByts(bin, endian, type)
+			var i = 0
+			var dec=0
+			while(i<bin.length){
+				if(bin[i]=='1'){
+					dec+=Math.pow(2, i)
+				}
+				i++
+			}
+			return dec
+		}
 	}
 
 	dec2Char(dec){
         return String.fromCodePoint(dec)
     }
 
-	hex2Byts_E(hex){
-		//https://stackoverflow.com/questions/45053624/convert-hex-to-binary-in-javascript
-		hex = this.frmtHex_E(hex)
-		var out = "";
-		for(var c of hex) {
-			switch(c) {
-				case '0': out += "0000"; break;
-				case '1': out += "0001"; break;
-				case '2': out += "0010"; break;
-				case '3': out += "0011"; break;
-				case '4': out += "0100"; break;
-				case '5': out += "0101"; break;
-				case '6': out += "0110"; break;
-				case '7': out += "0111"; break;
-				case '8': out += "1000"; break;
-				case '9': out += "1001"; break;
-				case 'a': out += "1010"; break;
-				case 'b': out += "1011"; break;
-				case 'c': out += "1100"; break;
-				case 'd': out += "1101"; break;
-				case 'e': out += "1110"; break;
-				case 'f': out += "1111"; break;
-				default: return "";
+
+	hex2Byts(hex, endian, type){
+		//BE CAREFUL!!!! BIG E AND SMALL e ARE DIFFERENT SWITCH CASES!
+		if(endian=='E'){
+			//https://stackoverflow.com/questions/45053624/convert-hex-to-binary-in-javascript
+			hex = this.frmtHex(hex, endian, type)
+			var out = "";
+			for(var c of hex) {
+				switch(c) {
+					case '0': out += "0000"; break;
+					case '1': out += "0001"; break;
+					case '2': out += "0010"; break;
+					case '3': out += "0011"; break;
+					case '4': out += "0100"; break;
+					case '5': out += "0101"; break;
+					case '6': out += "0110"; break;
+					case '7': out += "0111"; break;
+					case '8': out += "1000"; break;
+					case '9': out += "1001"; break;
+					case 'a': out += "1010"; break;
+					case 'b': out += "1011"; break;
+					case 'c': out += "1100"; break;
+					case 'd': out += "1101"; break;
+					case 'e': out += "1110"; break;
+					case 'f': out += "1111"; break;
+					default: return "";
+				}
 			}
+			return out
+		}else{
+			hex = this.frmtHex(hex, endian, type)
+			var out = "";
+			for(var c of hex) {
+				switch(c) {
+					case '0': out += "0000"; break;
+					case '1': out += "1000"; break;
+					case '2': out += "0100"; break;
+					case '3': out += "1100"; break;
+					case '4': out += "0010"; break;
+					case '5': out += "1010"; break;
+					case '6': out += "0110"; break;
+					case '7': out += "1110"; break;
+					case '8': out += "0001"; break;
+					case '9': out += "1001"; break;
+					case 'a': out += "0101"; break;
+					case 'b': out += "1101"; break;
+					case 'c': out += "0011"; break;
+					case 'd': out += "1011"; break;
+					case 'e': out += "0111"; break;
+					case 'f': out += "1111"; break;
+					default: return "";
+				}
+			}
+			return out
 		}
-		return out
 	}
 
-	hex2Dec_E(hex){
-		var byts = this.hex2Byts_E(hex)
-		return this.byts2Dec_E(byts)
+
+	hex2Dec(hex, endian, type){
+		var byts = this.hex2Byts(hex, endian, type)
+		return this.byts2Dec(byts, endian, type)
 	}
 
-	hex2Str_E(hex){
+
+	hex2Str(hex, endian, type){
 		if(hex.length%2!==0){
-			throw Error('hex2StrB cannot use a hex string that is not byt divisible')
+			throw Error('hex2Str cannot use a hex string that is not byt divisible')
 		}
 		var hexBuff=[]
 		for(var i = 2; i<=hex.length; i++){
@@ -193,63 +173,13 @@ export class Encoding{
 				hexBuff.push(hex[i-2]+hex[i-1])
 			}
 		}
-		return this.hexBuff2Str_E(hexBuff)
+		return this.hexBuff2Str(hexBuff, endian, type)
 	}
 
-	hex2Str_e(hex){
-		if(hex.length%2!==0){
-			throw Error('hex2StrL cannot use a hex string that is not byt divisible')
-		}
-		var hexBuff=[]
-		for(var i = 2; i<=hex.length; i++){
-			if(i%2==0){
-				hexBuff.push(hex[i-2]+hex[i-1])
-			}
-		}
-		return this.hexBuff2Str_e(hexBuff)
-	}
 
-	str2Hex_E(string){
-		var buff = this.str2HexBuff_E(string)
+	str2Hex(string, endian, type){
+		var buff = this.str2HexBuff(string, endian, type)
 		return buff.join('')
-	}
-
-	str2Hex_e(string){
-		var buff = this.str2HexBuff_e(string)
-		return buff.join('')
-	}
-
-	hex2Byts_e(hex){
-		hex = this.frmtHex_e(hex)
-		var out = "";
-		for(var c of hex) {
-			switch(c) {
-				case '0': out += "0000"; break;
-				case '1': out += "1000"; break;
-				case '2': out += "0100"; break;
-				case '3': out += "1100"; break;
-				case '4': out += "0010"; break;
-				case '5': out += "1010"; break;
-				case '6': out += "0110"; break;
-				case '7': out += "1110"; break;
-				case '8': out += "0001"; break;
-				case '9': out += "1001"; break;
-				case 'a': out += "0101"; break;
-				case 'b': out += "1101"; break;
-				case 'c': out += "0011"; break;
-				case 'd': out += "1011"; break;
-				case 'e': out += "0111"; break;
-				case 'f': out += "1111"; break;
-				default: return "";
-			}
-		}
-		return out
-	}
-
-	
-	hex2Dec_e(hex){
-		var byts = this.hex2Byts_e(hex)
-		return this.byts2Dec_e(byts)
 	}
 
 	byts2Hex_E(bin){
