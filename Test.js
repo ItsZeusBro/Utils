@@ -1,5 +1,0 @@
-
-
-
-
-new EncodingTest(true)
