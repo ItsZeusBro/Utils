@@ -28,18 +28,13 @@ export class Rand{
 		return latin
 	}
 
-	hexRng_E(min, max){
+	hexRng(min, max, endian, type){
 		//take in dec numbers min and max, and return a random hexidec number between them
-		var dec = new Rand().rng(min, max)
-		var bin = new Encoding().dec2Byts_E(dec)
-		return new Encoding().frmtHex_E(new Encoding().byts2Hex_E(bin))
+		var dec = new Rand().rng(min, max, type)
+		var bin = new Encoding().dec2Byts(dec, endian, type)
+		return new Encoding().frmtHex(new Encoding().byts2Hex(bin, endian, type), endian, type)
 	}
-	hexRng_e(min, max){
-		//take in dec numbers min and max, and return a random hexidec number between them
-		var dec = new Rand().rng(min, max)
-		var bin = new Encoding().dec2Byts_e(dec)
-		return new Encoding().frmtHex_e(new Encoding().byts2Hex_e(bin))
-	}
+
 
 	bytsRng_E(min, max){
 		//take in dec numbers min and max, and return a random hexidec number between them
