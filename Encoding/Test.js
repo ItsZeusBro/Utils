@@ -11,36 +11,39 @@ export class EncodingTest{
         this.verbose=verbose
 
 
-        this.frmtByts()
-        this.frmtHex()
+        // this.frmtByts()
+        // this.frmtHex()
 
-        this.dec2Char()
-        this.dec2Byts()
-        this.dec2Hex()
+        // this.dec2Char()
+        // this.dec2Byts()
+        // this.dec2Hex()
 
-        this.byts2Dec()
-        this.byts2Hex()
-        this.byts2Str()
+        // this.byts2Dec()
+        // this.byts2Hex()
+        // this.byts2Str()
+        // this.bytBuff2Str()
 
-        this.hex2Byts()
-        this.hexRng()
-        this.hex2Dec()
-        this.hex2Str()
+        // this.hex2Byts()
+        // this.hexRng()
+        // this.hex2Dec()
+        // this.hex2Str()
+        // this.hexBuff2Str()
 
-        this.bytBuff2Str()
-        this.hexBuff2Str()
 
-        this.str2HexBuff()
-
-        // this.str2BytsBuff()
+        // this.str2HexBuff()
+        // this.str2BytsBuff()        
+        
         // this.str2Byts()
-
-        // this.chainTest()
-        // this.chainTest()
-
+        
         // this.byts2BytsBuff()
         // this.byts2HexBuff()
+
+        this.chainTest()
+        // this.chainTest()
+
         // this.hexBuff2Str()
+
+
 
         //These need to be done 
         // this.str2Hex_E()
@@ -461,14 +464,29 @@ export class EncodingTest{
 
         do{
             console.log('str2HexBuff(', mode,')')
-
             for(var i=0; i<10000; i++){
-
                 var str = r.str(i, i, mode)
                 var buffer = e.str2HexBuff(str, mode)
                 if(this.verbose){console.log(str, buffer)}
                 assert.equal(str, e.hexBuff2Str(buffer, mode))
+            }
+            mode = mode.charCodeAt(0)+32
+            mode = String.fromCharCode(mode)
+        }while(mode=='e'||mode=='E')
 
+	}
+
+
+    str2BytsBuff(){
+        var e=new Encoding()
+        var r=new Rand()
+        var mode='E'
+        do{
+            console.log('str2BytsBuff(', mode,')')
+            for(var i=0; i<10000; i++){
+                var str = r.str(i, i, mode)
+                if(this.verbose){console.log(str, e.str2BytsBuff(str, mode))}
+                assert.equal(str, e.bytBuff2Str(e.str2BytsBuff(str, mode), mode))
             }
             mode = mode.charCodeAt(0)+32
             mode = String.fromCharCode(mode)
@@ -476,180 +494,142 @@ export class EncodingTest{
 	}
 
 
-    str2BytsBuff_E(){
-        console.log('str2BytsBuff_E()')
+
+    str2Byts(){
         var e=new Encoding()
         var r=new Rand()
-        for(var i=0; i<10000; i++){
-            var str = new Rand().str(i, i)
-            if(this.verbose){console.log(str, e.str2BytsBuff_E(str))}
-            assert.equal(str, e.bytBuff2Str_E(e.str2BytsBuff_E(str)))
-        }
-	}
+        var mode='E'
 
-    str2BytsBuff_e(){
-        console.log('str2BytsBuff_e()')
-        var e=new Encoding()
-        var r=new Rand()
-        for(var i=0; i<10000; i++){
-            var str = new Rand().str(i, i)
-            if(this.verbose){console.log(str, e.str2BytsBuff_e(str))}
-            assert.equal(str, e.bytBuff2Str_e(e.str2BytsBuff_e(str)))
-        }
-	}
-
-    str2Byts_E(){
-        console.log('str2Byts_E()')
-        var e=new Encoding()
-        var r=new Rand()
-        for(var i=0; i<10000; i++){
-            var str = new Rand().str(i, i)
-            if(this.verbose){console.log(str, e.str2Byts_E(str))}
-            assert.equal(str, e.byts2Str_E(e.str2Byts_E(str)))
-        }
-    }
-
-    str2Byts_e(){
-        console.log('str2Byts_e()')
-        var e=new Encoding()
-        var r=new Rand()
-        for(var i=0; i<10000; i++){
-            var str = new Rand().str(i, i)
-            if(this.verbose){console.log(str, e.str2Byts_e(str))}
-            assert.equal(str, e.byts2Str_e(e.str2Byts_e(str)))
-        }
-    }
-
-    byts2HexBuff_E(){
-        console.log('byts2BytsBuff()')
-        var e=new Encoding()
-        var byts=''
-        var hexBuff=[]
-        for(var i = 0; i<10000; i++){
-            var _byts = new Rand().bytsRng_E(0, 255)
-            byts+=_byts
-            hexBuff.push(e.byts2Hex_E(_byts))
-        }
-        var buffer= e.byts2HexBuff_E(byts)
-        for(var i = 0; i<buffer.length; i++){
-            assert.equal(buffer[i], hexBuff[i])
-        }
+        do{
+            console.log('str2Byts(', mode,')')
+            for(var i=0; i<10000; i++){
+                var str = r.str(i, i, mode)
+                if(this.verbose){console.log(str, e.str2Byts(str, mode))}
+                assert.equal(str, e.byts2Str(e.str2Byts(str, mode), mode))
+            }
+            mode = mode.charCodeAt(0)+32
+            mode = String.fromCharCode(mode)
+        }while(mode=='e'||mode=='E')
     }
 
     byts2BytsBuff(){
-        console.log('byts2BytsBuff()')
         var e=new Encoding()
-        var byts=''
-        var bytBuff=[]
-        for(var i = 0; i<10000; i++){
-            var _byts = new Rand().bytsRng_E(0, 255)
-            byts+=_byts
-            bytBuff.push(_byts)
-        }
-        var buffer= e.byts2BytsBuff(byts)
-        for(var i = 0; i<buffer.length; i++){
-            assert.equal(buffer[i], bytBuff[i])
-        }
+        var r=new Rand()
+        var mode='E'
+
+        do{
+            console.log('byts2BytsBuff(', mode,')')
+            var byts=''
+            var bytBuff=[]
+            for(var i = 0; i<10000; i++){
+                var _byts = new Rand().bytsRng(0, 255, mode)
+                byts+=_byts
+                bytBuff.push(_byts)
+            }
+            var buffer= e.byts2BytsBuff(byts, mode)
+            for(var i = 0; i<buffer.length; i++){
+                assert.equal(buffer[i], bytBuff[i])
+            }
+            mode = mode.charCodeAt(0)+32
+            mode = String.fromCharCode(mode)
+        }while(mode=='e'||mode=='E')
+
     }
 
-    chainTest_E(){
-        console.log('chainTest_E()')
+
+    byts2HexBuff(){
         var e=new Encoding()
-        var byts=''
+        var r=new Rand()
+        var mode='E'
+
+        do{
+            console.log('byts2HexBuff(', mode,')')
+
+            var byts=''
+            var hexBuff=[]
+
             for(var i = 0; i<10000; i++){
-                byts=new Rand().bytsRng_E(i, i)
-                assert.equal(
-                    e.hexBuff2Str_E(
-                        e.str2HexBuff_E(
-                            e.bytBuff2Str_E(
-                                e.byts2BytsBuff(
-                                    e.bytsBuff2Byts(
-                                        e.str2BytsBuff_E(
-                                            e.byts2Str_E(
-                                                e.str2Byts_E(
-                                                    e.hex2Str_E(
-                                                        e.byts2Hex_E(
-                                                            e.hex2Byts_E(
-                                                                e.dec2Hex_E(
-                                                                    e.hex2Dec_E(
-                                                                        e.byts2Hex_E(
-                                                                            e.dec2Byts_E(
-                                                                                e.byts2Dec_E(
-                                                                                    e.dec2Byts_E(
-                                                                                        e.byts2Dec_E(
-                                                                                            byts
-                                                                                        )
-                                                                                    )
-                                                                                )
-                                                                            )
-                                                                        )
-                                                                    )
-                                                                )
-                                                            )
-                                                        )
-                                                    )
-                                                )
-                                            )
-                                        )
-                                    )
-                                )
-                            )
-                        )
-                    )
-                    ,
-                    e.hexBuff2Str_E(e.byts2HexBuff_E(byts))
-                ) 
-        }
+                var _byts = r.bytsRng(0, 255, mode)
+                byts+=_byts
+                hexBuff.push(e.byts2Hex(_byts, mode))
+            }
+
+            var buffer= e.byts2HexBuff(byts, mode)
+
+            for(var i = 0; i<buffer.length; i++){
+                assert.equal(buffer[i], hexBuff[i])
+            }
+
+            mode = mode.charCodeAt(0)+32
+            mode = String.fromCharCode(mode)
+        }while(mode=='e'||mode=='E')
     }
-    
-    chainTest_e(){
-        console.log('chainTest_e()')
+
+
+
+    chainTest(){
+
         var e=new Encoding()
-        var byts=''
-            for(var i = 0; i<10000; i++){
-                byts=new Rand().bytsRng_e(i, i)
+        var r=new Rand()
+        var mode='E'
+
+        do{
+            console.log('chainTest(', mode,')')
+
+            var byts=''
+            for(var i = 0; i<10000; i++)
+            {
+                byts=r.bytsRng(i, i, mode)
+
                 assert.equal(
-                    e.hexBuff2Str_e(
-                        e.str2HexBuff_e(
-                            e.bytBuff2Str_e(
-                                e.byts2BytsBuff(
-                                    e.bytsBuff2Byts(
-                                        e.str2BytsBuff_e(
-                                            e.byts2Str_e(
-                                                e.str2Byts_e(
-                                                    e.hex2Str_e(
-                                                        e.byts2Hex_e(
-                                                            e.hex2Byts_e(
-                                                                e.dec2Hex_e(
-                                                                    e.hex2Dec_e(
-                                                                        e.byts2Hex_e(
-                                                                            e.dec2Byts_e(
-                                                                                e.byts2Dec_e(
-                                                                                    e.dec2Byts_e(
-                                                                                        e.byts2Dec_e(
-                                                                                            byts
-                                                                                        )
-                                                                                    )
-                                                                                )
-                                                                            )
-                                                                        )
-                                                                    )
-                                                                )
-                                                            )
-                                                        )
-                                                    )
-                                                )
-                                            )
-                                        )
-                                    )
-                                )
-                            )
-                        )
-                    )
-                    ,
-                    e.hexBuff2Str_e(e.byts2HexBuff_e(byts))
-                ) 
-        }
+                    e.hex2Dec(
+                        e.byts2Hex(
+                            e.dec2Byts(
+                                e.byts2Dec(
+                                    byts,
+                                    mode
+                                ),mode
+                            ),mode
+                        ),mode
+                    ),
+                    e.byts2Dec(byts, mode)
+                )
+                
+
+                // assert.equal(
+                //     e.hexBuff2Str(
+                //         e.str2HexBuff(
+                //             e.bytBuff2Str(
+                //                 e.byts2BytsBuff(
+                //                     e.bytsBuff2Byts(
+                //                         e.str2BytsBuff(
+                //                             e.byts2Str(
+                //                                 e.str2Byts(
+                //                                     e.hex2Str(
+                //                                         e.byts2Hex(
+                //                                             e.hex2Byts(
+                //                                                 e.dec2Hex(
+
+                //                                                 ),mode
+                //                                             ),mode
+                //                                         ),mode
+                //                                     ),mode
+                //                                 ),mode
+                //                             ),mode
+                //                         ),mode
+                //                     ),mode
+                //                 ),mode
+                //             ),mode
+                //         ),mode
+                //     )
+                //     ,
+                //     e.hexBuff2Str(e.byts2HexBuff(byts, mode))
+                // ) 
+            }
+
+            mode = mode.charCodeAt(0)+32
+            mode = String.fromCharCode(mode)
+        }while(mode=='e'||mode=='E')
     }
 } 
 
