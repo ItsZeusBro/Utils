@@ -16,11 +16,11 @@ export class EncodingTest{
         this.frmtByts()
         this.frmtHex()
 
-        // this.dec2Char()
-        // this.dec2Byts()
-        // this.dec2Hex()
+        this.dec2Char()
+        this.dec2Byts()
+        this.dec2Hex()
 
-        // this.byts2Dec()
+        this.byts2Dec()
         // this.byts2Hex()
         // this.byts2Str()
         // this.bytBuff2Str()
@@ -153,174 +153,170 @@ export class EncodingTest{
         }
     }
 
-    dec2Byts_E(){
-        console.log('dec2Byts_E()')
+    dec2Byts(){
+        console.log('dec2Byts()')
         var e  = new Encoding()
+        //E
         for(var i = 0; i<=100000; i++){
             if(this.verbose){
-                console.log('dec2Byts_E()1', e.dec2Byts_E(i), i)
+                console.log('dec2Byts(E) 1', e.dec2Byts(i, 'E'), i)
             }
             assert.equal(
-                e.byts2Dec_E(e.dec2Byts_E(i)), 
+                e.byts2Dec(e.dec2Byts(i, 'E'), 'E'), 
                 i
             )
         }
         for(var i = Number.MAX_SAFE_INTEGER-100000; i<=Number.MAX_SAFE_INTEGER; i++){
             if(this.verbose){
-                console.log('dec2Byts_E()1', e.dec2Byts_E(i), i)
+                console.log('dec2Byts(E) 1', e.dec2Byts(i, 'E'), i)
             }
             assert.equal(
-                e.byts2Dec_E(e.dec2Byts_E(i)), 
+                e.byts2Dec(e.dec2Byts(i, 'E'), 'E'), 
+                i
+            )
+        }
+
+        //e
+        for(var i = 0; i<=100000; i++){
+            if(this.verbose){
+                console.log('dec2Byts(e) 1', e.dec2Byts(i, 'e'), i)
+            }
+            assert.equal(
+                e.byts2Dec(e.dec2Byts(i, 'e'), 'e'), 
+                i
+            )
+        }
+        for(var i = Number.MAX_SAFE_INTEGER-100000; i<=Number.MAX_SAFE_INTEGER; i++){
+            if(this.verbose){
+                console.log('dec2Byts(E) 1', e.dec2Byts(i, 'e'), i)
+            }
+            assert.equal(
+                e.byts2Dec(e.dec2Byts(i, 'e'), 'e'), 
                 i
             )
         }
     }
 
-    dec2Byts_e(){
-        console.log('dec2Byts_e()')
+    dec2Hex(){
+        console.log('dec2Hex()')
         var e  = new Encoding()
-        for(var i = 0; i<=100000; i++){
-            //javascript assumes parseInt is little endian
-            if(this.verbose){
-                console.log('dec2Byts_e()1', e.dec2Byts_e(i), i)
-            }
-            assert.equal(
-                e.byts2Dec_e(e.dec2Byts_e(i)), 
-                i
-            )
-        }
-        for(var i = Number.MAX_SAFE_INTEGER-100000; i<=Number.MAX_SAFE_INTEGER; i++){
-            //javascript assumes parseInt is little endian
-            if(this.verbose){
-                console.log('dec2Byts_e()1', e.dec2Byts_e(i), i)
-            }
-            assert.equal(
-                e.byts2Dec_e(e.dec2Byts_e(i)), 
-                i
-            )
-        }
-    }
-
-    dec2Hex_E(){
-        console.log('dec2Hex_E()')
-        var e  = new Encoding()
+        //e
         for(var i = 0; i<=100000; i++){
             if(this.verbose){
-                console.log('dec2Hex_E()1', hex, i)
+                console.log('dec2Hex(E) 1', hex, i)
             }
-            var byts = e.dec2Byts_E(i)
-            var hex = e.byts2Hex_E(byts)
-            assert.equal(hex, e.dec2Hex_E(i))
+            var byts = e.dec2Byts(i, 'E')
+            var hex = e.byts2Hex(byts, 'E')
+            assert.equal(hex, e.dec2Hex(i, 'E'))
         }
         for(var i = Number.MAX_SAFE_INTEGER-100000; i<=Number.MAX_SAFE_INTEGER; i++){
             if(this.verbose){
-                console.log('dec2Hex_E()1', hex, i)
+                console.log('dec2Hex(E) 1', hex, i)
             }
-            var byts = e.dec2Byts_E(i)
-            var hex = e.byts2Hex_E(byts)
-            assert.equal(hex, e.dec2Hex_E(i))
+            var byts = e.dec2Byts(i, 'E')
+            var hex = e.byts2Hex(byts, 'E')
+            assert.equal(hex, e.dec2Hex(i, 'E'))
         }
-    }
 
-    dec2Hex_e(){
-        console.log('dec2Hex_e()')
-        var e  = new Encoding()
+
+        //E
         for(var i = 0; i<=100000; i++){
             if(this.verbose){
-                console.log('dec2Hex_e()1', hex, i)
+                console.log('dec2Hex(e) 1', hex, i)
             }
-            var byts = e.dec2Byts_e(i)
-            var hex = e.byts2Hex_e(byts)
-            assert.equal(hex, e.dec2Hex_e(i))
+            var byts = e.dec2Byts(i, 'e')
+            var hex = e.byts2Hex(byts, 'e')
+            assert.equal(hex, e.dec2Hex(i, 'e'))
         }
         for(var i = Number.MAX_SAFE_INTEGER-100000; i<=Number.MAX_SAFE_INTEGER; i++){
             if(this.verbose){
-                console.log('dec2Hex_e()1', hex, i)
+                console.log('dec2Hex(e) 1', hex, i)
             }
-            var byts = e.dec2Byts_e(i)
-            var hex = e.byts2Hex_e(byts)
-            assert.equal(hex, e.dec2Hex_e(i))
+            var byts = e.dec2Byts(i, 'e')
+            var hex = e.byts2Hex(byts, 'e')
+            assert.equal(hex, e.dec2Hex(i, 'e'))
         }
     }
 
-    byts2Dec_E(){
 
-        console.log('byts2Dec_E()')
+    byts2Dec(){
+
+        console.log('byts2Dec()')
         var e=new Encoding()
         var byts=''
         for(var i = 0; i<5; i++){
-            byts+=new Rand().bytsRng_E(i, i)
+            byts+=new Rand().bytsRng(i, i, 'E')
         }
-        var dec = e.byts2Dec_E(byts)
-        var byts = e.dec2Byts_E(dec)
+        var dec = e.byts2Dec(byts, 'E')
+        byts = e.dec2Byts(dec, 'E')
         if(this.verbose){
-            console.log('byts2Dec_E()1', byts, e.byts2Dec_E(byts))
+            console.log('byts2Dec(E) 1', byts, e.byts2Dec(byts, 'E'))
         }
         assert.equal(
             dec, 
-            e.byts2Dec_E(byts)
+            e.byts2Dec(byts, 'E')
         )
         for(var i = 0; i<=100000; i++){
-            var byts = new Encoding().dec2Byts_E(i)
+            byts = new Encoding().dec2Byts(i, 'E')
             if(this.verbose){
-                console.log('byts2Dec_E()2', byts, e.byts2Dec_E(byts))
+                console.log('byts2Dec(E) 2', byts, e.byts2Dec(byts, 'E'))
             }
             assert.equal(
-                new Encoding().dec2Byts_E(i), 
-                new Encoding().dec2Byts_E(new Encoding().byts2Dec_E(byts))
+                new Encoding().dec2Byts(i, 'E'), 
+                new Encoding().dec2Byts(new Encoding().byts2Dec(byts, 'E'),'E')
             )
         }
         for(var i = Number.MAX_SAFE_INTEGER-100000; i<=Number.MAX_SAFE_INTEGER; i++){
-            var byts = new Encoding().dec2Byts_E(i)
+            byts = new Encoding().dec2Byts(i, 'E')
             if(this.verbose){
-                console.log('byts2Dec_E()2', byts, e.byts2Dec_E(byts))
+                console.log('byts2Dec(E) 2', byts, e.byts2Dec(byts, 'E'))
             }
             assert.equal(
-                new Encoding().dec2Byts_E(i), 
-                new Encoding().dec2Byts_E(new Encoding().byts2Dec_E(byts))
+                new Encoding().dec2Byts(i, 'E'), 
+                new Encoding().dec2Byts(new Encoding().byts2Dec(byts, 'E'), 'E')
             )
         }
-    }
 
-    byts2Dec_e(){
+        //e
 
-        console.log('byts2Dec_e()')
-        var e=new Encoding()
-        var r=new Rand()
-        var byts=''
+        byts=''
         for(var i = 0; i<5; i++){
-            byts+=r.bytsRng_e(i, i)
+            byts+=new Rand().bytsRng(i, i, 'e')
         }
-        var dec = e.byts2Dec_e(byts)
-        var byts = e.dec2Byts_e(dec)
+        dec = e.byts2Dec(byts, 'e')
+        byts = e.dec2Byts(dec, 'e')
         if(this.verbose){
-            console.log('byts2Dec_e()1', byts, e.byts2Dec_e(byts))
+            console.log('byts2Dec(e) 1', byts, e.byts2Dec(byts, 'e'))
         }
         assert.equal(
             dec, 
-            e.byts2Dec_e(byts)
+            e.byts2Dec(byts, 'e')
         )
         for(var i = 0; i<=100000; i++){
-            var byts = e.dec2Byts_e(i)
+            byts = new Encoding().dec2Byts(i, 'e')
             if(this.verbose){
-                console.log('byts2Dec_e()2', byts, e.byts2Dec_e(byts))
+                console.log('byts2Dec(e) 2', byts, e.byts2Dec(byts, 'e'))
             }
             assert.equal(
-                e.dec2Byts_e(i), 
-                e.dec2Byts_e(e.byts2Dec_e(byts))
+                new Encoding().dec2Byts(i, 'e'), 
+                new Encoding().dec2Byts(new Encoding().byts2Dec(byts, 'e'),'e')
             )
         }
         for(var i = Number.MAX_SAFE_INTEGER-100000; i<=Number.MAX_SAFE_INTEGER; i++){
-            var byts = e.dec2Byts_e(i)
+            byts = new Encoding().dec2Byts(i, 'e')
             if(this.verbose){
-                console.log('byts2Dec_e()2', byts, e.byts2Dec_e(byts))
+                console.log('byts2Dec(e) 2', byts, e.byts2Dec(byts, 'e'))
             }
             assert.equal(
-                e.dec2Byts_e(i), 
-                e.dec2Byts_e(e.byts2Dec_e(byts))
+                new Encoding().dec2Byts(i, 'e'), 
+                new Encoding().dec2Byts(new Encoding().byts2Dec(byts, 'e'), 'e')
             )
         }
+
     }
+
+
+    
 
     byts2Hex_E(){
         console.log('byts2Hex_E()')
