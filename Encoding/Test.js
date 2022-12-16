@@ -30,7 +30,8 @@ export class EncodingTest{
         this.bytBuff2Str()
         this.hexBuff2Str()
 
-        // this.str2HexBuff()
+        this.str2HexBuff()
+
         // this.str2BytsBuff()
         // this.str2Byts()
 
@@ -453,31 +454,27 @@ export class EncodingTest{
 
 
 
-    str2HexBuff_E(){
-        console.log('str2HexBuff_E()')
+    str2HexBuff(){
         var e=new Encoding()
         var r=new Rand()
+        var mode='E'
 
-        for(var i=0; i<10000; i++){
-            var str = r.str(i, i)
-            var buffer = e.str2HexBuff_E(str)
-            if(this.verbose){console.log('str2HexBuff_E()1', str, buffer)}
-            assert.equal(str, e.hexBuff2Str_E(buffer))
-        }
+        do{
+            console.log('str2HexBuff(', mode,')')
+
+            for(var i=0; i<10000; i++){
+
+                var str = r.str(i, i, mode)
+                var buffer = e.str2HexBuff(str, mode)
+                if(this.verbose){console.log(str, buffer)}
+                assert.equal(str, e.hexBuff2Str(buffer, mode))
+
+            }
+            mode = mode.charCodeAt(0)+32
+            mode = String.fromCharCode(mode)
+        }while(mode=='e'||mode=='E')
 	}
 
-    str2HexBuff_e(){
-        console.log('str2HexBuff_e()')
-        var e=new Encoding()
-        var r=new Rand()
-
-        for(var i=0; i<10000; i++){
-            var str = r.str(i, i)
-            var buffer = e.str2HexBuff_e(str)
-            if(this.verbose){console.log('str2HexBuff_e()1', str, buffer)}
-            assert.equal(str, e.hexBuff2Str_e(buffer))
-        }
-	}
 
     str2BytsBuff_E(){
         console.log('str2BytsBuff_E()')
