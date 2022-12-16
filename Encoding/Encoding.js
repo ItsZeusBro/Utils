@@ -156,7 +156,7 @@ export class Encoding{
 
 	byts2Str(byts, endian, type){
 		if(byts.length%8!==0){
-			throw Error('hex2Str cannot use a hex string that is not byt divisible')
+			throw Error('byts2Str cannot use a byt string that is not byt divisible')
 		}
 		var bytBuff=[]
 		for(var i = 8; i<=byts.length; i++){

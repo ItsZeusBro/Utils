@@ -39,7 +39,6 @@ export class EncodingTest{
         // this.byts2HexBuff()
 
         this.chainTest()
-        // this.chainTest()
 
         // this.hexBuff2Str()
 
@@ -493,8 +492,6 @@ export class EncodingTest{
         }while(mode=='e'||mode=='E')
 	}
 
-
-
     str2Byts(){
         var e=new Encoding()
         var r=new Rand()
@@ -582,17 +579,25 @@ export class EncodingTest{
                 byts=r.bytsRng(i, i, mode)
 
                 assert.equal(
-                    e.hex2Dec(
+                    e.hex2Str(
                         e.byts2Hex(
-                            e.dec2Byts(
-                                e.byts2Dec(
-                                    byts,
-                                    mode
+                            e.hex2Byts(
+                                e.dec2Hex(
+                                    e.hex2Dec(
+                                        e.byts2Hex(
+                                            e.dec2Byts(
+                                                e.byts2Dec(
+                                                    byts,
+                                                    mode
+                                                ),mode
+                                            ),mode
+                                        ),mode
+                                    ),mode
                                 ),mode
                             ),mode
-                        ),mode
+                        ), mode
                     ),
-                    e.byts2Dec(byts, mode)
+                    e.byts2Str(byts, mode)
                 )
                 
 
@@ -607,11 +612,7 @@ export class EncodingTest{
                 //                                 e.str2Byts(
                 //                                     e.hex2Str(
                 //                                         e.byts2Hex(
-                //                                             e.hex2Byts(
-                //                                                 e.dec2Hex(
 
-                //                                                 ),mode
-                //                                             ),mode
                 //                                         ),mode
                 //                                     ),mode
                 //                                 ),mode
