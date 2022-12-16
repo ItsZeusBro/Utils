@@ -25,9 +25,10 @@ export class EncodingTest{
         this.hex2Byts()
         this.hexRng()
         this.hex2Dec()
+        this.hex2Str()
 
-        // this.hex2Str()
-        // this.bytBuff2Str()
+        this.bytBuff2Str()
+        this.hexBuff2Str()
 
         // this.str2HexBuff()
         // this.str2BytsBuff()
@@ -383,92 +384,71 @@ export class EncodingTest{
 
 
 
-    hex2Str_E(){
-        console.log('hex2Str_E()')
+    hex2Str(){
         var e=new Encoding()
         var r=new Rand()
-        for(var j = 0; j<100; j++){
-            var hexStr=''
-            for(var i = 0; i<100; i++){
-                hexStr+=''+r.hexRng_E(i, i)
+        var mode='E'
+        do{
+            console.log('hex2Str(', mode,')')
+            for(var j = 0; j<100; j++){
+                var hexStr=''
+                for(var i = 0; i<100; i++){
+                    hexStr+=''+r.hexRng(i, i, mode)
+                }
+                var str = e.hex2Str(hexStr, mode)
+                if(this.verbose){ console.log(str, hexStr) }
+                assert.equal(hexStr, e.str2Hex(str, mode))
             }
-            var str = e.hex2Str_E(hexStr)
-            if(this.verbose){ console.log('hex2Str_E()1', str, hexStr) }
-            assert.equal(hexStr, e.str2Hex_E(str))
-        }
-    }
-
-    hex2Str_e(){
-        console.log('hex2Str_e()')
-        var e=new Encoding()
-        var r=new Rand()
-        for(var j = 0; j<100; j++){
-            var hexStr=''
-            for(var i = 0; i<100; i++){
-                hexStr+=''+r.hexRng_e(i, i)
-            }
-            var str = e.hex2Str_e(hexStr)
-            if(this.verbose){ console.log('hex2Str_e()1', str, hexStr) }
-            assert.equal(hexStr, e.str2Hex_e(str))
-        }
+            mode = mode.charCodeAt(0)+32
+            mode = String.fromCharCode(mode)
+        }while(mode=='e'||mode=='E')  
     }
 
 
-    bytBuff2Str_E(){
-        console.log('bytBuff2Str_E()')
+
+    bytBuff2Str(){
         var e=new Encoding()
         var r=new Rand()
-        for(var i = 0; i<=60000; i++){
-            var buffer = []
-            buffer.push(r.bytsRng_E(i, i))
-            var str = e.bytBuff2Str_E(buffer)
-            if(this.verbose){console.log('bytBuff2Str_E()1', str, buffer)}
-            for(var j = 0; j<str.length; j++){
-                assert.equal(e.hex2Byts_E(e.char2Hex_E(str[j])), buffer[j]) 
+        var mode='E'
+        do{
+            console.log('bytBuff2Str(', mode,')')
+            for(var i = 0; i<=60000; i++){
+                var buffer = []
+                buffer.push(r.bytsRng(i, i, mode))
+                var str = e.bytBuff2Str(buffer, mode)
+                if(this.verbose){console.log(str, buffer)}
+                for(var j = 0; j<str.length; j++){
+                    assert.equal(e.hex2Byts(e.char2Hex(str[j], mode), mode), buffer[j]) 
+                }
             }
-        }
+            mode = mode.charCodeAt(0)+32
+            mode = String.fromCharCode(mode)
+        }while(mode=='e'||mode=='E') 
     }
 
-    bytBuff2Str_e(){
-        console.log('bytBuff2Str_e()')
-        var e=new Encoding()
-        var r=new Rand()
-        for(var i = 0; i<=60000; i++){
-            var buffer = []
-            buffer.push(r.bytsRng_e(i, i))
-            var str = e.bytBuff2Str_e(buffer)
-            if(this.verbose){console.log('bytBuff2Str_e()1', str, buffer)}
-            for(var j = 0; j<str.length; j++){
-                assert.equal(e.hex2Byts_e(e.char2Hex_e(str[j])), buffer[j]) 
-            }
-        }
-    }
+
 
     hexBuff2Str(){
         var e=new Encoding()
         var r=new Rand()
-        console.log('hexBuff2Str(E)')
-        var buffer = []
-        for(var i = 0; i<=60000; i++){
-           buffer.push(new Rand().hexRng(i, i, 'E'))
-        }
-        var str = new Encoding().hexBuff2Str(buffer, 'E')
-        if(this.verbose){console.log(str, buffer)}
-        for(var i = 0; i<str.length; i++){
-            assert.equal(new Encoding().char2Hex(str[i], 'E'), buffer[i]) 
-        }
+        var mode='E'
 
-        console.log('hexBuff2Str(e)')
-        buffer = []
-        for(var i = 0; i<=60000; i++){
-           buffer.push(new Rand().hexRng(i, i, 'e'))
-        }
-        str = new Encoding().hexBuff2Str(buffer, 'e')
-        if(this.verbose){console.log(str, buffer)}
-        for(var i = 0; i<str.length; i++){
-            assert.equal(new Encoding().char2Hex(str[i], 'e'), buffer[i]) 
-        }
+        do{
+            console.log('hexBuff2Str(', mode,')')
+            var buffer = []
+            for(var i = 0; i<=60000; i++){
+                buffer.push(r.hexRng(i, i, mode))
+            }
+            var str = e.hexBuff2Str(buffer, mode)
+            if(this.verbose){console.log(str, buffer)}
+            for(var i = 0; i<str.length; i++){
+                assert.equal(e.char2Hex(str[i], mode), buffer[i]) 
+            }
 
+            mode = mode.charCodeAt(0)+32
+            mode = String.fromCharCode(mode)
+        }while(mode=='e'||mode=='E') 
+    
     }
 
 
