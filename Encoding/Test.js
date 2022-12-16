@@ -13,52 +13,34 @@ export class EncodingTest{
 
         // this.frmtByts()
         // this.frmtHex()
-
         // this.dec2Char()
         // this.dec2Byts()
         // this.dec2Hex()
-
         // this.byts2Dec()
         // this.byts2Hex()
         // this.byts2Str()
         // this.bytBuff2Str()
-
         // this.hex2Byts()
         // this.hexRng()
         // this.hex2Dec()
         // this.hex2Str()
         // this.hexBuff2Str()
-
-
         // this.str2HexBuff()
         // this.str2BytsBuff()        
-        
         // this.str2Byts()
-        
+
         // this.byts2BytsBuff()
         // this.byts2HexBuff()
-
-        this.chainTest()
-
-        // this.hexBuff2Str()
+        // this.chainTest()
+        this.str2Hex()
 
 
-
-        //These need to be done 
-        // this.str2Hex_E()
-        // this.str2Hex_e()
-        //this.str2DecBuff()
-        //this.str2DecBuff()
-        // this.bytBuff2Hex_E()
-        // this.bytBuff2Hex_e()
-        // this.bytBuff2Byts_E()
-        // this.bytBuff2Byts_e()
-        //this.dec2BytBuff_E()
-        //this.dec2BytBuff_e()
-        //this.dec2HexBuff_E()
-        //this.dec2HexBuff_e()
-
-
+        // These need to be done 
+        // this.str2DecBuff()
+        // this.bytBuff2Hex()
+        // this.bytBuff2Byts()
+        // this.dec2BytBuff()
+        // this.dec2HexBuff()
 
     }
 
@@ -509,6 +491,23 @@ export class EncodingTest{
         }while(mode=='e'||mode=='E')
     }
 
+    str2Hex(){
+        var e=new Encoding()
+        var r=new Rand()
+        var mode='E'
+
+        do{
+            console.log('str2Hex(', mode,')')
+            for(var i=0; i<10000; i++){
+                var str = r.str(i, i, mode)
+                if(this.verbose){console.log(str, e.str2Hex(str, mode))}
+                assert.equal(str, e.hex2Str(e.str2Hex(str, mode), mode))
+            }
+            mode = mode.charCodeAt(0)+32
+            mode = String.fromCharCode(mode)
+        }while(mode=='e'||mode=='E')
+    }
+
     byts2BytsBuff(){
         var e=new Encoding()
         var r=new Rand()
@@ -532,7 +531,6 @@ export class EncodingTest{
         }while(mode=='e'||mode=='E')
 
     }
-
 
     byts2HexBuff(){
         var e=new Encoding()
@@ -562,8 +560,6 @@ export class EncodingTest{
         }while(mode=='e'||mode=='E')
     }
 
-
-
     chainTest(){
 
         var e=new Encoding()
@@ -577,55 +573,41 @@ export class EncodingTest{
             for(var i = 0; i<10000; i++)
             {
                 byts=r.bytsRng(i, i, mode)
-
                 assert.equal(
-                    e.hex2Str(
-                        e.byts2Hex(
-                            e.hex2Byts(
-                                e.dec2Hex(
-                                    e.hex2Dec(
-                                        e.byts2Hex(
-                                            e.dec2Byts(
-                                                e.byts2Dec(
-                                                    byts,
-                                                    mode
-                                                ),mode
+                    e.str2Byts(
+                        e.bytBuff2Str(
+                            e.byts2BytsBuff(
+                                e.bytsBuff2Byts(
+                                    e.str2BytsBuff(
+                                        e.hexBuff2Str(
+                                            e.str2HexBuff(
+                                                e.hex2Str(
+                                                    e.byts2Hex(
+                                                        e.hex2Byts(
+                                                            e.dec2Hex(
+                                                                e.hex2Dec(
+                                                                    e.byts2Hex(
+                                                                        e.dec2Byts(
+                                                                            e.byts2Dec(
+                                                                                byts,
+                                                                                mode
+                                                                            ),mode
+                                                                        ),mode
+                                                                    ),mode
+                                                                ),mode
+                                                            ),mode
+                                                        ),mode
+                                                    ), mode
+                                                ), mode                        
                                             ),mode
                                         ),mode
                                     ),mode
                                 ),mode
                             ),mode
-                        ), mode
+                        ),mode
                     ),
-                    e.byts2Str(byts, mode)
+                    byts
                 )
-                
-
-                // assert.equal(
-                //     e.hexBuff2Str(
-                //         e.str2HexBuff(
-                //             e.bytBuff2Str(
-                //                 e.byts2BytsBuff(
-                //                     e.bytsBuff2Byts(
-                //                         e.str2BytsBuff(
-                //                             e.byts2Str(
-                //                                 e.str2Byts(
-                //                                     e.hex2Str(
-                //                                         e.byts2Hex(
-
-                //                                         ),mode
-                //                                     ),mode
-                //                                 ),mode
-                //                             ),mode
-                //                         ),mode
-                //                     ),mode
-                //                 ),mode
-                //             ),mode
-                //         ),mode
-                //     )
-                //     ,
-                //     e.hexBuff2Str(e.byts2HexBuff(byts, mode))
-                // ) 
             }
 
             mode = mode.charCodeAt(0)+32
