@@ -9,9 +9,7 @@ export class EncodingTest{
 
 
         this.verbose=verbose
-        // this.byts2BytsBuff()
-        // this.byts2HexBuff()
-        // this.hexBuff2Str()
+
 
         this.frmtByts()
         this.frmtHex()
@@ -22,10 +20,12 @@ export class EncodingTest{
 
         this.byts2Dec()
         this.byts2Hex()
-        // this.byts2Str()
+        this.byts2Str()
+
+        this.hex2Byts()
+
         // this.bytBuff2Str()
 
-        // this.hex2Byts()
         // this.hexRng()
         // this.hex2Dec()
         // this.hex2Str()
@@ -37,6 +37,10 @@ export class EncodingTest{
 
         // this.chainTest()
         // this.chainTest()
+
+        // this.byts2BytsBuff()
+        // this.byts2HexBuff()
+        // this.hexBuff2Str()
 
         //These need to be done 
         // this.str2Hex_E()
@@ -57,90 +61,61 @@ export class EncodingTest{
     }
 
     frmtByts(){
-        console.log('frmtByts()')
-        var e = new Encoding()
-        //E
-        for(var i = 0; i<10000; i++){
-            if(this.verbose){
-                console.log('frmtByts(E) 1', e.frmtByts(e.dec2Byts(i, 'E'), 'E'), i)
+        var e  = new Encoding()
+        var r = new Rand()
+        var mode='E'
+        do{
+            console.log('frmtByts(', mode,')')
+            for(var i = 0; i<10000; i++){
+                if(this.verbose){
+                    console.log(e.frmtByts(e.dec2Byts(i, mode), mode), i)
+                }
+                assert.equal(e.byts2Dec(e.frmtByts(e.dec2Byts(i, mode), mode), mode), i)
             }
-            assert.equal(e.byts2Dec(e.frmtByts(e.dec2Byts(i, 'E'), 'E'), 'E'), i)
-        }
+    
+            for(var i = Number.MAX_SAFE_INTEGER-10000; i<=Number.MAX_SAFE_INTEGER; i++){
+                if(this.verbose){
+                    console.log(e.frmtByts(e.dec2Byts(i, mode), mode), i)
+                }
+                assert.equal(e.byts2Dec(e.frmtByts(e.dec2Byts(i, mode), mode), mode), i)
+            }
 
-        for(var i = Number.MAX_SAFE_INTEGER-10000; i<=Number.MAX_SAFE_INTEGER; i++){
-            if(this.verbose){
-                console.log('frmtByts(E) 2', e.frmtByts(e.dec2Byts(i, 'E'), 'E'), i)
-            }
-            assert.equal(e.byts2Dec(e.frmtByts(e.dec2Byts(i, 'E'), 'E'), 'E'), i)
-        }
+            mode = mode.charCodeAt(0)+32
+            mode = String.fromCharCode(mode)
 
-        //e
-        for(var i = 0; i<10000; i++){
-            if(this.verbose){
-                console.log('frmtByts(e) 1', e.frmtByts(e.dec2Byts(i, 'e'), 'e'), i)
-            }
-            assert.equal(e.byts2Dec(e.frmtByts(e.dec2Byts(i, 'e'), 'e'), 'e'), i)
-        }
-
-        for(var i = Number.MAX_SAFE_INTEGER-10000; i<=Number.MAX_SAFE_INTEGER; i++){
-            if(this.verbose){
-                console.log('frmtByts(e) 2', e.frmtByts(e.dec2Byts(i, 'e'), 'e'), i)
-            }
-            assert.equal(e.byts2Dec(e.frmtByts(e.dec2Byts(i, 'e'), 'e'), 'e'), i)
-        }
+        }while(mode=='e'||mode=='E')
     }
-
 
     frmtHex(){
-        console.log('frmtHex()')
-        var e = new Encoding()
+        var e  = new Encoding()
         var r = new Rand()
-
-        for(var i = 0; i<=100000; i++){
-            var hex = r.hexRng(i, i, 'E')
-            hex = e.frmtHex(hex, 'E')
-            assert.equal(hex.length%2==0, true)
-            if(this.verbose){
-                console.log('frmtHex(E) 1', hex, e.hex2Dec(hex, 'E'))
+        var mode='E'
+        do{
+            console.log('frmtHex(', mode,')')
+            for(var i = 0; i<=100000; i++){
+                var hex = r.hexRng(i, i, mode)
+                hex = e.frmtHex(hex, mode)
+                assert.equal(hex.length%2==0, true)
+                if(this.verbose){
+                    console.log(hex, e.hex2Dec(hex, mode))
+                }
+                assert.equal(e.hex2Dec(hex, mode), i)
             }
-            assert.equal(e.hex2Dec(hex, 'E'), i)
-        }
-
-        //send in 1 it should return length 2 hex, send in 3 and it should return length 4 etc...
-        for(var i = Number.MAX_SAFE_INTEGER-10000; i<=Number.MAX_SAFE_INTEGER; i++){
-            var hex = r.hexRng(i, i, 'E')
-            hex = e.frmtHex(hex, 'E')
-            assert.equal(hex.length%2==0, true)
-            if(this.verbose){
-                console.log('frmtHex(E) 2', hex, e.hex2Dec(hex, 'E'))
+            for(var i = Number.MAX_SAFE_INTEGER-10000; i<=Number.MAX_SAFE_INTEGER; i++){
+                var hex = r.hexRng(i, i, mode)
+                hex = e.frmtHex(hex, mode)
+                assert.equal(hex.length%2==0, true)
+                if(this.verbose){
+                    console.log(hex, e.hex2Dec(hex, mode))
+                }
+                assert.equal(e.hex2Dec(hex, mode), i)
             }
-            assert.equal(e.hex2Dec(hex, 'E'), i)
-        }
 
-        //e
-        for(var i = 0; i<=100000; i++){
-            var hex = r.hexRng(i, i, 'e')
-            hex = e.frmtHex(hex, 'e')
-            assert.equal(hex.length%2==0, true)
-            if(this.verbose){
-                console.log('frmtHex(e) 1', hex, e.hex2Dec(hex, 'e'))
-            }
-            assert.equal(e.hex2Dec(hex, 'e'), i)
-        }
-
-        //send in 1 it should return length 2 hex, send in 3 and it should return length 4 etc...
-        for(var i = Number.MAX_SAFE_INTEGER-10000; i<=Number.MAX_SAFE_INTEGER; i++){
-            var hex = r.hexRng(i, i, 'e')
-            hex = e.frmtHex(hex, 'e')
-            assert.equal(hex.length%2==0, true)
-            if(this.verbose){
-                console.log('frmtHex(e) 2', hex, e.hex2Dec(hex, 'e'))
-            }
-            assert.equal(e.hex2Dec(hex, 'e'), i)
-        }
+            mode = mode.charCodeAt(0)+32
+            mode = String.fromCharCode(mode)
+        }while(mode=='e'||mode=='E')
+        
     }
-
-    
 
     dec2Char(){
         console.log('dec2Char()')
@@ -154,90 +129,82 @@ export class EncodingTest{
     }
 
     dec2Byts(){
-        console.log('dec2Byts()')
         var e  = new Encoding()
-        //E
-        for(var i = 0; i<=100000; i++){
-            if(this.verbose){
-                console.log('dec2Byts(E) 1', e.dec2Byts(i, 'E'), i)
+        var r = new Rand()
+        var mode='E'
+        do{
+            console.log('dec2Byts(', mode,')')
+            for(var i = 0; i<=100000; i++){
+                if(this.verbose){
+                    console.log(e.dec2Byts(i, mode), i)
+                }
+                assert.equal(
+                    e.byts2Dec(e.dec2Byts(i, mode), mode), 
+                    i
+                )
             }
-            assert.equal(
-                e.byts2Dec(e.dec2Byts(i, 'E'), 'E'), 
-                i
-            )
-        }
-        for(var i = Number.MAX_SAFE_INTEGER-100000; i<=Number.MAX_SAFE_INTEGER; i++){
-            if(this.verbose){
-                console.log('dec2Byts(E) 1', e.dec2Byts(i, 'E'), i)
+            for(var i = Number.MAX_SAFE_INTEGER-100000; i<=Number.MAX_SAFE_INTEGER; i++){
+                if(this.verbose){
+                    console.log(e.dec2Byts(i, mode), i)
+                }
+                assert.equal(
+                    e.byts2Dec(e.dec2Byts(i, mode),mode), 
+                    i
+                )
             }
-            assert.equal(
-                e.byts2Dec(e.dec2Byts(i, 'E'), 'E'), 
-                i
-            )
-        }
 
-        //e
-        for(var i = 0; i<=100000; i++){
-            if(this.verbose){
-                console.log('dec2Byts(e) 1', e.dec2Byts(i, 'e'), i)
+            //e
+            for(var i = 0; i<=100000; i++){
+                if(this.verbose){
+                    console.log(e.dec2Byts(i, mode), i)
+                }
+                assert.equal(
+                    e.byts2Dec(e.dec2Byts(i, mode), mode), 
+                    i
+                )
             }
-            assert.equal(
-                e.byts2Dec(e.dec2Byts(i, 'e'), 'e'), 
-                i
-            )
-        }
-        for(var i = Number.MAX_SAFE_INTEGER-100000; i<=Number.MAX_SAFE_INTEGER; i++){
-            if(this.verbose){
-                console.log('dec2Byts(E) 1', e.dec2Byts(i, 'e'), i)
+            for(var i = Number.MAX_SAFE_INTEGER-100000; i<=Number.MAX_SAFE_INTEGER; i++){
+                if(this.verbose){
+                    console.log(e.dec2Byts(i, mode), i)
+                }
+                assert.equal(
+                    e.byts2Dec(e.dec2Byts(i, mode), mode), 
+                    i
+                )
             }
-            assert.equal(
-                e.byts2Dec(e.dec2Byts(i, 'e'), 'e'), 
-                i
-            )
-        }
+            mode = mode.charCodeAt(0)+32
+            mode = String.fromCharCode(mode)
+        }while(mode=='e'||mode=='E')
     }
 
     dec2Hex(){
-        console.log('dec2Hex()')
         var e  = new Encoding()
-        //e
-        for(var i = 0; i<=100000; i++){
-            if(this.verbose){
-                console.log('dec2Hex(E) 1', hex, i)
+        var r = new Rand()
+        var mode='E'
+        do{
+            console.log('dec2Hex(', mode,')')
+            for(var i = 0; i<=100000; i++){
+                if(this.verbose){
+                    console.log(hex, i)
+                }
+                var byts = e.dec2Byts(i, mode)
+                var hex = e.byts2Hex(byts, mode)
+                assert.equal(hex, e.dec2Hex(i, mode))
             }
-            var byts = e.dec2Byts(i, 'E')
-            var hex = e.byts2Hex(byts, 'E')
-            assert.equal(hex, e.dec2Hex(i, 'E'))
-        }
-        for(var i = Number.MAX_SAFE_INTEGER-100000; i<=Number.MAX_SAFE_INTEGER; i++){
-            if(this.verbose){
-                console.log('dec2Hex(E) 1', hex, i)
-            }
-            var byts = e.dec2Byts(i, 'E')
-            var hex = e.byts2Hex(byts, 'E')
-            assert.equal(hex, e.dec2Hex(i, 'E'))
-        }
 
+            for(var i = Number.MAX_SAFE_INTEGER-100000; i<=Number.MAX_SAFE_INTEGER; i++){
+                if(this.verbose){
+                    console.log(hex, i)
+                }
+                var byts = e.dec2Byts(i, mode)
+                var hex = e.byts2Hex(byts, mode)
+                assert.equal(hex, e.dec2Hex(i, mode))
+            }
 
-        //E
-        for(var i = 0; i<=100000; i++){
-            if(this.verbose){
-                console.log('dec2Hex(e) 1', hex, i)
-            }
-            var byts = e.dec2Byts(i, 'e')
-            var hex = e.byts2Hex(byts, 'e')
-            assert.equal(hex, e.dec2Hex(i, 'e'))
-        }
-        for(var i = Number.MAX_SAFE_INTEGER-100000; i<=Number.MAX_SAFE_INTEGER; i++){
-            if(this.verbose){
-                console.log('dec2Hex(e) 1', hex, i)
-            }
-            var byts = e.dec2Byts(i, 'e')
-            var hex = e.byts2Hex(byts, 'e')
-            assert.equal(hex, e.dec2Hex(i, 'e'))
-        }
+            mode = mode.charCodeAt(0)+32
+            mode = String.fromCharCode(mode)
+        }while(mode=='e'||mode=='E')
     }
-
 
     byts2Dec(){
         var e  = new Encoding()
@@ -283,17 +250,16 @@ export class EncodingTest{
         mode = mode.charCodeAt(0)+32
         mode = String.fromCharCode(mode)
         }while(mode=='e'||mode=='E')
-
     }
 
 
     byts2Hex(){
+        var e=new Encoding()
+        var r=new Rand()
         var mode='E'
         do{
             console.log('byts2Hex(', mode,')')
-            var e=new Encoding()
-            var r=new Rand()
-    
+
             for(var i = 0; i<=100000; i++){
                 var byts = e.dec2Byts(i, mode)
                 var hex = e.byts2Hex(byts, mode)
@@ -316,65 +282,57 @@ export class EncodingTest{
         }while(mode=='e'||mode=='E')
     }
 
-    byts2Hex_e(){
-        console.log('byts2Hex_e()')
+
+    byts2Str(){
         var e=new Encoding()
         var r=new Rand()
-        for(var i = 0; i<=100000; i++){
-            var byts = e.dec2Byts_e(i)
-            var hex = e.byts2Hex_e(byts)
-            if(this.verbose){
-                console.log('byts2Hex_e()2', byts, hex)
+        var mode='E'
+        do{
+            console.log('byts2Str(', mode,')')
+            for(var j = 0; j<100; j++){
+                var bytStr=''
+                var str=''
+                for(var i = 0; i<100; i++){
+                    var byt=r.bytsRng(i, i, mode)
+                    bytStr+=byt
+                    str+=e.bytBuff2Str([byt], mode)
+                }
+                var str = e.byts2Str(bytStr, mode)
+                if(this.verbose){console.log(str, bytStr)}
+                assert.equal(str, str)
             }
-            assert.equal(byts, e.hex2Byts_e(hex))
-        }
-        for(var i = Number.MAX_SAFE_INTEGER-100000; i<=Number.MAX_SAFE_INTEGER; i++){
-            var byts = e.dec2Byts_e(i)
-            var hex = e.byts2Hex_e(byts)
-            if(this.verbose){
-                console.log('byts2Hex_e()2', byts, hex)
+            mode = mode.charCodeAt(0)+32
+            mode = String.fromCharCode(mode)
+
+        }while(mode=='e'||mode=='E')
+    }
+
+   
+    hex2Byts(){
+        var e=new Encoding()
+        var r=new Rand()
+        var mode='E'
+        do{
+            console.log('hex2Byts(', mode,')')
+            for(var i = 0; i<=100000; i++){
+                var hex = r.hexRng(i, i, mode)
+                var bin = e.hex2Byts(hex, mode)
+                if(this.verbose){ console.log(bin, hex) }
+                assert.equal(hex, e.byts2Hex(bin, mode))
             }
-            assert.equal(byts, e.hex2Byts_e(hex))
-        }
+            for(var i = Number.MAX_SAFE_INTEGER-100000; i<=Number.MAX_SAFE_INTEGER; i++){
+                var hex = r.hexRng(i, i, mode)
+                var bin = e.hex2Byts(hex, mode)
+                if(this.verbose){ console.log(bin, hex) }
+                assert.equal(hex, e.byts2Hex(bin, mode))
+            }
+            mode = mode.charCodeAt(0)+32
+            mode = String.fromCharCode(mode)
+        }while(mode=='e'||mode=='E')  
     }
 
-    hex2Byts_E(){
-        console.log('hex2Bin_E()')
-        var e=new Encoding()
-        var r=new Rand()
-        for(var i = 0; i<=100000; i++){
-            var hex = r.hexRng_E(i, i)
-            var bin = e.hex2Byts_E(hex)
-            if(this.verbose){ console.log('hex2Byts_E()2', bin, hex) }
-            assert.equal(hex, e.byts2Hex_E(bin))
-        }
-        for(var i = Number.MAX_SAFE_INTEGER-100000; i<=Number.MAX_SAFE_INTEGER; i++){
-            var hex = r.hexRng_E(i, i)
-            var bin = e.hex2Byts_E(hex)
-            if(this.verbose){ console.log('hex2Byts_E()2', bin, hex) }
-            assert.equal(hex, e.byts2Hex_E(bin))
-        }
-    }
 
-    hex2Byts_e(){
-        console.log('hex2Byts_e()')
-        var e=new Encoding()
-        var r=new Rand()
-        for(var i = 0; i<=100000; i++){
-            var hex = r.hexRng_e(i, i)
-            var bin = e.hex2Byts_e(hex)
-            if(this.verbose){ console.log('hex2Byts_e()2', bin, hex) }
-            assert.equal(hex, e.byts2Hex_e(bin))
-        }
-        for(var i = Number.MAX_SAFE_INTEGER-100000; i<=Number.MAX_SAFE_INTEGER; i++){
-            var hex = r.hexRng_e(i, i)
-            var bin = e.hex2Byts_e(hex)
-            if(this.verbose){ console.log('hex2Byts_e()2', bin, hex) }
-            assert.equal(hex, e.byts2Hex_e(bin))
-        }
-
-    }
-
+    
     hexRng_E(){
         console.log('hexRng_E()')
         var e=new Encoding()
@@ -473,41 +431,6 @@ export class EncodingTest{
         }
     }
 
-    byts2Str_E(){
-        console.log('byts2Str_E()')
-        var e=new Encoding()
-        var r=new Rand()
-        for(var j = 0; j<100; j++){
-            var bytStr=''
-            var str=''
-            for(var i = 0; i<100; i++){
-                var byt=r.bytsRng_E(i, i)
-                bytStr+=byt
-                str+=e.bytBuff2Str_E([byt])
-            }
-            var str = e.byts2Str_E(bytStr)
-            if(this.verbose){console.log('byts2Str_E()1', str, bytStr)}
-            assert.equal(str, str)
-        }
-    }
-
-    byts2Str_e(){
-        console.log('byts2Str_e()')
-        var e=new Encoding()
-        var r=new Rand()
-        for(var j = 0; j<100; j++){
-            var bytStr=''
-            var str=''
-            for(var i = 0; i<100; i++){
-                var byt=r.bytsRng_e(i, i)
-                bytStr+=byt
-                str+=e.bytBuff2Str_e([byt])
-            }
-            var str = e.byts2Str_e(bytStr)
-            if(this.verbose){console.log('byts2Str_e()1', str, bytStr)}
-            assert.equal(str, str)
-        }
-    }
 
     bytBuff2Str_E(){
         console.log('bytBuff2Str_E()')
