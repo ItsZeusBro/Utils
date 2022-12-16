@@ -11,7 +11,8 @@ export class EncodingTest{
         this.verbose=verbose
 
 
-        // this.frmtByts()      //this formats a byte string by adding or reducing bytes according to a standard
+        this.frmtByts()      
+        
         // this.frmtHex()       //this formats a hex string by adding or reducing hex numbers according to a standard
         // this.dec2Char()      //this takes a decimal number and produces a char charachter using an encoding flag
         // this.dec2Byts()      //this takes a decimal number and produces a byte string that represents the number
@@ -47,28 +48,25 @@ export class EncodingTest{
     }
 
     frmtByts(){
+        //this formats a byte string by adding or reducing bytes according to a standard
         var e  = new Encoding()
         var r = new Rand()
         var mode='E'
+        var standard=128
         do{
             console.log('frmtByts(', mode,')')
-            for(var i = 0; i<10000; i++){
-                if(this.verbose){
-                    console.log(e.frmtByts(e.dec2Byts(i, mode), mode), i)
-                }
-                assert.equal(e.byts2Dec(e.frmtByts(e.dec2Byts(i, mode), mode), mode), i)
+            for(var i = 0; i<=10000; i++){
+                var byt = r.bytsRng(i, i, mode, standard)
+                if(this.verbose){ console.log(e.byts2Dec(e.frmtByts(byt, mode, standard), mode), i) }
+                assert.equal(e.byts2Dec(e.frmtByts(byt, mode, standard), mode), i)
             }
-    
             for(var i = Number.MAX_SAFE_INTEGER-10000; i<=Number.MAX_SAFE_INTEGER; i++){
-                if(this.verbose){
-                    console.log(e.frmtByts(e.dec2Byts(i, mode), mode), i)
-                }
-                assert.equal(e.byts2Dec(e.frmtByts(e.dec2Byts(i, mode), mode), mode), i)
+                var byt = r.bytsRng(i, i, mode, standard)
+                if(this.verbose){ console.log(e.byts2Dec(e.frmtByts(byt, mode, standard), mode), i) }
+                assert.equal(e.byts2Dec(e.frmtByts(byt, mode, standard), mode), i)
             }
-
             mode = mode.charCodeAt(0)+32
             mode = String.fromCharCode(mode)
-
         }while(mode=='e'||mode=='E')
     }
 
@@ -650,4 +648,4 @@ export class EncodingTest{
     }
 } 
 
-new EncodingTest()
+new EncodingTest(true)

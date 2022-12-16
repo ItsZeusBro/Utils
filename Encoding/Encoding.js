@@ -1,28 +1,20 @@
 import {Types} from "../Types/Types.js"
 export class Encoding{
 
-	frmtByts(bin, endian, type){
+	//this formats a byte string by adding or reducing bytes according to a standard
+	frmtByts(bin, endian, standard=32){
 		if(endian=='E'){
-			bin = this.stripByts(bin, endian, type)
-			while(true){
-				if(bin.length%8==0){
-					break
-				}else{
-					bin='0'.concat(bin)
-				}
+			bin = this.stripByts(bin, endian, standard)	//this doesnt need a standard because its just stripping based on endianness
+			while(bin.length!=standard){
+				bin='0'.concat(bin)
 			}
-			return bin
-		}else{
-			bin = this.stripByts(bin, endian, type)
-			while(true){
-				if(bin.length%8==0){
-					break
-				}else{
-					bin=bin.concat('0')
-				}
+		}else if(endian=='e'){
+			bin = this.stripByts(bin, endian, standard)
+			while(bin.length!=standard){
+				bin=bin.concat('0')
 			}
-			return bin
 		}
+		return bin
 	}
 
 	frmtHex(hex, endian, type){
@@ -199,7 +191,7 @@ export class Encoding{
 
 	byts2Dec(bin, endian, type){
 		if(endian=='E'){
-			bin=this.stripByts(bin, endian, type)
+			bin=this.stripByts(bin, endian)
 			var dec=0
 			var j = bin.length-1
 			for(var i = 0; i<bin.length; i++){
@@ -210,7 +202,7 @@ export class Encoding{
 			}		
 			return dec
 		}else if(endian=='e'){
-			bin =this.stripByts(bin, endian, type)
+			bin =this.stripByts(bin, endian)
 			var i = 0
 			var dec=0
 			while(i<bin.length){
@@ -287,12 +279,12 @@ export class Encoding{
 		}
 	}
 
-	hex2Dec(hex, endian, type){
+	hex2Dec(hex, endian, standard){
 		var byts = this.hex2Byts(hex, endian, type)
 		return this.byts2Dec(byts, endian, type)
 	}
 
-	hex2Str(hex, endian, type){
+	hex2Str(hex, endian, standard){
 		if(hex.length%2!==0){
 			throw Error('hex2Str cannot use a hex string that is not byt divisible')
 		}
@@ -305,14 +297,13 @@ export class Encoding{
 		return this.hexBuff2Str(hexBuff, endian, type)
 	}
 
-	dec2Hex(dec, endian, type){
-		var byts = this.dec2Byts(dec, endian, type)
-		return this.byts2Hex(byts, endian, type)
+	dec2Hex(dec, endian, standard){
+		var byts = this.dec2Byts(dec, endian, standard)
+		return this.byts2Hex(byts, endian, standard)
 	}
 
-	dec2Byts(dec, endian, type){
+	dec2Byts(dec, endian, standard){
 		var bin=''
-		if(dec==0){return '00000000'}
 		while(dec!=0){
 			if(new Types().isInt(dec/2)){
 				bin = '0'.concat(bin)
@@ -322,9 +313,9 @@ export class Encoding{
 			dec=Math.floor(dec/2)
 		}
 		if(endian=='E'){
-			return this.frmtByts(bin, endian, type)
+			return this.frmtByts(bin, endian, standard)
 		}else if(endian=='e'){
-			return this.frmtByts(bin.split('').reverse().join(''), endian, type)
+			return this.frmtByts(bin.split('').reverse().join(''), endian, standard)
 		}
 	}
 
@@ -354,7 +345,7 @@ export class Encoding{
 		return buff
 	}
 
-	stripByts(byts, endian, type){
+	stripByts(byts, endian, standard){
 		if(endian=='E'){
 			var byts2=byts
 			for(var i=0; i<byts.length; i++){
