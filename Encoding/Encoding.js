@@ -54,7 +54,6 @@ export class Encoding{
         return String.fromCodePoint(dec)
     }
 
-
     bytBuff2Str(buff, endian, type){
 		var str=''
 		for(var i = 0; i<buff.length; i++){
@@ -122,7 +121,7 @@ export class Encoding{
 				}
 			}
 			return out
-		}else{
+		}else if(endian=='e'){
 			bin = this.frmtByts(bin, endian, type)
 			var out = "";
 			var accumulator=''
@@ -192,7 +191,7 @@ export class Encoding{
 				j--
 			}		
 			return dec
-		}else{
+		}else if(endian=='e'){
 			bin =this.stripByts(bin, endian, type)
 			var i = 0
 			var dec=0
@@ -304,9 +303,9 @@ export class Encoding{
 			}
 			dec=Math.floor(dec/2)
 		}
-		if(endian='E'){
+		if(endian=='E'){
 			return this.frmtByts(bin, endian, type)
-		}else{
+		}else if(endian=='e'){
 			return this.frmtByts(bin.split('').reverse().join(''), endian, type)
 		}
 	}
@@ -362,6 +361,4 @@ export class Encoding{
 			return byts2
 		}
 	}
-	
-
 }

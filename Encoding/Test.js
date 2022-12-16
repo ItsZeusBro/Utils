@@ -9,49 +9,34 @@ export class EncodingTest{
 
 
         this.verbose=verbose
-        this.byts2BytsBuff()
-        this.byts2HexBuff()
-        this.hexBuff2Str()
-        char2Hex
-        hexRng_E
+        // this.byts2BytsBuff()
+        // this.byts2HexBuff()
+        // this.hexBuff2Str()
 
-        // this.frmtByts_E()
-        // this.frmtByts_e()
-        // this.frmtHex_E()
-        // this.frmtHex_e()
+        this.frmtByts()
+        this.frmtHex()
 
         // this.dec2Char()
-        // this.dec2Byts_E()
-        // this.dec2Byts_e()
-        // this.dec2Hex_E()
-        // this.dec2Hex_e()
+        // this.dec2Byts()
+        // this.dec2Hex()
 
-        // this.byts2Dec_E()
-        // this.byts2Dec_e()
-        // this.byts2Hex_E()
-        // this.byts2Hex_e()
-        // this.byts2Str_E()
-        // this.byts2Str_e()
-        // this.bytBuff2Str_E()
-        // this.bytBuff2Str_e()
+        // this.byts2Dec()
+        // this.byts2Hex()
+        // this.byts2Str()
+        // this.bytBuff2Str()
 
-        // this.hex2Byts_E()
-        // this.hex2Byts_e()
-        // this.hexRng_E()
-        // this.hexRng_e()
-        // this.hex2Dec_E()
-        // this.hex2Dec_e()
-        // this.hex2Str_E()
-        // this.hex2Str_e()
+        // this.hex2Byts()
+        // this.hexRng()
+        // this.hex2Dec()
+        // this.hex2Str()
 
        
-        // this.str2HexBuff_E()
-        // this.str2HexBuff_e()
-        // this.str2BytsBuff_E()
-        // this.str2BytsBuff_e()
-        // this.str2Byts_E()
-        // this.str2Byts_e()
+        // this.str2HexBuff()
+        // this.str2BytsBuff()
+        // this.str2Byts()
 
+        // this.chainTest()
+        // this.chainTest()
 
         //These need to be done 
         // this.str2Hex_E()
@@ -68,95 +53,94 @@ export class EncodingTest{
         //this.dec2HexBuff_e()
 
 
-        this.chainTest_E()
-        this.chainTest_e()
+
     }
 
-    frmtByts_E(){
-        console.log('frmtByts_E()')
+    frmtByts(){
+        console.log('frmtByts()')
         var e = new Encoding()
+        //E
         for(var i = 0; i<10000; i++){
             if(this.verbose){
-                console.log('frmtByts_E()1', e.frmtByts_E(e.dec2Byts_E(i)), i)
+                console.log('frmtByts(E) 1', e.frmtByts(e.dec2Byts(i, 'E'), 'E'), i)
             }
-            assert.equal(e.byts2Dec_E(e.frmtByts_E(e.dec2Byts_E(i))), i)
+            assert.equal(e.byts2Dec(e.frmtByts(e.dec2Byts(i, 'E'), 'E'), 'E'), i)
         }
+
         for(var i = Number.MAX_SAFE_INTEGER-10000; i<=Number.MAX_SAFE_INTEGER; i++){
             if(this.verbose){
-                console.log('frmtByts_E()2', e.frmtByts_E(e.dec2Byts_E(i)), i)
+                console.log('frmtByts(E) 2', e.frmtByts(e.dec2Byts(i, 'E'), 'E'), i)
             }
-            assert.equal(e.byts2Dec_E(e.frmtByts_E(e.dec2Byts_E(i))), i)
+            assert.equal(e.byts2Dec(e.frmtByts(e.dec2Byts(i, 'E'), 'E'), 'E'), i)
         }
 
-    }
-
-    frmtByts_e(){
-        console.log('frmtByts_e()')
-        var e = new Encoding()
+        //e
         for(var i = 0; i<10000; i++){
             if(this.verbose){
-                console.log('frmtByts_e()1',e.frmtByts_e(e.dec2Byts_e(i)), i)
+                console.log('frmtByts(e) 1', e.frmtByts(e.dec2Byts(i, 'e'), 'e'), i)
             }
-            assert.equal(e.byts2Dec_e(e.frmtByts_e(e.dec2Byts_e(i))), i)
+            assert.equal(e.byts2Dec(e.frmtByts(e.dec2Byts(i, 'e'), 'e'), 'e'), i)
         }
+
         for(var i = Number.MAX_SAFE_INTEGER-10000; i<=Number.MAX_SAFE_INTEGER; i++){
             if(this.verbose){
-                console.log('frmtByts_e()2', e.frmtByts_e(e.dec2Byts_e(i)), i)
+                console.log('frmtByts(e) 2', e.frmtByts(e.dec2Byts(i, 'e'), 'e'), i)
             }
-            assert.equal(e.byts2Dec_e(e.frmtByts_e(e.dec2Byts_e(i))), i)
+            assert.equal(e.byts2Dec(e.frmtByts(e.dec2Byts(i, 'e'), 'e'), 'e'), i)
         }
     }
 
-    frmtHex_E(){
-        console.log('frmtHex_E()')
-        var e = new Encoding()
-        var r = new Rand()
-        for(var i = 0; i<=100000; i++){
-            var hex = r.hexRng_E(i, i)
-            hex = e.frmtHex_E(hex)
-            assert.equal(hex.length%2==0, true)
-            if(this.verbose){
-                console.log('frmtHex_E()1', hex, e.hex2Dec_E(hex))
-            }
-            assert.equal(e.hex2Dec_E(hex), i)
-        }
-        //send in 1 it should return length 2 hex, send in 3 and it should return length 4 etc...
-        for(var i = Number.MAX_SAFE_INTEGER-10000; i<=Number.MAX_SAFE_INTEGER; i++){
-            var hex = r.hexRng_E(i, i)
-            hex = e.frmtHex_E(hex)
-            assert.equal(hex.length%2==0, true)
-            if(this.verbose){
-                console.log('frmtHex_E()1', hex, e.hex2Dec_E(hex))
-            }
-            assert.equal(e.hex2Dec_E(hex), i)
-        }
-    }
 
-    frmtHex_e(){
-        console.log('frmtHex_e()')
+    frmtHex(){
+        console.log('frmtHex()')
         var e = new Encoding()
         var r = new Rand()
 
         for(var i = 0; i<=100000; i++){
-            var hex = r.hexRng_e(i, i)
-            hex = e.frmtHex_e(hex)
+            var hex = r.hexRng(i, i, 'E')
+            hex = e.frmtHex(hex, 'E')
             assert.equal(hex.length%2==0, true)
             if(this.verbose){
-                console.log('frmtHex_e()1', hex, e.hex2Dec_e(hex))
+                console.log('frmtHex(E) 1', hex, e.hex2Dec(hex, 'E'))
             }
-            assert.equal(e.hex2Dec_e(hex), i)
+            assert.equal(e.hex2Dec(hex, 'E'), i)
         }
+
         //send in 1 it should return length 2 hex, send in 3 and it should return length 4 etc...
         for(var i = Number.MAX_SAFE_INTEGER-10000; i<=Number.MAX_SAFE_INTEGER; i++){
-            var hex = r.hexRng_e(i, i)
-            hex = e.frmtHex_e(hex)
+            var hex = r.hexRng(i, i, 'E')
+            hex = e.frmtHex(hex, 'E')
             assert.equal(hex.length%2==0, true)
             if(this.verbose){
-                console.log('frmtHex_e()1', hex, e.hex2Dec_e(hex))
+                console.log('frmtHex(E) 2', hex, e.hex2Dec(hex, 'E'))
             }
-            assert.equal(e.hex2Dec_e(hex), i)
+            assert.equal(e.hex2Dec(hex, 'E'), i)
+        }
+
+        //e
+        for(var i = 0; i<=100000; i++){
+            var hex = r.hexRng(i, i, 'e')
+            hex = e.frmtHex(hex, 'e')
+            assert.equal(hex.length%2==0, true)
+            if(this.verbose){
+                console.log('frmtHex(e) 1', hex, e.hex2Dec(hex, 'e'))
+            }
+            assert.equal(e.hex2Dec(hex, 'e'), i)
+        }
+
+        //send in 1 it should return length 2 hex, send in 3 and it should return length 4 etc...
+        for(var i = Number.MAX_SAFE_INTEGER-10000; i<=Number.MAX_SAFE_INTEGER; i++){
+            var hex = r.hexRng(i, i, 'e')
+            hex = e.frmtHex(hex, 'e')
+            assert.equal(hex.length%2==0, true)
+            if(this.verbose){
+                console.log('frmtHex(e) 2', hex, e.hex2Dec(hex, 'e'))
+            }
+            assert.equal(e.hex2Dec(hex, 'e'), i)
         }
     }
+
+    
 
     dec2Char(){
         console.log('dec2Char()')
