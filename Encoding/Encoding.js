@@ -62,6 +62,24 @@ export class Encoding{
 		}
 		return str
     }
+	
+
+	decBuff2Str(buff, endian, type){
+		var str=''
+		for(var i = 0; i<buff.length; i++){
+
+			str+= this.dec2Char(buff[i])
+		}
+		return str
+	}
+	str2DecBuff(str){
+		var buff=[]
+		for(var i = 0; i<str.length; i++){
+			buff.push(str[i].charCodeAt(0))
+		}
+		return buff
+	}
+
 
 	byts2BytsBuff(byts){
 		var buff=[]
