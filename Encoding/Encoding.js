@@ -182,73 +182,74 @@ export class Encoding{
 		return buff.join('')
 	}
 
-	byts2Hex_E(bin){
-		bin = this.frmtByts_E(bin)
-		var out = "";
-		var accumulator=''
-		for(var c = 1; c<=bin.length; c++) {
-			accumulator+=bin[c-1]
-			if(c%4==0){
-				switch(accumulator) {
-					case "0000": out += '0'; break;
-					case "0001": out += '1'; break;
-					case "0010": out += '2'; break;
-					case "0011": out += '3'; break;
-					case "0100": out += '4'; break;
-					case "0101": out += '5'; break;
-					case "0110": out += '6'; break;
-					case "0111": out += '7'; break;
-					case "1000": out += '8'; break;
-					case "1001": out += '9'; break;
-					case "1010": out += 'a'; break;
-					case "1011": out += 'b'; break;
-					case "1100": out += 'c'; break;
-					case "1101": out += 'd'; break;
-					case "1110": out += 'e'; break;
-					case "1111": out += 'f'; break;
-					default: return "";
+	byts2Hex(bin, endian, type){
+		//WARNING! E and e use different switch boards!
+		if(endian=='E'){
+			bin = this.frmtByts(bin, endian, type)
+			var out = "";
+			var accumulator=''
+			for(var c = 1; c<=bin.length; c++) {
+				accumulator+=bin[c-1]
+				if(c%4==0){
+					switch(accumulator) {
+						case "0000": out += '0'; break;
+						case "0001": out += '1'; break;
+						case "0010": out += '2'; break;
+						case "0011": out += '3'; break;
+						case "0100": out += '4'; break;
+						case "0101": out += '5'; break;
+						case "0110": out += '6'; break;
+						case "0111": out += '7'; break;
+						case "1000": out += '8'; break;
+						case "1001": out += '9'; break;
+						case "1010": out += 'a'; break;
+						case "1011": out += 'b'; break;
+						case "1100": out += 'c'; break;
+						case "1101": out += 'd'; break;
+						case "1110": out += 'e'; break;
+						case "1111": out += 'f'; break;
+						default: return "";
+					}
+					accumulator=""
 				}
-				accumulator=""
 			}
+			return out
+		}else{
+			bin = this.frmtByts(bin, endian, type)
+			var out = "";
+			var accumulator=''
+			for(var c = 1; c<=bin.length; c++) {
+				accumulator+=bin[c-1]
+				if(c%4==0){
+					switch(accumulator) {
+						case "0000": out += '0'; break;
+						case "1000": out += '1'; break;
+						case "0100": out += '2'; break;
+						case "1100": out += '3'; break;
+						case "0010": out += '4'; break;
+						case "1010": out += '5'; break;
+						case "0110": out += '6'; break;
+						case "1110": out += '7'; break;
+						case "0001": out += '8'; break;
+						case "1001": out += '9'; break;
+						case "0101": out += 'a'; break;
+						case "1101": out += 'b'; break;
+						case "0011": out += 'c'; break;
+						case "1011": out += 'd'; break;
+						case "0111": out += 'e'; break;
+						case "1111": out += 'f'; break;
+						default: return "";
+					}
+					accumulator=""
+				}
+			}
+			return out
 		}
-		return out
 	}
 
-	byts2Hex_e(bin){
-		bin = this.frmtByts_e(bin)
-		var out = "";
-		var accumulator=''
-		for(var c = 1; c<=bin.length; c++) {
-			accumulator+=bin[c-1]
-			if(c%4==0){
-				switch(accumulator) {
-					case "0000": out += '0'; break;
-					case "1000": out += '1'; break;
-					case "0100": out += '2'; break;
-					case "1100": out += '3'; break;
-					case "0010": out += '4'; break;
-					case "1010": out += '5'; break;
-					case "0110": out += '6'; break;
-					case "1110": out += '7'; break;
-					case "0001": out += '8'; break;
-					case "1001": out += '9'; break;
-					case "0101": out += 'a'; break;
-					case "1101": out += 'b'; break;
-					case "0011": out += 'c'; break;
-					case "1011": out += 'd'; break;
-					case "0111": out += 'e'; break;
-					case "1111": out += 'f'; break;
-					default: return "";
-				}
-				accumulator=""
-			}
-		}
-		return out
-	}
-
-	byts2Str_E(byts){
+	byts2Str(byts, endian, type){
 		if(byts.length%8!==0){
-			throw Error('hex2StrB cannot use a hex string that is not byt divisible')
+			throw Error('hex2Str cannot use a hex string that is not byt divisible')
 		}
 		var bytBuff=[]
 		for(var i = 8; i<=byts.length; i++){
@@ -260,54 +261,26 @@ export class Encoding{
 				bytBuff.push(bytsStr)
 			}
 		}
-
-		return this.bytBuff2Str_E(bytBuff)
+		return this.bytBuff2Str(bytBuff, endian, type)
 	}
 
-	byts2Str_e(byts){
-		if(byts.length%8!==0){
-			throw Error('hex2StrL cannot use a hex string that is not byt divisible')
-		}
-		var bytBuff=[]
-		for(var i = 8; i<=byts.length; i++){
-			var bytsStr=''
-			if(i%8==0){
-				for(var j = i-8; j<i; j++){
-					bytsStr+=byts[j]
-				}
-				bytBuff.push(bytsStr)
-			}
-		}
-		return this.bytBuff2Str_e(bytBuff)
-	}
 
-	str2Byts_E(string){
-		var buff = this.str2BytsBuff_E(string)
+
+	str2Byts(string, endian, type){
+		var buff = this.str2BytsBuff(string, endian, type)
 		return buff.join('')
 	}
 
-	str2Byts_e(string){
-		var buff = this.str2BytsBuff_e(string)
-		return buff.join('')
-	}
 
-    bytBuff2Str_E(buff){
+    bytBuff2Str(buff, endian, type){
 		var str=''
 		for(var i = 0; i<buff.length; i++){
 			var byt = buff[i]
-			str+= this.dec2Char(this.byts2Dec_E(byt))
+			str+= this.dec2Char(this.byts2Dec(byt, endian, type))
 		}
 		return str
     }
 
-	bytBuff2Str_e(buff){
-		var str=''
-		for(var i = 0; i<buff.length; i++){
-			var byt = buff[i]
-			str+= this.dec2Char(this.byts2Dec_e(byt))
-		}
-		return str
-    }
 
 	bytsBuff2Byts(buff){
 		var byts=''
@@ -317,100 +290,87 @@ export class Encoding{
 		return byts
 	}
 
-	str2BytsBuff_E(string){
+
+	str2BytsBuff(string, endian, type){
 		var buff=[]
 		for(var i = 0; i<string.length; i++){
-			buff.push(this.hex2Byts_E(this.char2Hex_E(string[i])))
+			buff.push(this.hex2Byts(this.char2Hex(string[i], endian, type), endian, type))
 		}
 		return buff
-	}
-
-	str2BytsBuff_e(string){
-		var buff=[]
-		for(var i = 0; i<string.length; i++){
-			buff.push(this.hex2Byts_e(this.char2Hex_e(string[i])))
-		}
-		return buff
-	}	
-
-	str2HexBuff_E(string){
-		var buff=[]
-		for(var i = 0; i<string.length; i++){
-			buff.push(this.char2Hex_E(string[i]))
-		}
-		return buff
-	}
-
-	str2HexBuff_e(string){
-		var buff=[]
-		for(var i = 0; i<string.length; i++){
-			buff.push(this.char2Hex_e(string[i]))
-		}
-		return buff
-	}	
-
-	stripByts_E(byts){
-		var byts2=byts
-		for(var i=0; i<byts.length; i++){
-			if(byts[i]=='1'){
-				return byts2
-			}else{
-				byts2=byts2.slice(1)
-			}
-		}
-		if(byts2==''){return '0'}
-		return byts2
-	}
-
-	stripByts_e(byts){
-		var byts2=byts
-		for(var i=byts.length-1; i>=0; i--){
-			if(byts[i]=='1'){
-				return byts2
-			}else{
-				byts2=byts2.slice(0, -1)
-			}
-		}
-		if(byts2==''){return '0'}
-		return byts2
-	}
-
-	frmtByts_E(bin){
-		bin = this.stripByts_E(bin)
-
-		while(true){
-			if(bin.length%8==0){
-				break
-			}else{
-				bin='0'.concat(bin)
-			}
-		}
-		return bin
 	}
 	
-	frmtByts_e(bin){
-		bin = this.stripByts_e(bin)
-		while(true){
-			if(bin.length%8==0){
-				break
-			}else{
-				bin=bin.concat('0')
-			}
+
+	str2HexBuff(string, endian, type){
+		var buff=[]
+		for(var i = 0; i<string.length; i++){
+			buff.push(this.char2Hex(string[i], endian, type))
 		}
-		return bin
+		return buff
 	}
 
-	frmtHex_E(hex){
-		if(hex.length%2!=0){
-			hex = '0'.concat(hex)
+
+	stripByts(byts, endian, type){
+		if(endian=='E'){
+			var byts2=byts
+			for(var i=0; i<byts.length; i++){
+				if(byts[i]=='1'){
+					return byts2
+				}else{
+					byts2=byts2.slice(1)
+				}
+			}
+			if(byts2==''){return '0'}
+			return byts2
+		}else{
+			var byts2=byts
+			for(var i=byts.length-1; i>=0; i--){
+				if(byts[i]=='1'){
+					return byts2
+				}else{
+					byts2=byts2.slice(0, -1)
+				}
+			}
+			if(byts2==''){return '0'}
+			return byts2
 		}
-		return hex
+	}
+
+
+	frmtByts(bin, endian, type){
+		if(endian=='E'){
+			bin = this.stripByts(bin, endian, type)
+			while(true){
+				if(bin.length%8==0){
+					break
+				}else{
+					bin='0'.concat(bin)
+				}
+			}
+			return bin
+		}else{
+			bin = this.stripByts(bin, endian, type)
+			while(true){
+				if(bin.length%8==0){
+					break
+				}else{
+					bin=bin.concat('0')
+				}
+			}
+			return bin
+		}
 	}
 	
-	frmtHex_e(hex){
-		if(hex.length%2!=0){
-			hex = hex.concat('0')
+	frmtHex(hex, endian, type){
+		if(endian=='E'){
+			if(hex.length%2!=0){
+				hex = '0'.concat(hex)
+			}
+			return hex
+		}else{
+			if(hex.length%2!=0){
+				hex = hex.concat('0')
+			}
+			return hex
 		}
-		return hex
 	}
 }
