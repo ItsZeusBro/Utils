@@ -139,7 +139,7 @@ export class Encoding{
 		return buff
 	}
 
-	byts2HexBuff(byts, endian, type){
+	byts2HexBuff(byts, endian, standard){
 		var buff=[]
 		var string=''
 		for(var i=1; i<=byts.length; i++){
@@ -346,7 +346,6 @@ export class Encoding{
 				for(var j = i-(standard/4); j<i; j++){
 					hexStr+=hex[j]
 				}
-				console.log(hexStr)
 				str+=this.hex2Char(hexStr, endian, standard)
 			}
 		}

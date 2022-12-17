@@ -29,9 +29,9 @@ export class EncodingTest{
         //this.hexBuff2Str()   //this does not require a standard, the hex string in the buffer is sufficient
         //this.str2HexBuff()   //takes each char literal and puts it into a hex buff, which doesnt care how big the number is
         //this.str2BytsBuff()  //takes each char literal and puts it into a byte buffer, which doesnt care how big the byte strings are that represent the char
-        this.str2Byts()      //this losses information unless we pass a flag on the formatting
+        //this.str2Byts()      //this losses information unless we pass a flag on the formatting
 
-        // this.str2Hex()       //this takes each char literal and produces a hex equivalent according to a standard and returns the entire hex string
+        this.str2Hex()       //this takes each char literal and produces a hex equivalent according to a standard and returns the entire hex string
         // this.str2DecBuff()   //this takes each char literal and produces a decimal code point buffer
         // this.decBuff2Str()   //this takes a decimal code point buffer and produces a char literal string with the encoding standard
         
@@ -514,13 +514,14 @@ export class EncodingTest{
         var e=new Encoding()
         var r=new Rand()
         var mode='E'
+        var standard=128
 
         do{
             console.log('str2Hex(', mode,')')
-            for(var i=0; i<10000; i++){
+            for(var i=0; i<1000; i++){
                 var str = r.str(i, i, mode)
-                if(this.verbose){console.log(str, e.str2Hex(str, mode))}
-                assert.equal(str, e.hex2Str(e.str2Hex(str, mode), mode))
+                if(this.verbose){console.log(str, e.str2Hex(str, mode, standard))}
+                assert.equal(str, e.hex2Str(e.str2Hex(str, mode, standard), mode, standard))
             }
             mode = mode.charCodeAt(0)+32
             mode = String.fromCharCode(mode)
@@ -531,17 +532,18 @@ export class EncodingTest{
         var e=new Encoding()
         var r=new Rand()
         var mode='E'
+        var standard=128
 
         do{
             console.log('byts2BytsBuff(', mode,')')
             var byts=''
             var bytBuff=[]
             for(var i = 0; i<10000; i++){
-                var _byts = new Rand().bytsRng(0, 255, mode)
+                var _byts = new Rand().bytsRng(i, i, mode, standard)
                 byts+=_byts
                 bytBuff.push(_byts)
             }
-            var buffer= e.byts2BytsBuff(byts, mode)
+            var buffer= e.byts2BytsBuff(byts, mode, standard)
             for(var i = 0; i<buffer.length; i++){
                 assert.equal(buffer[i], bytBuff[i])
             }
