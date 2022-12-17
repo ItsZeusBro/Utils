@@ -13,7 +13,7 @@ export class Encoding{
 		if(endian=='E'){
 			if(bin.length>standard){
 				//strip to standard
-				this.stripByts(bin, endian, standard)
+				bin = this.stripByts(bin, endian, standard)
 			}else if(bin.length<standard){
 				while(bin.length!=standard){
 					bin='0'.concat(bin)
@@ -22,7 +22,7 @@ export class Encoding{
 		}else if(endian=='e'){
 			if(bin.length>standard){
 				//strip to standard
-				this.stripByts(bin, endian, standard)
+				bin = this.stripByts(bin, endian, standard)
 			}else if(bin.length<standard){
 				while(bin.length!=standard){
 					bin=bin.concat('0')
@@ -50,11 +50,10 @@ export class Encoding{
 	}
 
 	frmtHex(hex, endian, standard){
-
 		if(endian=='E'){
 			if(hex.length>standard/4){
 				//strip to standard
-				this.stripHex(hex, endian, standard)
+				hex = this.stripHex(hex, endian, standard)
 			}else if(hex.length<standard/4){
 				while(hex.length!=standard/4){
 					hex='0'.concat(hex)
@@ -63,33 +62,35 @@ export class Encoding{
 		}else if(endian=='e'){
 			if(hex.length>standard/4){
 				//strip to standard
-				this.stripHex(hex, endian, standard)
+				hex = this.stripHex(hex, endian, standard)
 			}else if(hex.length<standard/4){
 				while(hex.length!=standard/4){
 					hex=hex.concat('0')
 				}
 			}
 		}
+		console.log('frmtHex', hex)
 		return hex
 	}
 
 	stripHex(hex, endian, standard){
 		if(hex==''){return '0'}
-		if(endian=='E'){
-			//strip to standard
-			while(hex.length<=standard){
-				hex=hex.slice(1)
-			}
-		}else if (endian=='e'){
-				while(byts.length<=standard){
-					hex=hex.slice(0, -1)
-				}
-		}else{
+		if(endian!='E'&&endian!='e'){
 			throw Error('endianness must be specified in stripHex()')
 		}
+		if(endian=='E'&&hex.length>standard/4){
+			//strip to standard
+			while(hex.length!=standard/4){
+				hex=hex.slice(1)
+			}
+		}else if (endian=='e'&&hex.length>standard/4){
+			while(hex.length!=standard/4){
+				hex=hex.slice(0, -1)
+			}
+		}
 		return hex
-
 	}
+
 
 	hex2Char(hex, endian, standard){
 		//a hex should be 2 hex chars to represent a byt, if its not, frmt it
@@ -160,9 +161,30 @@ export class Encoding{
 		}
 	}
 
+	//This needs a primitive function
 	hex2Dec(hex, endian, standard){
-		var byts = this.hex2Byts(hex, endian, standard)
-		return this.byts2Dec(byts, endian, standard)
+		if(endian=='E'){
+			hex=this.stripHex(hex, endian, standard)
+			var dec=0
+			var j = hex.length-1
+			for(var i = 0; i<hex.length; i++){
+				if(hex[i]!='0'){
+					dec+=Math.pow(16, j)
+				}
+				j--
+			}		
+		}else if(endian=='e'){
+			hex=this.stripHex(hex, endian, standard)
+			var i = 0
+			var dec=0
+			while(i<hex.length){
+				if(hex[i]!='0'){
+					dec+=Math.pow(16, i)
+				}
+				i++
+			}
+		}
+		return dec
 	}
 
 	hex2Str(hex, endian, standard){
