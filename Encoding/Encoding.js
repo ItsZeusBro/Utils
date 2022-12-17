@@ -109,7 +109,7 @@ export class Encoding{
     }
 	
 
-	decBuff2Str(buff, endian, type){
+	decBuff2Str(buff){
 		var str=''
 		for(var i = 0; i<buff.length; i++){
 

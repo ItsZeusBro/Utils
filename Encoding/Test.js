@@ -31,9 +31,9 @@ export class EncodingTest{
         //this.str2BytsBuff()  //takes each char literal and puts it into a byte buffer, which doesnt care how big the byte strings are that represent the char
         //this.str2Byts()      //this losses information unless we pass a flag on the formatting
 
-        this.str2Hex()       //this takes each char literal and produces a hex equivalent according to a standard and returns the entire hex string
-        // this.str2DecBuff()   //this takes each char literal and produces a decimal code point buffer
-        // this.decBuff2Str()   //this takes a decimal code point buffer and produces a char literal string with the encoding standard
+        //this.str2Hex()       //this takes each char literal and produces a hex equivalent according to a standard and returns the entire hex string
+        this.str2DecBuff()   //this takes each char literal and produces a decimal code point buffer
+        this.decBuff2Str()   //this takes a decimal code point buffer and produces a char literal string with the encoding standard
         
         // this.byts2BytsBuff() //this takes a byte string and creates a byte buffer with the given standard, this can ruin information if the byte string is constructed without the standard
         // this.byts2HexBuff()  //this takes a byte string and produces a hex buffer with the given standard
