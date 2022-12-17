@@ -35,11 +35,11 @@ export class EncodingTest{
         // this.byts2HexBuff()  //this takes a byte string and produces a hex buffer with the given standard
         // this.bytsBuff2Hex()    //this takes a byte buffer and produces a hex string (you can add a standard on the hex side)
         // this.next()
-
+        // this.bytsBuff2Byts()  //this losses information, unless we format each buffer position to some standard
+        // this.char2Hex()
         //THESE NEED TESTS
 
-        this.bytsBuff2Byts()  //this losses information, unless we format each buffer position to some standard
-        //this.char2Hex()
+ 
         //THIS IS BROKEN
         //this.chainTest()     
 
@@ -207,7 +207,6 @@ export class EncodingTest{
         }while(mode=='e'||mode=='E')
     }
 
-
     byts2Hex(){
         var e=new Encoding()
         var r=new Rand()
@@ -236,7 +235,6 @@ export class EncodingTest{
             mode = String.fromCharCode(mode)
         }while(mode=='e'||mode=='E')
     }
-
 
     byts2Str(){
         var e=new Encoding()
@@ -287,8 +285,6 @@ export class EncodingTest{
             mode = String.fromCharCode(mode)
         }while(mode=='e'||mode=='E')  
     }
-
-
 
     hexRng(){
         var e=new Encoding()
@@ -430,7 +426,6 @@ export class EncodingTest{
 
 	}
 
-
     str2BytsBuff(){
         var e=new Encoding()
         var r=new Rand()
@@ -463,6 +458,7 @@ export class EncodingTest{
             assert.equal(str[i], str2[i])
         }
     }
+
     str2DecBuff(){
         var e=new Encoding()
         var r=new Rand()
@@ -564,6 +560,7 @@ export class EncodingTest{
             mode = String.fromCharCode(mode)
         }while(mode=='e'||mode=='E')
     }
+
     next(){
         var e=new Encoding()
         var r=new Rand()
@@ -595,6 +592,7 @@ export class EncodingTest{
             mode = String.fromCharCode(mode)
         }while(mode=='e'||mode=='E')
     }
+
     byts2HexBuff(){
         var e=new Encoding()
         var r=new Rand()
@@ -652,15 +650,31 @@ export class EncodingTest{
                     }
                 }while(str)
             }
-
             mode = mode.charCodeAt(0)+32
             mode = String.fromCharCode(mode)
         }while(mode=='e'||mode=='E')
     }
 
-
     char2Hex(){
+        var e=new Encoding()
+        var r=new Rand()
+        var mode='E'
+        var standard=128
 
+        do{
+            
+            for(var i = 1; i<10000; i++){
+                var char = r.str(1, 1)
+                assert.equal(char.length, 1)
+                var hex = e.char2Hex(char, mode, standard)
+                if(this.verbose){console.log(char, hex)}
+
+                assert.equal(char, e.hex2Char(hex, mode, standard))
+            }
+
+            mode = mode.charCodeAt(0)+32
+            mode = String.fromCharCode(mode)
+        }while(mode=='e'||mode=='E')
     }
 
     chainTest(){
