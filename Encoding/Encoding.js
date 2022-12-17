@@ -1,5 +1,8 @@
 import {Types} from "../Types/Types.js"
 export class Encoding{
+	constructor(){
+		this.token;
+	}
 
 	//this formats a byte string by adding or reducing bytes according to a standard
 	frmtByts(bin, endian, standard=32){
@@ -115,7 +118,24 @@ export class Encoding{
 		}
 		return hexStr
 	}
+	next(str, type, standard){
+		//if we have a new string, we want to return the first token, which is 0-(standard)
+		//after we store the result we want to increment 
+		var str=''
+		if(!this.token){
+			this.token=0
+		}else{
+			if(type=='hex'){
+				str = hexStr.slice(this.token, this.token+(standard/4))
+				this.token+=(standard/4)
 
+			}else if(type=='bin'){
+				str = hexStr.slice(this.token, this.token+standard)
+				this.token+=standard
+			}
+		}
+		return str
+	}
 
 	decBuff2Str(buff){
 		var str=''

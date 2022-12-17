@@ -570,6 +570,7 @@ export class EncodingTest{
                     assert.equal(e.byts2Hex(bytBuff[j], mode, standard), str)
                 }
             }
+
             mode = mode.charCodeAt(0)+32
             mode = String.fromCharCode(mode)
         }while(mode=='e'||mode=='E')
