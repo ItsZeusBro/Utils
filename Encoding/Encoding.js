@@ -84,9 +84,9 @@ export class Encoding{
 		}
 	}
 
-	char2Hex(char, endian, type){
+	char2Hex(char, endian, standard){
 		var dec = char.charCodeAt(0)
-		return this.dec2Hex(dec, endian, type)
+		return this.dec2Hex(dec, endian, standard)
 	}
 
 	hex2Char(hex, endian, type){
