@@ -21,9 +21,9 @@ export class EncodingTest{
         // this.byts2Hex()         //this takes a byte string with a formatting flag and produces a hex string on format boundaries
         // this.byts2Str()         //this can have options (we can pass a flag representing the bytes standard)
         // this.bytBuff2Str()      //this does not require a standard, the byte string in the buffer is sufficient
-        this.hex2Byts()         //a hex number can be interpreted in its entirety and translated to a byte string
+        // this.hex2Byts()         //a hex number can be interpreted in its entirety and translated to a byte string
         
-        // this.hexRng()        //returns a hex string based on a decimal number
+        this.hexRng()              //returns a hex string based on a decimal number
         // this.hex2Dec()          //interpretes the hex string as a single decimal number
         // this.hex2Str()       //this uses a encoding standard that passed in with a flag
         // this.hexBuff2Str()   //this does not require a standard, the hex string in the buffer is sufficient
@@ -289,7 +289,6 @@ export class EncodingTest{
             mode = String.fromCharCode(mode)
         }while(mode=='e'||mode=='E')  
     }
-
 
 
     hexRng(){
