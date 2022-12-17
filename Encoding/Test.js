@@ -23,8 +23,8 @@ export class EncodingTest{
         // this.bytBuff2Str()      //this does not require a standard, the byte string in the buffer is sufficient
         // this.hex2Byts()         //a hex number can be interpreted in its entirety and translated to a byte string
         
-        this.hexRng()              //returns a hex string based on a decimal number
-        // this.hex2Dec()          //interpretes the hex string as a single decimal number
+        //this.hexRng()              //returns a hex string based on a decimal number
+        this.hex2Dec()          //interpretes the hex string as a single decimal number
         // this.hex2Str()       //this uses a encoding standard that passed in with a flag
         // this.hexBuff2Str()   //this does not require a standard, the hex string in the buffer is sufficient
         // this.str2HexBuff()   //takes each char literal and puts it into a hex buff, which doesnt care how big the number is
