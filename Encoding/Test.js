@@ -11,12 +11,12 @@ export class EncodingTest{
         this.verbose=verbose
 
 
-        this.frmtByts()      
+        // this.frmtByts()      
         
-        this.frmtHex()          //this formats a hex string by adding or reducing hex numbers according to a standard
-        this.dec2Char()         //this takes a decimal number and produces a char charachter using an encoding flag
-        this.dec2Byts()         //this takes a decimal number and produces a byte string that represents the number
-        this.dec2Hex()          //this takes a decimal number, and produces a hex, if the decimal is a string, it can return big numbers
+        // this.frmtHex()          //this formats a hex string by adding or reducing hex numbers according to a standard
+        // this.dec2Char()         //this takes a decimal number and produces a char charachter using an encoding flag
+        // this.dec2Byts()         //this takes a decimal number and produces a byte string that represents the number
+        // this.dec2Hex()          //this takes a decimal number, and produces a hex, if the decimal is a string, it can return big numbers
         this.byts2Dec()         //this takes a byte string and produces a single decimal number (returns a big number string if its a big number)
         // this.byts2Hex()      //this takes a byte string with a formatting flag and produces a hex string on format boundaries
         // this.byts2Str()      //this can have options (we can pass a flag representing the bytes standard)
@@ -175,40 +175,31 @@ export class EncodingTest{
         var e  = new Encoding()
         var r = new Rand()
         //e
+        var standard=128
+
         var mode='E'
         do{
             console.log('byts2Dec(', mode,')')
             var byts=''
-            for(var i = 0; i<5; i++){
-                byts+=new Rand().bytsRng(i, i, mode)
-            }
-            var dec = e.byts2Dec(byts, mode)
-            byts = e.dec2Byts(dec, mode)
-            if(this.verbose){
-                console.log(byts, e.byts2Dec(byts, mode))
-            }
-            assert.equal(
-                dec, 
-                e.byts2Dec(byts, mode)
-            )
             for(var i = 0; i<=100000; i++){
-                byts = new Encoding().dec2Byts(i, mode)
+                byts = new Encoding().dec2Byts(i, mode, standard)
                 if(this.verbose){
                     console.log(byts, e.byts2Dec(byts, mode))
                 }
                 assert.equal(
-                    new Encoding().dec2Byts(i, mode), 
-                    new Encoding().dec2Byts(new Encoding().byts2Dec(byts, mode),mode)
+                    new Encoding().dec2Byts(i, mode, standard), 
+                    new Encoding().dec2Byts(new Encoding().byts2Dec(byts, mode), mode, standard)
                 )
             }
+
             for(var i = Number.MAX_SAFE_INTEGER-100000; i<=Number.MAX_SAFE_INTEGER; i++){
-                byts = new Encoding().dec2Byts(i, mode)
+                byts = new Encoding().dec2Byts(i, mode, standard)
                 if(this.verbose){
                     console.log(byts, e.byts2Dec(byts, mode))
                 }
                 assert.equal(
-                    new Encoding().dec2Byts(i, mode), 
-                    new Encoding().dec2Byts(new Encoding().byts2Dec(byts, mode), mode)
+                    new Encoding().dec2Byts(i, mode, standard), 
+                    new Encoding().dec2Byts(new Encoding().byts2Dec(byts, mode), mode, standard)
                 )
             }
 
