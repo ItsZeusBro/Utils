@@ -32,18 +32,19 @@ export class EncodingTest{
         //this.str2Byts()      //this losses information unless we pass a flag on the formatting
 
         //this.str2Hex()       //this takes each char literal and produces a hex equivalent according to a standard and returns the entire hex string
-        this.str2DecBuff()   //this takes each char literal and produces a decimal code point buffer
-        this.decBuff2Str()   //this takes a decimal code point buffer and produces a char literal string with the encoding standard
+        // this.str2DecBuff()   //this takes each char literal and produces a decimal code point buffer
+        // this.decBuff2Str()   //this takes a decimal code point buffer and produces a char literal string with the encoding standard
         
-        // this.byts2BytsBuff() //this takes a byte string and creates a byte buffer with the given standard, this can ruin information if the byte string is constructed without the standard
-        // this.byts2HexBuff()  //this takes a byte string and produces a hex buffer with the given standard
+        //this.byts2BytsBuff() //this takes a byte string and creates a byte buffer with the given standard, this can ruin information if the byte string is constructed without the standard
+        //this.byts2HexBuff()  //this takes a byte string and produces a hex buffer with the given standard
         
+
+
         //this.bytBuff2Hex()    //this takes a byte buffer and produces a hex string (you can add a standard on the hex side)
-
-        // this.bytBuff2Byts()  //this losses information, unless we format each buffer position to some standard
+        //this.bytBuff2Byts()  //this losses information, unless we format each buffer position to some standard
         
 
-        // this.chainTest()     //
+        this.chainTest()     //
 
 
     }
@@ -557,6 +558,7 @@ export class EncodingTest{
         var e=new Encoding()
         var r=new Rand()
         var mode='E'
+        var standard=128
 
         do{
             console.log('byts2HexBuff(', mode,')')
@@ -564,15 +566,16 @@ export class EncodingTest{
             var byts=''
             var hexBuff=[]
 
-            for(var i = 0; i<10000; i++){
-                var _byts = r.bytsRng(0, 255, mode)
+            for(var i = 0; i<1000; i++){
+                var _byts = r.bytsRng(i, i, mode, standard)
                 byts+=_byts
-                hexBuff.push(e.byts2Hex(_byts, mode))
+                hexBuff.push(e.byts2Hex(_byts, mode, standard))
             }
 
-            var buffer= e.byts2HexBuff(byts, mode)
+            var buffer= e.byts2HexBuff(byts, mode, standard)
 
             for(var i = 0; i<buffer.length; i++){
+                console.log(buffer[i], hexBuff[i])
                 assert.equal(buffer[i], hexBuff[i])
             }
 
@@ -588,6 +591,7 @@ export class EncodingTest{
         var e=new Encoding()
         var r=new Rand()
         var mode='E'
+        var standard=128
 
         do{
             console.log('chainTest(', mode,')')
@@ -595,7 +599,7 @@ export class EncodingTest{
             var byts=''
             for(var i = 0; i<10000; i++)
             {
-                byts=r.bytsRng(i, i, mode)
+                byts=r.bytsRng(i, i, mode, standard)
                 assert.equal(
                     e.str2Byts(
                         e.bytBuff2Str(
@@ -613,21 +617,22 @@ export class EncodingTest{
                                                                         e.dec2Byts(
                                                                             e.byts2Dec(
                                                                                 byts,
-                                                                                mode
-                                                                            ),mode
-                                                                        ),mode
-                                                                    ),mode
-                                                                ),mode
-                                                            ),mode
-                                                        ),mode
-                                                    ), mode
-                                                ), mode                        
-                                            ),mode
-                                        ),mode
-                                    ),mode
-                                ),mode
-                            ),mode
-                        ),mode
+                                                                                mode,
+                                                                                standard
+                                                                            ),mode, standard
+                                                                        ),mode, standard
+                                                                    ),mode, standard
+                                                                ),mode, standard
+                                                            ),mode, standard
+                                                        ),mode, standard
+                                                    ), mode, standard
+                                                ), mode, standard                        
+                                            ),mode, standard
+                                        ),mode, standard
+                                    ),mode, standard
+                                ),mode, standard
+                            ),mode, standard
+                        ),mode, standard
                     ),
                     byts
                 )

@@ -126,12 +126,12 @@ export class Encoding{
 	}
 
 
-	byts2BytsBuff(byts){
+	byts2BytsBuff(byts, standard){
 		var buff=[]
 		var string=''
 		for(var i=1; i<=byts.length; i++){
 			string = string.concat(byts[i-1])
-			if(i%8==0){
+			if(i%standard==0){
 				buff.push(string.slice())
 				string=''
 			}
@@ -144,8 +144,8 @@ export class Encoding{
 		var string=''
 		for(var i=1; i<=byts.length; i++){
 			string = string.concat(byts[i-1])
-			if(i%8==0){
-				buff.push(this.byts2Hex(string.slice(), endian, type))
+			if(i%standard==0){
+				buff.push(this.byts2Hex(string.slice(), endian, standard))
 				string=''
 			}
 		}
