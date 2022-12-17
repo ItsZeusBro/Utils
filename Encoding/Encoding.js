@@ -267,10 +267,10 @@ export class Encoding{
 		}
 	}
 
-	hexBuff2Str(buff, endian, type){
+	hexBuff2Str(buff, endian, standard){
 		var string=''
 		for(var i=0; i<buff.length; i++){
-			string+=this.hex2Char(buff[i], endian, type)
+			string+=this.hex2Char(buff[i], endian, standard)
 		}
 		return string
 	}
