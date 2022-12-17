@@ -69,7 +69,6 @@ export class Encoding{
 				}
 			}
 		}
-		console.log('frmtHex', hex)
 		return hex
 	}
 
@@ -169,7 +168,24 @@ export class Encoding{
 			var j = hex.length-1
 			for(var i = 0; i<hex.length; i++){
 				if(hex[i]!='0'){
-					dec+=Math.pow(16, j)
+					switch(hex[i]) {
+						case "1": dec += 1*Math.pow(16, j); break;
+						case "2": dec += 2*Math.pow(16, j); break;
+						case "3": dec += 3*Math.pow(16, j); break;
+						case "4": dec += 4*Math.pow(16, j); break;
+						case "5": dec += 5*Math.pow(16, j); break;
+						case "6": dec += 6*Math.pow(16, j); break;
+						case "7": dec += 7*Math.pow(16, j); break;
+						case "8": dec += 8*Math.pow(16, j); break;
+						case "9": dec += 9*Math.pow(16, j); break;
+						case "a": dec += 10*Math.pow(16, j); break;
+						case "b": dec += 11*Math.pow(16, j); break;
+						case "c": dec += 12*Math.pow(16, j); break;
+						case "d": dec += 13*Math.pow(16, j); break;
+						case "e": dec += 14*Math.pow(16, j); break;
+						case "f": dec += 15*Math.pow(16, j); break;
+						default: return "";
+					}				
 				}
 				j--
 			}		
@@ -179,7 +195,24 @@ export class Encoding{
 			var dec=0
 			while(i<hex.length){
 				if(hex[i]!='0'){
-					dec+=Math.pow(16, i)
+					switch(hex[i]) {
+						case "1": dec += 1*Math.pow(16, i); break;
+						case "2": dec += 2*Math.pow(16, i); break;
+						case "3": dec += 3*Math.pow(16, i); break;
+						case "4": dec += 4*Math.pow(16, i); break;
+						case "5": dec += 5*Math.pow(16, i); break;
+						case "6": dec += 6*Math.pow(16, i); break;
+						case "7": dec += 7*Math.pow(16, i); break;
+						case "8": dec += 8*Math.pow(16, i); break;
+						case "9": dec += 9*Math.pow(16, i); break;
+						case "a": dec += 10*Math.pow(16, i); break;
+						case "b": dec += 11*Math.pow(16, i); break;
+						case "c": dec += 12*Math.pow(16, i); break;
+						case "d": dec += 13*Math.pow(16, i); break;
+						case "e": dec += 14*Math.pow(16, i); break;
+						case "f": dec += 15*Math.pow(16, i); break;
+						default: return "";
+					}				
 				}
 				i++
 			}
