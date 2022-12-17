@@ -102,7 +102,7 @@ export class Encoding{
         return String.fromCodePoint(dec)
     }
 
-    bytBuff2Str(buff, endian){
+    bytsBuff2Str(buff, endian){
 		var str=''
 		for(var i = 0; i<buff.length; i++){
 			var byt = buff[i]
@@ -111,7 +111,7 @@ export class Encoding{
 		return str
     }
 
-	bytBuff2Hex(buff, endian, standard){
+	bytsBuff2Hex(buff, endian, standard){
 		var hexStr=""
 		for(var i =0; i<buff.length; i++){
 			hexStr+=this.byts2Hex(buff[i], endian, standard)
