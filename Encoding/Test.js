@@ -19,13 +19,13 @@ export class EncodingTest{
         // this.dec2Hex()          //this takes a decimal number, and produces a hex, if the decimal is a string, it can return big numbers
         // this.byts2Dec()         //this takes a byte string and produces a single decimal number (returns a big number string if its a big number)
         // this.byts2Hex()         //this takes a byte string with a formatting flag and produces a hex string on format boundaries
-        // this.byts2Str()         //this can have options (we can pass a flag representing the bytes standard)
+        this.byts2Str()         //this can have options (we can pass a flag representing the bytes standard)
         // this.bytBuff2Str()      //this does not require a standard, the byte string in the buffer is sufficient
         // this.hex2Byts()         //a hex number can be interpreted in its entirety and translated to a byte string
         
         //this.hexRng()              //returns a hex string based on a decimal number
-        this.hex2Dec()          //interpretes the hex string as a single decimal number
-        // this.hex2Str()       //this uses a encoding standard that passed in with a flag
+        //this.hex2Dec()          //interpretes the hex string as a single decimal number
+        this.hex2Str()       //this uses a encoding standard that passed in with a flag
         // this.hexBuff2Str()   //this does not require a standard, the hex string in the buffer is sufficient
         // this.str2HexBuff()   //takes each char literal and puts it into a hex buff, which doesnt care how big the number is
         // this.str2BytsBuff()  //takes each char literal and puts it into a byte buffer, which doesnt care how big the byte strings are that represent the char
@@ -356,11 +356,12 @@ export class EncodingTest{
             for(var j = 0; j<100; j++){
                 var hexStr=''
                 for(var i = 0; i<100; i++){
-                    hexStr+=''+r.hexRng(i, i, mode)
+                    hexStr+=''+r.hexRng(i, i, mode, standard)
                 }
-                var str = e.hex2Str(hexStr, mode)
+                var str = e.hex2Str(hexStr, mode, standard)
+                console.log(str)
                 if(this.verbose){ console.log(str, hexStr) }
-                assert.equal(hexStr, e.str2Hex(str, mode))
+                assert.equal(hexStr, e.str2Hex(str, mode, standard))
             }
             mode = mode.charCodeAt(0)+32
             mode = String.fromCharCode(mode)

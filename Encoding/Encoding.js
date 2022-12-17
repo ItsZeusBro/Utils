@@ -89,9 +89,9 @@ export class Encoding{
 		return this.dec2Hex(dec, endian, standard)
 	}
 
-	hex2Char(hex, endian, type){
+	hex2Char(hex, endian, standard){
 		//a hex should be 2 hex chars to represent a byt, if its not, frmt it
-		var dec = this.hex2Dec(this.frmtHex(hex, endian, type), endian, type)
+		var dec = this.hex2Dec(hex, endian, standard)
 		return String.fromCharCode(dec)
 	}
 
@@ -336,18 +336,24 @@ export class Encoding{
 	}
 
 	hex2Str(hex, endian, standard){
-		if(hex.length%2!==0){
-			throw Error('hex2Str cannot use a hex string that is not byt divisible')
+		if(hex.length%(standard/4)!==0){
+			throw Error('hex2Str cannot use a byt string that is not standard divisible')
 		}
-		var hexBuff=[]
-		for(var i = 2; i<=hex.length; i++){
-			if(i%2==0){
-				hexBuff.push(hex[i-2]+hex[i-1])
+		var str=''
+		for(var i = (standard/4); i<=hex.length; i++){
+			var hexStr=''
+			if(i%(standard/4)==0){
+				for(var j = i-(standard/4); j<i; j++){
+					hexStr+=hex[j]
+				}
+				console.log(hexStr)
+				str+=this.hex2Char(hexStr, endian, standard)
 			}
 		}
-		return this.hexBuff2Str(hexBuff, endian, type)
+		return str
 	}
 
+	//this should have its own implementation one day to be more optimal
 	dec2Hex(dec, endian, standard){
 		var byts = this.dec2Byts(dec, endian, standard)
 		return this.byts2Hex(byts, endian, standard)
@@ -370,8 +376,8 @@ export class Encoding{
 		}
 	}
 
-	str2Hex(string, endian, type){
-		var buff = this.str2HexBuff(string, endian, type)
+	str2Hex(string, endian, standard){
+		var buff = this.str2HexBuff(string, endian, standard)
 		return buff.join('')
 	}
 
@@ -388,10 +394,10 @@ export class Encoding{
 		return buff
 	}
 	
-	str2HexBuff(string, endian, type){
+	str2HexBuff(string, endian, standard){
 		var buff=[]
 		for(var i = 0; i<string.length; i++){
-			buff.push(this.char2Hex(string[i], endian, type))
+			buff.push(this.char2Hex(string[i], endian, standard))
 		}
 		return buff
 	}
