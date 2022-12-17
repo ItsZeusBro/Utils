@@ -148,6 +148,7 @@ export class EncodingTest{
                 }
                 var byts = e.dec2Byts(i, mode, standard)
                 var hex = e.byts2Hex(byts, mode, standard)
+                console.log(hex.length, e.dec2Hex(i, mode, standard).length)
                 assert.equal(hex, e.dec2Hex(i, mode, standard))
             }
 

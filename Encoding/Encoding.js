@@ -480,23 +480,30 @@ export class Encoding{
 		}
 	}
 	dec2Hex(dec, endian, standard){
-		var hex=""
+		var hex="0"
+		hex = this.frmtHex(hex, endian, standard)
 		if(endian=='E'){
+			var i = hex.length-1
 			while(dec!=0){
 				var remainder = (dec/16)-Math.floor((dec/16))
 				dec=parseInt(dec/16)
-				hex+=this._dec2Hex(16*remainder)
-			}				
-				
-		}		
-		else if(endian=='e'){
-			while(dec!=0){
-				var remainder = (dec/16)-Math.floor((dec/16))
-				dec=parseInt(dec/16)
-				hex=this._dec2Hex(16*remainder)+hex
+				hex = hex.substring(0, i) + this._dec2Hex(16*remainder) + hex.substring(i + 1);
+				i--
 			}	
+			
+		}else if(endian=='e'){
+			var i =0;
+			while(dec!=0){
+				var remainder = (dec/16)-Math.floor((dec/16))
+				//console.log(this._dec2Hex(16*remainder))
+				dec=parseInt(dec/16)
+				hex = hex.substring(0, i) + this._dec2Hex(16*remainder) + hex.substring(i + 1);
+				i++
+			}		
+			
 		}
-		return this.frmtHex(hex, endian, standard)
+
+		return hex
 	}
 
 	dec2Byts(dec, endian, standard){
