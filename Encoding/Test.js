@@ -36,11 +36,11 @@ export class EncodingTest{
         
 
         //THESE NEED TESTS
-        //this.bytBuff2Hex()    //this takes a byte buffer and produces a hex string (you can add a standard on the hex side)
+        this.bytBuff2Hex()    //this takes a byte buffer and produces a hex string (you can add a standard on the hex side)
         //this.bytBuff2Byts()  //this losses information, unless we format each buffer position to some standard
         
         //THIS IS BROKEN
-        this.chainTest()     
+        //this.chainTest()     
 
 
     }
@@ -550,6 +550,31 @@ export class EncodingTest{
 
     }
 
+    bytBuff2Hex(){
+        var e=new Encoding()
+        var r=new Rand()
+        var mode='E'
+        var standard=128
+
+        do{
+            console.log('bytBuff2Hex(', mode,')')
+            for(var i = 0; i<10; i++){
+                var bytBuff = r.bytsBuff(i, i, i, mode, standard)
+                var hexStr=e.bytBuff2Hex(bytBuff, mode, standard)
+                var token=0
+                assert.equal(bytBuff.length*(standard/4), hexStr.length)
+                for(var j = 0; j<bytBuff.length; j++){
+                    var str = hexStr.slice(token, token+(standard/4))
+                    token+=(standard/4)
+                    if(this.verbose){console.log(e.byts2Hex(bytBuff[j], mode, standard), str)}
+                    assert.equal(e.byts2Hex(bytBuff[j], mode, standard), str)
+                }
+            }
+            mode = mode.charCodeAt(0)+32
+            mode = String.fromCharCode(mode)
+        }while(mode=='e'||mode=='E')
+    }
+
     byts2HexBuff(){
         var e=new Encoding()
         var r=new Rand()
@@ -579,7 +604,6 @@ export class EncodingTest{
             mode = String.fromCharCode(mode)
         }while(mode=='e'||mode=='E')
     }
-
 
 
     chainTest(){

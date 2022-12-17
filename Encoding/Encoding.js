@@ -107,7 +107,15 @@ export class Encoding{
 		}
 		return str
     }
-	
+
+	bytBuff2Hex(buff, endian, standard){
+		var hexStr=""
+		for(var i =0; i<buff.length; i++){
+			hexStr+=this.byts2Hex(buff[i], endian, standard)
+		}
+		return hexStr
+	}
+
 
 	decBuff2Str(buff){
 		var str=''
@@ -400,6 +408,4 @@ export class Encoding{
 		}
 		return buff
 	}
-
-
 }
