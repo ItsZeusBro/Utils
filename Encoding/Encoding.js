@@ -17,17 +17,70 @@ export class Encoding{
 		return bin
 	}
 
-	frmtHex(hex, endian, type){
+	frmtHex(hex, endian, standard){
 		if(endian=='E'){
-			if(hex.length%2!=0){
-				hex = '0'.concat(hex)
+			hex = this.stripHex(hex, endian)	//this doesnt need a standard because its just stripping based on endianness
+			while(hex.length!=standard/4){
+				hex='0'.concat(hex)
 			}
-			return hex
+		}else if(endian=='e'){
+			hex = this.stripHex(hex, endian)
+			while(hex.length!=standard/4){
+				hex=hex.concat('0')
+			}
+		}
+		return hex
+	}
+
+	stripHex(hex, endian){
+		if(endian=='E'){
+			var hex2=hex
+			for(var i=0; i<hex.length; i++){
+				if(hex[i]!='0'){
+					return hex2
+				}else{
+					hex2=hex2.slice(1)
+				}
+			}
+			if(hex2==''){return '0'}
+			return hex2
 		}else{
-			if(hex.length%2!=0){
-				hex = hex.concat('0')
+			var hex2=hex
+			for(var i=hex.length-1; i>=0; i--){
+				if(hex[i]!='0'){
+					return hex2
+				}else{
+					hex2=hex2.slice(0, -1)
+				}
 			}
-			return hex
+			if(hex2==''){return '0'}
+			return hex2
+		}
+	}
+
+	stripByts(byts, endian){
+		if(endian=='E'){
+			var byts2=byts
+			for(var i=0; i<byts.length; i++){
+				if(byts[i]=='1'){
+					return byts2
+				}else{
+					byts2=byts2.slice(1)
+				}
+			}
+			if(byts2==''){return '0'}
+			return byts2
+		}else{
+			var byts2=byts
+			for(var i=byts.length-1; i>=0; i--){
+				if(byts[i]=='1'){
+					return byts2
+				}else{
+					byts2=byts2.slice(0, -1)
+				}
+			}
+			if(byts2==''){return '0'}
+			return byts2
 		}
 	}
 
@@ -223,11 +276,11 @@ export class Encoding{
 		return string
 	}
 
-	hex2Byts(hex, endian, type){
+	hex2Byts(hex, endian, standard){
 		//BE CAREFUL!!!! BIG E AND SMALL e ARE DIFFERENT SWITCH CASES!
 		if(endian=='E'){
 			//https://stackoverflow.com/questions/45053624/convert-hex-to-binary-in-javascript
-			hex = this.frmtHex(hex, endian, type)
+			hex = this.frmtHex(hex, endian, standard)
 			var out = "";
 			for(var c of hex) {
 				switch(c) {
@@ -252,7 +305,7 @@ export class Encoding{
 			}
 			return out
 		}else{
-			hex = this.frmtHex(hex, endian, type)
+			hex = this.frmtHex(hex, endian, standard)
 			var out = "";
 			for(var c of hex) {
 				switch(c) {
@@ -280,8 +333,8 @@ export class Encoding{
 	}
 
 	hex2Dec(hex, endian, standard){
-		var byts = this.hex2Byts(hex, endian, type)
-		return this.byts2Dec(byts, endian, type)
+		var byts = this.hex2Byts(hex, endian, standard)
+		return this.byts2Dec(byts, endian, standard)
 	}
 
 	hex2Str(hex, endian, standard){
@@ -345,29 +398,5 @@ export class Encoding{
 		return buff
 	}
 
-	stripByts(byts, endian, standard){
-		if(endian=='E'){
-			var byts2=byts
-			for(var i=0; i<byts.length; i++){
-				if(byts[i]=='1'){
-					return byts2
-				}else{
-					byts2=byts2.slice(1)
-				}
-			}
-			if(byts2==''){return '0'}
-			return byts2
-		}else{
-			var byts2=byts
-			for(var i=byts.length-1; i>=0; i--){
-				if(byts[i]=='1'){
-					return byts2
-				}else{
-					byts2=byts2.slice(0, -1)
-				}
-			}
-			if(byts2==''){return '0'}
-			return byts2
-		}
-	}
+
 }
