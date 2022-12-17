@@ -21,8 +21,8 @@ export class EncodingTest{
         // this.byts2Hex()         //this takes a byte string with a formatting flag and produces a hex string on format boundaries
         // this.byts2Str()         //this can have options (we can pass a flag representing the bytes standard)
         // this.bytBuff2Str()      //this does not require a standard, the byte string in the buffer is sufficient
-        this.hex2Byts()         //a hex number can be interpreted in its entirety and translated to a byte string
-        // this.hexRng()        //returns a hex string based on a decimal number
+        // this.hex2Byts()         //a hex number can be interpreted in its entirety and translated to a byte string
+        this.hexRng()        //returns a hex string based on a decimal number
         // this.hex2Dec()       //interpretes the hex string as a single decimal number
         // this.hex2Str()       //this uses a encoding standard that passed in with a flag
         // this.hexBuff2Str()   //this does not require a standard, the hex string in the buffer is sufficient
@@ -294,19 +294,20 @@ export class EncodingTest{
         var e=new Encoding()
         var r=new Rand()
         var mode='E'
+        var standard=128
 
         do{
             console.log('hexRng(', mode,')')
 
             for(var i = 0; i<=100000; i++){
-                var hex = r.hexRng(i, i, mode)
-                if(this.verbose){ console.log(e.hex2Byts(hex, mode), hex, i) }
-                assert.equal(e.byts2Dec(e.hex2Byts(hex, mode), mode), i)
+                var hex = r.hexRng(i, i, mode, standard)
+                if(this.verbose){ console.log(e.hex2Byts(hex, mode, standard), hex, i) }
+                assert.equal(e.byts2Dec(e.hex2Byts(hex, mode, standard), mode, standard), i)
             }
             for(var i = Number.MAX_SAFE_INTEGER-100000; i<=Number.MAX_SAFE_INTEGER; i++){
-                var hex = r.hexRng(i, i, mode)
-                if(this.verbose){ console.log(e.hex2Byts(hex, mode), hex, i) }
-                assert.equal(e.byts2Dec(e.hex2Byts(hex, mode), mode), i)
+                var hex = r.hexRng(i, i, mode, standard)
+                if(this.verbose){ console.log(e.hex2Byts(hex, mode, standard), hex, i) }
+                assert.equal(e.byts2Dec(e.hex2Byts(hex, mode, standard), mode, standard), i)
             }
 
             mode = mode.charCodeAt(0)+32
