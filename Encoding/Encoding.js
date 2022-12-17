@@ -99,11 +99,11 @@ export class Encoding{
         return String.fromCodePoint(dec)
     }
 
-    bytBuff2Str(buff, endian, type){
+    bytBuff2Str(buff, endian){
 		var str=''
 		for(var i = 0; i<buff.length; i++){
 			var byt = buff[i]
-			str+= this.dec2Char(this.byts2Dec(byt, endian, type))
+			str+= this.dec2Char(this.byts2Dec(byt, endian))
 		}
 		return str
     }
@@ -152,10 +152,9 @@ export class Encoding{
 		return buff
 	}
 
-	byts2Hex(bin, endian, type){
+	byts2Hex(bin, endian, standard){
 		//WARNING! E and e use different switch boards!
 		if(endian=='E'){
-			bin = this.frmtByts(bin, endian, type)
 			var out = "";
 			var accumulator=''
 			for(var c = 1; c<=bin.length; c++) {
@@ -183,9 +182,8 @@ export class Encoding{
 					accumulator=""
 				}
 			}
-			return out
+			return this.frmtHex(out, endian, standard)
 		}else if(endian=='e'){
-			bin = this.frmtByts(bin, endian, type)
 			var out = "";
 			var accumulator=''
 			for(var c = 1; c<=bin.length; c++) {
@@ -213,25 +211,25 @@ export class Encoding{
 					accumulator=""
 				}
 			}
-			return out
+			return this.frmtHex(out, endian, standard)
 		}
 	}
 
-	byts2Str(byts, endian, type){
-		if(byts.length%8!==0){
-			throw Error('byts2Str cannot use a byt string that is not byt divisible')
+	byts2Str(byts, endian, standard){
+		if(byts.length%standard!==0){
+			throw Error('byts2Str cannot use a byt string that is not standard divisible')
 		}
-		var bytBuff=[]
-		for(var i = 8; i<=byts.length; i++){
+		var str=''
+		for(var i = standard; i<=byts.length; i++){
 			var bytsStr=''
-			if(i%8==0){
-				for(var j = i-8; j<i; j++){
+			if(i%standard==0){
+				for(var j = i-standard; j<i; j++){
 					bytsStr+=byts[j]
 				}
-				bytBuff.push(bytsStr)
+				str+=this.dec2Char(this.byts2Dec(bytsStr, endian))
 			}
 		}
-		return this.bytBuff2Str(bytBuff, endian, type)
+		return str
 	}
 
 	bytsBuff2Byts(buff){
@@ -242,7 +240,8 @@ export class Encoding{
 		return byts
 	}
 
-	byts2Dec(bin, endian, type){
+	//formatting doesnt matter here, except for floating point precision
+	byts2Dec(bin, endian){
 		if(endian=='E'){
 			bin=this.stripByts(bin, endian)
 			var dec=0
@@ -280,7 +279,6 @@ export class Encoding{
 		//BE CAREFUL!!!! BIG E AND SMALL e ARE DIFFERENT SWITCH CASES!
 		if(endian=='E'){
 			//https://stackoverflow.com/questions/45053624/convert-hex-to-binary-in-javascript
-			hex = this.frmtHex(hex, endian, standard)
 			var out = "";
 			for(var c of hex) {
 				switch(c) {
@@ -303,9 +301,9 @@ export class Encoding{
 					default: return "";
 				}
 			}
-			return out
+
+			return this.frmtByts(out, endian, standard)
 		}else{
-			hex = this.frmtHex(hex, endian, standard)
 			var out = "";
 			for(var c of hex) {
 				switch(c) {
@@ -328,7 +326,7 @@ export class Encoding{
 					default: return "";
 				}
 			}
-			return out
+			return this.frmtByts(out, endian, standard)
 		}
 	}
 
