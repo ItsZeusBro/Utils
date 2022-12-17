@@ -22,8 +22,8 @@ export class EncodingTest{
         // this.byts2Str()         //this can have options (we can pass a flag representing the bytes standard)
         // this.bytBuff2Str()      //this does not require a standard, the byte string in the buffer is sufficient
         // this.hex2Byts()         //a hex number can be interpreted in its entirety and translated to a byte string
-        this.hexRng()        //returns a hex string based on a decimal number
-        // this.hex2Dec()       //interpretes the hex string as a single decimal number
+        // this.hexRng()        //returns a hex string based on a decimal number
+        this.hex2Dec()          //interpretes the hex string as a single decimal number
         // this.hex2Str()       //this uses a encoding standard that passed in with a flag
         // this.hexBuff2Str()   //this does not require a standard, the hex string in the buffer is sufficient
         // this.str2HexBuff()   //takes each char literal and puts it into a hex buff, which doesnt care how big the number is
@@ -321,20 +321,21 @@ export class EncodingTest{
         var e=new Encoding()
         var r=new Rand()
         var mode='E'
+        var standard=128
 
         do{
             console.log('hex2Dec(', mode,')')
             for(var i = 1; i<100000; i++){
-                var byts = e.dec2Byts(i, mode)
-                var hex = e.byts2Hex(byts, mode)
-                if(this.verbose){ console.log(i, e.hex2Dec(hex, mode)) }
-                assert.equal(i, e.hex2Dec(hex, mode))
+                var byts = e.dec2Byts(i, mode, standard)
+                var hex = e.byts2Hex(byts, mode, standard)
+                if(this.verbose){ console.log(i, e.hex2Dec(hex, mode, standard)) }
+                assert.equal(i, e.hex2Dec(hex, mode, standard))
             }
             for(var i = Number.MAX_SAFE_INTEGER-100000; i<=Number.MAX_SAFE_INTEGER; i++){
-                var byts = e.dec2Byts(i, mode)
-                var hex = e.byts2Hex(byts, mode)
-                if(this.verbose){ console.log(i, e.hex2Dec(hex, mode)) }
-                assert.equal(i, e.hex2Dec(hex, mode))
+                var byts = e.dec2Byts(i, mode, standard)
+                var hex = e.byts2Hex(byts, mode, standard)
+                if(this.verbose){ console.log(i, e.hex2Dec(hex, mode, standard)) }
+                assert.equal(i, e.hex2Dec(hex, mode, standard))
             }
             mode = mode.charCodeAt(0)+32
             mode = String.fromCharCode(mode)
