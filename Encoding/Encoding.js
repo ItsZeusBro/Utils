@@ -417,7 +417,7 @@ export class Encoding{
 	str2BytsBuff(string, endian, standard){
 		var buff=[]
 		for(var i = 0; i<string.length; i++){
-			buff.push(this.hex2Byts(this.char2Hex(string[i], endian, standard), endian, standard))
+			buff.push(this.char2Byt(string[i], endian, standard))
 		}
 		return buff
 	}
