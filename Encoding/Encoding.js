@@ -50,44 +50,45 @@ export class Encoding{
 	}
 
 	frmtHex(hex, endian, standard){
+
 		if(endian=='E'){
-			hex = this.stripHex(hex, endian)	//this doesnt need a standard because its just stripping based on endianness
-			while(hex.length!=standard/4){
-				hex='0'.concat(hex)
-			}
+			if(hex.length>standard/4){
+				//strip to standard
+				this.stripHex(hex, endian, standard)
+			}else if(hex.length<standard/4){
+				while(hex.length!=standard/4){
+					hex='0'.concat(hex)
+				}
+			}			
 		}else if(endian=='e'){
-			hex = this.stripHex(hex, endian)
-			while(hex.length!=standard/4){
-				hex=hex.concat('0')
+			if(hex.length>standard/4){
+				//strip to standard
+				this.stripHex(hex, endian, standard)
+			}else if(hex.length<standard/4){
+				while(hex.length!=standard/4){
+					hex=hex.concat('0')
+				}
 			}
 		}
 		return hex
 	}
 
-	stripHex(hex, endian){
+	stripHex(hex, endian, standard){
+		if(hex==''){return '0'}
 		if(endian=='E'){
-			var hex2=hex
-			for(var i=0; i<hex.length; i++){
-				if(hex[i]!='0'){
-					return hex2
-				}else{
-					hex2=hex2.slice(1)
-				}
+			//strip to standard
+			while(hex.length<=standard){
+				hex=hex.slice(1)
 			}
-			if(hex2==''){return '0'}
-			return hex2
+		}else if (endian=='e'){
+				while(byts.length<=standard){
+					hex=hex.slice(0, -1)
+				}
 		}else{
-			var hex2=hex
-			for(var i=hex.length-1; i>=0; i--){
-				if(hex[i]!='0'){
-					return hex2
-				}else{
-					hex2=hex2.slice(0, -1)
-				}
-			}
-			if(hex2==''){return '0'}
-			return hex2
+			throw Error('endianness must be specified in stripHex()')
 		}
+		return hex
+
 	}
 
 	hex2Char(hex, endian, standard){
