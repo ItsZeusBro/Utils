@@ -155,7 +155,8 @@ export class Encoding{
 	}
 
 
-	byts2BytsBuff(byts, standard){
+	byts2BytsBuff(byts, mode, standard){
+		byts = byts.slice()
 		var buff=[]
 		var string=''
 		for(var i=1; i<=byts.length; i++){
@@ -262,9 +263,10 @@ export class Encoding{
 	}
 
 	bytsBuff2Byts(buff){
+		buff = buff.slice()
 		var byts=''
 		for(var i = 0; i<buff.length; i++){
-			byts+=buff[i]
+			byts=byts.concat(buff[i])
 		}
 		return byts
 	}
