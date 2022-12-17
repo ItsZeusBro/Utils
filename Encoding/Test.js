@@ -87,9 +87,6 @@ export class EncodingTest{
             }while(mode=='e'||mode=='E')
             j=j*2
         }
-
-        
-        
     }
 
     dec2Char(){
