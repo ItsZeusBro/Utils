@@ -381,15 +381,15 @@ export class Encoding{
 		return buff.join('')
 	}
 
-	str2Byts(string, endian, type){
-		var buff = this.str2BytsBuff(string, endian, type)
+	str2Byts(string, endian, standard){
+		var buff = this.str2BytsBuff(string, endian, standard)
 		return buff.join('')
 	}
 
-	str2BytsBuff(string, endian, type){
+	str2BytsBuff(string, endian, standard){
 		var buff=[]
 		for(var i = 0; i<string.length; i++){
-			buff.push(this.hex2Byts(this.char2Hex(string[i], endian, type), endian, type))
+			buff.push(this.hex2Byts(this.char2Hex(string[i], endian, standard), endian, standard))
 		}
 		return buff
 	}
