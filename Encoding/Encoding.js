@@ -397,10 +397,13 @@ export class Encoding{
 		return hexStr
 	}
 
-
+	//this can be optimized by 
 	str2Hex(string, endian, standard){
-		var buff = this.str2HexBuff(string, endian, standard)
-		return buff.join('')
+		var hexStr=''
+		for(var i=0; i<string.length; i++){
+			hexStr+=this.char2Hex(string[i], endian, standard)
+		}
+		return hexStr
 	}
 
 	str2Byts(string, endian, standard){
