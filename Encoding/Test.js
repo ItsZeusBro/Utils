@@ -31,15 +31,15 @@ export class EncodingTest{
         // this.str2Hex()       //this takes each char literal and produces a hex equivalent according to a standard and returns the entire hex string
         // this.str2DecBuff()   //this takes each char literal and produces a decimal code point buffer
         // this.decBuff2Str()   //this takes a decimal code point buffer and produces a char literal string with the encoding standard
-        this.byts2BytsBuff() //this takes a byte string and creates a byte buffer with the given standard, this can ruin information if the byte string is constructed without the standard
-        this.byts2HexBuff()  //this takes a byte string and produces a hex buffer with the given standard
-        this.bytsBuff2Hex()    //this takes a byte buffer and produces a hex string (you can add a standard on the hex side)
-        this.next()
+        // this.byts2BytsBuff() //this takes a byte string and creates a byte buffer with the given standard, this can ruin information if the byte string is constructed without the standard
+        // this.byts2HexBuff()  //this takes a byte string and produces a hex buffer with the given standard
+        // this.bytsBuff2Hex()    //this takes a byte buffer and produces a hex string (you can add a standard on the hex side)
+        // this.next()
 
         //THESE NEED TESTS
 
-        //this.bytsBuff2Byts()  //this losses information, unless we format each buffer position to some standard
-        
+        this.bytsBuff2Byts()  //this losses information, unless we format each buffer position to some standard
+        //this.char2Hex()
         //THIS IS BROKEN
         //this.chainTest()     
 
@@ -626,7 +626,36 @@ export class EncodingTest{
     }
 
     bytsBuff2Byts(){
+        var e=new Encoding()
+        var r=new Rand()
+        var mode='E'
+        var standard=128
 
+        do{
+            console.log('bytsBuff2Byts(', mode,')')
+            for(var i = 1; i<1000; i++){
+                var bytsBuff = r.bytsBuff(i, i, i, mode, standard)
+                var bytStr=e.bytsBuff2Byts(bytsBuff, mode, standard)
+
+                console.log('bytStr', bytStr)
+                assert.equal(bytsBuff.length*standard, bytStr.length)
+                var j=0;
+                do{
+                    var str = e.next(bytStr, 'bin', standard)
+                    if(str){
+                        if(this.verbose){console.log(bytsBuff[j], str)}
+                        assert.equal(bytsBuff[j], str)
+                        j++
+                    }else{
+                        console.log(j, bytsBuff.length)
+                        assert(j==bytsBuff.length, true)
+                    }
+                }while(str)
+            }
+
+            mode = mode.charCodeAt(0)+32
+            mode = String.fromCharCode(mode)
+        }while(mode=='e'||mode=='E')
     }
 
 
