@@ -1,7 +1,7 @@
 import {Types} from "../Types/Types.js"
 export class Encoding{
 	constructor(){
-		this.token;
+		this.token=0;
 	}
 
 	//this formats a byte string by adding or reducing bytes according to a standard
@@ -118,20 +118,21 @@ export class Encoding{
 		}
 		return hexStr
 	}
-	next(str, type, standard){
-		//if we have a new string, we want to return the first token, which is 0-(standard)
-		//after we store the result we want to increment 
+	next(codeStr, type, standard){
 		var str=''
-		if(!this.token){
+		if(this.token==undefined){
 			this.token=0
+			return undefined
 		}else{
 			if(type=='hex'){
-				str = hexStr.slice(this.token, this.token+(standard/4))
+				str = codeStr.slice(this.token, this.token+(standard/4))
 				this.token+=(standard/4)
+				if(this.token>=codeStr.length){this.token=undefined}
 
 			}else if(type=='bin'){
-				str = hexStr.slice(this.token, this.token+standard)
+				str = codeStr.slice(this.token, this.token+standard)
 				this.token+=standard
+				if(this.token>=codeStr.length){this.token=undefined}
 			}
 		}
 		return str
