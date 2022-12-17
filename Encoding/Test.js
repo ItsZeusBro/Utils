@@ -11,32 +11,32 @@ export class EncodingTest{
         this.verbose=verbose
 
         //THESE ALL WORK
-        // this.frmtByts()      
-        // this.frmtHex()          //this formats a hex string by adding or reducing hex numbers according to a standard
-        // this.dec2Char()         //this takes a decimal number and produces a char charachter using an encoding flag
-        // this.dec2Byts()         //this takes a decimal number and produces a byte string that represents the number
-        // this.dec2Hex()          //this takes a decimal number, and produces a hex, if the decimal is a string, it can return big numbers
-        // this.byts2Dec()         //this takes a byte string and produces a single decimal number (returns a big number string if its a big number)
-        // this.byts2Hex()         //this takes a byte string with a formatting flag and produces a hex string on format boundaries
-        // this.byts2Str()         //this can have options (we can pass a flag representing the bytes standard)
-        // this.bytsBuff2Str()      //this does not require a standard, the byte string in the buffer is sufficient
-        // this.hex2Byts()         //a hex number can be interpreted in its entirety and translated to a byte string
-        // this.hexRng()              //returns a hex string based on a decimal number
-        // this.hex2Dec()          //interpretes the hex string as a single decimal number
-        // this.hex2Str()       //this uses a encoding standard that passed in with a flag
-        // this.hexBuff2Str()   //this does not require a standard, the hex string in the buffer is sufficient
-        // this.str2HexBuff()   //takes each char literal and puts it into a hex buff, which doesnt care how big the number is
-        // this.str2BytsBuff()  //takes each char literal and puts it into a byte buffer, which doesnt care how big the byte strings are that represent the char
-        // this.str2Byts()      //this losses information unless we pass a flag on the formatting
-        // this.str2Hex()       //this takes each char literal and produces a hex equivalent according to a standard and returns the entire hex string
-        // this.str2DecBuff()   //this takes each char literal and produces a decimal code point buffer
-        // this.decBuff2Str()   //this takes a decimal code point buffer and produces a char literal string with the encoding standard
-        //this.byts2BytsBuff() //this takes a byte string and creates a byte buffer with the given standard, this can ruin information if the byte string is constructed without the standard
-        // this.byts2HexBuff()  //this takes a byte string and produces a hex buffer with the given standard
-        // this.bytsBuff2Hex()    //this takes a byte buffer and produces a hex string (you can add a standard on the hex side)
-        // this.next()
-        //this.bytsBuff2Byts()  //this losses information, unless we format each buffer position to some standard
-        // this.char2Hex()
+        this.frmtByts()      
+        this.frmtHex()          //this formats a hex string by adding or reducing hex numbers according to a standard
+        this.dec2Char()         //this takes a decimal number and produces a char charachter using an encoding flag
+        this.dec2Byts()         //this takes a decimal number and produces a byte string that represents the number
+        this.dec2Hex()          //this takes a decimal number, and produces a hex, if the decimal is a string, it can return big numbers
+        this.byts2Dec()         //this takes a byte string and produces a single decimal number (returns a big number string if its a big number)
+        this.byts2Hex()         //this takes a byte string with a formatting flag and produces a hex string on format boundaries
+        this.byts2Str()         //this can have options (we can pass a flag representing the bytes standard)
+        this.bytsBuff2Str()      //this does not require a standard, the byte string in the buffer is sufficient
+        this.hex2Byts()         //a hex number can be interpreted in its entirety and translated to a byte string
+        this.hexRng()              //returns a hex string based on a decimal number
+        this.hex2Dec()          //interpretes the hex string as a single decimal number
+        this.hex2Str()       //this uses a encoding standard that passed in with a flag
+        this.hexBuff2Str()   //this does not require a standard, the hex string in the buffer is sufficient
+        this.str2HexBuff()   //takes each char literal and puts it into a hex buff, which doesnt care how big the number is
+        this.str2BytsBuff()  //takes each char literal and puts it into a byte buffer, which doesnt care how big the byte strings are that represent the char
+        this.str2Byts()      //this losses information unless we pass a flag on the formatting
+        this.str2Hex()       //this takes each char literal and produces a hex equivalent according to a standard and returns the entire hex string
+        this.str2DecBuff()   //this takes each char literal and produces a decimal code point buffer
+        this.decBuff2Str()   //this takes a decimal code point buffer and produces a char literal string with the encoding standard
+        this.byts2BytsBuff() //this takes a byte string and creates a byte buffer with the given standard, this can ruin information if the byte string is constructed without the standard
+        this.byts2HexBuff()  //this takes a byte string and produces a hex buffer with the given standard
+        this.bytsBuff2Hex()    //this takes a byte buffer and produces a hex string (you can add a standard on the hex side)
+        this.next()
+        this.bytsBuff2Byts()  //this losses information, unless we format each buffer position to some standard
+        this.char2Hex()
         //THESE NEED TESTS
 
  
@@ -350,7 +350,6 @@ export class EncodingTest{
                     hexStr+=''+r.hexRng(i, i, mode, standard)
                 }
                 var str = e.hex2Str(hexStr, mode, standard)
-                console.log(str)
                 if(this.verbose){ console.log(str, hexStr) }
                 assert.equal(hexStr, e.str2Hex(str, mode, standard))
             }
@@ -526,11 +525,9 @@ export class EncodingTest{
                 bytsBuff.push(_byts)
             }
             var buffer= e.byts2BytsBuff(byts, mode, standard)
-            console.log(buffer, byts)
-            // for(var i = 0; i<buffer.length; i++){
-            //     console.log(buffer[i], bytsBuff[i])
-            //     assert.equal(buffer[i], bytsBuff[i])
-            // }
+            for(var i = 0; i<buffer.length; i++){
+                assert.equal(buffer[i], bytsBuff[i])
+            }
             mode = mode.charCodeAt(0)+32
             mode = String.fromCharCode(mode)
         }while(mode=='e'||mode=='E')
@@ -574,7 +571,6 @@ export class EncodingTest{
             for(var i = 1; i<1000; i++){
                 var bytsBuff = r.bytsBuff(i, i, i, mode, standard)
                 var hexStr=e.bytsBuff2Hex(bytsBuff, mode, standard)
-                console.log('hexStr', hexStr)
                 assert.equal(bytsBuff.length*(standard/4), hexStr.length)
                 var j=0;
                 do{
@@ -584,7 +580,6 @@ export class EncodingTest{
                         assert.equal(e.byts2Hex(bytsBuff[j], mode, standard), str)
                         j++
                     }else{
-                        console.log(j, bytsBuff.length)
                         assert(j==bytsBuff.length, true)
                     }
                 }while(str)
@@ -616,7 +611,6 @@ export class EncodingTest{
             var buffer= e.byts2HexBuff(byts, mode, standard)
 
             for(var i = 0; i<buffer.length; i++){
-                console.log(buffer[i], hexBuff[i])
                 assert.equal(buffer[i], hexBuff[i])
             }
 
@@ -637,18 +631,15 @@ export class EncodingTest{
                 var bytsBuff = r.bytsBuff(i, i, i, mode, standard)
                 var bytStr=e.bytsBuff2Byts(bytsBuff, mode, standard)
 
-                console.log(bytStr, bytsBuff)
-
                 assert.equal(bytsBuff.join('').length, bytStr.length)
                 var j=0;
                 do{
                     var str = e.next(bytStr, 'bin', standard)
                     if(str){
-                        //if(this.verbose){console.log(bytsBuff[j], str)}
+                        if(this.verbose){console.log(bytsBuff[j], str)}
                         assert.equal(bytsBuff[j], str)
                         j++
                     }else{
-                        //console.log(j, bytsBuff.length)
                         assert(j==bytsBuff.length, true)
                     }
                 }while(str)
@@ -738,4 +729,4 @@ export class EncodingTest{
     }
 } 
 
-new EncodingTest(true)
+new EncodingTest()
