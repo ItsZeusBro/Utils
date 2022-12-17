@@ -26,8 +26,8 @@ export class EncodingTest{
         //this.hexRng()              //returns a hex string based on a decimal number
         //this.hex2Dec()          //interpretes the hex string as a single decimal number
         //this.hex2Str()       //this uses a encoding standard that passed in with a flag
-        this.hexBuff2Str()   //this does not require a standard, the hex string in the buffer is sufficient
-        // this.str2HexBuff()   //takes each char literal and puts it into a hex buff, which doesnt care how big the number is
+        //this.hexBuff2Str()   //this does not require a standard, the hex string in the buffer is sufficient
+        this.str2HexBuff()   //takes each char literal and puts it into a hex buff, which doesnt care how big the number is
         // this.str2BytsBuff()  //takes each char literal and puts it into a byte buffer, which doesnt care how big the byte strings are that represent the char
         // this.str2Byts()      //this losses information unless we pass a flag on the formatting
 
@@ -426,15 +426,17 @@ export class EncodingTest{
     str2HexBuff(){
         var e=new Encoding()
         var r=new Rand()
-        var mode='E'
+        var mode='E'       
+        var standard=128
+
 
         do{
             console.log('str2HexBuff(', mode,')')
-            for(var i=0; i<10000; i++){
+            for(var i=0; i<1000; i++){
                 var str = r.str(i, i, mode)
-                var buffer = e.str2HexBuff(str, mode)
+                var buffer = e.str2HexBuff(str, mode, standard)
                 if(this.verbose){console.log(str, buffer)}
-                assert.equal(str, e.hexBuff2Str(buffer, mode))
+                assert.equal(str, e.hexBuff2Str(buffer, mode, standard))
             }
             mode = mode.charCodeAt(0)+32
             mode = String.fromCharCode(mode)
