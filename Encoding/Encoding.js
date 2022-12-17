@@ -407,8 +407,11 @@ export class Encoding{
 	}
 
 	str2Byts(string, endian, standard){
-		var buff = this.str2BytsBuff(string, endian, standard)
-		return buff.join('')
+		var bytStr=''
+		for(var i=0; i<string.length; i++){
+			bytStr+=this.char2Byt(string[i], endian, standard)
+		}
+		return bytStr
 	}
 
 	str2BytsBuff(string, endian, standard){
@@ -494,5 +497,9 @@ export class Encoding{
 	char2Hex(char, endian, standard){
 		var dec = char.charCodeAt(0)
 		return this.dec2Hex(dec, endian, standard)
+	}
+	char2Byt(char, endian, standard){
+		var dec = char.charCodeAt(0)
+		return this.dec2Byts(dec, endian, standard)
 	}
 }
