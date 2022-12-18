@@ -32,8 +32,9 @@ union Data {
 void printBook( struct Books *book );
 
 int main( int argc, char *argv[] )  {
+    printf("With help from: https://www.tutorialspoint.com/\n\n");
     printf("-------------------------------------------------------------------------------------------------------\n\n");
-    printf("C Type Limits\n");
+    printf("C Type Limits\n\n");
     printf("CHAR_BIT    :   %d\n", CHAR_BIT);
     printf("CHAR_MAX    :   %d\n", CHAR_MAX);
     printf("CHAR_MIN    :   %d\n", CHAR_MIN);
@@ -51,7 +52,7 @@ int main( int argc, char *argv[] )  {
     printf("USHRT_MAX   :   %d\n", (unsigned short) USHRT_MAX);
     printf("-------------------------------------------------------------------------------------------------------\n\n");
 
-    printf("C Storage Sizes for Float : %lu \n", sizeof(float));
+    printf("C Storage Sizes for Float : %lu \n\n", sizeof(float));
     printf("FLT_MAX     :     %g\n", (float) FLT_MAX);
     printf("FLT_MIN     :     %g\n", (float) FLT_MIN);
     printf("-FLT_MAX    :     %g\n", (float) -FLT_MAX);
@@ -62,7 +63,7 @@ int main( int argc, char *argv[] )  {
     printf("Precision value:  %d\n", FLT_DIG );
     printf("-------------------------------------------------------------------------------------------------------\n\n");
 
-    printf("C Formatting Specifiers\n");
+    printf("C Formatting Specifiers\n\n");
     printf("%%c                        Character\n");
     printf("%%d                        Signed integer\n");
     printf("%%e or %%E                  Scientific notation of floats\n");
@@ -89,7 +90,7 @@ int main( int argc, char *argv[] )  {
     struct Books Book1;        /* Declare Book1 of type Book */
     struct Books Book2;        /* Declare Book2 of type Book */
 
-    printf("Type Sizes in Bytes\n");
+    printf("Type Sizes in Bytes\n\n");
     printf("char                1 byte            -128                 to 127                  or 0 to 255\n");
     printf("unsigned char       1 byte            0                    to 255\n");
     printf("signed char         1 byte            -128                 to 127\n");
@@ -100,132 +101,107 @@ int main( int argc, char *argv[] )  {
     printf("long                8 bytes           -9223372036854775808 to 9223372036854775807\n");
     printf("unsigned long       8 bytes           0                    to 18446744073709551615\n");
     printf("-------------------------------------------------------------------------------------------------------\n\n");
-    //    char name[100];
-    //    strcpy(name, "Salaman");
-
-//     printf("Memory Allocation");
-
-//     char *description;
-//     description = malloc( 200 * sizeof(char) );
-
-//     if( description == NULL ) {
-
-//       fprintf(stderr, "Error - unable to allocate required memory\n");
-
-//     } else {
-
-//       strcpy( description, "C Limit Table");
-
-//     }
-
-//     printf("Description: %s\n", description );
-
-//     union Data data;        
-
-//     printf( "Memory size occupied by data : %d\n", sizeof(data));
-
-
-//    typedef unsigned char BYTE;
-//    BYTE  b1, b2;
-
-//    printf( "Value of TRUE : %d\n", TRUE);
-//    printf( "Value of FALSE : %d\n", FALSE);
-
-
-
-
-
-
-
-
-
-
-//    //Writing to file
-//    //You can use the fopen( ) function to create a new file 
-//    //or to open an existing file. This call will initialize 
-//    //an object of the type FILE, which contains all the 
-//    //information necessary to control the stream. The prototype 
-//    //of this function call is as follows
-
-//    //r: Opens an existing text file for reading purpose.
-//    //w: Opens a text file for writing. If it does not exist, 
-//    //   then a new file is created. Here your program will start 
-//    //   writing content from the beginning of the file.
-
-//    //a: Opens a text file for writing in appending mode. 
-//    //   If it does not exist, then a new file is created. 
-//    //   Here your program will start appending content in 
-//    //   the existing file content.
-
-//    //r+: Opens a text file for both reading and writing.
-
-//    //w+: Opens a text file for both reading and writing. 
-//    //    It first truncates the file to zero length if it 
-//    //   exists, otherwise creates a file if it does not exist.
-
-//    //a+ Opens a text file for both reading and writing. 
-//    //   It creates the file if it does not exist. 
-//    //   The reading will start from the beginning but 
-//    //   writing can only be appended.
-//    //
-
-
-//    //int fputc( int c, FILE *fp );
-//    //int fputs( const char *s, FILE *fp );
-//    FILE *fopen( const char * filename, const char * mode );
-//    int fclose( FILE *fp );
-
-//    FILE *fp;
-
-//    fp = fopen("./tmp/test.txt", "w+");
-//    fprintf(fp, "This is testing for fprintf...\n");
-//    fputs("This is testing for fputs...\n", fp);
-//    fclose(fp);
-
-//    int fgetc( FILE * fp );
-//    char *fgets( char *buf, int n, FILE *fp );
-
-//    char buff[255];
-
-//    fp = fopen("/tmp/test.txt", "r");
-//    fscanf(fp, "%s", buff);
-//    printf("1 : %s\n", buff );
-
-//    fgets(buff, 255, (FILE*)fp);
-//    printf("2: %s\n", buff );
    
-//    fgets(buff, 255, (FILE*)fp);
-//    printf("3: %s\n", buff );
-//    fclose(fp);
+    printf("Macros\n\n");
+    printf("    #define TRUE  1\n");
+    printf("    #define FALSE 0\n");
+    printf("    Value of TRUE : %d\n", TRUE);
+    printf("    Value of FALSE : %d\n", FALSE);
+    printf("-------------------------------------------------------------------------------------------------------\n\n");
+
+    union Data data;
+    printf("Union Structures\n\n");
+    printf("    union Data {\n int i;\n float f;\n char str[20];\n};\n");
+    printf("    union Data data;\n");
+    printf("    Memory size occupied by data : %lu\n", sizeof(data));      
+    printf("-------------------------------------------------------------------------------------------------------\n\n");
+    printf("    strcpy\n");
+    printf("    char someStr[100];\n");
+    printf("    strcpy(someStr, 'someStr');\n");
+    printf("-------------------------------------------------------------------------------------------------------\n\n");
+    printf("Memory Allocation\n\n");
+    printf("    char *description;\n");
+    printf("    description = malloc( 200 * sizeof(char) );\n");
+    printf("    if(description!=NULL){\n\tstrcpy( description, 'Whatever');\n\t}\n");
+    printf("    When your program comes out, operating system automatically release all the memory allocated\n");
+    printf("    by your program but as a good practice when you are not in need of memory anymore then you\n");
+    printf("    should release that memory by calling the function free().\n");
+    printf("    Alternatively, you can increase or decrease the size of an allocated memory block by calling\n");
+    printf("    the function realloc().\n");
+
+    printf("-------------------------------------------------------------------------------------------------------\n\n");
+
+    printf("Type Definitions\n\n");
+    printf("typedef unsigned char BYTE;\n");
+    printf("BYTE  b1, b2;\n\n");
+    printf("-------------------------------------------------------------------------------------------------------\n\n");
 
 
-//     // Binary I/O Functions
-//     // There are two functions, that can be used for binary input and output −
-//    size_t fread(void *ptr, size_t size_of_elements, size_t number_of_elements, FILE *a_file);
-              
-//    size_t fwrite(const void *ptr, size_t size_of_elements, size_t number_of_elements, FILE *a_file);
-   
-//    printf("File :%s\n", __FILE__ );
-//    printf("Date :%s\n", __DATE__ );
-//    printf("Time :%s\n", __TIME__ );
-//    printf("Line :%d\n", __LINE__ );
-//    printf("ANSI :%d\n", __STDC__ );
 
-   //When your program comes out, operating system automatically release all the memory allocated 
-   //by your program but as a good practice when you are not in need of memory anymore then you 
-   //should release that memory by calling the function free().
+    printf("Writing to file\n\n");
+    printf("    You can use the fopen( ) function to create a new file or to open an existing file.\n");
+    printf("    This call will initialize an object of the type FILE, which contains all the\n");
+    printf("    an object of the type FILE, which contains all the information necessary to control the stream.\n");
+    printf("    The prototype of this function call is as follows\n\n");
+    printf("r:  Opens an existing text file for reading purpose.\n\n");
+    printf("w:  Opens a text file for writing. If it does not exist,\n");
+    printf("    then a new file is created. Here your program will start\n");
+    printf("    writing content from the beginning of the file.\n\n");
+    printf("a:  Opens a text file for writing in appending mode.\n");
+    printf("    If it does not exist, then a new file is created. \n");
+    printf("    Here your program will start appending content in\n");
+    printf("    the existing file content.\n\n");
+    printf("r+: Opens a text file for both reading and writing.\n\n");
 
-  //Alternatively, you can increase or decrease the size of an allocated memory block by calling 
-  //the function realloc(). Let us check the above program once again and make use of realloc() 
-  //and free() functions −
+    printf("w+: Opens a text file for both reading and writing.\n");
+    printf("    It first truncates the file to zero length if it\n");
+    printf("    exists, otherwise creates a file if it does not exist.\n\n");
+
+    printf("a+: Opens a text file for both reading and writing.\n");
+    printf("    It creates the file if it does not exist.\n");
+    printf("    The reading will start from the beginning but\n");
+    printf("    writing can only be appended.\n\n");
+    printf("----------------------------------\n\n");
+
+    printf("Example\n\n");
+    printf("    int fputc( int c, FILE *fp );\n");
+    printf("    int fputs( const char *s, FILE *fp );\n");
+    printf("    FILE *fopen( const char * filename, const char * mode );\n");
+    printf("    int fclose( FILE *fp );\n\n");
+    printf("    FILE *fp;\n");
+    printf("    fp = fopen('./tmp/test.txt', 'w+');\n");
+    printf("    fprintf(fp, 'This is testing for fprintf...');\n");
+    printf("    fputs('This is testing for fputs...', fp);\n");
+    printf("    fclose(fp);\n\n");
+    printf("    int fgetc( FILE * fp );\n");
+    printf("    char *fgets( char *buf, int n, FILE *fp );\n\n");
+    printf("    char buff[255];\n");
+    printf("    fp = fopen('/tmp/test.txt', 'r');\n\n");
+    printf("    char buff[255];\n");
+    printf("    fp = fopen('/tmp/test.txt', 'r');\n\n");
+    printf("    fscanf(fp, '%%s', buff)\n");
+    printf("    printf('1 : %%s ', buff )\n");
+    printf("    fgets(buff, 255, (FILE*)fp)\n");
+    printf("    printf('2: %%s ', buff );\n\n");
+    printf("    fgets(buff, 255, (FILE*)fp);\n");
+    printf("    printf('3: %%s ', buff );\n");
+    printf("    fclose(fp);\n\n");
+    printf("-------------------------------------------------------------------------------------------------------\n\n");
+
+    printf("Binary I/O Functions\n\n");
+    printf("    There are two functions, that can be used for binary input and output:\n");
+    printf("    size_t fread(void *ptr, size_t size_of_elements, size_t number_of_elements, FILE *a_file);\n");
+    printf("    size_t fwrite(const void *ptr, size_t size_of_elements, size_t number_of_elements, FILE *a_file);\n");
+    printf("-------------------------------------------------------------------------------------------------------\n\n");
+
+    printf("C Constants\n\n");
+    printf("    printf('    File :%%s', __FILE__ )\n");
+    printf("    printf('    Date :%%s', __DATE__ )\n");
+    printf("    printf('    Time :%%s', __TIME__ )\n");
+    printf("    printf('    Line :%%d', __LINE__ )\n");
+    printf("    printf('    ANSI :%%d', __STDC__ )\n");
+
+
    return 0;
 
-}
-
-void printBook( struct Books *book ) {
-
-   printf( "Book title : %s\n", book->title);
-   printf( "Book author : %s\n", book->author);
-   printf( "Book subject : %s\n", book->subject);
-   printf( "Book book_id : %d\n", book->book_id);
 }
