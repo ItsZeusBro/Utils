@@ -11,10 +11,10 @@ void stringTest(){
     struct String string;
     string.str = (char *) malloc(200*sizeof(char));
     string.size=0;
-    strcpy(string.str, "hello world\n");
+    strcpy(string.str, "hello world, this is a test!");
     string.next=string.str;
     string.prev=string.str;
-    printf("%s %d", string.str, string.size);
+    printf("%s\n%d\n%c\n", string.str, string.size, *string.next);
 }
 void copyTest(){
     struct String string;
