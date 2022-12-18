@@ -2,10 +2,10 @@
 #define STRING_FILE
 
 struct String{
-    char* str;
+    char *str;
     int size;
-    char* next;
-    char* prev;
+    char *next;
+    char *prev;
 };
 
 struct String* slice(struct String*, int, int);

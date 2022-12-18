@@ -6,6 +6,16 @@
 #include "String.h"
 
 
+
+void stringTest(){
+    struct String string;
+    string.str = (char *) malloc(200*sizeof(char));
+    string.size=0;
+    strcpy(string.str, "hello world\n");
+    string.next=string.str;
+    string.prev=string.str;
+    printf("%s %d", string.str, string.size);
+}
 void copyTest(){
     struct String string;
 
@@ -89,6 +99,7 @@ void substrTest(){
 
 
 int main(int argc, char *argv[]){
+    stringTest();
     sliceTest();
     copyTest();
     removeAtTest();
