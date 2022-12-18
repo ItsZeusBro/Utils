@@ -4,7 +4,7 @@
 #include <limits.h>
 #include <float.h>
 #include "String.h"
-
+#include <assert.h>
 
 
 void stringTest(){
@@ -14,7 +14,9 @@ void stringTest(){
     strcpy(string.str, "hello world, this is a test!");
     string.next=string.str;
     string.prev=string.str;
+    assert(1);
     printf("%s\n%d\n%c\n", string.str, string.size, *string.next);
+
 }
 void copyTest(){
     struct String string;
