@@ -1,3 +1,4 @@
+import { assert } from "console";
 import { Encoding } from "../Encoding/Encoding.js";
 export class Rand{
     constructor(){
@@ -11,7 +12,10 @@ export class Rand{
 		return Math.floor(Math.random() * (max - min + 1) + min)
 	}
 
-    str(min, max){return this.rand._str(this.rand.rng(min, max))}
+    str(min, max){
+		var n = this.rng(min, max)
+		return this.rand._str(n)
+	}
 
     _str(len, chars=this.latin().join('')){
         //programiz.com
@@ -28,44 +32,46 @@ export class Rand{
 		return latin
 	}
 
-	hexRng(min, max, endian, type){
-		//take in dec numbers min and max, and return a random hexidec number between them
-		var dec = new Rand().rng(min, max, type)
-		var bin = new Encoding().dec2Byts(dec, endian, type)
-		return new Encoding().frmtHex(new Encoding().byts2Hex(bin, endian, type), endian, type)
-	}
-
-
-	bytsRng_E(min, max){
+	hexRng(min, max, endian, standard){
 		//take in dec numbers min and max, and return a random hexidec number between them
 		var dec = new Rand().rng(min, max)
-		return new Encoding().frmtByts_E(new Encoding().dec2Byts_E(dec))
-	}
-	bytsRng_e(min, max){
-		//take in dec numbers min and max, and return a random hexidec number between them
-		var dec = new Rand().rng(min, max)
-		return new Encoding().frmtByts_e(new Encoding().dec2Byts_e(dec))
+		var hex = new Encoding().dec2Hex(dec, endian, standard)
+		return new Encoding().frmtHex(hex, endian, standard)
 	}
 
-	codeMapRng(min, max){
+	bytsRng(min, max, endian, standard){
+		var dec = new Rand().rng(min, max)
+		var byts=new Encoding().dec2Byts(dec, endian, standard)
+		return new Encoding().frmtByts(byts, endian, standard)
+	}
+
+	bytsBuff(min, max, size, endian, standard){
+		var buff=[]
+		for(var i=0; i<size; i++){
+			buff.push(this.bytsRng(min, max, endian, standard))
+		}
+		return buff
+	}
+
+	codeMapRng(min, max, endian, type){
 		var unicode={}
 		for(var i = min; i<=max; i++){
 			unicode[String.fromCharCode(i)]={
 				'codePoint':i,
-				'bin':new Encoding().dec2Byts_E(i),
-				'hex_E':new Encoding().dec2Hex_E(i)
+				'bin':new Encoding().dec2Byts(i, endian, type),
+				'hex':new Encoding().dec2Hex(i, endian, type)
 			}
 		}
 		return unicode
     }
 
-    codePointMapRng(min, max){
+    codePointMapRng(min, max, endian, type){
         var unicode={}
 		for(var i = min; i<=max; i++){
 			unicode[i]={
 				'code':String.fromCharCode(i),
-				'bin':new Encoding().frmtByts_E(new Encoding().dec2Byts_E(i)),
-				'hex_E':new Encoding().dec2Hex_E(i)
+				'bin':new Encoding().frmtByts(new Encoding().dec2Byts(i, endian, type), endian, type),
+				'hex':new Encoding().dec2Hex(i, endian, type)
 			}
 		}
 		return unicode
