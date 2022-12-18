@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "$(gcc ./Test.c; ./a.out)"
 LTIME=$(stat -f %Sm ./Test.c)
 while true
 do
@@ -7,5 +8,5 @@ do
         echo "$(gcc ./Test.c; ./a.out)"
         LTIME=$ATIME
   fi
-  sleep 5
+  sleep 1
 done

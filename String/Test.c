@@ -4,19 +4,33 @@
 #include <limits.h>
 #include <float.h>
 #include "String.h"
+#include "Test.h"
 #include <assert.h>
 
 
 void stringTest(){
-    struct String string;
-    string.str = (char *) malloc(200*sizeof(char));
-    string.size=0;
-    strcpy(string.str, "hello world, this is a test!");
-    string.next=string.str;
-    string.prev=string.str;
-    assert(1);
-    printf("%s\n%d\n%c\n", string.str, string.size, *string.next);
+    struct String string1;
+    struct String string2;
+    string1.str = (char *) malloc(200*sizeof(char));
+    string2.str = (char *) malloc(200*sizeof(char));
+    strcpy(string1.str, "hello world, this is a test!");
+    strcpy(string2.str, "hello world, this is a test!");
+    string1.size=strlen(string1.str);
+    string2.size=strlen(string2.str);
+    string1.next=string1.str;
+    string1.prev=string1.str;
+    string2.next=string2.str;
+    string2.prev=string2.str;
+    assertEqual(string1, string2);
+    //printf("%s\n%d\n%c\n", string.str, string.size, *string.next);
+}
+assertEqual(str1, str2){
 
+    assert(str1.size==str2.size)
+    for(int i=0; i<str.size; i++){
+        assert(str1.str[i]==str2.str[i]);
+    }
+    return 0;
 }
 void copyTest(){
     struct String string;

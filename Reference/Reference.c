@@ -201,7 +201,6 @@ int main( int argc, char *argv[] )  {
     printf("    printf('    Line :%%d', __LINE__ )\n");
     printf("    printf('    ANSI :%%d', __STDC__ )\n");
 
-
    return 0;
 
 }
