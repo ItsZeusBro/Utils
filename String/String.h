@@ -1,46 +1,46 @@
 #ifndef STRING_FILE
 #define STRING_FILE
 
-struct{
+struct String{
     char* str;
     int size;
     char* next;
     char* prev;
-}string;
+};
 
-string* slice(string*, int min, int max);
+struct String* slice(struct String*, int, int);
 
-string* copy(string* _string);
+struct String* copy(struct String*);
 
-string* removeAt(string* _string, int _at);
+struct String* removeAt(struct String*, int);
 
-string* addAt(string* _string, int _at);
+struct String* addAt(struct String*, int);
 
-string* removeAll(string* _string, char _char);
+struct String* removeAll(struct String*, char);
 
-int size(string* _string);
+struct String* trim(struct String*);
 
-string* trim(string* _string);
+struct String* trimRight(struct String*);
 
-string* trimRight(string* _string);
+struct String* trimLeft(struct String*);
 
-string* trimLeft(string* _string);
+struct String* _realloc(struct String*, int);
 
-string* realloc(string* _string, int _size);
+struct String* _malloc(struct String*, int);
 
-string* malloc(string* _string, int _size);
-
-string* calloc(string* _string, int _size);
+struct String* _calloc(struct String*, int);
 
 //get the index of _prev, the size of _byts that we multiply by to get next
-string* next(string* _string);
+struct String* next(struct String*);
 
-string* prev(string* _string);
+struct String* prev(struct String*);
 
-string* compare(string* _string);
+struct String* compare(struct String*);
 
-string* size(string*);
+int size(struct String*);
 
-string* substr(string* _string1, string* _string2);
+struct String* substr(struct String*, struct String*);
+
+
 
 #endif
