@@ -50,10 +50,12 @@ export class Encoding{
 	}
 
 	frmtHex(hex, endian, standard){
+		if(hex[1]=='x'){hex=hex.slice(2)}
 		if(endian=='E'){
 			if(hex.length>standard/4){
 				//strip to standard
 				hex = this.stripHex(hex, endian, standard)
+				if(hex[1]=='x'){hex=hex.slice(2)}
 			}else if(hex.length<standard/4){
 				while(hex.length!=standard/4){
 					hex='0'.concat(hex)
@@ -63,16 +65,18 @@ export class Encoding{
 			if(hex.length>standard/4){
 				//strip to standard
 				hex = this.stripHex(hex, endian, standard)
+				if(hex[1]=='x'){hex=hex.slice(2)}
 			}else if(hex.length<standard/4){
 				while(hex.length!=standard/4){
 					hex=hex.concat('0')
 				}
 			}
 		}
-		return hex
+		return '0x'.concat(hex)
 	}
 
 	stripHex(hex, endian, standard){
+		if(hex[1]=='x'){hex=hex.slice(2)}
 		if(hex==''){return '0'}
 		if(endian!='E'&&endian!='e'){
 			throw Error('endianness must be specified in stripHex()')
@@ -87,12 +91,12 @@ export class Encoding{
 				hex=hex.slice(0, -1)
 			}
 		}
-		return hex
+		
+		return '0x'.concat(hex)
 	}
 
 
 	hex2Char(hex, endian, standard){
-		//a hex should be 2 hex chars to represent a byt, if its not, frmt it
 		var dec = this.hex2Dec(hex, endian, standard)
 		return String.fromCharCode(dec)
 	}
@@ -106,7 +110,7 @@ export class Encoding{
 	}
 
 	hex2Byts(hex, endian, standard){
-		//BE CAREFUL!!!! BIG E AND SMALL e ARE DIFFERENT SWITCH CASES!
+		if(hex[1]=='x'){hex=hex.slice(2)}
 		if(endian=='E'){
 			//https://stackoverflow.com/questions/45053624/convert-hex-to-binary-in-javascript
 			var out = "";
@@ -162,8 +166,9 @@ export class Encoding{
 
 	//This needs a primitive function
 	hex2Dec(hex, endian, standard){
+		hex=this.stripHex(hex, endian, standard)
+		if(hex[1]=='x'){hex=hex.slice(2)}
 		if(endian=='E'){
-			hex=this.stripHex(hex, endian, standard)
 			var dec=0
 			var j = hex.length-1
 			for(var i = 0; i<hex.length; i++){
@@ -190,7 +195,6 @@ export class Encoding{
 				j--
 			}		
 		}else if(endian=='e'){
-			hex=this.stripHex(hex, endian, standard)
 			var i = 0
 			var dec=0
 			while(i<hex.length){
@@ -221,6 +225,7 @@ export class Encoding{
 	}
 
 	hex2Str(hex, endian, standard){
+		hex = this._0xStr(hex)
 		if(hex.length%(standard/4)!==0){
 			throw Error('hex2Str cannot use a byt string that is not standard divisible')
 		}
@@ -237,6 +242,18 @@ export class Encoding{
 		return str
 	}
 
+	_0xStr(hex){
+		var hexStr=''
+		for(var i = 0; i<hex.length;){
+			if(hex[i]=='0'&&hex[i+1]=='x'){
+				i+=2
+			}else{
+				hexStr+=hex[i]
+				i++
+			}
+		}
+		return hexStr
+	}
 
 	byts2BytsBuff(byts, mode, standard){
 		byts = byts.slice()
@@ -482,6 +499,7 @@ export class Encoding{
 	dec2Hex(dec, endian, standard){
 		var hex="0"
 		hex = this.frmtHex(hex, endian, standard)
+		if(hex[1]=='x'){hex=hex.slice(2)}
 		if(endian=='E'){
 			var i = hex.length-1
 			while(dec!=0){
@@ -503,7 +521,7 @@ export class Encoding{
 			
 		}
 
-		return hex
+		return this.frmtHex(hex, endian, standard)
 	}
 
 	dec2Byts(dec, endian, standard){
