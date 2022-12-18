@@ -9,26 +9,26 @@ export class EncodingTest{
 
         this.verbose=verbose
         //THESE ALL WORK
-        this.frmtByts(standard_min, standard_max)      
-        this.frmtHex(standard_min, standard_max)          //this formats a hex string by adding or reducing hex numbers according to a standard
-        this.dec2Char(standard_min, standard_max)         //this takes a decimal number and produces a char charachter using an encoding flag
+        this.frmtByts(standard_min,standard_max)      
+        this.frmtHex(standard_min,standard_max)                                     //this formats a hex string by adding or reducing hex numbers according to a standard
+        this.dec2Char(8, 8)                                   //this takes a decimal number and produces a char charachter using an encoding flag
         this.dec2Byts(standard_min, standard_max)         //this takes a decimal number and produces a byte string that represents the number
         this.dec2Hex(standard_min, standard_max)          //this takes a decimal number, and produces a hex, if the decimal is a string, it can return big numbers
         this.byts2Dec(standard_min, standard_max)         //this takes a byte string and produces a single decimal number (returns a big number string if its a big number)
         this.byts2Hex(standard_min, standard_max)         //this takes a byte string with a formatting flag and produces a hex string on format boundaries
-        this.byts2Str(standard_min, standard_max)         //this can have options (we can pass a flag representing the bytes standard)
-        this.bytsBuff2Str(standard_min, standard_max)     //this does not require a standard, the byte string in the buffer is sufficient
+        this.byts2Str(8, 8)                              //this can have options (we can pass a flag representing the bytes standard)
+        this.bytsBuff2Str(8, 8)                           //this does not require a standard, the byte string in the buffer is sufficient
         this.hex2Byts(standard_min, standard_max)         //a hex number can be interpreted in its entirety and translated to a byte string
         this.hexRng(standard_min, standard_max)           //returns a hex string based on a decimal number
         this.hex2Dec(standard_min, standard_max)          //interpretes the hex string as a single decimal number
-        this.hex2Str(standard_min, standard_max)          //this uses a encoding standard that passed in with a flag
-        this.hexBuff2Str(standard_min, standard_max)      //this does not require a standard, the hex string in the buffer is sufficient
+        this.hex2Str(8, 8)                               //this uses a encoding standard that passed in with a flag
+        this.hexBuff2Str(8, 8)                           //this does not require a standard, the hex string in the buffer is sufficient
         this.str2HexBuff(standard_min, standard_max)      //takes each char literal and puts it into a hex buff, which doesnt care how big the number is
         this.str2BytsBuff(standard_min, standard_max)     //takes each char literal and puts it into a byte buffer, which doesnt care how big the byte strings are that represent the char
         this.str2Byts(standard_min, standard_max)         //this losses information unless we pass a flag on the formatting
         this.str2Hex(standard_min, standard_max)          //this takes each char literal and produces a hex equivalent according to a standard and returns the entire hex string
         this.str2DecBuff(standard_min, standard_max)      //this takes each char literal and produces a decimal code point buffer
-        this.decBuff2Str(standard_min, standard_max)      //this takes a decimal code point buffer and produces a char literal string with the encoding standard
+        this.decBuff2Str(8, 8)                            //this takes a decimal code point buffer and produces a char literal string with the encoding standard
         this.byts2BytsBuff(standard_min, standard_max)    //this takes a byte string and creates a byte buffer with the given standard, this can ruin information if the byte string is constructed without the standard
         this.byts2HexBuff(standard_min, standard_max)     //this takes a byte string and produces a hex buffer with the given standard
         this.bytsBuff2Hex(standard_min, standard_max)     //this takes a byte buffer and produces a hex string (you can add a standard on the hex side)
@@ -38,7 +38,7 @@ export class EncodingTest{
         this.chainTest(standard_min, standard_max)     
     }
 
-    frmtByts(standard_min, standard_max){
+    frmtByts(standard_min=8, standard_max=64){
         //this formats a byte string by adding or reducing bytes according to a standard
         var e  = new Encoding()
         var r = new Rand()
@@ -59,7 +59,7 @@ export class EncodingTest{
         }
     }
 
-    frmtHex(standard_min, standard_max){
+    frmtHex(standard_min=8, standard_max=64){
         var e  = new Encoding()
         var r = new Rand()
         for(var q = standard_min; q<=standard_max; q=q*2){
