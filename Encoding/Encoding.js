@@ -34,17 +34,18 @@ export class Encoding{
 
 	stripByts(byts, endian, standard){
 		if(byts==''){return '0'}
-		if(endian=='E'){
+		if(endian!='E'&&endian!='e'){
+			throw Error('endianness must be specified in stripHex()')
+		}
+		if(endian=='E'&&byts.length>standard){
 			//strip to standard
-			while(byts.length<=standard){
+			while(byts.length!=standard){
 				byts=byts.slice(1)
 			}
-		}else if (endian=='e'){
-				while(byts.length<=standard){
+		}else if (endian=='e'&&byts.length>standard){
+				while(byts.length!=standard){
 					byts=byts.slice(0, -1)
 				}
-		}else{
-			throw Error('endianness must be specified in stripByts()')
 		}
 		return byts
 	}
@@ -94,7 +95,6 @@ export class Encoding{
 		
 		return '0x'.concat(hex)
 	}
-
 
 	hex2Char(hex, endian, standard){
 		var dec = this.hex2Dec(hex, endian, standard)
@@ -496,6 +496,7 @@ export class Encoding{
 			default: return
 		}
 	}
+
 	dec2Hex(dec, endian, standard){
 		var hex="0"
 		hex = this.frmtHex(hex, endian, standard)
@@ -517,10 +518,8 @@ export class Encoding{
 				dec=parseInt(dec/16)
 				hex = hex.substring(0, i) + this._dec2Hex(16*remainder) + hex.substring(i + 1);
 				i++
-			}		
-			
+			}			
 		}
-
 		return this.frmtHex(hex, endian, standard)
 	}
 
