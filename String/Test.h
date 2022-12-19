@@ -3,5 +3,6 @@
 #define STRING_TEST_FILE
 
 int assertEqual(struct String, struct String);
+void stringTest(int verbose);
 
 #endif

@@ -8,17 +8,20 @@
 #include "Test.h"
 #include <assert.h>
 
-
 void stringTest(int verbose){
     printf("String Test\n");
+    
     for(int i = 0; i<1000; i++){
         struct String * str1 = genStr(i);
         if(verbose){
-            printf("string:%s\nsize:%d\naddr:%c\n", str1->str, str1->size, *str1->next);
+            // printf("lsdkjsdlkfj");
+    //         printf("lkdfjslkdfjsldkgjsdlgbqou");
+    //         printf("string:%s\nsize:%d\naddr:%c\n", str1->str, str1->size, *str1->next);
         }
     }
-    
 }
+
+
 int assertEqual(struct String str1, struct String str2){
 
     assert(str1.size==str2.size);
@@ -39,7 +42,6 @@ void copyTest(){
     //     str1.prev=str1.str;
     //     str2.next=str2.str;
     //     str2.prev=str2.str;
-
 }
 
 void sliceTest(){
