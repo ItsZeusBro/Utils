@@ -8,22 +8,30 @@
 #include <assert.h>
 
 
-void stringTest(){
+void stringTest(int verbose){
     printf("String Test\n");
-    struct String string1;
-    struct String string2;
-    string1.str = (char *) malloc(200*sizeof(char));
-    string2.str = (char *) malloc(200*sizeof(char));
-    strcpy(string1.str, "hello world, this is a test!");
-    strcpy(string2.str, "hello world, this is a test!");
-    string1.size=strlen(string1.str);
-    string2.size=strlen(string2.str);
-    string1.next=string1.str;
-    string1.prev=string1.str;
-    string2.next=string2.str;
-    string2.prev=string2.str;
-    assertEqual(string1, string2);
-    //printf("%s\n%d\n%c\n", string.str, string.size, *string.next);
+    for(var i = 0; i<1000; i++){
+        struct String string1;
+        struct String string2;
+        string1.str = (char *) malloc(100*sizeof(char));
+        string2.str = (char *) malloc(100*sizeof(char));
+        if(verbose){
+            printf("string:%s\nsize:%d\naddr:%c\n", string.str, string.size, *string.next);
+        }
+        strcpy(string1.str, genStr(100));
+        strcpy(string2.str, genStr(100));
+        string1.size=strlen(string1.str);
+        string2.size=strlen(string2.str);
+        string1.next=string1.str;
+        string1.prev=string1.str;
+        string2.next=string2.str;
+        string2.prev=string2.str;
+        assertEqual(string1, string2);
+    }
+    
+
+
+    
 }
 int assertEqual(struct String str1, struct String str2){
 
