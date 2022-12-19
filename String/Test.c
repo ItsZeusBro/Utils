@@ -31,6 +31,8 @@ int assertEqual(struct String str1, struct String str2){
 
     for(int i=0; i<str1.size; i++){
         printf("%c\n", str1.str[i]);
+        assert(str1.next[i]==str2.next[i]);
+        assert(str1.prev[i]==str2.prev[i]);
         assert(str1.str[i]==str2.str[i]);
     }
     return 0;
