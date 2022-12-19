@@ -9,6 +9,7 @@
 
 
 void stringTest(){
+    printf("String Test\n");
     struct String string1;
     struct String string2;
     string1.str = (char *) malloc(200*sizeof(char));
@@ -24,10 +25,12 @@ void stringTest(){
     assertEqual(string1, string2);
     //printf("%s\n%d\n%c\n", string.str, string.size, *string.next);
 }
-assertEqual(str1, str2){
+int assertEqual(struct String str1, struct String str2){
 
-    assert(str1.size==str2.size)
-    for(int i=0; i<str.size; i++){
+    assert(str1.size==str2.size);
+
+    for(int i=0; i<str1.size; i++){
+        printf("%c\n", str1.str[i]);
         assert(str1.str[i]==str2.str[i]);
     }
     return 0;
@@ -114,23 +117,23 @@ void substrTest(){
 }
 
 
-int main(int argc, char *argv[]){
+int main(){
     stringTest();
-    sliceTest();
-    copyTest();
-    removeAtTest();
-    addAtTest();
-    removeAllTest();
-    sizeTest();
-    trimTest();
-    trimRightTest();
-    trimLeftTest();
-    reallocTest();
-    mallocTest();
-    callocTest();
-    nextTest();
-    prevTest();
-    compareTest();
-    sizeTest();
-    substrTest();
+    // sliceTest();
+    // copyTest();
+    // removeAtTest();
+    // addAtTest();
+    // removeAllTest();
+    // sizeTest();
+    // trimTest();
+    // trimRightTest();
+    // trimLeftTest();
+    // reallocTest();
+    // mallocTest();
+    // callocTest();
+    // nextTest();
+    // prevTest();
+    // compareTest();
+    // sizeTest();
+    // substrTest();
 }

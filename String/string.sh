@@ -1,5 +1,6 @@
 #!/bin/bash
-echo "$(gcc ./Test.c; ./a.out)"
+
+echo "$(clear; gcc ./Test.c; ./a.out)"
 LTIME=$(stat -f %Sm ./Test.c)
 while true
 do
