@@ -40,8 +40,8 @@ int main( int argc, char *argv[] )  {
     printf("CHAR_MIN    :   %d\n", CHAR_MIN);
     printf("INT_MAX     :   %d\n", INT_MAX);
     printf("INT_MIN     :   %d\n", INT_MIN);
-    printf("LONG_MAX    :   %ld\n", (long) LONG_MAX);
-    printf("LONG_MIN    :   %ld\n", (long) LONG_MIN);
+    //printf("LONG_MAX    :   %ld\n", (long) LONG_MAX);
+   //  printf("LONG_MIN    :   %ld\n", (long) LONG_MIN);
     printf("SCHAR_MAX   :   %d\n", SCHAR_MAX);
     printf("SCHAR_MIN   :   %d\n", SCHAR_MIN);
     printf("SHRT_MAX    :   %d\n", SHRT_MAX);
@@ -72,11 +72,11 @@ int main( int argc, char *argv[] )  {
     printf("%%hi                       Signed integer (short)\n");
     printf("%%hu                       Unsigned Integer (short)\n");
     printf("%%i                        Unsigned integer\n");
-    printf("%%l or %%ld or %%li          Long\n");
+   //  printf("%%l or %%ld or %%li          Long\n");
     printf("%%lf                       Double\n");
     printf("%%Lf                       Long double\n");
     printf("%%lu                       Unsigned int or unsigned long\n");
-    printf("%%lli or %%lld              Long long\n");
+   //  printf("%%lli or %%lld              Long long\n");
     printf("%%llu                      Unsigned long long\n");
     printf("%%o                        Octal representation\n");
     printf("%%p                        Pointer\n");
@@ -194,12 +194,12 @@ int main( int argc, char *argv[] )  {
     printf("    size_t fwrite(const void *ptr, size_t size_of_elements, size_t number_of_elements, FILE *a_file);\n");
     printf("-------------------------------------------------------------------------------------------------------\n\n");
 
-    printf("C Constants\n\n");
-    printf("    printf('    File :%%s', __FILE__ )\n");
-    printf("    printf('    Date :%%s', __DATE__ )\n");
-    printf("    printf('    Time :%%s', __TIME__ )\n");
-    printf("    printf('    Line :%%d', __LINE__ )\n");
-    printf("    printf('    ANSI :%%d', __STDC__ )\n");
+   //  printf("C Constants\n\n");
+   //  printf("    printf('    File :%%s', __FILE__ )\n");
+   //  printf("    printf('    Date :%%s', __DATE__ )\n");
+   //  printf("    printf('    Time :%%s', __TIME__ )\n");
+   //  printf("    printf('    Line :%%d', __LINE__ )\n");
+   //  printf("    printf('    ANSI :%%d', __STDC__ )\n");
 
    return 0;
 
