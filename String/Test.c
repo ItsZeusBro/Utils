@@ -10,19 +10,19 @@
 
 void stringTest(int verbose){
     printf("String Test\n");
-
-    for(int i = 0; i<10; i++){
-        struct String * str = genStr(i);
-        printf("string:%s\nsize:%d\nstr addr:%p\nprev addr:%p\n", str->str, str->size, &str->str, &str->prev);
-        assert(str->size==i);
-        // printf("str->prev pointer %p", &str->prev)
-        assert(&str->prev==&str->str);
-        // str->str++;
-        // printf("str->next pointer %p", &str->next)
-        // assert(&str->next==&str->str);
-        // if(verbose){
-        // }
-    }
+    struct String * str = genStr(10);
+    // for(int i = 0; i<10; i++){
+    //     
+    //     printf("string:%s\nsize:%d\nstr addr:%p\nprev addr:%p\nnext addr:%p\n", str->str, str->size, str->str*, str->prev*, str->next*);
+    //     assert(str->size==i);
+    //     // printf("str->prev pointer %p", &str->prev)
+    //     assert(&str->prev==&str->str);
+    //     // str->str++;
+    //     // printf("str->next pointer %p", &str->next)
+    //     // assert(&str->next==&str->str);
+    //     // if(verbose){
+    //     // }
+    // }
 }
 
 
@@ -37,6 +37,7 @@ int assertEqual(struct String str1, struct String str2){
     }
     return 0;
 }
+
 void copyTest(){
     struct String string;
         // strcpy(str2.str, str1.str);
