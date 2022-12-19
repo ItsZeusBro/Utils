@@ -10,14 +10,18 @@
 
 void stringTest(int verbose){
     printf("String Test\n");
-    
-    for(int i = 0; i<1000; i++){
-        struct String * str1 = genStr(i);
-        if(verbose){
-            // printf("lsdkjsdlkfj");
-    //         printf("lkdfjslkdfjsldkgjsdlgbqou");
-    //         printf("string:%s\nsize:%d\naddr:%c\n", str1->str, str1->size, *str1->next);
-        }
+
+    for(int i = 0; i<10; i++){
+        struct String * str = genStr(i);
+        printf("string:%s\nsize:%d\nstr addr:%p\nprev addr:%p\n", str->str, str->size, &str->str, &str->prev);
+        assert(str->size==i);
+        // printf("str->prev pointer %p", &str->prev)
+        assert(&str->prev==&str->str);
+        // str->str++;
+        // printf("str->next pointer %p", &str->next)
+        // assert(&str->next==&str->str);
+        // if(verbose){
+        // }
     }
 }
 
