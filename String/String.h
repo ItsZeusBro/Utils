@@ -6,40 +6,43 @@ struct String{
     int size;
     char *next;
     char *prev;
-};
+}string;
 
-struct String* slice(struct String*, int, int);
 
-struct String* copy(struct String*);
+// struct String addAt(int, struct String, char);
 
-struct String* removeAt(struct String*, int);
+// struct String slice(struct String, int, int);
 
-struct String* addAt(struct String*, int);
+// struct String* copy(struct String);
 
-struct String* removeAll(struct String*, char);
+// struct String* removeAt(struct String, int);
 
-struct String* trim(struct String*);
+// struct String* addAt(struct String, int);
 
-struct String* trimRight(struct String*);
+// struct String* removeAll(struct String, char);
 
-struct String* trimLeft(struct String*);
+// struct String* trim(struct String);
 
-struct String* _realloc(struct String*, int);
+// struct String* trimRight(struct String);
 
-struct String* _malloc(struct String*, int);
+// struct String* trimLeft(struct String);
 
-struct String* _calloc(struct String*, int);
+// struct String* _realloc(struct String, int);
 
-//get the index of _prev, the size of _byts that we multiply by to get next
-struct String* next(struct String*);
+// struct String* _malloc(struct String, int);
 
-struct String* prev(struct String*);
+// struct String* _calloc(struct String, int);
 
-struct String* compare(struct String*);
+// //get the index of _prev, the size of _byts that we multiply by to get next
+// struct String* next(struct String);
 
-int size(struct String*);
+// struct String* prev(struct String);
 
-struct String* substr(struct String*, struct String*);
+// struct String* compare(struct String);
+
+// int size(struct String);
+
+// struct String* substr(struct String, struct String);
 
 
 

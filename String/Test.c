@@ -4,33 +4,19 @@
 #include <limits.h>
 #include <float.h>
 #include "String.h"
+#include "../Rand/Rand.h"
 #include "Test.h"
 #include <assert.h>
 
 
 void stringTest(int verbose){
     printf("String Test\n");
-    for(var i = 0; i<1000; i++){
-        struct String string1;
-        struct String string2;
-        string1.str = (char *) malloc(100*sizeof(char));
-        string2.str = (char *) malloc(100*sizeof(char));
-        if(verbose){
-            printf("string:%s\nsize:%d\naddr:%c\n", string.str, string.size, *string.next);
-        }
-        strcpy(string1.str, genStr(100));
-        strcpy(string2.str, genStr(100));
-        string1.size=strlen(string1.str);
-        string2.size=strlen(string2.str);
-        string1.next=string1.str;
-        string1.prev=string1.str;
-        string2.next=string2.str;
-        string2.prev=string2.str;
-        assertEqual(string1, string2);
+    for(int i = 0; i<1000; i++){
+        * struct String str1 = genStr(i);
+        // if(verbose){
+        //     printf("string:%s\nsize:%d\naddr:%c\n", str1->str, str1->size, *str1->next);
+        // }
     }
-    
-
-
     
 }
 int assertEqual(struct String str1, struct String str2){
@@ -38,7 +24,6 @@ int assertEqual(struct String str1, struct String str2){
     assert(str1.size==str2.size);
 
     for(int i=0; i<str1.size; i++){
-        printf("%c\n", str1.str[i]);
         assert(str1.next[i]==str2.next[i]);
         assert(str1.prev[i]==str2.prev[i]);
         assert(str1.str[i]==str2.str[i]);
@@ -47,6 +32,13 @@ int assertEqual(struct String str1, struct String str2){
 }
 void copyTest(){
     struct String string;
+        // strcpy(str2.str, str1.str);
+    //     str1.size=strlen(str1.str);
+    //     str2.size=strlen(str2.str);
+    //     str1.next=str1.str;
+    //     str1.prev=str1.str;
+    //     str2.next=str2.str;
+    //     str2.prev=str2.str;
 
 }
 
@@ -128,7 +120,7 @@ void substrTest(){
 
 
 int main(){
-    stringTest();
+    stringTest(1);
     // sliceTest();
     // copyTest();
     // removeAtTest();

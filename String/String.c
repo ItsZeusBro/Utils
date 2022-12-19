@@ -4,71 +4,76 @@
 #include <stdlib.h>
 
 
-string* slice(string* _string, int min, int max){
-    
-}
 
-string* copy(string* _string){
+// String* slice(struct String* string, int min, int max){
 
-}
+// }
 
-string* removeAt(string* _string, int _at){
+// String* addAt(int index, struct String* string, char ch){
 
-}
+// }
 
-string* addAt(string* _string, int _at){
+// String* copy(string* _string){
 
-}
+// }
 
-string* removeAll(string* _string, char _char){
+// String* removeAt(string* _string, int _at){
 
-}
+// }
 
-int size(string* _string){
+// String* addAt(string* _string, int _at){
 
-}
+// }
 
-string* trim(string* _string){
+// String* removeAll(string* _string, char _char){
 
-}
+// }
 
-string* trimRight(string* _string){
+// int size(string* _string){
 
-}
+// }
 
-string* trimLeft(string* _string){
+// string* trim(string* _string){
 
-}
+// }
 
-string* realloc(string* _string, int _size){
+// string* trimRight(string* _string){
 
-}
+// }
 
-string* malloc(string* _string, int _size){
+// string* trimLeft(string* _string){
 
-}
+// }
 
-string* calloc(string* _string, int _size){
+// string* realloc(string* _string, int _size){
 
-}
+// }
 
-//get the index of _prev, the size of _byts that we multiply by to get next
-string* next(string* _string){
+// string* malloc(string* _string, int _size){
 
-}
+// }
 
-string* prev(string* _string){
+// string* calloc(string* _string, int _size){
 
-}
+// }
 
-string* compare(string* _string){
+// //get the index of _prev, the size of _byts that we multiply by to get next
+// string* next(string* _string){
 
-}
+// }
 
-string* size(string*){
+// string* prev(string* _string){
 
-}
+// }
 
-string* substr(string* _string1, string* _string2){
+// string* compare(string* _string){
 
-}
+// }
+
+// string* size(string*){
+
+// }
+
+// string* substr(string* _string1, string* _string2){
+
+// }
