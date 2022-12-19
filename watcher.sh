@@ -8,7 +8,7 @@ do
   ATIME=$(stat -f %Sa $1/$2;)
   if [[ "$ATIME" != "$LTIME" ]]; then
         echo "$(./Reference/a.out;)";
-        echo "$(cd $1; gcc $2; ./a.out; cd..;)";
+        echo "$(cd $1; gcc $2; ./a.out; cd ..;)";
         LTIME=$ATIME
   fi
   sleep 1
