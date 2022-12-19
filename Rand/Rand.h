@@ -3,7 +3,7 @@
 
 #include "../String/String.h"
 
-struct String* genStr(int);
+struct String * genStr(int);
 
 
 #endif

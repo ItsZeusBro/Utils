@@ -12,10 +12,10 @@
 void stringTest(int verbose){
     printf("String Test\n");
     for(int i = 0; i<1000; i++){
-        * struct String str1 = genStr(i);
-        // if(verbose){
-        //     printf("string:%s\nsize:%d\naddr:%c\n", str1->str, str1->size, *str1->next);
-        // }
+        struct String * str1 = genStr(i);
+        if(verbose){
+            printf("string:%s\nsize:%d\naddr:%c\n", str1->str, str1->size, *str1->next);
+        }
     }
     
 }
@@ -138,4 +138,5 @@ int main(){
     // compareTest();
     // sizeTest();
     // substrTest();
+    return 0;
 }
