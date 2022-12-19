@@ -1,3 +1,3 @@
 
-stringTest: String.c ../Rand/Rand.c Test.c
-	gcc -I stringTest String.c ../Rand/Rand.c Test.c
+stringTest: String.o ../Rand/Rand.o Test.o
+	gcc -o stringTest String.o ../Rand/Rand.o Test.o
