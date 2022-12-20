@@ -3,11 +3,11 @@
 #include <stdlib.h>
 
 
-create(char * type){
+int create(char * type){
     //we need to create a raw compare strings function without using string library
 
 }
 
-destroy(void * type){
+int destroy(void * type){
 
 }

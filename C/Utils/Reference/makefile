@@ -1,0 +1,5 @@
+testAll:
+	(gcc -fPIC -c Test.c Reference.c)
+
+testCleanAll:
+	rm ./Test.o ./Reference.o

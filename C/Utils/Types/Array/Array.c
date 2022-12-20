@@ -22,7 +22,7 @@ struct Array * at(struct Array * arr, int index){
 
 //The concat() method is used to merge two or more arrays. This method does not change the existing 
 //arrays, but instead returns a new array.
-struct Array * concat(struct Array * arr,...){
+struct Array * concatArray(struct Array * arr,...){
 
 }
 
@@ -80,7 +80,7 @@ struct Array * shift(struct Array * arr){
 //The slice() method returns a shallow copy of a portion of an array into a new array object selected from start 
 //to end (end not included) where start and end represent the index of items in that array. The original array 
 //will not be modified.
-struct Array * slice(struct Array * arr, int index1, int index2){
+struct Array * sliceArray(struct Array * arr, int index1, int index2){
 
 }
 

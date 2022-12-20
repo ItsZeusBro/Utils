@@ -5,6 +5,7 @@
 #include <limits.h>
 #include <float.h>
 #include <assert.h>
+#include "./Assertions.h"
 
 int hexEqual(struct Hex * hex1, struct Hex * hex2){
 

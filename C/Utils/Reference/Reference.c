@@ -9,12 +9,7 @@
 int func() {
    return 0;
 }
-struct Books {
-    char  title[50];
-    char  author[50];
-    char  subject[100];
-    int   book_id;
-};
+
 
 //A union is a special data type available in C 
 //that allows to store different data types in 
@@ -29,9 +24,8 @@ union Data {
    char str[20];
 };
 
-void printBook( struct Books *book );
 
-int main( int argc, char *argv[] )  {
+int reference( int argc, char *argv[] )  {
     printf("With help from: https://www.tutorialspoint.com/\n\n");
     printf("-------------------------------------------------------------------------------------------------------\n\n");
     printf("C Type Limits\n\n");
@@ -87,8 +81,6 @@ int main( int argc, char *argv[] )  {
     printf("%%%%                        Prints %% character\n");
     printf("-------------------------------------------------------------------------------------------------------\n\n");
 
-    struct Books Book1;        /* Declare Book1 of type Book */
-    struct Books Book2;        /* Declare Book2 of type Book */
 
     printf("Type Sizes in Bytes\n\n");
     printf("char                1 byte            -128                 to 127                  or 0 to 255\n");

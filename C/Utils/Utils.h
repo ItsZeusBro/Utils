@@ -1,3 +1,6 @@
+#ifndef UTILS_FILE
+#define UTILS_FILE
+
 #include "./Types/Types.h"
 #include "./Rand/Rand.h"
 #include "./Assertions/Assertions.h"
@@ -7,4 +10,9 @@
 //We need to think about what high level constructs we can make with
 //all of the underlying utils, Like Matrix, Combinatorics, Automata
 //Crypto functions, Statistics tools
+
+#endif
+
+
+
 

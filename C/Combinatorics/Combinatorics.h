@@ -1,0 +1,4 @@
+#ifndef COMBINATORICS_FILE
+#define COMBINATORICS_FILE
+
+#endif

@@ -19,13 +19,11 @@ struct String * addAt(int index, struct String *str, char ch){
 
 }
 
-struct String * slice(struct String *str, int index1, int index2){
+struct String * sliceString(struct String *str, int index1, int index2){
 
 }
 
-struct String * splice(struct String *str, int index1, int index2){
 
-}
 
 struct String * copy(struct String *str){
 
@@ -67,7 +65,7 @@ struct String * compare(struct String *str1, struct String *str2){
 
 }
 
-struct String * concat(struct String *str1, struct String *str2){
+struct String * concatString(struct String *str1, struct String *str2){
 
 }
 
@@ -79,7 +77,3 @@ struct String * substr(struct String *str, struct String *str){
 
 }
 
-
-int main(){
-    
-}

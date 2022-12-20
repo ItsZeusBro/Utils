@@ -101,30 +101,3 @@ int isString(){
 int isArray(){
 
 }
-
-int main(){
-    hexEqual();
-    b64Equal();
-    binEqual();
-    byt8Equal();
-    byt16Equal();
-    byt32Equal();
-    byt64Equal();
-    numberEqual();
-    floatEqual();
-    stringsEqual();
-    arrayEqual();
-    isHex();
-    isb64();
-    isbin();
-    isByt8();
-    isByt16();
-    isByt32();
-    isByt64();
-    isAscii();
-    isUnicode();
-    isFloat();
-    isNumber();
-    isString();
-    isArray();
-}

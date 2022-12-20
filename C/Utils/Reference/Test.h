@@ -1,0 +1,4 @@
+#ifndef REFERENCE_TEST_FILE
+#define REFERENCE_TEST_FILE
+
+#endif

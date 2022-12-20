@@ -111,7 +111,7 @@ struct BYT64 * byt82byt64(struct BYT8 * byt8, char * fromEndian, char * toEndian
 //BYT16 CONVERSIONS
 struct DEC * byt162dec(struct BYT16 * byt16, char * fromEndian);
 struct HEX * byt162hex(struct BYT16 * byt16, char * fromEndian, char * toEndian);
-struct BIN * byt162bin(struct BYT16 * byt16, char * fromEndian, char * toEndian)
+struct BIN * byt162bin(struct BYT16 * byt16, char * fromEndian, char * toEndian);
 struct B64 * byt162b64(struct BYT16 * byt16, char * fromEndian, char * toEndian);
 struct BYT8 * byt162byt8(struct BYT16 * byt16, char * fromEndian, char * toEndian);
 struct BYT32 * byt162byt32(struct BYT16 * byt16, char * fromEndian, char * toEndian);
@@ -120,7 +120,7 @@ struct BYT64 * byt162byt64(struct BYT16 * byt16, char * fromEndian, char * toEnd
 //BYT32 CONVERSIONS
 struct DEC * byt322dec(struct BYT32 * byt32, char * fromEndian);
 struct HEX * byt322hex(struct BYT32 * byt32, char * fromEndian, char * toEndian);
-struct BIN * byt322bin(struct BYT32 * byt32, char * fromEndian, char * toEndian)
+struct BIN * byt322bin(struct BYT32 * byt32, char * fromEndian, char * toEndian);
 struct B64 * byt322b64(struct BYT32 * byt32, char * fromEndian, char * toEndian);
 struct BYT8 * byt322byt8(struct BYT32 * byt32, char * fromEndian, char * toEndian);
 struct BYT16 * byt322byt16(struct BYT32 * byt32, char * fromEndian, char * toEndian);

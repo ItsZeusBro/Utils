@@ -1,5 +1,5 @@
-types: Types.c Test.c
-	gcc -o UtilsTest Utils.c Test.c
+testAll:
+	(gcc -fPIC -c Test.c Assertions.c)
 
-clean:
-	rm ./Utils.o ./Test.o
+testCleanAll:
+	rm ./Test.o ./Assertions.o

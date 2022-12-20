@@ -3,9 +3,7 @@
 
 #include "../Types/String/String.h"
 #include "../Types/Number/Number.h"
-#include "../Types/Float/Float.h"
 #include "../Types/LinkList/LinkList.h"
-#include "../Types/Struct/Struct.h"
 #include "../Types/Array/Array.h"
 
 
@@ -17,7 +15,7 @@ struct LinkList * genLinkList(long long int min, long long int max, char * type)
 
 struct String * genStr(long long int min, long long int max);
 struct Array * genArray(char ** types, long long int min, long long int max);
-struct Float * genFloat(long long float min, long long float max);
+struct Float * genFloat(long double min, long double max);
 
 
 #endif

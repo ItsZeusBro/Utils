@@ -9,6 +9,8 @@
 
 
 
+
+
 //these check for struct conformity in memory
 //first we need to study the memory layout of each of our structs
 //and we need to actually create some signature for our struct types
