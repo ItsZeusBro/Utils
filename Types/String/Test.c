@@ -11,18 +11,6 @@
 void stringTest(int verbose){
     printf("String Test\n");
     struct String * str = genStr(10);
-    // for(int i = 0; i<10; i++){
-    //     
-    //     printf("string:%s\nsize:%d\nstr addr:%p\nprev addr:%p\nnext addr:%p\n", str->str, str->size, str->str*, str->prev*, str->next*);
-    //     assert(str->size==i);
-    //     // printf("str->prev pointer %p", &str->prev)
-    //     assert(&str->prev==&str->str);
-    //     // str->str++;
-    //     // printf("str->next pointer %p", &str->next)
-    //     // assert(&str->next==&str->str);
-    //     // if(verbose){
-    //     // }
-    // }
 }
 
 
@@ -38,92 +26,72 @@ int assertEqual(struct String str1, struct String str2){
     return 0;
 }
 
-void copyTest(){
-    struct String string;
-        // strcpy(str2.str, str1.str);
-    //     str1.size=strlen(str1.str);
-    //     str2.size=strlen(str2.str);
-    //     str1.next=str1.str;
-    //     str1.prev=str1.str;
-    //     str2.next=str2.str;
-    //     str2.prev=str2.str;
-}
 
-void sliceTest(){
-    struct String string;
+
+int addAt(){
 
 }
 
-void removeAtTest(){
-    struct String string; 
+int slice(){
 
 }
 
-void addAtTest(){
-    struct String string; 
+int splice(){
 
 }
 
-void removeAllTest(){
-    struct String string; 
+int copy(){
 
 }
 
-void sizeTest(){
-    struct String string; 
+int removeAt(){
 
 }
 
-void trimTest(){
-    struct String string; 
+int removeAll(){
 
 }
 
-void trimRightTest(){
-    struct String string; 
+int trim(){
 
 }
 
-void trimLeftTest(){
-    struct String string; 
+int trimRight(){
 
 }
 
-void reallocTest(){
-    struct String string; 
+int trimLeft(){
 
 }
 
-void mallocTest(){
-    struct String string; 
+int _realloc(){
 
 }
 
-void callocTest(){
-    struct String string; 
+int _malloc(){
 
 }
 
-void nextTest(){
-    struct String string; 
+int _calloc(){
 
 }
 
-void prevTest(){
-    struct String string; 
+int compare(){
 
 }
 
-void compareTest(){
-    struct String string; 
+int concat(){
 
 }
 
-
-void substrTest(){
-    struct String string; 
+int size(){
 
 }
+
+int substr(){
+
+}
+
 
 
 int main(){

@@ -12,11 +12,6 @@ struct LinkList * genLinkList(long long int min, long long int max, char * type)
 
 }
 
-struct Struct * genStruct(char ** types, long long int min, long long int max){
-
-    
-}
-
 struct String * genStr(long long int min, long long int max){
     struct String * str = (struct String *) malloc(sizeof(string));
 }
@@ -38,10 +33,3 @@ struct Array * genArray(char ** types, long long int min, long long int max){
     // for (int i = 0; i < variableNumberOfElements; i++)
     //     orderedIds[i] = malloc((ID_LEN+1) * sizeof(char)); 
 }
-
-
-
-struct Struct * genStruct(char ** types, long long int min, long long int max,);
-struct String * genStr(long long int min, long long int max);
-struct Array * genArray(char ** types, long long int min, long long int max);
-struct Float * genFloat(long long float min, long long float max);

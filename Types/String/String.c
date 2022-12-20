@@ -4,6 +4,12 @@
 #include <stdlib.h>
 
 
+// struct String{
+//     char *str;
+//     int size;
+// };
+
+
 struct String * addAt(int index, struct String *str, char ch){
 
 }
@@ -67,3 +73,4 @@ int size(struct String *str){
 struct String * substr(struct String *str, struct String *str){
 
 }
+

@@ -1,184 +1,214 @@
 #include "Number.h"
 
-struct Number * number(char * number, char * type);
+struct Number * number(char * number, char * fromType, char * toType, char * fromEndian, char * toEndian){
+
+}
+
+struct DEC * DEC(char * dec){
+
+}
+struct BIN * BIN(char * bin, char * fromEndian, char * toEndian){
+
+}
+struct HEX * HEX(char * hex, char * fromEndian, char * toEndian){
+
+}
+struct B64 * B64(char * b64, char * fromEndian, char * toEndian){
+
+}
+struct BYT8 * BYT8(char * byt8, char * fromEndian, char * toEndian){
+
+}
+struct BYT16 * BYT16(char * byt16, char * fromEndian, char * toEndian){
+
+}
+struct BYT32 * BYT32(char * byt32, char * fromEndian, char * toEndian){
+
+}
+struct BYT64 * BYT64(char * byt64, char * fromEndian, char * toEndian){
+
+}
 
 //DECIMAL CONVERSIONS
-char * dec2hex(char * dec){
+struct HEX * dec2hex(struct DEC * dec, char * toEndian){
 
 }
-char * dec2b64(char * dec){
+struct B64 * dec2b64(struct DEC * dec, char * toEndian){
 
 }
-char * dec2bin(char * dec){
+struct BIN * dec2bin(struct DEC * dec, char * toEndian){
 
 }
-char * dec2byt8(char * dec){
+struct BYT8 * dec2byt8(struct DEC * dec, char * toEndian){
 
 }
-char * dec2byt16(char * dec){
+struct BYT16 * dec2byt16(struct DEC * dec, char * toEndian){
 
 }
-char * dec2byt32(char * dec){
+char * dec2byt32(struct DEC * dec, char * toEndian){
 
 }
-char * dec2byt64(char * dec){
+char * dec2byt64(struct DEC * dec, char * toEndian){
 
 }
 
 //HEXIDECIMAL CONVERSIONS
-char * hex2dec(char * hex){
+struct DEC * hex2dec(struct HEX * hex, char * fromEndian){
 
 }
-char * hex2b64(char * hex){
+struct B64 * hex2b64(struct HEX * hex, char * fromEndian){
 
 }
-char * hex2bin(char * hex){
+struct BIN * hex2bin(struct HEX * hex, char * fromEndian){
 
 }
-char * hex2byt8(char * hex){
+struct BYT8 * hex2byt8(struct HEX * hex, char * fromEndian){
 
 }
-char * hex2byt16(char * hex){
+struct BYT16 * hex2byt16(struct HEX * hex, char * fromEndian){
 
 }
-char * hex2byt32(char * hex){
+char * hex2byt32(struct HEX * hex, char * fromEndian){
 
 }
-char * hex2byt64(char * hex){
+char * hex2byt64(struct HEX * hex, char * fromEndian){
 
 }
 
 //B64 CONVERSIONS
-char * b642dec(char * b64){
+struct DEC * b642dec(struct B64 * b64, char * fromEndian){
 
 }
-char * b642hex(char * b64){
+struct HEX * b642hex(struct B64 * b64, char * fromEndian, char * toEndian){
 
 }
-char * b642bin(char * b64){
+struct BIN * b642bin(struct B64 * b64, char * fromEndian, char * toEndian){
 
 }
-char * b642byt8(char * b64){
+struct BYT8 * b642byt8(struct B64 * b64, char * fromEndian, char * toEndian){
 
 }
-char * b642byt16(char * b64){
+struct BYT16 * b642byt16(struct B64 * b64, char * fromEndian, char * toEndian){
 
 }
-char * b642byt32(char * b64){
+char * b642byt32(struct B64 * b64, char * fromEndian, char * toEndian){
 
 }
-char * b642byt64(char * b64){
+char * b642byt64(struct B64 * b64, char * fromEndian, char * toEndian){
 
 }
 
 //BINARY CONVERSIONS
-char * bin2dec(char * bin){
+struct DEC * bin2dec(struct BIN * bin, char * fromEndian){
 
 }
-char * bin2hex(char * bin){
+struct HEX * bin2hex(struct BIN * bin, char * fromEndian, char * toEndian){
 
 }
-char * bin2b64(char * bin){
+struct B64 * bin2b64(struct BIN * bin, char * fromEndian, char * toEndian){
 
 }
-char * bin2byt8(char * bin){
+struct BYT8 * bin2byt8(struct BIN * bin, char * fromEndian, char * toEndians){
 
 }
-char * bin2byt16(char * bin){
+struct BYT16 * bin2byt16(struct BIN * bin, char * fromEndian, char * toEndian){
 
 }
-char * bin2byt32(char * bin){
+struct BYT32 * bin2byt32(struct BIN * bin, char * fromEndian, char * toEndians){
 
 }
-char * bin2byt64(char * bin){
+struct BYT64 * bin2byt64(struct BIN * bin, char * fromEndian, char * toEndian){
 
 }
 
 //BYT8 CONVERSIONS
-char * byt82dec(char * byt8){
+struct DEC * byt82dec(struct BYT8 * byt8, char * fromEndian){
 
 }
-char * byt82hex(char * byt8){
+struct HEX * byt82hex(struct BYT8 * byt8, char * fromEndian, char * toEndian){
 
 }
-char * byt82bin(char * byt8){
+struct BIN * byt82bin(struct BYT8 * byt8, char * fromEndian, char * toEndian){
 
 }
-char * byt82b64(char * byt8){
+struct B64 * byt82b64(struct BYT8 * byt8, char * fromEndian, char * toEndian){
 
 }
-char * byt82byt16(char * byt8){
+struct BYT16 * byt82byt16(struct BYT8 * byt8, char * fromEndian, char * toEndian){
 
 }
-char * byt82byt32(char * byt8){
+struct BYT32 * byt82byt32(struct BYT8 * byt8, char * fromEndian, char * toEndian){
 
 }
-char * byt82byt64(char * byt8){
+struct BYT64 * byt82byt64(struct BYT8 * byt8, char * fromEndian, char * toEndian){
 
 }
 
 //BYT16 CONVERSIONS
-char * byt162dec(char * byt16){
+struct DEC * byt162dec(struct BYT16 * byt16, char * fromEndian){
 
 }
-char * byt162hex(char * byt16){
+struct HEX * byt162hex(struct BYT16 * byt16, char * fromEndian, char * toEndian){
 
 }
-char * byt162bin(char * byt16){
+struct BIN * byt162bin(struct BYT16 * byt16, char * fromEndian, char * toEndian){
 
 }
-char * byt162b64(char * byt16){
+struct B64 * byt162b64(struct BYT16 * byt16, char * fromEndian, char * toEndian){
 
 }
-char * byt162byt8(char * byt16){
+struct BYT8 * byt162byt8(struct BYT16 * byt16, char * fromEndian, char * toEndian){
 
 }
-char * byt162byt32(char * byt16){
+struct BYT32 * byt162byt32(struct BYT16 * byt16, char * fromEndian, char * toEndian){
 
 }
-char * byt162byt64(char * byt16){
+struct BYT64 * byt162byt64(struct BYT16 * byt16, char * fromEndian, char * toEndian){
 
 }
 
 //BYT32 CONVERSIONS
-char * byt322dec(char * byt32){
+struct DEC * byt322dec(struct BYT32 * byt32, char * fromEndian){
 
 }
-char * byt322hex(char * byt32){
+struct HEX * byt322hex(struct BYT32 * byt32, char * fromEndian, char * toEndian){
 
 }
-char * byt322bin(char * byt32){
+struct BIN * byt322bin(struct BYT32 * byt32, char * fromEndian, char * toEndian){
 
 }
-char * byt322b64(char * byt32){
+struct B64 * byt322b64(struct BYT32 * byt32, char * fromEndian, char * toEndian){
 
 }
-char * byt322byt8(char * byt32){
+struct BYT8 * byt322byt8(struct BYT32 * byt32, char * fromEndian, char * toEndian){
 
 }
-char * byt322byt32(char * byt32){
+struct BYT16 * byt322byt16(struct BYT32 * byt32, char * fromEndian, char * toEndian){
 
 }
-char * byt322byt64(char * byt32){
+struct BYT64 * byt322byt64(struct BYT32 * byt32, char * fromEndian, char * toEndian){
 
 }
 
 //BYT64 CONVERSIONS
-char * byt642dec(char * byt64){
+struct DEC * byt642dec(struct BYT64 * byt64, char * fromEndian){
 
 }
-char * byt642hex(char * byt64){
+struct HEX * byt642hex(struct BYT64 * byt64, char * fromEndian, char * toEndian){
 
 }
-char * byt642bin(char * byt64){
+struct BIN * byt642bin(struct BYT64 * byt64, char * fromEndian, char * toEndian){
 
 }
-char * byt642b64(char * byt64){
+struct B64 * byt642b64(struct BYT64 * byt64, char * fromEndian, char * toEndian){
 
 }
-char * byt642byt8(char * byt64){
+struct BYT8 * byt642byt8(struct BYT64 * byt64, char * fromEndian, char * toEndian){
 
 }
-char * byt642byt32(char * byt64){
+struct BYT16 * byt642byt16(struct BYT64 * byt64, char * fromEndian, char * toEndian){
 
+}
+struct BYT32 * byt642byt32(struct BYT64 * byt64, char * fromEndian, char * toEndian){
+    
 }

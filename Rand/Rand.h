@@ -15,7 +15,6 @@ struct LinkList * genLinkList(long long int min, long long int max, char * type)
 
 //[  "123", "456", "789"  ]
 
-struct Struct * genStruct(char ** types, long long int min, long long int max,);
 struct String * genStr(long long int min, long long int max);
 struct Array * genArray(char ** types, long long int min, long long int max);
 struct Float * genFloat(long long float min, long long float max);
