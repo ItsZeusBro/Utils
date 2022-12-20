@@ -4,47 +4,40 @@
 struct String{
     char *str;
     int size;
-}string;
+};
 
 
-// struct String addAt(int, struct String, char);
+struct String * addAt(int index, struct String *str, char ch);
 
-// struct String slice(struct String, int, int);
+struct String * slice(struct String *str, int index1, int index2);
 
-// struct String* copy(struct String);
+struct String * splice(struct String *str, int index1, int index2);
 
-// struct String* removeAt(struct String, int);
+struct String * copy(struct String *str);
 
-// struct String* addAt(struct String, int);
+struct String * removeAt(int index, struct String *str);
 
-// struct String* removeAll(struct String, char);
+struct String * removeAll(struct String *str, char ch);
 
-// struct String* trim(struct String);
+struct String * trim(struct String *str);
 
-// struct String* trimRight(struct String);
+struct String * trimRight(struct String *str);
 
-// struct String* trimLeft(struct String);
+struct String * trimLeft(struct String *str);
 
-// struct String* _realloc(struct String, int);
+struct String * _realloc(struct String *str, int sizeInBytes);
 
-// struct String* _malloc(struct String, int);
+struct String * _malloc(struct String *str, int sizeInBytes);
 
-// struct String* _calloc(struct String, int);
+struct String * _calloc(struct String *str, int sizeInBytes);
 
-// //get the index of _prev, the size of _byts that we multiply by to get next
-// struct String* next(struct String);
+struct String * compare(struct String *str1, struct String *str2);
 
-// struct String* prev(struct String);
+struct String * concat(struct String *str1, struct String *str2);
 
-// struct String* compare(struct String);
+int size(struct String *str);
 
-// int size(struct String);
+struct String * substr(struct String *str, struct String *str);
 
-// struct String* substr(struct String, struct String);
-
-// struct Unicode * charCodeAt(int index, int nBytes){
-    //this takes the number of bytes that the string charachters encode in the string
-    //it takes the index of the char in the string that we wish to obtain the code for
-// }
 
 #endif

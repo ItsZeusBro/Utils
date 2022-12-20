@@ -12,7 +12,7 @@ struct Number{
     char * byt64;
 };
 
-struct Number * number(int number);
+struct Number * number(char * number, char * type);
 
 //DECIMAL CONVERSIONS
 char * dec2hex(char * dec);

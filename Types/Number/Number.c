@@ -1,6 +1,6 @@
 #include "Number.h"
 
-struct Number * number(int number);
+struct Number * number(char * number, char * type);
 
 //DECIMAL CONVERSIONS
 char * dec2hex(char * dec){
@@ -180,5 +180,5 @@ char * byt642byt8(char * byt64){
 
 }
 char * byt642byt32(char * byt64){
-    
+
 }
