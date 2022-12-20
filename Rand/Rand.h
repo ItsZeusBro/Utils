@@ -43,10 +43,10 @@ struct randFloat{
     long long float _float;
     long long float min;
     long long float max;
-}
+};
 
 struct Number * genNumber(struct randNumber * _randNumber);
-struct LinkList * genNumber(struct randLinkList * _randLinkList);
+struct LinkList * genLinkList(struct randLinkList * _randLinkList);
 struct Struct * genStruct(struct randStruct * _randStruct);
 struct String * genStr(struct randStr * _randStr);
 struct Array * genArray(struct randArr * _randArr);
