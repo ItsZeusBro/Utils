@@ -24,6 +24,7 @@ struct String * genStr(long long int min, long long int max){
 struct Number * genNumber(long long int min, long long int max){
 
 }
+
 struct Array * genArray(char ** types, long long int min, long long int max){
     //[       "123",      "456",      "789"       ]
   //0x1      0x2         0x3         0x4
