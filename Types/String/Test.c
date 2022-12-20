@@ -9,87 +9,73 @@
 #include "../Rand/Rand.h"
 #include "Test.h"
 
-void stringTest(int verbose){
+
+
+
+int stringTest(){
     printf("String Test\n");
     struct String * str = genStr(10);
 }
 
 
-int assertEqual(struct String str1, struct String str2){
-
-    assert(str1.size==str2.size);
-
-    for(int i=0; i<str1.size; i++){
-        assert(str1.next[i]==str2.next[i]);
-        assert(str1.prev[i]==str2.prev[i]);
-        assert(str1.str[i]==str2.str[i]);
-    }
-    return 0;
-}
-
-
-
-int addAt(){
+int addAtTest(){
 
 }
 
-int slice(){
+int sliceTest(){
 
 }
 
-int splice(){
+
+int copyTest(){
 
 }
 
-int copy(){
+int removeAtTest(){
 
 }
 
-int removeAt(){
+int removeAllTest(){
 
 }
 
-int removeAll(){
+int trimTest(){
 
 }
 
-int trim(){
+int trimRightTest(){
 
 }
 
-int trimRight(){
+int trimLeftTest(){
 
 }
 
-int trimLeft(){
+int reallocTest(){
 
 }
 
-int _realloc(){
+int mallocTest(){
 
 }
 
-int _malloc(){
+int callocTest(){
 
 }
 
-int _calloc(){
+int compareTest(){
 
 }
 
-int compare(){
+int concatTest(){
 
 }
 
-int concat(){
+int sizeTest(){
 
 }
 
-int size(){
-
-}
-
-int substr(){
+int substrTest(){
 
 }
 
@@ -111,6 +97,7 @@ int main(){
     // callocTest();
     // nextTest();
     // prevTest();
+    // concatTest();
     // compareTest();
     // sizeTest();
     // substrTest();

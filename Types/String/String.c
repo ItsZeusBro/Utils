@@ -9,6 +9,11 @@
 //     int size;
 // };
 
+struct String * string(char * str){
+    //this should initialize a String Struct
+    printf()
+}
+
 
 struct String * addAt(int index, struct String *str, char ch){
 
@@ -74,3 +79,7 @@ struct String * substr(struct String *str, struct String *str){
 
 }
 
+
+int main(){
+    
+}
