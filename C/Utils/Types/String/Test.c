@@ -80,9 +80,8 @@ int substrTest(){
 }
 
 
-
-int main(){
-    stringTest(1);
+int test(){
+    //stringTest(1);
     // sliceTest();
     // copyTest();
     // removeAtTest();
@@ -101,5 +100,5 @@ int main(){
     // compareTest();
     // sizeTest();
     // substrTest();
-    return 0;
 }
+
