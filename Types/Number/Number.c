@@ -1,4 +1,10 @@
 #include "Number.h"
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <limits.h>
+#include <float.h>
+#include <assert.h>
 
 struct Number * number(char * number, char * fromType, char * toType, char * fromEndian, char * toEndian){
 
@@ -210,5 +216,5 @@ struct BYT16 * byt642byt16(struct BYT64 * byt64, char * fromEndian, char * toEnd
 
 }
 struct BYT32 * byt642byt32(struct BYT64 * byt64, char * fromEndian, char * toEndian){
-    
+
 }

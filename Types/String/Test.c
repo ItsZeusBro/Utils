@@ -3,10 +3,11 @@
 #include <stdlib.h>
 #include <limits.h>
 #include <float.h>
+#include <assert.h>
+
 #include "String.h"
 #include "../Rand/Rand.h"
 #include "Test.h"
-#include <assert.h>
 
 void stringTest(int verbose){
     printf("String Test\n");
