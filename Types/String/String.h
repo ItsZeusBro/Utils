@@ -4,8 +4,6 @@
 struct String{
     char *str;
     int size;
-    char *next;
-    char *prev;
 }string;
 
 
@@ -44,6 +42,9 @@ struct String{
 
 // struct String* substr(struct String, struct String);
 
-
+// struct Unicode * charCodeAt(int index, int nBytes){
+    //this takes the number of bytes that the string charachters encode in the string
+    //it takes the index of the char in the string that we wish to obtain the code for
+// }
 
 #endif

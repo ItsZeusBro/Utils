@@ -132,6 +132,24 @@ int main( int argc, char *argv[] )  {
     printf("-------------------------------------------------------------------------------------------------------\n\n");
 
     printf("Type Definitions\n\n");
+    printf('    
+                C type information is lost after compiling because assembly just\n 
+                works with memory and primitive operations on those cells so when\n 
+                it is assembled, a C program doesnt care about typing, casting, or\n
+                or whether or not the next cell belongs to the previous cell or \n
+                whatever\n
+
+                Pointers are very low level types because they are memory addresses\n
+                that contain other memory addresses.\n 
+
+               //https://en.wikipedia.org/wiki/Null_pointer\n
+                Void Pointers are essentially any address in memory that when dereferenced\n
+                evaluates to the sytems NULL address (which can be memory location 0000:0000)\n
+
+                Even though type information is never translated into assembly, it is still\n 
+                needed by the C compiling step so that it knows how to compile things and\n 
+                assemble them\n
+    ');
     printf("typedef unsigned char BYTE;\n");
     printf("BYTE  b1, b2;\n\n");
     printf("-------------------------------------------------------------------------------------------------------\n\n");
@@ -192,6 +210,9 @@ int main( int argc, char *argv[] )  {
     printf("    There are two functions, that can be used for binary input and output:\n");
     printf("    size_t fread(void *ptr, size_t size_of_elements, size_t number_of_elements, FILE *a_file);\n");
     printf("    size_t fwrite(const void *ptr, size_t size_of_elements, size_t number_of_elements, FILE *a_file);\n");
+    printf("-------------------------------------------------------------------------------------------------------\n\n");
+    printf("-------------------------------------------------------------------------------------------------------\n\n");
+    printf("-------------------------------------------------------------------------------------------------------\n\n");
     printf("-------------------------------------------------------------------------------------------------------\n\n");
 
    //  printf("C Constants\n\n");
