@@ -5,3 +5,4 @@ struct Node{
     void * Data;
     struct Node * next;
 }
+
