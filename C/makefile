@@ -1,23 +1,45 @@
 ########################################################################################
 AUTOMATA_DIR=Automata/
 AUTOMATA_c=Automata.c
-AUTOMATA_c_PATH=${AUTOMATA_DIR}Automata.c
 AUTOMATA_o=Automata.o
-AUTOMATA_o_PATH=${AUTOMATA_DIR}Automata.o
-AUTOMATA_T_c=Test.c
-AUTOMATA_T_c_PATH=${AUTOMATA_DIR}Test.c
-AUTOMATA_T_o=Test.o
-AUTOMATA_T_o_PATH=${AUTOMATA_DIR}Test.o
-AUTOMATA_o_DEPENDENCIES=${AUTOMATA_DIR}${AUTOMATA_o} ${AUTOMATA_DIR}${AUTOMATA_T_o}
-AUTOMATA_DEPENDENCIES=${AUTOMATA_DIR}${AUTOMATA_c} ${AUTOMATA_DIR}${AUTOMATA_o} ${AUTOMATA_DIR}${AUTOMATA_T_c} ${AUTOMATA_DIR}${AUTOMATA_T_o}
-AUTOMATA_TEST_FILES_o=${AUTOMATA_o} ${AUTOMATA_T_o}
-AUTOMATA_TEST_FILES=${AUTOMATA_c} ${AUTOMATA_o} ${AUTOMATA_T_c} ${AUTOMATA_T_o}
+AUTOMATA_c_PATH=${AUTOMATA_DIR}${AUTOMATA_c}
+AUTOMATA_o_PATH=${AUTOMATA_DIR}${AUTOMATA_o}
 
-testAutomata: ${AUTOMATA_DEPENDENCIES}
-	(cd ${AUTOMATA_DIR}; gcc -fPIC -c ${TEST_AUTOMATA})
-testCleanAutomata: ${AUTOMATA_o_DEPENDENCIES}
+AUTOMATA_TEST_DIR=${AUTOMATA_DIR}Test/
+AUTOMATA_TEST_c=Test.c
+AUTOMATA_TEST_o=Test.o
+AUTOMATA_TEST_c_PATH=${AUTOMATA_TEST_DIR}${AUTOMATA_TEST_c}
+AUTOMATA_TEST_o_PATH=${AUTOMATA_TEST_DIR}${AUTOMATA_TEST_o}
+
+AUTOMATA_TEST_DRIVER_c=driver.c
+AUTOMATA_TEST_DRIVER_o=driver.o
+AUTOMATA_TEST_DRIVER_c_PATH=${AUTOMATA_TEST_DIR}${AUTOMATA_TEST_DRIVER_c}
+AUTOMATA_TEST_DRIVER_o_PATH=${AUTOMATA_TEST_DIR}${AUTOMATA_TEST_DRIVER_o}
+
+AUTOMATA_DEVELOPER_TEST_c_DEPENDENCIES=${AUTOMATA_c_PATH} ${AUTOMATA_TEST_c_PATH} ${AUTOMATA_TEST_DRIVER_c_PATH}
+AUTOMATA_DEVELOPER_TEST_o_DEPENDENCIES=${AUTOMATA_o_PATH} ${AUTOMATA_TEST_o_PATH} ${AUTOMATA_TEST_DRIVER_o_PATH}
+
+AUTOMATA_PRODUCTION_TEST_c_DEPENDENCIES=${AUTOMATA_c_PATH} ${AUTOMATA_TEST_c_PATH}
+AUTOMATA_PRODUCTION_TEST_o_DEPENDENCIES=${AUTOMATA_o_PATH} ${AUTOMATA_TEST_o_PATH}
+
+
+automataDev: ${AUTOMATA_DEVELOPER_TEST_c_DEPENDENCIES}
+	(cd ${AUTOMATA_DIR}; gcc -c ${AUTOMATA_c})
+	(cd ${AUTOMATA_TEST_DIR}; gcc -c ${AUTOMATA_TEST_c} ${AUTOMATA_TEST_DRIVER_c})
+
+automataDevClean: ${AUTOMATA_DEVELOPER_TEST_o_DEPENDENCIES}
 	(cd ${AUTOMATA_DIR}; rm ${AUTOMATA_o})
+	(cd ${AUTOMATA_TEST_DIR}; rm ${AUTOMATA_TEST_o} ${AUTOMATA_TEST_DRIVER_o})
 
+automataDevLink: ${AUTOMATA_DEVELOPER_TEST_o_DEPENDENCIES}
+	(gcc -o ${AUTOMATA_o_PATH} ${AUTOMATA_TEST_o_PATH} ${AUTOMATA_TEST_DRIVER_o_PATH})
+
+automataMakeDevRun: ${AUTOMATA_DEVELOPER_TEST_c_DEPENDENCIES} ${AUTOMATA_DEVELOPER_TEST_o_DEPENDENCIES}
+	(make automataDevClean)
+	(make automataDev)
+	(make automataDevLink)
+	./${AUTOMATA_TEST_DIR}a.out
+	
 ########################################################################################
 COMBINATORICS_DIR=Combinatorics/
 COMBINATORICS_c=Combinatorics.c
@@ -32,8 +54,16 @@ COMBINATORICS_o_DEPENDENCIES=${COMBINATORICS_DIR}${COMBINATORICS_o} ${COMBINATOR
 COMBINATORICS_DEPENDENCIES=${COMBINATORICS_DIR}${COMBINATORICS_c} ${COMBINATORICS_DIR}${COMBINATORICS_o} ${COMBINATORICS_DIR}${COMBINATORICS_T_c} ${COMBINATORICS_DIR}${COMBINATORICS_T_o}
 COMBINATORICS_TEST_FILES_o=${COMBINATORICS_o} ${COMBINATORICS_T_o}
 COMBINATORICS_TEST_FILES=${COMBINATORICS_c} ${COMBINATORICS_o} ${COMBINATORICS_T_c} ${COMBINATORICS_T_o}
-# testCombinatorics: ${COMBINATORICS_DEPENDENCIES}
-# testCleanCombinatorics: ${COMBINATORICS_o_DEPENDENCIES}
+
+testCombinatorics: ${COMBINATORICS_DEPENDENCIES}
+	(cd ${COMBINATORICS_DIR}; gcc -c ${COMBINATORICS_TEST_FILES};)
+
+testCleanCombinatorics: ${COMBINATORICS_o_DEPENDENCIES}
+	(cd ${COMBINATORICS_DIR}; rm ${COMBINATORICS_TEST_FILES_o})
+
+testCombinatoricsLink: ${COMBINATORICS_o_DEPENDENCIES}
+	(cd ${COMBINATORICS_DIR}; gcc -c driver.c driver.h;)
+	(cd ${COMBINATORICS_DIR}; gcc -o a.out ${COMBINATORICS_TEST_FILES_o} driver.o)
 
 ########################################################################################
 CRYPTO_DIR=Crypto/
@@ -361,26 +391,26 @@ define ALL_DEPENDENCIES
 	${UTILS_TYPES_UNICODE_DEPENDENCIES}
 endef
 
-testAll: ${ALL_DEPENDENCIES}
-	echo "Global Test All"
-	make testAutomata
-	make testCombinatorics
-	make testCrypto
-	make testMatrix
-	make testStatistics
-	make testUtils
-	make testUtilsAssertions
-	make testUtilsDictionary
-	make testUtilsRand
-	make testUtilsTypes
-	make testUtilsTypesArray
-	make testUtilsTypesFloat
-	make testUtilsTypesLinkList
-	make testUtilsTypesNumber
-	make testUtilsTypesString
-	make testUtilsTypesUnicode
-	(gcc -fPIC -c Test.c Test.h)
-	make linkTestAll
+# testAll: ${ALL_DEPENDENCIES}
+# 	echo "Global Test All"
+# 	make testAutomata
+# 	make testCombinatorics
+# 	make testCrypto
+# 	make testMatrix
+# 	make testStatistics
+# 	make testUtils
+# 	make testUtilsAssertions
+# 	make testUtilsDictionary
+# 	make testUtilsRand
+# 	make testUtilsTypes
+# 	make testUtilsTypesArray
+# 	make testUtilsTypesFloat
+# 	make testUtilsTypesLinkList
+# 	make testUtilsTypesNumber
+# 	make testUtilsTypesString
+# 	make testUtilsTypesUnicode
+# 	(gcc -fPIC -c Test.c Test.h)
+# 	make linkTestAll
 
 define ALL_o_DEPENDENCIES
 	${AUTOMATA_o_DEPENDENCIES} 
@@ -401,25 +431,25 @@ define ALL_o_DEPENDENCIES
 	${UTILS_TYPES_UNICODE_o_DEPENDENCIES}
 endef
 
-testCleanAll: ${ALL_o_DEPENDENCIES}
-	echo "Global Clean All"
-	make testCleanAutomata
-	make testCleanCombinatorics
-	make testCleanCrypto
-	make testCleanMatrix
-	make testCleanStatistics
-	make testCleanUtils
-	make testCleanUtilsAssertions
-	make testCleanUtilsDictionary
-	make testCleanUtilsRand
-	make testCleanUtilsTypes
-	make testCleanUtilsTypesArray
-	make testCleanUtilsTypesFloat
-	make testCleanUtilsTypesLinkList
-	make testCleanUtilsTypesNumber
-	make testCleanUtilsTypesString
-	make testCleanUtilsTypesUnicode
-	(rm Test.o)
+# testCleanAll: ${ALL_o_DEPENDENCIES}
+# 	echo "Global Clean All"
+# 	make testCleanAutomata
+# 	make testCleanCombinatorics
+# 	make testCleanCrypto
+# 	make testCleanMatrix
+# 	make testCleanStatistics
+# 	make testCleanUtils
+# 	make testCleanUtilsAssertions
+# 	make testCleanUtilsDictionary
+# 	make testCleanUtilsRand
+# 	make testCleanUtilsTypes
+# 	make testCleanUtilsTypesArray
+# 	make testCleanUtilsTypesFloat
+# 	make testCleanUtilsTypesLinkList
+# 	make testCleanUtilsTypesNumber
+# 	make testCleanUtilsTypesString
+# 	make testCleanUtilsTypesUnicode
+# 	(rm Test.o)
 ########################################################################################
 
 # linkTestAll: ${ALL_o_DEPENDENCIES}
