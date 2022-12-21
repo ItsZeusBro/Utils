@@ -3,203 +3,265 @@ AUTOMATA_c=${AUTOMATA_DIR}Automata.c
 AUTOMATA_o=${AUTOMATA_DIR}Automata.o
 AUTOMATA_T_c=${AUTOMATA_DIR}Test.c
 AUTOMATA_T_o=${AUTOMATA_DIR}Test.o
-AUTOMATA=${AUTOMATA_c} ${AUTOMATA_o} ${AUTOMATA_T_c} ${AUTOMATA_T_o}
+TEST_AUTOMATA=${AUTOMATA_c} ${AUTOMATA_o} ${AUTOMATA_T_c} ${AUTOMATA_T_o}
 
 COMBINATORICS_DIR=Combinatorics/
 COMBINATORICS_c=${COMBINATORICS_DIR}Combinatorics.c
 COMBINATORICS_o=${COMBINATORICS_DIR}Combinatorics.o
 COMBINATORICS_T_c=${COMBINATORICS_DIR}Test.c
 COMBINATORICS_T_o=${COMBINATORICS_DIR}Test.o
-COMBINATORICS=${COMBINATORICS_c} ${COMBINATORICS_o} ${COMBINATORICS_T_c} ${COMBINATORICS_T_o}
+TEST_COMBINATORICS=${COMBINATORICS_c} ${COMBINATORICS_o} ${COMBINATORICS_T_c} ${COMBINATORICS_T_o}
 
 CRYPTO_DIR=Crypto/
 CRYPTO_c=${CRYPTO_DIR}Crypto.c
 CRYPTO_o=${CRYPTO_DIR}Crypto.o
 CRYPTO_T_c=${CRYPTO_DIR}Test.c
 CRYPTO_T_o=${CRYPTO_DIR}Test.o
-CRYPTO=${CRYPTO_c} ${CRYPTO_o} ${CRYPTO_T_c} ${CRYPTO_T_o}
+TEST_CRYPTO=${CRYPTO_c} ${CRYPTO_o} ${CRYPTO_T_c} ${CRYPTO_T_o}
 
 MATRIX_DIR=Matrix/
 MATRIX_c=${MATRIX_DIR}Combinatorics.c
 MATRIX_o=${MATRIX_DIR}Combinatorics.o
 MATRIX_T_c=${MATRIX_DIR}Test.c
 MATRIX_T_o=${MATRIX_DIR}Test.o
-MATRIX=${MATRIX_c} ${MATRIX_o} ${MATRIX_T_c} ${MATRIX_T_o}
+TEST_MATRIX=${MATRIX_c} ${MATRIX_o} ${MATRIX_T_c} ${MATRIX_T_o}
 
 STATISTICS_DIR=Statistics/
 STATISTICS_c=${STATISTICS_DIR}Statistics.c
 STATISTICS_o=${STATISTICS_DIR}Statistics.o
 STATISTICS_T_c=${STATISTICS_DIR}Test.c
 STATISTICS_T_o=${STATISTICS_DIR}Test.o
-STATISTICS=${STATISTICS_c} ${STATISTICS_o} ${STATISTICS_T_c} ${STATISTICS_T_o}
+TEST_STATISTICS=${STATISTICS_c} ${STATISTICS_o} ${STATISTICS_T_c} ${STATISTICS_T_o}
 
 UTILS_DIR=Utils/
 UTILS_c=${UTILS_DIR}Utils.c
 UTILS_o=${UTILS_DIR}Utils.o
 UTILS_T_c=${UTILS_DIR}Test.c
 UTILS_T_o=${UTILS_DIR}Test.o
-UTILS_D=${UTILS_c} ${UTILS_o} ${UTILS_T_c} ${UTILS_T_o}
+TEST_UTILS_UTILS=${UTILS_c} ${UTILS_o} ${UTILS_T_c} ${UTILS_T_o}
 
 UTILS_ASSERTIONS_DIR=${UTILS_DIR}Assertions/
 UTILS_ASSERTIONS_c=${UTILS_ASSERTIONS_DIR}Assertions.c
 UTILS_ASSERTIONS_o=${UTILS_ASSERTIONS_DIR}Assertions.o
 UTILS_ASSERTIONS_T_c=${UTILS_ASSERTIONS_DIR}Test.c
 UTILS_ASSERTIONS_T_o=${UTILS_ASSERTIONS_DIR}Test.o
-UTILS_ASSERTIONS=${UTILS_ASSERTIONS_c} ${UTILS_ASSERTIONS_o} ${UTILS_ASSERTIONS_T_c} ${UTILS_ASSERTIONS_T_o}
+TEST_UTILS_ASSERTIONS=${UTILS_ASSERTIONS_c} ${UTILS_ASSERTIONS_o} ${UTILS_ASSERTIONS_T_c} ${UTILS_ASSERTIONS_T_o}
 
 UTILS_DICTIONARY_DIR=${UTILS_DIR}Dictionary/
 UTILS_DICTIONARY_c=${UTILS_DICTIONARY_DIR}Dictionary.c
 UTILS_DICTIONARY_o=${UTILS_DICTIONARY_DIR}Dictionary.o
 UTILS_DICTIONARY_T_c=${UTILS_DICTIONARY_DIR}Test.c
 UTILS_DICTIONARY_T_o=${UTILS_DICTIONARY_DIR}Test.o
-UTILS_DICTIONARY=${UTILS_DICTIONARY_c} ${UTILS_DICTIONARY_o} ${UTILS_DICTIONARY_T_c} ${UTILS_DICTIONARY_T_o}
+TEST_UTILS_DICTIONARY=${UTILS_DICTIONARY_c} ${UTILS_DICTIONARY_o} ${UTILS_DICTIONARY_T_c} ${UTILS_DICTIONARY_T_o}
 
 UTILS_RAND_DIR=${UTILS_DIR}Rand/
 UTILS_RAND_c=${UTILS_RAND_DIR}Assertions.c
 UTILS_RAND_o=${UTILS_RAND_DIR}Assertions.o
 UTILS_RAND_T_c=${UTILS_RAND_DIR}Test.c
 UTILS_RAND_T_o=${UTILS_RAND_DIR}Test.o
-UTILS_RAND=${UTILS_RAND_c} ${UTILS_RAND_o} ${UTILS_RAND_T_c} ${UTILS_RAND_T_o}
+TEST_UTILS_RAND=${UTILS_RAND_c} ${UTILS_RAND_o} ${UTILS_RAND_T_c} ${UTILS_RAND_T_o}
+
+UTILS_REFERENCE_DIR=${UTILS_REFERENCE_DIR}Reference/
+UTILS_REFERENCE_c=${UTILS_REFERENCE_DIR}Reference.c
+UTILS_REFERENCE_o=${UTILS_REFERENCE_DIR}Reference.o
+UTILS_REFERENCE_T_c=${UTILS_REFERENCE_DIR}Test.c
+UTILS_REFERENCE_T_o=${UTILS_REFERENCE_DIR}Test.o
+TEST_UTILS_REFERENCE=${UTILS_REFERENCE_c} ${UTILS_REFERENCE_o} ${UTILS_REFERENCE_T_c} ${UTILS_REFERENCE_T_o}
 
 
-UTILS= ${UTILS_D} ${UTILS_ASSERTIONS} ${UTILS_DICTIONARY}
+UTILS_TYPES_DIR=${UTILS_TYPES_DIR}Types/
+UTILS_TYPES_c=${UTILS_TYPES_DIR}Types.c
+UTILS_TYPES_o=${UTILS_TYPES_DIR}Types.o
+UTILS_TYPES_T_c=${UTILS_TYPES_DIR}Test.c
+UTILS_TYPES_T_o=${UTILS_TYPES_DIR}Test.o
+TEST_UTILS_TYPES_TYPES=${UTILS_TYPES_c} ${UTILS_TYPES_o} ${UTILS_TYPES_T_c} ${UTILS_TYPES_T_o}
 
-testAll: ${AUTOMATA} ${COMBINATORICS} ${CRYPTO} ${MATRIX} ${STATISTICS} ${UTILS}
+UTIL_TYPES_ARRAY_DIR=${UTILS_TYPES_DIR}/Array/
+UTILS_TYPES_ARRAY_c=${UTIL_TYPES_ARRAY_DIR}Array.c
+UTILS_TYPES_ARRAY_o=${UTIL_TYPES_ARRAY_DIR}Array.o
+UTILS_TYPES_ARRAY_T_c=${UTIL_TYPES_ARRAY_DIR}Test.c
+UTILS_TYPES_ARRAY_T_o=${UTIL_TYPES_ARRAY_DIR}Test.o
+TEST_UTILS_TYPES_ARRAY=${UTILS_TYPES_ARRAY_c} ${UTILS_TYPES_ARRAY_o} ${UTILS_TYPES_ARRAY_T_c} ${UTILS_TYPES_ARRAY_T_o}
+
+UTIL_TYPES_FLOAT_DIR=${UTILS_TYPES_DIR}/Float/
+UTILS_TYPES_FLOAT_c=${UTIL_TYPES_FLOAT_DIR}Float.c
+UTILS_TYPES_FLOAT_o=${UTIL_TYPES_FLOAT_DIR}Float.o
+UTILS_TYPES_FLOAT_T_c=${UTIL_TYPES_FLOAT_DIR}Test.c
+UTILS_TYPES_FLOAT_T_o=${UTIL_TYPES_FLOAT_DIR}Test.o
+TEST_UTILS_TYPES_FLOAT=${UTILS_TYPES_FLOAT_c} ${UTILS_TYPES_FLOAT_o} ${UTILS_TYPES_FLOAT_T_c} ${UTILS_TYPES_FLOAT_T_o}
+
+UTIL_TYPES_LINKLIST_DIR=${UTILS_TYPES_DIR}/LinkList/
+UTILS_TYPES_LINKLIST_c=${UTIL_TYPES_LINKLIST_DIR}LinkList.c
+UTILS_TYPES_LINKLIST_o=${UTIL_TYPES_LINKLIST_DIR}LinkList.o
+UTILS_TYPES_LINKLIST_T_c=${UTIL_TYPES_LINKLIST_DIR}Test.c
+UTILS_TYPES_LINKLIST_T_o=${UTIL_TYPES_LINKLIST_DIR}Test.o
+TEST_UTILS_TYPES_LINKLIST=${UTILS_TYPES_LINKLIST_c} ${UTILS_TYPES_LINKLIST_o} ${UTILS_TYPES_LINKLIST_T_c} ${UTILS_TYPES_LINKLIST_T_o}
+
+
+UTIL_TYPES_NUMBER_DIR=${UTILS_TYPES_DIR}/Number/
+UTILS_TYPES_NUMBER_c=${UTIL_TYPES_NUMBER_DIR}Number.c
+UTILS_TYPES_NUMBER_o=${UTIL_TYPES_NUMBER_DIR}Number.o
+UTILS_TYPES_NUMBER_T_c=${UTIL_TYPES_NUMBER_DIR}Test.c
+UTILS_TYPES_NUMBER_T_o=${UTIL_TYPES_NUMBER_DIR}Test.o
+TEST_UTILS_TYPES_NUMBER=${UTILS_TYPES_NUMBER_c} ${UTILS_TYPES_NUMBER_o} ${UTILS_TYPES_NUMBER_T_c} ${UTILS_TYPES_NUMBER_T_o}
+
+UTIL_TYPES_STRING_DIR=${UTILS_TYPES_DIR}/String/
+UTILS_TYPES_STRING_c=${UTIL_TYPES_STRING_DIR}String.c
+UTILS_TYPES_STRING_o=${UTIL_TYPES_STRING_DIR}String.o
+UTILS_TYPES_STRING_T_c=${UTIL_TYPES_STRING_DIR}Test.c
+UTILS_TYPES_STRING_T_o=${UTIL_TYPES_STRING_DIR}Test.o
+TEST_UTILS_TYPES_STRING=${UTILS_TYPES_STRING_c} ${UTILS_TYPES_STRING_o} ${UTILS_TYPES_STRING_T_c} ${UTILS_TYPES_STRING_T_o}
+
+UTIL_TYPES_UNICODE_DIR=${UTILS_TYPES_DIR}/Number/
+UTILS_TYPES_UNICODE_c=${UTIL_TYPES_UNICODE_DIR}Number.c
+UTILS_TYPES_UNICODE_o=${UTIL_TYPES_UNICODE_DIR}Number.o
+UTILS_TYPES_UNICODE_T_c=${UTIL_TYPES_UNICODE_DIR}Test.c
+UTILS_TYPES_UNICODE_T_o=${UTIL_TYPES_UNICODE_DIR}Test.o
+TEST_UTILS_TYPES_UNICODE=${UTILS_TYPES_UNICODE_c} ${UTILS_TYPES_UNICODE_o} ${UTILS_TYPES_UNICODE_T_c} ${UTILS_TYPES_UNICODE_T_o}
+
+
+TEST_UTILS_TYPES=${TEST_UTILS_TYPES_TYPES} ${TEST_UTILS_TYPES_ARRAY} ${TEST_UTILS_TYPES_FLOAT} ${TEST_UTILS_TYPES_LINKLIST} ${TEST_UTILS_TYPES_NUMBER} ${TEST_UTILS_TYPES_STRING} ${TEST_UTILS_TYPES_UNICODE}
+
+
+TEST_UTILS=${TEST_UTILS_UTILS} ${TEST_UTILS_ASSERTIONS} ${TEST_UTILS_DICTIONARY} ${TEST_UTILS_RAND} ${TEST_UTILS_REFERENCE} ${TEST_UTILS_TYPES}
+
+
+ALL=${TEST_AUTOMATA} ${TEST_COMBINATORICS} ${TEST_CRYPTO} ${TEST_MATRIX} ${TEST_STATISTICS} ${TEST_UTILS}
+
+testAll: ${ALL}
 	echo "Global Test All"
-	(cd Automata; make testAll)
-	(cd Combinatorics; make testAll)
-	(cd Crypto; make testAll)
-	(cd Matrix; make testAll)
-	(cd Statistics; make testAll)
-	(cd Utils; make testAll)
-	(gcc -o TestAll Test.c)
+	(cd ${AUTOMATA_DIR}; gcc -fPIC -c ${TEST_AUTOMATA})
+	(cd ${COMBINATORICS_DIR}; gcc -fPIC -c ${TEST_COMBINATORICS})
+	(cd ${CRYPTO_DIR}; gcc -fPIC -c ${TEST_CRYPTO})
+	(cd ${MATRIX_DIR}; gcc -fPIC -c ${TEST_MATRIX})
+	(cd ${STATISTICS_DIR}; gcc -fPIC -c ${TEST_STATISTICS})
+	(cd ${UTILS_DIR}; gcc -fPIC -c ${TEST_UTILS})
+	(gcc -fPIC -c Test.c Test.h)
 
-testCleanAll: ${AUTOMATA_D} ${COMBINATORICS_D}
+testCleanAll: ${ALL}
 	echo "Global Clean All"
-	(cd Automata; make testCleanAll)
-	(cd Combinatorics; make testCleanAll)
-	(cd Crypto; make testCleanAll)
-	(cd Matrix; make testCleanAll)
-	(cd Statistics; make testCleanAll)
-	(cd Utils; make testCleanAll)
-	(rm ./Test.o)
+	(cd ${AUTOMATA_DIR}; rm ${AUTOMATA_o})
+	(cd ${COMBINATORICS_DIR}; rm ${COMBINATORICS_o})
+	(cd ${CRYPTO_DIR}; rm ${CRYPTO_o})
+	(cd ${MATRIX_DIR}; rm ${MATRIX_o})
+	(cd ${STATISTICS_DIR}; rm ${STATISTICS_o})
+	(cd ${UTILS_DIR}; rm ${UTILS_o})
+	(rm Test.o)
 
 #AUTOMATA
-testAutomata: Automata/Automata.c Automata/Test.c
+testAutomata: ${TEST_AUTOMATA}
 	(cd Automata; make testAll)
 testCleanAutomata: Automata/Automata.o Automata/Test.o
 	(cd Automata; make testCleanAll)
 
 
 #COMBINATORICS
-testCombinatorics: Combinatorics/Combinatorics.c Combinatorics/Test.c
+testCombinatorics: ${TEST_COMBINATORICS}
 	(cd Combinatorics; make testAll)
 testCleanCombinatorics: Combinatorics/Combinatorics.o Combinatorics/Test.o
 	(cd Combinatorics; make testCleanAll)
 
 
 #CRYPTO
-testCrypto: Crypto/Crypto.c Crypto/Test.c
+testCrypto: ${TEST_CRYPTO}
 	(cd Crypto; make testAll)
 testCleanCrypto: Crypto/Crypto.o Crypto/Test.o
 	(cd Crypto; make testCleanAll)
 
 
 #MATRIX
-testMatrix: Matrix/Matrix.c Matrix/Test.c
+testMatrix: ${TEST_MATRIX}
 	(cd Matrix; make testAll)
 testCleanMatrix: Matrix/Matrix.o Matrix/Test.o
 	(cd Matrix; make testCleanAll)
 
 
 #STATISTICS
-testStatistics: Statistics/Statistics.c Statistics/Test.c
+testStatistics: ${TEST_STATISTICS}
 	(cd Statistics; make testAll)
 testCleanStatistics: Statistics/Statistics.o Statistics/Test.o
 	(cd Statistics; make testCleanAll)
 
 
 #UTILS
-testUtils: Utils/Utils.c Utils/Test.c
+testUtils: ${TEST_UTILS}
 	(cd Utils; make testAll)
 testCleanUtils: Utils/Utils.o Utils/Test.o
 	(cd Utils; make testCleanAll)
 
 
 #UTILS/ASSERTIONS
-testUtilsAssertions: Utils/Assertions/Assertions.c Utils/Assertions/Test.c
+testUtilsAssertions: ${TEST_UTILS_ASSERTIONS}
 	(cd Utils; cd Assertions; make testAll)
 testCleanUtilsAssertions: Utils/Assertions/Assertions.o Utils/Assertions/Test.o
 	(cd Utils; cd Assertions; make testCleanAll)
 
 
 #UTILS/DICTIONARY
-testUtilsDictionary: Utils/Dictionary/Dictionary.c Utils/Dictionary/Test.c
+testUtilsDictionary: ${TEST_UTILS_DICTIONARY}
 	(cd Utils; cd Dictionary; make testAll)
 testCleanUtilsDictionary: Utils/Dictionary/Dictionary.o Utils/Dictionary/Test.o
 	(cd Utils; cd Dictionary; make testCleanAll)
 
 
 #UTILS/RAND
-testUtilsRand: Utils/Rand/Rand.c Utils/Rand/Test.c
+testUtilsRand: ${TEST_UTILS_RAND}
 	(cd Utils; cd Rand; make testAll)
 testCleanUtilsRand: Utils/Rand/Rand.o Utils/Rand/Test.o
 	(cd Utils; cd Rand; make testCleanAll)
 
 
 #UTILS/REFERENCE
-testUtilsReference: Utils/Reference/Reference.c Utils/Reference/Test.c
+testUtilsReference: ${TEST_UTILS_REFERENCE}
 	(cd Utils; cd Reference; make testAll)
 testCleanUtilsReference: Utils/Reference/Reference.o Utils/Reference/Test.o
 	(cd Utils; cd Reference; make testCleanAll)
 
 
 #UTILS/TYPES
-testUtilsTypes: Utils/Types/Types.c Utils/Types/Test.c
+testUtilsTypes: ${TEST_UTILS_TYPES}
 	(cd Utils; cd Types; make testAll)
 testCleanUtilsTypes: Utils/Types/Types.o Utils/Types/Test.o
 	(cd Utils; cd Types; make testCleanAll)
 
 
 #UTILS/TYPES/ARRAY
-testUtilsTypesArray: Utils/Types/Array/Array.c Utils/Types/Array/Test.c
+testUtilsTypesArray: ${TEST_UTILS_TYPES_ARRAY}
 	(cd Utils; cd Types; cd Array; make testAll)
 testCleanUtilsTypesArray: Utils/Types/Array/Array.o Utils/Types/Array/Test.o
 	(cd Utils; cd Types; cd Array; make testCleanAll)
 
 
 #UTILS/TYPES/FLOAT
-testUtilsTypesFloat: Utils/Types/Float/Float.c Utils/Types/Float/Test.c
+testUtilsTypesFloat: ${TEST_UTILS_TYPES_FLOAT}
 	(cd Utils; cd Types; cd Float; make testAll)
 testCleanUtilsTypesFloat: Utils/Types/Float/Float.o Utils/Types/Float/Test.o
 	(cd Utils; cd Types; cd Float; make testCleanAll)
 
 
 #UTILS/TYPES/LINKLIST
-testUtilsTypesLinkList: Utils/Types/LinkedList/LinkedList.c Utils/Types/LinkedList/Test.c
+testUtilsTypesLinkList: ${TEST_UTILS_TYPES_LINKLIST}
 	(cd Utils; cd Types; cd LinkList; make testAll)
 testCleanUtilsTypesLinkList: Utils/Types/LinkedList/LinkedList.o Utils/Types/LinkedList/Test.o
 	(cd Utils; cd Types; cd LinkList; make testCleanAll)
 
 
 #UTILS/TYPES/NUMBER
-testUtilsTypesNumber: Utils/Types/Number/Number.c Utils/Types/Number/Test.c
+testUtilsTypesNumber: ${TEST_UTILS_TYPES_NUMBER}
 	(cd Utils; cd Types; cd Number; make testAll)
 testCleanUtilsTypesNumber: Utils/Types/Number/Number.o Utils/Types/Number/Test.o
 	(cd Utils; cd Types; cd Number; make testCleanAll)
 
 
 #UTILS/TYPES/STRING
-testUtilsTypesString: Utils/Types/String/String.c Utils/Types/String/Test.c
+testUtilsTypesString: ${TEST_UTILS_TYPES_STRING}
 	(cd Utils; cd Types; cd String; make testAll)
 testCleanUtilsTypesString: Utils/Types/String/String.o Utils/Types/String/Test.o
 	(cd Utils; cd Types; cd String; make testCleanAll)
 
 
 #UTILS/TYPES/UNICODE
-testUtilsTypesUnicode: Utils/Types/Unicode/Unicode.c Utils/Types/Unicode/Test.c
+testUtilsTypesUnicode: ${TEST_UTILS_TYPES_UNICODE}
 	(cd Utils; cd Types; cd Unicode; make testAll)
 testCleanUtilsTypesUnicode: Utils/Types/Unicode/Unicode.o Utils/Types/Unicode/Test.o
 	(cd Utils; cd Types; cd Unicode; make testCleanAll)
-
-
