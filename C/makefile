@@ -241,41 +241,41 @@ testCleanUtilsTypes: ${TEST_UTILS_TYPES_o}
 
 #UTILS/TYPES/ARRAY
 testUtilsTypesArray: ${TEST_UTILS_TYPES_ARRAY}
-	(cd Utils; cd Types; cd Array; make testAll)
-testCleanUtilsTypesArray: Utils/Types/Array/Array.o Utils/Types/Array/Test.o
-	(cd Utils; cd Types; cd Array; make testCleanAll)
+	(cd ${UTILS_TYPES_ARRAY_DIR}; gcc -fPIC -c ${TEST_UTILS_TYPES_ARRAY})
+testCleanUtilsTypesArray: ${TEST_UTILS_TYPES_ARRAY_o}
+	(cd ${UTILS_TYPES_ARRAY_DIR}; rm ${TEST_UTILS_TYPES_ARRAY_o})
 
 
 #UTILS/TYPES/FLOAT
 testUtilsTypesFloat: ${TEST_UTILS_TYPES_FLOAT}
-	(cd Utils; cd Types; cd Float; make testAll)
-testCleanUtilsTypesFloat: Utils/Types/Float/Float.o Utils/Types/Float/Test.o
-	(cd Utils; cd Types; cd Float; make testCleanAll)
+	(cd ${UTILS_TYPES_FLOAT_DIR}; gcc -fPIC -c ${TEST_UTILS_TYPES_FLOAT})
+testCleanUtilsTypesFloat: ${TEST_UTILS_TYPES_FLOAT_o}
+	(cd ${UTILS_TYPES_FLOAT_DIR}; rm ${TEST_UTILS_TYPES_FLOAT_o})
 
 
 #UTILS/TYPES/LINKLIST
 testUtilsTypesLinkList: ${TEST_UTILS_TYPES_LINKLIST}
-	(cd Utils; cd Types; cd LinkList; make testAll)
-testCleanUtilsTypesLinkList: Utils/Types/LinkedList/LinkedList.o Utils/Types/LinkedList/Test.o
-	(cd Utils; cd Types; cd LinkList; make testCleanAll)
+	(cd ${UTILS_TYPES_LINKLIST_DIR}; gcc -fPIC -c ${TEST_UTILS_LINKLIST_FLOAT})
+testCleanUtilsTypesLinkList: ${TEST_UTILS_TYPES_LINKLIST_o}
+	(cd ${UTILS_TYPES_LINKLIST_DIR}; rm ${TEST_UTILS_TYPES_LINKLIST_o})
 
 
 #UTILS/TYPES/NUMBER
 testUtilsTypesNumber: ${TEST_UTILS_TYPES_NUMBER}
-	(cd Utils; cd Types; cd Number; make testAll)
-testCleanUtilsTypesNumber: Utils/Types/Number/Number.o Utils/Types/Number/Test.o
-	(cd Utils; cd Types; cd Number; make testCleanAll)
+	(cd ${UTILS_TYPES_NUMBER_DIR}; gcc -fPIC -c ${TEST_UTILS_TYPES_NUMBER})
+testCleanUtilsTypesNumber: ${TEST_UTILS_TYPES_NUMBER_o}
+	(cd ${UTILS_TYPES_NUMBER_DIR}; rm ${TEST_UTILS_TYPES_NUMBER_o})
 
 
 #UTILS/TYPES/STRING
 testUtilsTypesString: ${TEST_UTILS_TYPES_STRING}
-	(cd Utils; cd Types; cd String; make testAll)
-testCleanUtilsTypesString: Utils/Types/String/String.o Utils/Types/String/Test.o
-	(cd Utils; cd Types; cd String; make testCleanAll)
+	(cd ${UTILS_TYPES_STRING_DIR}; gcc -fPIC -c ${TEST_UTILS_TYPES_STRING})
+testCleanUtilsTypesString: ${TEST_UTILS_TYPES_STRING_o}
+	(cd ${UTILS_TYPES_STRING_DIR}; rm ${TEST_UTILS_TYPES_STRING_o})
 
 
 #UTILS/TYPES/UNICODE
 testUtilsTypesUnicode: ${TEST_UTILS_TYPES_UNICODE}
-	(cd Utils; cd Types; cd Unicode; make testAll)
-testCleanUtilsTypesUnicode: Utils/Types/Unicode/Unicode.o Utils/Types/Unicode/Test.o
-	(cd Utils; cd Types; cd Unicode; make testCleanAll)
+	(cd ${UTILS_TYPES_UNICODE_DIR}; gcc -fPIC -c ${TEST_UTILS_TYPES_UNICODE})
+testCleanUtilsTypesUnicode: ${TEST_UTILS_TYPES_UNICODE_o}
+	(cd ${UTILS_TYPES_UNICODE_DIR}; rm ${TEST_UTILS_TYPES_UNICODE_o})
