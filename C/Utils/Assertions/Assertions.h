@@ -1,5 +1,5 @@
-#ifndef ASSERTIONS_FILE
-#define ASSERTIONS_FILE
+#ifndef UTILS_ASSERTIONS
+#define UTILS_ASSERTIONS
 
 #include "../Types/String/String.h"
 #include "../Types/Array/Array.h"
