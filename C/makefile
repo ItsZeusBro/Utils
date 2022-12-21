@@ -34,11 +34,11 @@ automataDevClean: ${AUTOMATA_DEVELOPER_TEST_o_DEPENDENCIES}
 automataDevLink: ${AUTOMATA_DEVELOPER_TEST_o_DEPENDENCIES}
 	(cd ${AUTOMATA_TEST_DIR}; gcc -o output ${AUTOMATA_TEST_o} ${AUTOMATA_TEST_DRIVER_o} ../${AUTOMATA_o})
 
-automataMakeDevRun: ${AUTOMATA_DEVELOPER_TEST_c_DEPENDENCIES} ${AUTOMATA_DEVELOPER_TEST_o_DEPENDENCIES}
+automataDevRun: ${AUTOMATA_DEVELOPER_TEST_c_DEPENDENCIES} ${AUTOMATA_DEVELOPER_TEST_o_DEPENDENCIES}
 	(make automataDevClean)
 	(make automataDev)
 	(make automataDevLink)
-
+	(cd ${AUTOMATA_TEST_DIR}; ./output)
 ########################################################################################
 COMBINATORICS_DIR=Combinatorics/
 COMBINATORICS_c=Combinatorics.c
