@@ -5,99 +5,99 @@
 #include <float.h>
 #include <assert.h>
 
-int hexEqual(){
-
-}
-
-int b64Equal(){
-
-}
-
-int binEqual(){
-
-}
-
-int byt8Equal(){
-
-}
-
-int byt16Equal(){
-
-}
-
-int byt32Equal(){
-
-}
-
-int byt64Equal(){
-
-}
-
-int numberEqual(){
-
-}
-
-int floatEqual(){
-
-}
-
-int stringsEqual(){
-
-}
-
-int arrayEqual(){
-
-}
-
-
-int isHex(){
-
-}
-
-int isb64(){
-
-}
-
-int isbin(){
-
-}
-
-int isByt8(){
-
-}
-
-int isByt16(){
-
-}
-
-int isByt32(){
-
-}
-
-int isByt64(){
-
-}
-
-int isAscii(){
-
-}
-
-int isUnicode(){
-
-}
-
-int isFloat(){
-
-}
-
-int isNumber(){
-
-}
-
-int isString(){
+void hexEqual(){
     
 }
 
-int isArray(){
+void b64Equal(){
+    
+}
+
+void binEqual(){
+
+}
+
+void byt8Equal(){
+
+}
+
+void byt16Equal(){
+
+}
+
+void byt32Equal(){
+
+}
+
+void byt64Equal(){
+
+}
+
+void numberEqual(){
+
+}
+
+void floatEqual(){
+
+}
+
+void stringsEqual(){
+
+}
+
+void arrayEqual(){
+
+}
+
+
+void isHex(){
+
+}
+
+void isb64(){
+
+}
+
+void isbin(){
+
+}
+
+void isByt8(){
+
+}
+
+void isByt16(){
+
+}
+
+void isByt32(){
+
+}
+
+void isByt64(){
+
+}
+
+void isAscii(){
+
+}
+
+void isUnicode(){
+
+}
+
+void isFloat(){
+
+}
+
+void isNumber(){
+
+}
+
+void isString(){
+    
+}
+
+void isArray(){
 
 }
