@@ -8,9 +8,6 @@
 #include "../Types/Number/Number.h"
 
 
-
-
-
 //these check for struct conformity in memory
 //first we need to study the memory layout of each of our structs
 //and we need to actually create some signature for our struct types
@@ -19,18 +16,17 @@
 //and see if it returns true, we can use a try function for type checking and 
 //other things
 
-int hexEqual(struct Hex * hex1, struct Hex * hex2);
-int b64Equal(struct B64 * b641, struct B64 * b642);
-int binEqual(struct BIN * b641, struct B64 * b642);
-int byt8Equal(struct BYT8 * byt8, struct BYT8 * byt8);
-int byt16Equal(struct BYT16 * byt16, struct BYT16 * byt16);
-int byt32Equal(struct BYT32 * byt32, struct BYT32 * byt32);
-int byt64Equal(struct BYT64 * byt64, struct BYT64 * byt64);
-int numberEqual(struct Number * number1, struct Number * number2);
-int floatEqual(struct Float * float1, struct Float * float2);
+int hexEqual(struct HEX * hex1, struct HEX * hex2);
+int b64Equal(struct B64 * b1, struct B64 * b2);
+int binEqual(struct BIN * bin1, struct B64 * bin2);
+int byt8Equal(struct BYT8 * byt1, struct BYT8 * byt2);
+int byt16Equal(struct BYT16 * byt1, struct BYT16 * byt2);
+int byt32Equal(struct BYT32 * byt1, struct BYT32 * byt2);
+int byt64Equal(struct BYT64 * b1, struct BYT64 * b2);
+int numberEqual(struct Number * num1, struct Number * num2);
+int floatEqual(struct Float * flt1, struct Float * flt2);
 int stringsEqual(struct String *str1, struct String *str2);
 int arrayEqual(struct Array * arr1, struct Array * arr2);
-
 
 int isHex(void * obj);
 int isb64(void * obj);
@@ -45,6 +41,5 @@ int isFloat(void * obj);
 int isNumber(void * obj);
 int isString(void * obj);
 int isArray(void * obj);
-
 
 #endif
