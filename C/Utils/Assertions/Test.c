@@ -5,99 +5,99 @@
 #include <float.h>
 #include <assert.h>
 
-void hexEqual(){
-    
+int hexEqual(){
+    return 0;
 }
 
-void b64Equal(){
-    
+int b64Equal(){
+    return 0;
 }
 
-void binEqual(){
-
+int binEqual(){
+    return 0;
 }
 
-void byt8Equal(){
-
+int byt8Equal(){
+    return 0;
 }
 
-void byt16Equal(){
-
+int byt16Equal(){
+    return 0;
 }
 
-void byt32Equal(){
-
+int byt32Equal(){
+    return 0;
 }
 
-void byt64Equal(){
-
+int byt64Equal(){
+    return 0;
 }
 
-void numberEqual(){
-
+int numberEqual(){
+    return 0;
 }
 
-void floatEqual(){
-
+int floatEqual(){
+    return 0;
 }
 
-void stringsEqual(){
-
+int stringsEqual(){
+    return 0;
 }
 
-void arrayEqual(){
-
+int arrayEqual(){
+    return 0;
 }
 
 
-void isHex(){
-
+int isHex(){
+    return 0;
 }
 
-void isb64(){
-
+int isb64(){
+    return 0;
 }
 
-void isbin(){
-
+int isbin(){
+    return 0;
 }
 
-void isByt8(){
-
+int isByt8(){
+    return 0;
 }
 
-void isByt16(){
-
+int isByt16(){
+    return 0;
 }
 
-void isByt32(){
-
+int isByt32(){
+    return 0;
 }
 
-void isByt64(){
-
+int isByt64(){
+    return 0;
 }
 
-void isAscii(){
-
+int isAscii(){
+    return 0;
 }
 
-void isUnicode(){
-
+int isUnicode(){
+    return 0;
 }
 
-void isFloat(){
-
+int isFloat(){
+    return 0;
 }
 
-void isNumber(){
-
+int isNumber(){
+    return 0;
 }
 
-void isString(){
-    
+int isString(){
+    return 0;   
 }
 
-void isArray(){
-
+int isArray(){
+    return 0;
 }
