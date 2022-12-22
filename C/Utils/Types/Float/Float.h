@@ -1,5 +1,5 @@
-#ifndef FLOAT_FILE
-#define FLOAT_FILE
+#ifndef UTILS_TYPES_FLOAT
+#define UTILS_TYPES_FLOAT
 
 struct Float{
     char * flt;
