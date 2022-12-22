@@ -12,11 +12,11 @@
 
 
 
-// int stringTest(){
-//     // printf("String Test\n");
-//     // struct String * str = genStr(10);
-//     // return 0;
-// }
+int stringTest(){
+    // printf("String Test\n");
+    // struct String * str = genStr(10);
+    // return 0;
+}
 
 
 // int addAtStringTest(){
