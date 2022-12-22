@@ -850,4 +850,9 @@ allDevClean: ${ALL_DEV_TEST_o_DEPENDENCIES}
 	make utilsTypesUnicodeDevClean
 	(rm -f Test.o)
 
+allDevRunClean:
+	make allDevClean
+	make allDev
+	make allDevLink
+
 ########################################################################################
