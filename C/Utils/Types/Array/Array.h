@@ -1,5 +1,5 @@
-#ifndef ARRAY_FILE
-#define ARRAY_FILE
+#ifndef UTILS_TYPES_ARRAY
+#define UTILS_TYPES_ARRAY
 //This needs pointer arithmetic to utilize RAM addressing for constant time performance
 struct Array{
     void * _arr;

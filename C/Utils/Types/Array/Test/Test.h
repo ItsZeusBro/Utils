@@ -1,0 +1,4 @@
+#ifndef UTILS_TYPES_ARRAY_TEST_TEST
+#define UTILS_TYPES_ARRAY_TEST_TEST
+
+#endif
