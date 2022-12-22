@@ -834,8 +834,7 @@ allDev: \
 automataDev combinatoricsDev cryptoDev matrixDev statsDev utilsDev \
 utilsAssertionsDev utilsDictionaryDev utilsRandDev utilsTypesDev \
 utilsTypesArrayDev utilsTypesFloatDev utilsTypesLinkListDev \
-utilsTypesNumberDev utilsTypesStringDev utilsTypesUnicodeDev \
-(gcc -c Test.c Test.h)
+utilsTypesNumberDev utilsTypesStringDev utilsTypesUnicodeDev
 
 allDevLink: ${ALL_TEST_o_DEPENDENCIES}
 	gcc -o ${ALL_DEV_TEST_o_FILES}
