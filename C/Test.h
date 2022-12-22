@@ -5,7 +5,7 @@
 #include "./Combinatorics/Combinatorics.h"
 #include "./Crypto/Crypto.h"
 #include "./Matrix/Matrix.h"
-#include "./Statistics/Statistics.h"
+#include "./Stats/Stats.h"
 #include "./Utils/Utils.h"
 
 
