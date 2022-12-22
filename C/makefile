@@ -854,5 +854,5 @@ allDevRunClean:
 	make allDevClean
 	make allDev
 	make allDevLink
-
+	./allDevTest
 ########################################################################################
