@@ -3,98 +3,98 @@
 
 #include "../Assertions.h"
 
-int hexEqualTest();
+// int hexEqualTest();
 
-int b64EqualTest();
+// int b64EqualTest();
     
 
 
-int binEqualTest();
+// int binEqualTest();
     
 
 
-int byt8EqualTest();
+// int byt8EqualTest();
     
 
 
-int byt16EqualTest();
+// int byt16EqualTest();
     
 
 
-int byt32EqualTest();
+// int byt32EqualTest();
     
 
 
-int byt64EqualTest();
+// int byt64EqualTest();
     
 
 
-int numberEqualTest();
+// int numberEqualTest();
     
 
 
-int floatEqualTest();
+// int floatEqualTest();
     
 
 
-int stringsEqualTest();
+// int stringsEqualTest();
     
 
 
-int arrayEqualTest();
+// int arrayEqualTest();
     
 
 
 
-int isHexTest();
+// int isHexTest();
     
 
 
-int isb64Test();
+// int isb64Test();
     
 
 
-int isbinTest();
+// int isbinTest();
     
 
 
-int isByt8Test();
+// int isByt8Test();
     
 
 
-int isByt16Test();
+// int isByt16Test();
     
 
 
-int isByt32Test();
+// int isByt32Test();
     
 
 
-int isByt64Test();
+// int isByt64Test();
     
 
 
-int isAsciiTest();
+// int isAsciiTest();
     
 
 
-int isUnicodeTest();
+// int isUnicodeTest();
     
 
 
-int isFloatTest();
+// int isFloatTest();
     
 
 
-int isNumberTest();
+// int isNumberTest();
     
 
 
-int isStringTest();
+// int isStringTest();
        
 
 
-int isArrayTest();
+// int isArrayTest();
     
 
 
