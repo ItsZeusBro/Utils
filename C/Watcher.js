@@ -1,36 +1,28 @@
 import fs from "node:fs"
 import { spawn } from "node:child_process"
+import { scheduler } from 'node:timers/promises';
 
 
 class Watcher{
-    watch(files){
-        var prev=[]
-        var current=[]
+    async watch(files){
+        console.log(files)
+        var state=[]
         for(var i = 0; i<files.length; i++){
-            current.push(fs.statSync(files[i]))
+            state.push(fs.statSync(files[i]))
         }
-        prev=current
         var i = 0;
         while(true){
-            if(JSON.stringify(current[i])!=JSON.stringify(prev[i])){
+            var stat = fs.statSync(files[i])
+            if(JSON.stringify(stat)!=JSON.stringify(state[i])){
                 //then we need to compile the sub project over again
-                console.log(files[i], 'changed; recompiling...')
-                prev=current
-                current=[]
-                for(var j = 0; j<files.length; j++){
-                    current.push(fs.statSync(files[j]))
-                }
-                i=0;
+                console.log(stat, state[i], 'file change discovered; recompiling', files[i])
+                state[i]=stat
                 this.recompiler(files[i])
             }
-            if(i==files.length){
-                //make prev current for next round of comparisons
-                prev=current
-                current=[]
-                for(var j = 0; j<files.length; j++){
-                    current.push(fs.statSync(files[j]))
-                }
-                i=0;
+            if(i==files.length-1){ 
+                console.log('watching files')
+                await scheduler.wait(1000);
+                i=0; 
             }   
             i++;  
         }
@@ -110,11 +102,8 @@ class Watcher{
             console.log(file, 'statsDevRun')
         }
         const make = spawn('make', makeArgs)
-        make.stdout.on('data', (data, err) => {
-            console.log(data, err)
-        });
-        make.stderr.on('data', (data) => {
-            console.log(data)
+        make.stdout.on('data', (data) => {
+            console.log(data.toJSON.data)
         });
     }
 }

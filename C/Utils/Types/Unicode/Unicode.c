@@ -12,7 +12,7 @@
 //     unicode->nBytes=nBytes
 //     unicode->_char = malloc(unicode->nBytes*sizeof(char));
 
-//     return unicode
+//     return unicode//
 // }
 
 // struct Unicode * _callocUnicode(int nBytes){
