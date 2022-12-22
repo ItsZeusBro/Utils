@@ -5,99 +5,99 @@
 #include <float.h>
 #include <assert.h>
 
-int hexEqual(){
+int hexEqualTest(){
     return 0;
 }
 
-int b64Equal(){
+int b64EqualTest(){
     return 0;
 }
 
-int binEqual(){
+int binEqualTest(){
     return 0;
 }
 
-int byt8Equal(){
+int byt8EqualTest(){
     return 0;
 }
 
-int byt16Equal(){
+int byt16EqualTest(){
     return 0;
 }
 
-int byt32Equal(){
+int byt32EqualTest(){
     return 0;
 }
 
-int byt64Equal(){
+int byt64EqualTest(){
     return 0;
 }
 
-int numberEqual(){
+int numberEqualTest(){
     return 0;
 }
 
-int floatEqual(){
+int floatEqualTest(){
     return 0;
 }
 
-int stringsEqual(){
+int stringsEqualTest(){
     return 0;
 }
 
-int arrayEqual(){
+int arrayEqualTest(){
     return 0;
 }
 
 
-int isHex(){
+int isHexTest(){
     return 0;
 }
 
-int isb64(){
+int isb64Test(){
     return 0;
 }
 
-int isbin(){
+int isbinTest(){
     return 0;
 }
 
-int isByt8(){
+int isByt8Test(){
     return 0;
 }
 
-int isByt16(){
+int isByt16Test(){
     return 0;
 }
 
-int isByt32(){
+int isByt32Test(){
     return 0;
 }
 
-int isByt64(){
+int isByt64Test(){
     return 0;
 }
 
-int isAscii(){
+int isAsciiTest(){
     return 0;
 }
 
-int isUnicode(){
+int isUnicodeTest(){
     return 0;
 }
 
-int isFloat(){
+int isFloatTest(){
     return 0;
 }
 
-int isNumber(){
+int isNumberTest(){
     return 0;
 }
 
-int isString(){
+int isStringTest(){
     return 0;   
 }
 
-int isArray(){
+int isArrayTest(){
     return 0;
 }
