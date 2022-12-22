@@ -1,0 +1,4 @@
+#ifndef UTILS_RAND_TEST_FILE
+#define UTILS_RAND_TEST_FILE
+
+#endif

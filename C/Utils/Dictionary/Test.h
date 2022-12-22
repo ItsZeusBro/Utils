@@ -1,4 +1,0 @@
-#ifndef DICTIONARY_TEST_FILE
-#define DICTIONARY_TEST_FILE
-
-#endif

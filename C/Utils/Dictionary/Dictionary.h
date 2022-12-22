@@ -1,5 +1,5 @@
-#ifndef DICTIONARY_FILE
-#define DICTIONARY_FILE
+#ifndef UTILS_DICTIONARY_DICTIONARY
+#define UTILS_DICTIONARY_DICTIONARY
 
 // #include "../Types/String/String.h"
 // #include "../Types/Array/Array.h"
