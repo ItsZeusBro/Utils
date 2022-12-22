@@ -1,6 +1,6 @@
-#include "String.h"
-#ifndef STRING_TEST_FILE
-#define STRING_TEST_FILE
+#include "../String.h"
+#ifndef UTILS_TYPES_STRING_TEST_TEST
+#define UTILS_TYPES_STRING_TEST_TEST
 
 int addAtStringTest();
 

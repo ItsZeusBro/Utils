@@ -1,0 +1,6 @@
+#ifndef UTILS_TYPES_NUMBER_TEST_TEST
+#define UTILS_TYPES_NUMBER_TEST_TEST
+
+
+#endif
+

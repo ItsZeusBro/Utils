@@ -5,8 +5,8 @@
 #include <float.h>
 #include <assert.h>
 
-#include "String.h"
-#include "../../Rand/Rand.h"
+#include "../String.h"
+#include "../../../Rand/Rand.h"
 #include "Test.h"
 
 
