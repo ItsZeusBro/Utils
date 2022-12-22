@@ -1,4 +1,0 @@
-#ifndef STATISTICS_FILE
-#define STATISTICS_FILE
-
-#endif
