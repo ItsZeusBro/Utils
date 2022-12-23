@@ -3,34 +3,45 @@ import { spawn, exec } from "node:child_process"
 import { scheduler } from 'node:timers/promises';
 
 class Watcher{
-    async watch(files){
+    watch(files){
         console.log('watching files')
         var state=[]
-        for(var i = 0; i<files.length; i++){
-            state.push(fs.statSync(files[i]))
+        for(var j = 0; j<files.length; j++){
+            state.push(fs.statSync(files[j]))
         }
-        var i = 0;
-        while(true){
-            var stat = fs.statSync(files[i])
-            if(JSON.stringify(stat)!=JSON.stringify(state[i])){
-                //then we need to compile the sub project over again
-                //console.log(stat, state[i], 'file change discovered; recompiling', files[i])
-                state[i]=stat
-                this.recompiler(files[i])
-            }
-            if(i==files.length-1){ 
-                await scheduler.wait(1000);
-                i=0; 
-            }   
-            i++;  
+        var i = [0];
+        var semaphore=[0]
+        setInterval(this._watch, 1, state, this, files, i, semaphore)
+    }
+
+    _watch(state, obj, files, i, semaphore){
+        if(semaphore.length){
+            try{
+                semaphore.pop()
+                if(i[0]==files.length){ 
+                    i[0]=0; 
+                }
+                var stat=fs.statSync(files[i[0]])
+                if(JSON.stringify(stat)!=JSON.stringify(state[i[0]])){
+                    state[i[0]]=stat
+                    obj.recompiler(files[i[0]])
+                    i[0]=i[0]+1;  
+                }else{
+                    stat=fs.statSync(files[i[0]])
+                    i[0]=i[0]+1;  
+                }
+                semaphore.push(0)
+            }catch{
+                return
+            }            
         }
     }
 
     recompiler(file){
         var makeArgs;
-        if(file.includes('./Test.')){
+        if(file.includes('./Test/Test.')){
             //compile whole project
-            console.log(file, 'allDevRun')
+            console.log('File Change Detected in', file, '\n', 'running make allDevRun')
             makeArgs=['allDevRun']
         }else if(file.includes('Crypto')){
             //compile crypto
@@ -97,7 +108,7 @@ class Watcher{
             console.log(file, 'statsDevRun')
         }
         exec('make '+makeArgs.join(' '), (error, stdout, stderr)=>{
-            console.log('\x1b[32m%s\x1b[0m', stdout,'\n');
+            // console.log('\x1b[32m%s\x1b[0m', stdout,'\n');
             console.log('\x1b[33m%s\x1b[0m', stderr,'\n');
             console.log('\x1b[31m%s\x1b[0m', error,'\n');
         });

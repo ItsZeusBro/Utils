@@ -969,7 +969,6 @@ ${UTILS_TYPES_NUMBER_h} ${UTILS_TYPES_NUMBER_TEST_h} ${UTILS_TYPES_NUMBER_TEST_D
 ${UTILS_TYPES_STRING_h}	${UTILS_TYPES_STRING_TEST_h} ${UTILS_TYPES_STRING_TEST_DRIVER_h} \
 ${UTILS_TYPES_UNICODE_h} ${UTILS_TYPES_UNICODE_TEST_h} ${UTILS_TYPES_UNICODE_TEST_DRIVER_h}  
   
-UTILS_TEST_o=Test.o
 ALL_DEV_TEST_o_FILES=\
 ${AUTOMATA_o_PATH} ${AUTOMATA_TEST_o_PATH} \
 ${COMBINATORICS_o_PATH} ${COMBINATORICS_TEST_o_PATH} \
@@ -1007,11 +1006,10 @@ allDev: ${ALL_DEV_TEST_c_DEPENDENCIES} ${ALL_DEV_TEST_h_DEPENDENCIES}
 	make utilsTypesNumberDev
 	make utilsTypesStringDev
 	make utilsTypesUnicodeDev
-	gcc -c ./Test.c
+	(cd ./Test/; gcc -c Test.c)
 
 allDevLink: ${ALL_DEV_TEST_o_DEPENDENCIES}
-	pwd
-	gcc -o allDevTest ./Test.o ${ALL_DEV_TEST_o_FILES} 
+	(gcc -o allDevTest ./Test/Test.o ${ALL_DEV_TEST_o_FILES}) 
 
 allDevClean: ${ALL_DEV_TEST_o_DEPENDENCIES}
 	make automataDevClean
@@ -1030,9 +1028,9 @@ allDevClean: ${ALL_DEV_TEST_o_DEPENDENCIES}
 	make utilsTypesNumberDevClean
 	make utilsTypesStringDevClean
 	make utilsTypesUnicodeDevClean
-	rm -f Test.o
+	rm -f ./Test/Test.o
 
-allDevRun:
+allDevRun: ${ALL_DEV_TEST_c_DEPENDENCIES} ${ALL_DEV_TEST_h_DEPENDENCIES}
 	make allDevClean
 	make allDev
 	make allDevLink
