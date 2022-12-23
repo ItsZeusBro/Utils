@@ -122,6 +122,4 @@ find.stdout.on('data', (data) => {
         }
         watcher.watch(files)
     }
-
 });
-
