@@ -1,5 +1,5 @@
-#ifndef MATRIX_DRIVER_FILE
-#define MATRIX_DRIVER_FILE
-#include "./Test.h"
+#ifndef C_MATRIX_TEST_DRIVER
+#define C_MATRIX_TEST_DRIVER
+#include "../Matrix.h"
 
 #endif

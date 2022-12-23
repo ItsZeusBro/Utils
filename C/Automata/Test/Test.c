@@ -1,7 +1,7 @@
 #include "./Test.h"
 
 
-int C_MATRIX_TEST_TEST(int argc, char *argv[]){
+int C_AUTOMATA_TEST_TEST(int argc, char *argv[]){
     //Run all api tests here...
     return 0;
 }

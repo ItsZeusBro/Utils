@@ -1,5 +1,6 @@
-#ifndef AUTOMATA_FILE
-#define AUTOMATA_FILE
+#ifndef C_AUTOMATA_AUTOMATA
+#define C_AUTOMATA_AUTOMATA
 
+//Define C Api here...
 
 #endif

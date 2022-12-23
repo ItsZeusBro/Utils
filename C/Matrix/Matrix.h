@@ -1,4 +1,7 @@
-#ifndef MATRIX_H_FILE
-#define MATRIX_H_FILE
+#ifndef C_MATRIX_MATRIX
+#define C_MATRIX_MATRIX
+
+//Define C Api here...
+
 
 #endif

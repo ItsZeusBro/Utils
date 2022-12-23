@@ -1,4 +1,7 @@
-#ifndef CRYPTO_FILE
-#define CRYPTO_FILE
+#ifndef C_CRYPTO_CRYPTO
+#define C_CRYPTO_CRYPTO
+
+//Define C Api here...
+
 
 #endif

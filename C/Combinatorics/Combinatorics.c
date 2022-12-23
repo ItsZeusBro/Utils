@@ -1,3 +1,3 @@
-#include "./Combinatorics.h"
+#include "Combinatorics.h"
 
-//hell
+//Create C Api here...

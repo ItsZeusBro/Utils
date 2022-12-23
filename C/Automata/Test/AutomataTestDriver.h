@@ -1,5 +1,0 @@
-#ifndef C_AUTOMATA_TEST_AUTOMATA_TEST_DRIVER
-#define C_AUTOMATA_TEST_AUTOMATA_TEST_DRIVER
-#include "./AutomataTest.h"
-
-#endif
