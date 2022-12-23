@@ -1,4 +1,6 @@
 ########################################################################################
+NULL :=
+\t   := $(NULL)<tab>$(NULL)
 
 AUTOMATA_DIR=Automata/
 AUTOMATA_c=Automata.c
@@ -25,21 +27,21 @@ PRODUCTION_AUTOMATA_TEST_o_DEPENDENCIES=${AUTOMATA_o_PATH} ${AUTOMATA_TEST_o_PAT
 
 
 automataDev: ${DEVELOPER_AUTOMATA_TEST_c_DEPENDENCIES}
-	(cd ${AUTOMATA_DIR}; gcc -c ${AUTOMATA_c})
-	(cd ${AUTOMATA_TEST_DIR}; gcc -c ${AUTOMATA_TEST_c} ${AUTOMATA_TEST_DRIVER_c})
+	cd ${AUTOMATA_DIR}; gcc -c ${AUTOMATA_c}
+	cd ${AUTOMATA_TEST_DIR}; gcc -c ${AUTOMATA_TEST_c} ${AUTOMATA_TEST_DRIVER_c}
 
 automataDevClean: ${DEVELOPER_AUTOMATA_TEST_o_DEPENDENCIES}
-	(cd ${AUTOMATA_DIR}; rm -f ${AUTOMATA_o})
-	(cd ${AUTOMATA_TEST_DIR}; rm -f ${AUTOMATA_TEST_o} ${AUTOMATA_TEST_DRIVER_o})
+	cd ${AUTOMATA_DIR}; rm -f ${AUTOMATA_o}
+	cd ${AUTOMATA_TEST_DIR}; rm -f ${AUTOMATA_TEST_o} ${AUTOMATA_TEST_DRIVER_o}
 
 automataDevLink: ${DEVELOPER_AUTOMATA_TEST_o_DEPENDENCIES}
-	(cd ${AUTOMATA_TEST_DIR}; gcc -o output ${AUTOMATA_TEST_o} ${AUTOMATA_TEST_DRIVER_o} ../${AUTOMATA_o})
+	cd ${AUTOMATA_TEST_DIR}; gcc -o output ${AUTOMATA_TEST_o} ${AUTOMATA_TEST_DRIVER_o} ../${AUTOMATA_o}
 
 automataDevRun: ${DEVELOPER_AUTOMATA_TEST_c_DEPENDENCIES} ${DEVELOPER_AUTOMATA_TEST_o_DEPENDENCIES}
-	(make automataDevClean)
-	(make automataDev)
-	(make automataDevLink)
-	(cd ${AUTOMATA_TEST_DIR}; ./output)
+	make automataDevClean
+	make automataDev
+	make automataDevLink
+	cd ${AUTOMATA_TEST_DIR}; ./output
 
 ########################################################################################
 
@@ -69,21 +71,21 @@ PRODUCTION_COMBINATORICS_TEST_o_DEPENDENCIES=${COMBINATORICS_o_PATH} ${COMBINATO
 
 
 combinatoricsDev: ${DEVELOPER_COMBINATORICS_TEST_c_DEPENDENCIES}
-	(cd ${COMBINATORICS_DIR}; gcc -c ${COMBINATORICS_c})
-	(cd ${COMBINATORICS_TEST_DIR}; gcc -c ${COMBINATORICS_TEST_c} ${COMBINATORICS_TEST_DRIVER_c})
+	cd ${COMBINATORICS_DIR}; gcc -c ${COMBINATORICS_c}
+	cd ${COMBINATORICS_TEST_DIR}; gcc -c ${COMBINATORICS_TEST_c} ${COMBINATORICS_TEST_DRIVER_c}
 
 combinatoricsDevClean: ${DEVELOPER_COMBINATORICS_TEST_o_DEPENDENCIES}
-	(cd ${COMBINATORICS_DIR}; rm -f ${COMBINATORICS_o})
-	(cd ${COMBINATORICS_TEST_DIR}; rm -f ${COMBINATORICS_TEST_o} ${COMBINATORICS_TEST_DRIVER_o})
+	cd ${COMBINATORICS_DIR}; rm -f ${COMBINATORICS_o}
+	cd ${COMBINATORICS_TEST_DIR}; rm -f ${COMBINATORICS_TEST_o} ${COMBINATORICS_TEST_DRIVER_o}
 
 combinatoricsDevLink: ${DEVELOPER_COMBINATORICS_TEST_o_DEPENDENCIES}
-	(cd ${COMBINATORICS_TEST_DIR}; gcc -o output ${COMBINATORICS_TEST_o} ${COMBINATORICS_TEST_DRIVER_o} ../${COMBINATORICS_o})
+	cd ${COMBINATORICS_TEST_DIR}; gcc -o output ${COMBINATORICS_TEST_o} ${COMBINATORICS_TEST_DRIVER_o} ../${COMBINATORICS_o}
 
 combinatoricsDevRun: ${DEVELOPER_COMBINATORICS_TEST_c_DEPENDENCIES} ${DEVELOPER_COMBINATORICS_TEST_o_DEPENDENCIES}
-	(make combinatoricsDevClean)
-	(make combinatoricsDev)
-	(make combinatoricsDevLink)
-	(cd ${COMBINATORICS_TEST_DIR}; ./output)
+	make combinatoricsDevClean
+	make combinatoricsDev
+	make combinatoricsDevLink
+	cd ${COMBINATORICS_TEST_DIR}; ./output
 
 ########################################################################################
 
@@ -112,21 +114,21 @@ PRODUCTION_CRYPTO_TEST_o_DEPENDENCIES=${CRYPTO_o_PATH} ${CRYPTO_TEST_o_PATH}
 
 
 cryptoDev: ${DEVELOPER_CRYPTO_TEST_c_DEPENDENCIES}
-	(cd ${CRYPTO_DIR}; gcc -c ${CRYPTO_c})
-	(cd ${CRYPTO_TEST_DIR}; gcc -c ${CRYPTO_TEST_c} ${CRYPTO_TEST_DRIVER_c})
+	cd ${CRYPTO_DIR}; gcc -c ${CRYPTO_c}
+	cd ${CRYPTO_TEST_DIR}; gcc -c ${CRYPTO_TEST_c} ${CRYPTO_TEST_DRIVER_c}
 
 cryptoDevClean: ${DEVELOPER_CRYPTO_TEST_o_DEPENDENCIES}
-	(cd ${CRYPTO_DIR}; rm -f ${CRYPTO_o})
-	(cd ${CRYPTO_TEST_DIR}; rm -f ${CRYPTO_TEST_o} ${CRYPTO_TEST_DRIVER_o})
+	cd ${CRYPTO_DIR}; rm -f ${CRYPTO_o}
+	cd ${CRYPTO_TEST_DIR}; rm -f ${CRYPTO_TEST_o} ${CRYPTO_TEST_DRIVER_o}
 
 cryptoDevLink: ${DEVELOPER_CRYPTO_TEST_o_DEPENDENCIES}
-	(cd ${CRYPTO_TEST_DIR}; gcc -o output ${CRYPTO_TEST_o} ${CRYPTO_TEST_DRIVER_o} ../${CRYPTO_o})
+	cd ${CRYPTO_TEST_DIR}; gcc -o output ${CRYPTO_TEST_o} ${CRYPTO_TEST_DRIVER_o} ../${CRYPTO_o}
 
 cryptoDevRun: ${DEVELOPER_CRYPTO_TEST_c_DEPENDENCIES} ${DEVELOPER_CRYPTO_TEST_o_DEPENDENCIES}
-	(make cryptoDevClean)
-	(make cryptoDev)
-	(make cryptoDevLink)
-	(cd ${CRYPTO_TEST_DIR}; ./output)
+	make cryptoDevClean
+	make cryptoDev
+	make cryptoDevLink
+	cd ${CRYPTO_TEST_DIR}; ./output
 ########################################################################################
 
 STATS_DIR=Stats/
@@ -154,21 +156,21 @@ PRODUCTION_STATS_TEST_o_DEPENDENCIES=${STATS_o_PATH} ${STATS_TEST_o_PATH}
 
 
 statsDev: ${DEVELOPER_STATS_TEST_c_DEPENDENCIES}
-	(cd ${STATS_DIR}; gcc -c ${STATS_c})
-	(cd ${STATS_TEST_DIR}; gcc -c ${STATS_TEST_c} ${STATS_TEST_DRIVER_c})
+	cd ${STATS_DIR}; gcc -c ${STATS_c}
+	cd ${STATS_TEST_DIR}; gcc -c ${STATS_TEST_c} ${STATS_TEST_DRIVER_c}
 
 statsDevClean: ${DEVELOPER_STATS_TEST_o_DEPENDENCIES}
-	(cd ${STATS_DIR}; rm -f ${STATS_o})
-	(cd ${STATS_TEST_DIR}; rm -f ${STATS_TEST_o} ${STATS_TEST_DRIVER_o})
+	cd ${STATS_DIR}; rm -f ${STATS_o}
+	cd ${STATS_TEST_DIR}; rm -f ${STATS_TEST_o} ${STATS_TEST_DRIVER_o}
 
 statsDevLink: ${DEVELOPER_STATS_TEST_o_DEPENDENCIES}
-	(cd ${STATS_TEST_DIR}; gcc -o output ${STATS_TEST_o} ${STATS_TEST_DRIVER_o} ../${STATS_o})
+	cd ${STATS_TEST_DIR}; gcc -o output ${STATS_TEST_o} ${STATS_TEST_DRIVER_o} ../${STATS_o}
 
 statsDevRun: ${DEVELOPER_STATS_TEST_c_DEPENDENCIES} ${DEVELOPER_STATS_TEST_o_DEPENDENCIES}
-	(make statsDevClean)
-	(make statsDev)
-	(make statsDevLink)
-	(cd ${STATS_TEST_DIR}; ./output)
+	make statsDevClean
+	make statsDev
+	make statsDevLink
+	cd ${STATS_TEST_DIR}; ./output
 ########################################################################################
 
 MATRIX_DIR=Matrix/
@@ -196,21 +198,21 @@ PRODUCTION_MATRIX_TEST_o_DEPENDENCIES=${MATRIX_o_PATH} ${MATRIX_TEST_o_PATH}
 
 
 matrixDev: ${DEVELOPER_MATRIX_TEST_c_DEPENDENCIES}
-	(cd ${MATRIX_DIR}; gcc -c ${MATRIX_c})
-	(cd ${MATRIX_TEST_DIR}; gcc -c ${MATRIX_TEST_c} ${MATRIX_TEST_DRIVER_c})
+	cd ${MATRIX_DIR}; gcc -c ${MATRIX_c}
+	cd ${MATRIX_TEST_DIR}; gcc -c ${MATRIX_TEST_c} ${MATRIX_TEST_DRIVER_c}
 
 matrixDevClean: ${DEVELOPER_MATRIX_TEST_o_DEPENDENCIES}
-	(cd ${MATRIX_DIR}; rm -f ${MATRIX_o})
-	(cd ${MATRIX_TEST_DIR}; rm -f ${MATRIX_TEST_o} ${MATRIX_TEST_DRIVER_o})
+	cd ${MATRIX_DIR}; rm -f ${MATRIX_o}
+	cd ${MATRIX_TEST_DIR}; rm -f ${MATRIX_TEST_o} ${MATRIX_TEST_DRIVER_o}
 
 matrixDevLink: ${DEVELOPER_MATRIX_TEST_o_DEPENDENCIES}
-	(cd ${MATRIX_TEST_DIR}; gcc -o output ${MATRIX_TEST_o} ${MATRIX_TEST_DRIVER_o} ../${MATRIX_o})
+	cd ${MATRIX_TEST_DIR}; gcc -o output ${MATRIX_TEST_o} ${MATRIX_TEST_DRIVER_o} ../${MATRIX_o}
 
 matrixDevRun: ${DEVELOPER_MATRIX_TEST_c_DEPENDENCIES} ${DEVELOPER_MATRIX_TEST_o_DEPENDENCIES}
-	(make matrixDevClean)
-	(make matrixDev)
-	(make matrixDevLink)
-	(cd ${MATRIX_TEST_DIR}; ./output)
+	make matrixDevClean
+	make matrixDev
+	make matrixDevLink
+	cd ${MATRIX_TEST_DIR}; ./output
 
 
 ########################################################################################
@@ -240,21 +242,21 @@ PRODUCTION_UTILS_TEST_o_DEPENDENCIES=${UTILS_o_PATH} ${UTILS_TEST_o_PATH}
 
 
 utilsDev: ${DEVELOPER_UTILS_TEST_c_DEPENDENCIES}
-	(cd ${UTILS_DIR}; gcc -c ${UTILS_c})
-	(cd ${UTILS_TEST_DIR}; gcc -c ${UTILS_TEST_c} ${UTILS_TEST_DRIVER_c})
+	cd ${UTILS_DIR}; gcc -c ${UTILS_c}
+	cd ${UTILS_TEST_DIR}; gcc -c ${UTILS_TEST_c} ${UTILS_TEST_DRIVER_c}
 
 utilsDevClean: ${DEVELOPER_UTILS_TEST_o_DEPENDENCIES}
-	(cd ${UTILS_DIR}; rm -f ${UTILS_o})
-	(cd ${UTILS_TEST_DIR}; rm -f ${UTILS_TEST_o} ${UTILS_TEST_DRIVER_o})
+	cd ${UTILS_DIR}; rm -f ${UTILS_o}
+	cd ${UTILS_TEST_DIR}; rm -f ${UTILS_TEST_o} ${UTILS_TEST_DRIVER_o}
 
 utilsDevLink: ${DEVELOPER_UTILS_TEST_o_DEPENDENCIES}
-	(cd ${UTILS_TEST_DIR}; gcc -o output ${UTILS_TEST_o} ${UTILS_TEST_DRIVER_o} ../${UTILS_o})
+	cd ${UTILS_TEST_DIR}; gcc -o output ${UTILS_TEST_o} ${UTILS_TEST_DRIVER_o} ../${UTILS_o}
 
 utilsDevRun: ${DEVELOPER_UTILS_TEST_c_DEPENDENCIES} ${DEVELOPER_UTILS_TEST_o_DEPENDENCIES}
-	(make utilsDevClean)
-	(make utilsDev)
-	(make utilsDevLink)
-	(cd ${UTILS_TEST_DIR}; ./output)
+	make utilsDevClean
+	make utilsDev
+	make utilsDevLink
+	cd ${UTILS_TEST_DIR}; ./output
 
 
 ########################################################################################
@@ -285,21 +287,21 @@ PRODUCTION_UTILS_ASSERTIONS_TEST_o_DEPENDENCIES=${UTILS_ASSERTIONS_o_PATH} ${UTI
 
 
 utilsAssertionsDev: ${DEVELOPER_UTILS_ASSERTIONS_TEST_c_DEPENDENCIES}
-	(cd ${UTILS_ASSERTIONS_DIR}; gcc -c ${UTILS_ASSERTIONS_c})
-	(cd ${UTILS_ASSERTIONS_TEST_DIR}; gcc -c ${UTILS_ASSERTIONS_TEST_c} ${UTILS_ASSERTIONS_TEST_DRIVER_c})
+	cd ${UTILS_ASSERTIONS_DIR}; gcc -c ${UTILS_ASSERTIONS_c}
+	cd ${UTILS_ASSERTIONS_TEST_DIR}; gcc -c ${UTILS_ASSERTIONS_TEST_c} ${UTILS_ASSERTIONS_TEST_DRIVER_c}
 
 utilsAssertionsDevClean: ${DEVELOPER_UTILS_ASSERTIONS_TEST_o_DEPENDENCIES}
-	(cd ${UTILS_ASSERTIONS_DIR}; rm -f ${UTILS_ASSERTIONS_o})
-	(cd ${UTILS_ASSERTIONS_TEST_DIR}; rm -f ${UTILS_ASSERTIONS_TEST_o} ${UTILS_ASSERTIONS_TEST_DRIVER_o})
+	cd ${UTILS_ASSERTIONS_DIR}; rm -f ${UTILS_ASSERTIONS_o}
+	cd ${UTILS_ASSERTIONS_TEST_DIR}; rm -f ${UTILS_ASSERTIONS_TEST_o} ${UTILS_ASSERTIONS_TEST_DRIVER_o}
 
 utilsAssertionsDevLink: ${DEVELOPER_UTILS_ASSERTIONS_TEST_o_DEPENDENCIES}
-	(cd ${UTILS_ASSERTIONS_TEST_DIR}; gcc -o output ${UTILS_ASSERTIONS_TEST_o} ${UTILS_ASSERTIONS_TEST_DRIVER_o} ../${UTILS_ASSERTIONS_o})
+	cd ${UTILS_ASSERTIONS_TEST_DIR}; gcc -o output ${UTILS_ASSERTIONS_TEST_o} ${UTILS_ASSERTIONS_TEST_DRIVER_o} ../${UTILS_ASSERTIONS_o}
 
 utilsAssertionsDevRun: ${DEVELOPER_UTILS_ASSERTIONS_TEST_c_DEPENDENCIES} ${DEVELOPER_UTILS_ASSERTIONS_TEST_o_DEPENDENCIES}
-	(make utilsAssertionsDevClean)
-	(make utilsAssertionsDev)
-	(make utilsAssertionsDevLink)
-	(cd ${UTILS_ASSERTIONS_TEST_DIR}; ./output)
+	make utilsAssertionsDevClean
+	make utilsAssertionsDev
+	make utilsAssertionsDevLink
+	cd ${UTILS_ASSERTIONS_TEST_DIR}; ./output
 
 
 ########################################################################################
@@ -329,21 +331,21 @@ PRODUCTION_UTILS_RAND_TEST_o_DEPENDENCIES=${UTILS_RAND_o_PATH} ${UTILS_RAND_TEST
 
 
 utilsRandDev: ${DEVELOPER_UTILS_RAND_TEST_c_DEPENDENCIES}
-	(cd ${UTILS_RAND_DIR}; gcc -c ${UTILS_RAND_c})
-	(cd ${UTILS_RAND_TEST_DIR}; gcc -c ${UTILS_RAND_TEST_c} ${UTILS_RAND_TEST_DRIVER_c})
+	cd ${UTILS_RAND_DIR}; gcc -c ${UTILS_RAND_c}
+	cd ${UTILS_RAND_TEST_DIR}; gcc -c ${UTILS_RAND_TEST_c} ${UTILS_RAND_TEST_DRIVER_c}
 
 utilsRandDevClean: ${DEVELOPER_UTILS_RAND_TEST_o_DEPENDENCIES}
-	(cd ${UTILS_RAND_DIR}; rm -f ${UTILS_RAND_o})
-	(cd ${UTILS_RAND_TEST_DIR}; rm -f ${UTILS_RAND_TEST_o} ${UTILS_RAND_TEST_DRIVER_o})
+	cd ${UTILS_RAND_DIR}; rm -f ${UTILS_RAND_o}
+	cd ${UTILS_RAND_TEST_DIR}; rm -f ${UTILS_RAND_TEST_o} ${UTILS_RAND_TEST_DRIVER_o}
 
 utilsRandDevLink: ${DEVELOPER_UTILS_RAND_TEST_o_DEPENDENCIES}
-	(cd ${UTILS_RAND_TEST_DIR}; gcc -o output ${UTILS_RAND_TEST_o} ${UTILS_RAND_TEST_DRIVER_o} ../${UTILS_RAND_o})
+	cd ${UTILS_RAND_TEST_DIR}; gcc -o output ${UTILS_RAND_TEST_o} ${UTILS_RAND_TEST_DRIVER_o} ../${UTILS_RAND_o}
 
 utilsRandDevRun: ${DEVELOPER_UTILS_RAND_TEST_c_DEPENDENCIES} ${DEVELOPER_UTILS_RAND_TEST_o_DEPENDENCIES}
-	(make utilsRandDevClean)
-	(make utilsRandDev)
-	(make utilsRandDevLink)
-	(cd ${UTILS_RAND_TEST_DIR}; ./output)
+	make utilsRandDevClean
+	make utilsRandDev
+	make utilsRandDevLink
+	cd ${UTILS_RAND_TEST_DIR}; ./output
 ########################################################################################
 
 UTILS_DICTIONARY_DIR=${UTILS_DIR}Dictionary/
@@ -371,21 +373,21 @@ PRODUCTION_UTILS_DICTIONARY_TEST_o_DEPENDENCIES=${UTILS_DICTIONARY_o_PATH} ${UTI
 
 
 utilsDictionaryDev: ${DEVELOPER_UTILS_DICTIONARY_TEST_c_DEPENDENCIES}
-	(cd ${UTILS_DICTIONARY_DIR}; gcc -c ${UTILS_DICTIONARY_c})
-	(cd ${UTILS_DICTIONARY_TEST_DIR}; gcc -c ${UTILS_DICTIONARY_TEST_c} ${UTILS_DICTIONARY_TEST_DRIVER_c})
+	cd ${UTILS_DICTIONARY_DIR}; gcc -c ${UTILS_DICTIONARY_c}
+	cd ${UTILS_DICTIONARY_TEST_DIR}; gcc -c ${UTILS_DICTIONARY_TEST_c} ${UTILS_DICTIONARY_TEST_DRIVER_c}
 
 utilsDictionaryDevClean: ${DEVELOPER_UTILS_DICTIONARY_TEST_o_DEPENDENCIES}
-	(cd ${UTILS_DICTIONARY_DIR}; rm -f ${UTILS_DICTIONARY_o})
-	(cd ${UTILS_DICTIONARY_TEST_DIR}; rm -f ${UTILS_DICTIONARY_TEST_o} ${UTILS_DICTIONARY_TEST_DRIVER_o})
+	cd ${UTILS_DICTIONARY_DIR}; rm -f ${UTILS_DICTIONARY_o}
+	cd ${UTILS_DICTIONARY_TEST_DIR}; rm -f ${UTILS_DICTIONARY_TEST_o} ${UTILS_DICTIONARY_TEST_DRIVER_o}
 
 utilsDictionaryDevLink: ${DEVELOPER_UTILS_DICTIONARY_TEST_o_DEPENDENCIES}
-	(cd ${UTILS_DICTIONARY_TEST_DIR}; gcc -o output ${UTILS_DICTIONARY_TEST_o} ${UTILS_DICTIONARY_TEST_DRIVER_o} ../${UTILS_DICTIONARY_o})
+	cd ${UTILS_DICTIONARY_TEST_DIR}; gcc -o output ${UTILS_DICTIONARY_TEST_o} ${UTILS_DICTIONARY_TEST_DRIVER_o} ../${UTILS_DICTIONARY_o}
 
 utilsDictionaryDevRun: ${DEVELOPER_UTILS_DICTIONARY_TEST_c_DEPENDENCIES} ${DEVELOPER_UTILS_DICTIONARY_TEST_o_DEPENDENCIES}
-	(make utilsDictionaryDevClean)
-	(make utilsDictionaryDev)
-	(make utilsDictionaryDevLink)
-	(cd ${UTILS_DICTIONARY_TEST_DIR}; ./output)
+	make utilsDictionaryDevClean
+	make utilsDictionaryDev
+	make utilsDictionaryDevLink
+	cd ${UTILS_DICTIONARY_TEST_DIR}; ./output
 
 ########################################################################################
 
@@ -414,21 +416,21 @@ PRODUCTION_UTILS_TYPES_TEST_o_DEPENDENCIES=${UTILS_TYPES_o_PATH} ${UTILS_TYPES_T
 
 
 utilsTypesDev: ${DEVELOPER_UTILS_TYPES_TEST_c_DEPENDENCIES}
-	(cd ${UTILS_TYPES_DIR}; gcc -c ${UTILS_TYPES_c})
-	(cd ${UTILS_TYPES_TEST_DIR}; gcc -c ${UTILS_TYPES_TEST_c} ${UTILS_TYPES_TEST_DRIVER_c})
+	cd ${UTILS_TYPES_DIR}; gcc -c ${UTILS_TYPES_c}
+	cd ${UTILS_TYPES_TEST_DIR}; gcc -c ${UTILS_TYPES_TEST_c} ${UTILS_TYPES_TEST_DRIVER_c}
 
 utilsTypesDevClean: ${DEVELOPER_UTILS_TYPES_TEST_o_DEPENDENCIES}
-	(cd ${UTILS_TYPES_DIR}; rm -f ${UTILS_TYPES_o})
-	(cd ${UTILS_TYPES_TEST_DIR}; rm -f ${UTILS_TYPES_TEST_o} ${UTILS_TYPES_TEST_DRIVER_o})
+	cd ${UTILS_TYPES_DIR}; rm -f ${UTILS_TYPES_o}
+	cd ${UTILS_TYPES_TEST_DIR}; rm -f ${UTILS_TYPES_TEST_o} ${UTILS_TYPES_TEST_DRIVER_o}
 
 utilsTypesDevLink: ${DEVELOPER_UTILS_TYPES_TEST_o_DEPENDENCIES}
-	(cd ${UTILS_TYPES_TEST_DIR}; gcc -o output ${UTILS_TYPES_TEST_o} ${UTILS_TYPES_TEST_DRIVER_o} ../${UTILS_TYPES_o})
+	cd ${UTILS_TYPES_TEST_DIR}; gcc -o output ${UTILS_TYPES_TEST_o} ${UTILS_TYPES_TEST_DRIVER_o} ../${UTILS_TYPES_o}
 
 utilsTypesDevRun: ${DEVELOPER_UTILS_TYPES_TEST_c_DEPENDENCIES} ${DEVELOPER_UTILS_TYPES_TEST_o_DEPENDENCIES}
-	(make utilsTypesDevClean)
-	(make utilsTypesDev)
-	(make utilsTypesDevLink)
-	(cd ${UTILS_TYPES_TEST_DIR}; ./output)
+	make utilsTypesDevClean
+	make utilsTypesDev
+	make utilsTypesDevLink
+	cd ${UTILS_TYPES_TEST_DIR}; ./output
 ########################################################################################
 
 
@@ -457,21 +459,21 @@ PRODUCTION_UTILS_TYPES_FLOAT_TEST_o_DEPENDENCIES=${UTILS_TYPES_FLOAT_o_PATH} ${U
 
 
 utilsTypesFloatDev: ${DEVELOPER_UTILS_TYPES_FLOAT_TEST_c_DEPENDENCIES}
-	(cd ${UTILS_TYPES_FLOAT_DIR}; gcc -c ${UTILS_TYPES_FLOAT_c})
-	(cd ${UTILS_TYPES_FLOAT_TEST_DIR}; gcc -c ${UTILS_TYPES_FLOAT_TEST_c} ${UTILS_TYPES_FLOAT_TEST_DRIVER_c})
+	cd ${UTILS_TYPES_FLOAT_DIR}; gcc -c ${UTILS_TYPES_FLOAT_c}
+	cd ${UTILS_TYPES_FLOAT_TEST_DIR}; gcc -c ${UTILS_TYPES_FLOAT_TEST_c} ${UTILS_TYPES_FLOAT_TEST_DRIVER_c}
 
 utilsTypesFloatDevClean: ${DEVELOPER_UTILS_TYPES_FLOAT_TEST_o_DEPENDENCIES}
-	(cd ${UTILS_TYPES_FLOAT_DIR}; rm -f ${UTILS_TYPES_FLOAT_o})
-	(cd ${UTILS_TYPES_FLOAT_TEST_DIR}; rm -f ${UTILS_TYPES_FLOAT_TEST_o} ${UTILS_TYPES_FLOAT_TEST_DRIVER_o})
+	cd ${UTILS_TYPES_FLOAT_DIR}; rm -f ${UTILS_TYPES_FLOAT_o}
+	cd ${UTILS_TYPES_FLOAT_TEST_DIR}; rm -f ${UTILS_TYPES_FLOAT_TEST_o} ${UTILS_TYPES_FLOAT_TEST_DRIVER_o}
 
 utilsTypesFloatDevLink: ${DEVELOPER_UTILS_TYPES_FLOAT_TEST_o_DEPENDENCIES}
-	(cd ${UTILS_TYPES_FLOAT_TEST_DIR}; gcc -o output ${UTILS_TYPES_FLOAT_TEST_o} ${UTILS_TYPES_FLOAT_TEST_DRIVER_o} ../${UTILS_TYPES_FLOAT_o})
+	cd ${UTILS_TYPES_FLOAT_TEST_DIR}; gcc -o output ${UTILS_TYPES_FLOAT_TEST_o} ${UTILS_TYPES_FLOAT_TEST_DRIVER_o} ../${UTILS_TYPES_FLOAT_o}
 
 utilsTypesFloatDevRun: ${DEVELOPER_UTILS_TYPES_FLOAT_TEST_c_DEPENDENCIES} ${DEVELOPER_UTILS_TYPES_FLOAT_TEST_o_DEPENDENCIES}
-	(make utilsTypesFloatDevClean)
-	(make utilsTypesFloatDev)
-	(make utilsTypesFloatDevLink)
-	(cd ${UTILS_TYPES_FLOAT_TEST_DIR}; ./output)
+	make utilsTypesFloatDevClean
+	make utilsTypesFloatDev
+	make utilsTypesFloatDevLink
+	cd ${UTILS_TYPES_FLOAT_TEST_DIR}; ./output
 
 
 ########################################################################################
@@ -502,21 +504,21 @@ PRODUCTION_UTILS_TYPES_ARRAY_TEST_o_DEPENDENCIES=${UTILS_TYPES_ARRAY_o_PATH} ${U
 
 
 utilsTypesArrayDev: ${DEVELOPER_UTILS_TYPES_ARRAY_TEST_c_DEPENDENCIES}
-	(cd ${UTILS_TYPES_ARRAY_DIR}; gcc -c ${UTILS_TYPES_ARRAY_c})
-	(cd ${UTILS_TYPES_ARRAY_TEST_DIR}; gcc -c ${UTILS_TYPES_ARRAY_TEST_c} ${UTILS_TYPES_ARRAY_TEST_DRIVER_c})
+	cd ${UTILS_TYPES_ARRAY_DIR}; gcc -c ${UTILS_TYPES_ARRAY_c}
+	cd ${UTILS_TYPES_ARRAY_TEST_DIR}; gcc -c ${UTILS_TYPES_ARRAY_TEST_c} ${UTILS_TYPES_ARRAY_TEST_DRIVER_c}
 
 utilsTypesArrayDevClean: ${DEVELOPER_UTILS_TYPES_ARRAY_TEST_o_DEPENDENCIES}
-	(cd ${UTILS_TYPES_ARRAY_DIR}; rm -f ${UTILS_TYPES_ARRAY_o})
-	(cd ${UTILS_TYPES_ARRAY_TEST_DIR}; rm -f ${UTILS_TYPES_ARRAY_TEST_o} ${UTILS_TYPES_ARRAY_TEST_DRIVER_o})
+	cd ${UTILS_TYPES_ARRAY_DIR}; rm -f ${UTILS_TYPES_ARRAY_o}
+	cd ${UTILS_TYPES_ARRAY_TEST_DIR}; rm -f ${UTILS_TYPES_ARRAY_TEST_o} ${UTILS_TYPES_ARRAY_TEST_DRIVER_o}
 
 utilsTypesArrayDevLink: ${DEVELOPER_UTILS_TYPES_ARRAY_TEST_o_DEPENDENCIES}
-	(cd ${UTILS_TYPES_ARRAY_TEST_DIR}; gcc -o output ${UTILS_TYPES_ARRAY_TEST_o} ${UTILS_TYPES_ARRAY_TEST_DRIVER_o} ../${UTILS_TYPES_ARRAY_o})
+	cd ${UTILS_TYPES_ARRAY_TEST_DIR}; gcc -o output ${UTILS_TYPES_ARRAY_TEST_o} ${UTILS_TYPES_ARRAY_TEST_DRIVER_o} ../${UTILS_TYPES_ARRAY_o}
 
 utilsTypesArrayDevRun: ${DEVELOPER_UTILS_TYPES_ARRAY_TEST_c_DEPENDENCIES} ${DEVELOPER_UTILS_TYPES_ARRAY_TEST_o_DEPENDENCIES}
-	(make utilsTypesArrayDevClean)
-	(make utilsTypesArrayDev)
-	(make utilsTypesArrayDevLink)
-	(cd ${UTILS_TYPES_ARRAY_TEST_DIR}; ./output)
+	make utilsTypesArrayDevClean
+	make utilsTypesArrayDev
+	make utilsTypesArrayDevLink
+	cd ${UTILS_TYPES_ARRAY_TEST_DIR}; ./output
 
 
 ########################################################################################
@@ -548,21 +550,21 @@ PRODUCTION_UTILS_TYPES_LINKLIST_TEST_o_DEPENDENCIES=${UTILS_TYPES_LINKLIST_o_PAT
 
 
 utilsTypesLinkListDev: ${DEVELOPER_UTILS_TYPES_LINKLIST_TEST_c_DEPENDENCIES}
-	(cd ${UTILS_TYPES_LINKLIST_DIR}; gcc -c ${UTILS_TYPES_LINKLIST_c})
-	(cd ${UTILS_TYPES_LINKLIST_TEST_DIR}; gcc -c ${UTILS_TYPES_LINKLIST_TEST_c} ${UTILS_TYPES_LINKLIST_TEST_DRIVER_c})
+	cd ${UTILS_TYPES_LINKLIST_DIR}; gcc -c ${UTILS_TYPES_LINKLIST_c}
+	cd ${UTILS_TYPES_LINKLIST_TEST_DIR}; gcc -c ${UTILS_TYPES_LINKLIST_TEST_c} ${UTILS_TYPES_LINKLIST_TEST_DRIVER_c}
 
 utilsTypesLinkListDevClean: ${DEVELOPER_UTILS_TYPES_LINKLIST_TEST_o_DEPENDENCIES}
-	(cd ${UTILS_TYPES_LINKLIST_DIR}; rm -f ${UTILS_TYPES_LINKLIST_o})
-	(cd ${UTILS_TYPES_LINKLIST_TEST_DIR}; rm -f ${UTILS_TYPES_LINKLIST_TEST_o} ${UTILS_TYPES_LINKLIST_TEST_DRIVER_o})
+	cd ${UTILS_TYPES_LINKLIST_DIR}; rm -f ${UTILS_TYPES_LINKLIST_o}
+	cd ${UTILS_TYPES_LINKLIST_TEST_DIR}; rm -f ${UTILS_TYPES_LINKLIST_TEST_o} ${UTILS_TYPES_LINKLIST_TEST_DRIVER_o}
 
 utilsTypesLinkListDevLink: ${DEVELOPER_UTILS_TYPES_LINKLIST_TEST_o_DEPENDENCIES}
-	(cd ${UTILS_TYPES_LINKLIST_TEST_DIR}; gcc -o output ${UTILS_TYPES_LINKLIST_TEST_o} ${UTILS_TYPES_LINKLIST_TEST_DRIVER_o} ../${UTILS_TYPES_LINKLIST_o})
+	cd ${UTILS_TYPES_LINKLIST_TEST_DIR}; gcc -o output ${UTILS_TYPES_LINKLIST_TEST_o} ${UTILS_TYPES_LINKLIST_TEST_DRIVER_o} ../${UTILS_TYPES_LINKLIST_o}
 
 utilsTypesLinkListDevRun: ${DEVELOPER_UTILS_TYPES_LINKLIST_TEST_c_DEPENDENCIES} ${DEVELOPER_UTILS_TYPES_LINKLIST_TEST_o_DEPENDENCIES}
-	(make utilsTypesLinkListDevClean)
-	(make utilsTypesLinkListDev)
-	(make utilsTypesLinkListDevLink)
-	(cd ${UTILS_TYPES_LINKLIST_TEST_DIR}; ./output)
+	make utilsTypesLinkListDevClean
+	make utilsTypesLinkListDev
+	make utilsTypesLinkListDevLink
+	cd ${UTILS_TYPES_LINKLIST_TEST_DIR}; ./output
 
 
 ########################################################################################
@@ -593,21 +595,21 @@ PRODUCTION_UTILS_TYPES_NUMBER_TEST_o_DEPENDENCIES=${UTILS_TYPES_NUMBER_o_PATH} $
 
 
 utilsTypesNumberDev: ${DEVELOPER_UTILS_TYPES_NUMBER_TEST_c_DEPENDENCIES}
-	(cd ${UTILS_TYPES_NUMBER_DIR}; gcc -c ${UTILS_TYPES_NUMBER_c})
-	(cd ${UTILS_TYPES_NUMBER_TEST_DIR}; gcc -c ${UTILS_TYPES_NUMBER_TEST_c} ${UTILS_TYPES_NUMBER_TEST_DRIVER_c})
+	cd ${UTILS_TYPES_NUMBER_DIR}; gcc -c ${UTILS_TYPES_NUMBER_c}
+	cd ${UTILS_TYPES_NUMBER_TEST_DIR}; gcc -c ${UTILS_TYPES_NUMBER_TEST_c} ${UTILS_TYPES_NUMBER_TEST_DRIVER_c}
 
 utilsTypesNumberDevClean: ${DEVELOPER_UTILS_TYPES_NUMBER_TEST_o_DEPENDENCIES}
-	(cd ${UTILS_TYPES_NUMBER_DIR}; rm -f ${UTILS_TYPES_NUMBER_o})
-	(cd ${UTILS_TYPES_NUMBER_TEST_DIR}; rm -f ${UTILS_TYPES_NUMBER_TEST_o} ${UTILS_TYPES_NUMBER_TEST_DRIVER_o})
+	cd ${UTILS_TYPES_NUMBER_DIR}; rm -f ${UTILS_TYPES_NUMBER_o}
+	cd ${UTILS_TYPES_NUMBER_TEST_DIR}; rm -f ${UTILS_TYPES_NUMBER_TEST_o} ${UTILS_TYPES_NUMBER_TEST_DRIVER_o}
 
 utilsTypesNumberDevLink: ${DEVELOPER_UTILS_TYPES_NUMBER_TEST_o_DEPENDENCIES}
-	(cd ${UTILS_TYPES_NUMBER_TEST_DIR}; gcc -o output ${UTILS_TYPES_NUMBER_TEST_o} ${UTILS_TYPES_NUMBER_TEST_DRIVER_o} ../${UTILS_TYPES_NUMBER_o})
+	cd ${UTILS_TYPES_NUMBER_TEST_DIR}; gcc -o output ${UTILS_TYPES_NUMBER_TEST_o} ${UTILS_TYPES_NUMBER_TEST_DRIVER_o} ../${UTILS_TYPES_NUMBER_o}
 
 utilsTypesNumberDevRun: ${DEVELOPER_UTILS_TYPES_NUMBER_TEST_c_DEPENDENCIES} ${DEVELOPER_UTILS_TYPES_NUMBER_TEST_o_DEPENDENCIES}
-	(make utilsTypesNumberDevClean)
-	(make utilsTypesNumberDev)
-	(make utilsTypesNumberDevLink)
-	(cd ${UTILS_TYPES_NUMBER_TEST_DIR}; ./output)
+	make utilsTypesNumberDevClean
+	make utilsTypesNumberDev
+	make utilsTypesNumberDevLink
+	cd ${UTILS_TYPES_NUMBER_TEST_DIR}; ./output
 
 
 ########################################################################################
@@ -637,21 +639,21 @@ PRODUCTION_UTILS_TYPES_STRING_TEST_o_DEPENDENCIES=${UTILS_TYPES_STRING_o_PATH} $
 
 
 utilsTypesStringDev: ${DEVELOPER_UTILS_TYPES_STRING_TEST_c_DEPENDENCIES}
-	(cd ${UTILS_TYPES_STRING_DIR}; gcc -c ${UTILS_TYPES_STRING_c})
-	(cd ${UTILS_TYPES_STRING_TEST_DIR}; gcc -c ${UTILS_TYPES_STRING_TEST_c} ${UTILS_TYPES_STRING_TEST_DRIVER_c})
+	cd ${UTILS_TYPES_STRING_DIR}; gcc -c ${UTILS_TYPES_STRING_c}
+	cd ${UTILS_TYPES_STRING_TEST_DIR}; gcc -c ${UTILS_TYPES_STRING_TEST_c} ${UTILS_TYPES_STRING_TEST_DRIVER_c}
 
 utilsTypesStringDevClean: ${DEVELOPER_UTILS_TYPES_STRING_TEST_o_DEPENDENCIES}
-	(cd ${UTILS_TYPES_STRING_DIR}; rm -f ${UTILS_TYPES_STRING_o})
-	(cd ${UTILS_TYPES_STRING_TEST_DIR}; rm -f ${UTILS_TYPES_STRING_TEST_o} ${UTILS_TYPES_STRING_TEST_DRIVER_o})
+	cd ${UTILS_TYPES_STRING_DIR}; rm -f ${UTILS_TYPES_STRING_o}
+	cd ${UTILS_TYPES_STRING_TEST_DIR}; rm -f ${UTILS_TYPES_STRING_TEST_o} ${UTILS_TYPES_STRING_TEST_DRIVER_o}
 
 utilsTypesStringDevLink: ${DEVELOPER_UTILS_TYPES_STRING_TEST_o_DEPENDENCIES}
-	(cd ${UTILS_TYPES_STRING_TEST_DIR}; gcc -o output ${UTILS_TYPES_STRING_TEST_o} ${UTILS_TYPES_STRING_TEST_DRIVER_o} ../${UTILS_TYPES_STRING_o})
+	cd ${UTILS_TYPES_STRING_TEST_DIR}; gcc -o output ${UTILS_TYPES_STRING_TEST_o} ${UTILS_TYPES_STRING_TEST_DRIVER_o} ../${UTILS_TYPES_STRING_o}
 
 utilsTypesStringDevRun: ${DEVELOPER_UTILS_TYPES_STRING_TEST_c_DEPENDENCIES} ${DEVELOPER_UTILS_TYPES_STRING_TEST_o_DEPENDENCIES}
-	(make utilsTypesStringDevClean)
-	(make utilsTypesStringDev)
-	(make utilsTypesStringDevLink)
-	(cd ${UTILS_TYPES_STRING_TEST_DIR}; ./output)
+	make utilsTypesStringDevClean
+	make utilsTypesStringDev
+	make utilsTypesStringDevLink
+	cd ${UTILS_TYPES_STRING_TEST_DIR}; ./output
 
 
 
@@ -683,21 +685,21 @@ PRODUCTION_UTILS_TYPES_UNICODE_TEST_o_DEPENDENCIES=${UTILS_TYPES_UNICODE_o_PATH}
 
 
 utilsTypesUnicodeDev: ${DEVELOPER_UTILS_TYPES_UNICODE_TEST_c_DEPENDENCIES}
-	(cd ${UTILS_TYPES_UNICODE_DIR}; gcc -c ${UTILS_TYPES_UNICODE_c})
-	(cd ${UTILS_TYPES_UNICODE_TEST_DIR}; gcc -c ${UTILS_TYPES_UNICODE_TEST_c} ${UTILS_TYPES_UNICODE_TEST_DRIVER_c})
+	cd ${UTILS_TYPES_UNICODE_DIR}; gcc -c ${UTILS_TYPES_UNICODE_c}
+	cd ${UTILS_TYPES_UNICODE_TEST_DIR}; gcc -c ${UTILS_TYPES_UNICODE_TEST_c} ${UTILS_TYPES_UNICODE_TEST_DRIVER_c}
 
 utilsTypesUnicodeDevClean: ${DEVELOPER_UTILS_TYPES_UNICODE_TEST_o_DEPENDENCIES}
-	(cd ${UTILS_TYPES_UNICODE_DIR}; rm -f ${UTILS_TYPES_UNICODE_o})
-	(cd ${UTILS_TYPES_UNICODE_TEST_DIR}; rm -f ${UTILS_TYPES_UNICODE_TEST_o} ${UTILS_TYPES_UNICODE_TEST_DRIVER_o})
+	cd ${UTILS_TYPES_UNICODE_DIR}; rm -f ${UTILS_TYPES_UNICODE_o}
+	cd ${UTILS_TYPES_UNICODE_TEST_DIR}; rm -f ${UTILS_TYPES_UNICODE_TEST_o} ${UTILS_TYPES_UNICODE_TEST_DRIVER_o}
 
 utilsTypesUnicodeDevLink: ${DEVELOPER_UTILS_TYPES_UNICODE_TEST_o_DEPENDENCIES}
-	(cd ${UTILS_TYPES_UNICODE_TEST_DIR}; gcc -o output ${UTILS_TYPES_UNICODE_TEST_o} ${UTILS_TYPES_UNICODE_TEST_DRIVER_o} ../${UTILS_TYPES_UNICODE_o})
+	cd ${UTILS_TYPES_UNICODE_TEST_DIR}; gcc -o output ${UTILS_TYPES_UNICODE_TEST_o} ${UTILS_TYPES_UNICODE_TEST_DRIVER_o} ../${UTILS_TYPES_UNICODE_o}
 
 utilsTypesUnicodeDevRun: ${DEVELOPER_UTILS_TYPES_UNICODE_TEST_c_DEPENDENCIES} ${DEVELOPER_UTILS_TYPES_UNICODE_TEST_o_DEPENDENCIES}
-	(make utilsTypesUnicodeDevClean)
-	(make utilsTypesUnicodeDev)
-	(make utilsTypesUnicodeDevLink)
-	(cd ${UTILS_TYPES_UNICODE_TEST_DIR}; ./output)
+	make utilsTypesUnicodeDevClean
+	make utilsTypesUnicodeDev
+	make utilsTypesUnicodeDevLink
+	cd ${UTILS_TYPES_UNICODE_TEST_DIR}; ./output
 
 
 ########################################################################################
@@ -826,7 +828,7 @@ allDev: ${ALL_DEV_TEST_c_DEPENDENCIES}
 	make utilsTypesNumberDev
 	make utilsTypesStringDev
 	make utilsTypesUnicodeDev
-	(gcc -c Test.c Test.h)
+	gcc -c Test.c Test.h
 
 allDevLink: ${ALL_DEV_TEST_o_DEPENDENCIES}
 	gcc -o allDevTest ${ALL_DEV_TEST_o_FILES}
@@ -848,7 +850,7 @@ allDevClean: ${ALL_DEV_TEST_o_DEPENDENCIES}
 	make utilsTypesNumberDevClean
 	make utilsTypesStringDevClean
 	make utilsTypesUnicodeDevClean
-	(rm -f Test.o)
+	rm -f Test.o
 
 allDevRun:
 	make allDevClean

@@ -1,9 +1,6 @@
 import fs from "node:fs"
 import { spawn, exec } from "node:child_process"
 import { scheduler } from 'node:timers/promises';
-import {Console} from "node:console";
-import { stderr, stdout } from "node:process";
-
 
 class Watcher{
     async watch(files){
@@ -100,9 +97,9 @@ class Watcher{
             console.log(file, 'statsDevRun')
         }
         exec('make '+makeArgs.join(' '), (error, stdout, stderr)=>{
-            console.log('\x1b[32m%s\x1b[0m', stdout);
-            console.log('\x1b[33m%s\x1b[0m', stderr);
-            console.log('\x1b[31m%s\x1b[0m', error);
+            console.log('\x1b[32m%s\x1b[0m', stdout,'\n');
+            console.log('\x1b[33m%s\x1b[0m', stderr,'\n');
+            console.log('\x1b[31m%s\x1b[0m', error,'\n');
         });
     }
 }
