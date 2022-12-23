@@ -1,7 +1,8 @@
 import fs from "node:fs"
 import { spawn, exec } from "node:child_process"
 import { scheduler } from 'node:timers/promises';
-// import { stderr } from "node:process";
+import {Console} from "node:console";
+import { stderr, stdout } from "node:process";
 
 
 class Watcher{
@@ -32,8 +33,8 @@ class Watcher{
         var makeArgs;
         if(file.includes('./Test.')){
             //compile whole project
-            console.log(file, 'allDevRunClean')
-            makeArgs=['allDevRunClean']
+            console.log(file, 'allDevRun')
+            makeArgs=['allDevRun']
         }else if(file.includes('Crypto')){
             //compile crypto
             makeArgs=['cryptoDevRun']
@@ -58,17 +59,14 @@ class Watcher{
             //compile Number lib
             makeArgs=['utilsTypesNumberDevRun']
             console.log(file, 'utilsTypesNumberDevRun')
-
         }else if(file.includes('Utils/Types/Float')){
             //compile Float lib
             makeArgs=['utilsTypesFloatDevRun']
             console.log(file, 'utilsTypesFloatDevRun')
-
         }else if(file.includes('Utils/Types/LinkList')){
             //compile Link List lib
             makeArgs=['utilsTypesLinkListDevRun']
             console.log(file, 'utilsTypesLinkListDevRun')
-
         }else if(file.includes('Utils/Types/String')){
             //compile String lib
             makeArgs=['utilsTypesStringDevRun']
@@ -102,11 +100,10 @@ class Watcher{
             console.log(file, 'statsDevRun')
         }
         exec('make '+makeArgs.join(' '), (error, stdout, stderr)=>{
-            console.log(`stdout: ${stdout}`);
-            console.log(`stderr: ${stderr}`);
-            console.log(`error: ${error}`);
+            console.log('\x1b[32m%s\x1b[0m', stdout);
+            console.log('\x1b[33m%s\x1b[0m', stderr);
+            console.log('\x1b[31m%s\x1b[0m', error);
         });
-        
     }
 }
 
@@ -114,17 +111,20 @@ const find = spawn('find', ['.', '-name', '*.c', '-o', '-name', '*.h']);
 var watcher = new Watcher()
 
 find.stdout.on('data', (data) => {
-    var string = data.toJSON().data
-    var file=''
-    var files=[]
-    for(var i = 0; i<string.length; i++){
-        if('\n'!=String.fromCharCode(string[i])){
-            file+=String.fromCharCode(string[i])
-        }else{
-            files.push(file)
-            file=''
+    if(typeof(data)!=='null'){
+        var string = data.toJSON().data
+        var file=''
+        var files=[]
+        for(var i = 0; i<string.length; i++){
+            if('\n'!=String.fromCharCode(string[i])){
+                file+=String.fromCharCode(string[i])
+            }else{
+                files.push(file)
+                file=''
+            }
         }
+        watcher.watch(files)
     }
-    watcher.watch(files)
+
 });
 
