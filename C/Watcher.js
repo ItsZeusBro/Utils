@@ -1,11 +1,12 @@
 import fs from "node:fs"
-import { spawn } from "node:child_process"
+import { spawn, exec } from "node:child_process"
 import { scheduler } from 'node:timers/promises';
+// import { stderr } from "node:process";
 
 
 class Watcher{
     async watch(files){
-        console.log(files)
+        console.log('watching files')
         var state=[]
         for(var i = 0; i<files.length; i++){
             state.push(fs.statSync(files[i]))
@@ -15,12 +16,11 @@ class Watcher{
             var stat = fs.statSync(files[i])
             if(JSON.stringify(stat)!=JSON.stringify(state[i])){
                 //then we need to compile the sub project over again
-                console.log(stat, state[i], 'file change discovered; recompiling', files[i])
+                //console.log(stat, state[i], 'file change discovered; recompiling', files[i])
                 state[i]=stat
                 this.recompiler(files[i])
             }
             if(i==files.length-1){ 
-                console.log('watching files')
                 await scheduler.wait(1000);
                 i=0; 
             }   
@@ -101,12 +101,15 @@ class Watcher{
             makeArgs=['statsDevRun']
             console.log(file, 'statsDevRun')
         }
-        const make = spawn('make', makeArgs)
-        make.stdout.on('data', (data) => {
-            console.log(data.toJSON.data)
+        exec('make '+makeArgs.join(' '), (error, stdout, stderr)=>{
+            console.log(`stdout: ${stdout}`);
+            console.log(`stderr: ${stderr}`);
+            console.log(`error: ${error}`);
         });
+        
     }
 }
+
 const find = spawn('find', ['.', '-name', '*.c', '-o', '-name', '*.h']);
 var watcher = new Watcher()
 

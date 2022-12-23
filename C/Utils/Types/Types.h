@@ -10,7 +10,7 @@
 int create(char * type);
 int destroy(void * type);
 
-//
+
 #endif
 
 
