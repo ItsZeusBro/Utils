@@ -12,7 +12,7 @@ class Watcher{
             state.push(JSON.stringify(fs.statSync(files[j])));
             semaphore.push(1);
         }
-        setInterval(this._watch, 10, state, this, files, semaphore);
+        setInterval(this._watch, 500, state, this, files, semaphore);
     }
 
     _watch(state, obj, files, semaphore){
