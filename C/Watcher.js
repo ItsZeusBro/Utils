@@ -11,20 +11,24 @@ class Watcher{
             state.push(fs.statSync(files[j]));
             semaphore.push(1);
         }
-        setInterval(this._watch, 1, state, this, files, semaphore);
+        setInterval(this._watch, 10, state, this, files, semaphore);
     }
 
     async _watch(state, obj, files, semaphore){
         for(var i = 0; i<files.length; i++){
             if(i==files.length){ return }
-            var stat=fs.statSync(files[i]);
-            var stat1=JSON.stringify(stat);
-            var stat2=JSON.stringify(state[i]);
-            var dif=false;
-            if(stat1!=stat2){
-                dif=true;
+            if(semaphore[i]){
+                var stat=fs.statSync(files[i]);
+                var stat1=JSON.stringify(stat);
+                var stat2=JSON.stringify(state[i]);
+                var dif=false;
+                if(stat1!=stat2){
+                    dif=true;
+                    state[i]=stat
+                }
             }
             if(semaphore[i]&&dif){
+                console.log(JSON.parse(stat1), JSON.parse(stat2))
                 dif=false;
                 semaphore[i]=0;
                 Promise.resolve(obj.recompiler(files[i])).then(
@@ -36,7 +40,6 @@ class Watcher{
             }
         }
 
-        
     }
 
     async recompiler(file){
@@ -109,11 +112,11 @@ class Watcher{
             makeArgs=['statsDevRun']
             console.log(file, 'statsDevRun')
         }
-        await Promise.resolve(exec('make '+makeArgs.join(' '), (error, stdout, stderr)=>{
+        exec('make '+makeArgs.join(' '), (error, stdout, stderr)=>{
             // console.log('\x1b[32m%s\x1b[0m', stdout,'\n');
             console.log('\x1b[33m%s\x1b[0m', stderr,'\n');
             console.log('\x1b[31m%s\x1b[0m', error,'\n');
-        }))
+        })
     }
 }
 
