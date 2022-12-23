@@ -6,38 +6,40 @@ class Watcher{
     watch(files){
         console.log('watching files')
         var state=[]
+        var semaphore=[]
         for(var j = 0; j<files.length; j++){
-            state.push(fs.statSync(files[j]))
+            state.push(fs.statSync(files[j]));
+            semaphore.push(1);
         }
-        var i = [0];
-        var semaphore=[0]
-        setInterval(this._watch, 1, state, this, files, i, semaphore)
+        setInterval(this._watch, 1, state, this, files, semaphore);
     }
 
-    _watch(state, obj, files, i, semaphore){
-        if(semaphore.length){
-            try{
-                semaphore.pop()
-                if(i[0]==files.length){ 
-                    i[0]=0; 
-                }
-                var stat=fs.statSync(files[i[0]])
-                if(JSON.stringify(stat)!=JSON.stringify(state[i[0]])){
-                    state[i[0]]=stat
-                    obj.recompiler(files[i[0]])
-                    i[0]=i[0]+1;  
-                }else{
-                    stat=fs.statSync(files[i[0]])
-                    i[0]=i[0]+1;  
-                }
-                semaphore.push(0)
-            }catch{
-                return
-            }            
+    async _watch(state, obj, files, semaphore){
+        for(var i = 0; i<files.length; i++){
+            if(i==files.length){ return }
+            var stat=fs.statSync(files[i]);
+            var stat1=JSON.stringify(stat);
+            var stat2=JSON.stringify(state[i]);
+            var dif=false;
+            if(stat1!=stat2){
+                dif=true;
+            }
+            if(semaphore[i]&&dif){
+                dif=false;
+                semaphore[i]=0;
+                Promise.resolve(obj.recompiler(files[i])).then(
+                    ()=>{
+                        state[i]=stat;
+                        semaphore[i]=1;
+                    }
+                )
+            }
         }
+
+        
     }
 
-    recompiler(file){
+    async recompiler(file){
         var makeArgs;
         if(file.includes('./Test/Test.')){
             //compile whole project
@@ -107,11 +109,11 @@ class Watcher{
             makeArgs=['statsDevRun']
             console.log(file, 'statsDevRun')
         }
-        exec('make '+makeArgs.join(' '), (error, stdout, stderr)=>{
+        await Promise.resolve(exec('make '+makeArgs.join(' '), (error, stdout, stderr)=>{
             // console.log('\x1b[32m%s\x1b[0m', stdout,'\n');
             console.log('\x1b[33m%s\x1b[0m', stderr,'\n');
             console.log('\x1b[31m%s\x1b[0m', error,'\n');
-        });
+        }))
     }
 }
 
