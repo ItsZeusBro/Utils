@@ -1,6 +1,4 @@
 ########################################################################################
-NULL :=
-\t   := $(NULL)<tab>$(NULL)
 
 AUTOMATA_DIR=Automata/
 AUTOMATA_c=Automata.c

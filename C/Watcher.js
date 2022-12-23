@@ -1,14 +1,15 @@
-import fs from "node:fs"
+import fs, { symlinkSync } from "node:fs"
 import { spawn, exec } from "node:child_process"
 import { scheduler } from 'node:timers/promises';
 
 class Watcher{
+
     watch(files){
         console.log('watching files')
         var state=[]
         var semaphore=[]
         for(var j = 0; j<files.length; j++){
-            state.push(fs.statSync(files[j]));
+            state.push(JSON.stringify(fs.statSync(files[j])));
             semaphore.push(1);
         }
         setInterval(this._watch, 10, state, this, files, semaphore);
@@ -18,26 +19,31 @@ class Watcher{
         for(var i = 0; i<files.length; i++){
             if(i==files.length){ return }
             var stat=fs.statSync(files[i]);
-            var stat1=JSON.stringify(stat);
-            var stat2=JSON.stringify(state[i]);
+            var stat1=JSON.stringify(stat).trim();
+            var stat2=state[i].trim();
             if(stat1!=stat2){
                 state[i]=stat1
-            }
-            if(semaphore[i]&&(stat1!=stat2)){
-                semaphore[i]=0;
-                Promise.resolve(obj.recompiler(files[i])).then(
-                    ()=>{
-                        semaphore[i]=1;
-                        //console.log('resolved', semaphore[i])
-                        //console.log(JSON.parse(state[i]), JSON.parse(stat1));
+                if(semaphore[i]){
+                    semaphore[i]=0;
+                    var some_function = function (file, semaphore, i) {
+                        return new Promise(
+                            (resolve, reject)=>{
+                                obj.recompiler(file)
+                                resolve([semaphore, i])
+                            }
+                        )
                     }
-                )
+                    some_function(files[i], semaphore, i).then(function (semaphore) {
+                        semaphore[0][semaphore[1]]=1;
+                    });
+                }
             }
         }
     }
 
     async recompiler(file){
         var makeArgs;
+        console.log(file)
         if(file.includes('./Test/Test.')){
             //compile whole project
             console.log('File Change Detected in', file, '\n', 'running make allDevRun')
@@ -107,9 +113,15 @@ class Watcher{
             console.log(file, 'statsDevRun')
         }
         exec('make '+makeArgs.join(' '), (error, stdout, stderr)=>{
-            // console.log('\x1b[32m%s\x1b[0m', stdout,'\n');
-            console.log('\x1b[33m%s\x1b[0m', stderr,'\n');
-            console.log('\x1b[31m%s\x1b[0m', error,'\n');
+            if(stdout){
+                console.log('\x1b[32m%s\x1b[0m', stdout,'\n');
+            }
+            if(stderr){
+                console.log('\x1b[33m%s\x1b[0m', stderr,'\n');
+            }
+            if(error){
+                console.log('\x1b[31m%s\x1b[0m', error,'\n');
+            }
         })
     }
 }
