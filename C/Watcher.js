@@ -14,32 +14,26 @@ class Watcher{
         setInterval(this._watch, 10, state, this, files, semaphore);
     }
 
-    async _watch(state, obj, files, semaphore){
+    _watch(state, obj, files, semaphore){
         for(var i = 0; i<files.length; i++){
             if(i==files.length){ return }
-            if(semaphore[i]){
-                var stat=fs.statSync(files[i]);
-                var stat1=JSON.stringify(stat);
-                var stat2=JSON.stringify(state[i]);
-                var dif=false;
-                if(stat1!=stat2){
-                    dif=true;
-                    state[i]=stat
-                }
+            var stat=fs.statSync(files[i]);
+            var stat1=JSON.stringify(stat);
+            var stat2=JSON.stringify(state[i]);
+            if(stat1!=stat2){
+                state[i]=stat1
             }
-            if(semaphore[i]&&dif){
-                console.log(JSON.parse(stat1), JSON.parse(stat2))
-                dif=false;
+            if(semaphore[i]&&(stat1!=stat2)){
                 semaphore[i]=0;
                 Promise.resolve(obj.recompiler(files[i])).then(
                     ()=>{
-                        state[i]=stat;
                         semaphore[i]=1;
+                        //console.log('resolved', semaphore[i])
+                        //console.log(JSON.parse(state[i]), JSON.parse(stat1));
                     }
                 )
             }
         }
-
     }
 
     async recompiler(file){
