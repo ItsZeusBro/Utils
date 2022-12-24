@@ -15,6 +15,8 @@ class Make{
         this.ALL_TEST_c_PRODUCTION_FILES=``;
         this.ALL_TEST_h_PRODUCTION_FILES=``;
         this.ALL_TEST_o_PRODUCTION_FILES=``;
+        this.makeAllDeveloperTests=``;
+        this.makeAllDeveloperTestsClean=``;
 
         this.uniquePaths=this.uniquePaths(makeObject)
         this.buildPaths(this.uniquePaths)
@@ -67,9 +69,10 @@ class Make{
             this.ALL_TEST_h_PRODUCTION_FILES+=this.makeAllTestHProductionFiles(uniquePaths[i].slice())
             this.ALL_TEST_o_PRODUCTION_FILES+=this.makeAllTestOProductionFiles(uniquePaths[i].slice())
         }
+
+        makefileOutput+=this.finalMake()
         console.log(makefileOutput)
 
-        makefileOutput+=this.finalMake(uniquePaths[i].slice())
     }
 
     cmain(dir, fileBase){
@@ -183,11 +186,11 @@ class Make{
        `${dir}_TEST_h_DEVELOPER_DEPENDENCIES=\$\{${dir}_h_PATH\} \$\{${dir}_TEST_h_PATH\} \$\{${dir}_TEST_DRIVER_h_PATH\}\n`+
        `${dir}_TEST_o_DEVELOPER_DEPENDENCIES=\$\{${dir}_o_PATH\} \$\{${dir}_TEST_o_PATH\} \$\{${dir}_TEST_DRIVER_o_PATH\}\n`+
 
-       `${dir}_TEST_c_DEVELOPER_FILES= /$/{${dir}_c_PATH/} /$/{${dir}_TEST_c_PATH/} /$/{${dir}_TEST_DRIVER_c_PATH/} \n`+
-       `${dir}_TEST_h_DEVELOPER_FILES= /$/{${dir}_h_PATH/} /$/{${dir}_TEST_h_PATH/} /$/{${dir}_TEST_DRIVER_h_PATH/} \n`+
-       `${dir}_TEST_o_DEVELOPER_FILES= /$/{${dir}_o_PATH/} /$/{${dir}_TEST_o_PATH/} /$/{${dir}_TEST_DRIVER_o_PATH/} \n\n\n`+
+       `${dir}_TEST_c_DEVELOPER_FILES= \$\{${dir}_c_PATH\} \$\{${dir}_TEST_c_PATH\} \$\{${dir}_TEST_DRIVER_c_PATH\} \n`+
+       `${dir}_TEST_h_DEVELOPER_FILES= \$\{${dir}_h_PATH\} \$\{${dir}_TEST_h_PATH\} \$\{${dir}_TEST_DRIVER_h_PATH\} \n`+
+       `${dir}_TEST_o_DEVELOPER_FILES= \$\{${dir}_o_PATH\} \$\{${dir}_TEST_o_PATH\} \$\{${dir}_TEST_DRIVER_o_PATH\} \n\n\n`+
 
-       `${dir}_TEST_DEVELOPER_FILES= /$/{${dir}_TEST_c_DEVELOPER_FILES/} /$/{${dir}_TEST_h_DEVELOPER_FILES/} /$/{${dir}_TEST_o_DEVELOPER_FILES/} \n\n\n`+
+       `${dir}_TEST_DEVELOPER_FILES= \$\{${dir}_TEST_c_DEVELOPER_FILES\} \$\{${dir}_TEST_h_DEVELOPER_FILES\} \$\{${dir}_TEST_o_DEVELOPER_FILES\} \n\n\n`+
 
 
        `${fileName}Developer: \$\{${dir}_TEST_c_DEVELOPER_DEPENDENCIES\} \$\{${dir}_TEST_h_DEVELOPER_DEPENDENCIES\}\n`+
@@ -207,6 +210,36 @@ class Make{
         `\tmake ${fileName}DeveloperLink\n\n`+
        `######################################################################################\n\n`
        return output        
+    }
+    finalMake(){
+
+        var output = 
+        `
+        \n\n
+        ALL_TEST_c_DEVELOPER_DEPENDENCIES=${this.ALL_TEST_c_DEVELOPER_DEPENDENCIES}\n
+        ALL_TEST_h_DEVELOPER_DEPENDENCIES=${this.ALL_TEST_h_DEVELOPER_DEPENDENCIES}\n
+        ALL_TEST_o_DEVELOPER_DEPENDENCIES=${this.ALL_TEST_o_DEVELOPER_DEPENDENCIES}\n
+        ALL_TEST_c_PRODUCTION_DEPENDENCIES=${this.ALL_TEST_c_PRODUCTION_DEPENDENCIES}\n
+        ALL_TEST_h_PRODUCTION_DEPENDENCIES=${this.ALL_TEST_h_PRODUCTION_DEPENDENCIES}\n
+        ALL_TEST_o_PRODUCTION_DEPENDENCIES=${this.ALL_TEST_o_PRODUCTION_DEPENDENCIES}\n
+        ALL_TEST_c_DEVELOPER_FILES=${this.ALL_TEST_c_DEVELOPER_FILES}\n
+        ALL_TEST_h_DEVELOPER_FILES=${this.ALL_TEST_h_DEVELOPER_FILES}\n
+        ALL_TEST_o_DEVELOPER_FILES=${this.ALL_TEST_o_DEVELOPER_FILES}\n
+
+        allDeveloperTests: ${this.ALL_TEST_c_DEVELOPER_DEPENDENCIES} ${this.ALL_TEST_h_DEVELOPER_DEPENDENCIES}\n
+        ${this.makeAllDeveloperTests}\n\n
+        allDeveloperTestsLink: ${this.ALL_TEST_o_DEVELOPER_DEPENDENCIES}\n
+        \t(gcc -o allDevTest ${this.ALL_DEV_TEST_o_FILES}) \n\n
+        allDeveloperTestsClean: ${this.ALL_TEST_o_DEVELOPER_DEPENDENCIES}\n
+        ${this.makeAllDeveloperTestsClean}\n\n
+        allDeveloperTestsRun: ${this.ALL_TEST_c_DEVELOPER_DEPENDENCIES} ${this.ALL_TEST_h_DEVELOPER_DEPENDENCIES}\n
+        \tmake allDeveloperTestsClean\n
+        \tmake allDeveloperTests\n
+        \tmake allDeveloperTestsLink\n
+        \t./allDevTest\n\n
+        ########################################################################################\n\n
+        `
+        return output
     }
 
     makeAllTestCDeveloperDependencies(dir){
