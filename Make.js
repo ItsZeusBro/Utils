@@ -56,7 +56,14 @@ class Make{
     }
 
     hTest(dir){
+        var fileBase=dir.split('/')[dir.split('/').length-3]
+        var fileDescriptor=(dir.split('/').slice(1).join('_')+'Test').toUpperCase()
 
+        var output2 = `#include "../`+fileBase+`.h"`
+        var output3 = `int ${fileDescriptor}(int argc, char *argv[]);`
+
+        var output = `#ifndef ${fileDescriptor}\n#define ${fileDescriptor}\n\n`+output2+`\n\n`+output3+`\n\n#endif`
+        fs.writeFileSync( dir+'Test'+'.h', output);
     }
 
     cDriver(dir){
