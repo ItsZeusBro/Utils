@@ -20,14 +20,22 @@ class Make{
 
     buildPaths(uniquePaths){
         for(var i=0; i<uniquePaths.length; i++){
-            console.log(uniquePaths[i])
-            if (!fs.existsSync(uniquePaths[i])){
-                fs.mkdirSync(uniquePaths[i]);
+            var testDir=uniquePaths[i]+'Test/'
+            var dir=uniquePaths[i]
+            var fileBase=dir.split('/')[dir.split('/').length-2]
+            console.log(fileBase)
+            if (!fs.existsSync(dir)){
+                fs.mkdirSync(dir);
             }
-            if (!fs.existsSync(uniquePaths[i]+'Test/')){
-                fs.mkdirSync(uniquePaths[i]+'Test/');
+            if (!fs.existsSync(testDir)){
+                fs.mkdirSync(testDir);
             }
-
+            this.cFile(dir, fileBase)
+            this.hFile(dir, fileBase)
+            this.cTest(testDir)
+            this.hTest(testDir)
+            this.cDriver(testDir)
+            this.hDriver(testDir)
         }
     }
 
