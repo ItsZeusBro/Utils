@@ -1,12 +1,10 @@
 import {makeObject} from "./MakeObject.js"
+import fs from 'node:fs'
 
 class Make{
     constructor(makeObject){
-        console.log(makeObject)
         this.uniquePaths=this.uniquePaths(makeObject)
-        console.log(this.uniquePaths)
-        this.filePaths=this.filePaths(makeObject)
-
+        this.buildPaths(this.uniquePaths)
     }
 
     uniquePaths(makeObject){
@@ -20,8 +18,14 @@ class Make{
         return Array.from(new Set(uniquePaths))
     }
 
-    filePaths(makeObject){
+    buildPaths(uniquePaths){
+        for(var i=0; i<uniquePaths.length; i++){
+            console.log(uniquePaths[i])
+            if (!fs.existsSync(uniquePaths[i])){
+                fs.mkdirSync(uniquePaths[i]);
+            }
 
+        }
     }
 
     cFile(){
