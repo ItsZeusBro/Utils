@@ -15,8 +15,9 @@ class Make{
         this.ALL_TEST_c_PRODUCTION_FILES=``;
         this.ALL_TEST_h_PRODUCTION_FILES=``;
         this.ALL_TEST_o_PRODUCTION_FILES=``;
-        this.makeAllDeveloperTests=``;
-        this.makeAllDeveloperTestsClean=``;
+        this.makeAllProductionTests=``;
+        this.makeAllProductionTestsClean=``;
+        this.makeAllProductionTestsLink=``;
 
         this.uniquePaths=this.uniquePaths(makeObject)
         this.buildPaths(this.uniquePaths)
@@ -68,10 +69,14 @@ class Make{
             this.ALL_TEST_c_PRODUCTION_FILES+=this.makeAllTestCProductionFiles(uniquePaths[i].slice())
             this.ALL_TEST_h_PRODUCTION_FILES+=this.makeAllTestHProductionFiles(uniquePaths[i].slice())
             this.ALL_TEST_o_PRODUCTION_FILES+=this.makeAllTestOProductionFiles(uniquePaths[i].slice())
+            this.makeAllProductionTests+=this._makeAllProductionTests(uniquePaths[i].slice())
+            this.makeAllProductionTestsClean+=this._makeAllProductionTestsClean(uniquePaths[i].slice())
+
         }
 
         makefileOutput+=this.finalMake()
-        console.log(makefileOutput)
+        fs.writeFileSync('./makefile', makefileOutput);
+
 
     }
 
@@ -186,9 +191,13 @@ class Make{
        `${dir}_TEST_h_DEVELOPER_DEPENDENCIES=\$\{${dir}_h_PATH\} \$\{${dir}_TEST_h_PATH\} \$\{${dir}_TEST_DRIVER_h_PATH\}\n`+
        `${dir}_TEST_o_DEVELOPER_DEPENDENCIES=\$\{${dir}_o_PATH\} \$\{${dir}_TEST_o_PATH\} \$\{${dir}_TEST_DRIVER_o_PATH\}\n`+
 
-       `${dir}_TEST_c_DEVELOPER_FILES= \$\{${dir}_c_PATH\} \$\{${dir}_TEST_c_PATH\} \$\{${dir}_TEST_DRIVER_c_PATH\} \n`+
-       `${dir}_TEST_h_DEVELOPER_FILES= \$\{${dir}_h_PATH\} \$\{${dir}_TEST_h_PATH\} \$\{${dir}_TEST_DRIVER_h_PATH\} \n`+
-       `${dir}_TEST_o_DEVELOPER_FILES= \$\{${dir}_o_PATH\} \$\{${dir}_TEST_o_PATH\} \$\{${dir}_TEST_DRIVER_o_PATH\} \n\n\n`+
+       `${dir}_TEST_c_DEVELOPER_FILES=\$\{${dir}_c_PATH\} \$\{${dir}_TEST_c_PATH\} \$\{${dir}_TEST_DRIVER_c_PATH\} \n`+
+       `${dir}_TEST_h_DEVELOPER_FILES=\$\{${dir}_h_PATH\} \$\{${dir}_TEST_h_PATH\} \$\{${dir}_TEST_DRIVER_h_PATH\} \n`+
+       `${dir}_TEST_o_DEVELOPER_FILES=\$\{${dir}_o_PATH\} \$\{${dir}_TEST_o_PATH\} \$\{${dir}_TEST_DRIVER_o_PATH\} \n`+
+
+       `${dir}_TEST_c_PRODUCTION_FILES=\$\{${dir}_c_PATH\} \$\{${dir}_TEST_c_PATH\} \n`+
+       `${dir}_TEST_h_PRODUCTION_FILES=\$\{${dir}_h_PATH\} \$\{${dir}_TEST_h_PATH\} \n`+
+       `${dir}_TEST_o_PRODUCTION_FILES=\$\{${dir}_o_PATH\} \$\{${dir}_TEST_o_PATH\} \n\n\n`+
 
        `${dir}_TEST_DEVELOPER_FILES= \$\{${dir}_TEST_c_DEVELOPER_FILES\} \$\{${dir}_TEST_h_DEVELOPER_FILES\} \$\{${dir}_TEST_o_DEVELOPER_FILES\} \n\n\n`+
 
@@ -197,48 +206,63 @@ class Make{
        `\tcd \$\{${dir}_DIR\}; gcc -c \$\{${dir}_c\}\n`+
        `\tcd \$\{${dir}_TEST_DIR\}; gcc -c \$\{${dir}_TEST_c\} \$\{${dir}_TEST_DRIVER_c\}\n\n`+
 
+       `${fileName}Production: \$\{${dir}_TEST_c_PRODUCTION_DEPENDENCIES\} \$\{${dir}_TEST_h_PRODUCTION_DEPENDENCIES\}\n`+
+       `\tcd \$\{${dir}_DIR\}; gcc -c \$\{${dir}_c\}\n`+
+       `\tcd \$\{${dir}_TEST_DIR\}; gcc -c \$\{${dir}_TEST_c\}\n\n`+
+
         `${fileName}DeveloperClean: \$\{${dir}_TEST_o_DEVELOPER_DEPENDENCIES\}\n`+
         `\tcd \$\{${dir}_DIR\}; rm -f \$\{${dir}_o\}\n`+
         `\tcd \$\{${dir}_TEST_DIR\}; rm -f \$\{${dir}_TEST_o\} \$\{${dir}_TEST_DRIVER_o\}\n\n` +
 
+        `${fileName}ProductionClean: \$\{${dir}_TEST_o_PRODUCTION_DEPENDENCIES\}\n`+
+        `\tcd \$\{${dir}_DIR\}; rm -f \$\{${dir}_o\}\n`+
+        `\tcd \$\{${dir}_TEST_DIR\}; rm -f \$\{${dir}_TEST_o\}\n\n` +
+
         `${fileName}DeveloperLink: \$\{${dir}_TEST_o_DEVELOPER_DEPENDENCIES\}\n`+
 	    `\t(gcc -o developerTest \$\{${dir}_o_PATH\} \$\{${dir}_TEST_o_PATH\} \$\{${dir}_TEST_DRIVER_o_PATH\})\n\n`+
+
+        `${fileName}ProductionLink: \$\{${dir}_TEST_o_PRODUCTION_DEPENDENCIES\}\n`+
+	    `\t(gcc -o developerTest \$\{${dir}_o_PATH\} \$\{${dir}_TEST_o_PATH\})\n\n`+
         
         `${fileName}DeveloperRun: ${fileName}Developer ${fileName}DeveloperClean ${fileName}DeveloperLink\n`+
         `\tmake ${fileName}DeveloperClean\n`+
         `\tmake ${fileName}Developer\n`+
         `\tmake ${fileName}DeveloperLink\n\n`+
-       `######################################################################################\n\n`
+
+        `########################################################################################################################################\n\n\n\n\n\n`
        return output        
     }
     finalMake(){
 
         var output = 
-        `
-        \n\n
-        ALL_TEST_c_DEVELOPER_DEPENDENCIES=${this.ALL_TEST_c_DEVELOPER_DEPENDENCIES}\n
-        ALL_TEST_h_DEVELOPER_DEPENDENCIES=${this.ALL_TEST_h_DEVELOPER_DEPENDENCIES}\n
-        ALL_TEST_o_DEVELOPER_DEPENDENCIES=${this.ALL_TEST_o_DEVELOPER_DEPENDENCIES}\n
-        ALL_TEST_c_PRODUCTION_DEPENDENCIES=${this.ALL_TEST_c_PRODUCTION_DEPENDENCIES}\n
-        ALL_TEST_h_PRODUCTION_DEPENDENCIES=${this.ALL_TEST_h_PRODUCTION_DEPENDENCIES}\n
-        ALL_TEST_o_PRODUCTION_DEPENDENCIES=${this.ALL_TEST_o_PRODUCTION_DEPENDENCIES}\n
-        ALL_TEST_c_DEVELOPER_FILES=${this.ALL_TEST_c_DEVELOPER_FILES}\n
-        ALL_TEST_h_DEVELOPER_FILES=${this.ALL_TEST_h_DEVELOPER_FILES}\n
-        ALL_TEST_o_DEVELOPER_FILES=${this.ALL_TEST_o_DEVELOPER_FILES}\n
+        `\n\n`+
+        `ALL_TEST_c_DEVELOPER_DEPENDENCIES=${this.ALL_TEST_c_DEVELOPER_DEPENDENCIES}\n`+
+        `ALL_TEST_h_DEVELOPER_DEPENDENCIES=${this.ALL_TEST_h_DEVELOPER_DEPENDENCIES}\n`+
+        `ALL_TEST_o_DEVELOPER_DEPENDENCIES=${this.ALL_TEST_o_DEVELOPER_DEPENDENCIES}\n`+
+        `ALL_TEST_c_PRODUCTION_DEPENDENCIES=${this.ALL_TEST_c_PRODUCTION_DEPENDENCIES}\n`+
+        `ALL_TEST_h_PRODUCTION_DEPENDENCIES=${this.ALL_TEST_h_PRODUCTION_DEPENDENCIES}\n`+
+        `ALL_TEST_o_PRODUCTION_DEPENDENCIES=${this.ALL_TEST_o_PRODUCTION_DEPENDENCIES}\n`+
+        `ALL_TEST_c_DEVELOPER_FILES=${this.ALL_TEST_c_DEVELOPER_FILES}\n`+
+        `ALL_TEST_h_DEVELOPER_FILES=${this.ALL_TEST_h_DEVELOPER_FILES}\n`+
+        `ALL_TEST_o_DEVELOPER_FILES=${this.ALL_TEST_o_DEVELOPER_FILES}\n`+
+        `ALL_TEST_c_PRODUCTION_FILES=${this.ALL_TEST_c_PRODUCTION_FILES}\n`+
+        `ALL_TEST_h_PRODUCTION_FILES=${this.ALL_TEST_h_PRODUCTION_FILES}\n`+
+        `ALL_TEST_o_PRODUCTION_FILES=${this.ALL_TEST_o_PRODUCTION_FILES}\n`+
+        `########################################################################################################################################\n\n\n\n\n\n`+
 
-        allDeveloperTests: ${this.ALL_TEST_c_DEVELOPER_DEPENDENCIES} ${this.ALL_TEST_h_DEVELOPER_DEPENDENCIES}\n
-        ${this.makeAllDeveloperTests}\n\n
-        allDeveloperTestsLink: ${this.ALL_TEST_o_DEVELOPER_DEPENDENCIES}\n
-        \t(gcc -o allDevTest ${this.ALL_DEV_TEST_o_FILES}) \n\n
-        allDeveloperTestsClean: ${this.ALL_TEST_o_DEVELOPER_DEPENDENCIES}\n
-        ${this.makeAllDeveloperTestsClean}\n\n
-        allDeveloperTestsRun: ${this.ALL_TEST_c_DEVELOPER_DEPENDENCIES} ${this.ALL_TEST_h_DEVELOPER_DEPENDENCIES}\n
-        \tmake allDeveloperTestsClean\n
-        \tmake allDeveloperTests\n
-        \tmake allDeveloperTestsLink\n
-        \t./allDevTest\n\n
-        ########################################################################################\n\n
-        `
+        `allProductionTests: ${this.ALL_TEST_c_PRODUCTION_DEPENDENCIES} ${this.ALL_TEST_h_PRODUCTION_DEPENDENCIES}\n`+
+        `${this.makeAllProductionTests}\n\n`+
+        `allProductionTestsLink: ${this.ALL_TEST_o_PRODUCTION_DEPENDENCIES}\n`+
+        `\tgcc -o allProduction ${this.ALL_TEST_o_PRODUCTION_FILES}\n\n`+
+        `allProductionTestsClean: ${this.ALL_TEST_o_PRODUCTION_DEPENDENCIES}\n`+
+        `${this.makeAllProductionTestsClean}\n\n`+
+        `allProductionTestsRun: ${this.ALL_TEST_c_PRODUCTION_DEPENDENCIES} ${this.ALL_TEST_h_PRODUCTION_DEPENDENCIES}\n`+
+        `\tmake allProductionTestsClean\n`+
+        `\tmake allProductionTests\n`+
+        `\tmake allProductionTestsLink\n`+
+        `\t./allProduction\n\n`+
+        `########################################################################################################################################\n\n\n\n\n\n`
+        
         return output
     }
 
@@ -246,48 +270,64 @@ class Make{
         dir=dir.slice().split('/')
         dir.pop()
         dir.shift()
+        dir=dir.join('_').toUpperCase()
+
         return `\$\{${dir}_TEST_c_DEVELOPER_DEPENDENCIES\} `
     }
     makeAllTestHDeveloperDependencies(dir){
         dir=dir.slice().split('/')
         dir.pop()
         dir.shift()
+        dir=dir.join('_').toUpperCase()
+
         return `\$\{${dir}_TEST_h_DEVELOPER_DEPENDENCIES\} `
     }
     makeAllTestODeveloperDependencies(dir){
         dir=dir.slice().split('/')
         dir.pop()
         dir.shift()
+        dir=dir.join('_').toUpperCase()
+
         return `\$\{${dir}_TEST_o_DEVELOPER_DEPENDENCIES\} `
     }
     makeAllTestCProductionDependencies(dir){
         dir=dir.slice().split('/')
         dir.pop()
         dir.shift()
+        dir=dir.join('_').toUpperCase()
+
         return `\$\{${dir}_TEST_c_PRODUCTION_DEPENDENCIES\} `
     }
     makeAllTestHProductionDependencies(dir){
         dir=dir.slice().split('/')
         dir.pop()
         dir.shift()
+        dir=dir.join('_').toUpperCase()
+
         return `\$\{${dir}_TEST_h_PRODUCTION_DEPENDENCIES\} `
     }
     makeAllTestOProductionDependencies(dir){
         dir=dir.slice().split('/')
         dir.pop()
         dir.shift()
+        dir=dir.join('_').toUpperCase()
+
         return `\$\{${dir}_TEST_o_PRODUCTION_DEPENDENCIES\} `
     }
     makeAllTestCDeveloperFiles(dir){
         dir=dir.slice().split('/')
         dir.pop()
         dir.shift()
+        dir=dir.join('_').toUpperCase()
+
         return `\$\{${dir}_TEST_c_DEVELOPER_FILES\} `
     }
     makeAllTestHDeveloperFiles(dir){
         dir=dir.slice().split('/')
         dir.pop()
         dir.shift()
+        dir=dir.join('_').toUpperCase()
+
         return `\$\{${dir}_TEST_h_DEVELOPER_FILES\} `
 
     }
@@ -295,6 +335,8 @@ class Make{
         dir=dir.slice().split('/')
         dir.pop()
         dir.shift()
+        dir=dir.join('_').toUpperCase()
+
         return `\$\{${dir}_TEST_o_DEVELOPER_FILES\} `
 
     }
@@ -302,6 +344,8 @@ class Make{
         dir=dir.slice().split('/')
         dir.pop()
         dir.shift()
+        dir=dir.join('_').toUpperCase()
+
         return `\$\{${dir}_TEST_c_PRODUCTION_FILES\} `
 
     }
@@ -309,6 +353,8 @@ class Make{
         dir=dir.slice().split('/')
         dir.pop()
         dir.shift()
+        dir=dir.join('_').toUpperCase()
+
         return `\$\{${dir}_TEST_h_PRODUCTION_FILES\} `
 
     }
@@ -316,9 +362,30 @@ class Make{
         dir=dir.slice().split('/')
         dir.pop()
         dir.shift()
+        dir=dir.join('_').toUpperCase()
+
         return `\$\{${dir}_TEST_o_PRODUCTION_FILES\} `
 
     }
+    _makeAllProductionTests(dir){
+        dir=dir.slice().split('/')
+        dir.pop()
+        dir.shift()
+        var fileName=dir.slice().pop()
+        dir=dir.join('_').toUpperCase()
+
+        return `\tmake ${fileName}Production\n`
+    }
+    _makeAllProductionTestsClean(dir){
+        dir=dir.slice().split('/')
+        dir.pop()
+        dir.shift()
+        var fileName=dir.slice().pop()
+        dir=dir.join('_').toUpperCase()
+
+        return `\tmake ${fileName}ProductionClean\n`
+    }
+
 }
 
 
