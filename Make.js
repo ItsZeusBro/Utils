@@ -30,7 +30,9 @@ class Make{
             if (!fs.existsSync(testDir)){
                 fs.mkdirSync(testDir);
             }
-            this.cFile(dir, fileBase)
+            if(!this.cmain(dir, fileBase)){
+                this.cFile(dir, fileBase)
+            }
             this.hFile(dir, fileBase)
             this.cTest(testDir)
             this.hTest(testDir)
@@ -39,6 +41,18 @@ class Make{
         }
     }
 
+    cmain(dir, fileBase){
+        if(dir.split('/').length==3){
+            var output = 
+                `#include `+`"`+fileBase+'.h'+`"\n\n`+
+                `int main(int argc, char *argv[]){\n`+
+                `\treturn 0;\n`+`}`
+            fs.writeFileSync( dir+fileBase+'.c', output);
+            return true
+        }else{
+            return false
+        }
+    }
     cFile(dir, fileBase){
         var output = `#include `+`"`+fileBase+'.h'+`"`
         fs.writeFileSync( dir+fileBase+'.c', output);
@@ -51,27 +65,49 @@ class Make{
     }
 
     cTest(dir){
-        var output = `#include `+`"`+'Test'+'.h'+`"`
+        var fileDescriptor=(dir.split('/').slice(1).join('_')+'Test').toUpperCase()
+        var output = 
+        `#include `+`"`+'Test'+'.h'+`"\n\n`+
+        `int _${fileDescriptor}(int argc, char *argv[]){\n\n\treturn 0;\n}`;
         fs.writeFileSync( dir+'Test'+'.c', output);
     }
 
     hTest(dir){
         var fileBase=dir.split('/')[dir.split('/').length-3]
         var fileDescriptor=(dir.split('/').slice(1).join('_')+'Test').toUpperCase()
-
-        var output2 = `#include "../`+fileBase+`.h"`
-        var output3 = `int ${fileDescriptor}(int argc, char *argv[]);`
-
-        var output = `#ifndef ${fileDescriptor}\n#define ${fileDescriptor}\n\n`+output2+`\n\n`+output3+`\n\n#endif`
+        var output2 = `#include "../`+fileBase+`.h"`;
+        var output3 = `int _${fileDescriptor}(int argc, char *argv[]);`;
+        var output = 
+            `#ifndef ${fileDescriptor}\n`+
+            `#define ${fileDescriptor}\n\n`+
+            output2+`\n\n`+
+            output3+`\n\n`+
+            `#endif`
         fs.writeFileSync( dir+'Test'+'.h', output);
     }
 
     cDriver(dir){
-
+        var fileDescriptor1=(dir.split('/').slice(1).join('_')+'Driver').toUpperCase()
+        var fileDescriptor2=(dir.split('/').slice(1).join('_')+'Test').toUpperCase()
+        var output=
+        `#include <stdio.h>\n`+
+        `#include "Test.h"\n`+
+        `#include "Driver.h"\n\n`+
+        `int main(int argc, char *argv[]){\n`+
+            `\tprintf("${fileDescriptor1}\\n");\n`+
+            `\t${fileDescriptor2}(argc, argv);\n\n`+
+            `\treturn 0;\n`+
+        `}`
+        fs.writeFileSync(dir+'Driver'+'.c', output);
     }
 
     hDriver(dir){
-
+        var fileDescriptor=(dir.split('/').slice(1).join('_')+'driver').toUpperCase()
+        var output = `#ifndef ${fileDescriptor}\n`+
+        `#define ${fileDescriptor}\n`+
+        `#include "Test.h"\n`+
+        `#endif`
+        fs.writeFileSync( dir+'Driver'+'.h', output);
     }
 }
 

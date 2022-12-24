@@ -1,7 +1,0 @@
-#ifndef CTOOLS_UTILS_TYPES_UNICODE_UNICODE
-#define CTOOLS_UTILS_TYPES_UNICODE_UNICODE
-
-//Define C Api here...
-
-
-#endif

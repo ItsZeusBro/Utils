@@ -1,7 +1,0 @@
-#ifndef CTOOLS_UTILS_TYPES_NUMBER_NUMBER
-#define CTOOLS_UTILS_TYPES_NUMBER_NUMBER
-
-//Define C Api here...
-
-
-#endif

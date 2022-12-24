@@ -1,0 +1,4 @@
+#ifndef CTOOLS_COMBINATORICS_TEST_DRIVER
+#define CTOOLS_COMBINATORICS_TEST_DRIVER
+#include "Test.h"
+#endif

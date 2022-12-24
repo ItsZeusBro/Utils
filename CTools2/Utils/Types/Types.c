@@ -1,3 +1,0 @@
-#include "Types.h"
-
-//Create C Api here...

@@ -3,6 +3,6 @@
 
 #include "../Unicode.h"
 
-int CTOOLS_UTILS_TYPES_UNICODE_TEST_TEST(int argc, char *argv[]);
+int _CTOOLS_UTILS_TYPES_UNICODE_TEST_TEST(int argc, char *argv[]);
 
 #endif

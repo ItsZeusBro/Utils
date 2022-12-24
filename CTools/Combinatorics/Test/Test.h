@@ -3,6 +3,6 @@
 
 #include "../Combinatorics.h"
 
-int CTOOLS_COMBINATORICS_TEST_TEST(int argc, char *argv[]);
+int _CTOOLS_COMBINATORICS_TEST_TEST(int argc, char *argv[]);
 
 #endif

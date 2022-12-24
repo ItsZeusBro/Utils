@@ -3,6 +3,6 @@
 
 #include "../Dictionary.h"
 
-int CTOOLS_UTILS_DICTIONARY_TEST_TEST(int argc, char *argv[]);
+int _CTOOLS_UTILS_DICTIONARY_TEST_TEST(int argc, char *argv[]);
 
 #endif

@@ -3,6 +3,6 @@
 
 #include "../String.h"
 
-int CTOOLS_UTILS_TYPES_STRING_TEST_TEST(int argc, char *argv[]);
+int _CTOOLS_UTILS_TYPES_STRING_TEST_TEST(int argc, char *argv[]);
 
 #endif

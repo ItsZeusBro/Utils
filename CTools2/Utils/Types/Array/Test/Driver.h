@@ -1,5 +1,0 @@
-#ifndef CTOOLS_UTILS_TYPES_ARRAY_TEST_DRIVER
-#define CTOOLS_UTILS_TYPES_ARRAY_TEST_DRIVER
-#include "Test.h"
-
-#endif

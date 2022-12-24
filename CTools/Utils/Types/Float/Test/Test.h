@@ -3,6 +3,6 @@
 
 #include "../Float.h"
 
-int CTOOLS_UTILS_TYPES_FLOAT_TEST_TEST(int argc, char *argv[]);
+int _CTOOLS_UTILS_TYPES_FLOAT_TEST_TEST(int argc, char *argv[]);
 
 #endif

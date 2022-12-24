@@ -3,6 +3,6 @@
 
 #include "../LinkList.h"
 
-int CTOOLS_UTILS_TYPES_LINKLIST_TEST_TEST(int argc, char *argv[]);
+int _CTOOLS_UTILS_TYPES_LINKLIST_TEST_TEST(int argc, char *argv[]);
 
 #endif

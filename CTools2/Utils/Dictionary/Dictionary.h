@@ -1,7 +1,0 @@
-#ifndef CTOOLS_UTILS_DICTIONARY_DICTIONARY
-#define CTOOLS_UTILS_DICTIONARY_DICTIONARY
-
-//Define C Api here...
-
-
-#endif

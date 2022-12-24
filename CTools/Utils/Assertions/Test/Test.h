@@ -3,6 +3,6 @@
 
 #include "../Assertions.h"
 
-int CTOOLS_UTILS_ASSERTIONS_TEST_TEST(int argc, char *argv[]);
+int _CTOOLS_UTILS_ASSERTIONS_TEST_TEST(int argc, char *argv[]);
 
 #endif

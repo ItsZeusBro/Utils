@@ -1,7 +1,0 @@
-#ifndef CTOOLS_UTILS_ASSERTIONS_ASSERTIONS
-#define CTOOLS_UTILS_ASSERTIONS_ASSERTIONS
-
-//Define C Api here...
-
-
-#endif

@@ -3,6 +3,6 @@
 
 #include "../Automata.h"
 
-int CTOOLS_AUTOMATA_TEST_TEST(int argc, char *argv[]);
+int _CTOOLS_AUTOMATA_TEST_TEST(int argc, char *argv[]);
 
 #endif

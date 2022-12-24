@@ -1,7 +1,0 @@
-#ifndef CTOOLS_UTILS_TYPES_STRING_STRING
-#define CTOOLS_UTILS_TYPES_STRING_STRING
-
-//Define C Api here...
-
-
-#endif

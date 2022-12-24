@@ -3,6 +3,6 @@
 
 #include "../Crypto.h"
 
-int CTOOLS_CRYPTO_TEST_TEST(int argc, char *argv[]);
+int _CTOOLS_CRYPTO_TEST_TEST(int argc, char *argv[]);
 
 #endif

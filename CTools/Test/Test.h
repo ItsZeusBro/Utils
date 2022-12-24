@@ -3,6 +3,6 @@
 
 #include "../CTools.h"
 
-int CTOOLS_TEST_TEST(int argc, char *argv[]);
+int _CTOOLS_TEST_TEST(int argc, char *argv[]);
 
 #endif

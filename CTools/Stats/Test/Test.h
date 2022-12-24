@@ -3,6 +3,6 @@
 
 #include "../Stats.h"
 
-int CTOOLS_STATS_TEST_TEST(int argc, char *argv[]);
+int _CTOOLS_STATS_TEST_TEST(int argc, char *argv[]);
 
 #endif

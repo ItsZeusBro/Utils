@@ -1,5 +1,0 @@
-#ifndef CTOOLS_AUTOMATA_TEST_DRIVER
-#define CTOOLS_AUTOMATA_TEST_DRIVER
-#include "Test.h"
-
-#endif

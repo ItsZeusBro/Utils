@@ -3,6 +3,6 @@
 
 #include "../Matrix.h"
 
-int CTOOLS_MATRIX_TEST_TEST(int argc, char *argv[]);
+int _CTOOLS_MATRIX_TEST_TEST(int argc, char *argv[]);
 
 #endif
