@@ -49,7 +49,7 @@ class Make{
                 this.hDriver(testDir)
             }
             
-            makefileOutput+=this.make(uniquePaths[i].slice())
+            makefileOutput+=this.make(uniquePaths[i].slice(), makeObject[uniquePaths[i]])
             this.ALL_TEST_c_DEVELOPER_DEPENDENCIES+=this.makeAllTestCDeveloperDependencies(uniquePaths[i].slice())
             this.ALL_TEST_h_DEVELOPER_DEPENDENCIES+=this.makeAllTestHDeveloperDependencies(uniquePaths[i].slice())
             this.ALL_TEST_o_DEVELOPER_DEPENDENCIES+=this.makeAllTestODeveloperDependencies(uniquePaths[i].slice())
@@ -152,14 +152,22 @@ class Make{
     }
 
 
-    make(dir){
+    make(dir, dependencies){
         var dirName=dir
         dir=dir.split('/')
         dir.pop()
         dir.shift()
         var fileName=dir.slice().pop()
         dir=dir.join('_').toUpperCase()
-
+        var dependenciesH=``
+        var dependenciesC=``
+        var dependenciesO=``
+       for(var i = 0; i<dependencies.length; i++){
+            
+            dependenciesH+=dependencies[0].slice(0,-1)+`h `
+            dependenciesC+=dependencies[0].slice(0,-1)+`c `
+            dependenciesO+=dependencies[0].slice(0,-1)+`o `
+       }
        var output = 
        `${dir}_DIR=${dirName}\n`+
        `${dir}_TEST_DIR=\$\{${dir}_DIR\}Test/\n`+
@@ -185,21 +193,21 @@ class Make{
        `${dir}_TEST_DRIVER_h_PATH=\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_DRIVER_h\}\n`+
        `${dir}_TEST_DRIVER_o_PATH=\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_DRIVER_o\}\n`+
 
-       `${dir}_TEST_c_PRODUCTION_DEPENDENCIES=\$\{${dir}_c_PATH\} \$\{${dir}_TEST_c_PATH\}\n`+
-       `${dir}_TEST_h_PRODUCTION_DEPENDENCIES=\$\{${dir}_h_PATH\} \$\{${dir}_TEST_h_PATH\}\n`+
-       `${dir}_TEST_o_PRODUCTION_DEPENDENCIES=\$\{${dir}_o_PATH\} \$\{${dir}_TEST_o_PATH\}\n`+
+       `${dir}_TEST_c_PRODUCTION_DEPENDENCIES=\$\{${dir}_c_PATH\} \$\{${dir}_TEST_c_PATH\} `+ dependenciesC + `\n`+
+       `${dir}_TEST_h_PRODUCTION_DEPENDENCIES=\$\{${dir}_h_PATH\} \$\{${dir}_TEST_h_PATH\} `+ dependenciesH + `\n`+
+       `${dir}_TEST_o_PRODUCTION_DEPENDENCIES=\$\{${dir}_o_PATH\} \$\{${dir}_TEST_o_PATH\} `+ dependenciesO + `\n`+
        
-       `${dir}_TEST_c_DEVELOPER_DEPENDENCIES=\$\{${dir}_c_PATH\} \$\{${dir}_TEST_c_PATH\} \$\{${dir}_TEST_DRIVER_c_PATH\}\n`+
-       `${dir}_TEST_h_DEVELOPER_DEPENDENCIES=\$\{${dir}_h_PATH\} \$\{${dir}_TEST_h_PATH\} \$\{${dir}_TEST_DRIVER_h_PATH\}\n`+
-       `${dir}_TEST_o_DEVELOPER_DEPENDENCIES=\$\{${dir}_o_PATH\} \$\{${dir}_TEST_o_PATH\} \$\{${dir}_TEST_DRIVER_o_PATH\}\n`+
+       `${dir}_TEST_c_DEVELOPER_DEPENDENCIES=\$\{${dir}_c_PATH\} \$\{${dir}_TEST_c_PATH\} \$\{${dir}_TEST_DRIVER_c_PATH\} `+ dependenciesC + `\n`+
+       `${dir}_TEST_h_DEVELOPER_DEPENDENCIES=\$\{${dir}_h_PATH\} \$\{${dir}_TEST_h_PATH\} \$\{${dir}_TEST_DRIVER_h_PATH\} `+ dependenciesH + `\n`+
+       `${dir}_TEST_o_DEVELOPER_DEPENDENCIES=\$\{${dir}_o_PATH\} \$\{${dir}_TEST_o_PATH\} \$\{${dir}_TEST_DRIVER_o_PATH\} `+ dependenciesO + `\n`+
 
-       `${dir}_TEST_c_DEVELOPER_FILES=\$\{${dir}_c_PATH\} \$\{${dir}_TEST_c_PATH\} \$\{${dir}_TEST_DRIVER_c_PATH\} \n`+
-       `${dir}_TEST_h_DEVELOPER_FILES=\$\{${dir}_h_PATH\} \$\{${dir}_TEST_h_PATH\} \$\{${dir}_TEST_DRIVER_h_PATH\} \n`+
-       `${dir}_TEST_o_DEVELOPER_FILES=\$\{${dir}_o_PATH\} \$\{${dir}_TEST_o_PATH\} \$\{${dir}_TEST_DRIVER_o_PATH\} \n`+
+       `${dir}_TEST_c_DEVELOPER_FILES=\$\{${dir}_c_PATH\} \$\{${dir}_TEST_c_PATH\} \$\{${dir}_TEST_DRIVER_c_PATH\} `+ dependenciesC + `\n`+
+       `${dir}_TEST_h_DEVELOPER_FILES=\$\{${dir}_h_PATH\} \$\{${dir}_TEST_h_PATH\} \$\{${dir}_TEST_DRIVER_h_PATH\} `+ dependenciesH + `\n`+
+       `${dir}_TEST_o_DEVELOPER_FILES=\$\{${dir}_o_PATH\} \$\{${dir}_TEST_o_PATH\} \$\{${dir}_TEST_DRIVER_o_PATH\} `+ dependenciesO + `\n`+
 
-       `${dir}_TEST_c_PRODUCTION_FILES=\$\{${dir}_c_PATH\} \$\{${dir}_TEST_c_PATH\} \n`+
-       `${dir}_TEST_h_PRODUCTION_FILES=\$\{${dir}_h_PATH\} \$\{${dir}_TEST_h_PATH\} \n`+
-       `${dir}_TEST_o_PRODUCTION_FILES=\$\{${dir}_o_PATH\} \$\{${dir}_TEST_o_PATH\} \n\n\n`+
+       `${dir}_TEST_c_PRODUCTION_FILES=\$\{${dir}_c_PATH\} \$\{${dir}_TEST_c_PATH\} `+ dependenciesC + `\n`+
+       `${dir}_TEST_h_PRODUCTION_FILES=\$\{${dir}_h_PATH\} \$\{${dir}_TEST_h_PATH\} `+ dependenciesH + `\n`+
+       `${dir}_TEST_o_PRODUCTION_FILES=\$\{${dir}_o_PATH\} \$\{${dir}_TEST_o_PATH\} `+ dependenciesO + `\n\n\n`+
 
        `${dir}_TEST_DEVELOPER_FILES= \$\{${dir}_TEST_c_DEVELOPER_FILES\} \$\{${dir}_TEST_h_DEVELOPER_FILES\} \$\{${dir}_TEST_o_DEVELOPER_FILES\} \n\n\n`+
 
