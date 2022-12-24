@@ -1,5 +1,5 @@
 import { spawn, exec } from "node:child_process"
-
+import fs from "node:fs";
 class Watcher{
 
     watch(files){
@@ -48,67 +48,67 @@ class Watcher{
             makeArgs=['allDevRun']
         }else if(file.includes('Crypto')){
             //compile crypto
-            makeArgs=['cryptoDevRun']
-            console.log(file, 'cryptoDevRun')
+            makeArgs=['CryptoDeveloperRun']
+            console.log(file, 'CryptoDeveloperRun')
         }else if(file.includes('Automata')){
             //compile automata
-            makeArgs=['automataDevRun']
-            console.log(file, 'automataDevRun')
+            makeArgs=['AutomataDeveloperRun']
+            console.log(file, 'AutomataDeveloperRun')
         }else if(file.includes('Utils/Types/Test')||file.includes('Utils/Types/Types')){
             //compile entire Utils Types lib
-            makeArgs=['utilsDevRun']
-            console.log(file, 'utilsDevRun')
+            makeArgs=['UtilsDeveloperRun']
+            console.log(file, 'UtilsDeveloperRun')
         }else if(file.includes('Utils/Types/Unicode')){
             //compile Unicode lib
-            makeArgs=['utilsTypesUnicodeDevRun']
-            console.log(file, 'utilsTypesUnicodeDevRun')
+            makeArgs=['UnicodeDeveloperRun']
+            console.log(file, 'UnicodeDeveloperRun')
         }else if(file.includes('Utils/Types/Array')){
             //compile Array lib
-            makeArgs=['utilsTypesArrayDevRun']
-            console.log(file, 'utilsTypesArrayDevRun')
+            makeArgs=['ArrayDeveloperRun']
+            console.log(file, 'ArrayDeveloperRun')
         }else if(file.includes('Utils/Types/Number')){
             //compile Number lib
-            makeArgs=['utilsTypesNumberDevRun']
-            console.log(file, 'utilsTypesNumberDevRun')
+            makeArgs=['NumberDeveloperRun']
+            console.log(file, 'NumberDeveloperRun')
         }else if(file.includes('Utils/Types/Float')){
             //compile Float lib
-            makeArgs=['utilsTypesFloatDevRun']
-            console.log(file, 'utilsTypesFloatDevRun')
+            makeArgs=['FloatDeveloperRun']
+            console.log(file, 'FloatDeveloperRun')
         }else if(file.includes('Utils/Types/LinkList')){
             //compile Link List lib
-            makeArgs=['utilsTypesLinkListDevRun']
-            console.log(file, 'utilsTypesLinkListDevRun')
+            makeArgs=['LinkListDeveloperRun']
+            console.log(file, 'LinkListDeveloperRun')
         }else if(file.includes('Utils/Types/String')){
             //compile String lib
-            makeArgs=['utilsTypesStringDevRun']
-            console.log(file, 'utilsTypesStringDevRun')
+            makeArgs=['StringDeveloperRun']
+            console.log(file, 'StringDeveloperRun')
         }else if(file.includes('Utils/Test/Test')||file.includes('Utils/Utils.')){
-            makeArgs=['utilsDevRun']          
-            console.log(file, 'utilsDevRun')
+            makeArgs=['UtilsDeveloperRun']          
+            console.log(file, 'UtilsDeveloperRun')
         }else if(file.includes('Utils/Assertions')){
             //compile Assertions
-            makeArgs=['utilsAssertionsDevRun']
-            console.log(file, 'utilsAssertionsDevRun')
+            makeArgs=['AssertionsDeveloperRun']
+            console.log(file, 'AssertionsDeveloperRun')
         }else if(file.includes('Utils/Dictionary')){
             //compile Dictionary
-            makeArgs=['utilsDictionaryDevRun']
-            console.log(file, 'utilsDictionaryDevRun')
+            makeArgs=['DictionaryDeveloperRun']
+            console.log(file, 'DictionaryDeveloperRun')
         }else if(file.includes('Utils/Rand')){
             //compile Rand
-            makeArgs=['utilsRandDevRun']
-            console.log(file, 'utilsRandDevRun')
+            makeArgs=['RandDeveloperRun']
+            console.log(file, 'RandDeveloperRun')
         }else if(file.includes('Combinatorics')){
             //compile Combinatorics
-            makeArgs=['combinatoricsDevRun']
-            console.log(file, 'combinatoricsDevRun')
+            makeArgs=['CombinatoricsDeveloperRun']
+            console.log(file, 'CombinatoricsDeveloperRun')
         }else if(file.includes('Matrix')){
             //compile matrix
-            makeArgs=['matrixDevRun']
-            console.log(file, 'matrixDevRun')
+            makeArgs=['MatrixDeveloperRun']
+            console.log(file, 'MatrixDeveloperRun')
         }else if(file.includes('Stats')){
             //compile stats
-            makeArgs=['statsDevRun']
-            console.log(file, 'statsDevRun')
+            makeArgs=['StatsDeveloperRun']
+            console.log(file, 'StatsDeveloperRun')
         }
         exec('make '+makeArgs.join(' '), (error, stdout, stderr)=>{
             if(stdout){

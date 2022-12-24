@@ -55,12 +55,13 @@ CToolsDeveloperLink: ${CTOOLS_TEST_o_DEVELOPER_DEPENDENCIES}
 	(gcc -o developerTest ${CTOOLS_o_PATH} ${CTOOLS_TEST_o_PATH} ${CTOOLS_TEST_DRIVER_o_PATH})
 
 CToolsProductionLink: ${CTOOLS_TEST_o_PRODUCTION_DEPENDENCIES}
-	(gcc -o developerTest ${CTOOLS_o_PATH} ${CTOOLS_TEST_o_PATH})
+	(gcc -o productionTest ${CTOOLS_o_PATH} ${CTOOLS_TEST_o_PATH})
 
-CToolsDeveloperRun: CToolsDeveloper CToolsDeveloperClean CToolsDeveloperLink
+CToolsDeveloperRun: ${CTOOLS_TEST_o_DEVELOPER_DEPENDENCIES} ${CTOOLS_TEST_c_DEVELOPER_DEPENDENCIES} ${CTOOLS_TEST_h_DEVELOPER_DEPENDENCIES}
 	make CToolsDeveloperClean
 	make CToolsDeveloper
 	make CToolsDeveloperLink
+	./developerTest
 
 ########################################################################################################################################
 
@@ -125,12 +126,13 @@ AutomataDeveloperLink: ${CTOOLS_AUTOMATA_TEST_o_DEVELOPER_DEPENDENCIES}
 	(gcc -o developerTest ${CTOOLS_AUTOMATA_o_PATH} ${CTOOLS_AUTOMATA_TEST_o_PATH} ${CTOOLS_AUTOMATA_TEST_DRIVER_o_PATH})
 
 AutomataProductionLink: ${CTOOLS_AUTOMATA_TEST_o_PRODUCTION_DEPENDENCIES}
-	(gcc -o developerTest ${CTOOLS_AUTOMATA_o_PATH} ${CTOOLS_AUTOMATA_TEST_o_PATH})
+	(gcc -o productionTest ${CTOOLS_AUTOMATA_o_PATH} ${CTOOLS_AUTOMATA_TEST_o_PATH})
 
-AutomataDeveloperRun: AutomataDeveloper AutomataDeveloperClean AutomataDeveloperLink
+AutomataDeveloperRun: ${CTOOLS_AUTOMATA_TEST_o_DEVELOPER_DEPENDENCIES} ${CTOOLS_AUTOMATA_TEST_c_DEVELOPER_DEPENDENCIES} ${CTOOLS_AUTOMATA_TEST_h_DEVELOPER_DEPENDENCIES}
 	make AutomataDeveloperClean
 	make AutomataDeveloper
 	make AutomataDeveloperLink
+	./developerTest
 
 ########################################################################################################################################
 
@@ -195,12 +197,13 @@ CombinatoricsDeveloperLink: ${CTOOLS_COMBINATORICS_TEST_o_DEVELOPER_DEPENDENCIES
 	(gcc -o developerTest ${CTOOLS_COMBINATORICS_o_PATH} ${CTOOLS_COMBINATORICS_TEST_o_PATH} ${CTOOLS_COMBINATORICS_TEST_DRIVER_o_PATH})
 
 CombinatoricsProductionLink: ${CTOOLS_COMBINATORICS_TEST_o_PRODUCTION_DEPENDENCIES}
-	(gcc -o developerTest ${CTOOLS_COMBINATORICS_o_PATH} ${CTOOLS_COMBINATORICS_TEST_o_PATH})
+	(gcc -o productionTest ${CTOOLS_COMBINATORICS_o_PATH} ${CTOOLS_COMBINATORICS_TEST_o_PATH})
 
-CombinatoricsDeveloperRun: CombinatoricsDeveloper CombinatoricsDeveloperClean CombinatoricsDeveloperLink
+CombinatoricsDeveloperRun: ${CTOOLS_COMBINATORICS_TEST_o_DEVELOPER_DEPENDENCIES} ${CTOOLS_COMBINATORICS_TEST_c_DEVELOPER_DEPENDENCIES} ${CTOOLS_COMBINATORICS_TEST_h_DEVELOPER_DEPENDENCIES}
 	make CombinatoricsDeveloperClean
 	make CombinatoricsDeveloper
 	make CombinatoricsDeveloperLink
+	./developerTest
 
 ########################################################################################################################################
 
@@ -265,12 +268,13 @@ CryptoDeveloperLink: ${CTOOLS_CRYPTO_TEST_o_DEVELOPER_DEPENDENCIES}
 	(gcc -o developerTest ${CTOOLS_CRYPTO_o_PATH} ${CTOOLS_CRYPTO_TEST_o_PATH} ${CTOOLS_CRYPTO_TEST_DRIVER_o_PATH})
 
 CryptoProductionLink: ${CTOOLS_CRYPTO_TEST_o_PRODUCTION_DEPENDENCIES}
-	(gcc -o developerTest ${CTOOLS_CRYPTO_o_PATH} ${CTOOLS_CRYPTO_TEST_o_PATH})
+	(gcc -o productionTest ${CTOOLS_CRYPTO_o_PATH} ${CTOOLS_CRYPTO_TEST_o_PATH})
 
-CryptoDeveloperRun: CryptoDeveloper CryptoDeveloperClean CryptoDeveloperLink
+CryptoDeveloperRun: ${CTOOLS_CRYPTO_TEST_o_DEVELOPER_DEPENDENCIES} ${CTOOLS_CRYPTO_TEST_c_DEVELOPER_DEPENDENCIES} ${CTOOLS_CRYPTO_TEST_h_DEVELOPER_DEPENDENCIES}
 	make CryptoDeveloperClean
 	make CryptoDeveloper
 	make CryptoDeveloperLink
+	./developerTest
 
 ########################################################################################################################################
 
@@ -335,12 +339,13 @@ MatrixDeveloperLink: ${CTOOLS_MATRIX_TEST_o_DEVELOPER_DEPENDENCIES}
 	(gcc -o developerTest ${CTOOLS_MATRIX_o_PATH} ${CTOOLS_MATRIX_TEST_o_PATH} ${CTOOLS_MATRIX_TEST_DRIVER_o_PATH})
 
 MatrixProductionLink: ${CTOOLS_MATRIX_TEST_o_PRODUCTION_DEPENDENCIES}
-	(gcc -o developerTest ${CTOOLS_MATRIX_o_PATH} ${CTOOLS_MATRIX_TEST_o_PATH})
+	(gcc -o productionTest ${CTOOLS_MATRIX_o_PATH} ${CTOOLS_MATRIX_TEST_o_PATH})
 
-MatrixDeveloperRun: MatrixDeveloper MatrixDeveloperClean MatrixDeveloperLink
+MatrixDeveloperRun: ${CTOOLS_MATRIX_TEST_o_DEVELOPER_DEPENDENCIES} ${CTOOLS_MATRIX_TEST_c_DEVELOPER_DEPENDENCIES} ${CTOOLS_MATRIX_TEST_h_DEVELOPER_DEPENDENCIES}
 	make MatrixDeveloperClean
 	make MatrixDeveloper
 	make MatrixDeveloperLink
+	./developerTest
 
 ########################################################################################################################################
 
@@ -405,12 +410,13 @@ StatsDeveloperLink: ${CTOOLS_STATS_TEST_o_DEVELOPER_DEPENDENCIES}
 	(gcc -o developerTest ${CTOOLS_STATS_o_PATH} ${CTOOLS_STATS_TEST_o_PATH} ${CTOOLS_STATS_TEST_DRIVER_o_PATH})
 
 StatsProductionLink: ${CTOOLS_STATS_TEST_o_PRODUCTION_DEPENDENCIES}
-	(gcc -o developerTest ${CTOOLS_STATS_o_PATH} ${CTOOLS_STATS_TEST_o_PATH})
+	(gcc -o productionTest ${CTOOLS_STATS_o_PATH} ${CTOOLS_STATS_TEST_o_PATH})
 
-StatsDeveloperRun: StatsDeveloper StatsDeveloperClean StatsDeveloperLink
+StatsDeveloperRun: ${CTOOLS_STATS_TEST_o_DEVELOPER_DEPENDENCIES} ${CTOOLS_STATS_TEST_c_DEVELOPER_DEPENDENCIES} ${CTOOLS_STATS_TEST_h_DEVELOPER_DEPENDENCIES}
 	make StatsDeveloperClean
 	make StatsDeveloper
 	make StatsDeveloperLink
+	./developerTest
 
 ########################################################################################################################################
 
@@ -475,12 +481,13 @@ UtilsDeveloperLink: ${CTOOLS_UTILS_TEST_o_DEVELOPER_DEPENDENCIES}
 	(gcc -o developerTest ${CTOOLS_UTILS_o_PATH} ${CTOOLS_UTILS_TEST_o_PATH} ${CTOOLS_UTILS_TEST_DRIVER_o_PATH})
 
 UtilsProductionLink: ${CTOOLS_UTILS_TEST_o_PRODUCTION_DEPENDENCIES}
-	(gcc -o developerTest ${CTOOLS_UTILS_o_PATH} ${CTOOLS_UTILS_TEST_o_PATH})
+	(gcc -o productionTest ${CTOOLS_UTILS_o_PATH} ${CTOOLS_UTILS_TEST_o_PATH})
 
-UtilsDeveloperRun: UtilsDeveloper UtilsDeveloperClean UtilsDeveloperLink
+UtilsDeveloperRun: ${CTOOLS_UTILS_TEST_o_DEVELOPER_DEPENDENCIES} ${CTOOLS_UTILS_TEST_c_DEVELOPER_DEPENDENCIES} ${CTOOLS_UTILS_TEST_h_DEVELOPER_DEPENDENCIES}
 	make UtilsDeveloperClean
 	make UtilsDeveloper
 	make UtilsDeveloperLink
+	./developerTest
 
 ########################################################################################################################################
 
@@ -545,12 +552,13 @@ AssertionsDeveloperLink: ${CTOOLS_UTILS_ASSERTIONS_TEST_o_DEVELOPER_DEPENDENCIES
 	(gcc -o developerTest ${CTOOLS_UTILS_ASSERTIONS_o_PATH} ${CTOOLS_UTILS_ASSERTIONS_TEST_o_PATH} ${CTOOLS_UTILS_ASSERTIONS_TEST_DRIVER_o_PATH})
 
 AssertionsProductionLink: ${CTOOLS_UTILS_ASSERTIONS_TEST_o_PRODUCTION_DEPENDENCIES}
-	(gcc -o developerTest ${CTOOLS_UTILS_ASSERTIONS_o_PATH} ${CTOOLS_UTILS_ASSERTIONS_TEST_o_PATH})
+	(gcc -o productionTest ${CTOOLS_UTILS_ASSERTIONS_o_PATH} ${CTOOLS_UTILS_ASSERTIONS_TEST_o_PATH})
 
-AssertionsDeveloperRun: AssertionsDeveloper AssertionsDeveloperClean AssertionsDeveloperLink
+AssertionsDeveloperRun: ${CTOOLS_UTILS_ASSERTIONS_TEST_o_DEVELOPER_DEPENDENCIES} ${CTOOLS_UTILS_ASSERTIONS_TEST_c_DEVELOPER_DEPENDENCIES} ${CTOOLS_UTILS_ASSERTIONS_TEST_h_DEVELOPER_DEPENDENCIES}
 	make AssertionsDeveloperClean
 	make AssertionsDeveloper
 	make AssertionsDeveloperLink
+	./developerTest
 
 ########################################################################################################################################
 
@@ -615,12 +623,13 @@ DictionaryDeveloperLink: ${CTOOLS_UTILS_DICTIONARY_TEST_o_DEVELOPER_DEPENDENCIES
 	(gcc -o developerTest ${CTOOLS_UTILS_DICTIONARY_o_PATH} ${CTOOLS_UTILS_DICTIONARY_TEST_o_PATH} ${CTOOLS_UTILS_DICTIONARY_TEST_DRIVER_o_PATH})
 
 DictionaryProductionLink: ${CTOOLS_UTILS_DICTIONARY_TEST_o_PRODUCTION_DEPENDENCIES}
-	(gcc -o developerTest ${CTOOLS_UTILS_DICTIONARY_o_PATH} ${CTOOLS_UTILS_DICTIONARY_TEST_o_PATH})
+	(gcc -o productionTest ${CTOOLS_UTILS_DICTIONARY_o_PATH} ${CTOOLS_UTILS_DICTIONARY_TEST_o_PATH})
 
-DictionaryDeveloperRun: DictionaryDeveloper DictionaryDeveloperClean DictionaryDeveloperLink
+DictionaryDeveloperRun: ${CTOOLS_UTILS_DICTIONARY_TEST_o_DEVELOPER_DEPENDENCIES} ${CTOOLS_UTILS_DICTIONARY_TEST_c_DEVELOPER_DEPENDENCIES} ${CTOOLS_UTILS_DICTIONARY_TEST_h_DEVELOPER_DEPENDENCIES}
 	make DictionaryDeveloperClean
 	make DictionaryDeveloper
 	make DictionaryDeveloperLink
+	./developerTest
 
 ########################################################################################################################################
 
@@ -685,12 +694,13 @@ RandDeveloperLink: ${CTOOLS_UTILS_RAND_TEST_o_DEVELOPER_DEPENDENCIES}
 	(gcc -o developerTest ${CTOOLS_UTILS_RAND_o_PATH} ${CTOOLS_UTILS_RAND_TEST_o_PATH} ${CTOOLS_UTILS_RAND_TEST_DRIVER_o_PATH})
 
 RandProductionLink: ${CTOOLS_UTILS_RAND_TEST_o_PRODUCTION_DEPENDENCIES}
-	(gcc -o developerTest ${CTOOLS_UTILS_RAND_o_PATH} ${CTOOLS_UTILS_RAND_TEST_o_PATH})
+	(gcc -o productionTest ${CTOOLS_UTILS_RAND_o_PATH} ${CTOOLS_UTILS_RAND_TEST_o_PATH})
 
-RandDeveloperRun: RandDeveloper RandDeveloperClean RandDeveloperLink
+RandDeveloperRun: ${CTOOLS_UTILS_RAND_TEST_o_DEVELOPER_DEPENDENCIES} ${CTOOLS_UTILS_RAND_TEST_c_DEVELOPER_DEPENDENCIES} ${CTOOLS_UTILS_RAND_TEST_h_DEVELOPER_DEPENDENCIES}
 	make RandDeveloperClean
 	make RandDeveloper
 	make RandDeveloperLink
+	./developerTest
 
 ########################################################################################################################################
 
@@ -755,12 +765,13 @@ TypesDeveloperLink: ${CTOOLS_UTILS_TYPES_TEST_o_DEVELOPER_DEPENDENCIES}
 	(gcc -o developerTest ${CTOOLS_UTILS_TYPES_o_PATH} ${CTOOLS_UTILS_TYPES_TEST_o_PATH} ${CTOOLS_UTILS_TYPES_TEST_DRIVER_o_PATH})
 
 TypesProductionLink: ${CTOOLS_UTILS_TYPES_TEST_o_PRODUCTION_DEPENDENCIES}
-	(gcc -o developerTest ${CTOOLS_UTILS_TYPES_o_PATH} ${CTOOLS_UTILS_TYPES_TEST_o_PATH})
+	(gcc -o productionTest ${CTOOLS_UTILS_TYPES_o_PATH} ${CTOOLS_UTILS_TYPES_TEST_o_PATH})
 
-TypesDeveloperRun: TypesDeveloper TypesDeveloperClean TypesDeveloperLink
+TypesDeveloperRun: ${CTOOLS_UTILS_TYPES_TEST_o_DEVELOPER_DEPENDENCIES} ${CTOOLS_UTILS_TYPES_TEST_c_DEVELOPER_DEPENDENCIES} ${CTOOLS_UTILS_TYPES_TEST_h_DEVELOPER_DEPENDENCIES}
 	make TypesDeveloperClean
 	make TypesDeveloper
 	make TypesDeveloperLink
+	./developerTest
 
 ########################################################################################################################################
 
@@ -825,12 +836,13 @@ ArrayDeveloperLink: ${CTOOLS_UTILS_TYPES_ARRAY_TEST_o_DEVELOPER_DEPENDENCIES}
 	(gcc -o developerTest ${CTOOLS_UTILS_TYPES_ARRAY_o_PATH} ${CTOOLS_UTILS_TYPES_ARRAY_TEST_o_PATH} ${CTOOLS_UTILS_TYPES_ARRAY_TEST_DRIVER_o_PATH})
 
 ArrayProductionLink: ${CTOOLS_UTILS_TYPES_ARRAY_TEST_o_PRODUCTION_DEPENDENCIES}
-	(gcc -o developerTest ${CTOOLS_UTILS_TYPES_ARRAY_o_PATH} ${CTOOLS_UTILS_TYPES_ARRAY_TEST_o_PATH})
+	(gcc -o productionTest ${CTOOLS_UTILS_TYPES_ARRAY_o_PATH} ${CTOOLS_UTILS_TYPES_ARRAY_TEST_o_PATH})
 
-ArrayDeveloperRun: ArrayDeveloper ArrayDeveloperClean ArrayDeveloperLink
+ArrayDeveloperRun: ${CTOOLS_UTILS_TYPES_ARRAY_TEST_o_DEVELOPER_DEPENDENCIES} ${CTOOLS_UTILS_TYPES_ARRAY_TEST_c_DEVELOPER_DEPENDENCIES} ${CTOOLS_UTILS_TYPES_ARRAY_TEST_h_DEVELOPER_DEPENDENCIES}
 	make ArrayDeveloperClean
 	make ArrayDeveloper
 	make ArrayDeveloperLink
+	./developerTest
 
 ########################################################################################################################################
 
@@ -895,12 +907,13 @@ FloatDeveloperLink: ${CTOOLS_UTILS_TYPES_FLOAT_TEST_o_DEVELOPER_DEPENDENCIES}
 	(gcc -o developerTest ${CTOOLS_UTILS_TYPES_FLOAT_o_PATH} ${CTOOLS_UTILS_TYPES_FLOAT_TEST_o_PATH} ${CTOOLS_UTILS_TYPES_FLOAT_TEST_DRIVER_o_PATH})
 
 FloatProductionLink: ${CTOOLS_UTILS_TYPES_FLOAT_TEST_o_PRODUCTION_DEPENDENCIES}
-	(gcc -o developerTest ${CTOOLS_UTILS_TYPES_FLOAT_o_PATH} ${CTOOLS_UTILS_TYPES_FLOAT_TEST_o_PATH})
+	(gcc -o productionTest ${CTOOLS_UTILS_TYPES_FLOAT_o_PATH} ${CTOOLS_UTILS_TYPES_FLOAT_TEST_o_PATH})
 
-FloatDeveloperRun: FloatDeveloper FloatDeveloperClean FloatDeveloperLink
+FloatDeveloperRun: ${CTOOLS_UTILS_TYPES_FLOAT_TEST_o_DEVELOPER_DEPENDENCIES} ${CTOOLS_UTILS_TYPES_FLOAT_TEST_c_DEVELOPER_DEPENDENCIES} ${CTOOLS_UTILS_TYPES_FLOAT_TEST_h_DEVELOPER_DEPENDENCIES}
 	make FloatDeveloperClean
 	make FloatDeveloper
 	make FloatDeveloperLink
+	./developerTest
 
 ########################################################################################################################################
 
@@ -965,12 +978,13 @@ LinkListDeveloperLink: ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_o_DEVELOPER_DEPENDENCI
 	(gcc -o developerTest ${CTOOLS_UTILS_TYPES_LINKLIST_o_PATH} ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_o_PATH} ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_DRIVER_o_PATH})
 
 LinkListProductionLink: ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_o_PRODUCTION_DEPENDENCIES}
-	(gcc -o developerTest ${CTOOLS_UTILS_TYPES_LINKLIST_o_PATH} ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_o_PATH})
+	(gcc -o productionTest ${CTOOLS_UTILS_TYPES_LINKLIST_o_PATH} ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_o_PATH})
 
-LinkListDeveloperRun: LinkListDeveloper LinkListDeveloperClean LinkListDeveloperLink
+LinkListDeveloperRun: ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_o_DEVELOPER_DEPENDENCIES} ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_c_DEVELOPER_DEPENDENCIES} ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_h_DEVELOPER_DEPENDENCIES}
 	make LinkListDeveloperClean
 	make LinkListDeveloper
 	make LinkListDeveloperLink
+	./developerTest
 
 ########################################################################################################################################
 
@@ -1035,12 +1049,13 @@ NumberDeveloperLink: ${CTOOLS_UTILS_TYPES_NUMBER_TEST_o_DEVELOPER_DEPENDENCIES}
 	(gcc -o developerTest ${CTOOLS_UTILS_TYPES_NUMBER_o_PATH} ${CTOOLS_UTILS_TYPES_NUMBER_TEST_o_PATH} ${CTOOLS_UTILS_TYPES_NUMBER_TEST_DRIVER_o_PATH})
 
 NumberProductionLink: ${CTOOLS_UTILS_TYPES_NUMBER_TEST_o_PRODUCTION_DEPENDENCIES}
-	(gcc -o developerTest ${CTOOLS_UTILS_TYPES_NUMBER_o_PATH} ${CTOOLS_UTILS_TYPES_NUMBER_TEST_o_PATH})
+	(gcc -o productionTest ${CTOOLS_UTILS_TYPES_NUMBER_o_PATH} ${CTOOLS_UTILS_TYPES_NUMBER_TEST_o_PATH})
 
-NumberDeveloperRun: NumberDeveloper NumberDeveloperClean NumberDeveloperLink
+NumberDeveloperRun: ${CTOOLS_UTILS_TYPES_NUMBER_TEST_o_DEVELOPER_DEPENDENCIES} ${CTOOLS_UTILS_TYPES_NUMBER_TEST_c_DEVELOPER_DEPENDENCIES} ${CTOOLS_UTILS_TYPES_NUMBER_TEST_h_DEVELOPER_DEPENDENCIES}
 	make NumberDeveloperClean
 	make NumberDeveloper
 	make NumberDeveloperLink
+	./developerTest
 
 ########################################################################################################################################
 
@@ -1105,12 +1120,13 @@ StringDeveloperLink: ${CTOOLS_UTILS_TYPES_STRING_TEST_o_DEVELOPER_DEPENDENCIES}
 	(gcc -o developerTest ${CTOOLS_UTILS_TYPES_STRING_o_PATH} ${CTOOLS_UTILS_TYPES_STRING_TEST_o_PATH} ${CTOOLS_UTILS_TYPES_STRING_TEST_DRIVER_o_PATH})
 
 StringProductionLink: ${CTOOLS_UTILS_TYPES_STRING_TEST_o_PRODUCTION_DEPENDENCIES}
-	(gcc -o developerTest ${CTOOLS_UTILS_TYPES_STRING_o_PATH} ${CTOOLS_UTILS_TYPES_STRING_TEST_o_PATH})
+	(gcc -o productionTest ${CTOOLS_UTILS_TYPES_STRING_o_PATH} ${CTOOLS_UTILS_TYPES_STRING_TEST_o_PATH})
 
-StringDeveloperRun: StringDeveloper StringDeveloperClean StringDeveloperLink
+StringDeveloperRun: ${CTOOLS_UTILS_TYPES_STRING_TEST_o_DEVELOPER_DEPENDENCIES} ${CTOOLS_UTILS_TYPES_STRING_TEST_c_DEVELOPER_DEPENDENCIES} ${CTOOLS_UTILS_TYPES_STRING_TEST_h_DEVELOPER_DEPENDENCIES}
 	make StringDeveloperClean
 	make StringDeveloper
 	make StringDeveloperLink
+	./developerTest
 
 ########################################################################################################################################
 
@@ -1175,12 +1191,13 @@ UnicodeDeveloperLink: ${CTOOLS_UTILS_TYPES_UNICODE_TEST_o_DEVELOPER_DEPENDENCIES
 	(gcc -o developerTest ${CTOOLS_UTILS_TYPES_UNICODE_o_PATH} ${CTOOLS_UTILS_TYPES_UNICODE_TEST_o_PATH} ${CTOOLS_UTILS_TYPES_UNICODE_TEST_DRIVER_o_PATH})
 
 UnicodeProductionLink: ${CTOOLS_UTILS_TYPES_UNICODE_TEST_o_PRODUCTION_DEPENDENCIES}
-	(gcc -o developerTest ${CTOOLS_UTILS_TYPES_UNICODE_o_PATH} ${CTOOLS_UTILS_TYPES_UNICODE_TEST_o_PATH})
+	(gcc -o productionTest ${CTOOLS_UTILS_TYPES_UNICODE_o_PATH} ${CTOOLS_UTILS_TYPES_UNICODE_TEST_o_PATH})
 
-UnicodeDeveloperRun: UnicodeDeveloper UnicodeDeveloperClean UnicodeDeveloperLink
+UnicodeDeveloperRun: ${CTOOLS_UTILS_TYPES_UNICODE_TEST_o_DEVELOPER_DEPENDENCIES} ${CTOOLS_UTILS_TYPES_UNICODE_TEST_c_DEVELOPER_DEPENDENCIES} ${CTOOLS_UTILS_TYPES_UNICODE_TEST_h_DEVELOPER_DEPENDENCIES}
 	make UnicodeDeveloperClean
 	make UnicodeDeveloper
 	make UnicodeDeveloperLink
+	./developerTest
 
 ########################################################################################################################################
 

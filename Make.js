@@ -2,7 +2,7 @@ import {makeObject} from "./MakeObject.js"
 import fs from 'node:fs'
 
 class Make{
-    constructor(makeObject){
+    constructor(makeObject, buildPaths){
         this.ALL_TEST_c_DEVELOPER_DEPENDENCIES=``;
         this.ALL_TEST_h_DEVELOPER_DEPENDENCIES=``;
         this.ALL_TEST_o_DEVELOPER_DEPENDENCIES=``;
@@ -20,7 +20,7 @@ class Make{
         this.makeAllProductionTestsLink=``;
 
         this.uniquePaths=this.uniquePaths(makeObject)
-        this.buildPaths(this.uniquePaths)
+        this.buildPaths(this.uniquePaths, buildPaths)
     }
 
     uniquePaths(makeObject){
@@ -34,7 +34,7 @@ class Make{
         return Array.from(new Set(uniquePaths))
     }
 
-    buildPaths(uniquePaths){
+    buildPaths(uniquePaths, buildPaths){
         var makefileOutput=``;
 
 
@@ -42,20 +42,24 @@ class Make{
             var testDir=uniquePaths[i]+'Test/'
             var dir=uniquePaths[i].slice()
             var fileBase=dir.split('/')[dir.split('/').length-2]
-            if (!fs.existsSync(dir)){
-                fs.mkdirSync(dir);
+            if(JSON.parse(buildPaths.toLowerCase())==true){
+                console.log('creating empty project...')
+                if (!fs.existsSync(dir)){
+                    fs.mkdirSync(dir);
+                }
+                if (!fs.existsSync(testDir)){
+                    fs.mkdirSync(testDir);
+                }
+                if(!this.cmain(dir, fileBase)){
+                    this.cFile(dir, fileBase)
+                }
+                this.hFile(dir, fileBase)
+                this.cTest(testDir)
+                this.hTest(testDir)
+                this.cDriver(testDir)
+                this.hDriver(testDir)
             }
-            if (!fs.existsSync(testDir)){
-                fs.mkdirSync(testDir);
-            }
-            if(!this.cmain(dir, fileBase)){
-                this.cFile(dir, fileBase)
-            }
-            this.hFile(dir, fileBase)
-            this.cTest(testDir)
-            this.hTest(testDir)
-            this.cDriver(testDir)
-            this.hDriver(testDir)
+            
             makefileOutput+=this.make(uniquePaths[i].slice())
             this.ALL_TEST_c_DEVELOPER_DEPENDENCIES+=this.makeAllTestCDeveloperDependencies(uniquePaths[i].slice())
             this.ALL_TEST_h_DEVELOPER_DEPENDENCIES+=this.makeAllTestHDeveloperDependencies(uniquePaths[i].slice())
@@ -222,12 +226,13 @@ class Make{
 	    `\t(gcc -o developerTest \$\{${dir}_o_PATH\} \$\{${dir}_TEST_o_PATH\} \$\{${dir}_TEST_DRIVER_o_PATH\})\n\n`+
 
         `${fileName}ProductionLink: \$\{${dir}_TEST_o_PRODUCTION_DEPENDENCIES\}\n`+
-	    `\t(gcc -o developerTest \$\{${dir}_o_PATH\} \$\{${dir}_TEST_o_PATH\})\n\n`+
+	    `\t(gcc -o productionTest \$\{${dir}_o_PATH\} \$\{${dir}_TEST_o_PATH\})\n\n`+
         
-        `${fileName}DeveloperRun: ${fileName}Developer ${fileName}DeveloperClean ${fileName}DeveloperLink\n`+
+        `${fileName}DeveloperRun: \$\{${dir}_TEST_o_DEVELOPER_DEPENDENCIES\} \$\{${dir}_TEST_c_DEVELOPER_DEPENDENCIES\} \$\{${dir}_TEST_h_DEVELOPER_DEPENDENCIES\}\n`+
         `\tmake ${fileName}DeveloperClean\n`+
         `\tmake ${fileName}Developer\n`+
-        `\tmake ${fileName}DeveloperLink\n\n`+
+        `\tmake ${fileName}DeveloperLink\n`+
+        `\t./developerTest\n\n`+
 
         `########################################################################################################################################\n\n\n\n\n\n`
        return output        
@@ -389,4 +394,4 @@ class Make{
 }
 
 
-new Make(makeObject)
+new Make(makeObject, process.argv[2])
