@@ -19,11 +19,11 @@ class Make{
     }
 
     buildPaths(uniquePaths){
+        var makefileOutput=``
         for(var i=0; i<uniquePaths.length; i++){
             var testDir=uniquePaths[i]+'Test/'
-            var dir=uniquePaths[i]
+            var dir=uniquePaths[i].slice()
             var fileBase=dir.split('/')[dir.split('/').length-2]
-            console.log(fileBase)
             if (!fs.existsSync(dir)){
                 fs.mkdirSync(dir);
             }
@@ -38,7 +38,9 @@ class Make{
             this.hTest(testDir)
             this.cDriver(testDir)
             this.hDriver(testDir)
+            makefileOutput+=this.make(uniquePaths[i].slice())
         }
+        console.log(makefileOutput)
     }
 
     cmain(dir, fileBase){
@@ -108,6 +110,68 @@ class Make{
         `#include "Test.h"\n`+
         `#endif`
         fs.writeFileSync( dir+'Driver'+'.h', output);
+    }
+
+
+    make(dir){
+        var dirName=dir
+        dir=dir.split('/')
+        dir.pop()
+        dir.shift()
+        var fileName=dir.slice().pop()
+        dir=dir.join('_').toUpperCase()
+
+       var output = 
+       `${dir}_DIR=${dirName}\n`+
+       `${dir}_TEST_DIR=\$\{${dir}_DIR\}Test/\n`+
+       `${dir}_c=${fileName}.c\n`+
+       `${dir}_h=${fileName}.h\n`+
+       `${dir}_o=${fileName}.o\n`+
+       `${dir}_TEST_c=Test.c\n`+
+       `${dir}_TEST_h=Test.h\n`+
+       `${dir}_TEST_o=Test.o\n`+
+       `${dir}_TEST_DRIVER_c=Driver.c\n`+
+       `${dir}_TEST_DRIVER_h=Driver.h\n`+
+       `${dir}_TEST_DRIVER_o=Driver.o\n`+
+
+       `${dir}_c_PATH=\$\{${dir}_DIR\} \$\{${dir}_c\}\n`+
+       `${dir}_h_PATH=\$\{${dir}_DIR\} \$\{${dir}_h\}\n`+
+       `${dir}_o_PATH=\$\{${dir}_DIR\} \$\{${dir}_o\}\n`+
+
+       `${dir}_TEST_c_PATH=\$\{${dir}_TEST_DIR\} \$\{${dir}_TEST_c\}\n`+
+       `${dir}_TEST_h_PATH=\$\{${dir}_TEST_DIR\} \$\{${dir}_TEST_h\}\n`+
+       `${dir}_TEST_o_PATH=\$\{${dir}_TEST_DIR\} \$\{${dir}_TEST_o\}\n`+
+
+       `${dir}_TEST_DRIVER_c_PATH=\$\{${dir}_TEST_DIR\} \$\{${dir}_TEST_DRIVER_c\}\n`+
+       `${dir}_TEST_DRIVER_h_PATH=\$\{${dir}_TEST_DIR\} \$\{${dir}_TEST_DRIVER_h\}\n`+
+       `${dir}_TEST_DRIVER_o_PATH=\$\{${dir}_TEST_DIR\} \$\{${dir}_TEST_DRIVER_o\}\n`+
+
+       `${dir}_TEST_c_PRODUCTION_DEPENDENCIES=\$\{${dir}_c_PATH\} \$\{${dir}_TEST_c_PATH\}\n`+
+       `${dir}_TEST_h_PRODUCTION_DEPENDENCIES=\$\{${dir}_h_PATH\} \$\{${dir}_TEST_h_PATH\}\n`+
+       `${dir}_TEST_o_PRODUCTION_DEPENDENCIES=\$\{${dir}_o_PATH\} \$\{${dir}_TEST_o_PATH\}\n`+
+       
+       `${dir}_TEST_c_DEVELOPER_DEPENDENCIES=\$\{${dir}_c_PATH\} \$\{${dir}_TEST_c_PATH\} \$\{${dir}_TEST_DRIVER_c_PATH\}\n`+
+       `${dir}_TEST_h_DEVELOPER_DEPENDENCIES=\$\{${dir}_h_PATH\} \$\{${dir}_TEST_h_PATH\} \$\{${dir}_TEST_DRIVER_h_PATH\}\n`+
+       `${dir}_TEST_o_DEVELOPER_DEPENDENCIES=\$\{${dir}_o_PATH\} \$\{${dir}_TEST_o_PATH\} \$\{${dir}_TEST_DRIVER_o_PATH\}\n`+
+
+       `${fileName}Developer: \$\{${dir}_TEST_c_DEVELOPER_DEPENDENCIES\} \$\{${dir}_TEST_h_DEVELOPER_DEPENDENCIES\}\n`+
+       `\tcd \$\{${dir}_DIR\}; gcc -c \$\{${dir}_c\}\n`+
+       `\tcd \$\{${dir}_TEST_DIR\}; gcc -c \$\{${dir}_TEST_c\} \$\{${dir}_TEST_DRIVER_c\}\n\n`+
+
+        `${fileName}DeveloperClean: \$\{${dir}_TEST_o_DEVELOPER_DEPENDENCIES\}\n`+
+        `\tcd \$\{${dir}_DIR\}; rm -f \$\{${dir}_o\}\n`+
+        `\tcd \$\{${dir}_TEST_DIR\}; rm -f \$\{${dir}_TEST_o\} \$\{${dir}_TEST_DRIVER_o\}\n\n` +
+
+        
+       `######################################################################################\n\n`
+       return output
+
+
+
+
+
+
+        
     }
 }
 
