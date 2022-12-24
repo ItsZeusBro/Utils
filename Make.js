@@ -39,27 +39,30 @@ class Make{
         }
     }
 
-    cFile(){
+    cFile(dir, fileBase){
+        var output = `#include `+`"`+fileBase+'.h'+`"`
+        fs.writeFileSync( dir+fileBase+'.c', output);
+    }
+
+    hFile(dir, fileBase){
+        var fileDescriptor=(dir.split('/').slice(1).join('_')+fileBase).toUpperCase()
+        var output = `#ifndef ${fileDescriptor}\n#define ${fileDescriptor}\n\n#endif`
+        fs.writeFileSync( dir+fileBase+'.h', output);
+    }
+
+    cTest(dir){
 
     }
 
-    hFile(){
-        
-    }
-
-    cTest(){
+    hTest(dir){
 
     }
 
-    hTest(){
+    cDriver(dir){
 
     }
 
-    cDriver(){
-
-    }
-
-    hDriver(){
+    hDriver(dir){
 
     }
 }

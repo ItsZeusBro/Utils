@@ -1,0 +1,4 @@
+#ifndef CTOOLS_STATS_STATS
+#define CTOOLS_STATS_STATS
+
+#endif
