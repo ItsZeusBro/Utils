@@ -1,6 +1,4 @@
-import fs, { symlinkSync } from "node:fs"
 import { spawn, exec } from "node:child_process"
-import { scheduler } from 'node:timers/promises';
 
 class Watcher{
 
@@ -145,68 +143,3 @@ find.stdout.on('data', (data) => {
         watcher.watch(files)
     }
 });
-
-var dependency_tree={
-    "project":"./",
-
-    //add standard and non standard c dependencies for each file 
-    "Automata/Automata.c":[],
-    "Automata/Automata.h":[],
-
-
-    "Combinatorics/Combinatorics.c":[],
-    "Combinatorics/Combinatorics.h":[],
-
-
-    "Crypto/Crypto.c":[],
-    "Crypto/Crypto.h":[],
-
-
-    "Matrix/Matrix.c":[],
-    "Matrix/Matrix.h":[],
-
-
-    "Stats/Stats.c":[],
-    "Stats/Stats.h":[],
-
-
-    "Utils/Utils.c":[],
-    "Utils/Utils.h":[],
-
-
-    "Utils/Assertions/Assertions.c":[],
-    "Utils/Assertions/Assertions.h":[],
-
-
-    "Utils/Dictionary/Dictionary.c":[],
-    "Utils/Dictionary/Dictionary.h":[],
-
-
-    "Utils/Rand/Rand.c":[],
-    "Utils/Rand/Rand.h":[],
-
-
-    "Utils/Types/Types.c":[],
-    "Utils/Types/Types.h":[],
-
-
-    "Utils/Types/Array/Array.c":[],
-    "Utils/Types/Array/Array.h":[],
-
-
-    "Utils/Types/Float/Float.c":[],
-    "Utils/Types/Float/Float.h":[],
-
-
-    "Utils/Types/LinkList/LinkList.c":[],
-    "Utils/Types/LinkList/LinkList.h":[],
-
-
-    "Utils/Types/Number/Number.c":[],
-    "Utils/Types/Number/Number.h":[],
-
-
-    "Utils/Types/String/String.c":[],
-    "Utils/Types/String/String.h":[]
-
-}
