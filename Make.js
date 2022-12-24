@@ -51,7 +51,8 @@ class Make{
     }
 
     cTest(dir){
-
+        var output = `#include `+`"`+'Test'+'.h'+`"`
+        fs.writeFileSync( dir+'Test'+'.c', output);
     }
 
     hTest(dir){
