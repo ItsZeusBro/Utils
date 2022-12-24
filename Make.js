@@ -19,30 +19,19 @@ class Make{
         this.makeAllProductionTestsClean=``;
         this.makeAllProductionTestsLink=``;
 
-        this.uniquePaths=this.uniquePaths(makeObject)
-        this.buildPaths(this.uniquePaths, buildPaths)
+        this.scafolding(makeObject, buildPaths)
     }
 
-    uniquePaths(makeObject){
-        var uniquePaths=[]
-        var keys = Object.keys(makeObject)
-        for(var i=0;  i<keys.length; i++){
-            var path=keys[i].split('/')
-            path.pop()
-            uniquePaths.push(path.join('/')+'/')
-        }
-        return Array.from(new Set(uniquePaths))
-    }
 
-    buildPaths(uniquePaths, buildPaths){
+    scafolding(makeObject, buildPaths){
         var makefileOutput=``;
-
-
+        var uniquePaths=Object.keys(makeObject)
         for(var i=0; i<uniquePaths.length; i++){
             var testDir=uniquePaths[i]+'Test/'
             var dir=uniquePaths[i].slice()
             var fileBase=dir.split('/')[dir.split('/').length-2]
             if(JSON.parse(buildPaths.toLowerCase())==true){
+
                 console.log('creating empty project...')
                 if (!fs.existsSync(dir)){
                     fs.mkdirSync(dir);
@@ -51,7 +40,7 @@ class Make{
                     fs.mkdirSync(testDir);
                 }
                 if(!this.cmain(dir, fileBase)){
-                    this.cFile(dir, fileBase)
+                    this.cFile(dir, fileBase, makeObject[uniquePaths[i]])
                 }
                 this.hFile(dir, fileBase)
                 this.cTest(testDir)
@@ -96,8 +85,17 @@ class Make{
             return false
         }
     }
-    cFile(dir, fileBase){
-        var output = `#include `+`"`+fileBase+'.h'+`"`
+    cFile(dir, fileBase, dependencies){
+        var output = `#include `+`"`+fileBase+'.h'+`"\n`
+        for(var i=0; i<dependencies.length; i++){
+            var m =dir.slice().split('/').length-3
+            var path=``
+            for(var j = 0; j<m; j++){
+                path+=`../`
+            }
+            path+=dependencies[i].split('/').slice(2).join('/')
+            output+= `#include `+`"`+path+`"\n`
+        }
         fs.writeFileSync( dir+fileBase+'.c', output);
     }
 
