@@ -134,17 +134,17 @@ class Make{
        `${dir}_TEST_DRIVER_h=Driver.h\n`+
        `${dir}_TEST_DRIVER_o=Driver.o\n`+
 
-       `${dir}_c_PATH=\$\{${dir}_DIR\} \$\{${dir}_c\}\n`+
-       `${dir}_h_PATH=\$\{${dir}_DIR\} \$\{${dir}_h\}\n`+
-       `${dir}_o_PATH=\$\{${dir}_DIR\} \$\{${dir}_o\}\n`+
+       `${dir}_c_PATH=\$\{${dir}_DIR\}\$\{${dir}_c\}\n`+
+       `${dir}_h_PATH=\$\{${dir}_DIR\}\$\{${dir}_h\}\n`+
+       `${dir}_o_PATH=\$\{${dir}_DIR\}\$\{${dir}_o\}\n`+
 
-       `${dir}_TEST_c_PATH=\$\{${dir}_TEST_DIR\} \$\{${dir}_TEST_c\}\n`+
-       `${dir}_TEST_h_PATH=\$\{${dir}_TEST_DIR\} \$\{${dir}_TEST_h\}\n`+
-       `${dir}_TEST_o_PATH=\$\{${dir}_TEST_DIR\} \$\{${dir}_TEST_o\}\n`+
+       `${dir}_TEST_c_PATH=\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_c\}\n`+
+       `${dir}_TEST_h_PATH=\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_h\}\n`+
+       `${dir}_TEST_o_PATH=\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_o\}\n`+
 
-       `${dir}_TEST_DRIVER_c_PATH=\$\{${dir}_TEST_DIR\} \$\{${dir}_TEST_DRIVER_c\}\n`+
-       `${dir}_TEST_DRIVER_h_PATH=\$\{${dir}_TEST_DIR\} \$\{${dir}_TEST_DRIVER_h\}\n`+
-       `${dir}_TEST_DRIVER_o_PATH=\$\{${dir}_TEST_DIR\} \$\{${dir}_TEST_DRIVER_o\}\n`+
+       `${dir}_TEST_DRIVER_c_PATH=\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_DRIVER_c\}\n`+
+       `${dir}_TEST_DRIVER_h_PATH=\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_DRIVER_h\}\n`+
+       `${dir}_TEST_DRIVER_o_PATH=\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_DRIVER_o\}\n`+
 
        `${dir}_TEST_c_PRODUCTION_DEPENDENCIES=\$\{${dir}_c_PATH\} \$\{${dir}_TEST_c_PATH\}\n`+
        `${dir}_TEST_h_PRODUCTION_DEPENDENCIES=\$\{${dir}_h_PATH\} \$\{${dir}_TEST_h_PATH\}\n`+
@@ -152,7 +152,7 @@ class Make{
        
        `${dir}_TEST_c_DEVELOPER_DEPENDENCIES=\$\{${dir}_c_PATH\} \$\{${dir}_TEST_c_PATH\} \$\{${dir}_TEST_DRIVER_c_PATH\}\n`+
        `${dir}_TEST_h_DEVELOPER_DEPENDENCIES=\$\{${dir}_h_PATH\} \$\{${dir}_TEST_h_PATH\} \$\{${dir}_TEST_DRIVER_h_PATH\}\n`+
-       `${dir}_TEST_o_DEVELOPER_DEPENDENCIES=\$\{${dir}_o_PATH\} \$\{${dir}_TEST_o_PATH\} \$\{${dir}_TEST_DRIVER_o_PATH\}\n`+
+       `${dir}_TEST_o_DEVELOPER_DEPENDENCIES=\$\{${dir}_o_PATH\} \$\{${dir}_TEST_o_PATH\} \$\{${dir}_TEST_DRIVER_o_PATH\}\n\n\n`+
 
        `${fileName}Developer: \$\{${dir}_TEST_c_DEVELOPER_DEPENDENCIES\} \$\{${dir}_TEST_h_DEVELOPER_DEPENDENCIES\}\n`+
        `\tcd \$\{${dir}_DIR\}; gcc -c \$\{${dir}_c\}\n`+
@@ -162,7 +162,13 @@ class Make{
         `\tcd \$\{${dir}_DIR\}; rm -f \$\{${dir}_o\}\n`+
         `\tcd \$\{${dir}_TEST_DIR\}; rm -f \$\{${dir}_TEST_o\} \$\{${dir}_TEST_DRIVER_o\}\n\n` +
 
+        `${fileName}DeveloperLink: \$\{${dir}_TEST_o_DEVELOPER_DEPENDENCIES\}\n`+
+	    `\t(gcc -o developerTest \$\{${dir}_o_PATH\} \$\{${dir}_TEST_o_PATH\} \$\{${dir}_TEST_DRIVER_o_PATH\})\n\n`+
         
+        `${fileName}DeveloperRun: ${fileName}Developer ${fileName}DeveloperClean ${fileName}DeveloperLink\n`+
+        `\tmake ${fileName}DeveloperClean\n`+
+        `\tmake ${fileName}Developer\n`+
+        `\tmake ${fileName}DeveloperLink\n\n`+
        `######################################################################################\n\n`
        return output
 
