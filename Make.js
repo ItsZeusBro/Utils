@@ -24,6 +24,9 @@ class Make{
             if (!fs.existsSync(uniquePaths[i])){
                 fs.mkdirSync(uniquePaths[i]);
             }
+            if (!fs.existsSync(uniquePaths[i]+'Test/')){
+                fs.mkdirSync(uniquePaths[i]+'Test/');
+            }
 
         }
     }
