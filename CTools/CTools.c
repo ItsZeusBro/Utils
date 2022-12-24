@@ -1,6 +1,6 @@
 #include "CTools.h"
 #include <stdio.h>
-int main(int argc, char *argv[]){
-    printf('Hello World!');
+int main(){
+    printf("Hello World!");
 	return 0;
 }
