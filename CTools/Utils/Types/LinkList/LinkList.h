@@ -1,14 +1,7 @@
-#ifndef LINK_LIST_FILE
-#define LINK_LIST_FILE
+#ifndef CTOOLS_UTILS_TYPES_LINKLIST_LINKLIST
+#define CTOOLS_UTILS_TYPES_LINKLIST_LINKLIST
 
-struct LinkList{
-    struct Node * linkList;
-};
-
-struct Node{
-    void * Data;
-    struct Node * next;
-};
+//Define C Api here...
 
 
 #endif

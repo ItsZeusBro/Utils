@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include "Test.h"
+#include "Driver.h"
 
 int main(int argc, char *argv[]){
-    printf("C_MATRIX_TEST_DRIVER\n");
+    printf("CTOOLS_MATRIX_TEST_DRIVER\n");
 
-    C_MATRIX_TEST_TEST(argc, argv);
+    CTOOLS_MATRIX_TEST_TEST(argc, argv);
     
     return 0;
 }

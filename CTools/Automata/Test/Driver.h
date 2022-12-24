@@ -1,5 +1,5 @@
-#ifndef C_AUTOMATA_TEST_DRIVER
-#define C_AUTOMATA_TEST_DRIVER
-#include "../Automata.h"
+#ifndef CTOOLS_AUTOMATA_TEST_DRIVER
+#define CTOOLS_AUTOMATA_TEST_DRIVER
+#include "Test.h"
 
 #endif

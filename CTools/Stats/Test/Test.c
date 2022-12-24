@@ -1,7 +1,7 @@
-#include "./Test.h"
+#include "Test.h"
 
 
-int C_STATS_TEST_TEST(int argc, char *argv[]){
+int CTOOLS_STATS_TEST_TEST(int argc, char *argv[]){
     //Run all api tests here...
     return 0;
 }

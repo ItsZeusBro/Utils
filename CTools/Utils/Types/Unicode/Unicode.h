@@ -1,22 +1,7 @@
-#ifndef UNICODE_FILE
-#define UNICODE_FILE
+#ifndef CTOOLS_UTILS_TYPES_UNICODE_UNICODE
+#define CTOOLS_UTILS_TYPES_UNICODE_UNICODE
 
-// struct Unicode{
-//     int _char;
-//     int nBytes;
-// };
-
-// struct Unicode * _mallocUnicode(int nBytes);
-
-// struct Unicode * _callocUnicode(int nBytes);
-
-// struct Unicode * unicode(int unicode);
-
-// void printUnicode(int charCode);
-//
+//Define C Api here...
 
 
 #endif
-
-
-

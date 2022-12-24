@@ -1,8 +1,8 @@
-#ifndef C_MATRIX_TEST_TEST
-#define C_MATRIX_TEST_TEST
+#ifndef CTOOLS_MATRIX_TEST_TEST
+#define CTOOLS_MATRIX_TEST_TEST
 
 #include "../Matrix.h"
 //Define all Api Tests here...
-int C_MATRIX_TEST_TEST(int argc, char *argv[]);
+int CTOOLS_MATRIX_TEST_TEST(int argc, char *argv[]);
 
 #endif

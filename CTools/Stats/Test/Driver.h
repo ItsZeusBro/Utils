@@ -1,5 +1,5 @@
-#ifndef C_STATS_TEST_DRIVER
-#define C_STATS_TEST_DRIVER
-#include "../Stats.h"
+#ifndef CTOOLS_STATS_TEST_DRIVER
+#define CTOOLS_STATS_TEST_DRIVER
+#include "Test.h"
 
 #endif

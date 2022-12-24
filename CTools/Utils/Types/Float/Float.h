@@ -1,10 +1,7 @@
-#ifndef UTILS_TYPES_FLOAT
-#define UTILS_TYPES_FLOAT
+#ifndef CTOOLS_UTILS_TYPES_FLOAT_FLOAT
+#define CTOOLS_UTILS_TYPES_FLOAT_FLOAT
 
-struct Float{
-    char * flt;
-    int precision;
-};
+//Define C Api here...
+
 
 #endif
-

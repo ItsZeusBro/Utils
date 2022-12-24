@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include "Test.h"
+#include "Driver.h"
 
 int main(int argc, char *argv[]){
-    printf("C_STATS_TEST_DRIVER\n");
+    printf("CTOOLS_STATS_TEST_DRIVER\n");
 
-    C_STATS_TEST_TEST(argc, argv);
+    CTOOLS_STATS_TEST_TEST(argc, argv);
     
     return 0;
 }

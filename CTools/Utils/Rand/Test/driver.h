@@ -1,5 +1,5 @@
-#ifndef UTILS_RAND_TEST_DRIVER
-#define UTILS_RAND_TEST_DRIVER
-#include "./Test.h"
+#ifndef CTOOLS_UTILS_RAND_TEST_DRIVER
+#define CTOOLS_UTILS_RAND_TEST_DRIVER
+#include "Test.h"
 
 #endif

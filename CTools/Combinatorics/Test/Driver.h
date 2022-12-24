@@ -1,5 +1,5 @@
-#ifndef C_COMBINATORICS_TEST_DRIVER
-#define C_COMBINATORICS_TEST_DRIVER
-#include "../Combinatorics.h"
+#ifndef CTOOLS_COMBINATORICS_TEST_DRIVER
+#define CTOOLS_COMBINATORICS_TEST_DRIVER
+#include "Test.h"
 
 #endif

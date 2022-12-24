@@ -1,8 +1,8 @@
-#ifndef C_CRYPTO_TEST_TEST
-#define C_CRYPTO_TEST_TEST
+#ifndef CTOOLS_CRYPTO_TEST_TEST
+#define CTOOLS_CRYPTO_TEST_TEST
 
 #include "../Crypto.h"
 //Define all Api Tests here...
-int C_CRYPTO_TEST_TEST(int argc, char *argv[]);
+int CTOOLS_CRYPTO_TEST_TEST(int argc, char *argv[]);
 
 #endif

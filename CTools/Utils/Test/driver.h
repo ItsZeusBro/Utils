@@ -1,5 +1,5 @@
-#ifndef UTILS_DRIVER_FILE
-#define UTILS_DRIVER_FILE
-#include "./Test.h"
+#ifndef CTOOLS_UTILS_TEST_DRIVER
+#define CTOOLS_UTILS_TEST_DRIVER
+#include "Test.h"
 
 #endif

@@ -1,17 +1,7 @@
-#ifndef TYPES_FILE
-#define TYPES_FILE
-#include "./Array/Array.h"
-#include "./Float/Float.h"
-#include "./LinkList/LinkList.h"
-#include "./Number/Number.h"
-#include "./Unicode/Unicode.h"
-#include "./String/String.h"
+#ifndef CTOOLS_UTILS_TYPES_TYPES
+#define CTOOLS_UTILS_TYPES_TYPES
 
-int create(char * type);
-int destroy(void * type);
+//Define C Api here...
 
 
 #endif
-
-
-

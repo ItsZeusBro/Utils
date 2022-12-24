@@ -1,5 +1,5 @@
-#ifndef C_AUTOMATA_AUTOMATA
-#define C_AUTOMATA_AUTOMATA
+#ifndef CTOOLS_AUTOMATA_AUTOMATA
+#define CTOOLS_AUTOMATA_AUTOMATA
 
 //Define C Api here...
 

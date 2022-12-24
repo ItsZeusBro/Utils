@@ -1,5 +1,5 @@
-#ifndef CTOOLS_STATS
-#define CTOOLS_STATS
+#ifndef CTOOLS_CTOOLS
+#define CTOOLS_CTOOLS
 
 //Define C Api here...
 

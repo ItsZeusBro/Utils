@@ -1,5 +1,5 @@
-#ifndef C_CRYPTO_CRYPTO
-#define C_CRYPTO_CRYPTO
+#ifndef CTOOLS_CRYPTO_CRYPTO
+#define CTOOLS_CRYPTO_CRYPTO
 
 //Define C Api here...
 

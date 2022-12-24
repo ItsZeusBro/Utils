@@ -1,4 +1,8 @@
-#ifndef UTILS_DICTIONARY_TEST_TEST
-#define UTILS_DICTIONARY_TEST_TEST
+#ifndef CTOOLS_UTILS_DICTIONARY_TEST_TEST
+#define CTOOLS_UTILS_DICTIONARY_TEST_TEST
+
+#include "../Dictionary.h"
+//Define all Api Tests here...
+int CTOOLS_UTILS_DICTIONARY_TEST_TEST(int argc, char *argv[]);
 
 #endif
