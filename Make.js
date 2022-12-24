@@ -3,20 +3,18 @@ import fs from 'node:fs'
 
 class Make{
     constructor(makeObject){
-        this.makeVariables={}
-
-        this.makeVariables['ALL_TEST_c_DEVELOPER_DEPENDENCIES']=``
-        this.makeVariables['ALL_TEST_h_DEVELOPER_DEPENDENCIES']=``
-        this.makeVariables['ALL_TEST_o_DEVELOPER_DEPENDENCIES']=``
-        this.makeVariables['ALL_TEST_c_PRODUCTION_DEPENDENCIES']=``
-        this.makeVariables['ALL_TEST_h_PRODUCTION_DEPENDENCIES']=``
-        this.makeVariables['ALL_TEST_o_PRODUCTION_DEPENDENCIES']=``
-        this.makeVariables['ALL_TEST_c_DEVELOPER_FILES']=``
-        this.makeVariables['ALL_TEST_h_DEVELOPER_FILES']=``
-        this.makeVariables['ALL_TEST_o_DEVELOPER_FILES']=``
-        this.makeVariables['ALL_TEST_c_PRODUCTION_FILES']=``
-        this.makeVariables['ALL_TEST_h_PRODUCTION_FILES']=``
-        this.makeVariables['ALL_TEST_o_PRODUCTION_FILES']=``
+        this.ALL_TEST_c_DEVELOPER_DEPENDENCIES=``;
+        this.ALL_TEST_h_DEVELOPER_DEPENDENCIES=``;
+        this.ALL_TEST_o_DEVELOPER_DEPENDENCIES=``;
+        this.ALL_TEST_c_PRODUCTION_DEPENDENCIES=``;
+        this.ALL_TEST_h_PRODUCTION_DEPENDENCIES=``;
+        this.ALL_TEST_o_PRODUCTION_DEPENDENCIES=``;
+        this.ALL_TEST_c_DEVELOPER_FILES=``;
+        this.ALL_TEST_h_DEVELOPER_FILES=``;
+        this.ALL_TEST_o_DEVELOPER_FILES=``;
+        this.ALL_TEST_c_PRODUCTION_FILES=``;
+        this.ALL_TEST_h_PRODUCTION_FILES=``;
+        this.ALL_TEST_o_PRODUCTION_FILES=``;
 
         this.uniquePaths=this.uniquePaths(makeObject)
         this.buildPaths(this.uniquePaths)
@@ -55,13 +53,23 @@ class Make{
             this.hTest(testDir)
             this.cDriver(testDir)
             this.hDriver(testDir)
-            //makefileOutput+=this.make(uniquePaths[i].slice())
-            this.load(uniquePaths[i].slice())
+            makefileOutput+=this.make(uniquePaths[i].slice())
+            this.ALL_TEST_c_DEVELOPER_DEPENDENCIES+=this.makeAllTestCDeveloperDependencies(uniquePaths[i].slice())
+            this.ALL_TEST_h_DEVELOPER_DEPENDENCIES+=this.makeAllTestHDeveloperDependencies(uniquePaths[i].slice())
+            this.ALL_TEST_o_DEVELOPER_DEPENDENCIES+=this.makeAllTestODeveloperDependencies(uniquePaths[i].slice())
+            this.ALL_TEST_c_PRODUCTION_DEPENDENCIES+=this.makeAllTestCProductionDependencies(uniquePaths[i].slice())
+            this.ALL_TEST_h_PRODUCTION_DEPENDENCIES+=this.makeAllTestHProductionDependencies(uniquePaths[i].slice())
+            this.ALL_TEST_o_PRODUCTION_DEPENDENCIES+=this.makeAllTestOProductionDependencies(uniquePaths[i].slice())
+            this.ALL_TEST_c_DEVELOPER_FILES+=this.makeAllTestCDeveloperFiles(uniquePaths[i].slice())
+            this.ALL_TEST_h_DEVELOPER_FILES+=this.makeAllTestHDeveloperFiles(uniquePaths[i].slice())
+            this.ALL_TEST_o_DEVELOPER_FILES+=this.makeAllTestODeveloperFiles(uniquePaths[i].slice())
+            this.ALL_TEST_c_PRODUCTION_FILES+=this.makeAllTestCProductionFiles(uniquePaths[i].slice())
+            this.ALL_TEST_h_PRODUCTION_FILES+=this.makeAllTestHProductionFiles(uniquePaths[i].slice())
+            this.ALL_TEST_o_PRODUCTION_FILES+=this.makeAllTestOProductionFiles(uniquePaths[i].slice())
         }
+        console.log(makefileOutput)
 
-        //makefileOutput+=this.finalMake(uniquePaths[i].slice())
-
-        console.log(this.makeVariables)
+        makefileOutput+=this.finalMake(uniquePaths[i].slice())
     }
 
     cmain(dir, fileBase){
@@ -133,68 +141,6 @@ class Make{
         fs.writeFileSync( dir+'Driver'+'.h', output);
     }
 
-    load(dir){
-        var dirName=dir
-        dir=dir.split('/')
-        dir.pop()
-        dir.shift()
-        var fileName=dir.slice().pop()
-        dir=dir.join('_').toUpperCase()
-
-        this.makeVariables[`${dir}_DIR`]=`${dirName}`
-        this.makeVariables[`${dir}_TEST_DIR`]=`\$\{${dir}_DIR\}Test/`
-
-        this.makeVariables[`${dir}_c`]=`${fileName}.c`
-        this.makeVariables[`${dir}_h`]=`${fileName}.h`
-        this.makeVariables[`${dir}_o`]=`${fileName}.o`
-
-        this.makeVariables[`${dir}_TEST_c`]=`Test.c`
-        this.makeVariables[`${dir}_TEST_h`]=`Test.h`
-        this.makeVariables[`${dir}_TEST_o`]=`Test.o`
-
-        this.makeVariables[`${dir}_TEST_DRIVER_c`]=`Driver.c`
-        this.makeVariables[`${dir}_TEST_DRIVER_h`]=`Driver.h`
-        this.makeVariables[`${dir}_TEST_DRIVER_o`]=`Driver.o`
-
-        this.makeVariables[`${dir}_c_PATH`]=`\$\{${dir}_DIR\}\$\{${dir}_c\}`
-        this.makeVariables[`${dir}_h_PATH`]=`\$\{${dir}_DIR\}\$\{${dir}_h\}`
-        this.makeVariables[`${dir}_o_PATH`]=`\$\{${dir}_DIR\}\$\{${dir}_o\}`
-
-        this.makeVariables[`${dir}_TEST_c_PATH`]=`\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_c\}`
-        this.makeVariables[`${dir}_TEST_h_PATH`]=`\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_h\}`
-        this.makeVariables[`${dir}_TEST_o_PATH`]=`\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_o\}`
-
-        this.makeVariables[`${dir}_TEST_DRIVER_c_PATH`]=`\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_DRIVER_c\}`
-        this.makeVariables[`${dir}_TEST_DRIVER_h_PATH`]=`\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_DRIVER_h\}`
-        this.makeVariables[`${dir}_TEST_DRIVER_o_PATH`]=`\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_DRIVER_o\}`
-
-        this.makeVariables[`${dir}_TEST_c_PRODUCTION_DEPENDENCIES`]=`\$\{${dir}_c_PATH\} \$\{${dir}_TEST_c_PATH\}`
-        this.makeVariables[`${dir}_TEST_h_PRODUCTION_DEPENDENCIES`]=`\$\{${dir}_h_PATH\} \$\{${dir}_TEST_h_PATH\}`
-        this.makeVariables[`${dir}_TEST_o_PRODUCTION_DEPENDENCIES`]=`\$\{${dir}_o_PATH\} \$\{${dir}_TEST_o_PATH\}`
-
-        this.makeVariables[`${dir}_TEST_c_DEVELOPER_DEPENDENCIES`]=`\$\{${dir}_c_PATH\} \$\{${dir}_TEST_c_PATH\} \$\{${dir}_TEST_DRIVER_c_PATH\}`
-        this.makeVariables[`${dir}_TEST_h_DEVELOPER_DEPENDENCIES`]=`\$\{${dir}_h_PATH\} \$\{${dir}_TEST_h_PATH\} \$\{${dir}_TEST_DRIVER_h_PATH\}`
-        this.makeVariables[`${dir}_TEST_o_DEVELOPER_DEPENDENCIES`]=`\$\{${dir}_o_PATH\} \$\{${dir}_TEST_o_PATH\} \$\{${dir}_TEST_DRIVER_o_PATH\}`
-
-        this.makeVariables[`${dir}_TEST_c_DEVELOPER_FILES`]=`/$/{${dir}_c_PATH/} /$/{${dir}_TEST_c_PATH/} /$/{${dir}_TEST_DRIVER_c_PATH/}`
-        this.makeVariables[`${dir}_TEST_h_DEVELOPER_FILES`]=`/$/{${dir}_h_PATH/} /$/{${dir}_TEST_h_PATH/} /$/{${dir}_TEST_DRIVER_h_PATH/}`
-        this.makeVariables[`${dir}_TEST_o_DEVELOPER_FILES`]=`/$/{${dir}_o_PATH/} /$/{${dir}_TEST_o_PATH/} /$/{${dir}_TEST_DRIVER_o_PATH/}`
-        
-        this.makeVariables[`${dir}_TEST_DEVELOPER_FILES`]=`/$/{${dir}_TEST_c_DEVELOPER_FILES/} /$/{${dir}_TEST_h_DEVELOPER_FILES/} /$/{${dir}_TEST_o_DEVELOPER_FILES/}`
-
-        this.makeVariables['ALL_TEST_c_DEVELOPER_DEPENDENCIES']+=this.makeAllTestCDeveloperDependencies(dir)
-        this.makeVariables['ALL_TEST_h_DEVELOPER_DEPENDENCIES']+=this.makeAllTestHDeveloperDependencies(dir)
-        this.makeVariables['ALL_TEST_o_DEVELOPER_DEPENDENCIES']+=this.makeAllTestODeveloperDependencies(dir)
-        this.makeVariables['ALL_TEST_c_PRODUCTION_DEPENDENCIES']+=this.makeAllTestCProductionDependencies(dir)
-        this.makeVariables['ALL_TEST_h_PRODUCTION_DEPENDENCIES']+=this.makeAllTestHProductionDependencies(dir)
-        this.makeVariables['ALL_TEST_o_PRODUCTION_DEPENDENCIES']+=this.makeAllTestOProductionDependencies(dir)
-        this.makeVariables['ALL_TEST_c_DEVELOPER_FILES']+=this.makeAllTestCDeveloperFiles(dir)
-        this.makeVariables['ALL_TEST_h_DEVELOPER_FILES']+=this.makeAllTestHDeveloperFiles(dir)
-        this.makeVariables['ALL_TEST_o_DEVELOPER_FILES']+=this.makeAllTestODeveloperFiles(dir)
-        this.makeVariables['ALL_TEST_c_PRODUCTION_FILES']+=this.makeAllTestCProductionFiles(dir)
-        this.makeVariables['ALL_TEST_h_PRODUCTION_FILES']+=this.makeAllTestHProductionFiles(dir)
-        this.makeVariables['ALL_TEST_o_PRODUCTION_FILES']+=this.makeAllTestOProductionFiles(dir)
-    }
 
     make(dir){
         var dirName=dir
@@ -203,8 +149,8 @@ class Make{
         dir.shift()
         var fileName=dir.slice().pop()
         dir=dir.join('_').toUpperCase()
-        
-        var output = 
+
+       var output = 
        `${dir}_DIR=${dirName}\n`+
        `${dir}_TEST_DIR=\$\{${dir}_DIR\}Test/\n`+
        `${dir}_c=${fileName}.c\n`+
@@ -216,18 +162,23 @@ class Make{
        `${dir}_TEST_DRIVER_c=Driver.c\n`+
        `${dir}_TEST_DRIVER_h=Driver.h\n`+
        `${dir}_TEST_DRIVER_o=Driver.o\n`+
+
        `${dir}_c_PATH=\$\{${dir}_DIR\}\$\{${dir}_c\}\n`+
        `${dir}_h_PATH=\$\{${dir}_DIR\}\$\{${dir}_h\}\n`+
        `${dir}_o_PATH=\$\{${dir}_DIR\}\$\{${dir}_o\}\n`+
+
        `${dir}_TEST_c_PATH=\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_c\}\n`+
        `${dir}_TEST_h_PATH=\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_h\}\n`+
        `${dir}_TEST_o_PATH=\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_o\}\n`+
+
        `${dir}_TEST_DRIVER_c_PATH=\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_DRIVER_c\}\n`+
        `${dir}_TEST_DRIVER_h_PATH=\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_DRIVER_h\}\n`+
        `${dir}_TEST_DRIVER_o_PATH=\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_DRIVER_o\}\n`+
+
        `${dir}_TEST_c_PRODUCTION_DEPENDENCIES=\$\{${dir}_c_PATH\} \$\{${dir}_TEST_c_PATH\}\n`+
        `${dir}_TEST_h_PRODUCTION_DEPENDENCIES=\$\{${dir}_h_PATH\} \$\{${dir}_TEST_h_PATH\}\n`+
        `${dir}_TEST_o_PRODUCTION_DEPENDENCIES=\$\{${dir}_o_PATH\} \$\{${dir}_TEST_o_PATH\}\n`+
+       
        `${dir}_TEST_c_DEVELOPER_DEPENDENCIES=\$\{${dir}_c_PATH\} \$\{${dir}_TEST_c_PATH\} \$\{${dir}_TEST_DRIVER_c_PATH\}\n`+
        `${dir}_TEST_h_DEVELOPER_DEPENDENCIES=\$\{${dir}_h_PATH\} \$\{${dir}_TEST_h_PATH\} \$\{${dir}_TEST_DRIVER_h_PATH\}\n`+
        `${dir}_TEST_o_DEVELOPER_DEPENDENCIES=\$\{${dir}_o_PATH\} \$\{${dir}_TEST_o_PATH\} \$\{${dir}_TEST_DRIVER_o_PATH\}\n`+
@@ -257,55 +208,83 @@ class Make{
        `######################################################################################\n\n`
        return output        
     }
-    finalMake(){
-
-    }
 
     makeAllTestCDeveloperDependencies(dir){
+        dir=dir.slice().split('/')
+        dir.pop()
+        dir.shift()
         return `\$\{${dir}_TEST_c_DEVELOPER_DEPENDENCIES\} `
     }
-
     makeAllTestHDeveloperDependencies(dir){
+        dir=dir.slice().split('/')
+        dir.pop()
+        dir.shift()
         return `\$\{${dir}_TEST_h_DEVELOPER_DEPENDENCIES\} `
     }
-
     makeAllTestODeveloperDependencies(dir){
+        dir=dir.slice().split('/')
+        dir.pop()
+        dir.shift()
         return `\$\{${dir}_TEST_o_DEVELOPER_DEPENDENCIES\} `
     }
-
     makeAllTestCProductionDependencies(dir){
+        dir=dir.slice().split('/')
+        dir.pop()
+        dir.shift()
         return `\$\{${dir}_TEST_c_PRODUCTION_DEPENDENCIES\} `
     }
-
     makeAllTestHProductionDependencies(dir){
+        dir=dir.slice().split('/')
+        dir.pop()
+        dir.shift()
         return `\$\{${dir}_TEST_h_PRODUCTION_DEPENDENCIES\} `
     }
-
     makeAllTestOProductionDependencies(dir){
+        dir=dir.slice().split('/')
+        dir.pop()
+        dir.shift()
         return `\$\{${dir}_TEST_o_PRODUCTION_DEPENDENCIES\} `
     }
-
     makeAllTestCDeveloperFiles(dir){
+        dir=dir.slice().split('/')
+        dir.pop()
+        dir.shift()
         return `\$\{${dir}_TEST_c_DEVELOPER_FILES\} `
     }
-
     makeAllTestHDeveloperFiles(dir){
+        dir=dir.slice().split('/')
+        dir.pop()
+        dir.shift()
         return `\$\{${dir}_TEST_h_DEVELOPER_FILES\} `
+
     }
     makeAllTestODeveloperFiles(dir){
+        dir=dir.slice().split('/')
+        dir.pop()
+        dir.shift()
         return `\$\{${dir}_TEST_o_DEVELOPER_FILES\} `
-    }
 
+    }
     makeAllTestCProductionFiles(dir){
+        dir=dir.slice().split('/')
+        dir.pop()
+        dir.shift()
         return `\$\{${dir}_TEST_c_PRODUCTION_FILES\} `
+
     }
     makeAllTestHProductionFiles(dir){
+        dir=dir.slice().split('/')
+        dir.pop()
+        dir.shift()
         return `\$\{${dir}_TEST_h_PRODUCTION_FILES\} `
+
     }
-
     makeAllTestOProductionFiles(dir){
-
+        dir=dir.slice().split('/')
+        dir.pop()
+        dir.shift()
         return `\$\{${dir}_TEST_o_PRODUCTION_FILES\} `
+
     }
 }
 
