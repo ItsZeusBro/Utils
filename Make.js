@@ -21,16 +21,18 @@ class Make{
         this.scafolding(makeObject, buildPaths);
     }
 
-
     scafolding(makeObject, buildPaths){
+        //we need to make sure we do not overwrite the paths in the makeObject if they already exist, 
+        //especially if we are just adding a dependency...
+
         var makefileOutput=``;
         var uniquePaths=Object.keys(makeObject)
         for(var i=0; i<uniquePaths.length; i++){
             var testDir=uniquePaths[i]+'Test/'
             var dir=uniquePaths[i].slice()
             var fileBase=dir.split('/')[dir.split('/').length-2]
-            if(JSON.parse(buildPaths.toLowerCase())==true){
 
+            if(JSON.parse(buildPaths.toLowerCase())==true){
                 console.log('creating empty project...')
                 if (!fs.existsSync(dir)){
                     fs.mkdirSync(dir);
@@ -65,13 +67,10 @@ class Make{
             this.ALL_TEST_o_PRODUCTION_FILES+=this.makeAllTestOProductionFiles(uniquePaths[i].slice())
             this.makeAllProductionTests+=this._makeAllProductionTests(uniquePaths[i].slice())
             this.makeAllProductionTestsClean+=this._makeAllProductionTestsClean(uniquePaths[i].slice())
-
         }
 
         makefileOutput+=this.finalMake()
         fs.writeFileSync('./makefile', makefileOutput);
-
-
     }
 
     cmain(dir, fileBase){
@@ -209,7 +208,7 @@ class Make{
 
        `${dir}_TEST_c_PRODUCTION_FILES=\$\{${dir}_c_PATH\} \$\{${dir}_TEST_c_PATH\} `+ dependenciesC + `\n`+
        `${dir}_TEST_h_PRODUCTION_FILES=\$\{${dir}_h_PATH\} \$\{${dir}_TEST_h_PATH\} `+ dependenciesH + `\n`+
-       `${dir}_TEST_o_PRODUCTION_FILES=\$\{${dir}_o_PATH\} \$\{${dir}_TEST_o_PATH\} `+ dependenciesO + `\n\n\n`+
+       `${dir}_TEST_o_PRODUCTION_FILES=\$\{${dir}_o_PATH\} \$\{${dir}_TEST_o_PATH\} `+ dependenciesO + `\n`+
 
        `${dir}_TEST_DEVELOPER_FILES= \$\{${dir}_TEST_c_DEVELOPER_FILES\} \$\{${dir}_TEST_h_DEVELOPER_FILES\} \$\{${dir}_TEST_o_DEVELOPER_FILES\} \n\n\n`+
 
