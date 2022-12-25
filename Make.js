@@ -2,7 +2,7 @@ import {makeObject} from "./MakeObject.js"
 import fs from 'node:fs'
 
 class Make{
-    constructor(makeObject, buildPaths){
+    constructor(makeObject, buildPaths=false){
         this.ALL_TEST_c_DEVELOPER_DEPENDENCIES=``;
         this.ALL_TEST_h_DEVELOPER_DEPENDENCIES=``;
         this.ALL_TEST_o_DEVELOPER_DEPENDENCIES=``;
@@ -46,6 +46,8 @@ class Make{
                 this.hTest(testDir)
                 this.cDriver(testDir)
                 this.hDriver(testDir)
+            }else{
+                
             }
             
             makefileOutput+=this.make(uniquePaths[i].slice(), makeObject[uniquePaths[i]])
@@ -73,6 +75,7 @@ class Make{
     }
 
     cmain(dir, fileBase){
+        console.log(dir, fileBase)
         if(dir.split('/').length==3){
             var output = 
                 `#include `+`"`+fileBase+'.h'+`"\n\n`+
