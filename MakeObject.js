@@ -16,6 +16,6 @@ export var makeObject = {
     "./CTools/Utils/Types/LinkList/":["./CTools/Utils/Types/String/String.h"],
     "./CTools/Utils/Types/Number/":["./CTools/Utils/Types/String/String.h"],
     "./CTools/Utils/Types/String/":[],
-    "./CTools/Utils/Types/Unicode/":["./CTools/Utils/Types/String/String.h"]
-
+    "./CTools/Utils/Types/Unicode/":["./CTools/Utils/Types/String/String.h"],
+    "./CTools/Utils/Memory/":["./CTools/Utils/Types/String/String.h"]
 }

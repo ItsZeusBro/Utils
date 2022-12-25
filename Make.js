@@ -18,8 +18,7 @@ class Make{
         this.makeAllProductionTests=``;
         this.makeAllProductionTestsClean=``;
         this.makeAllProductionTestsLink=``;
-
-        this.scafolding(makeObject, buildPaths)
+        this.scafolding(makeObject, buildPaths);
     }
 
 
