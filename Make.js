@@ -2,7 +2,7 @@ import {makeObject} from "./MakeObject.js"
 import fs from 'node:fs'
 
 class Make{
-    constructor(makeObject, buildPaths=false){
+    constructor(makeObject, flags=[]){
         this.ALL_TEST_c_DEVELOPER_DEPENDENCIES=``;
         this.ALL_TEST_h_DEVELOPER_DEPENDENCIES=``;
         this.ALL_TEST_o_DEVELOPER_DEPENDENCIES=``;
@@ -18,59 +18,84 @@ class Make{
         this.makeAllProductionTests=``;
         this.makeAllProductionTestsClean=``;
         this.makeAllProductionTestsLink=``;
-        this.scafolding(makeObject, buildPaths);
+        var context = this.context(flags)
+        this.make(makeObject, context)
+
+    }
+    context(flag){
+        //Rule 0:
+        //if we have an empty project, the project should not have a directory path that exists. We create the
+        //project paths and files using a Project class, and add the make file using the Makefile class. 
+        //The makefile should have comment sections that the makefile class uses for indexing. The Makefile class 
+        //interacts with the Profiler class which interacts with the tree.profile file to see what exists in the Makefile
+        //quickly. 
+
+        //Rule 1: 
+        //if we have a new path with new dependencies we add the new path and its dependencies to the project
+        //then add them to the makefile in their proper section, then add its profile to the tree.profile
+
+        //Rule 2: 
+        //if we have a new dependency under an existing path (does not exist in the tree.profile), we add it to the 
+        //project (including the import statements), we add it to the makefile in the proper section, then to the 
+        //tree.profile
+
+        //Rule 3: 
+        //Anytime a path exists, we assume it was overwritten when we run make without flags (dont touch it) if a file
+        //does not exist in a path that was defined, we create it with its dependencies and make file elements
+
+        
     }
 
-    scafolding(makeObject, buildPaths){
-        //we need to make sure we do not overwrite the paths in the makeObject if they already exist, 
-        //especially if we are just adding a dependency...
+    scafolding(makeObject, flags){
 
-        var makefileOutput=``;
-        var uniquePaths=Object.keys(makeObject)
-        for(var i=0; i<uniquePaths.length; i++){
-            var testDir=uniquePaths[i]+'Test/'
-            var dir=uniquePaths[i].slice()
-            var fileBase=dir.split('/')[dir.split('/').length-2]
+        // var makefileOutput=``;
+        // var uniquePaths=Object.keys(makeObject)
+        // for(var i=0; i<uniquePaths.length; i++){
+        //     var testDir=uniquePaths[i]+'Test/'
+        //     var dir=uniquePaths[i].slice()
+        //     var fileBase=dir.split('/')[dir.split('/').length-2]
 
-            if(JSON.parse(buildPaths.toLowerCase())==true){
-                console.log('creating empty project...')
-                if (!fs.existsSync(dir)){
-                    fs.mkdirSync(dir);
-                }
-                if (!fs.existsSync(testDir)){
-                    fs.mkdirSync(testDir);
-                }
-                if(!this.cmain(dir, fileBase)){
-                    this.cFile(dir, fileBase, makeObject[uniquePaths[i]])
-                }
-                this.hFile(dir, fileBase)
-                this.cTest(testDir)
-                this.hTest(testDir)
-                this.cDriver(testDir)
-                this.hDriver(testDir)
-            }else{
+
+
+        //     // if(JSON.parse(buildPaths.toLowerCase())==true){
+        //     //     console.log('creating empty project...')
+        //     //     if (!fs.existsSync(dir)){
+        //     //         fs.mkdirSync(dir);
+        //     //     }
+        //     //     if (!fs.existsSync(testDir)){
+        //     //         fs.mkdirSync(testDir);
+        //     //     }
+        //     //     if(!this.cmain(dir, fileBase)){
+        //     //         this.cFile(dir, fileBase, makeObject[uniquePaths[i]])
+        //     //     }
+        //     //     this.hFile(dir, fileBase)
+        //     //     this.cTest(testDir)
+        //     //     this.hTest(testDir)
+        //     //     this.cDriver(testDir)
+        //     //     this.hDriver(testDir)
+        //     // }else{
                 
-            }
+        //     // }
             
-            makefileOutput+=this.make(uniquePaths[i].slice(), makeObject[uniquePaths[i]])
-            this.ALL_TEST_c_DEVELOPER_DEPENDENCIES+=this.makeAllTestCDeveloperDependencies(uniquePaths[i].slice())
-            this.ALL_TEST_h_DEVELOPER_DEPENDENCIES+=this.makeAllTestHDeveloperDependencies(uniquePaths[i].slice())
-            this.ALL_TEST_o_DEVELOPER_DEPENDENCIES+=this.makeAllTestODeveloperDependencies(uniquePaths[i].slice())
-            this.ALL_TEST_c_PRODUCTION_DEPENDENCIES+=this.makeAllTestCProductionDependencies(uniquePaths[i].slice())
-            this.ALL_TEST_h_PRODUCTION_DEPENDENCIES+=this.makeAllTestHProductionDependencies(uniquePaths[i].slice())
-            this.ALL_TEST_o_PRODUCTION_DEPENDENCIES+=this.makeAllTestOProductionDependencies(uniquePaths[i].slice())
-            this.ALL_TEST_c_DEVELOPER_FILES+=this.makeAllTestCDeveloperFiles(uniquePaths[i].slice())
-            this.ALL_TEST_h_DEVELOPER_FILES+=this.makeAllTestHDeveloperFiles(uniquePaths[i].slice())
-            this.ALL_TEST_o_DEVELOPER_FILES+=this.makeAllTestODeveloperFiles(uniquePaths[i].slice())
-            this.ALL_TEST_c_PRODUCTION_FILES+=this.makeAllTestCProductionFiles(uniquePaths[i].slice())
-            this.ALL_TEST_h_PRODUCTION_FILES+=this.makeAllTestHProductionFiles(uniquePaths[i].slice())
-            this.ALL_TEST_o_PRODUCTION_FILES+=this.makeAllTestOProductionFiles(uniquePaths[i].slice())
-            this.makeAllProductionTests+=this._makeAllProductionTests(uniquePaths[i].slice())
-            this.makeAllProductionTestsClean+=this._makeAllProductionTestsClean(uniquePaths[i].slice())
-        }
+        //     makefileOutput+=this.make(uniquePaths[i].slice(), makeObject[uniquePaths[i]])
+        //     this.ALL_TEST_c_DEVELOPER_DEPENDENCIES+=this.makeAllTestCDeveloperDependencies(uniquePaths[i].slice())
+        //     this.ALL_TEST_h_DEVELOPER_DEPENDENCIES+=this.makeAllTestHDeveloperDependencies(uniquePaths[i].slice())
+        //     this.ALL_TEST_o_DEVELOPER_DEPENDENCIES+=this.makeAllTestODeveloperDependencies(uniquePaths[i].slice())
+        //     this.ALL_TEST_c_PRODUCTION_DEPENDENCIES+=this.makeAllTestCProductionDependencies(uniquePaths[i].slice())
+        //     this.ALL_TEST_h_PRODUCTION_DEPENDENCIES+=this.makeAllTestHProductionDependencies(uniquePaths[i].slice())
+        //     this.ALL_TEST_o_PRODUCTION_DEPENDENCIES+=this.makeAllTestOProductionDependencies(uniquePaths[i].slice())
+        //     this.ALL_TEST_c_DEVELOPER_FILES+=this.makeAllTestCDeveloperFiles(uniquePaths[i].slice())
+        //     this.ALL_TEST_h_DEVELOPER_FILES+=this.makeAllTestHDeveloperFiles(uniquePaths[i].slice())
+        //     this.ALL_TEST_o_DEVELOPER_FILES+=this.makeAllTestODeveloperFiles(uniquePaths[i].slice())
+        //     this.ALL_TEST_c_PRODUCTION_FILES+=this.makeAllTestCProductionFiles(uniquePaths[i].slice())
+        //     this.ALL_TEST_h_PRODUCTION_FILES+=this.makeAllTestHProductionFiles(uniquePaths[i].slice())
+        //     this.ALL_TEST_o_PRODUCTION_FILES+=this.makeAllTestOProductionFiles(uniquePaths[i].slice())
+        //     this.makeAllProductionTests+=this._makeAllProductionTests(uniquePaths[i].slice())
+        //     this.makeAllProductionTestsClean+=this._makeAllProductionTestsClean(uniquePaths[i].slice())
+        // }
 
-        makefileOutput+=this.finalMake()
-        fs.writeFileSync('./makefile', makefileOutput);
+        // makefileOutput+=this.finalMake()
+        // fs.writeFileSync('./makefile', makefileOutput);
     }
 
     cmain(dir, fileBase){
@@ -278,6 +303,18 @@ class Make{
         return output
     }
 
+
+    
+
+}
+
+
+new Make(makeObject, process.argv.slice(3))
+
+
+class Makefile{
+    
+
     makeAllTestCDeveloperDependencies(dir){
         dir=dir.slice().split('/')
         dir.pop()
@@ -399,6 +436,3 @@ class Make{
     }
 
 }
-
-
-new Make(makeObject, process.argv[2])
