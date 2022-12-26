@@ -1,4 +1,4 @@
-import {makeObject} from "./MakeObject.js"
+import {makeObject} from "../MakeObject.js"
 import fs from 'node:fs'
 
 class Make{
@@ -154,96 +154,9 @@ class Make{
 
 
     make(dir, dependencies){
-        var dirName=dir
-        dir=dir.split('/')
-        dir.pop()
-        dir.shift()
-        var fileName=dir.slice().pop()
-        var name = dir.join("")
-        dir=dir.join('_').toUpperCase()
-        var dependenciesH=``
-        var dependenciesC=``
-        var dependenciesO=``
+        var makeFile = new MakeFile(dir, dependencies);
+
         
-       for(var i = 0; i<dependencies.length; i++){
-            
-            dependenciesH+=dependencies[0].slice(0,-1)+`h `
-            dependenciesC+=dependencies[0].slice(0,-1)+`c `
-            dependenciesO+=dependencies[0].slice(0,-1)+`o `
-       }
-       var output = 
-       `${dir}_DIR=${dirName}\n`+
-       `${dir}_TEST_DIR=\$\{${dir}_DIR\}Test/\n`+
-       `${dir}_C=${fileName}.c\n`+
-       `${dir}_H=${fileName}.h\n`+
-       `${dir}_O=${fileName}.o\n`+
-       `${dir}_TEST_C=Test.c\n`+
-       `${dir}_TEST_H=Test.h\n`+
-       `${dir}_TEST_O=Test.o\n`+
-       `${dir}_TEST_DRIVER_C=Driver.c\n`+
-       `${dir}_TEST_DRIVER_H=Driver.h\n`+
-       `${dir}_TEST_DRIVER_O=Driver.o\n`+
-
-       `${dir}_C_PATH=\$\{${dir}_DIR\}\$\{${dir}_C\}\n`+
-       `${dir}_H_PATH=\$\{${dir}_DIR\}\$\{${dir}_H\}\n`+
-       `${dir}_O_PATH=\$\{${dir}_DIR\}\$\{${dir}_O\}\n`+
-
-       `${dir}_TEST_C_PATH=\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_C\}\n`+
-       `${dir}_TEST_H_PATH=\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_H\}\n`+
-       `${dir}_TEST_O_PATH=\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_O\}\n`+
-
-       `${dir}_TEST_DRIVER_C_PATH=\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_DRIVER_C\}\n`+
-       `${dir}_TEST_DRIVER_H_PATH=\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_DRIVER_H\}\n`+
-       `${dir}_TEST_DRIVER_O_PATH=\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_DRIVER_O\}\n`+
-
-       `PRODUCTION_${dir}_TEST_C_DEPENDENCIES=\$\{${dir}_C_PATH\} \$\{${dir}_TEST_C_PATH\} `+ dependenciesC + `\n`+
-       `PRODUCTION_${dir}_TEST_H_DEPENDENCIES=\$\{${dir}_H_PATH\} \$\{${dir}_TEST_H_PATH\} `+ dependenciesH + `\n`+
-       `PRODUCTION_${dir}_TEST_O_DEPENDENCIES=\$\{${dir}_O_PATH\} \$\{${dir}_TEST_O_PATH\} `+ dependenciesO + `\n`+
-       
-       `DEVELOPER_${dir}_TEST_C_DEPENDENCIES=\$\{${dir}_C_PATH\} \$\{${dir}_TEST_C_PATH\} \$\{${dir}_TEST_DRIVER_C_PATH\} `+ dependenciesC + `\n`+
-       `DEVELOPER_${dir}_TEST_H_DEPENDENCIES=\$\{${dir}_H_PATH\} \$\{${dir}_TEST_H_PATH\} \$\{${dir}_TEST_DRIVER_H_PATH\} `+ dependenciesH + `\n`+
-       `DEVELOPER_${dir}_TEST_O_DEPENDENCIES=\$\{${dir}_O_PATH\} \$\{${dir}_TEST_O_PATH\} \$\{${dir}_TEST_DRIVER_O_PATH\} `+ dependenciesO + `\n`+
-
-       `DEVELOPER_${dir}_TEST_C_FILES=\$\{${dir}_C_PATH\} \$\{${dir}_TEST_C_PATH\} \$\{${dir}_TEST_DRIVER_C_PATH\} `+ dependenciesC + `\n`+
-       `DEVELOPER_${dir}_TEST_H_FILES=\$\{${dir}_H_PATH\} \$\{${dir}_TEST_H_PATH\} \$\{${dir}_TEST_DRIVER_H_PATH\} `+ dependenciesH + `\n`+
-       `DEVELOPER_${dir}_TEST_O_FILES=\$\{${dir}_O_PATH\} \$\{${dir}_TEST_O_PATH\} \$\{${dir}_TEST_DRIVER_O_PATH\} `+ dependenciesO + `\n`+
-
-       `PRODUCTION_${dir}_TEST_C_FILES=\$\{${dir}_C_PATH\} \$\{${dir}_TEST_C_PATH\} `+ dependenciesC + `\n`+
-       `PRODUCTION_${dir}_TEST_H_FILES=\$\{${dir}_H_PATH\} \$\{${dir}_TEST_H_PATH\} `+ dependenciesH + `\n`+
-       `PRODUCTION_${dir}_TEST_O_FILES=\$\{${dir}_O_PATH\} \$\{${dir}_TEST_O_PATH\} `+ dependenciesO + `\n`+
-
-       `${dir}_TEST_DEVELOPER_FILES= \$\{DEVELOPER_${dir}_TEST_C_FILES\} \$\{DEVELOPER_${dir}_TEST_H_FILES\} \$\{DEVELOPER_${dir}_TEST_O_FILES\} \n\n\n`+
-
-
-       `Developer${name}: \$\{DEVELOPER_${dir}_TEST_C_DEPENDENCIES\} \$\{DEVELOPER_${dir}_TEST_H_DEPENDENCIES\}\n`+
-       `\tcd \$\{${dir}_DIR\}; gcc -c \$\{${dir}_C\}\n`+
-       `\tcd \$\{${dir}_TEST_DIR\}; gcc -c \$\{${dir}_TEST_C\} \$\{${dir}_TEST_DRIVER_C\}\n\n`+
-
-       `Production${name}: \$\{PRODUCTION_${dir}_TEST_C_DEPENDENCIES\} \$\{PRODUCTION_${dir}_TEST_H_DEPENDENCIES\}\n`+
-       `\tcd \$\{${dir}_DIR\}; gcc -c \$\{${dir}_C\}\n`+
-       `\tcd \$\{${dir}_TEST_DIR\}; gcc -c \$\{${dir}_TEST_C\}\n\n`+
-
-        `Developer${name}Clean: \$\{DEVELOPER_${dir}_TEST_O_DEPENDENCIES\}\n`+
-        `\tcd \$\{${dir}_DIR\}; rm -f \$\{${dir}_O\}\n`+
-        `\tcd \$\{${dir}_TEST_DIR\}; rm -f \$\{${dir}_TEST_O\} \$\{${dir}_TEST_DRIVER_O\}\n\n` +
-
-        `Production${name}Clean: \$\{PRODUCTION_${dir}_TEST_O_DEPENDENCIES\}\n`+
-        `\tcd \$\{${dir}_DIR\}; rm -f \$\{${dir}_O\}\n`+
-        `\tcd \$\{${dir}_TEST_DIR\}; rm -f \$\{${dir}_TEST_O\}\n\n` +
-
-        `Developer${name}Link: \$\{DEVELOPER_${dir}_TEST_O_DEPENDENCIES\}\n`+
-	    `\t(gcc -o developerTest \$\{${dir}_O_PATH\} \$\{${dir}_TEST_O_PATH\} \$\{${dir}_TEST_DRIVER_O_PATH\})\n\n`+
-
-        `Production${name}Link: \$\{PRODUCTION_${dir}_TEST_O_DEPENDENCIES\}\n`+
-	    `\t(gcc -o productionTest \$\{${dir}_O_PATH\} \$\{${dir}_TEST_O_PATH\})\n\n`+
-        
-        `Developer${name}Run: \$\{DEVELOPER_${dir}_TEST_O_DEPENDENCIES\} \$\{DEVELOPER_${dir}_TEST_C_DEPENDENCIES\} \$\{DEVELOPER_${dir}_TEST_H_DEPENDENCIES\}\n`+
-        `\tmake Developer${name}Clean\n`+
-        `\tmake Developer${name}\n`+
-        `\tmake Developer${name}Link\n`+
-        `\t./developerTest\n\n`+
-
-        `########################################################################################################################################\n\n\n\n\n\n`
        return output        
     }
     finalMake(){
