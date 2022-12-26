@@ -1,3 +1,5 @@
+import fs from 'node:fs'
+
 export class MakeFile{
     constructor(makeObject, flags){
        this.name;

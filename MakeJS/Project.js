@@ -1,14 +1,16 @@
+import fs from 'node:fs'
+
 export class Project{
     constructor(makeObject, flags){
-
+        this.scafolding(makeObject, flags)
     }
-    scafolding(makeObject, buildPaths){
+    scafolding(makeObject, flags){
         var uniquePaths=Object.keys(makeObject)
         for(var i=0; i<uniquePaths.length; i++){
             var testDir=uniquePaths[i]+'Test/'
             var dir=uniquePaths[i].slice()
             var fileBase=dir.split('/')[dir.split('/').length-2]
-            if(JSON.parse(buildPaths.toLowerCase())==true){
+            if(JSON.parse(flags.toLowerCase())==true){
                 if (!fs.existsSync(dir)){ fs.mkdirSync(dir); }
                 if (!fs.existsSync(testDir)){ fs.mkdirSync(testDir); }
                 if(!this.cmain(dir, fileBase)){ this.cFile(dir, fileBase, makeObject[uniquePaths[i]]) }
@@ -24,8 +26,10 @@ export class Project{
     cmain(dir, fileBase){
         if(dir.split('/').length==3){
             var output = 
-                `#include `+`"`+fileBase+'.h'+`"\n\n`+
+                `#include `+`"`+fileBase+'.h'+`"\n`+
+                `#include <stdio.h>\n\n`+
                 `int main(int argc, char *argv[]){\n`+
+                `\tprintf("argc: %d, argv: %s", argc, argv);\n`+
                 `\treturn 0;\n`+`}`
             fs.writeFileSync( dir+fileBase+'.c', output);
             return true
