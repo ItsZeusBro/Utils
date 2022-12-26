@@ -1,4 +1,4 @@
-class MakeFile{
+export class MakeFile{
     constructor(dir, dependencies){
         dir=dir.split('/')
         dir.pop()
@@ -6,6 +6,7 @@ class MakeFile{
         this.fileName=dir.slice().pop()
         this.name = dir.join("")
         this.dir=dir.join('_').toUpperCase()
+        this.dependencies=dependencies
         this.dependenciesH=``
         this.dependenciesC=``
         this.dependenciesO=``
@@ -30,66 +31,64 @@ class MakeFile{
     moduleCFilePath(){return `${this.dir}_C_PATH=\$\{${this.dir}_DIR\}\$\{${this.dir}_C\}\n`}
     moduleHFilePath(){return `${this.dir}_H_PATH=\$\{${this.dir}_DIR\}\$\{${this.dir}_H\}\n`}
     moduleOFilePath(){return `${this.dir}_O_PATH=\$\{${this.dir}_DIR\}\$\{${this.dir}_O\}\n`}
-
     moduleTestCFilePath(){return `${this.dir}_TEST_C_PATH=\$\{${this.dir}_TEST_DIR\}\$\{${this.dir}_TEST_C\}\n`}
     moduleTestHFilePath(){return `${this.dir}_TEST_H_PATH=\$\{${this.dir}_TEST_DIR\}\$\{${this.dir}_TEST_H\}\n`}
     moduleTestOFilePath(){return `${this.dir}_TEST_O_PATH=\$\{${this.dir}_TEST_DIR\}\$\{${this.dir}_TEST_O\}\n`}
-
     moduleTestDriverCFilePath(){return `${this.dir}_TEST_DRIVER_C_PATH=\$\{${this.dir}_TEST_DIR\}\$\{${this.dir}_TEST_DRIVER_C\}\n`}
     moduleTestDriverHFilePath(){return `${this.dir}_TEST_DRIVER_H_PATH=\$\{${this.dir}_TEST_DIR\}\$\{${this.dir}_TEST_DRIVER_H\}\n`}
     moduleTestDriverOFilePath(){return `${this.dir}_TEST_DRIVER_O_PATH=\$\{${this.dir}_TEST_DIR\}\$\{${this.dir}_TEST_DRIVER_O\}\n`}
-
     moduleTestDriverCFilePath(){return `${this.dir}_TEST_DRIVER_C_PATH=\$\{${this.dir}_TEST_DIR\}\$\{${this.dir}_TEST_DRIVER_C\}\n`}
     moduleTestDriverHFilePath(){return `${this.dir}_TEST_DRIVER_H_PATH=\$\{${this.dir}_TEST_DIR\}\$\{${this.dir}_TEST_DRIVER_H\}\n`}
     moduleTestDriverOFilePath(){return `${this.dir}_TEST_DRIVER_O_PATH=\$\{${this.dir}_TEST_DIR\}\$\{${this.dir}_TEST_DRIVER_O\}\n`}
-
-    developerTestCDependencies(){return `DEVELOPER_${this.dir}_TEST_C_DEPENDENCIES=\$\{${this.dir}_C_PATH\} \$\{${this.dir}_TEST_C_PATH\} `+ this.dependenciesC + `\n`}
-    developerTestHDependencies(){return `DEVELOPER_${this.dir}_TEST_H_DEPENDENCIES=\$\{${this.dir}_H_PATH\} \$\{${this.dir}_TEST_H_PATH\} `+ this.dependenciesH + `\n`}
-    developerTestODependencies(){return `DEVELOPER_${this.dir}_TEST_O_DEPENDENCIES=\$\{${this.dir}_O_PATH\} \$\{${this.dir}_TEST_O_PATH\} `+ this.dependenciesO + `\n`}
-
     productionTestCDependencies(){return `PRODUCTION_${this.dir}_TEST_C_DEPENDENCIES=\$\{${this.dir}_C_PATH\} \$\{${this.dir}_TEST_C_PATH\} `+ this.dependenciesC + `\n`}
     productionTestHDependencies(){return `PRODUCTION_${this.dir}_TEST_H_DEPENDENCIES=\$\{${this.dir}_H_PATH\} \$\{${this.dir}_TEST_H_PATH\} `+ this.dependenciesH + `\n`}
     productionTestODependencies(){return `PRODUCTION_${this.dir}_TEST_O_DEPENDENCIES=\$\{${this.dir}_O_PATH\} \$\{${this.dir}_TEST_O_PATH\} `+ this.dependenciesO + `\n`}
-
-    developerTestCDependencies(){return `DEVELOPER_${this.dir}_TEST_C_DEPENDENCIES=\$\{${this.dir}_C_PATH\} \$\{${this.dir}_TEST_C_PATH\} \$\{${this.dir}_TEST_DRIVER_C_PATH\}`+ this.dependenciesC + `\n`}
-    developerTestHDependencies(){return `DEVELOPER_${this.dir}_TEST_H_DEPENDENCIES=\$\{${this.dir}_H_PATH\} \$\{${this.dir}_TEST_H_PATH\} \$\{${this.dir}_TEST_DRIVER_H_PATH\}`+ this.dependenciesH + `\n`}
-    developerTestODependencies(){return `DEVELOPER_${this.dir}_TEST_O_DEPENDENCIES=\$\{${this.dir}_O_PATH\} \$\{${this.dir}_TEST_O_PATH\} \$\{${this.dir}_TEST_DRIVER_O_PATH\}`+ this.dependenciesO + `\n`}
-
-    productionTestCDependencies(){return `PRODUCTION_${this.dir}_TEST_C_DEPENDENCIES=\$\{${this.dir}_C_PATH\} \$\{${this.dir}_TEST_C_PATH\} \$\{${this.dir}_TEST_DRIVER_C_PATH\}`+ this.dependenciesC + `\n`}
-    productionTestHDependencies(){return `PRODUCTION_${this.dir}_TEST_H_DEPENDENCIES=\$\{${this.dir}_H_PATH\} \$\{${this.dir}_TEST_H_PATH\} \$\{${this.dir}_TEST_DRIVER_H_PATH\}`+ this.dependenciesH + `\n`}
-    productionTestODependencies(){return `PRODUCTION_${this.dir}_TEST_O_DEPENDENCIES=\$\{${this.dir}_O_PATH\} \$\{${this.dir}_TEST_O_PATH\} \$\{${this.dir}_TEST_DRIVER_O_PATH\}`+ this.dependenciesO + `\n`}
-    
-    
-    
-    //    `DEVELOPER_${dir}_TEST_C_FILES=\$\{${dir}_C_PATH\} \$\{${dir}_TEST_C_PATH\} \$\{${dir}_TEST_DRIVER_C_PATH\} `+ dependenciesC + `\n`+
-    //    `DEVELOPER_${dir}_TEST_H_FILES=\$\{${dir}_H_PATH\} \$\{${dir}_TEST_H_PATH\} \$\{${dir}_TEST_DRIVER_H_PATH\} `+ dependenciesH + `\n`+
-    //    `DEVELOPER_${dir}_TEST_O_FILES=\$\{${dir}_O_PATH\} \$\{${dir}_TEST_O_PATH\} \$\{${dir}_TEST_DRIVER_O_PATH\} `+ dependenciesO + `\n`+
-    //    `PRODUCTION_${dir}_TEST_C_FILES=\$\{${dir}_C_PATH\} \$\{${dir}_TEST_C_PATH\} `+ dependenciesC + `\n`+
-    //    `PRODUCTION_${dir}_TEST_H_FILES=\$\{${dir}_H_PATH\} \$\{${dir}_TEST_H_PATH\} `+ dependenciesH + `\n`+
-    //    `PRODUCTION_${dir}_TEST_O_FILES=\$\{${dir}_O_PATH\} \$\{${dir}_TEST_O_PATH\} `+ dependenciesO + `\n`+
-    //    `${dir}_TEST_DEVELOPER_FILES= \$\{DEVELOPER_${dir}_TEST_C_FILES\} \$\{DEVELOPER_${dir}_TEST_H_FILES\} \$\{DEVELOPER_${dir}_TEST_O_FILES\} \n\n\n`+
-    //    `Developer${name}: \$\{DEVELOPER_${dir}_TEST_C_DEPENDENCIES\} \$\{DEVELOPER_${dir}_TEST_H_DEPENDENCIES\}\n`+
-    //    `\tcd \$\{${dir}_DIR\}; gcc -c \$\{${dir}_C\}\n`+
-    //    `\tcd \$\{${dir}_TEST_DIR\}; gcc -c \$\{${dir}_TEST_C\} \$\{${dir}_TEST_DRIVER_C\}\n\n`+
-    //    `Production${name}: \$\{PRODUCTION_${dir}_TEST_C_DEPENDENCIES\} \$\{PRODUCTION_${dir}_TEST_H_DEPENDENCIES\}\n`+
-    //    `\tcd \$\{${dir}_DIR\}; gcc -c \$\{${dir}_C\}\n`+
-    //    `\tcd \$\{${dir}_TEST_DIR\}; gcc -c \$\{${dir}_TEST_C\}\n\n`+
-    //     `Developer${name}Clean: \$\{DEVELOPER_${dir}_TEST_O_DEPENDENCIES\}\n`+
-    //     `\tcd \$\{${dir}_DIR\}; rm -f \$\{${dir}_O\}\n`+
-    //     `\tcd \$\{${dir}_TEST_DIR\}; rm -f \$\{${dir}_TEST_O\} \$\{${dir}_TEST_DRIVER_O\}\n\n` +
-    //     `Production${name}Clean: \$\{PRODUCTION_${dir}_TEST_O_DEPENDENCIES\}\n`+
-    //     `\tcd \$\{${dir}_DIR\}; rm -f \$\{${dir}_O\}\n`+
-    //     `\tcd \$\{${dir}_TEST_DIR\}; rm -f \$\{${dir}_TEST_O\}\n\n` +
-    //     `Developer${name}Link: \$\{DEVELOPER_${dir}_TEST_O_DEPENDENCIES\}\n`+
-	//     `\t(gcc -o developerTest \$\{${dir}_O_PATH\} \$\{${dir}_TEST_O_PATH\} \$\{${dir}_TEST_DRIVER_O_PATH\})\n\n`+
-    //     `Production${name}Link: \$\{PRODUCTION_${dir}_TEST_O_DEPENDENCIES\}\n`+
-	//     `\t(gcc -o productionTest \$\{${dir}_O_PATH\} \$\{${dir}_TEST_O_PATH\})\n\n`+
-    //     `Developer${name}Run: \$\{DEVELOPER_${dir}_TEST_O_DEPENDENCIES\} \$\{DEVELOPER_${dir}_TEST_C_DEPENDENCIES\} \$\{DEVELOPER_${dir}_TEST_H_DEPENDENCIES\}\n`+
-    //     `\tmake Developer${name}Clean\n`+
-    //     `\tmake Developer${name}\n`+
-    //     `\tmake Developer${name}Link\n`+
-    //     `\t./developerTest\n\n`+
-
-    //     `########################################################################################################################################\n\n\n\n\n\n`
-
+    developerTestCDependencies(){return `DEVELOPER${this.dir}_TEST_C_DEPENDENCIES=\$\{${this.dir}_C_PATH\} \$\{${this.dir}_TEST_C_PATH\} \$\{${this.dir}_TEST_DRIVER_C_PATH\}`+ this.dependenciesC + `\n`}
+    developerTestHDependencies(){return `DEVELOPER${this.dir}_TEST_H_DEPENDENCIES=\$\{${this.dir}_H_PATH\} \$\{${this.dir}_TEST_H_PATH\} \$\{${this.dir}_TEST_DRIVER_H_PATH\}`+ this.dependenciesH + `\n`}
+    developerTestODependencies(){return `DEVELOPER${this.dir}_TEST_O_DEPENDENCIES=\$\{${this.dir}_O_PATH\} \$\{${this.dir}_TEST_O_PATH\} \$\{${this.dir}_TEST_DRIVER_O_PATH\}`+ this.dependenciesO + `\n`}
+    developerTestCFiles(){ return `DEVELOPER_${this.dir}_TEST_C_FILES=\$\{${this.dir}_C_PATH\} \$\{${this.dir}_TEST_C_PATH\} \$\{${this.dir}_TEST_DRIVER_C_PATH\} `+ this.dependenciesC + `\n`}
+    developerTestHFiles(){ return `DEVELOPER_${this.dir}_TEST_H_FILES=\$\{${this.dir}_H_PATH\} \$\{${this.dir}_TEST_H_PATH\} \$\{${this.dir}_TEST_DRIVER_H_PATH\} `+ this.dependenciesH + `\n`}
+    developerTestOFiles(){ return `DEVELOPER_${this.dir}_TEST_O_FILES=\$\{${this.dir}_O_PATH\} \$\{${this.dir}_TEST_O_PATH\} \$\{${this.dir}_TEST_DRIVER_O_PATH\} `+ this.dependenciesO + `\n`}
+    productionTestCFiles(){ return `PRODUCTION${this.dir}_TEST_C_FILES=\$\{${this.dir}_C_PATH\} \$\{${this.dir}_TEST_C_PATH\} `+ this.dependenciesC + `\n`}
+    productionTestHFiles(){ return `PRODUCTION${this.dir}_TEST_H_FILES=\$\{${this.dir}_H_PATH\} \$\{${this.dir}_TEST_H_PATH\} `+ this.dependenciesH + `\n`}
+    productionTestOFiles(){ return `PRODUCTION${this.dir}_TEST_O_FILES=\$\{${this.dir}_O_PATH\} \$\{${this.dir}_TEST_O_PATH\} `+ this.dependenciesO + `\n`}
+    developerTestFiles(){ return `${this.dir}_TEST_DEVELOPER_FILES= \$\{DEVELOPER_${this.dir}_TEST_C_FILES\} \$\{DEVELOPER_${this.dir}_TEST_H_FILES\} \$\{DEVELOPER_${this.dir}_TEST_O_FILES\} \n\n\n`}
+    developerBuild(){ 
+        return `Developer${this.name}: \$\{DEVELOPER_${this.dir}_TEST_C_DEPENDENCIES\} \$\{DEVELOPER_${this.dir}_TEST_H_DEPENDENCIES\}\n` +
+        `\tcd \$\{${this.dir}_DIR\}; gcc -c \$\{${this.dir}_C\}\n` +
+        `\tcd \$\{${this.dir}_TEST_DIR\}; gcc -c \$\{${this.dir}_TEST_C\} \$\{${this.dir}_TEST_DRIVER_C\}\n\n`
+    }
+    productionBuild(){
+        return `Production${this.name}: \$\{PRODUCTION_${this.dir}_TEST_C_DEPENDENCIES\} \$\{PRODUCTION_${this.dir}_TEST_H_DEPENDENCIES\}\n`+
+        `\tcd \$\{${this.dir}_DIR\}; gcc -c \$\{${this.dir}_C\}\n`+
+        `\tcd \$\{${this.dir}_TEST_DIR\}; gcc -c \$\{${this.dir}_TEST_C\}\n\n`
+    }
+    developerBuildClean(){
+        return `Developer${this.name}Clean: \$\{DEVELOPER_${this.dir}_TEST_O_DEPENDENCIES\}\n`+
+        `\tcd \$\{${this.dir}_DIR\}; rm -f \$\{${this.dir}_O\}\n`+
+        `\tcd \$\{${this.dir}_TEST_DIR\}; rm -f \$\{${this.dir}_TEST_O\} \$\{${this.dir}_TEST_DRIVER_O\}\n\n`
+    }
+    productionBuildClean(){
+        return `Production${this.name}Clean: \$\{PRODUCTION_${this.dir}_TEST_O_DEPENDENCIES\}\n`+
+        `\tcd \$\{${this.dir}_DIR\}; rm -f \$\{${this.dir}_O\}\n`+
+        `\tcd \$\{${this.dir}_TEST_DIR\}; rm -f \$\{${this.dir}_TEST_O\}\n\n`
+    }
+    developerBuildLink(){
+        return `Developer${this.name}Link: \$\{DEVELOPER_${this.dir}_TEST_O_DEPENDENCIES\}\n`+
+        `\t(gcc -o developerTest \$\{${this.dir}_O_PATH\} \$\{${this.dir}_TEST_O_PATH\} \$\{${this.dir}_TEST_DRIVER_O_PATH\})\n\n`
+    }
+    productionBuildLink(){
+        return `Production${this.name}Link: \$\{PRODUCTION_${this.dir}_TEST_O_DEPENDENCIES\}\n`+
+        `\t(gcc -o productionTest \$\{${this.dir}_O_PATH\} \$\{${this.dir}_TEST_O_PATH\})\n\n`
+    }
+    developerBuildRun(){
+        return `Developer${this.name}Run: \$\{DEVELOPER_${this.dir}_TEST_O_DEPENDENCIES\} \$\{DEVELOPER_${this.dir}_TEST_C_DEPENDENCIES\} \$\{DEVELOPER_${this.dir}_TEST_H_DEPENDENCIES\}\n`+
+        `\tmake Developer${this.name}Clean\n`+
+        `\tmake Developer${this.name}\n`+
+        `\tmake Developer${this.name}Link\n`+
+        `\t./developerTest\n\n`
+    }
+    endOfModule(){
+        return  `########################################################################################################################################\n\n\n\n\n\n`
+    }
 }

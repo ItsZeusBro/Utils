@@ -1,4 +1,5 @@
-import {makeObject} from "../MakeObject.js"
+import {makeObject} from "./MakeObject.js"
+import {MakeFile} from "./MakeFile.js"
 import fs from 'node:fs'
 
 class Make{
@@ -70,7 +71,7 @@ class Make{
         }
 
         makefileOutput+=this.finalMake()
-        fs.writeFileSync('./makefile', makefileOutput);
+        fs.writeFileSync('../makefile', makefileOutput);
     }
 
     cmain(dir, fileBase){
@@ -155,9 +156,51 @@ class Make{
 
     make(dir, dependencies){
         var makeFile = new MakeFile(dir, dependencies);
-
-        
-       return output        
+        return ``+
+        makeFile.modulePath()+
+        makeFile.moduleTestPath()+
+        makeFile.moduleCFile()+
+        makeFile.moduleHFile()+
+        makeFile.moduleOFile()+
+        makeFile.moduleTestCFile()+
+        makeFile.moduleTestHFile()+
+        makeFile.moduleTestOFile()+
+        makeFile.moduleTestDriverCFile()+
+        makeFile.moduleTestDriverHFile()+
+        makeFile.moduleTestDriverOFile()+
+        makeFile.moduleCFilePath()+
+        makeFile.moduleHFilePath()+
+        makeFile.moduleOFilePath()+
+        makeFile.moduleTestCFilePath()+
+        makeFile.moduleTestHFilePath()+
+        makeFile.moduleTestOFilePath()+
+        makeFile.moduleTestDriverCFilePath()+
+        makeFile.moduleTestDriverHFilePath()+
+        makeFile.moduleTestDriverOFilePath()+
+        makeFile.moduleTestDriverCFilePath()+
+        makeFile.moduleTestDriverHFilePath()+
+        makeFile.moduleTestDriverOFilePath()+
+        makeFile.productionTestCDependencies()+
+        makeFile.productionTestHDependencies()+
+        makeFile.productionTestODependencies()+
+        makeFile.developerTestCDependencies()+
+        makeFile.developerTestHDependencies()+
+        makeFile.developerTestODependencies()+
+        makeFile.developerTestCFiles()+
+        makeFile.developerTestHFiles()+
+        makeFile.developerTestOFiles()+
+        makeFile.productionTestCFiles()+
+        makeFile.productionTestHFiles()+
+        makeFile.productionTestOFiles()+
+        makeFile.developerTestFiles()+
+        makeFile.developerBuild()+
+        makeFile.productionBuild()+
+        makeFile.developerBuildClean()+
+        makeFile.productionBuildClean()+
+        makeFile.developerBuildLink()+
+        makeFile.productionBuildLink()+
+        makeFile.developerBuildRun()+
+        makeFile.endOfModule()
     }
     finalMake(){
 
