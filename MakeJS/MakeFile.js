@@ -107,10 +107,10 @@ export class MakeFile{
         `\t(gcc -o productionTest \$\{${this.dir}_O_PATH\} \$\{${this.dir}_TEST_O_PATH\})\n\n`
     }
     developerBuildRun(){
-        return `Developer${this.fileName}Run: \$\{DEVELOPER_${this.dir}_TEST_O_DEPENDENCIES\} \$\{DEVELOPER_${this.dir}_TEST_C_DEPENDENCIES\} \$\{DEVELOPER_${this.dir}_TEST_H_DEPENDENCIES\}\n`+
-        `\tmake Developer${this.fileName}Clean\n`+
-        `\tmake Developer${this.fileName}\n`+
-        `\tmake Developer${this.fileName}Link\n`+
+        return `Developer${this.name.split('/').slice(1).join('')}Run: \$\{DEVELOPER_${this.dir}_TEST_O_DEPENDENCIES\} \$\{DEVELOPER_${this.dir}_TEST_C_DEPENDENCIES\} \$\{DEVELOPER_${this.dir}_TEST_H_DEPENDENCIES\}\n`+
+        `\tmake Developer${this.name.split('/').slice(1).join('')}Clean\n`+
+        `\tmake Developer${this.name.split('/').slice(1).join('')}\n`+
+        `\tmake Developer${this.name.split('/').slice(1).join('')}Link\n`+
         `\t./developerTest\n\n`
     }
     endOfModule(){
