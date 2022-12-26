@@ -4,21 +4,7 @@ import fs from 'node:fs'
 
 class Make{
     constructor(makeObject, buildPaths=false){
-        this.DEVELOPER_TEST_C_DEPENDENCIES=``;
-        this.DEVELOPER_TEST_H_DEPENDENCIES=``;
-        this.DEVELOPER_TEST_O_DEPENDENCIES=``;
-        this.PRODUCTION_TEST_C_DEPENDENCIES=``;
-        this.PRODUCTION_TEST_H_DEPENDENCIES=``;
-        this.PRODUCTION_TEST_O_DEPENDENCIES=``;
-        this.DEVELOPER_TEST_C_FILES=``;
-        this.DEVELOPER_TEST_H_FILES=``;
-        this.DEVELOPER_TEST_O_FILES=``;
-        this.PRODUCTION_TEST_C_FILES=``;
-        this.PRODUCTION_TEST_H_FILES=``;
-        this.PRODUCTION_TEST_O_FILES=``;
-        this.ProductionTests=``;
-        this.ProductionTestsClean=``;
-        this.ProductionTestsLink=``;
+        this.makeFile = new MakeFile()
         this.scafolding(makeObject, buildPaths);
     }
 
@@ -34,7 +20,7 @@ class Make{
             var fileBase=dir.split('/')[dir.split('/').length-2]
 
             if(JSON.parse(buildPaths.toLowerCase())==true){
-                console.log('creating empty project...')
+                console.log('creating empty module', dir)
                 if (!fs.existsSync(dir)){
                     fs.mkdirSync(dir);
                 }
@@ -54,28 +40,27 @@ class Make{
             }
             
             makefileOutput+=this.make(uniquePaths[i].slice(), makeObject[uniquePaths[i]])
-            this.DEVELOPER_TEST_C_DEPENDENCIES+=this.DeveloperTestCDependencies(uniquePaths[i].slice())
-            this.DEVELOPER_TEST_H_DEPENDENCIES+=this.DeveloperTestHDependencies(uniquePaths[i].slice())
-            this.DEVELOPER_TEST_O_DEPENDENCIES+=this.DeveloperTestODependencies(uniquePaths[i].slice())
-            this.PRODUCTION_TEST_C_DEPENDENCIES+=this.ProductionTestCDependencies(uniquePaths[i].slice())
-            this.PRODUCTION_TEST_H_DEPENDENCIES+=this.ProductionTestHDependencies(uniquePaths[i].slice())
-            this.PRODUCTION_TEST_O_DEPENDENCIES+=this.ProductionTestODependencies(uniquePaths[i].slice())
-            this.DEVELOPER_TEST_C_FILES+=this.DeveloperTestCFiles(uniquePaths[i].slice())
-            this.DEVELOPER_TEST_H_FILES+=this.DeveloperTestHFiles(uniquePaths[i].slice())
-            this.DEVELOPER_TEST_O_FILES+=this.DeveloperTestOFiles(uniquePaths[i].slice())
-            this.PRODUCTION_TEST_C_FILES+=this.ProductionTestCFiles(uniquePaths[i].slice())
-            this.PRODUCTION_TEST_H_FILES+=this.ProductionTestHFiles(uniquePaths[i].slice())
-            this.PRODUCTION_TEST_O_FILES+=this.ProductionTestOFiles(uniquePaths[i].slice())
-            this.ProductionTests+=this._ProductionTests(uniquePaths[i].slice())
-            this.ProductionTestsClean+=this._ProductionTestsClean(uniquePaths[i].slice())
+            this.makeFile.DEVELOPER_TEST_C_DEPENDENCIES+=this.DeveloperTestCDependencies(uniquePaths[i].slice())
+            this.makeFile.DEVELOPER_TEST_H_DEPENDENCIES+=this.DeveloperTestHDependencies(uniquePaths[i].slice())
+            this.makeFile.DEVELOPER_TEST_O_DEPENDENCIES+=this.DeveloperTestODependencies(uniquePaths[i].slice())
+            this.makeFile.PRODUCTION_TEST_C_DEPENDENCIES+=this.ProductionTestCDependencies(uniquePaths[i].slice())
+            this.makeFile.PRODUCTION_TEST_H_DEPENDENCIES+=this.ProductionTestHDependencies(uniquePaths[i].slice())
+            this.makeFile.PRODUCTION_TEST_O_DEPENDENCIES+=this.ProductionTestODependencies(uniquePaths[i].slice())
+            this.makeFile.DEVELOPER_TEST_C_FILES+=this.DeveloperTestCFiles(uniquePaths[i].slice())
+            this.makeFile.DEVELOPER_TEST_H_FILES+=this.DeveloperTestHFiles(uniquePaths[i].slice())
+            this.makeFile.DEVELOPER_TEST_O_FILES+=this.DeveloperTestOFiles(uniquePaths[i].slice())
+            this.makeFile.PRODUCTION_TEST_C_FILES+=this.ProductionTestCFiles(uniquePaths[i].slice())
+            this.makeFile.PRODUCTION_TEST_H_FILES+=this.ProductionTestHFiles(uniquePaths[i].slice())
+            this.makeFile.PRODUCTION_TEST_O_FILES+=this.ProductionTestOFiles(uniquePaths[i].slice())
+            this.makeFile.ProductionTests+=this._ProductionTests(uniquePaths[i].slice())
+            this.makeFile.ProductionTestsClean+=this._ProductionTestsClean(uniquePaths[i].slice())
         }
 
         makefileOutput+=this.finalMake()
-        fs.writeFileSync('../makefile', makefileOutput);
+        fs.writeFileSync('./makefile', makefileOutput);
     }
 
     cmain(dir, fileBase){
-        console.log(dir, fileBase)
         if(dir.split('/').length==3){
             var output = 
                 `#include `+`"`+fileBase+'.h'+`"\n\n`+
@@ -155,85 +140,76 @@ class Make{
 
 
     make(dir, dependencies){
-        var makeFile = new MakeFile(dir, dependencies);
+        this.makeFile.set(dir, dependencies)
+
         return ``+
-        makeFile.modulePath()+
-        makeFile.moduleTestPath()+
-        makeFile.moduleCFile()+
-        makeFile.moduleHFile()+
-        makeFile.moduleOFile()+
-        makeFile.moduleTestCFile()+
-        makeFile.moduleTestHFile()+
-        makeFile.moduleTestOFile()+
-        makeFile.moduleTestDriverCFile()+
-        makeFile.moduleTestDriverHFile()+
-        makeFile.moduleTestDriverOFile()+
-        makeFile.moduleCFilePath()+
-        makeFile.moduleHFilePath()+
-        makeFile.moduleOFilePath()+
-        makeFile.moduleTestCFilePath()+
-        makeFile.moduleTestHFilePath()+
-        makeFile.moduleTestOFilePath()+
-        makeFile.moduleTestDriverCFilePath()+
-        makeFile.moduleTestDriverHFilePath()+
-        makeFile.moduleTestDriverOFilePath()+
-        makeFile.moduleTestDriverCFilePath()+
-        makeFile.moduleTestDriverHFilePath()+
-        makeFile.moduleTestDriverOFilePath()+
-        makeFile.productionTestCDependencies()+
-        makeFile.productionTestHDependencies()+
-        makeFile.productionTestODependencies()+
-        makeFile.developerTestCDependencies()+
-        makeFile.developerTestHDependencies()+
-        makeFile.developerTestODependencies()+
-        makeFile.developerTestCFiles()+
-        makeFile.developerTestHFiles()+
-        makeFile.developerTestOFiles()+
-        makeFile.productionTestCFiles()+
-        makeFile.productionTestHFiles()+
-        makeFile.productionTestOFiles()+
-        makeFile.developerTestFiles()+
-        makeFile.developerBuild()+
-        makeFile.productionBuild()+
-        makeFile.developerBuildClean()+
-        makeFile.productionBuildClean()+
-        makeFile.developerBuildLink()+
-        makeFile.productionBuildLink()+
-        makeFile.developerBuildRun()+
-        makeFile.endOfModule()
+        this.makeFile.modulePath()+
+        this.makeFile.moduleTestPath()+
+        this.makeFile.moduleCFile()+
+        this.makeFile.moduleHFile()+
+        this.makeFile.moduleOFile()+
+        this.makeFile.moduleTestCFile()+
+        this.makeFile.moduleTestHFile()+
+        this.makeFile.moduleTestOFile()+
+        this.makeFile.moduleTestDriverCFile()+
+        this.makeFile.moduleTestDriverHFile()+
+        this.makeFile.moduleTestDriverOFile()+
+        this.makeFile.moduleCFilePath()+
+        this.makeFile.moduleHFilePath()+
+        this.makeFile.moduleOFilePath()+
+        this.makeFile.moduleTestCFilePath()+
+        this.makeFile.moduleTestHFilePath()+
+        this.makeFile.moduleTestOFilePath()+
+        this.makeFile.moduleTestDriverCFilePath()+
+        this.makeFile.moduleTestDriverHFilePath()+
+        this.makeFile.moduleTestDriverOFilePath()+
+        this.makeFile.moduleTestDriverCFilePath()+
+        this.makeFile.moduleTestDriverHFilePath()+
+        this.makeFile.moduleTestDriverOFilePath()+
+        this.makeFile.productionTestCDependencies()+
+        this.makeFile.productionTestHDependencies()+
+        this.makeFile.productionTestODependencies()+
+        this.makeFile.developerTestCDependencies()+
+        this.makeFile.developerTestHDependencies()+
+        this.makeFile.developerTestODependencies()+
+        this.makeFile.developerTestCFiles()+
+        this.makeFile.developerTestHFiles()+
+        this.makeFile.developerTestOFiles()+
+        this.makeFile.productionTestCFiles()+
+        this.makeFile.productionTestHFiles()+
+        this.makeFile.productionTestOFiles()+
+        this.makeFile.developerTestFiles()+
+        this.makeFile.developerBuild()+
+        this.makeFile.productionBuild()+
+        this.makeFile.developerBuildClean()+
+        this.makeFile.productionBuildClean()+
+        this.makeFile.developerBuildLink()+
+        this.makeFile.productionBuildLink()+
+        this.makeFile.developerBuildRun()+
+        this.makeFile.endOfModule()
     }
     finalMake(){
 
-        var output = 
-        `\n\n`+
-        `DEVELOPER_TEST_C_DEPENDENCIES=${this.DEVELOPER_TEST_C_DEPENDENCIES}\n`+
-        `DEVELOPER_TEST_H_DEPENDENCIES=${this.DEVELOPER_TEST_H_DEPENDENCIES}\n`+
-        `DEVELOPER_TEST_O_DEPENDENCIES=${this.DEVELOPER_TEST_O_DEPENDENCIES}\n`+
-        `PRODUCTION_TEST_C_DEPENDENCIES=${this.PRODUCTION_TEST_C_DEPENDENCIES}\n`+
-        `PRODUCTION_TEST_H_DEPENDENCIES=${this.PRODUCTION_TEST_H_DEPENDENCIES}\n`+
-        `PRODUCTION_TEST_O_DEPENDENCIES=${this.PRODUCTION_TEST_O_DEPENDENCIES}\n`+
-        `DEVELOPER_TEST_C_FILES=${this.DEVELOPER_TEST_C_FILES}\n`+
-        `DEVELOPER_TEST_H_FILES=${this.DEVELOPER_TEST_H_FILES}\n`+
-        `DEVELOPER_TEST_O_FILES=${this.DEVELOPER_TEST_O_FILES}\n`+
-        `PRODUCTION_TEST_C_FILES=${this.PRODUCTION_TEST_C_FILES}\n`+
-        `PRODUCTION_TEST_H_FILES=${this.PRODUCTION_TEST_H_FILES}\n`+
-        `PRODUCTION_TEST_O_FILES=${this.PRODUCTION_TEST_O_FILES}\n`+
-        `########################################################################################################################################\n\n\n\n\n\n`+
-
-        `ProductionTests: ${this.PRODUCTION_TEST_C_DEPENDENCIES} ${this.PRODUCTION_TEST_H_DEPENDENCIES}\n`+
-        `${this.ProductionTests}\n\n`+
-        `ProductionTestsLink: ${this.PRODUCTION_TEST_O_DEPENDENCIES}\n`+
-        `\tgcc -o Production ${this.PRODUCTION_TEST_O_FILES}\n\n`+
-        `ProductionTestsClean: ${this.PRODUCTION_TEST_O_DEPENDENCIES}\n`+
-        `${this.ProductionTestsClean}\n\n`+
-        `ProductionTestsRun: ${this.PRODUCTION_TEST_C_DEPENDENCIES} ${this.PRODUCTION_TEST_H_DEPENDENCIES}\n`+
-        `\tmake ProductionTestsClean\n`+
-        `\tmake ProductionTests\n`+
-        `\tmake ProductionTestsLink\n`+
-        `\t./Production\n\n`+
-        `########################################################################################################################################\n\n\n\n\n\n`
         
-        return output
+        return ``+
+        this.makeFile.allDeveloperTestCDependencies() +
+        this.makeFile.allDeveloperTestHDependencies() +
+        this.makeFile.allDeveloperTestODependencies() +
+        this.makeFile.allProductionTestCDependencies() +
+        this.makeFile.allProductionTestHDependencies() +
+        this.makeFile.allProductionTestODependencies() +
+        this.makeFile.allDeveloperTestCFiles() +
+        this.makeFile.allDeveloperTestHFiles() +
+        this.makeFile.allDeveloperTestOFiles() +
+        this.makeFile.allProductionTestCFiles() +
+        this.makeFile.allProductionTestHFiles() +
+        this.makeFile.allProductionTestOFiles() +
+        this.makeFile.endOfModule() +       
+        this.makeFile.productionTests() +
+        this.makeFile.productionTestsLink() +
+        this.makeFile.productionTestsClean() +
+        this.makeFile.productionTestsRun()+
+        this.makeFile.endOfModule()        
     }
 
     DeveloperTestCDependencies(dir){
@@ -281,7 +257,6 @@ class Make{
         dir.pop()
         dir.shift()
         dir=dir.join('_').toUpperCase()
-
         return `\$\{PRODUCTION_${dir}_TEST_O_DEPENDENCIES\} `
     }
     DeveloperTestCFiles(dir){
@@ -338,22 +313,11 @@ class Make{
 
     }
     _ProductionTests(dir){
-        dir=dir.slice().split('/')
-        dir.pop()
-        dir.shift()
-        var fileName=dir.slice().pop()
-        dir=dir.join('_').toUpperCase()
-
-        return `\tmake Production${fileName}\n`
+        return `\tmake Production${dir.split('/').slice(1).join('')}\n`
     }
+    
     _ProductionTestsClean(dir){
-        dir=dir.slice().split('/')
-        dir.pop()
-        dir.shift()
-        var fileName=dir.slice().pop()
-        dir=dir.join('_').toUpperCase()
-
-        return `\tmake Production${fileName}Clean\n`
+        return `\tmake Production${dir.split('/').slice(1).join('')}Clean\n`
     }
 
 }
