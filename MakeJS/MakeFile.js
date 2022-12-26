@@ -1,5 +1,5 @@
 export class MakeFile{
-    constructor(dir, dependencies){
+    constructor(makeObject, flags){
        this.name;
        this.dir;
        this.fileName;
@@ -7,7 +7,6 @@ export class MakeFile{
        this.dependenciesC;
        this.dependenciesH;
        this.dependenciesO;
-       
        this.DEVELOPER_TEST_C_DEPENDENCIES=``;
        this.DEVELOPER_TEST_H_DEPENDENCIES=``;
        this.DEVELOPER_TEST_O_DEPENDENCIES=``;
@@ -23,7 +22,106 @@ export class MakeFile{
        this.ProductionTests=``;
        this.ProductionTestsClean=``;
        this.ProductionTestsLink=``;
+
+       this.makefileOutput=this.modules(makeObject)
+       fs.writeFileSync('./makefile', this.makefileOutput);
     }
+
+    modules(makeObject){
+        var makefileOutput=``;
+        var uniquePaths=Object.keys(makeObject)
+        for(var i=0; i<uniquePaths.length; i++){
+            makefileOutput+=this.module(uniquePaths[i].slice(), makeObject[uniquePaths[i]])
+            this.DEVELOPER_TEST_C_DEPENDENCIES+=this.DeveloperTestCDependencies(uniquePaths[i].slice())
+            this.DEVELOPER_TEST_H_DEPENDENCIES+=this.DeveloperTestHDependencies(uniquePaths[i].slice())
+            this.DEVELOPER_TEST_O_DEPENDENCIES+=this.DeveloperTestODependencies(uniquePaths[i].slice())
+            this.PRODUCTION_TEST_C_DEPENDENCIES+=this.ProductionTestCDependencies(uniquePaths[i].slice())
+            this.PRODUCTION_TEST_H_DEPENDENCIES+=this.ProductionTestHDependencies(uniquePaths[i].slice())
+            this.PRODUCTION_TEST_O_DEPENDENCIES+=this.ProductionTestODependencies(uniquePaths[i].slice())
+            this.DEVELOPER_TEST_C_FILES+=this.DeveloperTestCFiles(uniquePaths[i].slice())
+            this.DEVELOPER_TEST_H_FILES+=this.DeveloperTestHFiles(uniquePaths[i].slice())
+            this.DEVELOPER_TEST_O_FILES+=this.DeveloperTestOFiles(uniquePaths[i].slice())
+            this.PRODUCTION_TEST_C_FILES+=this.ProductionTestCFiles(uniquePaths[i].slice())
+            this.PRODUCTION_TEST_H_FILES+=this.ProductionTestHFiles(uniquePaths[i].slice())
+            this.PRODUCTION_TEST_O_FILES+=this.ProductionTestOFiles(uniquePaths[i].slice())
+            this.ProductionTests+=this._ProductionTests(uniquePaths[i].slice())
+            this.ProductionTestsClean+=this._ProductionTestsClean(uniquePaths[i].slice())
+        }
+        makefileOutput+=this.consolodateModules()
+        return makefileOutput
+    }
+
+    module(dir, dependencies){
+        this.set(dir, dependencies)
+        return ``+
+        this.modulePath()+
+        this.moduleTestPath()+
+        this.moduleCFile()+
+        this.moduleHFile()+
+        this.moduleOFile()+
+        this.moduleTestCFile()+
+        this.moduleTestHFile()+
+        this.moduleTestOFile()+
+        this.moduleTestDriverCFile()+
+        this.moduleTestDriverHFile()+
+        this.moduleTestDriverOFile()+
+        this.moduleCFilePath()+
+        this.moduleHFilePath()+
+        this.moduleOFilePath()+
+        this.moduleTestCFilePath()+
+        this.moduleTestHFilePath()+
+        this.moduleTestOFilePath()+
+        this.moduleTestDriverCFilePath()+
+        this.moduleTestDriverHFilePath()+
+        this.moduleTestDriverOFilePath()+
+        this.moduleTestDriverCFilePath()+
+        this.moduleTestDriverHFilePath()+
+        this.moduleTestDriverOFilePath()+
+        this.productionTestCDependencies()+
+        this.productionTestHDependencies()+
+        this.productionTestODependencies()+
+        this.developerTestCDependencies()+
+        this.developerTestHDependencies()+
+        this.developerTestODependencies()+
+        this.developerTestCFiles()+
+        this.developerTestHFiles()+
+        this.developerTestOFiles()+
+        this.productionTestCFiles()+
+        this.productionTestHFiles()+
+        this.productionTestOFiles()+
+        this.developerTestFiles()+
+        this.developerBuild()+
+        this.productionBuild()+
+        this.developerBuildClean()+
+        this.productionBuildClean()+
+        this.developerBuildLink()+
+        this.productionBuildLink()+
+        this.developerBuildRun()+
+        this.endOfModule()
+    }
+
+    consolodateModules(){
+        return ``+
+        this.allDeveloperTestCDependencies() +
+        this.allDeveloperTestHDependencies() +
+        this.allDeveloperTestODependencies() +
+        this.allProductionTestCDependencies() +
+        this.allProductionTestHDependencies() +
+        this.allProductionTestODependencies() +
+        this.allDeveloperTestCFiles() +
+        this.allDeveloperTestHFiles() +
+        this.allDeveloperTestOFiles() +
+        this.allProductionTestCFiles() +
+        this.allProductionTestHFiles() +
+        this.allProductionTestOFiles() +
+        this.endOfModule() +       
+        this.productionTests() +
+        this.productionTestsLink() +
+        this.productionTestsClean() +
+        this.productionTestsRun()+
+        this.endOfModule()        
+    }
+
     set(dir, dependencies){
         this.name=dir
         dir=dir.split('/')
@@ -42,6 +140,7 @@ export class MakeFile{
             this.dependenciesO+=this.dependencies[0].slice(0,-1)+`o `
        }
     }
+    
     modulePath(){ return`${this.dir}_DIR=${this.name}\n` }
     moduleTestPath(){return `${this.dir}_TEST_DIR=\$\{${this.dir}_DIR\}Test/\n`}
     moduleCFile(){ return `${this.dir}_C=${this.fileName}.c\n`}
@@ -156,22 +255,18 @@ export class MakeFile{
     allProductionTestOFiles(){
         return `PRODUCTION_TEST_O_FILES=${this.PRODUCTION_TEST_O_FILES}\n\n\n`
     }
-
     productionTests(){
         return `ProductionTests: ${this.PRODUCTION_TEST_C_DEPENDENCIES} ${this.PRODUCTION_TEST_H_DEPENDENCIES}\n`+
         `${this.ProductionTests}\n\n`
     }
-
     productionTestsLink(){
         return `ProductionTestsLink: ${this.PRODUCTION_TEST_O_DEPENDENCIES}\n`+
         `\tgcc -o Production ${this.PRODUCTION_TEST_O_FILES}\n\n`
     }
-
     productionTestsClean(){
         return `ProductionTestsClean: ${this.PRODUCTION_TEST_O_DEPENDENCIES}\n`+
         `${this.ProductionTestsClean}\n\n`
     }
-
     productionTestsRun(){
         return `ProductionTestsRun: ${this.PRODUCTION_TEST_C_DEPENDENCIES} ${this.PRODUCTION_TEST_H_DEPENDENCIES}\n`+
         `\tmake ProductionTestsClean\n`+
@@ -179,4 +274,106 @@ export class MakeFile{
         `\tmake ProductionTestsLink\n`+
         `\t./Production\n\n`
     }   
+    DeveloperTestCDependencies(dir){
+        dir=dir.slice().split('/')
+        dir.pop()
+        dir.shift()
+        dir=dir.join('_').toUpperCase()
+
+        return `\$\{DEVELOPER_${dir}_TEST_C_DEPENDENCIES\} `
+    }
+    DeveloperTestHDependencies(dir){
+        dir=dir.slice().split('/')
+        dir.pop()
+        dir.shift()
+        dir=dir.join('_').toUpperCase()
+
+        return `\$\{DEVELOPER_${dir}_TEST_H_DEPENDENCIES\} `
+    }
+    DeveloperTestODependencies(dir){
+        dir=dir.slice().split('/')
+        dir.pop()
+        dir.shift()
+        dir=dir.join('_').toUpperCase()
+
+        return `\$\{DEVELOPER_${dir}_TEST_O_DEPENDENCIES\} `
+    }
+    ProductionTestCDependencies(dir){
+        dir=dir.slice().split('/')
+        dir.pop()
+        dir.shift()
+        dir=dir.join('_').toUpperCase()
+
+        return `\$\{PRODUCTION_${dir}_TEST_C_DEPENDENCIES\} `
+    }
+    ProductionTestHDependencies(dir){
+        dir=dir.slice().split('/')
+        dir.pop()
+        dir.shift()
+        dir=dir.join('_').toUpperCase()
+
+        return `\$\{PRODUCTION_${dir}_TEST_H_DEPENDENCIES\} `
+    }
+    ProductionTestODependencies(dir){
+        dir=dir.slice().split('/')
+        dir.pop()
+        dir.shift()
+        dir=dir.join('_').toUpperCase()
+        return `\$\{PRODUCTION_${dir}_TEST_O_DEPENDENCIES\} `
+    }
+    DeveloperTestCFiles(dir){
+        dir=dir.slice().split('/')
+        dir.pop()
+        dir.shift()
+        dir=dir.join('_').toUpperCase()
+
+        return `\$\{DEVELOPER_${dir}_TEST_C_FILES\} `
+    }
+    DeveloperTestHFiles(dir){
+        dir=dir.slice().split('/')
+        dir.pop()
+        dir.shift()
+        dir=dir.join('_').toUpperCase()
+
+        return `\$\{DEVELOPER_${dir}_TEST_H_FILES\} `
+
+    }
+    DeveloperTestOFiles(dir){
+        dir=dir.slice().split('/')
+        dir.pop()
+        dir.shift()
+        dir=dir.join('_').toUpperCase()
+
+        return `\$\{DEVELOPER_${dir}_TEST_O_FILES\} `
+
+    }
+    ProductionTestCFiles(dir){
+        dir=dir.slice().split('/')
+        dir.pop()
+        dir.shift()
+        dir=dir.join('_').toUpperCase()
+
+        return `\$\{PRODUCTION_${dir}_TEST_C_FILES\} `
+
+    }
+    ProductionTestHFiles(dir){
+        dir=dir.slice().split('/')
+        dir.pop()
+        dir.shift()
+        dir=dir.join('_').toUpperCase()
+
+        return `\$\{PRODUCTION_${dir}_TEST_H_FILES\} `
+
+    }
+    ProductionTestOFiles(dir){
+        dir=dir.slice().split('/')
+        dir.pop()
+        dir.shift()
+        dir=dir.join('_').toUpperCase()
+
+        return `\$\{PRODUCTION_${dir}_TEST_O_FILES\} `
+
+    }
+    _ProductionTests(dir){ return `\tmake Production${dir.split('/').slice(1).join('')}\n`}
+    _ProductionTestsClean(dir){ return `\tmake Production${dir.split('/').slice(1).join('')}Clean\n` }
 }
