@@ -15,7 +15,7 @@ export class Project{
             this.createDirectory(testDirectory)
 
             if(!this.createCMainFile(directory, fileBase)){ 
-                this.updateFile(directory+fileBase+'.c', makeObject[directory])
+                this.updateFileDependencies(directory+fileBase+'.h', makeObject[directory])
                 console.log('updateCFile')
             }
             //else{
@@ -89,7 +89,7 @@ export class Project{
         return fs.existsSync(file)
     }
 
-    updateFile(file, dependencies){
+    updateFileDependencies(file, dependencies){
         console.log('updating File', file, dependencies)
         if(this.exists(file)){
             var data = fs.readFileSync(file, 'UTF-8')
