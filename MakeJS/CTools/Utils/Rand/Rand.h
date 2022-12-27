@@ -1,0 +1,4 @@
+#ifndef CTOOLS_UTILS_RAND_RAND
+#define CTOOLS_UTILS_RAND_RAND
+
+#endif

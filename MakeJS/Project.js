@@ -169,4 +169,4 @@ export class Project{
 
 }
 
-new Project(makeObject);
+// new Project(makeObject);
