@@ -1,7 +1,7 @@
 export var makeObject = {
-    "../CTools/":["../CTools/Automata.h"],
+    "../CTools/":["../CTools/Automata.h", "../Ctools/Combinatorics.h"],
     "../CTools/Automata/":[],
-    // "../CTools/Combinatorics/":[],
+    "../CTools/Combinatorics/":[],
     // "../CTools/Crypto/":[],
     // "../CTools/Matrix/":[],
     // "../CTools/Stats/":[],
