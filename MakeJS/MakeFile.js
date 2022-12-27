@@ -24,7 +24,6 @@ export class MakeFile{
        this.ProductionTests=``;
        this.ProductionTestsClean=``;
        this.ProductionTestsLink=``;
-
        this.makefileOutput=this.modules(makeObject)
        fs.writeFileSync('./makefile', this.makefileOutput);
     }
@@ -101,7 +100,6 @@ export class MakeFile{
         this.developerBuildRun()+
         this.endOfModule()
     }
-
     consolodateModules(){
         return ``+
         this.allDeveloperTestCDependencies() +
@@ -123,7 +121,6 @@ export class MakeFile{
         this.productionTestsRun()+
         this.endOfModule()        
     }
-
     set(dir, dependencies){
         this.name=dir
         dir=dir.split('/')
@@ -142,7 +139,7 @@ export class MakeFile{
             this.dependenciesO+=this.dependencies[0].slice(0,-1)+`o `
        }
     }
-    
+
     modulePath(){ return`${this.dir}_DIR=${this.name}\n` }
     moduleTestPath(){return `${this.dir}_TEST_DIR=\$\{${this.dir}_DIR\}Test/\n`}
     moduleCFile(){ return `${this.dir}_C=${this.fileName}.c\n`}
@@ -217,7 +214,6 @@ export class MakeFile{
     endOfModule(){
         return  `########################################################################################################################################\n\n\n\n\n\n`
     }
-
     allDeveloperTestCDependencies(){
         return `DEVELOPER_TEST_C_DEPENDENCIES=${this.DEVELOPER_TEST_C_DEPENDENCIES}\n`
     }
@@ -227,7 +223,6 @@ export class MakeFile{
     allDeveloperTestODependencies(){
         return `DEVELOPER_TEST_O_DEPENDENCIES=${this.DEVELOPER_TEST_O_DEPENDENCIES}\n`
     }
-
     allProductionTestCDependencies(){
         return `PRODUCTION_TEST_C_DEPENDENCIES=${this.PRODUCTION_TEST_C_DEPENDENCIES}\n`
     }
@@ -237,7 +232,6 @@ export class MakeFile{
     allProductionTestODependencies(){
         return `PRODUCTION_TEST_O_DEPENDENCIES=${this.PRODUCTION_TEST_O_DEPENDENCIES}\n`
     }
-
     allDeveloperTestCFiles(){
         return `DEVELOPER_TEST_C_FILES=${this.DEVELOPER_TEST_C_FILES}\n`
     }
@@ -247,7 +241,6 @@ export class MakeFile{
     allDeveloperTestOFiles(){
         return `DEVELOPER_TEST_O_FILES=${this.DEVELOPER_TEST_O_FILES}\n`
     }
-        
     allProductionTestCFiles(){
         return `PRODUCTION_TEST_C_FILES=${this.PRODUCTION_TEST_C_FILES}\n`
     }

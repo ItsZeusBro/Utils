@@ -1,74 +1,162 @@
 import fs from 'node:fs'
-
+import { makeObject } from './MakeObject.js'
 export class Project{
     constructor(makeObject, flags){
-        this.scafolding(makeObject, flags)
+        this.createProject(makeObject, flags)
     }
-    scafolding(makeObject, flags){
-        var uniquePaths=Object.keys(makeObject)
-        for(var i=0; i<uniquePaths.length; i++){
-            var testDir=uniquePaths[i]+'Test/'
-            var dir=uniquePaths[i].slice()
-            var fileBase=dir.split('/')[dir.split('/').length-2]
-            if(JSON.parse(flags.toLowerCase())==true){
-                if (!fs.existsSync(dir)){ fs.mkdirSync(dir); }
-                if (!fs.existsSync(testDir)){ fs.mkdirSync(testDir); }
-                if(!this.cmain(dir, fileBase)){ this.cFile(dir, fileBase, makeObject[uniquePaths[i]]) }
-                this.hFile(dir, fileBase)
-                this.cTest(testDir)
-                this.hTest(testDir)
-                this.cDriver(testDir)
-                this.hDriver(testDir)
+
+    createProject(makeObject, flags){
+        var directories=Object.keys(makeObject)
+        for(var i=0; i<directories.length; i++){
+            var directory=directories[i].slice()
+            var testDirectory=this.testDirectory(directory)
+            var fileBase=directory.split('/')[directory.split('/').length-2]
+            this.createDirectory(directory)
+            this.createDirectory(testDirectory)
+
+            if(!this.createCMainFile(directory, fileBase)){ 
+                this.updateCFile(directory, fileBase, makeObject[directory])
+                console.log('updateCFile')
+
             }
+            //else{
+            //     if(!this.createCFile(directory, fileBase, makeObject[directory])){
+            //         //update dependencies
+            //         this.updateCFile(directory, fileBase, makeObject[directory])
+            //     }
+            // }
+
+            // if(!this.createHFile(directory, fileBase)){
+            //     //update dependencies
+            //     this.updateHFile(directory, fileBase, makeObject[directory])
+            // }
+            // if(!this.createCTestFile(testDirectory)){
+            //     //update dependencies
+            //     this.updateCTestFile(directory, fileBase, makeObject[directory])
+
+            // }
+            // if(!this.createHTestFile(testDirectory)){
+            //     //update dependencies
+            //     this.updateHTestFile(directory, fileBase, makeObject[directory])
+
+            // }
+            // if(!this.createCTestDriverFile(testDirectory)){
+            //     //update dependencies
+            //     this.updateCDriverFile(testDirectory, fileBase, makeObject[directory])
+
+            // }
+            // if(!this.createHTestDriverFile(testDirectory)){
+            //     //update dependencies
+            //     this.updateHDriverFile(directory, fileBase, makeObject[directory])
+
+            // }
         }
     }
 
-    cmain(dir, fileBase){
-        if(dir.split('/').length==3){
+
+    testDirectory(path){
+        return path+'Test/'
+    }
+
+    createDirectory(directory){
+        //if the paths or files dont exist, we make them no matter what
+        if (!fs.existsSync(directory)){ fs.mkdirSync(directory); }
+    }
+
+    createCMainFile(directory, fileBase){
+        if(this.isMainDirectory(directory)&&!this.exists(directory+fileBase+'.c')){
             var output = 
-                `#include `+`"`+fileBase+'.h'+`"\n`+
-                `#include <stdio.h>\n\n`+
-                `int main(int argc, char *argv[]){\n`+
-                `\tprintf("argc: %d, argv: %s", argc, argv);\n`+
-                `\treturn 0;\n`+`}`
-            fs.writeFileSync( dir+fileBase+'.c', output);
+            `#include `+`"`+fileBase+'.h'+`"\n`+
+            `#include <stdio.h>\n\n`+
+            `int main(int argc, char *argv[]){\n`+
+            `\tprintf("argc: %d, argv: %s", argc, argv);\n`+
+            `\treturn 0;\n`+`}`
+            fs.writeFileSync(directory+fileBase+'.c', output);
+            return true
+        }else{
+            return false
+        }
+    }
+
+    isMainDirectory(dir){
+        if(dir.split('/').length==3){
+            return true
+        }else{
+            return false
+        }
+    }
+
+    exists(file){
+        return fs.existsSync(file)
+    }
+
+    updateCFile(directory, fileBase, dependencies){
+        console.log('updating C File', directory, fileBase, dependencies)
+        if(this.exists(directory+fileBase+'.c')){
+            var data = fs.readFileSync(directory+fileBase+'.c', 'UTF-8')
+            var lines = data.split(/\r?\n/)
+            for(var i = lines.length-1; i>=0; i--){
+                if(lines[i].contains('#include')){
+                    var newLine =i+1;
+                    for(var j = 0; j<dependencies.length; j++){
+                        lines.splice(newLine, 0, `#include `+dependencies[j]);
+                    }
+                }
+            }
             return true
         }else{
             return false
         }
     }
     
-    cFile(dir, fileBase, dependencies){
+    createCFile(directory, fileBase){
         var output = `#include `+`"`+fileBase+'.h'+`"\n`
-        for(var i=0; i<dependencies.length; i++){
-            var m =dir.slice().split('/').length-3
-            var path=``
-            for(var j = 0; j<m; j++){
-                path+=`../`
-            }
-            path+=dependencies[i].split('/').slice(2).join('/')
-            output+= `#include `+`"`+path+`"\n`
-        }
-        fs.writeFileSync( dir+fileBase+'.c', output);
+
+        fs.writeFileSync(directory+fileBase+'.c', output);
+    }
+    updateCFile(directory, fileBase){
+        
     }
 
-    hFile(dir, fileBase){
-        var fileDescriptor=(dir.split('/').slice(1).join('_')+fileBase).toUpperCase()
+    createHFile(directory, fileBase, dependencies){
+        var fileDescriptor=(directory.split('/').slice(1).join('_')+fileBase).toUpperCase()
         var output = `#ifndef ${fileDescriptor}\n#define ${fileDescriptor}\n\n#endif`
-        fs.writeFileSync( dir+fileBase+'.h', output);
+
+        for(var i=0; i<dependencies.length; i++){
+            var m =directory.slice().split('/').length-3
+            var dependency=``
+            for(var j = 0; j<m; j++){
+                dependency+=`../`
+            }
+            dependency+=dependencies[i].split('/').slice(2).join('/')
+            output+= `#include `+`"`+dependency+`"\n`
+        }
+
+        fs.writeFileSync(directory+fileBase+'.h', output);
+    }
+    updateHFile(directory, fileBase, dependencies){
+        for(var i=0; i<dependencies.length; i++){
+            var m =directory.slice().split('/').length-3
+            var dependency=``
+            for(var j = 0; j<m; j++){
+                dependency+=`../`
+            }
+            dependency+=dependencies[i].split('/').slice(2).join('/')
+            output+= `#include `+`"`+dependency+`"\n`
+        }
     }
 
-    cTest(dir){
-        var fileDescriptor=(dir.split('/').slice(1).join('_')+'Test').toUpperCase()
+    createCTestFile(directory){
+        var fileDescriptor=(directory.split('/').slice(1).join('_')+'Test').toUpperCase()
         var output = 
         `#include `+`"`+'Test'+'.h'+`"\n\n`+
         `int _${fileDescriptor}(int argc, char *argv[]){\n\n\treturn 0;\n}`;
-        fs.writeFileSync( dir+'Test'+'.c', output);
+        fs.writeFileSync( directory+'Test'+'.c', output);
     }
 
-    hTest(dir){
-        var fileBase=dir.split('/')[dir.split('/').length-3]
-        var fileDescriptor=(dir.split('/').slice(1).join('_')+'Test').toUpperCase()
+    createHTestFile(directory){
+        var fileBase=directory.split('/')[directory.split('/').length-3]
+        var fileDescriptor=(directory.split('/').slice(1).join('_')+'Test').toUpperCase()
         var output2 = `#include "../`+fileBase+`.h"`;
         var output3 = `int _${fileDescriptor}(int argc, char *argv[]);`;
         var output = 
@@ -77,12 +165,12 @@ export class Project{
             output2+`\n\n`+
             output3+`\n\n`+
             `#endif`
-        fs.writeFileSync( dir+'Test'+'.h', output);
+        fs.writeFileSync(directory+'Test'+'.h', output);
     }
 
-    cDriver(dir){
-        var fileDescriptor1=(dir.split('/').slice(1).join('_')+'Driver').toUpperCase()
-        var fileDescriptor2=(dir.split('/').slice(1).join('_')+'Test').toUpperCase()
+    createCDriverFile(directory){
+        var fileDescriptor1=(directory.split('/').slice(1).join('_')+'Driver').toUpperCase()
+        var fileDescriptor2=(directory.split('/').slice(1).join('_')+'Test').toUpperCase()
         var output=
         `#include <stdio.h>\n`+
         `#include "Test.h"\n`+
@@ -92,15 +180,17 @@ export class Project{
             `\t${fileDescriptor2}(argc, argv);\n\n`+
             `\treturn 0;\n`+
         `}`
-        fs.writeFileSync(dir+'Driver'+'.c', output);
+        fs.writeFileSync(directory+'Driver'+'.c', output);
     }
 
-    hDriver(dir){
-        var fileDescriptor=(dir.split('/').slice(1).join('_')+'driver').toUpperCase()
+    createHDriverFile(directory){
+        var fileDescriptor=(directory.split('/').slice(1).join('_')+'driver').toUpperCase()
         var output = `#ifndef ${fileDescriptor}\n`+
         `#define ${fileDescriptor}\n`+
         `#include "Test.h"\n`+
         `#endif`
-        fs.writeFileSync( dir+'Driver'+'.h', output);
+        fs.writeFileSync(directory+'Driver'+'.h', output);
     }
 }
+
+new Project(makeObject)
