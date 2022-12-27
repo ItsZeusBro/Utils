@@ -15,9 +15,8 @@ export class Project{
             this.createDirectory(testDirectory)
 
             if(!this.createCMainFile(directory, fileBase)){ 
-                this.updateCFile(directory, fileBase, makeObject[directory])
+                this.updateFile(directory+fileBase+'.c', makeObject[directory])
                 console.log('updateCFile')
-
             }
             //else{
             //     if(!this.createCFile(directory, fileBase, makeObject[directory])){
@@ -90,23 +89,27 @@ export class Project{
         return fs.existsSync(file)
     }
 
-    updateCFile(directory, fileBase, dependencies){
-        console.log('updating C File', directory, fileBase, dependencies)
-        if(this.exists(directory+fileBase+'.c')){
-            var data = fs.readFileSync(directory+fileBase+'.c', 'UTF-8')
+    updateFile(file, dependencies){
+        console.log('updating File', file, dependencies)
+        if(this.exists(file)){
+            var data = fs.readFileSync(file, 'UTF-8')
             var lines = data.split(/\r?\n/)
+            console.log(lines)
             for(var i = lines.length-1; i>=0; i--){
-                if(lines[i].contains('#include')){
+                if(lines[i].includes('#include')){
+                    console.log(lines[i])
                     var newLine =i+1;
                     for(var j = 0; j<dependencies.length; j++){
-                        lines.splice(newLine, 0, `#include `+dependencies[j]);
+                        lines.splice(newLine, 0, `#include `+`"${dependencies[j]}"`);
                     }
+                    fs.writeFileSync(file, lines.join('\n'));
+
+                    return true
                 }
             }
-            return true
-        }else{
-            return false
+            
         }
+        return false
     }
     
     createCFile(directory, fileBase){
