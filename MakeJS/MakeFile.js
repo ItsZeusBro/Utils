@@ -1,4 +1,5 @@
 import fs from 'node:fs'
+import { makeObject } from './MakeObject.js';
 
 export class MakeFile{
     constructor(makeObject, flags){
@@ -122,21 +123,24 @@ export class MakeFile{
         this.endOfModule()        
     }
     set(dir, dependencies){
+        //console.log(dir, dependencies)
+
+
         this.name=dir
         dir=dir.split('/')
         dir.pop()
         dir.shift()
         this.fileName=dir.slice().pop()
         this.dir=dir.join('_').toUpperCase()
+        
         this.dependencies=dependencies
         this.dependenciesH=``
         this.dependenciesC=``
         this.dependenciesO=``
-        
        for(var i = 0; i<this.dependencies.length; i++){
-            this.dependenciesH+=this.dependencies[0].slice(0,-1)+`h `
-            this.dependenciesC+=this.dependencies[0].slice(0,-1)+`c `
-            this.dependenciesO+=this.dependencies[0].slice(0,-1)+`o `
+            this.dependenciesH+=this.dependencies[i].slice(0,-1)+`h `
+            this.dependenciesC+=this.dependencies[i].slice(0,-1)+`c `
+            this.dependenciesO+=this.dependencies[i].slice(0,-1)+`o `
        }
     }
 
@@ -166,9 +170,9 @@ export class MakeFile{
     productionTestCDependencies(){return `PRODUCTION_${this.dir}_TEST_C_DEPENDENCIES=\$\{${this.dir}_C_PATH\} \$\{${this.dir}_TEST_C_PATH\} `+ this.dependenciesC + `\n`}
     productionTestHDependencies(){return `PRODUCTION_${this.dir}_TEST_H_DEPENDENCIES=\$\{${this.dir}_H_PATH\} \$\{${this.dir}_TEST_H_PATH\} `+ this.dependenciesH + `\n`}
     productionTestODependencies(){return `PRODUCTION_${this.dir}_TEST_O_DEPENDENCIES=\$\{${this.dir}_O_PATH\} \$\{${this.dir}_TEST_O_PATH\} `+ this.dependenciesO + `\n`}
-    developerTestCDependencies(){return `DEVELOPER_${this.dir}_TEST_C_DEPENDENCIES=\$\{${this.dir}_C_PATH\} \$\{${this.dir}_TEST_C_PATH\} \$\{${this.dir}_TEST_DRIVER_C_PATH\}`+ this.dependenciesC + `\n`}
-    developerTestHDependencies(){return `DEVELOPER_${this.dir}_TEST_H_DEPENDENCIES=\$\{${this.dir}_H_PATH\} \$\{${this.dir}_TEST_H_PATH\} \$\{${this.dir}_TEST_DRIVER_H_PATH\}`+ this.dependenciesH + `\n`}
-    developerTestODependencies(){return `DEVELOPER_${this.dir}_TEST_O_DEPENDENCIES=\$\{${this.dir}_O_PATH\} \$\{${this.dir}_TEST_O_PATH\} \$\{${this.dir}_TEST_DRIVER_O_PATH\}`+ this.dependenciesO + `\n`}
+    developerTestCDependencies(){return `DEVELOPER_${this.dir}_TEST_C_DEPENDENCIES=\$\{${this.dir}_C_PATH\} \$\{${this.dir}_TEST_C_PATH\} \$\{${this.dir}_TEST_DRIVER_C_PATH\} `+ this.dependenciesC + `\n`}
+    developerTestHDependencies(){return `DEVELOPER_${this.dir}_TEST_H_DEPENDENCIES=\$\{${this.dir}_H_PATH\} \$\{${this.dir}_TEST_H_PATH\} \$\{${this.dir}_TEST_DRIVER_H_PATH\} `+ this.dependenciesH + `\n`}
+    developerTestODependencies(){return `DEVELOPER_${this.dir}_TEST_O_DEPENDENCIES=\$\{${this.dir}_O_PATH\} \$\{${this.dir}_TEST_O_PATH\} \$\{${this.dir}_TEST_DRIVER_O_PATH\} `+ this.dependenciesO + `\n`}
     developerTestCFiles(){ return `DEVELOPER_${this.dir}_TEST_C_FILES=\$\{${this.dir}_C_PATH\} \$\{${this.dir}_TEST_C_PATH\} \$\{${this.dir}_TEST_DRIVER_C_PATH\} `+ this.dependenciesC + `\n`}
     developerTestHFiles(){ return `DEVELOPER_${this.dir}_TEST_H_FILES=\$\{${this.dir}_H_PATH\} \$\{${this.dir}_TEST_H_PATH\} \$\{${this.dir}_TEST_DRIVER_H_PATH\} `+ this.dependenciesH + `\n`}
     developerTestOFiles(){ return `DEVELOPER_${this.dir}_TEST_O_FILES=\$\{${this.dir}_O_PATH\} \$\{${this.dir}_TEST_O_PATH\} \$\{${this.dir}_TEST_DRIVER_O_PATH\} `+ this.dependenciesO + `\n`}
@@ -372,3 +376,5 @@ export class MakeFile{
     _ProductionTests(dir){ return `\tmake Production${dir.split('/').slice(1).join('')}\n`}
     _ProductionTestsClean(dir){ return `\tmake Production${dir.split('/').slice(1).join('')}Clean\n` }
 }
+
+// new MakeFile(makeObject)

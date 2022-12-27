@@ -2,5 +2,5 @@
 #define CTOOLS_CTOOLS
 
 #include "../CTools/Automata/Automata.h"
-#include "../Ctools/Combinatorics/Combinatorics.h"
+#include "../CTools/Combinatorics/Combinatorics.h"
 #endif

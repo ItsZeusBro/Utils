@@ -13,8 +13,19 @@ export class Project{
             this.createDirectory(directory)
             this.createDirectory(testDirectory)
             var fileBase=directory.split('/')[directory.split('/').length-2]
-            if(!this.createHFile(directory, makeObject[directory])){
-                this.updateFileDependencies(directory+fileBase+'.h', makeObject[directory]);
+            
+            var dependencies=makeObject[directory]
+            for(var n=0; n<dependencies.length; n++){
+                var m =directory.slice().split('/').length-3
+                var path=``
+                for(var j = 0; j<m; j++){
+                    path+=`../`
+                }
+                path+=dependencies[n]
+                dependencies[n]=path
+            }
+            if(!this.createHFile(directory, dependencies)){
+                this.updateFileDependencies(directory+fileBase+'.h', dependencies);
             }
             this.createHTestFile(testDirectory)
             this.createHTestDriverFile(testDirectory)
@@ -31,7 +42,8 @@ export class Project{
     exists(file){ return fs.existsSync(file) }
 
     updateFileDependencies(file, dependencies){
-        console.log('updating File', file, dependencies);
+        
+
         if(this.exists(file)){
             var data = fs.readFileSync(file, 'UTF-8');
             var lines = data.split(/\r?\n/);
@@ -53,9 +65,7 @@ export class Project{
                                 var begining = lines.slice(0, 1)
                                 var end = lines.slice(1)
                                 lines=begining.concat([`#include `+`"${dependencies[j]}"`]).concat(end)
-                                console.log(lines)
                             }
-
                         }
                         fs.writeFileSync(file, lines.join('\n'));
                         return true

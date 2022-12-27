@@ -1,5 +1,5 @@
 export var makeObject = {
-    "../CTools/":["../CTools/Automata/Automata.h", "../Ctools/Combinatorics/Combinatorics.h"],
+    "../CTools/":["../CTools/Automata/Automata.h", "../CTools/Combinatorics/Combinatorics.h"],
     "../CTools/Automata/":[],
     "../CTools/Combinatorics/":[],
     "../CTools/Crypto/":[],
@@ -10,10 +10,10 @@ export var makeObject = {
     "../CTools/Utils/Dictionary/":[],
     "../CTools/Utils/Rand/":[],
     "../CTools/Utils/Types/":[],
-    "../CTools/Utils/Types/Array":[],
-    "../CTools/Utils/Types/Float":[],
-    "../CTools/Utils/Types/LinkList":[],
-    "../CTools/Utils/Types/Number":[],
-    "../CTools/Utils/Types/String":[],
-    "../CTools/Utils/Types/Unicode":[]
+    "../CTools/Utils/Types/Array/":[],
+    "../CTools/Utils/Types/Float/":[],
+    "../CTools/Utils/Types/LinkList/":["../CTools/Automata/Automata.h"],
+    "../CTools/Utils/Types/Number/":[],
+    "../CTools/Utils/Types/String/":[],
+    "../CTools/Utils/Types/Unicode/":[]
 }

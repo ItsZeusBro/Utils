@@ -7,6 +7,7 @@ class Make{
     constructor(makeObject, flags){
         this.save(makeObject, flags)
         this.clean(makeObject, flags)
+        
         this.makeFile = new MakeFile(makeObject, flags)
         this.projectFiles = new Project(makeObject, flags);
     }
@@ -19,8 +20,8 @@ class Make{
                 }
             }
         }
-        
     }
+
     save(makeObject, flags){
         if(flags.includes('-save')){
             var dir;
@@ -33,6 +34,7 @@ class Make{
                     }
                 }
             }
+
             var keys = Object.keys(makeObject)
             for(var i = 0; i<keys.length; i++){
                 if(keys[i].slice().split('/').length==2||keys[i].slice().split('/').length==3){
@@ -41,6 +43,7 @@ class Make{
                     }
                 }
             }
+
         }
     }
 }
