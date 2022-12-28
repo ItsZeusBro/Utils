@@ -66,10 +66,6 @@ DeveloperCToolsRun: ${DEVELOPER_CTOOLS_TEST_O_DEPENDENCIES} ${DEVELOPER_CTOOLS_T
 
 ########################################################################################################################################
 
-
-
-
-
 CTOOLS_AUTOMATA_DIR=../CTools/Automata/
 CTOOLS_AUTOMATA_TEST_DIR=${CTOOLS_AUTOMATA_DIR}Test/
 CTOOLS_AUTOMATA_C=Automata.c
