@@ -1,11 +1,10 @@
 import fs from 'node:fs'
-import { makeObject } from './MakeObject.js'
 export class Project{
-    constructor(makeObject, flags){
-        this.createProject(makeObject, flags);
+    constructor(makeObject, options){
+        this.createProject(makeObject);
     }
 
-    createProject(makeObject, flags){
+    createProject(makeObject){
         var directories=Object.keys(makeObject)
         for(var i=0; i<directories.length; i++){
             var directory=directories[i].slice()
@@ -13,7 +12,6 @@ export class Project{
             this.createDirectory(directory)
             this.createDirectory(testDirectory)
             var fileBase=directory.split('/')[directory.split('/').length-2]
-            
             var dependencies=makeObject[directory]
             for(var n=0; n<dependencies.length; n++){
                 var m =directory.slice().split('/').length-3
@@ -36,42 +34,19 @@ export class Project{
     }
 
     testDirectory(path){ return path+'Test/' }
-
     createDirectory(directory){ if (!fs.existsSync(directory)){ fs.mkdirSync(directory); } }
-
     exists(file){ return fs.existsSync(file) }
 
     updateFileDependencies(file, dependencies){
-        
 
         if(this.exists(file)){
             var data = fs.readFileSync(file, 'UTF-8');
             var lines = data.split(/\r?\n/);
-            var doNotUpdate=[]
-            for(var i = lines.length-1; i>=0; i--){
-                if(lines[i].includes('#include')){
-                    var update=true
-                    for(var j = 0; j<dependencies.length; j++){
-                        if(lines[i]==`#include `+`"${dependencies[j]}"`){
-                            update=false
-                            doNotUpdate.push(j)
-                        }
-                    }
-                    if(update){
-                        //we only want to update dependencies that are not in doNotUpdate
-                        for(var j = 0; j<dependencies.length; j++){
-                            if(!doNotUpdate.includes(j)){
-                                //then update
-                                var begining = lines.slice(0, 1)
-                                var end = lines.slice(1)
-                                lines=begining.concat([`#include `+`"${dependencies[j]}"`]).concat(end)
-                            }
-                        }
-                        fs.writeFileSync(file, lines.join('\n'));
-                        return true
-                    }
-                }
-            }
+            console.log(lines)
+            //we only want to update dependencies that do not already exist in the file
+            //we also do not want to overwrite the other parts of the file
+            //there is no other possibility except for removing an existing dependency
+            //that we know should not belong in the file by way of some express intent to remove
         }
         return false
     }
@@ -83,10 +58,12 @@ export class Project{
             var fileBase=directory.split('/')[directory.split('/').length-2];
             var fileDescriptor=(directory.split('/').slice(1).join('_')+fileBase).toUpperCase();
             var output = `#ifndef ${fileDescriptor}\n#define ${fileDescriptor}\n\n`;
+            output+=`//?\n`
             for(var i=0; i<dependencies.length; i++){
                 var m =directory.slice().split('/').length-3;
                 output+= `#include `+`"`+dependencies[i]+`"\n`;
             }
+            output+=`\n//?\n`
             output+=`#endif`;
             fs.writeFileSync(directory+fileBase+'.h', output);
         }
@@ -175,8 +152,4 @@ export class Project{
             return false
         }
     }
-
-
 }
-
-// new Project(makeObject);

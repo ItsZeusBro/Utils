@@ -1,5 +1,4 @@
 import fs from 'node:fs'
-import { makeObject } from './MakeObject.js';
 
 export class MakeFile{
     constructor(makeObject, flags){
@@ -123,9 +122,6 @@ export class MakeFile{
         this.endOfModule()        
     }
     set(dir, dependencies){
-        //console.log(dir, dependencies)
-
-
         this.name=dir
         dir=dir.split('/')
         dir.pop()

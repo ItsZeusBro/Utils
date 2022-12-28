@@ -1,6 +1,6 @@
 export var makeObject = {
-    "../CTools/":["../CTools/Automata/Automata.h", "../CTools/Combinatorics/Combinatorics.h"],
-    "../CTools/Automata/":[],
+    "../CTools/":["../CTools/Automata/Automata.h", "../CTools/Utils/Types/String/String.h"],
+    "../CTools/Automata/":["../CTools/Utils/Types/String/String.h"],
     "../CTools/Combinatorics/":[],
     "../CTools/Crypto/":[],
     "../CTools/Matrix/":[],
