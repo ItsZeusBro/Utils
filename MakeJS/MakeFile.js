@@ -66,29 +66,31 @@ class MakeFileString{
         for(var i = 0; i<Object.keys(makeObject).length; i++){
             var dependencies = makeObject[Object.keys(makeObject)[i]]
             var dir = Object.keys(makeObject)[i]
-            var name = dir.slice().split('/')[dir.slice().split('/').length-2]
             plv.update(dir, plv.projVars)
             plm.update(dir, plv.projVars)
-            string+=this.moduleVars(mlv, name, dir, dependencies)
-            string+=this.moduleMake(mlm, name, dir)
+            string+=this.moduleVars(mlv, dir, dependencies)
+            string+=this.moduleMake(mlm, dir)
         }
         string +=this.projectVars(plv, plv.projVars) 
         string +=this.projectMake(plm, plv.projVars)
         return string
     }
-    moduleMake(mlm, name, dir){
-       return ``+
-        mlm.devBuild(dir, name)+
-        mlm.prodBuild(dir, name)+
-        mlm.devBuildClean(dir, name)+
-        mlm.prodBuildClean(dir, name)+
-        mlm.devBuildLink(dir, name)+
-        mlm.prodBuildLink(dir, name)+
-        mlm.devBuildRun(dir, name)+
+    moduleMake(mlm, dir){
+        var name = dir.slice().split('/').slice(1).slice(0, -1).join('')
+        var literal=dir.split('/').slice(1).slice(0,-1).join('_').toUpperCase()
+
+        return ``+
+        mlm.devBuild(literal, name)+
+        mlm.prodBuild(literal, name)+
+        mlm.devBuildClean(literal, name)+
+        mlm.prodBuildClean(literal, name)+
+        mlm.devBuildLink(literal, name)+
+        mlm.prodBuildLink(literal, name)+
+        mlm.devBuildRun(literal, name)+
         mlm.endOfSection()
     }
 
-    moduleVars(mlv, name, dir, deps){
+    moduleVars(mlv, dir, deps){
         var depsH=``
         var depsC=``
         var depsO=``
@@ -97,44 +99,47 @@ class MakeFileString{
             depsC+=deps[i].slice(0,-1)+`c `
             depsO+=deps[i].slice(0,-1)+`o `
         }
+        var fileBase = dir.slice().split('/').slice(-2).join('')
+        var name = dir.slice().split('/').slice(1).slice(0, -1).join('')
+        var literal=dir.split('/').slice(1).slice(0,-1).join('_').toUpperCase()
 
         return ``+
-        mlv.path(dir, name)+
-        mlv.testPath(dir)+
-        mlv.cFile(dir, name+'.c')+
-        mlv.hFile(dir, name+'.h')+
-        mlv.oFile(dir, name+'.o')+
-        mlv.testCFile(dir)+
-        mlv.testHFile(dir)+
-        mlv.testOFile(dir)+
-        mlv.testDrvrCFile(dir)+
-        mlv.testDrvrHFile(dir)+
-        mlv.testDrvrOFile(dir)+
-        mlv.cFilePath(dir)+
-        mlv.hFilePath(dir)+
-        mlv.oFilePath(dir)+
-        mlv.testCFilePath(dir)+
-        mlv.testHFilePath(dir)+
-        mlv.testOFilePath(dir)+
-        mlv.testDrvrCFilePath(dir)+
-        mlv.testDrvrHFilePath(dir)+
-        mlv.testDrvrOFilePath(dir)+
-        mlv.testDrvrCFilePath(dir)+
-        mlv.testDrvrHFilePath(dir)+
-        mlv.testDrvrOFilePath(dir)+
-        mlv.prodTestCDeps(dir, depsC)+
-        mlv.prodTestHDeps(dir, depsH)+
-        mlv.prodTestODeps(dir, depsO)+
-        mlv.devTestCDeps(dir, depsC)+
-        mlv.devTestHDeps(dir, depsH)+
-        mlv.devTestODeps(dir, depsO)+
-        mlv.devTestCFiles(dir, depsC)+
-        mlv.devTestHFiles(dir, depsH)+
-        mlv.devTestOFiles(dir, depsO)+
-        mlv.prodTestCFiles(dir, depsC)+
-        mlv.prodTestHFiles(dir, depsH)+
-        mlv.prodTestOFiles(dir, depsO)+
-        mlv.devTestFiles(dir)
+        mlv.path(literal, dir)+
+        mlv.testPath(literal)+
+        mlv.cFile(literal, fileBase)+
+        mlv.hFile(literal, fileBase)+
+        mlv.oFile(literal, fileBase)+
+        mlv.testCFile(literal)+
+        mlv.testHFile(literal)+
+        mlv.testOFile(literal)+
+        mlv.testDrvrCFile(literal)+
+        mlv.testDrvrHFile(literal)+
+        mlv.testDrvrOFile(literal)+
+        mlv.cFilePath(literal)+
+        mlv.hFilePath(literal)+
+        mlv.oFilePath(literal)+
+        mlv.testCFilePath(literal)+
+        mlv.testHFilePath(literal)+
+        mlv.testOFilePath(literal)+
+        mlv.testDrvrCFilePath(literal)+
+        mlv.testDrvrHFilePath(literal)+
+        mlv.testDrvrOFilePath(literal)+
+        mlv.testDrvrCFilePath(literal)+
+        mlv.testDrvrHFilePath(literal)+
+        mlv.testDrvrOFilePath(literal)+
+        mlv.prodTestCDeps(literal, depsC)+
+        mlv.prodTestHDeps(literal, depsH)+
+        mlv.prodTestODeps(literal, depsO)+
+        mlv.devTestCDeps(literal, depsC)+
+        mlv.devTestHDeps(literal, depsH)+
+        mlv.devTestODeps(literal, depsO)+
+        mlv.devTestCFiles(literal, depsC)+
+        mlv.devTestHFiles(literal, depsH)+
+        mlv.devTestOFiles(literal, depsO)+
+        mlv.prodTestCFiles(literal, depsC)+
+        mlv.prodTestHFiles(literal, depsH)+
+        mlv.prodTestOFiles(literal, depsO)+
+        mlv.devTestFiles(literal)
     }
     projectVars(plv, projVars){
         return ``+
@@ -163,4 +168,4 @@ class MakeFileString{
     }
 }
 
-console.log(new MakeFileString(makeObject))
+new MakeFileString(makeObject)

@@ -92,38 +92,38 @@
     export class ModuleLevelMake{
 
         devBuild(dir, name){ 
-            return `Dev${name.split('/').slice(1).join('')}: \$\{DEV_${dir}_TEST_C_DEPS\} \$\{DEV_${dir}_TEST_H_DEPS\}\n` +
+            return `Dev${name}: \$\{DEV_${dir}_TEST_C_DEPS\} \$\{DEV_${dir}_TEST_H_DEPS\}\n` +
             `\tcd \$\{${dir}_DIR\}; gcc -c \$\{${dir}_C\}\n` +
             `\tcd \$\{${dir}_TEST_DIR\}; gcc -c \$\{${dir}_TEST_C\} \$\{${dir}_TEST_DRVR_C\}\n\n`
         }
         prodBuild(dir, name){
-            return `Prod${name.split('/').slice(1).join('')}: \$\{PROD_${dir}_TEST_C_DEPS\} \$\{PROD_${dir}_TEST_H_DEPS\}\n`+
+            return `Prod${name}: \$\{PROD_${dir}_TEST_C_DEPS\} \$\{PROD_${dir}_TEST_H_DEPS\}\n`+
             `\tcd \$\{${dir}_DIR\}; gcc -c \$\{${dir}_C\}\n`+
             `\tcd \$\{${dir}_TEST_DIR\}; gcc -c \$\{${dir}_TEST_C\}\n\n`
         }
         devBuildClean(dir, name){
-            return `Dev${name.split('/').slice(1).join('')}Clean: \$\{DEV_${dir}_TEST_O_DEPS\}\n`+
+            return `Dev${name}Clean: \$\{DEV_${dir}_TEST_O_DEPS\}\n`+
             `\tcd \$\{${dir}_DIR\}; rm -f \$\{${dir}_O\}\n`+
             `\tcd \$\{${dir}_TEST_DIR\}; rm -f \$\{${dir}_TEST_O\} \$\{${dir}_TEST_DRVR_O\}\n\n`
         }
         prodBuildClean(dir, name){
-            return `Prod${name.split('/').slice(1).join('')}Clean: \$\{PROD_${dir}_TEST_O_DEPS\}\n`+
+            return `Prod${name}Clean: \$\{PROD_${dir}_TEST_O_DEPS\}\n`+
             `\tcd \$\{${dir}_DIR\}; rm -f \$\{${dir}_O\}\n`+
             `\tcd \$\{${dir}_TEST_DIR\}; rm -f \$\{${dir}_TEST_O\}\n\n`
         }
         devBuildLink(dir, name){
-            return `Dev${name.split('/').slice(1).join('')}Link: \$\{DEV_${dir}_TEST_O_DEPS\}\n`+
+            return `Dev${name}Link: \$\{DEV_${dir}_TEST_O_DEPS\}\n`+
             `\t(gcc -o devTest \$\{${dir}_O_PATH\} \$\{${dir}_TEST_O_PATH\} \$\{${dir}_TEST_DRVR_O_PATH\})\n\n`
         }
         prodBuildLink(dir, name){
-            return `Prod${name.split('/').slice(1).join('')}Link: \$\{PROD_${dir}_TEST_O_DEPS\}\n`+
+            return `Prod${name}Link: \$\{PROD_${dir}_TEST_O_DEPS\}\n`+
             `\t(gcc -o prodTest \$\{${dir}_O_PATH\} \$\{${dir}_TEST_O_PATH\})\n\n`
         }
         devBuildRun(dir, name){
-            return `Dev${name.split('/').slice(1).join('')}Run: \$\{DEV_${dir}_TEST_O_DEPS\} \$\{DEV_${dir}_TEST_C_DEPS\} \$\{DEV_${dir}_TEST_H_DEPS\}\n`+
-            `\tmake Dev${name.split('/').slice(1).join('')}Clean\n`+
-            `\tmake Dev${name.split('/').slice(1).join('')}\n`+
-            `\tmake Dev${name.split('/').slice(1).join('')}Link\n`+
+            return `Dev${name}Run: \$\{DEV_${dir}_TEST_O_DEPS\} \$\{DEV_${dir}_TEST_C_DEPS\} \$\{DEV_${dir}_TEST_H_DEPS\}\n`+
+            `\tmake Dev${name}Clean\n`+
+            `\tmake Dev${name}\n`+
+            `\tmake Dev${name}Link\n`+
             `\t./devTest\n\n`
         }
         endOfSection(){ return `########################################################################################################################################\n\n\n\n\n\n`}

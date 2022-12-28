@@ -1,67 +1,67 @@
-../CTools/_DIR=CTools
-../CTools/_TEST_DIR=${../CTools/_DIR}Test/
-../CTools/_C=CTools.c.c
-../CTools/_H=CTools.h.h
-../CTools/_O=CTools.o.o
-../CTools/_TEST_C=Test.c
-../CTools/_TEST_H=Test.h
-../CTools/_TEST_O=Test.o
-../CTools/_TEST_DRVR_C=Drvr.c
-../CTools/_TEST_DRVR_H=Drvr.h
-../CTools/_TEST_DRVR_O=Drvr.o
-../CTools/_C_PATH=${../CTools/_DIR}${../CTools/_C}
-../CTools/_H_PATH=${../CTools/_DIR}${../CTools/_H}
-../CTools/_O_PATH=${../CTools/_DIR}${../CTools/_O}
-../CTools/_TEST_C_PATH=${../CTools/_TEST_DIR}${../CTools/_TEST_C}
-../CTools/_TEST_H_PATH=${../CTools/_TEST_DIR}${../CTools/_TEST_H}
-../CTools/_TEST_O_PATH=${../CTools/_TEST_DIR}${../CTools/_TEST_O}
-../CTools/_TEST_DRVR_C_PATH=${../CTools/_TEST_DIR}${../CTools/_TEST_DRVR_C}
-../CTools/_TEST_DRVR_H_PATH=${../CTools/_TEST_DIR}${../CTools/_TEST_DRVR_H}
-../CTools/_TEST_DRVR_O_PATH=${../CTools/_TEST_DIR}${../CTools/_TEST_DRVR_O}
-../CTools/_TEST_DRVR_C_PATH=${../CTools/_TEST_DIR}${../CTools/_TEST_DRVR_C}
-../CTools/_TEST_DRVR_H_PATH=${../CTools/_TEST_DIR}${../CTools/_TEST_DRVR_H}
-../CTools/_TEST_DRVR_O_PATH=${../CTools/_TEST_DIR}${../CTools/_TEST_DRVR_O}
-PROD_../CTools/_TEST_C_DEPS=${../CTools/_C_PATH} ${../CTools/_TEST_C_PATH} ../CTools/Automata/Automata.c ../CTools/Utils/Types/String/String.c 
-PROD_../CTools/_TEST_H_DEPS=${../CTools/_H_PATH} ${../CTools/_TEST_H_PATH} ../CTools/Automata/Automata.h ../CTools/Utils/Types/String/String.h 
-PROD_../CTools/_TEST_O_DEPS=${../CTools/_O_PATH} ${../CTools/_TEST_O_PATH} ../CTools/Automata/Automata.o ../CTools/Utils/Types/String/String.o 
-DEV_../CTools/_TEST_C_DEPS=${../CTools/_C_PATH} ${../CTools/_TEST_C_PATH} ${../CTools/_TEST_DRVR_C_PATH} ../CTools/Automata/Automata.c ../CTools/Utils/Types/String/String.c 
-DEV_../CTools/_TEST_H_DEPS=${../CTools/_H_PATH} ${../CTools/_TEST_H_PATH} ${../CTools/_TEST_DRVR_H_PATH} ../CTools/Automata/Automata.h ../CTools/Utils/Types/String/String.h 
-DEV_../CTools/_TEST_O_DEPS=${../CTools/_O_PATH} ${../CTools/_TEST_O_PATH} ${../CTools/_TEST_DRVR_O_PATH} ../CTools/Automata/Automata.o ../CTools/Utils/Types/String/String.o 
-DEV_../CTools/_TEST_C_FILES=${../CTools/_C_PATH} ${../CTools/_TEST_C_PATH} ${../CTools/_TEST_DRVR_C_PATH} ../CTools/Automata/Automata.c ../CTools/Utils/Types/String/String.c 
-DEV_../CTools/_TEST_H_FILES=${../CTools/_H_PATH} ${../CTools/_TEST_H_PATH} ${../CTools/_TEST_DRVR_H_PATH} ../CTools/Automata/Automata.h ../CTools/Utils/Types/String/String.h 
-DEV_../CTools/_TEST_O_FILES=${../CTools/_O_PATH} ${../CTools/_TEST_O_PATH} ${../CTools/_TEST_DRVR_O_PATH} ../CTools/Automata/Automata.o ../CTools/Utils/Types/String/String.o 
-PROD_../CTools/_TEST_C_FILES=${../CTools/_C_PATH} ${../CTools/_TEST_C_PATH} ../CTools/Automata/Automata.c ../CTools/Utils/Types/String/String.c 
-PROD_../CTools/_TEST_H_FILES=${../CTools/_H_PATH} ${../CTools/_TEST_H_PATH} ../CTools/Automata/Automata.h ../CTools/Utils/Types/String/String.h 
-PROD_../CTools/_TEST_O_FILES=${../CTools/_O_PATH} ${../CTools/_TEST_O_PATH} ../CTools/Automata/Automata.o ../CTools/Utils/Types/String/String.o 
-../CTools/_TEST_DEV_FILES= ${DEV_../CTools/_TEST_C_FILES} ${DEV_../CTools/_TEST_H_FILES} ${DEV_../CTools/_TEST_O_FILES} 
+CTOOLS_DIR=./CTools/
+CTOOLS_TEST_DIR=${CTOOLS_DIR}Test/
+CTOOLS_C=CTools.c
+CTOOLS_H=CTools.h
+CTOOLS_O=CTools.o
+CTOOLS_TEST_C=Test.c
+CTOOLS_TEST_H=Test.h
+CTOOLS_TEST_O=Test.o
+CTOOLS_TEST_DRVR_C=Drvr.c
+CTOOLS_TEST_DRVR_H=Drvr.h
+CTOOLS_TEST_DRVR_O=Drvr.o
+CTOOLS_C_PATH=${CTOOLS_DIR}${CTOOLS_C}
+CTOOLS_H_PATH=${CTOOLS_DIR}${CTOOLS_H}
+CTOOLS_O_PATH=${CTOOLS_DIR}${CTOOLS_O}
+CTOOLS_TEST_C_PATH=${CTOOLS_TEST_DIR}${CTOOLS_TEST_C}
+CTOOLS_TEST_H_PATH=${CTOOLS_TEST_DIR}${CTOOLS_TEST_H}
+CTOOLS_TEST_O_PATH=${CTOOLS_TEST_DIR}${CTOOLS_TEST_O}
+CTOOLS_TEST_DRVR_C_PATH=${CTOOLS_TEST_DIR}${CTOOLS_TEST_DRVR_C}
+CTOOLS_TEST_DRVR_H_PATH=${CTOOLS_TEST_DIR}${CTOOLS_TEST_DRVR_H}
+CTOOLS_TEST_DRVR_O_PATH=${CTOOLS_TEST_DIR}${CTOOLS_TEST_DRVR_O}
+CTOOLS_TEST_DRVR_C_PATH=${CTOOLS_TEST_DIR}${CTOOLS_TEST_DRVR_C}
+CTOOLS_TEST_DRVR_H_PATH=${CTOOLS_TEST_DIR}${CTOOLS_TEST_DRVR_H}
+CTOOLS_TEST_DRVR_O_PATH=${CTOOLS_TEST_DIR}${CTOOLS_TEST_DRVR_O}
+PROD_CTOOLS_TEST_C_DEPS=${CTOOLS_C_PATH} ${CTOOLS_TEST_C_PATH} ./CTools/Automata/Automata.c ./CTools/Utils/Types/String/String.c 
+PROD_CTOOLS_TEST_H_DEPS=${CTOOLS_H_PATH} ${CTOOLS_TEST_H_PATH} ./CTools/Automata/Automata.h ./CTools/Utils/Types/String/String.h 
+PROD_CTOOLS_TEST_O_DEPS=${CTOOLS_O_PATH} ${CTOOLS_TEST_O_PATH} ./CTools/Automata/Automata.o ./CTools/Utils/Types/String/String.o 
+DEV_CTOOLS_TEST_C_DEPS=${CTOOLS_C_PATH} ${CTOOLS_TEST_C_PATH} ${CTOOLS_TEST_DRVR_C_PATH} ./CTools/Automata/Automata.c ./CTools/Utils/Types/String/String.c 
+DEV_CTOOLS_TEST_H_DEPS=${CTOOLS_H_PATH} ${CTOOLS_TEST_H_PATH} ${CTOOLS_TEST_DRVR_H_PATH} ./CTools/Automata/Automata.h ./CTools/Utils/Types/String/String.h 
+DEV_CTOOLS_TEST_O_DEPS=${CTOOLS_O_PATH} ${CTOOLS_TEST_O_PATH} ${CTOOLS_TEST_DRVR_O_PATH} ./CTools/Automata/Automata.o ./CTools/Utils/Types/String/String.o 
+DEV_CTOOLS_TEST_C_FILES=${CTOOLS_C_PATH} ${CTOOLS_TEST_C_PATH} ${CTOOLS_TEST_DRVR_C_PATH} ./CTools/Automata/Automata.c ./CTools/Utils/Types/String/String.c 
+DEV_CTOOLS_TEST_H_FILES=${CTOOLS_H_PATH} ${CTOOLS_TEST_H_PATH} ${CTOOLS_TEST_DRVR_H_PATH} ./CTools/Automata/Automata.h ./CTools/Utils/Types/String/String.h 
+DEV_CTOOLS_TEST_O_FILES=${CTOOLS_O_PATH} ${CTOOLS_TEST_O_PATH} ${CTOOLS_TEST_DRVR_O_PATH} ./CTools/Automata/Automata.o ./CTools/Utils/Types/String/String.o 
+PROD_CTOOLS_TEST_C_FILES=${CTOOLS_C_PATH} ${CTOOLS_TEST_C_PATH} ./CTools/Automata/Automata.c ./CTools/Utils/Types/String/String.c 
+PROD_CTOOLS_TEST_H_FILES=${CTOOLS_H_PATH} ${CTOOLS_TEST_H_PATH} ./CTools/Automata/Automata.h ./CTools/Utils/Types/String/String.h 
+PROD_CTOOLS_TEST_O_FILES=${CTOOLS_O_PATH} ${CTOOLS_TEST_O_PATH} ./CTools/Automata/Automata.o ./CTools/Utils/Types/String/String.o 
+CTOOLS_TEST_DEV_FILES= ${DEV_CTOOLS_TEST_C_FILES} ${DEV_CTOOLS_TEST_H_FILES} ${DEV_CTOOLS_TEST_O_FILES} 
 
 
-Dev: ${DEV_../CTools/_TEST_C_DEPS} ${DEV_../CTools/_TEST_H_DEPS}
-	cd ${../CTools/_DIR}; gcc -c ${../CTools/_C}
-	cd ${../CTools/_TEST_DIR}; gcc -c ${../CTools/_TEST_C} ${../CTools/_TEST_DRVR_C}
+DevCTools: ${DEV_CTOOLS_TEST_C_DEPS} ${DEV_CTOOLS_TEST_H_DEPS}
+	cd ${CTOOLS_DIR}; gcc -c ${CTOOLS_C}
+	cd ${CTOOLS_TEST_DIR}; gcc -c ${CTOOLS_TEST_C} ${CTOOLS_TEST_DRVR_C}
 
-Prod: ${PROD_../CTools/_TEST_C_DEPS} ${PROD_../CTools/_TEST_H_DEPS}
-	cd ${../CTools/_DIR}; gcc -c ${../CTools/_C}
-	cd ${../CTools/_TEST_DIR}; gcc -c ${../CTools/_TEST_C}
+ProdCTools: ${PROD_CTOOLS_TEST_C_DEPS} ${PROD_CTOOLS_TEST_H_DEPS}
+	cd ${CTOOLS_DIR}; gcc -c ${CTOOLS_C}
+	cd ${CTOOLS_TEST_DIR}; gcc -c ${CTOOLS_TEST_C}
 
-DevClean: ${DEV_../CTools/_TEST_O_DEPS}
-	cd ${../CTools/_DIR}; rm -f ${../CTools/_O}
-	cd ${../CTools/_TEST_DIR}; rm -f ${../CTools/_TEST_O} ${../CTools/_TEST_DRVR_O}
+DevCToolsClean: ${DEV_CTOOLS_TEST_O_DEPS}
+	cd ${CTOOLS_DIR}; rm -f ${CTOOLS_O}
+	cd ${CTOOLS_TEST_DIR}; rm -f ${CTOOLS_TEST_O} ${CTOOLS_TEST_DRVR_O}
 
-ProdClean: ${PROD_../CTools/_TEST_O_DEPS}
-	cd ${../CTools/_DIR}; rm -f ${../CTools/_O}
-	cd ${../CTools/_TEST_DIR}; rm -f ${../CTools/_TEST_O}
+ProdCToolsClean: ${PROD_CTOOLS_TEST_O_DEPS}
+	cd ${CTOOLS_DIR}; rm -f ${CTOOLS_O}
+	cd ${CTOOLS_TEST_DIR}; rm -f ${CTOOLS_TEST_O}
 
-DevLink: ${DEV_../CTools/_TEST_O_DEPS}
-	(gcc -o devTest ${../CTools/_O_PATH} ${../CTools/_TEST_O_PATH} ${../CTools/_TEST_DRVR_O_PATH})
+DevCToolsLink: ${DEV_CTOOLS_TEST_O_DEPS}
+	(gcc -o devTest ${CTOOLS_O_PATH} ${CTOOLS_TEST_O_PATH} ${CTOOLS_TEST_DRVR_O_PATH})
 
-ProdLink: ${PROD_../CTools/_TEST_O_DEPS}
-	(gcc -o prodTest ${../CTools/_O_PATH} ${../CTools/_TEST_O_PATH})
+ProdCToolsLink: ${PROD_CTOOLS_TEST_O_DEPS}
+	(gcc -o prodTest ${CTOOLS_O_PATH} ${CTOOLS_TEST_O_PATH})
 
-DevRun: ${DEV_../CTools/_TEST_O_DEPS} ${DEV_../CTools/_TEST_C_DEPS} ${DEV_../CTools/_TEST_H_DEPS}
-	make DevClean
-	make Dev
-	make DevLink
+DevCToolsRun: ${DEV_CTOOLS_TEST_O_DEPS} ${DEV_CTOOLS_TEST_C_DEPS} ${DEV_CTOOLS_TEST_H_DEPS}
+	make DevCToolsClean
+	make DevCTools
+	make DevCToolsLink
 	./devTest
 
 ########################################################################################################################################
@@ -70,70 +70,70 @@ DevRun: ${DEV_../CTools/_TEST_O_DEPS} ${DEV_../CTools/_TEST_C_DEPS} ${DEV_../CTo
 
 
 
-../CTools/Automata/_DIR=Automata
-../CTools/Automata/_TEST_DIR=${../CTools/Automata/_DIR}Test/
-../CTools/Automata/_C=Automata.c.c
-../CTools/Automata/_H=Automata.h.h
-../CTools/Automata/_O=Automata.o.o
-../CTools/Automata/_TEST_C=Test.c
-../CTools/Automata/_TEST_H=Test.h
-../CTools/Automata/_TEST_O=Test.o
-../CTools/Automata/_TEST_DRVR_C=Drvr.c
-../CTools/Automata/_TEST_DRVR_H=Drvr.h
-../CTools/Automata/_TEST_DRVR_O=Drvr.o
-../CTools/Automata/_C_PATH=${../CTools/Automata/_DIR}${../CTools/Automata/_C}
-../CTools/Automata/_H_PATH=${../CTools/Automata/_DIR}${../CTools/Automata/_H}
-../CTools/Automata/_O_PATH=${../CTools/Automata/_DIR}${../CTools/Automata/_O}
-../CTools/Automata/_TEST_C_PATH=${../CTools/Automata/_TEST_DIR}${../CTools/Automata/_TEST_C}
-../CTools/Automata/_TEST_H_PATH=${../CTools/Automata/_TEST_DIR}${../CTools/Automata/_TEST_H}
-../CTools/Automata/_TEST_O_PATH=${../CTools/Automata/_TEST_DIR}${../CTools/Automata/_TEST_O}
-../CTools/Automata/_TEST_DRVR_C_PATH=${../CTools/Automata/_TEST_DIR}${../CTools/Automata/_TEST_DRVR_C}
-../CTools/Automata/_TEST_DRVR_H_PATH=${../CTools/Automata/_TEST_DIR}${../CTools/Automata/_TEST_DRVR_H}
-../CTools/Automata/_TEST_DRVR_O_PATH=${../CTools/Automata/_TEST_DIR}${../CTools/Automata/_TEST_DRVR_O}
-../CTools/Automata/_TEST_DRVR_C_PATH=${../CTools/Automata/_TEST_DIR}${../CTools/Automata/_TEST_DRVR_C}
-../CTools/Automata/_TEST_DRVR_H_PATH=${../CTools/Automata/_TEST_DIR}${../CTools/Automata/_TEST_DRVR_H}
-../CTools/Automata/_TEST_DRVR_O_PATH=${../CTools/Automata/_TEST_DIR}${../CTools/Automata/_TEST_DRVR_O}
-PROD_../CTools/Automata/_TEST_C_DEPS=${../CTools/Automata/_C_PATH} ${../CTools/Automata/_TEST_C_PATH} ../CTools/Utils/Types/String/String.c 
-PROD_../CTools/Automata/_TEST_H_DEPS=${../CTools/Automata/_H_PATH} ${../CTools/Automata/_TEST_H_PATH} ../CTools/Utils/Types/String/String.h 
-PROD_../CTools/Automata/_TEST_O_DEPS=${../CTools/Automata/_O_PATH} ${../CTools/Automata/_TEST_O_PATH} ../CTools/Utils/Types/String/String.o 
-DEV_../CTools/Automata/_TEST_C_DEPS=${../CTools/Automata/_C_PATH} ${../CTools/Automata/_TEST_C_PATH} ${../CTools/Automata/_TEST_DRVR_C_PATH} ../CTools/Utils/Types/String/String.c 
-DEV_../CTools/Automata/_TEST_H_DEPS=${../CTools/Automata/_H_PATH} ${../CTools/Automata/_TEST_H_PATH} ${../CTools/Automata/_TEST_DRVR_H_PATH} ../CTools/Utils/Types/String/String.h 
-DEV_../CTools/Automata/_TEST_O_DEPS=${../CTools/Automata/_O_PATH} ${../CTools/Automata/_TEST_O_PATH} ${../CTools/Automata/_TEST_DRVR_O_PATH} ../CTools/Utils/Types/String/String.o 
-DEV_../CTools/Automata/_TEST_C_FILES=${../CTools/Automata/_C_PATH} ${../CTools/Automata/_TEST_C_PATH} ${../CTools/Automata/_TEST_DRVR_C_PATH} ../CTools/Utils/Types/String/String.c 
-DEV_../CTools/Automata/_TEST_H_FILES=${../CTools/Automata/_H_PATH} ${../CTools/Automata/_TEST_H_PATH} ${../CTools/Automata/_TEST_DRVR_H_PATH} ../CTools/Utils/Types/String/String.h 
-DEV_../CTools/Automata/_TEST_O_FILES=${../CTools/Automata/_O_PATH} ${../CTools/Automata/_TEST_O_PATH} ${../CTools/Automata/_TEST_DRVR_O_PATH} ../CTools/Utils/Types/String/String.o 
-PROD_../CTools/Automata/_TEST_C_FILES=${../CTools/Automata/_C_PATH} ${../CTools/Automata/_TEST_C_PATH} ../CTools/Utils/Types/String/String.c 
-PROD_../CTools/Automata/_TEST_H_FILES=${../CTools/Automata/_H_PATH} ${../CTools/Automata/_TEST_H_PATH} ../CTools/Utils/Types/String/String.h 
-PROD_../CTools/Automata/_TEST_O_FILES=${../CTools/Automata/_O_PATH} ${../CTools/Automata/_TEST_O_PATH} ../CTools/Utils/Types/String/String.o 
-../CTools/Automata/_TEST_DEV_FILES= ${DEV_../CTools/Automata/_TEST_C_FILES} ${DEV_../CTools/Automata/_TEST_H_FILES} ${DEV_../CTools/Automata/_TEST_O_FILES} 
+CTOOLS_AUTOMATA_DIR=./CTools/Automata/
+CTOOLS_AUTOMATA_TEST_DIR=${CTOOLS_AUTOMATA_DIR}Test/
+CTOOLS_AUTOMATA_C=Automata.c
+CTOOLS_AUTOMATA_H=Automata.h
+CTOOLS_AUTOMATA_O=Automata.o
+CTOOLS_AUTOMATA_TEST_C=Test.c
+CTOOLS_AUTOMATA_TEST_H=Test.h
+CTOOLS_AUTOMATA_TEST_O=Test.o
+CTOOLS_AUTOMATA_TEST_DRVR_C=Drvr.c
+CTOOLS_AUTOMATA_TEST_DRVR_H=Drvr.h
+CTOOLS_AUTOMATA_TEST_DRVR_O=Drvr.o
+CTOOLS_AUTOMATA_C_PATH=${CTOOLS_AUTOMATA_DIR}${CTOOLS_AUTOMATA_C}
+CTOOLS_AUTOMATA_H_PATH=${CTOOLS_AUTOMATA_DIR}${CTOOLS_AUTOMATA_H}
+CTOOLS_AUTOMATA_O_PATH=${CTOOLS_AUTOMATA_DIR}${CTOOLS_AUTOMATA_O}
+CTOOLS_AUTOMATA_TEST_C_PATH=${CTOOLS_AUTOMATA_TEST_DIR}${CTOOLS_AUTOMATA_TEST_C}
+CTOOLS_AUTOMATA_TEST_H_PATH=${CTOOLS_AUTOMATA_TEST_DIR}${CTOOLS_AUTOMATA_TEST_H}
+CTOOLS_AUTOMATA_TEST_O_PATH=${CTOOLS_AUTOMATA_TEST_DIR}${CTOOLS_AUTOMATA_TEST_O}
+CTOOLS_AUTOMATA_TEST_DRVR_C_PATH=${CTOOLS_AUTOMATA_TEST_DIR}${CTOOLS_AUTOMATA_TEST_DRVR_C}
+CTOOLS_AUTOMATA_TEST_DRVR_H_PATH=${CTOOLS_AUTOMATA_TEST_DIR}${CTOOLS_AUTOMATA_TEST_DRVR_H}
+CTOOLS_AUTOMATA_TEST_DRVR_O_PATH=${CTOOLS_AUTOMATA_TEST_DIR}${CTOOLS_AUTOMATA_TEST_DRVR_O}
+CTOOLS_AUTOMATA_TEST_DRVR_C_PATH=${CTOOLS_AUTOMATA_TEST_DIR}${CTOOLS_AUTOMATA_TEST_DRVR_C}
+CTOOLS_AUTOMATA_TEST_DRVR_H_PATH=${CTOOLS_AUTOMATA_TEST_DIR}${CTOOLS_AUTOMATA_TEST_DRVR_H}
+CTOOLS_AUTOMATA_TEST_DRVR_O_PATH=${CTOOLS_AUTOMATA_TEST_DIR}${CTOOLS_AUTOMATA_TEST_DRVR_O}
+PROD_CTOOLS_AUTOMATA_TEST_C_DEPS=${CTOOLS_AUTOMATA_C_PATH} ${CTOOLS_AUTOMATA_TEST_C_PATH} ./CTools/Utils/Types/String/String.c 
+PROD_CTOOLS_AUTOMATA_TEST_H_DEPS=${CTOOLS_AUTOMATA_H_PATH} ${CTOOLS_AUTOMATA_TEST_H_PATH} ./CTools/Utils/Types/String/String.h 
+PROD_CTOOLS_AUTOMATA_TEST_O_DEPS=${CTOOLS_AUTOMATA_O_PATH} ${CTOOLS_AUTOMATA_TEST_O_PATH} ./CTools/Utils/Types/String/String.o 
+DEV_CTOOLS_AUTOMATA_TEST_C_DEPS=${CTOOLS_AUTOMATA_C_PATH} ${CTOOLS_AUTOMATA_TEST_C_PATH} ${CTOOLS_AUTOMATA_TEST_DRVR_C_PATH} ./CTools/Utils/Types/String/String.c 
+DEV_CTOOLS_AUTOMATA_TEST_H_DEPS=${CTOOLS_AUTOMATA_H_PATH} ${CTOOLS_AUTOMATA_TEST_H_PATH} ${CTOOLS_AUTOMATA_TEST_DRVR_H_PATH} ./CTools/Utils/Types/String/String.h 
+DEV_CTOOLS_AUTOMATA_TEST_O_DEPS=${CTOOLS_AUTOMATA_O_PATH} ${CTOOLS_AUTOMATA_TEST_O_PATH} ${CTOOLS_AUTOMATA_TEST_DRVR_O_PATH} ./CTools/Utils/Types/String/String.o 
+DEV_CTOOLS_AUTOMATA_TEST_C_FILES=${CTOOLS_AUTOMATA_C_PATH} ${CTOOLS_AUTOMATA_TEST_C_PATH} ${CTOOLS_AUTOMATA_TEST_DRVR_C_PATH} ./CTools/Utils/Types/String/String.c 
+DEV_CTOOLS_AUTOMATA_TEST_H_FILES=${CTOOLS_AUTOMATA_H_PATH} ${CTOOLS_AUTOMATA_TEST_H_PATH} ${CTOOLS_AUTOMATA_TEST_DRVR_H_PATH} ./CTools/Utils/Types/String/String.h 
+DEV_CTOOLS_AUTOMATA_TEST_O_FILES=${CTOOLS_AUTOMATA_O_PATH} ${CTOOLS_AUTOMATA_TEST_O_PATH} ${CTOOLS_AUTOMATA_TEST_DRVR_O_PATH} ./CTools/Utils/Types/String/String.o 
+PROD_CTOOLS_AUTOMATA_TEST_C_FILES=${CTOOLS_AUTOMATA_C_PATH} ${CTOOLS_AUTOMATA_TEST_C_PATH} ./CTools/Utils/Types/String/String.c 
+PROD_CTOOLS_AUTOMATA_TEST_H_FILES=${CTOOLS_AUTOMATA_H_PATH} ${CTOOLS_AUTOMATA_TEST_H_PATH} ./CTools/Utils/Types/String/String.h 
+PROD_CTOOLS_AUTOMATA_TEST_O_FILES=${CTOOLS_AUTOMATA_O_PATH} ${CTOOLS_AUTOMATA_TEST_O_PATH} ./CTools/Utils/Types/String/String.o 
+CTOOLS_AUTOMATA_TEST_DEV_FILES= ${DEV_CTOOLS_AUTOMATA_TEST_C_FILES} ${DEV_CTOOLS_AUTOMATA_TEST_H_FILES} ${DEV_CTOOLS_AUTOMATA_TEST_O_FILES} 
 
 
-Dev: ${DEV_../CTools/Automata/_TEST_C_DEPS} ${DEV_../CTools/Automata/_TEST_H_DEPS}
-	cd ${../CTools/Automata/_DIR}; gcc -c ${../CTools/Automata/_C}
-	cd ${../CTools/Automata/_TEST_DIR}; gcc -c ${../CTools/Automata/_TEST_C} ${../CTools/Automata/_TEST_DRVR_C}
+DevCToolsAutomata: ${DEV_CTOOLS_AUTOMATA_TEST_C_DEPS} ${DEV_CTOOLS_AUTOMATA_TEST_H_DEPS}
+	cd ${CTOOLS_AUTOMATA_DIR}; gcc -c ${CTOOLS_AUTOMATA_C}
+	cd ${CTOOLS_AUTOMATA_TEST_DIR}; gcc -c ${CTOOLS_AUTOMATA_TEST_C} ${CTOOLS_AUTOMATA_TEST_DRVR_C}
 
-Prod: ${PROD_../CTools/Automata/_TEST_C_DEPS} ${PROD_../CTools/Automata/_TEST_H_DEPS}
-	cd ${../CTools/Automata/_DIR}; gcc -c ${../CTools/Automata/_C}
-	cd ${../CTools/Automata/_TEST_DIR}; gcc -c ${../CTools/Automata/_TEST_C}
+ProdCToolsAutomata: ${PROD_CTOOLS_AUTOMATA_TEST_C_DEPS} ${PROD_CTOOLS_AUTOMATA_TEST_H_DEPS}
+	cd ${CTOOLS_AUTOMATA_DIR}; gcc -c ${CTOOLS_AUTOMATA_C}
+	cd ${CTOOLS_AUTOMATA_TEST_DIR}; gcc -c ${CTOOLS_AUTOMATA_TEST_C}
 
-DevClean: ${DEV_../CTools/Automata/_TEST_O_DEPS}
-	cd ${../CTools/Automata/_DIR}; rm -f ${../CTools/Automata/_O}
-	cd ${../CTools/Automata/_TEST_DIR}; rm -f ${../CTools/Automata/_TEST_O} ${../CTools/Automata/_TEST_DRVR_O}
+DevCToolsAutomataClean: ${DEV_CTOOLS_AUTOMATA_TEST_O_DEPS}
+	cd ${CTOOLS_AUTOMATA_DIR}; rm -f ${CTOOLS_AUTOMATA_O}
+	cd ${CTOOLS_AUTOMATA_TEST_DIR}; rm -f ${CTOOLS_AUTOMATA_TEST_O} ${CTOOLS_AUTOMATA_TEST_DRVR_O}
 
-ProdClean: ${PROD_../CTools/Automata/_TEST_O_DEPS}
-	cd ${../CTools/Automata/_DIR}; rm -f ${../CTools/Automata/_O}
-	cd ${../CTools/Automata/_TEST_DIR}; rm -f ${../CTools/Automata/_TEST_O}
+ProdCToolsAutomataClean: ${PROD_CTOOLS_AUTOMATA_TEST_O_DEPS}
+	cd ${CTOOLS_AUTOMATA_DIR}; rm -f ${CTOOLS_AUTOMATA_O}
+	cd ${CTOOLS_AUTOMATA_TEST_DIR}; rm -f ${CTOOLS_AUTOMATA_TEST_O}
 
-DevLink: ${DEV_../CTools/Automata/_TEST_O_DEPS}
-	(gcc -o devTest ${../CTools/Automata/_O_PATH} ${../CTools/Automata/_TEST_O_PATH} ${../CTools/Automata/_TEST_DRVR_O_PATH})
+DevCToolsAutomataLink: ${DEV_CTOOLS_AUTOMATA_TEST_O_DEPS}
+	(gcc -o devTest ${CTOOLS_AUTOMATA_O_PATH} ${CTOOLS_AUTOMATA_TEST_O_PATH} ${CTOOLS_AUTOMATA_TEST_DRVR_O_PATH})
 
-ProdLink: ${PROD_../CTools/Automata/_TEST_O_DEPS}
-	(gcc -o prodTest ${../CTools/Automata/_O_PATH} ${../CTools/Automata/_TEST_O_PATH})
+ProdCToolsAutomataLink: ${PROD_CTOOLS_AUTOMATA_TEST_O_DEPS}
+	(gcc -o prodTest ${CTOOLS_AUTOMATA_O_PATH} ${CTOOLS_AUTOMATA_TEST_O_PATH})
 
-DevRun: ${DEV_../CTools/Automata/_TEST_O_DEPS} ${DEV_../CTools/Automata/_TEST_C_DEPS} ${DEV_../CTools/Automata/_TEST_H_DEPS}
-	make DevClean
-	make Dev
-	make DevLink
+DevCToolsAutomataRun: ${DEV_CTOOLS_AUTOMATA_TEST_O_DEPS} ${DEV_CTOOLS_AUTOMATA_TEST_C_DEPS} ${DEV_CTOOLS_AUTOMATA_TEST_H_DEPS}
+	make DevCToolsAutomataClean
+	make DevCToolsAutomata
+	make DevCToolsAutomataLink
 	./devTest
 
 ########################################################################################################################################
@@ -142,70 +142,70 @@ DevRun: ${DEV_../CTools/Automata/_TEST_O_DEPS} ${DEV_../CTools/Automata/_TEST_C_
 
 
 
-../CTools/Combinatorics/_DIR=Combinatorics
-../CTools/Combinatorics/_TEST_DIR=${../CTools/Combinatorics/_DIR}Test/
-../CTools/Combinatorics/_C=Combinatorics.c.c
-../CTools/Combinatorics/_H=Combinatorics.h.h
-../CTools/Combinatorics/_O=Combinatorics.o.o
-../CTools/Combinatorics/_TEST_C=Test.c
-../CTools/Combinatorics/_TEST_H=Test.h
-../CTools/Combinatorics/_TEST_O=Test.o
-../CTools/Combinatorics/_TEST_DRVR_C=Drvr.c
-../CTools/Combinatorics/_TEST_DRVR_H=Drvr.h
-../CTools/Combinatorics/_TEST_DRVR_O=Drvr.o
-../CTools/Combinatorics/_C_PATH=${../CTools/Combinatorics/_DIR}${../CTools/Combinatorics/_C}
-../CTools/Combinatorics/_H_PATH=${../CTools/Combinatorics/_DIR}${../CTools/Combinatorics/_H}
-../CTools/Combinatorics/_O_PATH=${../CTools/Combinatorics/_DIR}${../CTools/Combinatorics/_O}
-../CTools/Combinatorics/_TEST_C_PATH=${../CTools/Combinatorics/_TEST_DIR}${../CTools/Combinatorics/_TEST_C}
-../CTools/Combinatorics/_TEST_H_PATH=${../CTools/Combinatorics/_TEST_DIR}${../CTools/Combinatorics/_TEST_H}
-../CTools/Combinatorics/_TEST_O_PATH=${../CTools/Combinatorics/_TEST_DIR}${../CTools/Combinatorics/_TEST_O}
-../CTools/Combinatorics/_TEST_DRVR_C_PATH=${../CTools/Combinatorics/_TEST_DIR}${../CTools/Combinatorics/_TEST_DRVR_C}
-../CTools/Combinatorics/_TEST_DRVR_H_PATH=${../CTools/Combinatorics/_TEST_DIR}${../CTools/Combinatorics/_TEST_DRVR_H}
-../CTools/Combinatorics/_TEST_DRVR_O_PATH=${../CTools/Combinatorics/_TEST_DIR}${../CTools/Combinatorics/_TEST_DRVR_O}
-../CTools/Combinatorics/_TEST_DRVR_C_PATH=${../CTools/Combinatorics/_TEST_DIR}${../CTools/Combinatorics/_TEST_DRVR_C}
-../CTools/Combinatorics/_TEST_DRVR_H_PATH=${../CTools/Combinatorics/_TEST_DIR}${../CTools/Combinatorics/_TEST_DRVR_H}
-../CTools/Combinatorics/_TEST_DRVR_O_PATH=${../CTools/Combinatorics/_TEST_DIR}${../CTools/Combinatorics/_TEST_DRVR_O}
-PROD_../CTools/Combinatorics/_TEST_C_DEPS=${../CTools/Combinatorics/_C_PATH} ${../CTools/Combinatorics/_TEST_C_PATH} 
-PROD_../CTools/Combinatorics/_TEST_H_DEPS=${../CTools/Combinatorics/_H_PATH} ${../CTools/Combinatorics/_TEST_H_PATH} 
-PROD_../CTools/Combinatorics/_TEST_O_DEPS=${../CTools/Combinatorics/_O_PATH} ${../CTools/Combinatorics/_TEST_O_PATH} 
-DEV_../CTools/Combinatorics/_TEST_C_DEPS=${../CTools/Combinatorics/_C_PATH} ${../CTools/Combinatorics/_TEST_C_PATH} ${../CTools/Combinatorics/_TEST_DRVR_C_PATH} 
-DEV_../CTools/Combinatorics/_TEST_H_DEPS=${../CTools/Combinatorics/_H_PATH} ${../CTools/Combinatorics/_TEST_H_PATH} ${../CTools/Combinatorics/_TEST_DRVR_H_PATH} 
-DEV_../CTools/Combinatorics/_TEST_O_DEPS=${../CTools/Combinatorics/_O_PATH} ${../CTools/Combinatorics/_TEST_O_PATH} ${../CTools/Combinatorics/_TEST_DRVR_O_PATH} 
-DEV_../CTools/Combinatorics/_TEST_C_FILES=${../CTools/Combinatorics/_C_PATH} ${../CTools/Combinatorics/_TEST_C_PATH} ${../CTools/Combinatorics/_TEST_DRVR_C_PATH} 
-DEV_../CTools/Combinatorics/_TEST_H_FILES=${../CTools/Combinatorics/_H_PATH} ${../CTools/Combinatorics/_TEST_H_PATH} ${../CTools/Combinatorics/_TEST_DRVR_H_PATH} 
-DEV_../CTools/Combinatorics/_TEST_O_FILES=${../CTools/Combinatorics/_O_PATH} ${../CTools/Combinatorics/_TEST_O_PATH} ${../CTools/Combinatorics/_TEST_DRVR_O_PATH} 
-PROD_../CTools/Combinatorics/_TEST_C_FILES=${../CTools/Combinatorics/_C_PATH} ${../CTools/Combinatorics/_TEST_C_PATH} 
-PROD_../CTools/Combinatorics/_TEST_H_FILES=${../CTools/Combinatorics/_H_PATH} ${../CTools/Combinatorics/_TEST_H_PATH} 
-PROD_../CTools/Combinatorics/_TEST_O_FILES=${../CTools/Combinatorics/_O_PATH} ${../CTools/Combinatorics/_TEST_O_PATH} 
-../CTools/Combinatorics/_TEST_DEV_FILES= ${DEV_../CTools/Combinatorics/_TEST_C_FILES} ${DEV_../CTools/Combinatorics/_TEST_H_FILES} ${DEV_../CTools/Combinatorics/_TEST_O_FILES} 
+CTOOLS_COMBINATORICS_DIR=./CTools/Combinatorics/
+CTOOLS_COMBINATORICS_TEST_DIR=${CTOOLS_COMBINATORICS_DIR}Test/
+CTOOLS_COMBINATORICS_C=Combinatorics.c
+CTOOLS_COMBINATORICS_H=Combinatorics.h
+CTOOLS_COMBINATORICS_O=Combinatorics.o
+CTOOLS_COMBINATORICS_TEST_C=Test.c
+CTOOLS_COMBINATORICS_TEST_H=Test.h
+CTOOLS_COMBINATORICS_TEST_O=Test.o
+CTOOLS_COMBINATORICS_TEST_DRVR_C=Drvr.c
+CTOOLS_COMBINATORICS_TEST_DRVR_H=Drvr.h
+CTOOLS_COMBINATORICS_TEST_DRVR_O=Drvr.o
+CTOOLS_COMBINATORICS_C_PATH=${CTOOLS_COMBINATORICS_DIR}${CTOOLS_COMBINATORICS_C}
+CTOOLS_COMBINATORICS_H_PATH=${CTOOLS_COMBINATORICS_DIR}${CTOOLS_COMBINATORICS_H}
+CTOOLS_COMBINATORICS_O_PATH=${CTOOLS_COMBINATORICS_DIR}${CTOOLS_COMBINATORICS_O}
+CTOOLS_COMBINATORICS_TEST_C_PATH=${CTOOLS_COMBINATORICS_TEST_DIR}${CTOOLS_COMBINATORICS_TEST_C}
+CTOOLS_COMBINATORICS_TEST_H_PATH=${CTOOLS_COMBINATORICS_TEST_DIR}${CTOOLS_COMBINATORICS_TEST_H}
+CTOOLS_COMBINATORICS_TEST_O_PATH=${CTOOLS_COMBINATORICS_TEST_DIR}${CTOOLS_COMBINATORICS_TEST_O}
+CTOOLS_COMBINATORICS_TEST_DRVR_C_PATH=${CTOOLS_COMBINATORICS_TEST_DIR}${CTOOLS_COMBINATORICS_TEST_DRVR_C}
+CTOOLS_COMBINATORICS_TEST_DRVR_H_PATH=${CTOOLS_COMBINATORICS_TEST_DIR}${CTOOLS_COMBINATORICS_TEST_DRVR_H}
+CTOOLS_COMBINATORICS_TEST_DRVR_O_PATH=${CTOOLS_COMBINATORICS_TEST_DIR}${CTOOLS_COMBINATORICS_TEST_DRVR_O}
+CTOOLS_COMBINATORICS_TEST_DRVR_C_PATH=${CTOOLS_COMBINATORICS_TEST_DIR}${CTOOLS_COMBINATORICS_TEST_DRVR_C}
+CTOOLS_COMBINATORICS_TEST_DRVR_H_PATH=${CTOOLS_COMBINATORICS_TEST_DIR}${CTOOLS_COMBINATORICS_TEST_DRVR_H}
+CTOOLS_COMBINATORICS_TEST_DRVR_O_PATH=${CTOOLS_COMBINATORICS_TEST_DIR}${CTOOLS_COMBINATORICS_TEST_DRVR_O}
+PROD_CTOOLS_COMBINATORICS_TEST_C_DEPS=${CTOOLS_COMBINATORICS_C_PATH} ${CTOOLS_COMBINATORICS_TEST_C_PATH} 
+PROD_CTOOLS_COMBINATORICS_TEST_H_DEPS=${CTOOLS_COMBINATORICS_H_PATH} ${CTOOLS_COMBINATORICS_TEST_H_PATH} 
+PROD_CTOOLS_COMBINATORICS_TEST_O_DEPS=${CTOOLS_COMBINATORICS_O_PATH} ${CTOOLS_COMBINATORICS_TEST_O_PATH} 
+DEV_CTOOLS_COMBINATORICS_TEST_C_DEPS=${CTOOLS_COMBINATORICS_C_PATH} ${CTOOLS_COMBINATORICS_TEST_C_PATH} ${CTOOLS_COMBINATORICS_TEST_DRVR_C_PATH} 
+DEV_CTOOLS_COMBINATORICS_TEST_H_DEPS=${CTOOLS_COMBINATORICS_H_PATH} ${CTOOLS_COMBINATORICS_TEST_H_PATH} ${CTOOLS_COMBINATORICS_TEST_DRVR_H_PATH} 
+DEV_CTOOLS_COMBINATORICS_TEST_O_DEPS=${CTOOLS_COMBINATORICS_O_PATH} ${CTOOLS_COMBINATORICS_TEST_O_PATH} ${CTOOLS_COMBINATORICS_TEST_DRVR_O_PATH} 
+DEV_CTOOLS_COMBINATORICS_TEST_C_FILES=${CTOOLS_COMBINATORICS_C_PATH} ${CTOOLS_COMBINATORICS_TEST_C_PATH} ${CTOOLS_COMBINATORICS_TEST_DRVR_C_PATH} 
+DEV_CTOOLS_COMBINATORICS_TEST_H_FILES=${CTOOLS_COMBINATORICS_H_PATH} ${CTOOLS_COMBINATORICS_TEST_H_PATH} ${CTOOLS_COMBINATORICS_TEST_DRVR_H_PATH} 
+DEV_CTOOLS_COMBINATORICS_TEST_O_FILES=${CTOOLS_COMBINATORICS_O_PATH} ${CTOOLS_COMBINATORICS_TEST_O_PATH} ${CTOOLS_COMBINATORICS_TEST_DRVR_O_PATH} 
+PROD_CTOOLS_COMBINATORICS_TEST_C_FILES=${CTOOLS_COMBINATORICS_C_PATH} ${CTOOLS_COMBINATORICS_TEST_C_PATH} 
+PROD_CTOOLS_COMBINATORICS_TEST_H_FILES=${CTOOLS_COMBINATORICS_H_PATH} ${CTOOLS_COMBINATORICS_TEST_H_PATH} 
+PROD_CTOOLS_COMBINATORICS_TEST_O_FILES=${CTOOLS_COMBINATORICS_O_PATH} ${CTOOLS_COMBINATORICS_TEST_O_PATH} 
+CTOOLS_COMBINATORICS_TEST_DEV_FILES= ${DEV_CTOOLS_COMBINATORICS_TEST_C_FILES} ${DEV_CTOOLS_COMBINATORICS_TEST_H_FILES} ${DEV_CTOOLS_COMBINATORICS_TEST_O_FILES} 
 
 
-Dev: ${DEV_../CTools/Combinatorics/_TEST_C_DEPS} ${DEV_../CTools/Combinatorics/_TEST_H_DEPS}
-	cd ${../CTools/Combinatorics/_DIR}; gcc -c ${../CTools/Combinatorics/_C}
-	cd ${../CTools/Combinatorics/_TEST_DIR}; gcc -c ${../CTools/Combinatorics/_TEST_C} ${../CTools/Combinatorics/_TEST_DRVR_C}
+DevCToolsCombinatorics: ${DEV_CTOOLS_COMBINATORICS_TEST_C_DEPS} ${DEV_CTOOLS_COMBINATORICS_TEST_H_DEPS}
+	cd ${CTOOLS_COMBINATORICS_DIR}; gcc -c ${CTOOLS_COMBINATORICS_C}
+	cd ${CTOOLS_COMBINATORICS_TEST_DIR}; gcc -c ${CTOOLS_COMBINATORICS_TEST_C} ${CTOOLS_COMBINATORICS_TEST_DRVR_C}
 
-Prod: ${PROD_../CTools/Combinatorics/_TEST_C_DEPS} ${PROD_../CTools/Combinatorics/_TEST_H_DEPS}
-	cd ${../CTools/Combinatorics/_DIR}; gcc -c ${../CTools/Combinatorics/_C}
-	cd ${../CTools/Combinatorics/_TEST_DIR}; gcc -c ${../CTools/Combinatorics/_TEST_C}
+ProdCToolsCombinatorics: ${PROD_CTOOLS_COMBINATORICS_TEST_C_DEPS} ${PROD_CTOOLS_COMBINATORICS_TEST_H_DEPS}
+	cd ${CTOOLS_COMBINATORICS_DIR}; gcc -c ${CTOOLS_COMBINATORICS_C}
+	cd ${CTOOLS_COMBINATORICS_TEST_DIR}; gcc -c ${CTOOLS_COMBINATORICS_TEST_C}
 
-DevClean: ${DEV_../CTools/Combinatorics/_TEST_O_DEPS}
-	cd ${../CTools/Combinatorics/_DIR}; rm -f ${../CTools/Combinatorics/_O}
-	cd ${../CTools/Combinatorics/_TEST_DIR}; rm -f ${../CTools/Combinatorics/_TEST_O} ${../CTools/Combinatorics/_TEST_DRVR_O}
+DevCToolsCombinatoricsClean: ${DEV_CTOOLS_COMBINATORICS_TEST_O_DEPS}
+	cd ${CTOOLS_COMBINATORICS_DIR}; rm -f ${CTOOLS_COMBINATORICS_O}
+	cd ${CTOOLS_COMBINATORICS_TEST_DIR}; rm -f ${CTOOLS_COMBINATORICS_TEST_O} ${CTOOLS_COMBINATORICS_TEST_DRVR_O}
 
-ProdClean: ${PROD_../CTools/Combinatorics/_TEST_O_DEPS}
-	cd ${../CTools/Combinatorics/_DIR}; rm -f ${../CTools/Combinatorics/_O}
-	cd ${../CTools/Combinatorics/_TEST_DIR}; rm -f ${../CTools/Combinatorics/_TEST_O}
+ProdCToolsCombinatoricsClean: ${PROD_CTOOLS_COMBINATORICS_TEST_O_DEPS}
+	cd ${CTOOLS_COMBINATORICS_DIR}; rm -f ${CTOOLS_COMBINATORICS_O}
+	cd ${CTOOLS_COMBINATORICS_TEST_DIR}; rm -f ${CTOOLS_COMBINATORICS_TEST_O}
 
-DevLink: ${DEV_../CTools/Combinatorics/_TEST_O_DEPS}
-	(gcc -o devTest ${../CTools/Combinatorics/_O_PATH} ${../CTools/Combinatorics/_TEST_O_PATH} ${../CTools/Combinatorics/_TEST_DRVR_O_PATH})
+DevCToolsCombinatoricsLink: ${DEV_CTOOLS_COMBINATORICS_TEST_O_DEPS}
+	(gcc -o devTest ${CTOOLS_COMBINATORICS_O_PATH} ${CTOOLS_COMBINATORICS_TEST_O_PATH} ${CTOOLS_COMBINATORICS_TEST_DRVR_O_PATH})
 
-ProdLink: ${PROD_../CTools/Combinatorics/_TEST_O_DEPS}
-	(gcc -o prodTest ${../CTools/Combinatorics/_O_PATH} ${../CTools/Combinatorics/_TEST_O_PATH})
+ProdCToolsCombinatoricsLink: ${PROD_CTOOLS_COMBINATORICS_TEST_O_DEPS}
+	(gcc -o prodTest ${CTOOLS_COMBINATORICS_O_PATH} ${CTOOLS_COMBINATORICS_TEST_O_PATH})
 
-DevRun: ${DEV_../CTools/Combinatorics/_TEST_O_DEPS} ${DEV_../CTools/Combinatorics/_TEST_C_DEPS} ${DEV_../CTools/Combinatorics/_TEST_H_DEPS}
-	make DevClean
-	make Dev
-	make DevLink
+DevCToolsCombinatoricsRun: ${DEV_CTOOLS_COMBINATORICS_TEST_O_DEPS} ${DEV_CTOOLS_COMBINATORICS_TEST_C_DEPS} ${DEV_CTOOLS_COMBINATORICS_TEST_H_DEPS}
+	make DevCToolsCombinatoricsClean
+	make DevCToolsCombinatorics
+	make DevCToolsCombinatoricsLink
 	./devTest
 
 ########################################################################################################################################
@@ -214,70 +214,70 @@ DevRun: ${DEV_../CTools/Combinatorics/_TEST_O_DEPS} ${DEV_../CTools/Combinatoric
 
 
 
-../CTools/Crypto/_DIR=Crypto
-../CTools/Crypto/_TEST_DIR=${../CTools/Crypto/_DIR}Test/
-../CTools/Crypto/_C=Crypto.c.c
-../CTools/Crypto/_H=Crypto.h.h
-../CTools/Crypto/_O=Crypto.o.o
-../CTools/Crypto/_TEST_C=Test.c
-../CTools/Crypto/_TEST_H=Test.h
-../CTools/Crypto/_TEST_O=Test.o
-../CTools/Crypto/_TEST_DRVR_C=Drvr.c
-../CTools/Crypto/_TEST_DRVR_H=Drvr.h
-../CTools/Crypto/_TEST_DRVR_O=Drvr.o
-../CTools/Crypto/_C_PATH=${../CTools/Crypto/_DIR}${../CTools/Crypto/_C}
-../CTools/Crypto/_H_PATH=${../CTools/Crypto/_DIR}${../CTools/Crypto/_H}
-../CTools/Crypto/_O_PATH=${../CTools/Crypto/_DIR}${../CTools/Crypto/_O}
-../CTools/Crypto/_TEST_C_PATH=${../CTools/Crypto/_TEST_DIR}${../CTools/Crypto/_TEST_C}
-../CTools/Crypto/_TEST_H_PATH=${../CTools/Crypto/_TEST_DIR}${../CTools/Crypto/_TEST_H}
-../CTools/Crypto/_TEST_O_PATH=${../CTools/Crypto/_TEST_DIR}${../CTools/Crypto/_TEST_O}
-../CTools/Crypto/_TEST_DRVR_C_PATH=${../CTools/Crypto/_TEST_DIR}${../CTools/Crypto/_TEST_DRVR_C}
-../CTools/Crypto/_TEST_DRVR_H_PATH=${../CTools/Crypto/_TEST_DIR}${../CTools/Crypto/_TEST_DRVR_H}
-../CTools/Crypto/_TEST_DRVR_O_PATH=${../CTools/Crypto/_TEST_DIR}${../CTools/Crypto/_TEST_DRVR_O}
-../CTools/Crypto/_TEST_DRVR_C_PATH=${../CTools/Crypto/_TEST_DIR}${../CTools/Crypto/_TEST_DRVR_C}
-../CTools/Crypto/_TEST_DRVR_H_PATH=${../CTools/Crypto/_TEST_DIR}${../CTools/Crypto/_TEST_DRVR_H}
-../CTools/Crypto/_TEST_DRVR_O_PATH=${../CTools/Crypto/_TEST_DIR}${../CTools/Crypto/_TEST_DRVR_O}
-PROD_../CTools/Crypto/_TEST_C_DEPS=${../CTools/Crypto/_C_PATH} ${../CTools/Crypto/_TEST_C_PATH} 
-PROD_../CTools/Crypto/_TEST_H_DEPS=${../CTools/Crypto/_H_PATH} ${../CTools/Crypto/_TEST_H_PATH} 
-PROD_../CTools/Crypto/_TEST_O_DEPS=${../CTools/Crypto/_O_PATH} ${../CTools/Crypto/_TEST_O_PATH} 
-DEV_../CTools/Crypto/_TEST_C_DEPS=${../CTools/Crypto/_C_PATH} ${../CTools/Crypto/_TEST_C_PATH} ${../CTools/Crypto/_TEST_DRVR_C_PATH} 
-DEV_../CTools/Crypto/_TEST_H_DEPS=${../CTools/Crypto/_H_PATH} ${../CTools/Crypto/_TEST_H_PATH} ${../CTools/Crypto/_TEST_DRVR_H_PATH} 
-DEV_../CTools/Crypto/_TEST_O_DEPS=${../CTools/Crypto/_O_PATH} ${../CTools/Crypto/_TEST_O_PATH} ${../CTools/Crypto/_TEST_DRVR_O_PATH} 
-DEV_../CTools/Crypto/_TEST_C_FILES=${../CTools/Crypto/_C_PATH} ${../CTools/Crypto/_TEST_C_PATH} ${../CTools/Crypto/_TEST_DRVR_C_PATH} 
-DEV_../CTools/Crypto/_TEST_H_FILES=${../CTools/Crypto/_H_PATH} ${../CTools/Crypto/_TEST_H_PATH} ${../CTools/Crypto/_TEST_DRVR_H_PATH} 
-DEV_../CTools/Crypto/_TEST_O_FILES=${../CTools/Crypto/_O_PATH} ${../CTools/Crypto/_TEST_O_PATH} ${../CTools/Crypto/_TEST_DRVR_O_PATH} 
-PROD_../CTools/Crypto/_TEST_C_FILES=${../CTools/Crypto/_C_PATH} ${../CTools/Crypto/_TEST_C_PATH} 
-PROD_../CTools/Crypto/_TEST_H_FILES=${../CTools/Crypto/_H_PATH} ${../CTools/Crypto/_TEST_H_PATH} 
-PROD_../CTools/Crypto/_TEST_O_FILES=${../CTools/Crypto/_O_PATH} ${../CTools/Crypto/_TEST_O_PATH} 
-../CTools/Crypto/_TEST_DEV_FILES= ${DEV_../CTools/Crypto/_TEST_C_FILES} ${DEV_../CTools/Crypto/_TEST_H_FILES} ${DEV_../CTools/Crypto/_TEST_O_FILES} 
+CTOOLS_CRYPTO_DIR=./CTools/Crypto/
+CTOOLS_CRYPTO_TEST_DIR=${CTOOLS_CRYPTO_DIR}Test/
+CTOOLS_CRYPTO_C=Crypto.c
+CTOOLS_CRYPTO_H=Crypto.h
+CTOOLS_CRYPTO_O=Crypto.o
+CTOOLS_CRYPTO_TEST_C=Test.c
+CTOOLS_CRYPTO_TEST_H=Test.h
+CTOOLS_CRYPTO_TEST_O=Test.o
+CTOOLS_CRYPTO_TEST_DRVR_C=Drvr.c
+CTOOLS_CRYPTO_TEST_DRVR_H=Drvr.h
+CTOOLS_CRYPTO_TEST_DRVR_O=Drvr.o
+CTOOLS_CRYPTO_C_PATH=${CTOOLS_CRYPTO_DIR}${CTOOLS_CRYPTO_C}
+CTOOLS_CRYPTO_H_PATH=${CTOOLS_CRYPTO_DIR}${CTOOLS_CRYPTO_H}
+CTOOLS_CRYPTO_O_PATH=${CTOOLS_CRYPTO_DIR}${CTOOLS_CRYPTO_O}
+CTOOLS_CRYPTO_TEST_C_PATH=${CTOOLS_CRYPTO_TEST_DIR}${CTOOLS_CRYPTO_TEST_C}
+CTOOLS_CRYPTO_TEST_H_PATH=${CTOOLS_CRYPTO_TEST_DIR}${CTOOLS_CRYPTO_TEST_H}
+CTOOLS_CRYPTO_TEST_O_PATH=${CTOOLS_CRYPTO_TEST_DIR}${CTOOLS_CRYPTO_TEST_O}
+CTOOLS_CRYPTO_TEST_DRVR_C_PATH=${CTOOLS_CRYPTO_TEST_DIR}${CTOOLS_CRYPTO_TEST_DRVR_C}
+CTOOLS_CRYPTO_TEST_DRVR_H_PATH=${CTOOLS_CRYPTO_TEST_DIR}${CTOOLS_CRYPTO_TEST_DRVR_H}
+CTOOLS_CRYPTO_TEST_DRVR_O_PATH=${CTOOLS_CRYPTO_TEST_DIR}${CTOOLS_CRYPTO_TEST_DRVR_O}
+CTOOLS_CRYPTO_TEST_DRVR_C_PATH=${CTOOLS_CRYPTO_TEST_DIR}${CTOOLS_CRYPTO_TEST_DRVR_C}
+CTOOLS_CRYPTO_TEST_DRVR_H_PATH=${CTOOLS_CRYPTO_TEST_DIR}${CTOOLS_CRYPTO_TEST_DRVR_H}
+CTOOLS_CRYPTO_TEST_DRVR_O_PATH=${CTOOLS_CRYPTO_TEST_DIR}${CTOOLS_CRYPTO_TEST_DRVR_O}
+PROD_CTOOLS_CRYPTO_TEST_C_DEPS=${CTOOLS_CRYPTO_C_PATH} ${CTOOLS_CRYPTO_TEST_C_PATH} 
+PROD_CTOOLS_CRYPTO_TEST_H_DEPS=${CTOOLS_CRYPTO_H_PATH} ${CTOOLS_CRYPTO_TEST_H_PATH} 
+PROD_CTOOLS_CRYPTO_TEST_O_DEPS=${CTOOLS_CRYPTO_O_PATH} ${CTOOLS_CRYPTO_TEST_O_PATH} 
+DEV_CTOOLS_CRYPTO_TEST_C_DEPS=${CTOOLS_CRYPTO_C_PATH} ${CTOOLS_CRYPTO_TEST_C_PATH} ${CTOOLS_CRYPTO_TEST_DRVR_C_PATH} 
+DEV_CTOOLS_CRYPTO_TEST_H_DEPS=${CTOOLS_CRYPTO_H_PATH} ${CTOOLS_CRYPTO_TEST_H_PATH} ${CTOOLS_CRYPTO_TEST_DRVR_H_PATH} 
+DEV_CTOOLS_CRYPTO_TEST_O_DEPS=${CTOOLS_CRYPTO_O_PATH} ${CTOOLS_CRYPTO_TEST_O_PATH} ${CTOOLS_CRYPTO_TEST_DRVR_O_PATH} 
+DEV_CTOOLS_CRYPTO_TEST_C_FILES=${CTOOLS_CRYPTO_C_PATH} ${CTOOLS_CRYPTO_TEST_C_PATH} ${CTOOLS_CRYPTO_TEST_DRVR_C_PATH} 
+DEV_CTOOLS_CRYPTO_TEST_H_FILES=${CTOOLS_CRYPTO_H_PATH} ${CTOOLS_CRYPTO_TEST_H_PATH} ${CTOOLS_CRYPTO_TEST_DRVR_H_PATH} 
+DEV_CTOOLS_CRYPTO_TEST_O_FILES=${CTOOLS_CRYPTO_O_PATH} ${CTOOLS_CRYPTO_TEST_O_PATH} ${CTOOLS_CRYPTO_TEST_DRVR_O_PATH} 
+PROD_CTOOLS_CRYPTO_TEST_C_FILES=${CTOOLS_CRYPTO_C_PATH} ${CTOOLS_CRYPTO_TEST_C_PATH} 
+PROD_CTOOLS_CRYPTO_TEST_H_FILES=${CTOOLS_CRYPTO_H_PATH} ${CTOOLS_CRYPTO_TEST_H_PATH} 
+PROD_CTOOLS_CRYPTO_TEST_O_FILES=${CTOOLS_CRYPTO_O_PATH} ${CTOOLS_CRYPTO_TEST_O_PATH} 
+CTOOLS_CRYPTO_TEST_DEV_FILES= ${DEV_CTOOLS_CRYPTO_TEST_C_FILES} ${DEV_CTOOLS_CRYPTO_TEST_H_FILES} ${DEV_CTOOLS_CRYPTO_TEST_O_FILES} 
 
 
-Dev: ${DEV_../CTools/Crypto/_TEST_C_DEPS} ${DEV_../CTools/Crypto/_TEST_H_DEPS}
-	cd ${../CTools/Crypto/_DIR}; gcc -c ${../CTools/Crypto/_C}
-	cd ${../CTools/Crypto/_TEST_DIR}; gcc -c ${../CTools/Crypto/_TEST_C} ${../CTools/Crypto/_TEST_DRVR_C}
+DevCToolsCrypto: ${DEV_CTOOLS_CRYPTO_TEST_C_DEPS} ${DEV_CTOOLS_CRYPTO_TEST_H_DEPS}
+	cd ${CTOOLS_CRYPTO_DIR}; gcc -c ${CTOOLS_CRYPTO_C}
+	cd ${CTOOLS_CRYPTO_TEST_DIR}; gcc -c ${CTOOLS_CRYPTO_TEST_C} ${CTOOLS_CRYPTO_TEST_DRVR_C}
 
-Prod: ${PROD_../CTools/Crypto/_TEST_C_DEPS} ${PROD_../CTools/Crypto/_TEST_H_DEPS}
-	cd ${../CTools/Crypto/_DIR}; gcc -c ${../CTools/Crypto/_C}
-	cd ${../CTools/Crypto/_TEST_DIR}; gcc -c ${../CTools/Crypto/_TEST_C}
+ProdCToolsCrypto: ${PROD_CTOOLS_CRYPTO_TEST_C_DEPS} ${PROD_CTOOLS_CRYPTO_TEST_H_DEPS}
+	cd ${CTOOLS_CRYPTO_DIR}; gcc -c ${CTOOLS_CRYPTO_C}
+	cd ${CTOOLS_CRYPTO_TEST_DIR}; gcc -c ${CTOOLS_CRYPTO_TEST_C}
 
-DevClean: ${DEV_../CTools/Crypto/_TEST_O_DEPS}
-	cd ${../CTools/Crypto/_DIR}; rm -f ${../CTools/Crypto/_O}
-	cd ${../CTools/Crypto/_TEST_DIR}; rm -f ${../CTools/Crypto/_TEST_O} ${../CTools/Crypto/_TEST_DRVR_O}
+DevCToolsCryptoClean: ${DEV_CTOOLS_CRYPTO_TEST_O_DEPS}
+	cd ${CTOOLS_CRYPTO_DIR}; rm -f ${CTOOLS_CRYPTO_O}
+	cd ${CTOOLS_CRYPTO_TEST_DIR}; rm -f ${CTOOLS_CRYPTO_TEST_O} ${CTOOLS_CRYPTO_TEST_DRVR_O}
 
-ProdClean: ${PROD_../CTools/Crypto/_TEST_O_DEPS}
-	cd ${../CTools/Crypto/_DIR}; rm -f ${../CTools/Crypto/_O}
-	cd ${../CTools/Crypto/_TEST_DIR}; rm -f ${../CTools/Crypto/_TEST_O}
+ProdCToolsCryptoClean: ${PROD_CTOOLS_CRYPTO_TEST_O_DEPS}
+	cd ${CTOOLS_CRYPTO_DIR}; rm -f ${CTOOLS_CRYPTO_O}
+	cd ${CTOOLS_CRYPTO_TEST_DIR}; rm -f ${CTOOLS_CRYPTO_TEST_O}
 
-DevLink: ${DEV_../CTools/Crypto/_TEST_O_DEPS}
-	(gcc -o devTest ${../CTools/Crypto/_O_PATH} ${../CTools/Crypto/_TEST_O_PATH} ${../CTools/Crypto/_TEST_DRVR_O_PATH})
+DevCToolsCryptoLink: ${DEV_CTOOLS_CRYPTO_TEST_O_DEPS}
+	(gcc -o devTest ${CTOOLS_CRYPTO_O_PATH} ${CTOOLS_CRYPTO_TEST_O_PATH} ${CTOOLS_CRYPTO_TEST_DRVR_O_PATH})
 
-ProdLink: ${PROD_../CTools/Crypto/_TEST_O_DEPS}
-	(gcc -o prodTest ${../CTools/Crypto/_O_PATH} ${../CTools/Crypto/_TEST_O_PATH})
+ProdCToolsCryptoLink: ${PROD_CTOOLS_CRYPTO_TEST_O_DEPS}
+	(gcc -o prodTest ${CTOOLS_CRYPTO_O_PATH} ${CTOOLS_CRYPTO_TEST_O_PATH})
 
-DevRun: ${DEV_../CTools/Crypto/_TEST_O_DEPS} ${DEV_../CTools/Crypto/_TEST_C_DEPS} ${DEV_../CTools/Crypto/_TEST_H_DEPS}
-	make DevClean
-	make Dev
-	make DevLink
+DevCToolsCryptoRun: ${DEV_CTOOLS_CRYPTO_TEST_O_DEPS} ${DEV_CTOOLS_CRYPTO_TEST_C_DEPS} ${DEV_CTOOLS_CRYPTO_TEST_H_DEPS}
+	make DevCToolsCryptoClean
+	make DevCToolsCrypto
+	make DevCToolsCryptoLink
 	./devTest
 
 ########################################################################################################################################
@@ -286,70 +286,70 @@ DevRun: ${DEV_../CTools/Crypto/_TEST_O_DEPS} ${DEV_../CTools/Crypto/_TEST_C_DEPS
 
 
 
-../CTools/Matrix/_DIR=Matrix
-../CTools/Matrix/_TEST_DIR=${../CTools/Matrix/_DIR}Test/
-../CTools/Matrix/_C=Matrix.c.c
-../CTools/Matrix/_H=Matrix.h.h
-../CTools/Matrix/_O=Matrix.o.o
-../CTools/Matrix/_TEST_C=Test.c
-../CTools/Matrix/_TEST_H=Test.h
-../CTools/Matrix/_TEST_O=Test.o
-../CTools/Matrix/_TEST_DRVR_C=Drvr.c
-../CTools/Matrix/_TEST_DRVR_H=Drvr.h
-../CTools/Matrix/_TEST_DRVR_O=Drvr.o
-../CTools/Matrix/_C_PATH=${../CTools/Matrix/_DIR}${../CTools/Matrix/_C}
-../CTools/Matrix/_H_PATH=${../CTools/Matrix/_DIR}${../CTools/Matrix/_H}
-../CTools/Matrix/_O_PATH=${../CTools/Matrix/_DIR}${../CTools/Matrix/_O}
-../CTools/Matrix/_TEST_C_PATH=${../CTools/Matrix/_TEST_DIR}${../CTools/Matrix/_TEST_C}
-../CTools/Matrix/_TEST_H_PATH=${../CTools/Matrix/_TEST_DIR}${../CTools/Matrix/_TEST_H}
-../CTools/Matrix/_TEST_O_PATH=${../CTools/Matrix/_TEST_DIR}${../CTools/Matrix/_TEST_O}
-../CTools/Matrix/_TEST_DRVR_C_PATH=${../CTools/Matrix/_TEST_DIR}${../CTools/Matrix/_TEST_DRVR_C}
-../CTools/Matrix/_TEST_DRVR_H_PATH=${../CTools/Matrix/_TEST_DIR}${../CTools/Matrix/_TEST_DRVR_H}
-../CTools/Matrix/_TEST_DRVR_O_PATH=${../CTools/Matrix/_TEST_DIR}${../CTools/Matrix/_TEST_DRVR_O}
-../CTools/Matrix/_TEST_DRVR_C_PATH=${../CTools/Matrix/_TEST_DIR}${../CTools/Matrix/_TEST_DRVR_C}
-../CTools/Matrix/_TEST_DRVR_H_PATH=${../CTools/Matrix/_TEST_DIR}${../CTools/Matrix/_TEST_DRVR_H}
-../CTools/Matrix/_TEST_DRVR_O_PATH=${../CTools/Matrix/_TEST_DIR}${../CTools/Matrix/_TEST_DRVR_O}
-PROD_../CTools/Matrix/_TEST_C_DEPS=${../CTools/Matrix/_C_PATH} ${../CTools/Matrix/_TEST_C_PATH} 
-PROD_../CTools/Matrix/_TEST_H_DEPS=${../CTools/Matrix/_H_PATH} ${../CTools/Matrix/_TEST_H_PATH} 
-PROD_../CTools/Matrix/_TEST_O_DEPS=${../CTools/Matrix/_O_PATH} ${../CTools/Matrix/_TEST_O_PATH} 
-DEV_../CTools/Matrix/_TEST_C_DEPS=${../CTools/Matrix/_C_PATH} ${../CTools/Matrix/_TEST_C_PATH} ${../CTools/Matrix/_TEST_DRVR_C_PATH} 
-DEV_../CTools/Matrix/_TEST_H_DEPS=${../CTools/Matrix/_H_PATH} ${../CTools/Matrix/_TEST_H_PATH} ${../CTools/Matrix/_TEST_DRVR_H_PATH} 
-DEV_../CTools/Matrix/_TEST_O_DEPS=${../CTools/Matrix/_O_PATH} ${../CTools/Matrix/_TEST_O_PATH} ${../CTools/Matrix/_TEST_DRVR_O_PATH} 
-DEV_../CTools/Matrix/_TEST_C_FILES=${../CTools/Matrix/_C_PATH} ${../CTools/Matrix/_TEST_C_PATH} ${../CTools/Matrix/_TEST_DRVR_C_PATH} 
-DEV_../CTools/Matrix/_TEST_H_FILES=${../CTools/Matrix/_H_PATH} ${../CTools/Matrix/_TEST_H_PATH} ${../CTools/Matrix/_TEST_DRVR_H_PATH} 
-DEV_../CTools/Matrix/_TEST_O_FILES=${../CTools/Matrix/_O_PATH} ${../CTools/Matrix/_TEST_O_PATH} ${../CTools/Matrix/_TEST_DRVR_O_PATH} 
-PROD_../CTools/Matrix/_TEST_C_FILES=${../CTools/Matrix/_C_PATH} ${../CTools/Matrix/_TEST_C_PATH} 
-PROD_../CTools/Matrix/_TEST_H_FILES=${../CTools/Matrix/_H_PATH} ${../CTools/Matrix/_TEST_H_PATH} 
-PROD_../CTools/Matrix/_TEST_O_FILES=${../CTools/Matrix/_O_PATH} ${../CTools/Matrix/_TEST_O_PATH} 
-../CTools/Matrix/_TEST_DEV_FILES= ${DEV_../CTools/Matrix/_TEST_C_FILES} ${DEV_../CTools/Matrix/_TEST_H_FILES} ${DEV_../CTools/Matrix/_TEST_O_FILES} 
+CTOOLS_MATRIX_DIR=./CTools/Matrix/
+CTOOLS_MATRIX_TEST_DIR=${CTOOLS_MATRIX_DIR}Test/
+CTOOLS_MATRIX_C=Matrix.c
+CTOOLS_MATRIX_H=Matrix.h
+CTOOLS_MATRIX_O=Matrix.o
+CTOOLS_MATRIX_TEST_C=Test.c
+CTOOLS_MATRIX_TEST_H=Test.h
+CTOOLS_MATRIX_TEST_O=Test.o
+CTOOLS_MATRIX_TEST_DRVR_C=Drvr.c
+CTOOLS_MATRIX_TEST_DRVR_H=Drvr.h
+CTOOLS_MATRIX_TEST_DRVR_O=Drvr.o
+CTOOLS_MATRIX_C_PATH=${CTOOLS_MATRIX_DIR}${CTOOLS_MATRIX_C}
+CTOOLS_MATRIX_H_PATH=${CTOOLS_MATRIX_DIR}${CTOOLS_MATRIX_H}
+CTOOLS_MATRIX_O_PATH=${CTOOLS_MATRIX_DIR}${CTOOLS_MATRIX_O}
+CTOOLS_MATRIX_TEST_C_PATH=${CTOOLS_MATRIX_TEST_DIR}${CTOOLS_MATRIX_TEST_C}
+CTOOLS_MATRIX_TEST_H_PATH=${CTOOLS_MATRIX_TEST_DIR}${CTOOLS_MATRIX_TEST_H}
+CTOOLS_MATRIX_TEST_O_PATH=${CTOOLS_MATRIX_TEST_DIR}${CTOOLS_MATRIX_TEST_O}
+CTOOLS_MATRIX_TEST_DRVR_C_PATH=${CTOOLS_MATRIX_TEST_DIR}${CTOOLS_MATRIX_TEST_DRVR_C}
+CTOOLS_MATRIX_TEST_DRVR_H_PATH=${CTOOLS_MATRIX_TEST_DIR}${CTOOLS_MATRIX_TEST_DRVR_H}
+CTOOLS_MATRIX_TEST_DRVR_O_PATH=${CTOOLS_MATRIX_TEST_DIR}${CTOOLS_MATRIX_TEST_DRVR_O}
+CTOOLS_MATRIX_TEST_DRVR_C_PATH=${CTOOLS_MATRIX_TEST_DIR}${CTOOLS_MATRIX_TEST_DRVR_C}
+CTOOLS_MATRIX_TEST_DRVR_H_PATH=${CTOOLS_MATRIX_TEST_DIR}${CTOOLS_MATRIX_TEST_DRVR_H}
+CTOOLS_MATRIX_TEST_DRVR_O_PATH=${CTOOLS_MATRIX_TEST_DIR}${CTOOLS_MATRIX_TEST_DRVR_O}
+PROD_CTOOLS_MATRIX_TEST_C_DEPS=${CTOOLS_MATRIX_C_PATH} ${CTOOLS_MATRIX_TEST_C_PATH} 
+PROD_CTOOLS_MATRIX_TEST_H_DEPS=${CTOOLS_MATRIX_H_PATH} ${CTOOLS_MATRIX_TEST_H_PATH} 
+PROD_CTOOLS_MATRIX_TEST_O_DEPS=${CTOOLS_MATRIX_O_PATH} ${CTOOLS_MATRIX_TEST_O_PATH} 
+DEV_CTOOLS_MATRIX_TEST_C_DEPS=${CTOOLS_MATRIX_C_PATH} ${CTOOLS_MATRIX_TEST_C_PATH} ${CTOOLS_MATRIX_TEST_DRVR_C_PATH} 
+DEV_CTOOLS_MATRIX_TEST_H_DEPS=${CTOOLS_MATRIX_H_PATH} ${CTOOLS_MATRIX_TEST_H_PATH} ${CTOOLS_MATRIX_TEST_DRVR_H_PATH} 
+DEV_CTOOLS_MATRIX_TEST_O_DEPS=${CTOOLS_MATRIX_O_PATH} ${CTOOLS_MATRIX_TEST_O_PATH} ${CTOOLS_MATRIX_TEST_DRVR_O_PATH} 
+DEV_CTOOLS_MATRIX_TEST_C_FILES=${CTOOLS_MATRIX_C_PATH} ${CTOOLS_MATRIX_TEST_C_PATH} ${CTOOLS_MATRIX_TEST_DRVR_C_PATH} 
+DEV_CTOOLS_MATRIX_TEST_H_FILES=${CTOOLS_MATRIX_H_PATH} ${CTOOLS_MATRIX_TEST_H_PATH} ${CTOOLS_MATRIX_TEST_DRVR_H_PATH} 
+DEV_CTOOLS_MATRIX_TEST_O_FILES=${CTOOLS_MATRIX_O_PATH} ${CTOOLS_MATRIX_TEST_O_PATH} ${CTOOLS_MATRIX_TEST_DRVR_O_PATH} 
+PROD_CTOOLS_MATRIX_TEST_C_FILES=${CTOOLS_MATRIX_C_PATH} ${CTOOLS_MATRIX_TEST_C_PATH} 
+PROD_CTOOLS_MATRIX_TEST_H_FILES=${CTOOLS_MATRIX_H_PATH} ${CTOOLS_MATRIX_TEST_H_PATH} 
+PROD_CTOOLS_MATRIX_TEST_O_FILES=${CTOOLS_MATRIX_O_PATH} ${CTOOLS_MATRIX_TEST_O_PATH} 
+CTOOLS_MATRIX_TEST_DEV_FILES= ${DEV_CTOOLS_MATRIX_TEST_C_FILES} ${DEV_CTOOLS_MATRIX_TEST_H_FILES} ${DEV_CTOOLS_MATRIX_TEST_O_FILES} 
 
 
-Dev: ${DEV_../CTools/Matrix/_TEST_C_DEPS} ${DEV_../CTools/Matrix/_TEST_H_DEPS}
-	cd ${../CTools/Matrix/_DIR}; gcc -c ${../CTools/Matrix/_C}
-	cd ${../CTools/Matrix/_TEST_DIR}; gcc -c ${../CTools/Matrix/_TEST_C} ${../CTools/Matrix/_TEST_DRVR_C}
+DevCToolsMatrix: ${DEV_CTOOLS_MATRIX_TEST_C_DEPS} ${DEV_CTOOLS_MATRIX_TEST_H_DEPS}
+	cd ${CTOOLS_MATRIX_DIR}; gcc -c ${CTOOLS_MATRIX_C}
+	cd ${CTOOLS_MATRIX_TEST_DIR}; gcc -c ${CTOOLS_MATRIX_TEST_C} ${CTOOLS_MATRIX_TEST_DRVR_C}
 
-Prod: ${PROD_../CTools/Matrix/_TEST_C_DEPS} ${PROD_../CTools/Matrix/_TEST_H_DEPS}
-	cd ${../CTools/Matrix/_DIR}; gcc -c ${../CTools/Matrix/_C}
-	cd ${../CTools/Matrix/_TEST_DIR}; gcc -c ${../CTools/Matrix/_TEST_C}
+ProdCToolsMatrix: ${PROD_CTOOLS_MATRIX_TEST_C_DEPS} ${PROD_CTOOLS_MATRIX_TEST_H_DEPS}
+	cd ${CTOOLS_MATRIX_DIR}; gcc -c ${CTOOLS_MATRIX_C}
+	cd ${CTOOLS_MATRIX_TEST_DIR}; gcc -c ${CTOOLS_MATRIX_TEST_C}
 
-DevClean: ${DEV_../CTools/Matrix/_TEST_O_DEPS}
-	cd ${../CTools/Matrix/_DIR}; rm -f ${../CTools/Matrix/_O}
-	cd ${../CTools/Matrix/_TEST_DIR}; rm -f ${../CTools/Matrix/_TEST_O} ${../CTools/Matrix/_TEST_DRVR_O}
+DevCToolsMatrixClean: ${DEV_CTOOLS_MATRIX_TEST_O_DEPS}
+	cd ${CTOOLS_MATRIX_DIR}; rm -f ${CTOOLS_MATRIX_O}
+	cd ${CTOOLS_MATRIX_TEST_DIR}; rm -f ${CTOOLS_MATRIX_TEST_O} ${CTOOLS_MATRIX_TEST_DRVR_O}
 
-ProdClean: ${PROD_../CTools/Matrix/_TEST_O_DEPS}
-	cd ${../CTools/Matrix/_DIR}; rm -f ${../CTools/Matrix/_O}
-	cd ${../CTools/Matrix/_TEST_DIR}; rm -f ${../CTools/Matrix/_TEST_O}
+ProdCToolsMatrixClean: ${PROD_CTOOLS_MATRIX_TEST_O_DEPS}
+	cd ${CTOOLS_MATRIX_DIR}; rm -f ${CTOOLS_MATRIX_O}
+	cd ${CTOOLS_MATRIX_TEST_DIR}; rm -f ${CTOOLS_MATRIX_TEST_O}
 
-DevLink: ${DEV_../CTools/Matrix/_TEST_O_DEPS}
-	(gcc -o devTest ${../CTools/Matrix/_O_PATH} ${../CTools/Matrix/_TEST_O_PATH} ${../CTools/Matrix/_TEST_DRVR_O_PATH})
+DevCToolsMatrixLink: ${DEV_CTOOLS_MATRIX_TEST_O_DEPS}
+	(gcc -o devTest ${CTOOLS_MATRIX_O_PATH} ${CTOOLS_MATRIX_TEST_O_PATH} ${CTOOLS_MATRIX_TEST_DRVR_O_PATH})
 
-ProdLink: ${PROD_../CTools/Matrix/_TEST_O_DEPS}
-	(gcc -o prodTest ${../CTools/Matrix/_O_PATH} ${../CTools/Matrix/_TEST_O_PATH})
+ProdCToolsMatrixLink: ${PROD_CTOOLS_MATRIX_TEST_O_DEPS}
+	(gcc -o prodTest ${CTOOLS_MATRIX_O_PATH} ${CTOOLS_MATRIX_TEST_O_PATH})
 
-DevRun: ${DEV_../CTools/Matrix/_TEST_O_DEPS} ${DEV_../CTools/Matrix/_TEST_C_DEPS} ${DEV_../CTools/Matrix/_TEST_H_DEPS}
-	make DevClean
-	make Dev
-	make DevLink
+DevCToolsMatrixRun: ${DEV_CTOOLS_MATRIX_TEST_O_DEPS} ${DEV_CTOOLS_MATRIX_TEST_C_DEPS} ${DEV_CTOOLS_MATRIX_TEST_H_DEPS}
+	make DevCToolsMatrixClean
+	make DevCToolsMatrix
+	make DevCToolsMatrixLink
 	./devTest
 
 ########################################################################################################################################
@@ -358,70 +358,70 @@ DevRun: ${DEV_../CTools/Matrix/_TEST_O_DEPS} ${DEV_../CTools/Matrix/_TEST_C_DEPS
 
 
 
-../CTools/Stats/_DIR=Stats
-../CTools/Stats/_TEST_DIR=${../CTools/Stats/_DIR}Test/
-../CTools/Stats/_C=Stats.c.c
-../CTools/Stats/_H=Stats.h.h
-../CTools/Stats/_O=Stats.o.o
-../CTools/Stats/_TEST_C=Test.c
-../CTools/Stats/_TEST_H=Test.h
-../CTools/Stats/_TEST_O=Test.o
-../CTools/Stats/_TEST_DRVR_C=Drvr.c
-../CTools/Stats/_TEST_DRVR_H=Drvr.h
-../CTools/Stats/_TEST_DRVR_O=Drvr.o
-../CTools/Stats/_C_PATH=${../CTools/Stats/_DIR}${../CTools/Stats/_C}
-../CTools/Stats/_H_PATH=${../CTools/Stats/_DIR}${../CTools/Stats/_H}
-../CTools/Stats/_O_PATH=${../CTools/Stats/_DIR}${../CTools/Stats/_O}
-../CTools/Stats/_TEST_C_PATH=${../CTools/Stats/_TEST_DIR}${../CTools/Stats/_TEST_C}
-../CTools/Stats/_TEST_H_PATH=${../CTools/Stats/_TEST_DIR}${../CTools/Stats/_TEST_H}
-../CTools/Stats/_TEST_O_PATH=${../CTools/Stats/_TEST_DIR}${../CTools/Stats/_TEST_O}
-../CTools/Stats/_TEST_DRVR_C_PATH=${../CTools/Stats/_TEST_DIR}${../CTools/Stats/_TEST_DRVR_C}
-../CTools/Stats/_TEST_DRVR_H_PATH=${../CTools/Stats/_TEST_DIR}${../CTools/Stats/_TEST_DRVR_H}
-../CTools/Stats/_TEST_DRVR_O_PATH=${../CTools/Stats/_TEST_DIR}${../CTools/Stats/_TEST_DRVR_O}
-../CTools/Stats/_TEST_DRVR_C_PATH=${../CTools/Stats/_TEST_DIR}${../CTools/Stats/_TEST_DRVR_C}
-../CTools/Stats/_TEST_DRVR_H_PATH=${../CTools/Stats/_TEST_DIR}${../CTools/Stats/_TEST_DRVR_H}
-../CTools/Stats/_TEST_DRVR_O_PATH=${../CTools/Stats/_TEST_DIR}${../CTools/Stats/_TEST_DRVR_O}
-PROD_../CTools/Stats/_TEST_C_DEPS=${../CTools/Stats/_C_PATH} ${../CTools/Stats/_TEST_C_PATH} 
-PROD_../CTools/Stats/_TEST_H_DEPS=${../CTools/Stats/_H_PATH} ${../CTools/Stats/_TEST_H_PATH} 
-PROD_../CTools/Stats/_TEST_O_DEPS=${../CTools/Stats/_O_PATH} ${../CTools/Stats/_TEST_O_PATH} 
-DEV_../CTools/Stats/_TEST_C_DEPS=${../CTools/Stats/_C_PATH} ${../CTools/Stats/_TEST_C_PATH} ${../CTools/Stats/_TEST_DRVR_C_PATH} 
-DEV_../CTools/Stats/_TEST_H_DEPS=${../CTools/Stats/_H_PATH} ${../CTools/Stats/_TEST_H_PATH} ${../CTools/Stats/_TEST_DRVR_H_PATH} 
-DEV_../CTools/Stats/_TEST_O_DEPS=${../CTools/Stats/_O_PATH} ${../CTools/Stats/_TEST_O_PATH} ${../CTools/Stats/_TEST_DRVR_O_PATH} 
-DEV_../CTools/Stats/_TEST_C_FILES=${../CTools/Stats/_C_PATH} ${../CTools/Stats/_TEST_C_PATH} ${../CTools/Stats/_TEST_DRVR_C_PATH} 
-DEV_../CTools/Stats/_TEST_H_FILES=${../CTools/Stats/_H_PATH} ${../CTools/Stats/_TEST_H_PATH} ${../CTools/Stats/_TEST_DRVR_H_PATH} 
-DEV_../CTools/Stats/_TEST_O_FILES=${../CTools/Stats/_O_PATH} ${../CTools/Stats/_TEST_O_PATH} ${../CTools/Stats/_TEST_DRVR_O_PATH} 
-PROD_../CTools/Stats/_TEST_C_FILES=${../CTools/Stats/_C_PATH} ${../CTools/Stats/_TEST_C_PATH} 
-PROD_../CTools/Stats/_TEST_H_FILES=${../CTools/Stats/_H_PATH} ${../CTools/Stats/_TEST_H_PATH} 
-PROD_../CTools/Stats/_TEST_O_FILES=${../CTools/Stats/_O_PATH} ${../CTools/Stats/_TEST_O_PATH} 
-../CTools/Stats/_TEST_DEV_FILES= ${DEV_../CTools/Stats/_TEST_C_FILES} ${DEV_../CTools/Stats/_TEST_H_FILES} ${DEV_../CTools/Stats/_TEST_O_FILES} 
+CTOOLS_STATS_DIR=./CTools/Stats/
+CTOOLS_STATS_TEST_DIR=${CTOOLS_STATS_DIR}Test/
+CTOOLS_STATS_C=Stats.c
+CTOOLS_STATS_H=Stats.h
+CTOOLS_STATS_O=Stats.o
+CTOOLS_STATS_TEST_C=Test.c
+CTOOLS_STATS_TEST_H=Test.h
+CTOOLS_STATS_TEST_O=Test.o
+CTOOLS_STATS_TEST_DRVR_C=Drvr.c
+CTOOLS_STATS_TEST_DRVR_H=Drvr.h
+CTOOLS_STATS_TEST_DRVR_O=Drvr.o
+CTOOLS_STATS_C_PATH=${CTOOLS_STATS_DIR}${CTOOLS_STATS_C}
+CTOOLS_STATS_H_PATH=${CTOOLS_STATS_DIR}${CTOOLS_STATS_H}
+CTOOLS_STATS_O_PATH=${CTOOLS_STATS_DIR}${CTOOLS_STATS_O}
+CTOOLS_STATS_TEST_C_PATH=${CTOOLS_STATS_TEST_DIR}${CTOOLS_STATS_TEST_C}
+CTOOLS_STATS_TEST_H_PATH=${CTOOLS_STATS_TEST_DIR}${CTOOLS_STATS_TEST_H}
+CTOOLS_STATS_TEST_O_PATH=${CTOOLS_STATS_TEST_DIR}${CTOOLS_STATS_TEST_O}
+CTOOLS_STATS_TEST_DRVR_C_PATH=${CTOOLS_STATS_TEST_DIR}${CTOOLS_STATS_TEST_DRVR_C}
+CTOOLS_STATS_TEST_DRVR_H_PATH=${CTOOLS_STATS_TEST_DIR}${CTOOLS_STATS_TEST_DRVR_H}
+CTOOLS_STATS_TEST_DRVR_O_PATH=${CTOOLS_STATS_TEST_DIR}${CTOOLS_STATS_TEST_DRVR_O}
+CTOOLS_STATS_TEST_DRVR_C_PATH=${CTOOLS_STATS_TEST_DIR}${CTOOLS_STATS_TEST_DRVR_C}
+CTOOLS_STATS_TEST_DRVR_H_PATH=${CTOOLS_STATS_TEST_DIR}${CTOOLS_STATS_TEST_DRVR_H}
+CTOOLS_STATS_TEST_DRVR_O_PATH=${CTOOLS_STATS_TEST_DIR}${CTOOLS_STATS_TEST_DRVR_O}
+PROD_CTOOLS_STATS_TEST_C_DEPS=${CTOOLS_STATS_C_PATH} ${CTOOLS_STATS_TEST_C_PATH} 
+PROD_CTOOLS_STATS_TEST_H_DEPS=${CTOOLS_STATS_H_PATH} ${CTOOLS_STATS_TEST_H_PATH} 
+PROD_CTOOLS_STATS_TEST_O_DEPS=${CTOOLS_STATS_O_PATH} ${CTOOLS_STATS_TEST_O_PATH} 
+DEV_CTOOLS_STATS_TEST_C_DEPS=${CTOOLS_STATS_C_PATH} ${CTOOLS_STATS_TEST_C_PATH} ${CTOOLS_STATS_TEST_DRVR_C_PATH} 
+DEV_CTOOLS_STATS_TEST_H_DEPS=${CTOOLS_STATS_H_PATH} ${CTOOLS_STATS_TEST_H_PATH} ${CTOOLS_STATS_TEST_DRVR_H_PATH} 
+DEV_CTOOLS_STATS_TEST_O_DEPS=${CTOOLS_STATS_O_PATH} ${CTOOLS_STATS_TEST_O_PATH} ${CTOOLS_STATS_TEST_DRVR_O_PATH} 
+DEV_CTOOLS_STATS_TEST_C_FILES=${CTOOLS_STATS_C_PATH} ${CTOOLS_STATS_TEST_C_PATH} ${CTOOLS_STATS_TEST_DRVR_C_PATH} 
+DEV_CTOOLS_STATS_TEST_H_FILES=${CTOOLS_STATS_H_PATH} ${CTOOLS_STATS_TEST_H_PATH} ${CTOOLS_STATS_TEST_DRVR_H_PATH} 
+DEV_CTOOLS_STATS_TEST_O_FILES=${CTOOLS_STATS_O_PATH} ${CTOOLS_STATS_TEST_O_PATH} ${CTOOLS_STATS_TEST_DRVR_O_PATH} 
+PROD_CTOOLS_STATS_TEST_C_FILES=${CTOOLS_STATS_C_PATH} ${CTOOLS_STATS_TEST_C_PATH} 
+PROD_CTOOLS_STATS_TEST_H_FILES=${CTOOLS_STATS_H_PATH} ${CTOOLS_STATS_TEST_H_PATH} 
+PROD_CTOOLS_STATS_TEST_O_FILES=${CTOOLS_STATS_O_PATH} ${CTOOLS_STATS_TEST_O_PATH} 
+CTOOLS_STATS_TEST_DEV_FILES= ${DEV_CTOOLS_STATS_TEST_C_FILES} ${DEV_CTOOLS_STATS_TEST_H_FILES} ${DEV_CTOOLS_STATS_TEST_O_FILES} 
 
 
-Dev: ${DEV_../CTools/Stats/_TEST_C_DEPS} ${DEV_../CTools/Stats/_TEST_H_DEPS}
-	cd ${../CTools/Stats/_DIR}; gcc -c ${../CTools/Stats/_C}
-	cd ${../CTools/Stats/_TEST_DIR}; gcc -c ${../CTools/Stats/_TEST_C} ${../CTools/Stats/_TEST_DRVR_C}
+DevCToolsStats: ${DEV_CTOOLS_STATS_TEST_C_DEPS} ${DEV_CTOOLS_STATS_TEST_H_DEPS}
+	cd ${CTOOLS_STATS_DIR}; gcc -c ${CTOOLS_STATS_C}
+	cd ${CTOOLS_STATS_TEST_DIR}; gcc -c ${CTOOLS_STATS_TEST_C} ${CTOOLS_STATS_TEST_DRVR_C}
 
-Prod: ${PROD_../CTools/Stats/_TEST_C_DEPS} ${PROD_../CTools/Stats/_TEST_H_DEPS}
-	cd ${../CTools/Stats/_DIR}; gcc -c ${../CTools/Stats/_C}
-	cd ${../CTools/Stats/_TEST_DIR}; gcc -c ${../CTools/Stats/_TEST_C}
+ProdCToolsStats: ${PROD_CTOOLS_STATS_TEST_C_DEPS} ${PROD_CTOOLS_STATS_TEST_H_DEPS}
+	cd ${CTOOLS_STATS_DIR}; gcc -c ${CTOOLS_STATS_C}
+	cd ${CTOOLS_STATS_TEST_DIR}; gcc -c ${CTOOLS_STATS_TEST_C}
 
-DevClean: ${DEV_../CTools/Stats/_TEST_O_DEPS}
-	cd ${../CTools/Stats/_DIR}; rm -f ${../CTools/Stats/_O}
-	cd ${../CTools/Stats/_TEST_DIR}; rm -f ${../CTools/Stats/_TEST_O} ${../CTools/Stats/_TEST_DRVR_O}
+DevCToolsStatsClean: ${DEV_CTOOLS_STATS_TEST_O_DEPS}
+	cd ${CTOOLS_STATS_DIR}; rm -f ${CTOOLS_STATS_O}
+	cd ${CTOOLS_STATS_TEST_DIR}; rm -f ${CTOOLS_STATS_TEST_O} ${CTOOLS_STATS_TEST_DRVR_O}
 
-ProdClean: ${PROD_../CTools/Stats/_TEST_O_DEPS}
-	cd ${../CTools/Stats/_DIR}; rm -f ${../CTools/Stats/_O}
-	cd ${../CTools/Stats/_TEST_DIR}; rm -f ${../CTools/Stats/_TEST_O}
+ProdCToolsStatsClean: ${PROD_CTOOLS_STATS_TEST_O_DEPS}
+	cd ${CTOOLS_STATS_DIR}; rm -f ${CTOOLS_STATS_O}
+	cd ${CTOOLS_STATS_TEST_DIR}; rm -f ${CTOOLS_STATS_TEST_O}
 
-DevLink: ${DEV_../CTools/Stats/_TEST_O_DEPS}
-	(gcc -o devTest ${../CTools/Stats/_O_PATH} ${../CTools/Stats/_TEST_O_PATH} ${../CTools/Stats/_TEST_DRVR_O_PATH})
+DevCToolsStatsLink: ${DEV_CTOOLS_STATS_TEST_O_DEPS}
+	(gcc -o devTest ${CTOOLS_STATS_O_PATH} ${CTOOLS_STATS_TEST_O_PATH} ${CTOOLS_STATS_TEST_DRVR_O_PATH})
 
-ProdLink: ${PROD_../CTools/Stats/_TEST_O_DEPS}
-	(gcc -o prodTest ${../CTools/Stats/_O_PATH} ${../CTools/Stats/_TEST_O_PATH})
+ProdCToolsStatsLink: ${PROD_CTOOLS_STATS_TEST_O_DEPS}
+	(gcc -o prodTest ${CTOOLS_STATS_O_PATH} ${CTOOLS_STATS_TEST_O_PATH})
 
-DevRun: ${DEV_../CTools/Stats/_TEST_O_DEPS} ${DEV_../CTools/Stats/_TEST_C_DEPS} ${DEV_../CTools/Stats/_TEST_H_DEPS}
-	make DevClean
-	make Dev
-	make DevLink
+DevCToolsStatsRun: ${DEV_CTOOLS_STATS_TEST_O_DEPS} ${DEV_CTOOLS_STATS_TEST_C_DEPS} ${DEV_CTOOLS_STATS_TEST_H_DEPS}
+	make DevCToolsStatsClean
+	make DevCToolsStats
+	make DevCToolsStatsLink
 	./devTest
 
 ########################################################################################################################################
@@ -430,70 +430,70 @@ DevRun: ${DEV_../CTools/Stats/_TEST_O_DEPS} ${DEV_../CTools/Stats/_TEST_C_DEPS} 
 
 
 
-../CTools/Utils/_DIR=Utils
-../CTools/Utils/_TEST_DIR=${../CTools/Utils/_DIR}Test/
-../CTools/Utils/_C=Utils.c.c
-../CTools/Utils/_H=Utils.h.h
-../CTools/Utils/_O=Utils.o.o
-../CTools/Utils/_TEST_C=Test.c
-../CTools/Utils/_TEST_H=Test.h
-../CTools/Utils/_TEST_O=Test.o
-../CTools/Utils/_TEST_DRVR_C=Drvr.c
-../CTools/Utils/_TEST_DRVR_H=Drvr.h
-../CTools/Utils/_TEST_DRVR_O=Drvr.o
-../CTools/Utils/_C_PATH=${../CTools/Utils/_DIR}${../CTools/Utils/_C}
-../CTools/Utils/_H_PATH=${../CTools/Utils/_DIR}${../CTools/Utils/_H}
-../CTools/Utils/_O_PATH=${../CTools/Utils/_DIR}${../CTools/Utils/_O}
-../CTools/Utils/_TEST_C_PATH=${../CTools/Utils/_TEST_DIR}${../CTools/Utils/_TEST_C}
-../CTools/Utils/_TEST_H_PATH=${../CTools/Utils/_TEST_DIR}${../CTools/Utils/_TEST_H}
-../CTools/Utils/_TEST_O_PATH=${../CTools/Utils/_TEST_DIR}${../CTools/Utils/_TEST_O}
-../CTools/Utils/_TEST_DRVR_C_PATH=${../CTools/Utils/_TEST_DIR}${../CTools/Utils/_TEST_DRVR_C}
-../CTools/Utils/_TEST_DRVR_H_PATH=${../CTools/Utils/_TEST_DIR}${../CTools/Utils/_TEST_DRVR_H}
-../CTools/Utils/_TEST_DRVR_O_PATH=${../CTools/Utils/_TEST_DIR}${../CTools/Utils/_TEST_DRVR_O}
-../CTools/Utils/_TEST_DRVR_C_PATH=${../CTools/Utils/_TEST_DIR}${../CTools/Utils/_TEST_DRVR_C}
-../CTools/Utils/_TEST_DRVR_H_PATH=${../CTools/Utils/_TEST_DIR}${../CTools/Utils/_TEST_DRVR_H}
-../CTools/Utils/_TEST_DRVR_O_PATH=${../CTools/Utils/_TEST_DIR}${../CTools/Utils/_TEST_DRVR_O}
-PROD_../CTools/Utils/_TEST_C_DEPS=${../CTools/Utils/_C_PATH} ${../CTools/Utils/_TEST_C_PATH} 
-PROD_../CTools/Utils/_TEST_H_DEPS=${../CTools/Utils/_H_PATH} ${../CTools/Utils/_TEST_H_PATH} 
-PROD_../CTools/Utils/_TEST_O_DEPS=${../CTools/Utils/_O_PATH} ${../CTools/Utils/_TEST_O_PATH} 
-DEV_../CTools/Utils/_TEST_C_DEPS=${../CTools/Utils/_C_PATH} ${../CTools/Utils/_TEST_C_PATH} ${../CTools/Utils/_TEST_DRVR_C_PATH} 
-DEV_../CTools/Utils/_TEST_H_DEPS=${../CTools/Utils/_H_PATH} ${../CTools/Utils/_TEST_H_PATH} ${../CTools/Utils/_TEST_DRVR_H_PATH} 
-DEV_../CTools/Utils/_TEST_O_DEPS=${../CTools/Utils/_O_PATH} ${../CTools/Utils/_TEST_O_PATH} ${../CTools/Utils/_TEST_DRVR_O_PATH} 
-DEV_../CTools/Utils/_TEST_C_FILES=${../CTools/Utils/_C_PATH} ${../CTools/Utils/_TEST_C_PATH} ${../CTools/Utils/_TEST_DRVR_C_PATH} 
-DEV_../CTools/Utils/_TEST_H_FILES=${../CTools/Utils/_H_PATH} ${../CTools/Utils/_TEST_H_PATH} ${../CTools/Utils/_TEST_DRVR_H_PATH} 
-DEV_../CTools/Utils/_TEST_O_FILES=${../CTools/Utils/_O_PATH} ${../CTools/Utils/_TEST_O_PATH} ${../CTools/Utils/_TEST_DRVR_O_PATH} 
-PROD_../CTools/Utils/_TEST_C_FILES=${../CTools/Utils/_C_PATH} ${../CTools/Utils/_TEST_C_PATH} 
-PROD_../CTools/Utils/_TEST_H_FILES=${../CTools/Utils/_H_PATH} ${../CTools/Utils/_TEST_H_PATH} 
-PROD_../CTools/Utils/_TEST_O_FILES=${../CTools/Utils/_O_PATH} ${../CTools/Utils/_TEST_O_PATH} 
-../CTools/Utils/_TEST_DEV_FILES= ${DEV_../CTools/Utils/_TEST_C_FILES} ${DEV_../CTools/Utils/_TEST_H_FILES} ${DEV_../CTools/Utils/_TEST_O_FILES} 
+CTOOLS_UTILS_DIR=./CTools/Utils/
+CTOOLS_UTILS_TEST_DIR=${CTOOLS_UTILS_DIR}Test/
+CTOOLS_UTILS_C=Utils.c
+CTOOLS_UTILS_H=Utils.h
+CTOOLS_UTILS_O=Utils.o
+CTOOLS_UTILS_TEST_C=Test.c
+CTOOLS_UTILS_TEST_H=Test.h
+CTOOLS_UTILS_TEST_O=Test.o
+CTOOLS_UTILS_TEST_DRVR_C=Drvr.c
+CTOOLS_UTILS_TEST_DRVR_H=Drvr.h
+CTOOLS_UTILS_TEST_DRVR_O=Drvr.o
+CTOOLS_UTILS_C_PATH=${CTOOLS_UTILS_DIR}${CTOOLS_UTILS_C}
+CTOOLS_UTILS_H_PATH=${CTOOLS_UTILS_DIR}${CTOOLS_UTILS_H}
+CTOOLS_UTILS_O_PATH=${CTOOLS_UTILS_DIR}${CTOOLS_UTILS_O}
+CTOOLS_UTILS_TEST_C_PATH=${CTOOLS_UTILS_TEST_DIR}${CTOOLS_UTILS_TEST_C}
+CTOOLS_UTILS_TEST_H_PATH=${CTOOLS_UTILS_TEST_DIR}${CTOOLS_UTILS_TEST_H}
+CTOOLS_UTILS_TEST_O_PATH=${CTOOLS_UTILS_TEST_DIR}${CTOOLS_UTILS_TEST_O}
+CTOOLS_UTILS_TEST_DRVR_C_PATH=${CTOOLS_UTILS_TEST_DIR}${CTOOLS_UTILS_TEST_DRVR_C}
+CTOOLS_UTILS_TEST_DRVR_H_PATH=${CTOOLS_UTILS_TEST_DIR}${CTOOLS_UTILS_TEST_DRVR_H}
+CTOOLS_UTILS_TEST_DRVR_O_PATH=${CTOOLS_UTILS_TEST_DIR}${CTOOLS_UTILS_TEST_DRVR_O}
+CTOOLS_UTILS_TEST_DRVR_C_PATH=${CTOOLS_UTILS_TEST_DIR}${CTOOLS_UTILS_TEST_DRVR_C}
+CTOOLS_UTILS_TEST_DRVR_H_PATH=${CTOOLS_UTILS_TEST_DIR}${CTOOLS_UTILS_TEST_DRVR_H}
+CTOOLS_UTILS_TEST_DRVR_O_PATH=${CTOOLS_UTILS_TEST_DIR}${CTOOLS_UTILS_TEST_DRVR_O}
+PROD_CTOOLS_UTILS_TEST_C_DEPS=${CTOOLS_UTILS_C_PATH} ${CTOOLS_UTILS_TEST_C_PATH} 
+PROD_CTOOLS_UTILS_TEST_H_DEPS=${CTOOLS_UTILS_H_PATH} ${CTOOLS_UTILS_TEST_H_PATH} 
+PROD_CTOOLS_UTILS_TEST_O_DEPS=${CTOOLS_UTILS_O_PATH} ${CTOOLS_UTILS_TEST_O_PATH} 
+DEV_CTOOLS_UTILS_TEST_C_DEPS=${CTOOLS_UTILS_C_PATH} ${CTOOLS_UTILS_TEST_C_PATH} ${CTOOLS_UTILS_TEST_DRVR_C_PATH} 
+DEV_CTOOLS_UTILS_TEST_H_DEPS=${CTOOLS_UTILS_H_PATH} ${CTOOLS_UTILS_TEST_H_PATH} ${CTOOLS_UTILS_TEST_DRVR_H_PATH} 
+DEV_CTOOLS_UTILS_TEST_O_DEPS=${CTOOLS_UTILS_O_PATH} ${CTOOLS_UTILS_TEST_O_PATH} ${CTOOLS_UTILS_TEST_DRVR_O_PATH} 
+DEV_CTOOLS_UTILS_TEST_C_FILES=${CTOOLS_UTILS_C_PATH} ${CTOOLS_UTILS_TEST_C_PATH} ${CTOOLS_UTILS_TEST_DRVR_C_PATH} 
+DEV_CTOOLS_UTILS_TEST_H_FILES=${CTOOLS_UTILS_H_PATH} ${CTOOLS_UTILS_TEST_H_PATH} ${CTOOLS_UTILS_TEST_DRVR_H_PATH} 
+DEV_CTOOLS_UTILS_TEST_O_FILES=${CTOOLS_UTILS_O_PATH} ${CTOOLS_UTILS_TEST_O_PATH} ${CTOOLS_UTILS_TEST_DRVR_O_PATH} 
+PROD_CTOOLS_UTILS_TEST_C_FILES=${CTOOLS_UTILS_C_PATH} ${CTOOLS_UTILS_TEST_C_PATH} 
+PROD_CTOOLS_UTILS_TEST_H_FILES=${CTOOLS_UTILS_H_PATH} ${CTOOLS_UTILS_TEST_H_PATH} 
+PROD_CTOOLS_UTILS_TEST_O_FILES=${CTOOLS_UTILS_O_PATH} ${CTOOLS_UTILS_TEST_O_PATH} 
+CTOOLS_UTILS_TEST_DEV_FILES= ${DEV_CTOOLS_UTILS_TEST_C_FILES} ${DEV_CTOOLS_UTILS_TEST_H_FILES} ${DEV_CTOOLS_UTILS_TEST_O_FILES} 
 
 
-Dev: ${DEV_../CTools/Utils/_TEST_C_DEPS} ${DEV_../CTools/Utils/_TEST_H_DEPS}
-	cd ${../CTools/Utils/_DIR}; gcc -c ${../CTools/Utils/_C}
-	cd ${../CTools/Utils/_TEST_DIR}; gcc -c ${../CTools/Utils/_TEST_C} ${../CTools/Utils/_TEST_DRVR_C}
+DevCToolsUtils: ${DEV_CTOOLS_UTILS_TEST_C_DEPS} ${DEV_CTOOLS_UTILS_TEST_H_DEPS}
+	cd ${CTOOLS_UTILS_DIR}; gcc -c ${CTOOLS_UTILS_C}
+	cd ${CTOOLS_UTILS_TEST_DIR}; gcc -c ${CTOOLS_UTILS_TEST_C} ${CTOOLS_UTILS_TEST_DRVR_C}
 
-Prod: ${PROD_../CTools/Utils/_TEST_C_DEPS} ${PROD_../CTools/Utils/_TEST_H_DEPS}
-	cd ${../CTools/Utils/_DIR}; gcc -c ${../CTools/Utils/_C}
-	cd ${../CTools/Utils/_TEST_DIR}; gcc -c ${../CTools/Utils/_TEST_C}
+ProdCToolsUtils: ${PROD_CTOOLS_UTILS_TEST_C_DEPS} ${PROD_CTOOLS_UTILS_TEST_H_DEPS}
+	cd ${CTOOLS_UTILS_DIR}; gcc -c ${CTOOLS_UTILS_C}
+	cd ${CTOOLS_UTILS_TEST_DIR}; gcc -c ${CTOOLS_UTILS_TEST_C}
 
-DevClean: ${DEV_../CTools/Utils/_TEST_O_DEPS}
-	cd ${../CTools/Utils/_DIR}; rm -f ${../CTools/Utils/_O}
-	cd ${../CTools/Utils/_TEST_DIR}; rm -f ${../CTools/Utils/_TEST_O} ${../CTools/Utils/_TEST_DRVR_O}
+DevCToolsUtilsClean: ${DEV_CTOOLS_UTILS_TEST_O_DEPS}
+	cd ${CTOOLS_UTILS_DIR}; rm -f ${CTOOLS_UTILS_O}
+	cd ${CTOOLS_UTILS_TEST_DIR}; rm -f ${CTOOLS_UTILS_TEST_O} ${CTOOLS_UTILS_TEST_DRVR_O}
 
-ProdClean: ${PROD_../CTools/Utils/_TEST_O_DEPS}
-	cd ${../CTools/Utils/_DIR}; rm -f ${../CTools/Utils/_O}
-	cd ${../CTools/Utils/_TEST_DIR}; rm -f ${../CTools/Utils/_TEST_O}
+ProdCToolsUtilsClean: ${PROD_CTOOLS_UTILS_TEST_O_DEPS}
+	cd ${CTOOLS_UTILS_DIR}; rm -f ${CTOOLS_UTILS_O}
+	cd ${CTOOLS_UTILS_TEST_DIR}; rm -f ${CTOOLS_UTILS_TEST_O}
 
-DevLink: ${DEV_../CTools/Utils/_TEST_O_DEPS}
-	(gcc -o devTest ${../CTools/Utils/_O_PATH} ${../CTools/Utils/_TEST_O_PATH} ${../CTools/Utils/_TEST_DRVR_O_PATH})
+DevCToolsUtilsLink: ${DEV_CTOOLS_UTILS_TEST_O_DEPS}
+	(gcc -o devTest ${CTOOLS_UTILS_O_PATH} ${CTOOLS_UTILS_TEST_O_PATH} ${CTOOLS_UTILS_TEST_DRVR_O_PATH})
 
-ProdLink: ${PROD_../CTools/Utils/_TEST_O_DEPS}
-	(gcc -o prodTest ${../CTools/Utils/_O_PATH} ${../CTools/Utils/_TEST_O_PATH})
+ProdCToolsUtilsLink: ${PROD_CTOOLS_UTILS_TEST_O_DEPS}
+	(gcc -o prodTest ${CTOOLS_UTILS_O_PATH} ${CTOOLS_UTILS_TEST_O_PATH})
 
-DevRun: ${DEV_../CTools/Utils/_TEST_O_DEPS} ${DEV_../CTools/Utils/_TEST_C_DEPS} ${DEV_../CTools/Utils/_TEST_H_DEPS}
-	make DevClean
-	make Dev
-	make DevLink
+DevCToolsUtilsRun: ${DEV_CTOOLS_UTILS_TEST_O_DEPS} ${DEV_CTOOLS_UTILS_TEST_C_DEPS} ${DEV_CTOOLS_UTILS_TEST_H_DEPS}
+	make DevCToolsUtilsClean
+	make DevCToolsUtils
+	make DevCToolsUtilsLink
 	./devTest
 
 ########################################################################################################################################
@@ -502,70 +502,70 @@ DevRun: ${DEV_../CTools/Utils/_TEST_O_DEPS} ${DEV_../CTools/Utils/_TEST_C_DEPS} 
 
 
 
-../CTools/Utils/Assertions/_DIR=Assertions
-../CTools/Utils/Assertions/_TEST_DIR=${../CTools/Utils/Assertions/_DIR}Test/
-../CTools/Utils/Assertions/_C=Assertions.c.c
-../CTools/Utils/Assertions/_H=Assertions.h.h
-../CTools/Utils/Assertions/_O=Assertions.o.o
-../CTools/Utils/Assertions/_TEST_C=Test.c
-../CTools/Utils/Assertions/_TEST_H=Test.h
-../CTools/Utils/Assertions/_TEST_O=Test.o
-../CTools/Utils/Assertions/_TEST_DRVR_C=Drvr.c
-../CTools/Utils/Assertions/_TEST_DRVR_H=Drvr.h
-../CTools/Utils/Assertions/_TEST_DRVR_O=Drvr.o
-../CTools/Utils/Assertions/_C_PATH=${../CTools/Utils/Assertions/_DIR}${../CTools/Utils/Assertions/_C}
-../CTools/Utils/Assertions/_H_PATH=${../CTools/Utils/Assertions/_DIR}${../CTools/Utils/Assertions/_H}
-../CTools/Utils/Assertions/_O_PATH=${../CTools/Utils/Assertions/_DIR}${../CTools/Utils/Assertions/_O}
-../CTools/Utils/Assertions/_TEST_C_PATH=${../CTools/Utils/Assertions/_TEST_DIR}${../CTools/Utils/Assertions/_TEST_C}
-../CTools/Utils/Assertions/_TEST_H_PATH=${../CTools/Utils/Assertions/_TEST_DIR}${../CTools/Utils/Assertions/_TEST_H}
-../CTools/Utils/Assertions/_TEST_O_PATH=${../CTools/Utils/Assertions/_TEST_DIR}${../CTools/Utils/Assertions/_TEST_O}
-../CTools/Utils/Assertions/_TEST_DRVR_C_PATH=${../CTools/Utils/Assertions/_TEST_DIR}${../CTools/Utils/Assertions/_TEST_DRVR_C}
-../CTools/Utils/Assertions/_TEST_DRVR_H_PATH=${../CTools/Utils/Assertions/_TEST_DIR}${../CTools/Utils/Assertions/_TEST_DRVR_H}
-../CTools/Utils/Assertions/_TEST_DRVR_O_PATH=${../CTools/Utils/Assertions/_TEST_DIR}${../CTools/Utils/Assertions/_TEST_DRVR_O}
-../CTools/Utils/Assertions/_TEST_DRVR_C_PATH=${../CTools/Utils/Assertions/_TEST_DIR}${../CTools/Utils/Assertions/_TEST_DRVR_C}
-../CTools/Utils/Assertions/_TEST_DRVR_H_PATH=${../CTools/Utils/Assertions/_TEST_DIR}${../CTools/Utils/Assertions/_TEST_DRVR_H}
-../CTools/Utils/Assertions/_TEST_DRVR_O_PATH=${../CTools/Utils/Assertions/_TEST_DIR}${../CTools/Utils/Assertions/_TEST_DRVR_O}
-PROD_../CTools/Utils/Assertions/_TEST_C_DEPS=${../CTools/Utils/Assertions/_C_PATH} ${../CTools/Utils/Assertions/_TEST_C_PATH} 
-PROD_../CTools/Utils/Assertions/_TEST_H_DEPS=${../CTools/Utils/Assertions/_H_PATH} ${../CTools/Utils/Assertions/_TEST_H_PATH} 
-PROD_../CTools/Utils/Assertions/_TEST_O_DEPS=${../CTools/Utils/Assertions/_O_PATH} ${../CTools/Utils/Assertions/_TEST_O_PATH} 
-DEV_../CTools/Utils/Assertions/_TEST_C_DEPS=${../CTools/Utils/Assertions/_C_PATH} ${../CTools/Utils/Assertions/_TEST_C_PATH} ${../CTools/Utils/Assertions/_TEST_DRVR_C_PATH} 
-DEV_../CTools/Utils/Assertions/_TEST_H_DEPS=${../CTools/Utils/Assertions/_H_PATH} ${../CTools/Utils/Assertions/_TEST_H_PATH} ${../CTools/Utils/Assertions/_TEST_DRVR_H_PATH} 
-DEV_../CTools/Utils/Assertions/_TEST_O_DEPS=${../CTools/Utils/Assertions/_O_PATH} ${../CTools/Utils/Assertions/_TEST_O_PATH} ${../CTools/Utils/Assertions/_TEST_DRVR_O_PATH} 
-DEV_../CTools/Utils/Assertions/_TEST_C_FILES=${../CTools/Utils/Assertions/_C_PATH} ${../CTools/Utils/Assertions/_TEST_C_PATH} ${../CTools/Utils/Assertions/_TEST_DRVR_C_PATH} 
-DEV_../CTools/Utils/Assertions/_TEST_H_FILES=${../CTools/Utils/Assertions/_H_PATH} ${../CTools/Utils/Assertions/_TEST_H_PATH} ${../CTools/Utils/Assertions/_TEST_DRVR_H_PATH} 
-DEV_../CTools/Utils/Assertions/_TEST_O_FILES=${../CTools/Utils/Assertions/_O_PATH} ${../CTools/Utils/Assertions/_TEST_O_PATH} ${../CTools/Utils/Assertions/_TEST_DRVR_O_PATH} 
-PROD_../CTools/Utils/Assertions/_TEST_C_FILES=${../CTools/Utils/Assertions/_C_PATH} ${../CTools/Utils/Assertions/_TEST_C_PATH} 
-PROD_../CTools/Utils/Assertions/_TEST_H_FILES=${../CTools/Utils/Assertions/_H_PATH} ${../CTools/Utils/Assertions/_TEST_H_PATH} 
-PROD_../CTools/Utils/Assertions/_TEST_O_FILES=${../CTools/Utils/Assertions/_O_PATH} ${../CTools/Utils/Assertions/_TEST_O_PATH} 
-../CTools/Utils/Assertions/_TEST_DEV_FILES= ${DEV_../CTools/Utils/Assertions/_TEST_C_FILES} ${DEV_../CTools/Utils/Assertions/_TEST_H_FILES} ${DEV_../CTools/Utils/Assertions/_TEST_O_FILES} 
+CTOOLS_UTILS_ASSERTIONS_DIR=./CTools/Utils/Assertions/
+CTOOLS_UTILS_ASSERTIONS_TEST_DIR=${CTOOLS_UTILS_ASSERTIONS_DIR}Test/
+CTOOLS_UTILS_ASSERTIONS_C=Assertions.c
+CTOOLS_UTILS_ASSERTIONS_H=Assertions.h
+CTOOLS_UTILS_ASSERTIONS_O=Assertions.o
+CTOOLS_UTILS_ASSERTIONS_TEST_C=Test.c
+CTOOLS_UTILS_ASSERTIONS_TEST_H=Test.h
+CTOOLS_UTILS_ASSERTIONS_TEST_O=Test.o
+CTOOLS_UTILS_ASSERTIONS_TEST_DRVR_C=Drvr.c
+CTOOLS_UTILS_ASSERTIONS_TEST_DRVR_H=Drvr.h
+CTOOLS_UTILS_ASSERTIONS_TEST_DRVR_O=Drvr.o
+CTOOLS_UTILS_ASSERTIONS_C_PATH=${CTOOLS_UTILS_ASSERTIONS_DIR}${CTOOLS_UTILS_ASSERTIONS_C}
+CTOOLS_UTILS_ASSERTIONS_H_PATH=${CTOOLS_UTILS_ASSERTIONS_DIR}${CTOOLS_UTILS_ASSERTIONS_H}
+CTOOLS_UTILS_ASSERTIONS_O_PATH=${CTOOLS_UTILS_ASSERTIONS_DIR}${CTOOLS_UTILS_ASSERTIONS_O}
+CTOOLS_UTILS_ASSERTIONS_TEST_C_PATH=${CTOOLS_UTILS_ASSERTIONS_TEST_DIR}${CTOOLS_UTILS_ASSERTIONS_TEST_C}
+CTOOLS_UTILS_ASSERTIONS_TEST_H_PATH=${CTOOLS_UTILS_ASSERTIONS_TEST_DIR}${CTOOLS_UTILS_ASSERTIONS_TEST_H}
+CTOOLS_UTILS_ASSERTIONS_TEST_O_PATH=${CTOOLS_UTILS_ASSERTIONS_TEST_DIR}${CTOOLS_UTILS_ASSERTIONS_TEST_O}
+CTOOLS_UTILS_ASSERTIONS_TEST_DRVR_C_PATH=${CTOOLS_UTILS_ASSERTIONS_TEST_DIR}${CTOOLS_UTILS_ASSERTIONS_TEST_DRVR_C}
+CTOOLS_UTILS_ASSERTIONS_TEST_DRVR_H_PATH=${CTOOLS_UTILS_ASSERTIONS_TEST_DIR}${CTOOLS_UTILS_ASSERTIONS_TEST_DRVR_H}
+CTOOLS_UTILS_ASSERTIONS_TEST_DRVR_O_PATH=${CTOOLS_UTILS_ASSERTIONS_TEST_DIR}${CTOOLS_UTILS_ASSERTIONS_TEST_DRVR_O}
+CTOOLS_UTILS_ASSERTIONS_TEST_DRVR_C_PATH=${CTOOLS_UTILS_ASSERTIONS_TEST_DIR}${CTOOLS_UTILS_ASSERTIONS_TEST_DRVR_C}
+CTOOLS_UTILS_ASSERTIONS_TEST_DRVR_H_PATH=${CTOOLS_UTILS_ASSERTIONS_TEST_DIR}${CTOOLS_UTILS_ASSERTIONS_TEST_DRVR_H}
+CTOOLS_UTILS_ASSERTIONS_TEST_DRVR_O_PATH=${CTOOLS_UTILS_ASSERTIONS_TEST_DIR}${CTOOLS_UTILS_ASSERTIONS_TEST_DRVR_O}
+PROD_CTOOLS_UTILS_ASSERTIONS_TEST_C_DEPS=${CTOOLS_UTILS_ASSERTIONS_C_PATH} ${CTOOLS_UTILS_ASSERTIONS_TEST_C_PATH} 
+PROD_CTOOLS_UTILS_ASSERTIONS_TEST_H_DEPS=${CTOOLS_UTILS_ASSERTIONS_H_PATH} ${CTOOLS_UTILS_ASSERTIONS_TEST_H_PATH} 
+PROD_CTOOLS_UTILS_ASSERTIONS_TEST_O_DEPS=${CTOOLS_UTILS_ASSERTIONS_O_PATH} ${CTOOLS_UTILS_ASSERTIONS_TEST_O_PATH} 
+DEV_CTOOLS_UTILS_ASSERTIONS_TEST_C_DEPS=${CTOOLS_UTILS_ASSERTIONS_C_PATH} ${CTOOLS_UTILS_ASSERTIONS_TEST_C_PATH} ${CTOOLS_UTILS_ASSERTIONS_TEST_DRVR_C_PATH} 
+DEV_CTOOLS_UTILS_ASSERTIONS_TEST_H_DEPS=${CTOOLS_UTILS_ASSERTIONS_H_PATH} ${CTOOLS_UTILS_ASSERTIONS_TEST_H_PATH} ${CTOOLS_UTILS_ASSERTIONS_TEST_DRVR_H_PATH} 
+DEV_CTOOLS_UTILS_ASSERTIONS_TEST_O_DEPS=${CTOOLS_UTILS_ASSERTIONS_O_PATH} ${CTOOLS_UTILS_ASSERTIONS_TEST_O_PATH} ${CTOOLS_UTILS_ASSERTIONS_TEST_DRVR_O_PATH} 
+DEV_CTOOLS_UTILS_ASSERTIONS_TEST_C_FILES=${CTOOLS_UTILS_ASSERTIONS_C_PATH} ${CTOOLS_UTILS_ASSERTIONS_TEST_C_PATH} ${CTOOLS_UTILS_ASSERTIONS_TEST_DRVR_C_PATH} 
+DEV_CTOOLS_UTILS_ASSERTIONS_TEST_H_FILES=${CTOOLS_UTILS_ASSERTIONS_H_PATH} ${CTOOLS_UTILS_ASSERTIONS_TEST_H_PATH} ${CTOOLS_UTILS_ASSERTIONS_TEST_DRVR_H_PATH} 
+DEV_CTOOLS_UTILS_ASSERTIONS_TEST_O_FILES=${CTOOLS_UTILS_ASSERTIONS_O_PATH} ${CTOOLS_UTILS_ASSERTIONS_TEST_O_PATH} ${CTOOLS_UTILS_ASSERTIONS_TEST_DRVR_O_PATH} 
+PROD_CTOOLS_UTILS_ASSERTIONS_TEST_C_FILES=${CTOOLS_UTILS_ASSERTIONS_C_PATH} ${CTOOLS_UTILS_ASSERTIONS_TEST_C_PATH} 
+PROD_CTOOLS_UTILS_ASSERTIONS_TEST_H_FILES=${CTOOLS_UTILS_ASSERTIONS_H_PATH} ${CTOOLS_UTILS_ASSERTIONS_TEST_H_PATH} 
+PROD_CTOOLS_UTILS_ASSERTIONS_TEST_O_FILES=${CTOOLS_UTILS_ASSERTIONS_O_PATH} ${CTOOLS_UTILS_ASSERTIONS_TEST_O_PATH} 
+CTOOLS_UTILS_ASSERTIONS_TEST_DEV_FILES= ${DEV_CTOOLS_UTILS_ASSERTIONS_TEST_C_FILES} ${DEV_CTOOLS_UTILS_ASSERTIONS_TEST_H_FILES} ${DEV_CTOOLS_UTILS_ASSERTIONS_TEST_O_FILES} 
 
 
-Dev: ${DEV_../CTools/Utils/Assertions/_TEST_C_DEPS} ${DEV_../CTools/Utils/Assertions/_TEST_H_DEPS}
-	cd ${../CTools/Utils/Assertions/_DIR}; gcc -c ${../CTools/Utils/Assertions/_C}
-	cd ${../CTools/Utils/Assertions/_TEST_DIR}; gcc -c ${../CTools/Utils/Assertions/_TEST_C} ${../CTools/Utils/Assertions/_TEST_DRVR_C}
+DevCToolsUtilsAssertions: ${DEV_CTOOLS_UTILS_ASSERTIONS_TEST_C_DEPS} ${DEV_CTOOLS_UTILS_ASSERTIONS_TEST_H_DEPS}
+	cd ${CTOOLS_UTILS_ASSERTIONS_DIR}; gcc -c ${CTOOLS_UTILS_ASSERTIONS_C}
+	cd ${CTOOLS_UTILS_ASSERTIONS_TEST_DIR}; gcc -c ${CTOOLS_UTILS_ASSERTIONS_TEST_C} ${CTOOLS_UTILS_ASSERTIONS_TEST_DRVR_C}
 
-Prod: ${PROD_../CTools/Utils/Assertions/_TEST_C_DEPS} ${PROD_../CTools/Utils/Assertions/_TEST_H_DEPS}
-	cd ${../CTools/Utils/Assertions/_DIR}; gcc -c ${../CTools/Utils/Assertions/_C}
-	cd ${../CTools/Utils/Assertions/_TEST_DIR}; gcc -c ${../CTools/Utils/Assertions/_TEST_C}
+ProdCToolsUtilsAssertions: ${PROD_CTOOLS_UTILS_ASSERTIONS_TEST_C_DEPS} ${PROD_CTOOLS_UTILS_ASSERTIONS_TEST_H_DEPS}
+	cd ${CTOOLS_UTILS_ASSERTIONS_DIR}; gcc -c ${CTOOLS_UTILS_ASSERTIONS_C}
+	cd ${CTOOLS_UTILS_ASSERTIONS_TEST_DIR}; gcc -c ${CTOOLS_UTILS_ASSERTIONS_TEST_C}
 
-DevClean: ${DEV_../CTools/Utils/Assertions/_TEST_O_DEPS}
-	cd ${../CTools/Utils/Assertions/_DIR}; rm -f ${../CTools/Utils/Assertions/_O}
-	cd ${../CTools/Utils/Assertions/_TEST_DIR}; rm -f ${../CTools/Utils/Assertions/_TEST_O} ${../CTools/Utils/Assertions/_TEST_DRVR_O}
+DevCToolsUtilsAssertionsClean: ${DEV_CTOOLS_UTILS_ASSERTIONS_TEST_O_DEPS}
+	cd ${CTOOLS_UTILS_ASSERTIONS_DIR}; rm -f ${CTOOLS_UTILS_ASSERTIONS_O}
+	cd ${CTOOLS_UTILS_ASSERTIONS_TEST_DIR}; rm -f ${CTOOLS_UTILS_ASSERTIONS_TEST_O} ${CTOOLS_UTILS_ASSERTIONS_TEST_DRVR_O}
 
-ProdClean: ${PROD_../CTools/Utils/Assertions/_TEST_O_DEPS}
-	cd ${../CTools/Utils/Assertions/_DIR}; rm -f ${../CTools/Utils/Assertions/_O}
-	cd ${../CTools/Utils/Assertions/_TEST_DIR}; rm -f ${../CTools/Utils/Assertions/_TEST_O}
+ProdCToolsUtilsAssertionsClean: ${PROD_CTOOLS_UTILS_ASSERTIONS_TEST_O_DEPS}
+	cd ${CTOOLS_UTILS_ASSERTIONS_DIR}; rm -f ${CTOOLS_UTILS_ASSERTIONS_O}
+	cd ${CTOOLS_UTILS_ASSERTIONS_TEST_DIR}; rm -f ${CTOOLS_UTILS_ASSERTIONS_TEST_O}
 
-DevLink: ${DEV_../CTools/Utils/Assertions/_TEST_O_DEPS}
-	(gcc -o devTest ${../CTools/Utils/Assertions/_O_PATH} ${../CTools/Utils/Assertions/_TEST_O_PATH} ${../CTools/Utils/Assertions/_TEST_DRVR_O_PATH})
+DevCToolsUtilsAssertionsLink: ${DEV_CTOOLS_UTILS_ASSERTIONS_TEST_O_DEPS}
+	(gcc -o devTest ${CTOOLS_UTILS_ASSERTIONS_O_PATH} ${CTOOLS_UTILS_ASSERTIONS_TEST_O_PATH} ${CTOOLS_UTILS_ASSERTIONS_TEST_DRVR_O_PATH})
 
-ProdLink: ${PROD_../CTools/Utils/Assertions/_TEST_O_DEPS}
-	(gcc -o prodTest ${../CTools/Utils/Assertions/_O_PATH} ${../CTools/Utils/Assertions/_TEST_O_PATH})
+ProdCToolsUtilsAssertionsLink: ${PROD_CTOOLS_UTILS_ASSERTIONS_TEST_O_DEPS}
+	(gcc -o prodTest ${CTOOLS_UTILS_ASSERTIONS_O_PATH} ${CTOOLS_UTILS_ASSERTIONS_TEST_O_PATH})
 
-DevRun: ${DEV_../CTools/Utils/Assertions/_TEST_O_DEPS} ${DEV_../CTools/Utils/Assertions/_TEST_C_DEPS} ${DEV_../CTools/Utils/Assertions/_TEST_H_DEPS}
-	make DevClean
-	make Dev
-	make DevLink
+DevCToolsUtilsAssertionsRun: ${DEV_CTOOLS_UTILS_ASSERTIONS_TEST_O_DEPS} ${DEV_CTOOLS_UTILS_ASSERTIONS_TEST_C_DEPS} ${DEV_CTOOLS_UTILS_ASSERTIONS_TEST_H_DEPS}
+	make DevCToolsUtilsAssertionsClean
+	make DevCToolsUtilsAssertions
+	make DevCToolsUtilsAssertionsLink
 	./devTest
 
 ########################################################################################################################################
@@ -574,70 +574,70 @@ DevRun: ${DEV_../CTools/Utils/Assertions/_TEST_O_DEPS} ${DEV_../CTools/Utils/Ass
 
 
 
-../CTools/Utils/Dictionary/_DIR=Dictionary
-../CTools/Utils/Dictionary/_TEST_DIR=${../CTools/Utils/Dictionary/_DIR}Test/
-../CTools/Utils/Dictionary/_C=Dictionary.c.c
-../CTools/Utils/Dictionary/_H=Dictionary.h.h
-../CTools/Utils/Dictionary/_O=Dictionary.o.o
-../CTools/Utils/Dictionary/_TEST_C=Test.c
-../CTools/Utils/Dictionary/_TEST_H=Test.h
-../CTools/Utils/Dictionary/_TEST_O=Test.o
-../CTools/Utils/Dictionary/_TEST_DRVR_C=Drvr.c
-../CTools/Utils/Dictionary/_TEST_DRVR_H=Drvr.h
-../CTools/Utils/Dictionary/_TEST_DRVR_O=Drvr.o
-../CTools/Utils/Dictionary/_C_PATH=${../CTools/Utils/Dictionary/_DIR}${../CTools/Utils/Dictionary/_C}
-../CTools/Utils/Dictionary/_H_PATH=${../CTools/Utils/Dictionary/_DIR}${../CTools/Utils/Dictionary/_H}
-../CTools/Utils/Dictionary/_O_PATH=${../CTools/Utils/Dictionary/_DIR}${../CTools/Utils/Dictionary/_O}
-../CTools/Utils/Dictionary/_TEST_C_PATH=${../CTools/Utils/Dictionary/_TEST_DIR}${../CTools/Utils/Dictionary/_TEST_C}
-../CTools/Utils/Dictionary/_TEST_H_PATH=${../CTools/Utils/Dictionary/_TEST_DIR}${../CTools/Utils/Dictionary/_TEST_H}
-../CTools/Utils/Dictionary/_TEST_O_PATH=${../CTools/Utils/Dictionary/_TEST_DIR}${../CTools/Utils/Dictionary/_TEST_O}
-../CTools/Utils/Dictionary/_TEST_DRVR_C_PATH=${../CTools/Utils/Dictionary/_TEST_DIR}${../CTools/Utils/Dictionary/_TEST_DRVR_C}
-../CTools/Utils/Dictionary/_TEST_DRVR_H_PATH=${../CTools/Utils/Dictionary/_TEST_DIR}${../CTools/Utils/Dictionary/_TEST_DRVR_H}
-../CTools/Utils/Dictionary/_TEST_DRVR_O_PATH=${../CTools/Utils/Dictionary/_TEST_DIR}${../CTools/Utils/Dictionary/_TEST_DRVR_O}
-../CTools/Utils/Dictionary/_TEST_DRVR_C_PATH=${../CTools/Utils/Dictionary/_TEST_DIR}${../CTools/Utils/Dictionary/_TEST_DRVR_C}
-../CTools/Utils/Dictionary/_TEST_DRVR_H_PATH=${../CTools/Utils/Dictionary/_TEST_DIR}${../CTools/Utils/Dictionary/_TEST_DRVR_H}
-../CTools/Utils/Dictionary/_TEST_DRVR_O_PATH=${../CTools/Utils/Dictionary/_TEST_DIR}${../CTools/Utils/Dictionary/_TEST_DRVR_O}
-PROD_../CTools/Utils/Dictionary/_TEST_C_DEPS=${../CTools/Utils/Dictionary/_C_PATH} ${../CTools/Utils/Dictionary/_TEST_C_PATH} 
-PROD_../CTools/Utils/Dictionary/_TEST_H_DEPS=${../CTools/Utils/Dictionary/_H_PATH} ${../CTools/Utils/Dictionary/_TEST_H_PATH} 
-PROD_../CTools/Utils/Dictionary/_TEST_O_DEPS=${../CTools/Utils/Dictionary/_O_PATH} ${../CTools/Utils/Dictionary/_TEST_O_PATH} 
-DEV_../CTools/Utils/Dictionary/_TEST_C_DEPS=${../CTools/Utils/Dictionary/_C_PATH} ${../CTools/Utils/Dictionary/_TEST_C_PATH} ${../CTools/Utils/Dictionary/_TEST_DRVR_C_PATH} 
-DEV_../CTools/Utils/Dictionary/_TEST_H_DEPS=${../CTools/Utils/Dictionary/_H_PATH} ${../CTools/Utils/Dictionary/_TEST_H_PATH} ${../CTools/Utils/Dictionary/_TEST_DRVR_H_PATH} 
-DEV_../CTools/Utils/Dictionary/_TEST_O_DEPS=${../CTools/Utils/Dictionary/_O_PATH} ${../CTools/Utils/Dictionary/_TEST_O_PATH} ${../CTools/Utils/Dictionary/_TEST_DRVR_O_PATH} 
-DEV_../CTools/Utils/Dictionary/_TEST_C_FILES=${../CTools/Utils/Dictionary/_C_PATH} ${../CTools/Utils/Dictionary/_TEST_C_PATH} ${../CTools/Utils/Dictionary/_TEST_DRVR_C_PATH} 
-DEV_../CTools/Utils/Dictionary/_TEST_H_FILES=${../CTools/Utils/Dictionary/_H_PATH} ${../CTools/Utils/Dictionary/_TEST_H_PATH} ${../CTools/Utils/Dictionary/_TEST_DRVR_H_PATH} 
-DEV_../CTools/Utils/Dictionary/_TEST_O_FILES=${../CTools/Utils/Dictionary/_O_PATH} ${../CTools/Utils/Dictionary/_TEST_O_PATH} ${../CTools/Utils/Dictionary/_TEST_DRVR_O_PATH} 
-PROD_../CTools/Utils/Dictionary/_TEST_C_FILES=${../CTools/Utils/Dictionary/_C_PATH} ${../CTools/Utils/Dictionary/_TEST_C_PATH} 
-PROD_../CTools/Utils/Dictionary/_TEST_H_FILES=${../CTools/Utils/Dictionary/_H_PATH} ${../CTools/Utils/Dictionary/_TEST_H_PATH} 
-PROD_../CTools/Utils/Dictionary/_TEST_O_FILES=${../CTools/Utils/Dictionary/_O_PATH} ${../CTools/Utils/Dictionary/_TEST_O_PATH} 
-../CTools/Utils/Dictionary/_TEST_DEV_FILES= ${DEV_../CTools/Utils/Dictionary/_TEST_C_FILES} ${DEV_../CTools/Utils/Dictionary/_TEST_H_FILES} ${DEV_../CTools/Utils/Dictionary/_TEST_O_FILES} 
+CTOOLS_UTILS_DICTIONARY_DIR=./CTools/Utils/Dictionary/
+CTOOLS_UTILS_DICTIONARY_TEST_DIR=${CTOOLS_UTILS_DICTIONARY_DIR}Test/
+CTOOLS_UTILS_DICTIONARY_C=Dictionary.c
+CTOOLS_UTILS_DICTIONARY_H=Dictionary.h
+CTOOLS_UTILS_DICTIONARY_O=Dictionary.o
+CTOOLS_UTILS_DICTIONARY_TEST_C=Test.c
+CTOOLS_UTILS_DICTIONARY_TEST_H=Test.h
+CTOOLS_UTILS_DICTIONARY_TEST_O=Test.o
+CTOOLS_UTILS_DICTIONARY_TEST_DRVR_C=Drvr.c
+CTOOLS_UTILS_DICTIONARY_TEST_DRVR_H=Drvr.h
+CTOOLS_UTILS_DICTIONARY_TEST_DRVR_O=Drvr.o
+CTOOLS_UTILS_DICTIONARY_C_PATH=${CTOOLS_UTILS_DICTIONARY_DIR}${CTOOLS_UTILS_DICTIONARY_C}
+CTOOLS_UTILS_DICTIONARY_H_PATH=${CTOOLS_UTILS_DICTIONARY_DIR}${CTOOLS_UTILS_DICTIONARY_H}
+CTOOLS_UTILS_DICTIONARY_O_PATH=${CTOOLS_UTILS_DICTIONARY_DIR}${CTOOLS_UTILS_DICTIONARY_O}
+CTOOLS_UTILS_DICTIONARY_TEST_C_PATH=${CTOOLS_UTILS_DICTIONARY_TEST_DIR}${CTOOLS_UTILS_DICTIONARY_TEST_C}
+CTOOLS_UTILS_DICTIONARY_TEST_H_PATH=${CTOOLS_UTILS_DICTIONARY_TEST_DIR}${CTOOLS_UTILS_DICTIONARY_TEST_H}
+CTOOLS_UTILS_DICTIONARY_TEST_O_PATH=${CTOOLS_UTILS_DICTIONARY_TEST_DIR}${CTOOLS_UTILS_DICTIONARY_TEST_O}
+CTOOLS_UTILS_DICTIONARY_TEST_DRVR_C_PATH=${CTOOLS_UTILS_DICTIONARY_TEST_DIR}${CTOOLS_UTILS_DICTIONARY_TEST_DRVR_C}
+CTOOLS_UTILS_DICTIONARY_TEST_DRVR_H_PATH=${CTOOLS_UTILS_DICTIONARY_TEST_DIR}${CTOOLS_UTILS_DICTIONARY_TEST_DRVR_H}
+CTOOLS_UTILS_DICTIONARY_TEST_DRVR_O_PATH=${CTOOLS_UTILS_DICTIONARY_TEST_DIR}${CTOOLS_UTILS_DICTIONARY_TEST_DRVR_O}
+CTOOLS_UTILS_DICTIONARY_TEST_DRVR_C_PATH=${CTOOLS_UTILS_DICTIONARY_TEST_DIR}${CTOOLS_UTILS_DICTIONARY_TEST_DRVR_C}
+CTOOLS_UTILS_DICTIONARY_TEST_DRVR_H_PATH=${CTOOLS_UTILS_DICTIONARY_TEST_DIR}${CTOOLS_UTILS_DICTIONARY_TEST_DRVR_H}
+CTOOLS_UTILS_DICTIONARY_TEST_DRVR_O_PATH=${CTOOLS_UTILS_DICTIONARY_TEST_DIR}${CTOOLS_UTILS_DICTIONARY_TEST_DRVR_O}
+PROD_CTOOLS_UTILS_DICTIONARY_TEST_C_DEPS=${CTOOLS_UTILS_DICTIONARY_C_PATH} ${CTOOLS_UTILS_DICTIONARY_TEST_C_PATH} 
+PROD_CTOOLS_UTILS_DICTIONARY_TEST_H_DEPS=${CTOOLS_UTILS_DICTIONARY_H_PATH} ${CTOOLS_UTILS_DICTIONARY_TEST_H_PATH} 
+PROD_CTOOLS_UTILS_DICTIONARY_TEST_O_DEPS=${CTOOLS_UTILS_DICTIONARY_O_PATH} ${CTOOLS_UTILS_DICTIONARY_TEST_O_PATH} 
+DEV_CTOOLS_UTILS_DICTIONARY_TEST_C_DEPS=${CTOOLS_UTILS_DICTIONARY_C_PATH} ${CTOOLS_UTILS_DICTIONARY_TEST_C_PATH} ${CTOOLS_UTILS_DICTIONARY_TEST_DRVR_C_PATH} 
+DEV_CTOOLS_UTILS_DICTIONARY_TEST_H_DEPS=${CTOOLS_UTILS_DICTIONARY_H_PATH} ${CTOOLS_UTILS_DICTIONARY_TEST_H_PATH} ${CTOOLS_UTILS_DICTIONARY_TEST_DRVR_H_PATH} 
+DEV_CTOOLS_UTILS_DICTIONARY_TEST_O_DEPS=${CTOOLS_UTILS_DICTIONARY_O_PATH} ${CTOOLS_UTILS_DICTIONARY_TEST_O_PATH} ${CTOOLS_UTILS_DICTIONARY_TEST_DRVR_O_PATH} 
+DEV_CTOOLS_UTILS_DICTIONARY_TEST_C_FILES=${CTOOLS_UTILS_DICTIONARY_C_PATH} ${CTOOLS_UTILS_DICTIONARY_TEST_C_PATH} ${CTOOLS_UTILS_DICTIONARY_TEST_DRVR_C_PATH} 
+DEV_CTOOLS_UTILS_DICTIONARY_TEST_H_FILES=${CTOOLS_UTILS_DICTIONARY_H_PATH} ${CTOOLS_UTILS_DICTIONARY_TEST_H_PATH} ${CTOOLS_UTILS_DICTIONARY_TEST_DRVR_H_PATH} 
+DEV_CTOOLS_UTILS_DICTIONARY_TEST_O_FILES=${CTOOLS_UTILS_DICTIONARY_O_PATH} ${CTOOLS_UTILS_DICTIONARY_TEST_O_PATH} ${CTOOLS_UTILS_DICTIONARY_TEST_DRVR_O_PATH} 
+PROD_CTOOLS_UTILS_DICTIONARY_TEST_C_FILES=${CTOOLS_UTILS_DICTIONARY_C_PATH} ${CTOOLS_UTILS_DICTIONARY_TEST_C_PATH} 
+PROD_CTOOLS_UTILS_DICTIONARY_TEST_H_FILES=${CTOOLS_UTILS_DICTIONARY_H_PATH} ${CTOOLS_UTILS_DICTIONARY_TEST_H_PATH} 
+PROD_CTOOLS_UTILS_DICTIONARY_TEST_O_FILES=${CTOOLS_UTILS_DICTIONARY_O_PATH} ${CTOOLS_UTILS_DICTIONARY_TEST_O_PATH} 
+CTOOLS_UTILS_DICTIONARY_TEST_DEV_FILES= ${DEV_CTOOLS_UTILS_DICTIONARY_TEST_C_FILES} ${DEV_CTOOLS_UTILS_DICTIONARY_TEST_H_FILES} ${DEV_CTOOLS_UTILS_DICTIONARY_TEST_O_FILES} 
 
 
-Dev: ${DEV_../CTools/Utils/Dictionary/_TEST_C_DEPS} ${DEV_../CTools/Utils/Dictionary/_TEST_H_DEPS}
-	cd ${../CTools/Utils/Dictionary/_DIR}; gcc -c ${../CTools/Utils/Dictionary/_C}
-	cd ${../CTools/Utils/Dictionary/_TEST_DIR}; gcc -c ${../CTools/Utils/Dictionary/_TEST_C} ${../CTools/Utils/Dictionary/_TEST_DRVR_C}
+DevCToolsUtilsDictionary: ${DEV_CTOOLS_UTILS_DICTIONARY_TEST_C_DEPS} ${DEV_CTOOLS_UTILS_DICTIONARY_TEST_H_DEPS}
+	cd ${CTOOLS_UTILS_DICTIONARY_DIR}; gcc -c ${CTOOLS_UTILS_DICTIONARY_C}
+	cd ${CTOOLS_UTILS_DICTIONARY_TEST_DIR}; gcc -c ${CTOOLS_UTILS_DICTIONARY_TEST_C} ${CTOOLS_UTILS_DICTIONARY_TEST_DRVR_C}
 
-Prod: ${PROD_../CTools/Utils/Dictionary/_TEST_C_DEPS} ${PROD_../CTools/Utils/Dictionary/_TEST_H_DEPS}
-	cd ${../CTools/Utils/Dictionary/_DIR}; gcc -c ${../CTools/Utils/Dictionary/_C}
-	cd ${../CTools/Utils/Dictionary/_TEST_DIR}; gcc -c ${../CTools/Utils/Dictionary/_TEST_C}
+ProdCToolsUtilsDictionary: ${PROD_CTOOLS_UTILS_DICTIONARY_TEST_C_DEPS} ${PROD_CTOOLS_UTILS_DICTIONARY_TEST_H_DEPS}
+	cd ${CTOOLS_UTILS_DICTIONARY_DIR}; gcc -c ${CTOOLS_UTILS_DICTIONARY_C}
+	cd ${CTOOLS_UTILS_DICTIONARY_TEST_DIR}; gcc -c ${CTOOLS_UTILS_DICTIONARY_TEST_C}
 
-DevClean: ${DEV_../CTools/Utils/Dictionary/_TEST_O_DEPS}
-	cd ${../CTools/Utils/Dictionary/_DIR}; rm -f ${../CTools/Utils/Dictionary/_O}
-	cd ${../CTools/Utils/Dictionary/_TEST_DIR}; rm -f ${../CTools/Utils/Dictionary/_TEST_O} ${../CTools/Utils/Dictionary/_TEST_DRVR_O}
+DevCToolsUtilsDictionaryClean: ${DEV_CTOOLS_UTILS_DICTIONARY_TEST_O_DEPS}
+	cd ${CTOOLS_UTILS_DICTIONARY_DIR}; rm -f ${CTOOLS_UTILS_DICTIONARY_O}
+	cd ${CTOOLS_UTILS_DICTIONARY_TEST_DIR}; rm -f ${CTOOLS_UTILS_DICTIONARY_TEST_O} ${CTOOLS_UTILS_DICTIONARY_TEST_DRVR_O}
 
-ProdClean: ${PROD_../CTools/Utils/Dictionary/_TEST_O_DEPS}
-	cd ${../CTools/Utils/Dictionary/_DIR}; rm -f ${../CTools/Utils/Dictionary/_O}
-	cd ${../CTools/Utils/Dictionary/_TEST_DIR}; rm -f ${../CTools/Utils/Dictionary/_TEST_O}
+ProdCToolsUtilsDictionaryClean: ${PROD_CTOOLS_UTILS_DICTIONARY_TEST_O_DEPS}
+	cd ${CTOOLS_UTILS_DICTIONARY_DIR}; rm -f ${CTOOLS_UTILS_DICTIONARY_O}
+	cd ${CTOOLS_UTILS_DICTIONARY_TEST_DIR}; rm -f ${CTOOLS_UTILS_DICTIONARY_TEST_O}
 
-DevLink: ${DEV_../CTools/Utils/Dictionary/_TEST_O_DEPS}
-	(gcc -o devTest ${../CTools/Utils/Dictionary/_O_PATH} ${../CTools/Utils/Dictionary/_TEST_O_PATH} ${../CTools/Utils/Dictionary/_TEST_DRVR_O_PATH})
+DevCToolsUtilsDictionaryLink: ${DEV_CTOOLS_UTILS_DICTIONARY_TEST_O_DEPS}
+	(gcc -o devTest ${CTOOLS_UTILS_DICTIONARY_O_PATH} ${CTOOLS_UTILS_DICTIONARY_TEST_O_PATH} ${CTOOLS_UTILS_DICTIONARY_TEST_DRVR_O_PATH})
 
-ProdLink: ${PROD_../CTools/Utils/Dictionary/_TEST_O_DEPS}
-	(gcc -o prodTest ${../CTools/Utils/Dictionary/_O_PATH} ${../CTools/Utils/Dictionary/_TEST_O_PATH})
+ProdCToolsUtilsDictionaryLink: ${PROD_CTOOLS_UTILS_DICTIONARY_TEST_O_DEPS}
+	(gcc -o prodTest ${CTOOLS_UTILS_DICTIONARY_O_PATH} ${CTOOLS_UTILS_DICTIONARY_TEST_O_PATH})
 
-DevRun: ${DEV_../CTools/Utils/Dictionary/_TEST_O_DEPS} ${DEV_../CTools/Utils/Dictionary/_TEST_C_DEPS} ${DEV_../CTools/Utils/Dictionary/_TEST_H_DEPS}
-	make DevClean
-	make Dev
-	make DevLink
+DevCToolsUtilsDictionaryRun: ${DEV_CTOOLS_UTILS_DICTIONARY_TEST_O_DEPS} ${DEV_CTOOLS_UTILS_DICTIONARY_TEST_C_DEPS} ${DEV_CTOOLS_UTILS_DICTIONARY_TEST_H_DEPS}
+	make DevCToolsUtilsDictionaryClean
+	make DevCToolsUtilsDictionary
+	make DevCToolsUtilsDictionaryLink
 	./devTest
 
 ########################################################################################################################################
@@ -646,70 +646,70 @@ DevRun: ${DEV_../CTools/Utils/Dictionary/_TEST_O_DEPS} ${DEV_../CTools/Utils/Dic
 
 
 
-../CTools/Utils/Rand/_DIR=Rand
-../CTools/Utils/Rand/_TEST_DIR=${../CTools/Utils/Rand/_DIR}Test/
-../CTools/Utils/Rand/_C=Rand.c.c
-../CTools/Utils/Rand/_H=Rand.h.h
-../CTools/Utils/Rand/_O=Rand.o.o
-../CTools/Utils/Rand/_TEST_C=Test.c
-../CTools/Utils/Rand/_TEST_H=Test.h
-../CTools/Utils/Rand/_TEST_O=Test.o
-../CTools/Utils/Rand/_TEST_DRVR_C=Drvr.c
-../CTools/Utils/Rand/_TEST_DRVR_H=Drvr.h
-../CTools/Utils/Rand/_TEST_DRVR_O=Drvr.o
-../CTools/Utils/Rand/_C_PATH=${../CTools/Utils/Rand/_DIR}${../CTools/Utils/Rand/_C}
-../CTools/Utils/Rand/_H_PATH=${../CTools/Utils/Rand/_DIR}${../CTools/Utils/Rand/_H}
-../CTools/Utils/Rand/_O_PATH=${../CTools/Utils/Rand/_DIR}${../CTools/Utils/Rand/_O}
-../CTools/Utils/Rand/_TEST_C_PATH=${../CTools/Utils/Rand/_TEST_DIR}${../CTools/Utils/Rand/_TEST_C}
-../CTools/Utils/Rand/_TEST_H_PATH=${../CTools/Utils/Rand/_TEST_DIR}${../CTools/Utils/Rand/_TEST_H}
-../CTools/Utils/Rand/_TEST_O_PATH=${../CTools/Utils/Rand/_TEST_DIR}${../CTools/Utils/Rand/_TEST_O}
-../CTools/Utils/Rand/_TEST_DRVR_C_PATH=${../CTools/Utils/Rand/_TEST_DIR}${../CTools/Utils/Rand/_TEST_DRVR_C}
-../CTools/Utils/Rand/_TEST_DRVR_H_PATH=${../CTools/Utils/Rand/_TEST_DIR}${../CTools/Utils/Rand/_TEST_DRVR_H}
-../CTools/Utils/Rand/_TEST_DRVR_O_PATH=${../CTools/Utils/Rand/_TEST_DIR}${../CTools/Utils/Rand/_TEST_DRVR_O}
-../CTools/Utils/Rand/_TEST_DRVR_C_PATH=${../CTools/Utils/Rand/_TEST_DIR}${../CTools/Utils/Rand/_TEST_DRVR_C}
-../CTools/Utils/Rand/_TEST_DRVR_H_PATH=${../CTools/Utils/Rand/_TEST_DIR}${../CTools/Utils/Rand/_TEST_DRVR_H}
-../CTools/Utils/Rand/_TEST_DRVR_O_PATH=${../CTools/Utils/Rand/_TEST_DIR}${../CTools/Utils/Rand/_TEST_DRVR_O}
-PROD_../CTools/Utils/Rand/_TEST_C_DEPS=${../CTools/Utils/Rand/_C_PATH} ${../CTools/Utils/Rand/_TEST_C_PATH} 
-PROD_../CTools/Utils/Rand/_TEST_H_DEPS=${../CTools/Utils/Rand/_H_PATH} ${../CTools/Utils/Rand/_TEST_H_PATH} 
-PROD_../CTools/Utils/Rand/_TEST_O_DEPS=${../CTools/Utils/Rand/_O_PATH} ${../CTools/Utils/Rand/_TEST_O_PATH} 
-DEV_../CTools/Utils/Rand/_TEST_C_DEPS=${../CTools/Utils/Rand/_C_PATH} ${../CTools/Utils/Rand/_TEST_C_PATH} ${../CTools/Utils/Rand/_TEST_DRVR_C_PATH} 
-DEV_../CTools/Utils/Rand/_TEST_H_DEPS=${../CTools/Utils/Rand/_H_PATH} ${../CTools/Utils/Rand/_TEST_H_PATH} ${../CTools/Utils/Rand/_TEST_DRVR_H_PATH} 
-DEV_../CTools/Utils/Rand/_TEST_O_DEPS=${../CTools/Utils/Rand/_O_PATH} ${../CTools/Utils/Rand/_TEST_O_PATH} ${../CTools/Utils/Rand/_TEST_DRVR_O_PATH} 
-DEV_../CTools/Utils/Rand/_TEST_C_FILES=${../CTools/Utils/Rand/_C_PATH} ${../CTools/Utils/Rand/_TEST_C_PATH} ${../CTools/Utils/Rand/_TEST_DRVR_C_PATH} 
-DEV_../CTools/Utils/Rand/_TEST_H_FILES=${../CTools/Utils/Rand/_H_PATH} ${../CTools/Utils/Rand/_TEST_H_PATH} ${../CTools/Utils/Rand/_TEST_DRVR_H_PATH} 
-DEV_../CTools/Utils/Rand/_TEST_O_FILES=${../CTools/Utils/Rand/_O_PATH} ${../CTools/Utils/Rand/_TEST_O_PATH} ${../CTools/Utils/Rand/_TEST_DRVR_O_PATH} 
-PROD_../CTools/Utils/Rand/_TEST_C_FILES=${../CTools/Utils/Rand/_C_PATH} ${../CTools/Utils/Rand/_TEST_C_PATH} 
-PROD_../CTools/Utils/Rand/_TEST_H_FILES=${../CTools/Utils/Rand/_H_PATH} ${../CTools/Utils/Rand/_TEST_H_PATH} 
-PROD_../CTools/Utils/Rand/_TEST_O_FILES=${../CTools/Utils/Rand/_O_PATH} ${../CTools/Utils/Rand/_TEST_O_PATH} 
-../CTools/Utils/Rand/_TEST_DEV_FILES= ${DEV_../CTools/Utils/Rand/_TEST_C_FILES} ${DEV_../CTools/Utils/Rand/_TEST_H_FILES} ${DEV_../CTools/Utils/Rand/_TEST_O_FILES} 
+CTOOLS_UTILS_RAND_DIR=./CTools/Utils/Rand/
+CTOOLS_UTILS_RAND_TEST_DIR=${CTOOLS_UTILS_RAND_DIR}Test/
+CTOOLS_UTILS_RAND_C=Rand.c
+CTOOLS_UTILS_RAND_H=Rand.h
+CTOOLS_UTILS_RAND_O=Rand.o
+CTOOLS_UTILS_RAND_TEST_C=Test.c
+CTOOLS_UTILS_RAND_TEST_H=Test.h
+CTOOLS_UTILS_RAND_TEST_O=Test.o
+CTOOLS_UTILS_RAND_TEST_DRVR_C=Drvr.c
+CTOOLS_UTILS_RAND_TEST_DRVR_H=Drvr.h
+CTOOLS_UTILS_RAND_TEST_DRVR_O=Drvr.o
+CTOOLS_UTILS_RAND_C_PATH=${CTOOLS_UTILS_RAND_DIR}${CTOOLS_UTILS_RAND_C}
+CTOOLS_UTILS_RAND_H_PATH=${CTOOLS_UTILS_RAND_DIR}${CTOOLS_UTILS_RAND_H}
+CTOOLS_UTILS_RAND_O_PATH=${CTOOLS_UTILS_RAND_DIR}${CTOOLS_UTILS_RAND_O}
+CTOOLS_UTILS_RAND_TEST_C_PATH=${CTOOLS_UTILS_RAND_TEST_DIR}${CTOOLS_UTILS_RAND_TEST_C}
+CTOOLS_UTILS_RAND_TEST_H_PATH=${CTOOLS_UTILS_RAND_TEST_DIR}${CTOOLS_UTILS_RAND_TEST_H}
+CTOOLS_UTILS_RAND_TEST_O_PATH=${CTOOLS_UTILS_RAND_TEST_DIR}${CTOOLS_UTILS_RAND_TEST_O}
+CTOOLS_UTILS_RAND_TEST_DRVR_C_PATH=${CTOOLS_UTILS_RAND_TEST_DIR}${CTOOLS_UTILS_RAND_TEST_DRVR_C}
+CTOOLS_UTILS_RAND_TEST_DRVR_H_PATH=${CTOOLS_UTILS_RAND_TEST_DIR}${CTOOLS_UTILS_RAND_TEST_DRVR_H}
+CTOOLS_UTILS_RAND_TEST_DRVR_O_PATH=${CTOOLS_UTILS_RAND_TEST_DIR}${CTOOLS_UTILS_RAND_TEST_DRVR_O}
+CTOOLS_UTILS_RAND_TEST_DRVR_C_PATH=${CTOOLS_UTILS_RAND_TEST_DIR}${CTOOLS_UTILS_RAND_TEST_DRVR_C}
+CTOOLS_UTILS_RAND_TEST_DRVR_H_PATH=${CTOOLS_UTILS_RAND_TEST_DIR}${CTOOLS_UTILS_RAND_TEST_DRVR_H}
+CTOOLS_UTILS_RAND_TEST_DRVR_O_PATH=${CTOOLS_UTILS_RAND_TEST_DIR}${CTOOLS_UTILS_RAND_TEST_DRVR_O}
+PROD_CTOOLS_UTILS_RAND_TEST_C_DEPS=${CTOOLS_UTILS_RAND_C_PATH} ${CTOOLS_UTILS_RAND_TEST_C_PATH} 
+PROD_CTOOLS_UTILS_RAND_TEST_H_DEPS=${CTOOLS_UTILS_RAND_H_PATH} ${CTOOLS_UTILS_RAND_TEST_H_PATH} 
+PROD_CTOOLS_UTILS_RAND_TEST_O_DEPS=${CTOOLS_UTILS_RAND_O_PATH} ${CTOOLS_UTILS_RAND_TEST_O_PATH} 
+DEV_CTOOLS_UTILS_RAND_TEST_C_DEPS=${CTOOLS_UTILS_RAND_C_PATH} ${CTOOLS_UTILS_RAND_TEST_C_PATH} ${CTOOLS_UTILS_RAND_TEST_DRVR_C_PATH} 
+DEV_CTOOLS_UTILS_RAND_TEST_H_DEPS=${CTOOLS_UTILS_RAND_H_PATH} ${CTOOLS_UTILS_RAND_TEST_H_PATH} ${CTOOLS_UTILS_RAND_TEST_DRVR_H_PATH} 
+DEV_CTOOLS_UTILS_RAND_TEST_O_DEPS=${CTOOLS_UTILS_RAND_O_PATH} ${CTOOLS_UTILS_RAND_TEST_O_PATH} ${CTOOLS_UTILS_RAND_TEST_DRVR_O_PATH} 
+DEV_CTOOLS_UTILS_RAND_TEST_C_FILES=${CTOOLS_UTILS_RAND_C_PATH} ${CTOOLS_UTILS_RAND_TEST_C_PATH} ${CTOOLS_UTILS_RAND_TEST_DRVR_C_PATH} 
+DEV_CTOOLS_UTILS_RAND_TEST_H_FILES=${CTOOLS_UTILS_RAND_H_PATH} ${CTOOLS_UTILS_RAND_TEST_H_PATH} ${CTOOLS_UTILS_RAND_TEST_DRVR_H_PATH} 
+DEV_CTOOLS_UTILS_RAND_TEST_O_FILES=${CTOOLS_UTILS_RAND_O_PATH} ${CTOOLS_UTILS_RAND_TEST_O_PATH} ${CTOOLS_UTILS_RAND_TEST_DRVR_O_PATH} 
+PROD_CTOOLS_UTILS_RAND_TEST_C_FILES=${CTOOLS_UTILS_RAND_C_PATH} ${CTOOLS_UTILS_RAND_TEST_C_PATH} 
+PROD_CTOOLS_UTILS_RAND_TEST_H_FILES=${CTOOLS_UTILS_RAND_H_PATH} ${CTOOLS_UTILS_RAND_TEST_H_PATH} 
+PROD_CTOOLS_UTILS_RAND_TEST_O_FILES=${CTOOLS_UTILS_RAND_O_PATH} ${CTOOLS_UTILS_RAND_TEST_O_PATH} 
+CTOOLS_UTILS_RAND_TEST_DEV_FILES= ${DEV_CTOOLS_UTILS_RAND_TEST_C_FILES} ${DEV_CTOOLS_UTILS_RAND_TEST_H_FILES} ${DEV_CTOOLS_UTILS_RAND_TEST_O_FILES} 
 
 
-Dev: ${DEV_../CTools/Utils/Rand/_TEST_C_DEPS} ${DEV_../CTools/Utils/Rand/_TEST_H_DEPS}
-	cd ${../CTools/Utils/Rand/_DIR}; gcc -c ${../CTools/Utils/Rand/_C}
-	cd ${../CTools/Utils/Rand/_TEST_DIR}; gcc -c ${../CTools/Utils/Rand/_TEST_C} ${../CTools/Utils/Rand/_TEST_DRVR_C}
+DevCToolsUtilsRand: ${DEV_CTOOLS_UTILS_RAND_TEST_C_DEPS} ${DEV_CTOOLS_UTILS_RAND_TEST_H_DEPS}
+	cd ${CTOOLS_UTILS_RAND_DIR}; gcc -c ${CTOOLS_UTILS_RAND_C}
+	cd ${CTOOLS_UTILS_RAND_TEST_DIR}; gcc -c ${CTOOLS_UTILS_RAND_TEST_C} ${CTOOLS_UTILS_RAND_TEST_DRVR_C}
 
-Prod: ${PROD_../CTools/Utils/Rand/_TEST_C_DEPS} ${PROD_../CTools/Utils/Rand/_TEST_H_DEPS}
-	cd ${../CTools/Utils/Rand/_DIR}; gcc -c ${../CTools/Utils/Rand/_C}
-	cd ${../CTools/Utils/Rand/_TEST_DIR}; gcc -c ${../CTools/Utils/Rand/_TEST_C}
+ProdCToolsUtilsRand: ${PROD_CTOOLS_UTILS_RAND_TEST_C_DEPS} ${PROD_CTOOLS_UTILS_RAND_TEST_H_DEPS}
+	cd ${CTOOLS_UTILS_RAND_DIR}; gcc -c ${CTOOLS_UTILS_RAND_C}
+	cd ${CTOOLS_UTILS_RAND_TEST_DIR}; gcc -c ${CTOOLS_UTILS_RAND_TEST_C}
 
-DevClean: ${DEV_../CTools/Utils/Rand/_TEST_O_DEPS}
-	cd ${../CTools/Utils/Rand/_DIR}; rm -f ${../CTools/Utils/Rand/_O}
-	cd ${../CTools/Utils/Rand/_TEST_DIR}; rm -f ${../CTools/Utils/Rand/_TEST_O} ${../CTools/Utils/Rand/_TEST_DRVR_O}
+DevCToolsUtilsRandClean: ${DEV_CTOOLS_UTILS_RAND_TEST_O_DEPS}
+	cd ${CTOOLS_UTILS_RAND_DIR}; rm -f ${CTOOLS_UTILS_RAND_O}
+	cd ${CTOOLS_UTILS_RAND_TEST_DIR}; rm -f ${CTOOLS_UTILS_RAND_TEST_O} ${CTOOLS_UTILS_RAND_TEST_DRVR_O}
 
-ProdClean: ${PROD_../CTools/Utils/Rand/_TEST_O_DEPS}
-	cd ${../CTools/Utils/Rand/_DIR}; rm -f ${../CTools/Utils/Rand/_O}
-	cd ${../CTools/Utils/Rand/_TEST_DIR}; rm -f ${../CTools/Utils/Rand/_TEST_O}
+ProdCToolsUtilsRandClean: ${PROD_CTOOLS_UTILS_RAND_TEST_O_DEPS}
+	cd ${CTOOLS_UTILS_RAND_DIR}; rm -f ${CTOOLS_UTILS_RAND_O}
+	cd ${CTOOLS_UTILS_RAND_TEST_DIR}; rm -f ${CTOOLS_UTILS_RAND_TEST_O}
 
-DevLink: ${DEV_../CTools/Utils/Rand/_TEST_O_DEPS}
-	(gcc -o devTest ${../CTools/Utils/Rand/_O_PATH} ${../CTools/Utils/Rand/_TEST_O_PATH} ${../CTools/Utils/Rand/_TEST_DRVR_O_PATH})
+DevCToolsUtilsRandLink: ${DEV_CTOOLS_UTILS_RAND_TEST_O_DEPS}
+	(gcc -o devTest ${CTOOLS_UTILS_RAND_O_PATH} ${CTOOLS_UTILS_RAND_TEST_O_PATH} ${CTOOLS_UTILS_RAND_TEST_DRVR_O_PATH})
 
-ProdLink: ${PROD_../CTools/Utils/Rand/_TEST_O_DEPS}
-	(gcc -o prodTest ${../CTools/Utils/Rand/_O_PATH} ${../CTools/Utils/Rand/_TEST_O_PATH})
+ProdCToolsUtilsRandLink: ${PROD_CTOOLS_UTILS_RAND_TEST_O_DEPS}
+	(gcc -o prodTest ${CTOOLS_UTILS_RAND_O_PATH} ${CTOOLS_UTILS_RAND_TEST_O_PATH})
 
-DevRun: ${DEV_../CTools/Utils/Rand/_TEST_O_DEPS} ${DEV_../CTools/Utils/Rand/_TEST_C_DEPS} ${DEV_../CTools/Utils/Rand/_TEST_H_DEPS}
-	make DevClean
-	make Dev
-	make DevLink
+DevCToolsUtilsRandRun: ${DEV_CTOOLS_UTILS_RAND_TEST_O_DEPS} ${DEV_CTOOLS_UTILS_RAND_TEST_C_DEPS} ${DEV_CTOOLS_UTILS_RAND_TEST_H_DEPS}
+	make DevCToolsUtilsRandClean
+	make DevCToolsUtilsRand
+	make DevCToolsUtilsRandLink
 	./devTest
 
 ########################################################################################################################################
@@ -718,70 +718,70 @@ DevRun: ${DEV_../CTools/Utils/Rand/_TEST_O_DEPS} ${DEV_../CTools/Utils/Rand/_TES
 
 
 
-../CTools/Utils/Types/_DIR=Types
-../CTools/Utils/Types/_TEST_DIR=${../CTools/Utils/Types/_DIR}Test/
-../CTools/Utils/Types/_C=Types.c.c
-../CTools/Utils/Types/_H=Types.h.h
-../CTools/Utils/Types/_O=Types.o.o
-../CTools/Utils/Types/_TEST_C=Test.c
-../CTools/Utils/Types/_TEST_H=Test.h
-../CTools/Utils/Types/_TEST_O=Test.o
-../CTools/Utils/Types/_TEST_DRVR_C=Drvr.c
-../CTools/Utils/Types/_TEST_DRVR_H=Drvr.h
-../CTools/Utils/Types/_TEST_DRVR_O=Drvr.o
-../CTools/Utils/Types/_C_PATH=${../CTools/Utils/Types/_DIR}${../CTools/Utils/Types/_C}
-../CTools/Utils/Types/_H_PATH=${../CTools/Utils/Types/_DIR}${../CTools/Utils/Types/_H}
-../CTools/Utils/Types/_O_PATH=${../CTools/Utils/Types/_DIR}${../CTools/Utils/Types/_O}
-../CTools/Utils/Types/_TEST_C_PATH=${../CTools/Utils/Types/_TEST_DIR}${../CTools/Utils/Types/_TEST_C}
-../CTools/Utils/Types/_TEST_H_PATH=${../CTools/Utils/Types/_TEST_DIR}${../CTools/Utils/Types/_TEST_H}
-../CTools/Utils/Types/_TEST_O_PATH=${../CTools/Utils/Types/_TEST_DIR}${../CTools/Utils/Types/_TEST_O}
-../CTools/Utils/Types/_TEST_DRVR_C_PATH=${../CTools/Utils/Types/_TEST_DIR}${../CTools/Utils/Types/_TEST_DRVR_C}
-../CTools/Utils/Types/_TEST_DRVR_H_PATH=${../CTools/Utils/Types/_TEST_DIR}${../CTools/Utils/Types/_TEST_DRVR_H}
-../CTools/Utils/Types/_TEST_DRVR_O_PATH=${../CTools/Utils/Types/_TEST_DIR}${../CTools/Utils/Types/_TEST_DRVR_O}
-../CTools/Utils/Types/_TEST_DRVR_C_PATH=${../CTools/Utils/Types/_TEST_DIR}${../CTools/Utils/Types/_TEST_DRVR_C}
-../CTools/Utils/Types/_TEST_DRVR_H_PATH=${../CTools/Utils/Types/_TEST_DIR}${../CTools/Utils/Types/_TEST_DRVR_H}
-../CTools/Utils/Types/_TEST_DRVR_O_PATH=${../CTools/Utils/Types/_TEST_DIR}${../CTools/Utils/Types/_TEST_DRVR_O}
-PROD_../CTools/Utils/Types/_TEST_C_DEPS=${../CTools/Utils/Types/_C_PATH} ${../CTools/Utils/Types/_TEST_C_PATH} 
-PROD_../CTools/Utils/Types/_TEST_H_DEPS=${../CTools/Utils/Types/_H_PATH} ${../CTools/Utils/Types/_TEST_H_PATH} 
-PROD_../CTools/Utils/Types/_TEST_O_DEPS=${../CTools/Utils/Types/_O_PATH} ${../CTools/Utils/Types/_TEST_O_PATH} 
-DEV_../CTools/Utils/Types/_TEST_C_DEPS=${../CTools/Utils/Types/_C_PATH} ${../CTools/Utils/Types/_TEST_C_PATH} ${../CTools/Utils/Types/_TEST_DRVR_C_PATH} 
-DEV_../CTools/Utils/Types/_TEST_H_DEPS=${../CTools/Utils/Types/_H_PATH} ${../CTools/Utils/Types/_TEST_H_PATH} ${../CTools/Utils/Types/_TEST_DRVR_H_PATH} 
-DEV_../CTools/Utils/Types/_TEST_O_DEPS=${../CTools/Utils/Types/_O_PATH} ${../CTools/Utils/Types/_TEST_O_PATH} ${../CTools/Utils/Types/_TEST_DRVR_O_PATH} 
-DEV_../CTools/Utils/Types/_TEST_C_FILES=${../CTools/Utils/Types/_C_PATH} ${../CTools/Utils/Types/_TEST_C_PATH} ${../CTools/Utils/Types/_TEST_DRVR_C_PATH} 
-DEV_../CTools/Utils/Types/_TEST_H_FILES=${../CTools/Utils/Types/_H_PATH} ${../CTools/Utils/Types/_TEST_H_PATH} ${../CTools/Utils/Types/_TEST_DRVR_H_PATH} 
-DEV_../CTools/Utils/Types/_TEST_O_FILES=${../CTools/Utils/Types/_O_PATH} ${../CTools/Utils/Types/_TEST_O_PATH} ${../CTools/Utils/Types/_TEST_DRVR_O_PATH} 
-PROD_../CTools/Utils/Types/_TEST_C_FILES=${../CTools/Utils/Types/_C_PATH} ${../CTools/Utils/Types/_TEST_C_PATH} 
-PROD_../CTools/Utils/Types/_TEST_H_FILES=${../CTools/Utils/Types/_H_PATH} ${../CTools/Utils/Types/_TEST_H_PATH} 
-PROD_../CTools/Utils/Types/_TEST_O_FILES=${../CTools/Utils/Types/_O_PATH} ${../CTools/Utils/Types/_TEST_O_PATH} 
-../CTools/Utils/Types/_TEST_DEV_FILES= ${DEV_../CTools/Utils/Types/_TEST_C_FILES} ${DEV_../CTools/Utils/Types/_TEST_H_FILES} ${DEV_../CTools/Utils/Types/_TEST_O_FILES} 
+CTOOLS_UTILS_TYPES_DIR=./CTools/Utils/Types/
+CTOOLS_UTILS_TYPES_TEST_DIR=${CTOOLS_UTILS_TYPES_DIR}Test/
+CTOOLS_UTILS_TYPES_C=Types.c
+CTOOLS_UTILS_TYPES_H=Types.h
+CTOOLS_UTILS_TYPES_O=Types.o
+CTOOLS_UTILS_TYPES_TEST_C=Test.c
+CTOOLS_UTILS_TYPES_TEST_H=Test.h
+CTOOLS_UTILS_TYPES_TEST_O=Test.o
+CTOOLS_UTILS_TYPES_TEST_DRVR_C=Drvr.c
+CTOOLS_UTILS_TYPES_TEST_DRVR_H=Drvr.h
+CTOOLS_UTILS_TYPES_TEST_DRVR_O=Drvr.o
+CTOOLS_UTILS_TYPES_C_PATH=${CTOOLS_UTILS_TYPES_DIR}${CTOOLS_UTILS_TYPES_C}
+CTOOLS_UTILS_TYPES_H_PATH=${CTOOLS_UTILS_TYPES_DIR}${CTOOLS_UTILS_TYPES_H}
+CTOOLS_UTILS_TYPES_O_PATH=${CTOOLS_UTILS_TYPES_DIR}${CTOOLS_UTILS_TYPES_O}
+CTOOLS_UTILS_TYPES_TEST_C_PATH=${CTOOLS_UTILS_TYPES_TEST_DIR}${CTOOLS_UTILS_TYPES_TEST_C}
+CTOOLS_UTILS_TYPES_TEST_H_PATH=${CTOOLS_UTILS_TYPES_TEST_DIR}${CTOOLS_UTILS_TYPES_TEST_H}
+CTOOLS_UTILS_TYPES_TEST_O_PATH=${CTOOLS_UTILS_TYPES_TEST_DIR}${CTOOLS_UTILS_TYPES_TEST_O}
+CTOOLS_UTILS_TYPES_TEST_DRVR_C_PATH=${CTOOLS_UTILS_TYPES_TEST_DIR}${CTOOLS_UTILS_TYPES_TEST_DRVR_C}
+CTOOLS_UTILS_TYPES_TEST_DRVR_H_PATH=${CTOOLS_UTILS_TYPES_TEST_DIR}${CTOOLS_UTILS_TYPES_TEST_DRVR_H}
+CTOOLS_UTILS_TYPES_TEST_DRVR_O_PATH=${CTOOLS_UTILS_TYPES_TEST_DIR}${CTOOLS_UTILS_TYPES_TEST_DRVR_O}
+CTOOLS_UTILS_TYPES_TEST_DRVR_C_PATH=${CTOOLS_UTILS_TYPES_TEST_DIR}${CTOOLS_UTILS_TYPES_TEST_DRVR_C}
+CTOOLS_UTILS_TYPES_TEST_DRVR_H_PATH=${CTOOLS_UTILS_TYPES_TEST_DIR}${CTOOLS_UTILS_TYPES_TEST_DRVR_H}
+CTOOLS_UTILS_TYPES_TEST_DRVR_O_PATH=${CTOOLS_UTILS_TYPES_TEST_DIR}${CTOOLS_UTILS_TYPES_TEST_DRVR_O}
+PROD_CTOOLS_UTILS_TYPES_TEST_C_DEPS=${CTOOLS_UTILS_TYPES_C_PATH} ${CTOOLS_UTILS_TYPES_TEST_C_PATH} 
+PROD_CTOOLS_UTILS_TYPES_TEST_H_DEPS=${CTOOLS_UTILS_TYPES_H_PATH} ${CTOOLS_UTILS_TYPES_TEST_H_PATH} 
+PROD_CTOOLS_UTILS_TYPES_TEST_O_DEPS=${CTOOLS_UTILS_TYPES_O_PATH} ${CTOOLS_UTILS_TYPES_TEST_O_PATH} 
+DEV_CTOOLS_UTILS_TYPES_TEST_C_DEPS=${CTOOLS_UTILS_TYPES_C_PATH} ${CTOOLS_UTILS_TYPES_TEST_C_PATH} ${CTOOLS_UTILS_TYPES_TEST_DRVR_C_PATH} 
+DEV_CTOOLS_UTILS_TYPES_TEST_H_DEPS=${CTOOLS_UTILS_TYPES_H_PATH} ${CTOOLS_UTILS_TYPES_TEST_H_PATH} ${CTOOLS_UTILS_TYPES_TEST_DRVR_H_PATH} 
+DEV_CTOOLS_UTILS_TYPES_TEST_O_DEPS=${CTOOLS_UTILS_TYPES_O_PATH} ${CTOOLS_UTILS_TYPES_TEST_O_PATH} ${CTOOLS_UTILS_TYPES_TEST_DRVR_O_PATH} 
+DEV_CTOOLS_UTILS_TYPES_TEST_C_FILES=${CTOOLS_UTILS_TYPES_C_PATH} ${CTOOLS_UTILS_TYPES_TEST_C_PATH} ${CTOOLS_UTILS_TYPES_TEST_DRVR_C_PATH} 
+DEV_CTOOLS_UTILS_TYPES_TEST_H_FILES=${CTOOLS_UTILS_TYPES_H_PATH} ${CTOOLS_UTILS_TYPES_TEST_H_PATH} ${CTOOLS_UTILS_TYPES_TEST_DRVR_H_PATH} 
+DEV_CTOOLS_UTILS_TYPES_TEST_O_FILES=${CTOOLS_UTILS_TYPES_O_PATH} ${CTOOLS_UTILS_TYPES_TEST_O_PATH} ${CTOOLS_UTILS_TYPES_TEST_DRVR_O_PATH} 
+PROD_CTOOLS_UTILS_TYPES_TEST_C_FILES=${CTOOLS_UTILS_TYPES_C_PATH} ${CTOOLS_UTILS_TYPES_TEST_C_PATH} 
+PROD_CTOOLS_UTILS_TYPES_TEST_H_FILES=${CTOOLS_UTILS_TYPES_H_PATH} ${CTOOLS_UTILS_TYPES_TEST_H_PATH} 
+PROD_CTOOLS_UTILS_TYPES_TEST_O_FILES=${CTOOLS_UTILS_TYPES_O_PATH} ${CTOOLS_UTILS_TYPES_TEST_O_PATH} 
+CTOOLS_UTILS_TYPES_TEST_DEV_FILES= ${DEV_CTOOLS_UTILS_TYPES_TEST_C_FILES} ${DEV_CTOOLS_UTILS_TYPES_TEST_H_FILES} ${DEV_CTOOLS_UTILS_TYPES_TEST_O_FILES} 
 
 
-Dev: ${DEV_../CTools/Utils/Types/_TEST_C_DEPS} ${DEV_../CTools/Utils/Types/_TEST_H_DEPS}
-	cd ${../CTools/Utils/Types/_DIR}; gcc -c ${../CTools/Utils/Types/_C}
-	cd ${../CTools/Utils/Types/_TEST_DIR}; gcc -c ${../CTools/Utils/Types/_TEST_C} ${../CTools/Utils/Types/_TEST_DRVR_C}
+DevCToolsUtilsTypes: ${DEV_CTOOLS_UTILS_TYPES_TEST_C_DEPS} ${DEV_CTOOLS_UTILS_TYPES_TEST_H_DEPS}
+	cd ${CTOOLS_UTILS_TYPES_DIR}; gcc -c ${CTOOLS_UTILS_TYPES_C}
+	cd ${CTOOLS_UTILS_TYPES_TEST_DIR}; gcc -c ${CTOOLS_UTILS_TYPES_TEST_C} ${CTOOLS_UTILS_TYPES_TEST_DRVR_C}
 
-Prod: ${PROD_../CTools/Utils/Types/_TEST_C_DEPS} ${PROD_../CTools/Utils/Types/_TEST_H_DEPS}
-	cd ${../CTools/Utils/Types/_DIR}; gcc -c ${../CTools/Utils/Types/_C}
-	cd ${../CTools/Utils/Types/_TEST_DIR}; gcc -c ${../CTools/Utils/Types/_TEST_C}
+ProdCToolsUtilsTypes: ${PROD_CTOOLS_UTILS_TYPES_TEST_C_DEPS} ${PROD_CTOOLS_UTILS_TYPES_TEST_H_DEPS}
+	cd ${CTOOLS_UTILS_TYPES_DIR}; gcc -c ${CTOOLS_UTILS_TYPES_C}
+	cd ${CTOOLS_UTILS_TYPES_TEST_DIR}; gcc -c ${CTOOLS_UTILS_TYPES_TEST_C}
 
-DevClean: ${DEV_../CTools/Utils/Types/_TEST_O_DEPS}
-	cd ${../CTools/Utils/Types/_DIR}; rm -f ${../CTools/Utils/Types/_O}
-	cd ${../CTools/Utils/Types/_TEST_DIR}; rm -f ${../CTools/Utils/Types/_TEST_O} ${../CTools/Utils/Types/_TEST_DRVR_O}
+DevCToolsUtilsTypesClean: ${DEV_CTOOLS_UTILS_TYPES_TEST_O_DEPS}
+	cd ${CTOOLS_UTILS_TYPES_DIR}; rm -f ${CTOOLS_UTILS_TYPES_O}
+	cd ${CTOOLS_UTILS_TYPES_TEST_DIR}; rm -f ${CTOOLS_UTILS_TYPES_TEST_O} ${CTOOLS_UTILS_TYPES_TEST_DRVR_O}
 
-ProdClean: ${PROD_../CTools/Utils/Types/_TEST_O_DEPS}
-	cd ${../CTools/Utils/Types/_DIR}; rm -f ${../CTools/Utils/Types/_O}
-	cd ${../CTools/Utils/Types/_TEST_DIR}; rm -f ${../CTools/Utils/Types/_TEST_O}
+ProdCToolsUtilsTypesClean: ${PROD_CTOOLS_UTILS_TYPES_TEST_O_DEPS}
+	cd ${CTOOLS_UTILS_TYPES_DIR}; rm -f ${CTOOLS_UTILS_TYPES_O}
+	cd ${CTOOLS_UTILS_TYPES_TEST_DIR}; rm -f ${CTOOLS_UTILS_TYPES_TEST_O}
 
-DevLink: ${DEV_../CTools/Utils/Types/_TEST_O_DEPS}
-	(gcc -o devTest ${../CTools/Utils/Types/_O_PATH} ${../CTools/Utils/Types/_TEST_O_PATH} ${../CTools/Utils/Types/_TEST_DRVR_O_PATH})
+DevCToolsUtilsTypesLink: ${DEV_CTOOLS_UTILS_TYPES_TEST_O_DEPS}
+	(gcc -o devTest ${CTOOLS_UTILS_TYPES_O_PATH} ${CTOOLS_UTILS_TYPES_TEST_O_PATH} ${CTOOLS_UTILS_TYPES_TEST_DRVR_O_PATH})
 
-ProdLink: ${PROD_../CTools/Utils/Types/_TEST_O_DEPS}
-	(gcc -o prodTest ${../CTools/Utils/Types/_O_PATH} ${../CTools/Utils/Types/_TEST_O_PATH})
+ProdCToolsUtilsTypesLink: ${PROD_CTOOLS_UTILS_TYPES_TEST_O_DEPS}
+	(gcc -o prodTest ${CTOOLS_UTILS_TYPES_O_PATH} ${CTOOLS_UTILS_TYPES_TEST_O_PATH})
 
-DevRun: ${DEV_../CTools/Utils/Types/_TEST_O_DEPS} ${DEV_../CTools/Utils/Types/_TEST_C_DEPS} ${DEV_../CTools/Utils/Types/_TEST_H_DEPS}
-	make DevClean
-	make Dev
-	make DevLink
+DevCToolsUtilsTypesRun: ${DEV_CTOOLS_UTILS_TYPES_TEST_O_DEPS} ${DEV_CTOOLS_UTILS_TYPES_TEST_C_DEPS} ${DEV_CTOOLS_UTILS_TYPES_TEST_H_DEPS}
+	make DevCToolsUtilsTypesClean
+	make DevCToolsUtilsTypes
+	make DevCToolsUtilsTypesLink
 	./devTest
 
 ########################################################################################################################################
@@ -790,70 +790,70 @@ DevRun: ${DEV_../CTools/Utils/Types/_TEST_O_DEPS} ${DEV_../CTools/Utils/Types/_T
 
 
 
-../CTools/Utils/Types/Array/_DIR=Array
-../CTools/Utils/Types/Array/_TEST_DIR=${../CTools/Utils/Types/Array/_DIR}Test/
-../CTools/Utils/Types/Array/_C=Array.c.c
-../CTools/Utils/Types/Array/_H=Array.h.h
-../CTools/Utils/Types/Array/_O=Array.o.o
-../CTools/Utils/Types/Array/_TEST_C=Test.c
-../CTools/Utils/Types/Array/_TEST_H=Test.h
-../CTools/Utils/Types/Array/_TEST_O=Test.o
-../CTools/Utils/Types/Array/_TEST_DRVR_C=Drvr.c
-../CTools/Utils/Types/Array/_TEST_DRVR_H=Drvr.h
-../CTools/Utils/Types/Array/_TEST_DRVR_O=Drvr.o
-../CTools/Utils/Types/Array/_C_PATH=${../CTools/Utils/Types/Array/_DIR}${../CTools/Utils/Types/Array/_C}
-../CTools/Utils/Types/Array/_H_PATH=${../CTools/Utils/Types/Array/_DIR}${../CTools/Utils/Types/Array/_H}
-../CTools/Utils/Types/Array/_O_PATH=${../CTools/Utils/Types/Array/_DIR}${../CTools/Utils/Types/Array/_O}
-../CTools/Utils/Types/Array/_TEST_C_PATH=${../CTools/Utils/Types/Array/_TEST_DIR}${../CTools/Utils/Types/Array/_TEST_C}
-../CTools/Utils/Types/Array/_TEST_H_PATH=${../CTools/Utils/Types/Array/_TEST_DIR}${../CTools/Utils/Types/Array/_TEST_H}
-../CTools/Utils/Types/Array/_TEST_O_PATH=${../CTools/Utils/Types/Array/_TEST_DIR}${../CTools/Utils/Types/Array/_TEST_O}
-../CTools/Utils/Types/Array/_TEST_DRVR_C_PATH=${../CTools/Utils/Types/Array/_TEST_DIR}${../CTools/Utils/Types/Array/_TEST_DRVR_C}
-../CTools/Utils/Types/Array/_TEST_DRVR_H_PATH=${../CTools/Utils/Types/Array/_TEST_DIR}${../CTools/Utils/Types/Array/_TEST_DRVR_H}
-../CTools/Utils/Types/Array/_TEST_DRVR_O_PATH=${../CTools/Utils/Types/Array/_TEST_DIR}${../CTools/Utils/Types/Array/_TEST_DRVR_O}
-../CTools/Utils/Types/Array/_TEST_DRVR_C_PATH=${../CTools/Utils/Types/Array/_TEST_DIR}${../CTools/Utils/Types/Array/_TEST_DRVR_C}
-../CTools/Utils/Types/Array/_TEST_DRVR_H_PATH=${../CTools/Utils/Types/Array/_TEST_DIR}${../CTools/Utils/Types/Array/_TEST_DRVR_H}
-../CTools/Utils/Types/Array/_TEST_DRVR_O_PATH=${../CTools/Utils/Types/Array/_TEST_DIR}${../CTools/Utils/Types/Array/_TEST_DRVR_O}
-PROD_../CTools/Utils/Types/Array/_TEST_C_DEPS=${../CTools/Utils/Types/Array/_C_PATH} ${../CTools/Utils/Types/Array/_TEST_C_PATH} 
-PROD_../CTools/Utils/Types/Array/_TEST_H_DEPS=${../CTools/Utils/Types/Array/_H_PATH} ${../CTools/Utils/Types/Array/_TEST_H_PATH} 
-PROD_../CTools/Utils/Types/Array/_TEST_O_DEPS=${../CTools/Utils/Types/Array/_O_PATH} ${../CTools/Utils/Types/Array/_TEST_O_PATH} 
-DEV_../CTools/Utils/Types/Array/_TEST_C_DEPS=${../CTools/Utils/Types/Array/_C_PATH} ${../CTools/Utils/Types/Array/_TEST_C_PATH} ${../CTools/Utils/Types/Array/_TEST_DRVR_C_PATH} 
-DEV_../CTools/Utils/Types/Array/_TEST_H_DEPS=${../CTools/Utils/Types/Array/_H_PATH} ${../CTools/Utils/Types/Array/_TEST_H_PATH} ${../CTools/Utils/Types/Array/_TEST_DRVR_H_PATH} 
-DEV_../CTools/Utils/Types/Array/_TEST_O_DEPS=${../CTools/Utils/Types/Array/_O_PATH} ${../CTools/Utils/Types/Array/_TEST_O_PATH} ${../CTools/Utils/Types/Array/_TEST_DRVR_O_PATH} 
-DEV_../CTools/Utils/Types/Array/_TEST_C_FILES=${../CTools/Utils/Types/Array/_C_PATH} ${../CTools/Utils/Types/Array/_TEST_C_PATH} ${../CTools/Utils/Types/Array/_TEST_DRVR_C_PATH} 
-DEV_../CTools/Utils/Types/Array/_TEST_H_FILES=${../CTools/Utils/Types/Array/_H_PATH} ${../CTools/Utils/Types/Array/_TEST_H_PATH} ${../CTools/Utils/Types/Array/_TEST_DRVR_H_PATH} 
-DEV_../CTools/Utils/Types/Array/_TEST_O_FILES=${../CTools/Utils/Types/Array/_O_PATH} ${../CTools/Utils/Types/Array/_TEST_O_PATH} ${../CTools/Utils/Types/Array/_TEST_DRVR_O_PATH} 
-PROD_../CTools/Utils/Types/Array/_TEST_C_FILES=${../CTools/Utils/Types/Array/_C_PATH} ${../CTools/Utils/Types/Array/_TEST_C_PATH} 
-PROD_../CTools/Utils/Types/Array/_TEST_H_FILES=${../CTools/Utils/Types/Array/_H_PATH} ${../CTools/Utils/Types/Array/_TEST_H_PATH} 
-PROD_../CTools/Utils/Types/Array/_TEST_O_FILES=${../CTools/Utils/Types/Array/_O_PATH} ${../CTools/Utils/Types/Array/_TEST_O_PATH} 
-../CTools/Utils/Types/Array/_TEST_DEV_FILES= ${DEV_../CTools/Utils/Types/Array/_TEST_C_FILES} ${DEV_../CTools/Utils/Types/Array/_TEST_H_FILES} ${DEV_../CTools/Utils/Types/Array/_TEST_O_FILES} 
+CTOOLS_UTILS_TYPES_ARRAY_DIR=./CTools/Utils/Types/Array/
+CTOOLS_UTILS_TYPES_ARRAY_TEST_DIR=${CTOOLS_UTILS_TYPES_ARRAY_DIR}Test/
+CTOOLS_UTILS_TYPES_ARRAY_C=Array.c
+CTOOLS_UTILS_TYPES_ARRAY_H=Array.h
+CTOOLS_UTILS_TYPES_ARRAY_O=Array.o
+CTOOLS_UTILS_TYPES_ARRAY_TEST_C=Test.c
+CTOOLS_UTILS_TYPES_ARRAY_TEST_H=Test.h
+CTOOLS_UTILS_TYPES_ARRAY_TEST_O=Test.o
+CTOOLS_UTILS_TYPES_ARRAY_TEST_DRVR_C=Drvr.c
+CTOOLS_UTILS_TYPES_ARRAY_TEST_DRVR_H=Drvr.h
+CTOOLS_UTILS_TYPES_ARRAY_TEST_DRVR_O=Drvr.o
+CTOOLS_UTILS_TYPES_ARRAY_C_PATH=${CTOOLS_UTILS_TYPES_ARRAY_DIR}${CTOOLS_UTILS_TYPES_ARRAY_C}
+CTOOLS_UTILS_TYPES_ARRAY_H_PATH=${CTOOLS_UTILS_TYPES_ARRAY_DIR}${CTOOLS_UTILS_TYPES_ARRAY_H}
+CTOOLS_UTILS_TYPES_ARRAY_O_PATH=${CTOOLS_UTILS_TYPES_ARRAY_DIR}${CTOOLS_UTILS_TYPES_ARRAY_O}
+CTOOLS_UTILS_TYPES_ARRAY_TEST_C_PATH=${CTOOLS_UTILS_TYPES_ARRAY_TEST_DIR}${CTOOLS_UTILS_TYPES_ARRAY_TEST_C}
+CTOOLS_UTILS_TYPES_ARRAY_TEST_H_PATH=${CTOOLS_UTILS_TYPES_ARRAY_TEST_DIR}${CTOOLS_UTILS_TYPES_ARRAY_TEST_H}
+CTOOLS_UTILS_TYPES_ARRAY_TEST_O_PATH=${CTOOLS_UTILS_TYPES_ARRAY_TEST_DIR}${CTOOLS_UTILS_TYPES_ARRAY_TEST_O}
+CTOOLS_UTILS_TYPES_ARRAY_TEST_DRVR_C_PATH=${CTOOLS_UTILS_TYPES_ARRAY_TEST_DIR}${CTOOLS_UTILS_TYPES_ARRAY_TEST_DRVR_C}
+CTOOLS_UTILS_TYPES_ARRAY_TEST_DRVR_H_PATH=${CTOOLS_UTILS_TYPES_ARRAY_TEST_DIR}${CTOOLS_UTILS_TYPES_ARRAY_TEST_DRVR_H}
+CTOOLS_UTILS_TYPES_ARRAY_TEST_DRVR_O_PATH=${CTOOLS_UTILS_TYPES_ARRAY_TEST_DIR}${CTOOLS_UTILS_TYPES_ARRAY_TEST_DRVR_O}
+CTOOLS_UTILS_TYPES_ARRAY_TEST_DRVR_C_PATH=${CTOOLS_UTILS_TYPES_ARRAY_TEST_DIR}${CTOOLS_UTILS_TYPES_ARRAY_TEST_DRVR_C}
+CTOOLS_UTILS_TYPES_ARRAY_TEST_DRVR_H_PATH=${CTOOLS_UTILS_TYPES_ARRAY_TEST_DIR}${CTOOLS_UTILS_TYPES_ARRAY_TEST_DRVR_H}
+CTOOLS_UTILS_TYPES_ARRAY_TEST_DRVR_O_PATH=${CTOOLS_UTILS_TYPES_ARRAY_TEST_DIR}${CTOOLS_UTILS_TYPES_ARRAY_TEST_DRVR_O}
+PROD_CTOOLS_UTILS_TYPES_ARRAY_TEST_C_DEPS=${CTOOLS_UTILS_TYPES_ARRAY_C_PATH} ${CTOOLS_UTILS_TYPES_ARRAY_TEST_C_PATH} 
+PROD_CTOOLS_UTILS_TYPES_ARRAY_TEST_H_DEPS=${CTOOLS_UTILS_TYPES_ARRAY_H_PATH} ${CTOOLS_UTILS_TYPES_ARRAY_TEST_H_PATH} 
+PROD_CTOOLS_UTILS_TYPES_ARRAY_TEST_O_DEPS=${CTOOLS_UTILS_TYPES_ARRAY_O_PATH} ${CTOOLS_UTILS_TYPES_ARRAY_TEST_O_PATH} 
+DEV_CTOOLS_UTILS_TYPES_ARRAY_TEST_C_DEPS=${CTOOLS_UTILS_TYPES_ARRAY_C_PATH} ${CTOOLS_UTILS_TYPES_ARRAY_TEST_C_PATH} ${CTOOLS_UTILS_TYPES_ARRAY_TEST_DRVR_C_PATH} 
+DEV_CTOOLS_UTILS_TYPES_ARRAY_TEST_H_DEPS=${CTOOLS_UTILS_TYPES_ARRAY_H_PATH} ${CTOOLS_UTILS_TYPES_ARRAY_TEST_H_PATH} ${CTOOLS_UTILS_TYPES_ARRAY_TEST_DRVR_H_PATH} 
+DEV_CTOOLS_UTILS_TYPES_ARRAY_TEST_O_DEPS=${CTOOLS_UTILS_TYPES_ARRAY_O_PATH} ${CTOOLS_UTILS_TYPES_ARRAY_TEST_O_PATH} ${CTOOLS_UTILS_TYPES_ARRAY_TEST_DRVR_O_PATH} 
+DEV_CTOOLS_UTILS_TYPES_ARRAY_TEST_C_FILES=${CTOOLS_UTILS_TYPES_ARRAY_C_PATH} ${CTOOLS_UTILS_TYPES_ARRAY_TEST_C_PATH} ${CTOOLS_UTILS_TYPES_ARRAY_TEST_DRVR_C_PATH} 
+DEV_CTOOLS_UTILS_TYPES_ARRAY_TEST_H_FILES=${CTOOLS_UTILS_TYPES_ARRAY_H_PATH} ${CTOOLS_UTILS_TYPES_ARRAY_TEST_H_PATH} ${CTOOLS_UTILS_TYPES_ARRAY_TEST_DRVR_H_PATH} 
+DEV_CTOOLS_UTILS_TYPES_ARRAY_TEST_O_FILES=${CTOOLS_UTILS_TYPES_ARRAY_O_PATH} ${CTOOLS_UTILS_TYPES_ARRAY_TEST_O_PATH} ${CTOOLS_UTILS_TYPES_ARRAY_TEST_DRVR_O_PATH} 
+PROD_CTOOLS_UTILS_TYPES_ARRAY_TEST_C_FILES=${CTOOLS_UTILS_TYPES_ARRAY_C_PATH} ${CTOOLS_UTILS_TYPES_ARRAY_TEST_C_PATH} 
+PROD_CTOOLS_UTILS_TYPES_ARRAY_TEST_H_FILES=${CTOOLS_UTILS_TYPES_ARRAY_H_PATH} ${CTOOLS_UTILS_TYPES_ARRAY_TEST_H_PATH} 
+PROD_CTOOLS_UTILS_TYPES_ARRAY_TEST_O_FILES=${CTOOLS_UTILS_TYPES_ARRAY_O_PATH} ${CTOOLS_UTILS_TYPES_ARRAY_TEST_O_PATH} 
+CTOOLS_UTILS_TYPES_ARRAY_TEST_DEV_FILES= ${DEV_CTOOLS_UTILS_TYPES_ARRAY_TEST_C_FILES} ${DEV_CTOOLS_UTILS_TYPES_ARRAY_TEST_H_FILES} ${DEV_CTOOLS_UTILS_TYPES_ARRAY_TEST_O_FILES} 
 
 
-Dev: ${DEV_../CTools/Utils/Types/Array/_TEST_C_DEPS} ${DEV_../CTools/Utils/Types/Array/_TEST_H_DEPS}
-	cd ${../CTools/Utils/Types/Array/_DIR}; gcc -c ${../CTools/Utils/Types/Array/_C}
-	cd ${../CTools/Utils/Types/Array/_TEST_DIR}; gcc -c ${../CTools/Utils/Types/Array/_TEST_C} ${../CTools/Utils/Types/Array/_TEST_DRVR_C}
+DevCToolsUtilsTypesArray: ${DEV_CTOOLS_UTILS_TYPES_ARRAY_TEST_C_DEPS} ${DEV_CTOOLS_UTILS_TYPES_ARRAY_TEST_H_DEPS}
+	cd ${CTOOLS_UTILS_TYPES_ARRAY_DIR}; gcc -c ${CTOOLS_UTILS_TYPES_ARRAY_C}
+	cd ${CTOOLS_UTILS_TYPES_ARRAY_TEST_DIR}; gcc -c ${CTOOLS_UTILS_TYPES_ARRAY_TEST_C} ${CTOOLS_UTILS_TYPES_ARRAY_TEST_DRVR_C}
 
-Prod: ${PROD_../CTools/Utils/Types/Array/_TEST_C_DEPS} ${PROD_../CTools/Utils/Types/Array/_TEST_H_DEPS}
-	cd ${../CTools/Utils/Types/Array/_DIR}; gcc -c ${../CTools/Utils/Types/Array/_C}
-	cd ${../CTools/Utils/Types/Array/_TEST_DIR}; gcc -c ${../CTools/Utils/Types/Array/_TEST_C}
+ProdCToolsUtilsTypesArray: ${PROD_CTOOLS_UTILS_TYPES_ARRAY_TEST_C_DEPS} ${PROD_CTOOLS_UTILS_TYPES_ARRAY_TEST_H_DEPS}
+	cd ${CTOOLS_UTILS_TYPES_ARRAY_DIR}; gcc -c ${CTOOLS_UTILS_TYPES_ARRAY_C}
+	cd ${CTOOLS_UTILS_TYPES_ARRAY_TEST_DIR}; gcc -c ${CTOOLS_UTILS_TYPES_ARRAY_TEST_C}
 
-DevClean: ${DEV_../CTools/Utils/Types/Array/_TEST_O_DEPS}
-	cd ${../CTools/Utils/Types/Array/_DIR}; rm -f ${../CTools/Utils/Types/Array/_O}
-	cd ${../CTools/Utils/Types/Array/_TEST_DIR}; rm -f ${../CTools/Utils/Types/Array/_TEST_O} ${../CTools/Utils/Types/Array/_TEST_DRVR_O}
+DevCToolsUtilsTypesArrayClean: ${DEV_CTOOLS_UTILS_TYPES_ARRAY_TEST_O_DEPS}
+	cd ${CTOOLS_UTILS_TYPES_ARRAY_DIR}; rm -f ${CTOOLS_UTILS_TYPES_ARRAY_O}
+	cd ${CTOOLS_UTILS_TYPES_ARRAY_TEST_DIR}; rm -f ${CTOOLS_UTILS_TYPES_ARRAY_TEST_O} ${CTOOLS_UTILS_TYPES_ARRAY_TEST_DRVR_O}
 
-ProdClean: ${PROD_../CTools/Utils/Types/Array/_TEST_O_DEPS}
-	cd ${../CTools/Utils/Types/Array/_DIR}; rm -f ${../CTools/Utils/Types/Array/_O}
-	cd ${../CTools/Utils/Types/Array/_TEST_DIR}; rm -f ${../CTools/Utils/Types/Array/_TEST_O}
+ProdCToolsUtilsTypesArrayClean: ${PROD_CTOOLS_UTILS_TYPES_ARRAY_TEST_O_DEPS}
+	cd ${CTOOLS_UTILS_TYPES_ARRAY_DIR}; rm -f ${CTOOLS_UTILS_TYPES_ARRAY_O}
+	cd ${CTOOLS_UTILS_TYPES_ARRAY_TEST_DIR}; rm -f ${CTOOLS_UTILS_TYPES_ARRAY_TEST_O}
 
-DevLink: ${DEV_../CTools/Utils/Types/Array/_TEST_O_DEPS}
-	(gcc -o devTest ${../CTools/Utils/Types/Array/_O_PATH} ${../CTools/Utils/Types/Array/_TEST_O_PATH} ${../CTools/Utils/Types/Array/_TEST_DRVR_O_PATH})
+DevCToolsUtilsTypesArrayLink: ${DEV_CTOOLS_UTILS_TYPES_ARRAY_TEST_O_DEPS}
+	(gcc -o devTest ${CTOOLS_UTILS_TYPES_ARRAY_O_PATH} ${CTOOLS_UTILS_TYPES_ARRAY_TEST_O_PATH} ${CTOOLS_UTILS_TYPES_ARRAY_TEST_DRVR_O_PATH})
 
-ProdLink: ${PROD_../CTools/Utils/Types/Array/_TEST_O_DEPS}
-	(gcc -o prodTest ${../CTools/Utils/Types/Array/_O_PATH} ${../CTools/Utils/Types/Array/_TEST_O_PATH})
+ProdCToolsUtilsTypesArrayLink: ${PROD_CTOOLS_UTILS_TYPES_ARRAY_TEST_O_DEPS}
+	(gcc -o prodTest ${CTOOLS_UTILS_TYPES_ARRAY_O_PATH} ${CTOOLS_UTILS_TYPES_ARRAY_TEST_O_PATH})
 
-DevRun: ${DEV_../CTools/Utils/Types/Array/_TEST_O_DEPS} ${DEV_../CTools/Utils/Types/Array/_TEST_C_DEPS} ${DEV_../CTools/Utils/Types/Array/_TEST_H_DEPS}
-	make DevClean
-	make Dev
-	make DevLink
+DevCToolsUtilsTypesArrayRun: ${DEV_CTOOLS_UTILS_TYPES_ARRAY_TEST_O_DEPS} ${DEV_CTOOLS_UTILS_TYPES_ARRAY_TEST_C_DEPS} ${DEV_CTOOLS_UTILS_TYPES_ARRAY_TEST_H_DEPS}
+	make DevCToolsUtilsTypesArrayClean
+	make DevCToolsUtilsTypesArray
+	make DevCToolsUtilsTypesArrayLink
 	./devTest
 
 ########################################################################################################################################
@@ -862,70 +862,70 @@ DevRun: ${DEV_../CTools/Utils/Types/Array/_TEST_O_DEPS} ${DEV_../CTools/Utils/Ty
 
 
 
-../CTools/Utils/Types/Float/_DIR=Float
-../CTools/Utils/Types/Float/_TEST_DIR=${../CTools/Utils/Types/Float/_DIR}Test/
-../CTools/Utils/Types/Float/_C=Float.c.c
-../CTools/Utils/Types/Float/_H=Float.h.h
-../CTools/Utils/Types/Float/_O=Float.o.o
-../CTools/Utils/Types/Float/_TEST_C=Test.c
-../CTools/Utils/Types/Float/_TEST_H=Test.h
-../CTools/Utils/Types/Float/_TEST_O=Test.o
-../CTools/Utils/Types/Float/_TEST_DRVR_C=Drvr.c
-../CTools/Utils/Types/Float/_TEST_DRVR_H=Drvr.h
-../CTools/Utils/Types/Float/_TEST_DRVR_O=Drvr.o
-../CTools/Utils/Types/Float/_C_PATH=${../CTools/Utils/Types/Float/_DIR}${../CTools/Utils/Types/Float/_C}
-../CTools/Utils/Types/Float/_H_PATH=${../CTools/Utils/Types/Float/_DIR}${../CTools/Utils/Types/Float/_H}
-../CTools/Utils/Types/Float/_O_PATH=${../CTools/Utils/Types/Float/_DIR}${../CTools/Utils/Types/Float/_O}
-../CTools/Utils/Types/Float/_TEST_C_PATH=${../CTools/Utils/Types/Float/_TEST_DIR}${../CTools/Utils/Types/Float/_TEST_C}
-../CTools/Utils/Types/Float/_TEST_H_PATH=${../CTools/Utils/Types/Float/_TEST_DIR}${../CTools/Utils/Types/Float/_TEST_H}
-../CTools/Utils/Types/Float/_TEST_O_PATH=${../CTools/Utils/Types/Float/_TEST_DIR}${../CTools/Utils/Types/Float/_TEST_O}
-../CTools/Utils/Types/Float/_TEST_DRVR_C_PATH=${../CTools/Utils/Types/Float/_TEST_DIR}${../CTools/Utils/Types/Float/_TEST_DRVR_C}
-../CTools/Utils/Types/Float/_TEST_DRVR_H_PATH=${../CTools/Utils/Types/Float/_TEST_DIR}${../CTools/Utils/Types/Float/_TEST_DRVR_H}
-../CTools/Utils/Types/Float/_TEST_DRVR_O_PATH=${../CTools/Utils/Types/Float/_TEST_DIR}${../CTools/Utils/Types/Float/_TEST_DRVR_O}
-../CTools/Utils/Types/Float/_TEST_DRVR_C_PATH=${../CTools/Utils/Types/Float/_TEST_DIR}${../CTools/Utils/Types/Float/_TEST_DRVR_C}
-../CTools/Utils/Types/Float/_TEST_DRVR_H_PATH=${../CTools/Utils/Types/Float/_TEST_DIR}${../CTools/Utils/Types/Float/_TEST_DRVR_H}
-../CTools/Utils/Types/Float/_TEST_DRVR_O_PATH=${../CTools/Utils/Types/Float/_TEST_DIR}${../CTools/Utils/Types/Float/_TEST_DRVR_O}
-PROD_../CTools/Utils/Types/Float/_TEST_C_DEPS=${../CTools/Utils/Types/Float/_C_PATH} ${../CTools/Utils/Types/Float/_TEST_C_PATH} 
-PROD_../CTools/Utils/Types/Float/_TEST_H_DEPS=${../CTools/Utils/Types/Float/_H_PATH} ${../CTools/Utils/Types/Float/_TEST_H_PATH} 
-PROD_../CTools/Utils/Types/Float/_TEST_O_DEPS=${../CTools/Utils/Types/Float/_O_PATH} ${../CTools/Utils/Types/Float/_TEST_O_PATH} 
-DEV_../CTools/Utils/Types/Float/_TEST_C_DEPS=${../CTools/Utils/Types/Float/_C_PATH} ${../CTools/Utils/Types/Float/_TEST_C_PATH} ${../CTools/Utils/Types/Float/_TEST_DRVR_C_PATH} 
-DEV_../CTools/Utils/Types/Float/_TEST_H_DEPS=${../CTools/Utils/Types/Float/_H_PATH} ${../CTools/Utils/Types/Float/_TEST_H_PATH} ${../CTools/Utils/Types/Float/_TEST_DRVR_H_PATH} 
-DEV_../CTools/Utils/Types/Float/_TEST_O_DEPS=${../CTools/Utils/Types/Float/_O_PATH} ${../CTools/Utils/Types/Float/_TEST_O_PATH} ${../CTools/Utils/Types/Float/_TEST_DRVR_O_PATH} 
-DEV_../CTools/Utils/Types/Float/_TEST_C_FILES=${../CTools/Utils/Types/Float/_C_PATH} ${../CTools/Utils/Types/Float/_TEST_C_PATH} ${../CTools/Utils/Types/Float/_TEST_DRVR_C_PATH} 
-DEV_../CTools/Utils/Types/Float/_TEST_H_FILES=${../CTools/Utils/Types/Float/_H_PATH} ${../CTools/Utils/Types/Float/_TEST_H_PATH} ${../CTools/Utils/Types/Float/_TEST_DRVR_H_PATH} 
-DEV_../CTools/Utils/Types/Float/_TEST_O_FILES=${../CTools/Utils/Types/Float/_O_PATH} ${../CTools/Utils/Types/Float/_TEST_O_PATH} ${../CTools/Utils/Types/Float/_TEST_DRVR_O_PATH} 
-PROD_../CTools/Utils/Types/Float/_TEST_C_FILES=${../CTools/Utils/Types/Float/_C_PATH} ${../CTools/Utils/Types/Float/_TEST_C_PATH} 
-PROD_../CTools/Utils/Types/Float/_TEST_H_FILES=${../CTools/Utils/Types/Float/_H_PATH} ${../CTools/Utils/Types/Float/_TEST_H_PATH} 
-PROD_../CTools/Utils/Types/Float/_TEST_O_FILES=${../CTools/Utils/Types/Float/_O_PATH} ${../CTools/Utils/Types/Float/_TEST_O_PATH} 
-../CTools/Utils/Types/Float/_TEST_DEV_FILES= ${DEV_../CTools/Utils/Types/Float/_TEST_C_FILES} ${DEV_../CTools/Utils/Types/Float/_TEST_H_FILES} ${DEV_../CTools/Utils/Types/Float/_TEST_O_FILES} 
+CTOOLS_UTILS_TYPES_FLOAT_DIR=./CTools/Utils/Types/Float/
+CTOOLS_UTILS_TYPES_FLOAT_TEST_DIR=${CTOOLS_UTILS_TYPES_FLOAT_DIR}Test/
+CTOOLS_UTILS_TYPES_FLOAT_C=Float.c
+CTOOLS_UTILS_TYPES_FLOAT_H=Float.h
+CTOOLS_UTILS_TYPES_FLOAT_O=Float.o
+CTOOLS_UTILS_TYPES_FLOAT_TEST_C=Test.c
+CTOOLS_UTILS_TYPES_FLOAT_TEST_H=Test.h
+CTOOLS_UTILS_TYPES_FLOAT_TEST_O=Test.o
+CTOOLS_UTILS_TYPES_FLOAT_TEST_DRVR_C=Drvr.c
+CTOOLS_UTILS_TYPES_FLOAT_TEST_DRVR_H=Drvr.h
+CTOOLS_UTILS_TYPES_FLOAT_TEST_DRVR_O=Drvr.o
+CTOOLS_UTILS_TYPES_FLOAT_C_PATH=${CTOOLS_UTILS_TYPES_FLOAT_DIR}${CTOOLS_UTILS_TYPES_FLOAT_C}
+CTOOLS_UTILS_TYPES_FLOAT_H_PATH=${CTOOLS_UTILS_TYPES_FLOAT_DIR}${CTOOLS_UTILS_TYPES_FLOAT_H}
+CTOOLS_UTILS_TYPES_FLOAT_O_PATH=${CTOOLS_UTILS_TYPES_FLOAT_DIR}${CTOOLS_UTILS_TYPES_FLOAT_O}
+CTOOLS_UTILS_TYPES_FLOAT_TEST_C_PATH=${CTOOLS_UTILS_TYPES_FLOAT_TEST_DIR}${CTOOLS_UTILS_TYPES_FLOAT_TEST_C}
+CTOOLS_UTILS_TYPES_FLOAT_TEST_H_PATH=${CTOOLS_UTILS_TYPES_FLOAT_TEST_DIR}${CTOOLS_UTILS_TYPES_FLOAT_TEST_H}
+CTOOLS_UTILS_TYPES_FLOAT_TEST_O_PATH=${CTOOLS_UTILS_TYPES_FLOAT_TEST_DIR}${CTOOLS_UTILS_TYPES_FLOAT_TEST_O}
+CTOOLS_UTILS_TYPES_FLOAT_TEST_DRVR_C_PATH=${CTOOLS_UTILS_TYPES_FLOAT_TEST_DIR}${CTOOLS_UTILS_TYPES_FLOAT_TEST_DRVR_C}
+CTOOLS_UTILS_TYPES_FLOAT_TEST_DRVR_H_PATH=${CTOOLS_UTILS_TYPES_FLOAT_TEST_DIR}${CTOOLS_UTILS_TYPES_FLOAT_TEST_DRVR_H}
+CTOOLS_UTILS_TYPES_FLOAT_TEST_DRVR_O_PATH=${CTOOLS_UTILS_TYPES_FLOAT_TEST_DIR}${CTOOLS_UTILS_TYPES_FLOAT_TEST_DRVR_O}
+CTOOLS_UTILS_TYPES_FLOAT_TEST_DRVR_C_PATH=${CTOOLS_UTILS_TYPES_FLOAT_TEST_DIR}${CTOOLS_UTILS_TYPES_FLOAT_TEST_DRVR_C}
+CTOOLS_UTILS_TYPES_FLOAT_TEST_DRVR_H_PATH=${CTOOLS_UTILS_TYPES_FLOAT_TEST_DIR}${CTOOLS_UTILS_TYPES_FLOAT_TEST_DRVR_H}
+CTOOLS_UTILS_TYPES_FLOAT_TEST_DRVR_O_PATH=${CTOOLS_UTILS_TYPES_FLOAT_TEST_DIR}${CTOOLS_UTILS_TYPES_FLOAT_TEST_DRVR_O}
+PROD_CTOOLS_UTILS_TYPES_FLOAT_TEST_C_DEPS=${CTOOLS_UTILS_TYPES_FLOAT_C_PATH} ${CTOOLS_UTILS_TYPES_FLOAT_TEST_C_PATH} 
+PROD_CTOOLS_UTILS_TYPES_FLOAT_TEST_H_DEPS=${CTOOLS_UTILS_TYPES_FLOAT_H_PATH} ${CTOOLS_UTILS_TYPES_FLOAT_TEST_H_PATH} 
+PROD_CTOOLS_UTILS_TYPES_FLOAT_TEST_O_DEPS=${CTOOLS_UTILS_TYPES_FLOAT_O_PATH} ${CTOOLS_UTILS_TYPES_FLOAT_TEST_O_PATH} 
+DEV_CTOOLS_UTILS_TYPES_FLOAT_TEST_C_DEPS=${CTOOLS_UTILS_TYPES_FLOAT_C_PATH} ${CTOOLS_UTILS_TYPES_FLOAT_TEST_C_PATH} ${CTOOLS_UTILS_TYPES_FLOAT_TEST_DRVR_C_PATH} 
+DEV_CTOOLS_UTILS_TYPES_FLOAT_TEST_H_DEPS=${CTOOLS_UTILS_TYPES_FLOAT_H_PATH} ${CTOOLS_UTILS_TYPES_FLOAT_TEST_H_PATH} ${CTOOLS_UTILS_TYPES_FLOAT_TEST_DRVR_H_PATH} 
+DEV_CTOOLS_UTILS_TYPES_FLOAT_TEST_O_DEPS=${CTOOLS_UTILS_TYPES_FLOAT_O_PATH} ${CTOOLS_UTILS_TYPES_FLOAT_TEST_O_PATH} ${CTOOLS_UTILS_TYPES_FLOAT_TEST_DRVR_O_PATH} 
+DEV_CTOOLS_UTILS_TYPES_FLOAT_TEST_C_FILES=${CTOOLS_UTILS_TYPES_FLOAT_C_PATH} ${CTOOLS_UTILS_TYPES_FLOAT_TEST_C_PATH} ${CTOOLS_UTILS_TYPES_FLOAT_TEST_DRVR_C_PATH} 
+DEV_CTOOLS_UTILS_TYPES_FLOAT_TEST_H_FILES=${CTOOLS_UTILS_TYPES_FLOAT_H_PATH} ${CTOOLS_UTILS_TYPES_FLOAT_TEST_H_PATH} ${CTOOLS_UTILS_TYPES_FLOAT_TEST_DRVR_H_PATH} 
+DEV_CTOOLS_UTILS_TYPES_FLOAT_TEST_O_FILES=${CTOOLS_UTILS_TYPES_FLOAT_O_PATH} ${CTOOLS_UTILS_TYPES_FLOAT_TEST_O_PATH} ${CTOOLS_UTILS_TYPES_FLOAT_TEST_DRVR_O_PATH} 
+PROD_CTOOLS_UTILS_TYPES_FLOAT_TEST_C_FILES=${CTOOLS_UTILS_TYPES_FLOAT_C_PATH} ${CTOOLS_UTILS_TYPES_FLOAT_TEST_C_PATH} 
+PROD_CTOOLS_UTILS_TYPES_FLOAT_TEST_H_FILES=${CTOOLS_UTILS_TYPES_FLOAT_H_PATH} ${CTOOLS_UTILS_TYPES_FLOAT_TEST_H_PATH} 
+PROD_CTOOLS_UTILS_TYPES_FLOAT_TEST_O_FILES=${CTOOLS_UTILS_TYPES_FLOAT_O_PATH} ${CTOOLS_UTILS_TYPES_FLOAT_TEST_O_PATH} 
+CTOOLS_UTILS_TYPES_FLOAT_TEST_DEV_FILES= ${DEV_CTOOLS_UTILS_TYPES_FLOAT_TEST_C_FILES} ${DEV_CTOOLS_UTILS_TYPES_FLOAT_TEST_H_FILES} ${DEV_CTOOLS_UTILS_TYPES_FLOAT_TEST_O_FILES} 
 
 
-Dev: ${DEV_../CTools/Utils/Types/Float/_TEST_C_DEPS} ${DEV_../CTools/Utils/Types/Float/_TEST_H_DEPS}
-	cd ${../CTools/Utils/Types/Float/_DIR}; gcc -c ${../CTools/Utils/Types/Float/_C}
-	cd ${../CTools/Utils/Types/Float/_TEST_DIR}; gcc -c ${../CTools/Utils/Types/Float/_TEST_C} ${../CTools/Utils/Types/Float/_TEST_DRVR_C}
+DevCToolsUtilsTypesFloat: ${DEV_CTOOLS_UTILS_TYPES_FLOAT_TEST_C_DEPS} ${DEV_CTOOLS_UTILS_TYPES_FLOAT_TEST_H_DEPS}
+	cd ${CTOOLS_UTILS_TYPES_FLOAT_DIR}; gcc -c ${CTOOLS_UTILS_TYPES_FLOAT_C}
+	cd ${CTOOLS_UTILS_TYPES_FLOAT_TEST_DIR}; gcc -c ${CTOOLS_UTILS_TYPES_FLOAT_TEST_C} ${CTOOLS_UTILS_TYPES_FLOAT_TEST_DRVR_C}
 
-Prod: ${PROD_../CTools/Utils/Types/Float/_TEST_C_DEPS} ${PROD_../CTools/Utils/Types/Float/_TEST_H_DEPS}
-	cd ${../CTools/Utils/Types/Float/_DIR}; gcc -c ${../CTools/Utils/Types/Float/_C}
-	cd ${../CTools/Utils/Types/Float/_TEST_DIR}; gcc -c ${../CTools/Utils/Types/Float/_TEST_C}
+ProdCToolsUtilsTypesFloat: ${PROD_CTOOLS_UTILS_TYPES_FLOAT_TEST_C_DEPS} ${PROD_CTOOLS_UTILS_TYPES_FLOAT_TEST_H_DEPS}
+	cd ${CTOOLS_UTILS_TYPES_FLOAT_DIR}; gcc -c ${CTOOLS_UTILS_TYPES_FLOAT_C}
+	cd ${CTOOLS_UTILS_TYPES_FLOAT_TEST_DIR}; gcc -c ${CTOOLS_UTILS_TYPES_FLOAT_TEST_C}
 
-DevClean: ${DEV_../CTools/Utils/Types/Float/_TEST_O_DEPS}
-	cd ${../CTools/Utils/Types/Float/_DIR}; rm -f ${../CTools/Utils/Types/Float/_O}
-	cd ${../CTools/Utils/Types/Float/_TEST_DIR}; rm -f ${../CTools/Utils/Types/Float/_TEST_O} ${../CTools/Utils/Types/Float/_TEST_DRVR_O}
+DevCToolsUtilsTypesFloatClean: ${DEV_CTOOLS_UTILS_TYPES_FLOAT_TEST_O_DEPS}
+	cd ${CTOOLS_UTILS_TYPES_FLOAT_DIR}; rm -f ${CTOOLS_UTILS_TYPES_FLOAT_O}
+	cd ${CTOOLS_UTILS_TYPES_FLOAT_TEST_DIR}; rm -f ${CTOOLS_UTILS_TYPES_FLOAT_TEST_O} ${CTOOLS_UTILS_TYPES_FLOAT_TEST_DRVR_O}
 
-ProdClean: ${PROD_../CTools/Utils/Types/Float/_TEST_O_DEPS}
-	cd ${../CTools/Utils/Types/Float/_DIR}; rm -f ${../CTools/Utils/Types/Float/_O}
-	cd ${../CTools/Utils/Types/Float/_TEST_DIR}; rm -f ${../CTools/Utils/Types/Float/_TEST_O}
+ProdCToolsUtilsTypesFloatClean: ${PROD_CTOOLS_UTILS_TYPES_FLOAT_TEST_O_DEPS}
+	cd ${CTOOLS_UTILS_TYPES_FLOAT_DIR}; rm -f ${CTOOLS_UTILS_TYPES_FLOAT_O}
+	cd ${CTOOLS_UTILS_TYPES_FLOAT_TEST_DIR}; rm -f ${CTOOLS_UTILS_TYPES_FLOAT_TEST_O}
 
-DevLink: ${DEV_../CTools/Utils/Types/Float/_TEST_O_DEPS}
-	(gcc -o devTest ${../CTools/Utils/Types/Float/_O_PATH} ${../CTools/Utils/Types/Float/_TEST_O_PATH} ${../CTools/Utils/Types/Float/_TEST_DRVR_O_PATH})
+DevCToolsUtilsTypesFloatLink: ${DEV_CTOOLS_UTILS_TYPES_FLOAT_TEST_O_DEPS}
+	(gcc -o devTest ${CTOOLS_UTILS_TYPES_FLOAT_O_PATH} ${CTOOLS_UTILS_TYPES_FLOAT_TEST_O_PATH} ${CTOOLS_UTILS_TYPES_FLOAT_TEST_DRVR_O_PATH})
 
-ProdLink: ${PROD_../CTools/Utils/Types/Float/_TEST_O_DEPS}
-	(gcc -o prodTest ${../CTools/Utils/Types/Float/_O_PATH} ${../CTools/Utils/Types/Float/_TEST_O_PATH})
+ProdCToolsUtilsTypesFloatLink: ${PROD_CTOOLS_UTILS_TYPES_FLOAT_TEST_O_DEPS}
+	(gcc -o prodTest ${CTOOLS_UTILS_TYPES_FLOAT_O_PATH} ${CTOOLS_UTILS_TYPES_FLOAT_TEST_O_PATH})
 
-DevRun: ${DEV_../CTools/Utils/Types/Float/_TEST_O_DEPS} ${DEV_../CTools/Utils/Types/Float/_TEST_C_DEPS} ${DEV_../CTools/Utils/Types/Float/_TEST_H_DEPS}
-	make DevClean
-	make Dev
-	make DevLink
+DevCToolsUtilsTypesFloatRun: ${DEV_CTOOLS_UTILS_TYPES_FLOAT_TEST_O_DEPS} ${DEV_CTOOLS_UTILS_TYPES_FLOAT_TEST_C_DEPS} ${DEV_CTOOLS_UTILS_TYPES_FLOAT_TEST_H_DEPS}
+	make DevCToolsUtilsTypesFloatClean
+	make DevCToolsUtilsTypesFloat
+	make DevCToolsUtilsTypesFloatLink
 	./devTest
 
 ########################################################################################################################################
@@ -934,70 +934,70 @@ DevRun: ${DEV_../CTools/Utils/Types/Float/_TEST_O_DEPS} ${DEV_../CTools/Utils/Ty
 
 
 
-../CTools/Utils/Types/LinkList/_DIR=LinkList
-../CTools/Utils/Types/LinkList/_TEST_DIR=${../CTools/Utils/Types/LinkList/_DIR}Test/
-../CTools/Utils/Types/LinkList/_C=LinkList.c.c
-../CTools/Utils/Types/LinkList/_H=LinkList.h.h
-../CTools/Utils/Types/LinkList/_O=LinkList.o.o
-../CTools/Utils/Types/LinkList/_TEST_C=Test.c
-../CTools/Utils/Types/LinkList/_TEST_H=Test.h
-../CTools/Utils/Types/LinkList/_TEST_O=Test.o
-../CTools/Utils/Types/LinkList/_TEST_DRVR_C=Drvr.c
-../CTools/Utils/Types/LinkList/_TEST_DRVR_H=Drvr.h
-../CTools/Utils/Types/LinkList/_TEST_DRVR_O=Drvr.o
-../CTools/Utils/Types/LinkList/_C_PATH=${../CTools/Utils/Types/LinkList/_DIR}${../CTools/Utils/Types/LinkList/_C}
-../CTools/Utils/Types/LinkList/_H_PATH=${../CTools/Utils/Types/LinkList/_DIR}${../CTools/Utils/Types/LinkList/_H}
-../CTools/Utils/Types/LinkList/_O_PATH=${../CTools/Utils/Types/LinkList/_DIR}${../CTools/Utils/Types/LinkList/_O}
-../CTools/Utils/Types/LinkList/_TEST_C_PATH=${../CTools/Utils/Types/LinkList/_TEST_DIR}${../CTools/Utils/Types/LinkList/_TEST_C}
-../CTools/Utils/Types/LinkList/_TEST_H_PATH=${../CTools/Utils/Types/LinkList/_TEST_DIR}${../CTools/Utils/Types/LinkList/_TEST_H}
-../CTools/Utils/Types/LinkList/_TEST_O_PATH=${../CTools/Utils/Types/LinkList/_TEST_DIR}${../CTools/Utils/Types/LinkList/_TEST_O}
-../CTools/Utils/Types/LinkList/_TEST_DRVR_C_PATH=${../CTools/Utils/Types/LinkList/_TEST_DIR}${../CTools/Utils/Types/LinkList/_TEST_DRVR_C}
-../CTools/Utils/Types/LinkList/_TEST_DRVR_H_PATH=${../CTools/Utils/Types/LinkList/_TEST_DIR}${../CTools/Utils/Types/LinkList/_TEST_DRVR_H}
-../CTools/Utils/Types/LinkList/_TEST_DRVR_O_PATH=${../CTools/Utils/Types/LinkList/_TEST_DIR}${../CTools/Utils/Types/LinkList/_TEST_DRVR_O}
-../CTools/Utils/Types/LinkList/_TEST_DRVR_C_PATH=${../CTools/Utils/Types/LinkList/_TEST_DIR}${../CTools/Utils/Types/LinkList/_TEST_DRVR_C}
-../CTools/Utils/Types/LinkList/_TEST_DRVR_H_PATH=${../CTools/Utils/Types/LinkList/_TEST_DIR}${../CTools/Utils/Types/LinkList/_TEST_DRVR_H}
-../CTools/Utils/Types/LinkList/_TEST_DRVR_O_PATH=${../CTools/Utils/Types/LinkList/_TEST_DIR}${../CTools/Utils/Types/LinkList/_TEST_DRVR_O}
-PROD_../CTools/Utils/Types/LinkList/_TEST_C_DEPS=${../CTools/Utils/Types/LinkList/_C_PATH} ${../CTools/Utils/Types/LinkList/_TEST_C_PATH} ../CTools/Automata/Automata.c 
-PROD_../CTools/Utils/Types/LinkList/_TEST_H_DEPS=${../CTools/Utils/Types/LinkList/_H_PATH} ${../CTools/Utils/Types/LinkList/_TEST_H_PATH} ../CTools/Automata/Automata.h 
-PROD_../CTools/Utils/Types/LinkList/_TEST_O_DEPS=${../CTools/Utils/Types/LinkList/_O_PATH} ${../CTools/Utils/Types/LinkList/_TEST_O_PATH} ../CTools/Automata/Automata.o 
-DEV_../CTools/Utils/Types/LinkList/_TEST_C_DEPS=${../CTools/Utils/Types/LinkList/_C_PATH} ${../CTools/Utils/Types/LinkList/_TEST_C_PATH} ${../CTools/Utils/Types/LinkList/_TEST_DRVR_C_PATH} ../CTools/Automata/Automata.c 
-DEV_../CTools/Utils/Types/LinkList/_TEST_H_DEPS=${../CTools/Utils/Types/LinkList/_H_PATH} ${../CTools/Utils/Types/LinkList/_TEST_H_PATH} ${../CTools/Utils/Types/LinkList/_TEST_DRVR_H_PATH} ../CTools/Automata/Automata.h 
-DEV_../CTools/Utils/Types/LinkList/_TEST_O_DEPS=${../CTools/Utils/Types/LinkList/_O_PATH} ${../CTools/Utils/Types/LinkList/_TEST_O_PATH} ${../CTools/Utils/Types/LinkList/_TEST_DRVR_O_PATH} ../CTools/Automata/Automata.o 
-DEV_../CTools/Utils/Types/LinkList/_TEST_C_FILES=${../CTools/Utils/Types/LinkList/_C_PATH} ${../CTools/Utils/Types/LinkList/_TEST_C_PATH} ${../CTools/Utils/Types/LinkList/_TEST_DRVR_C_PATH} ../CTools/Automata/Automata.c 
-DEV_../CTools/Utils/Types/LinkList/_TEST_H_FILES=${../CTools/Utils/Types/LinkList/_H_PATH} ${../CTools/Utils/Types/LinkList/_TEST_H_PATH} ${../CTools/Utils/Types/LinkList/_TEST_DRVR_H_PATH} ../CTools/Automata/Automata.h 
-DEV_../CTools/Utils/Types/LinkList/_TEST_O_FILES=${../CTools/Utils/Types/LinkList/_O_PATH} ${../CTools/Utils/Types/LinkList/_TEST_O_PATH} ${../CTools/Utils/Types/LinkList/_TEST_DRVR_O_PATH} ../CTools/Automata/Automata.o 
-PROD_../CTools/Utils/Types/LinkList/_TEST_C_FILES=${../CTools/Utils/Types/LinkList/_C_PATH} ${../CTools/Utils/Types/LinkList/_TEST_C_PATH} ../CTools/Automata/Automata.c 
-PROD_../CTools/Utils/Types/LinkList/_TEST_H_FILES=${../CTools/Utils/Types/LinkList/_H_PATH} ${../CTools/Utils/Types/LinkList/_TEST_H_PATH} ../CTools/Automata/Automata.h 
-PROD_../CTools/Utils/Types/LinkList/_TEST_O_FILES=${../CTools/Utils/Types/LinkList/_O_PATH} ${../CTools/Utils/Types/LinkList/_TEST_O_PATH} ../CTools/Automata/Automata.o 
-../CTools/Utils/Types/LinkList/_TEST_DEV_FILES= ${DEV_../CTools/Utils/Types/LinkList/_TEST_C_FILES} ${DEV_../CTools/Utils/Types/LinkList/_TEST_H_FILES} ${DEV_../CTools/Utils/Types/LinkList/_TEST_O_FILES} 
+CTOOLS_UTILS_TYPES_LINKLIST_DIR=./CTools/Utils/Types/LinkList/
+CTOOLS_UTILS_TYPES_LINKLIST_TEST_DIR=${CTOOLS_UTILS_TYPES_LINKLIST_DIR}Test/
+CTOOLS_UTILS_TYPES_LINKLIST_C=LinkList.c
+CTOOLS_UTILS_TYPES_LINKLIST_H=LinkList.h
+CTOOLS_UTILS_TYPES_LINKLIST_O=LinkList.o
+CTOOLS_UTILS_TYPES_LINKLIST_TEST_C=Test.c
+CTOOLS_UTILS_TYPES_LINKLIST_TEST_H=Test.h
+CTOOLS_UTILS_TYPES_LINKLIST_TEST_O=Test.o
+CTOOLS_UTILS_TYPES_LINKLIST_TEST_DRVR_C=Drvr.c
+CTOOLS_UTILS_TYPES_LINKLIST_TEST_DRVR_H=Drvr.h
+CTOOLS_UTILS_TYPES_LINKLIST_TEST_DRVR_O=Drvr.o
+CTOOLS_UTILS_TYPES_LINKLIST_C_PATH=${CTOOLS_UTILS_TYPES_LINKLIST_DIR}${CTOOLS_UTILS_TYPES_LINKLIST_C}
+CTOOLS_UTILS_TYPES_LINKLIST_H_PATH=${CTOOLS_UTILS_TYPES_LINKLIST_DIR}${CTOOLS_UTILS_TYPES_LINKLIST_H}
+CTOOLS_UTILS_TYPES_LINKLIST_O_PATH=${CTOOLS_UTILS_TYPES_LINKLIST_DIR}${CTOOLS_UTILS_TYPES_LINKLIST_O}
+CTOOLS_UTILS_TYPES_LINKLIST_TEST_C_PATH=${CTOOLS_UTILS_TYPES_LINKLIST_TEST_DIR}${CTOOLS_UTILS_TYPES_LINKLIST_TEST_C}
+CTOOLS_UTILS_TYPES_LINKLIST_TEST_H_PATH=${CTOOLS_UTILS_TYPES_LINKLIST_TEST_DIR}${CTOOLS_UTILS_TYPES_LINKLIST_TEST_H}
+CTOOLS_UTILS_TYPES_LINKLIST_TEST_O_PATH=${CTOOLS_UTILS_TYPES_LINKLIST_TEST_DIR}${CTOOLS_UTILS_TYPES_LINKLIST_TEST_O}
+CTOOLS_UTILS_TYPES_LINKLIST_TEST_DRVR_C_PATH=${CTOOLS_UTILS_TYPES_LINKLIST_TEST_DIR}${CTOOLS_UTILS_TYPES_LINKLIST_TEST_DRVR_C}
+CTOOLS_UTILS_TYPES_LINKLIST_TEST_DRVR_H_PATH=${CTOOLS_UTILS_TYPES_LINKLIST_TEST_DIR}${CTOOLS_UTILS_TYPES_LINKLIST_TEST_DRVR_H}
+CTOOLS_UTILS_TYPES_LINKLIST_TEST_DRVR_O_PATH=${CTOOLS_UTILS_TYPES_LINKLIST_TEST_DIR}${CTOOLS_UTILS_TYPES_LINKLIST_TEST_DRVR_O}
+CTOOLS_UTILS_TYPES_LINKLIST_TEST_DRVR_C_PATH=${CTOOLS_UTILS_TYPES_LINKLIST_TEST_DIR}${CTOOLS_UTILS_TYPES_LINKLIST_TEST_DRVR_C}
+CTOOLS_UTILS_TYPES_LINKLIST_TEST_DRVR_H_PATH=${CTOOLS_UTILS_TYPES_LINKLIST_TEST_DIR}${CTOOLS_UTILS_TYPES_LINKLIST_TEST_DRVR_H}
+CTOOLS_UTILS_TYPES_LINKLIST_TEST_DRVR_O_PATH=${CTOOLS_UTILS_TYPES_LINKLIST_TEST_DIR}${CTOOLS_UTILS_TYPES_LINKLIST_TEST_DRVR_O}
+PROD_CTOOLS_UTILS_TYPES_LINKLIST_TEST_C_DEPS=${CTOOLS_UTILS_TYPES_LINKLIST_C_PATH} ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_C_PATH} ./CTools/Automata/Automata.c 
+PROD_CTOOLS_UTILS_TYPES_LINKLIST_TEST_H_DEPS=${CTOOLS_UTILS_TYPES_LINKLIST_H_PATH} ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_H_PATH} ./CTools/Automata/Automata.h 
+PROD_CTOOLS_UTILS_TYPES_LINKLIST_TEST_O_DEPS=${CTOOLS_UTILS_TYPES_LINKLIST_O_PATH} ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_O_PATH} ./CTools/Automata/Automata.o 
+DEV_CTOOLS_UTILS_TYPES_LINKLIST_TEST_C_DEPS=${CTOOLS_UTILS_TYPES_LINKLIST_C_PATH} ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_C_PATH} ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_DRVR_C_PATH} ./CTools/Automata/Automata.c 
+DEV_CTOOLS_UTILS_TYPES_LINKLIST_TEST_H_DEPS=${CTOOLS_UTILS_TYPES_LINKLIST_H_PATH} ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_H_PATH} ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_DRVR_H_PATH} ./CTools/Automata/Automata.h 
+DEV_CTOOLS_UTILS_TYPES_LINKLIST_TEST_O_DEPS=${CTOOLS_UTILS_TYPES_LINKLIST_O_PATH} ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_O_PATH} ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_DRVR_O_PATH} ./CTools/Automata/Automata.o 
+DEV_CTOOLS_UTILS_TYPES_LINKLIST_TEST_C_FILES=${CTOOLS_UTILS_TYPES_LINKLIST_C_PATH} ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_C_PATH} ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_DRVR_C_PATH} ./CTools/Automata/Automata.c 
+DEV_CTOOLS_UTILS_TYPES_LINKLIST_TEST_H_FILES=${CTOOLS_UTILS_TYPES_LINKLIST_H_PATH} ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_H_PATH} ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_DRVR_H_PATH} ./CTools/Automata/Automata.h 
+DEV_CTOOLS_UTILS_TYPES_LINKLIST_TEST_O_FILES=${CTOOLS_UTILS_TYPES_LINKLIST_O_PATH} ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_O_PATH} ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_DRVR_O_PATH} ./CTools/Automata/Automata.o 
+PROD_CTOOLS_UTILS_TYPES_LINKLIST_TEST_C_FILES=${CTOOLS_UTILS_TYPES_LINKLIST_C_PATH} ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_C_PATH} ./CTools/Automata/Automata.c 
+PROD_CTOOLS_UTILS_TYPES_LINKLIST_TEST_H_FILES=${CTOOLS_UTILS_TYPES_LINKLIST_H_PATH} ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_H_PATH} ./CTools/Automata/Automata.h 
+PROD_CTOOLS_UTILS_TYPES_LINKLIST_TEST_O_FILES=${CTOOLS_UTILS_TYPES_LINKLIST_O_PATH} ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_O_PATH} ./CTools/Automata/Automata.o 
+CTOOLS_UTILS_TYPES_LINKLIST_TEST_DEV_FILES= ${DEV_CTOOLS_UTILS_TYPES_LINKLIST_TEST_C_FILES} ${DEV_CTOOLS_UTILS_TYPES_LINKLIST_TEST_H_FILES} ${DEV_CTOOLS_UTILS_TYPES_LINKLIST_TEST_O_FILES} 
 
 
-Dev: ${DEV_../CTools/Utils/Types/LinkList/_TEST_C_DEPS} ${DEV_../CTools/Utils/Types/LinkList/_TEST_H_DEPS}
-	cd ${../CTools/Utils/Types/LinkList/_DIR}; gcc -c ${../CTools/Utils/Types/LinkList/_C}
-	cd ${../CTools/Utils/Types/LinkList/_TEST_DIR}; gcc -c ${../CTools/Utils/Types/LinkList/_TEST_C} ${../CTools/Utils/Types/LinkList/_TEST_DRVR_C}
+DevCToolsUtilsTypesLinkList: ${DEV_CTOOLS_UTILS_TYPES_LINKLIST_TEST_C_DEPS} ${DEV_CTOOLS_UTILS_TYPES_LINKLIST_TEST_H_DEPS}
+	cd ${CTOOLS_UTILS_TYPES_LINKLIST_DIR}; gcc -c ${CTOOLS_UTILS_TYPES_LINKLIST_C}
+	cd ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_DIR}; gcc -c ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_C} ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_DRVR_C}
 
-Prod: ${PROD_../CTools/Utils/Types/LinkList/_TEST_C_DEPS} ${PROD_../CTools/Utils/Types/LinkList/_TEST_H_DEPS}
-	cd ${../CTools/Utils/Types/LinkList/_DIR}; gcc -c ${../CTools/Utils/Types/LinkList/_C}
-	cd ${../CTools/Utils/Types/LinkList/_TEST_DIR}; gcc -c ${../CTools/Utils/Types/LinkList/_TEST_C}
+ProdCToolsUtilsTypesLinkList: ${PROD_CTOOLS_UTILS_TYPES_LINKLIST_TEST_C_DEPS} ${PROD_CTOOLS_UTILS_TYPES_LINKLIST_TEST_H_DEPS}
+	cd ${CTOOLS_UTILS_TYPES_LINKLIST_DIR}; gcc -c ${CTOOLS_UTILS_TYPES_LINKLIST_C}
+	cd ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_DIR}; gcc -c ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_C}
 
-DevClean: ${DEV_../CTools/Utils/Types/LinkList/_TEST_O_DEPS}
-	cd ${../CTools/Utils/Types/LinkList/_DIR}; rm -f ${../CTools/Utils/Types/LinkList/_O}
-	cd ${../CTools/Utils/Types/LinkList/_TEST_DIR}; rm -f ${../CTools/Utils/Types/LinkList/_TEST_O} ${../CTools/Utils/Types/LinkList/_TEST_DRVR_O}
+DevCToolsUtilsTypesLinkListClean: ${DEV_CTOOLS_UTILS_TYPES_LINKLIST_TEST_O_DEPS}
+	cd ${CTOOLS_UTILS_TYPES_LINKLIST_DIR}; rm -f ${CTOOLS_UTILS_TYPES_LINKLIST_O}
+	cd ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_DIR}; rm -f ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_O} ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_DRVR_O}
 
-ProdClean: ${PROD_../CTools/Utils/Types/LinkList/_TEST_O_DEPS}
-	cd ${../CTools/Utils/Types/LinkList/_DIR}; rm -f ${../CTools/Utils/Types/LinkList/_O}
-	cd ${../CTools/Utils/Types/LinkList/_TEST_DIR}; rm -f ${../CTools/Utils/Types/LinkList/_TEST_O}
+ProdCToolsUtilsTypesLinkListClean: ${PROD_CTOOLS_UTILS_TYPES_LINKLIST_TEST_O_DEPS}
+	cd ${CTOOLS_UTILS_TYPES_LINKLIST_DIR}; rm -f ${CTOOLS_UTILS_TYPES_LINKLIST_O}
+	cd ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_DIR}; rm -f ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_O}
 
-DevLink: ${DEV_../CTools/Utils/Types/LinkList/_TEST_O_DEPS}
-	(gcc -o devTest ${../CTools/Utils/Types/LinkList/_O_PATH} ${../CTools/Utils/Types/LinkList/_TEST_O_PATH} ${../CTools/Utils/Types/LinkList/_TEST_DRVR_O_PATH})
+DevCToolsUtilsTypesLinkListLink: ${DEV_CTOOLS_UTILS_TYPES_LINKLIST_TEST_O_DEPS}
+	(gcc -o devTest ${CTOOLS_UTILS_TYPES_LINKLIST_O_PATH} ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_O_PATH} ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_DRVR_O_PATH})
 
-ProdLink: ${PROD_../CTools/Utils/Types/LinkList/_TEST_O_DEPS}
-	(gcc -o prodTest ${../CTools/Utils/Types/LinkList/_O_PATH} ${../CTools/Utils/Types/LinkList/_TEST_O_PATH})
+ProdCToolsUtilsTypesLinkListLink: ${PROD_CTOOLS_UTILS_TYPES_LINKLIST_TEST_O_DEPS}
+	(gcc -o prodTest ${CTOOLS_UTILS_TYPES_LINKLIST_O_PATH} ${CTOOLS_UTILS_TYPES_LINKLIST_TEST_O_PATH})
 
-DevRun: ${DEV_../CTools/Utils/Types/LinkList/_TEST_O_DEPS} ${DEV_../CTools/Utils/Types/LinkList/_TEST_C_DEPS} ${DEV_../CTools/Utils/Types/LinkList/_TEST_H_DEPS}
-	make DevClean
-	make Dev
-	make DevLink
+DevCToolsUtilsTypesLinkListRun: ${DEV_CTOOLS_UTILS_TYPES_LINKLIST_TEST_O_DEPS} ${DEV_CTOOLS_UTILS_TYPES_LINKLIST_TEST_C_DEPS} ${DEV_CTOOLS_UTILS_TYPES_LINKLIST_TEST_H_DEPS}
+	make DevCToolsUtilsTypesLinkListClean
+	make DevCToolsUtilsTypesLinkList
+	make DevCToolsUtilsTypesLinkListLink
 	./devTest
 
 ########################################################################################################################################
@@ -1006,70 +1006,70 @@ DevRun: ${DEV_../CTools/Utils/Types/LinkList/_TEST_O_DEPS} ${DEV_../CTools/Utils
 
 
 
-../CTools/Utils/Types/Number/_DIR=Number
-../CTools/Utils/Types/Number/_TEST_DIR=${../CTools/Utils/Types/Number/_DIR}Test/
-../CTools/Utils/Types/Number/_C=Number.c.c
-../CTools/Utils/Types/Number/_H=Number.h.h
-../CTools/Utils/Types/Number/_O=Number.o.o
-../CTools/Utils/Types/Number/_TEST_C=Test.c
-../CTools/Utils/Types/Number/_TEST_H=Test.h
-../CTools/Utils/Types/Number/_TEST_O=Test.o
-../CTools/Utils/Types/Number/_TEST_DRVR_C=Drvr.c
-../CTools/Utils/Types/Number/_TEST_DRVR_H=Drvr.h
-../CTools/Utils/Types/Number/_TEST_DRVR_O=Drvr.o
-../CTools/Utils/Types/Number/_C_PATH=${../CTools/Utils/Types/Number/_DIR}${../CTools/Utils/Types/Number/_C}
-../CTools/Utils/Types/Number/_H_PATH=${../CTools/Utils/Types/Number/_DIR}${../CTools/Utils/Types/Number/_H}
-../CTools/Utils/Types/Number/_O_PATH=${../CTools/Utils/Types/Number/_DIR}${../CTools/Utils/Types/Number/_O}
-../CTools/Utils/Types/Number/_TEST_C_PATH=${../CTools/Utils/Types/Number/_TEST_DIR}${../CTools/Utils/Types/Number/_TEST_C}
-../CTools/Utils/Types/Number/_TEST_H_PATH=${../CTools/Utils/Types/Number/_TEST_DIR}${../CTools/Utils/Types/Number/_TEST_H}
-../CTools/Utils/Types/Number/_TEST_O_PATH=${../CTools/Utils/Types/Number/_TEST_DIR}${../CTools/Utils/Types/Number/_TEST_O}
-../CTools/Utils/Types/Number/_TEST_DRVR_C_PATH=${../CTools/Utils/Types/Number/_TEST_DIR}${../CTools/Utils/Types/Number/_TEST_DRVR_C}
-../CTools/Utils/Types/Number/_TEST_DRVR_H_PATH=${../CTools/Utils/Types/Number/_TEST_DIR}${../CTools/Utils/Types/Number/_TEST_DRVR_H}
-../CTools/Utils/Types/Number/_TEST_DRVR_O_PATH=${../CTools/Utils/Types/Number/_TEST_DIR}${../CTools/Utils/Types/Number/_TEST_DRVR_O}
-../CTools/Utils/Types/Number/_TEST_DRVR_C_PATH=${../CTools/Utils/Types/Number/_TEST_DIR}${../CTools/Utils/Types/Number/_TEST_DRVR_C}
-../CTools/Utils/Types/Number/_TEST_DRVR_H_PATH=${../CTools/Utils/Types/Number/_TEST_DIR}${../CTools/Utils/Types/Number/_TEST_DRVR_H}
-../CTools/Utils/Types/Number/_TEST_DRVR_O_PATH=${../CTools/Utils/Types/Number/_TEST_DIR}${../CTools/Utils/Types/Number/_TEST_DRVR_O}
-PROD_../CTools/Utils/Types/Number/_TEST_C_DEPS=${../CTools/Utils/Types/Number/_C_PATH} ${../CTools/Utils/Types/Number/_TEST_C_PATH} 
-PROD_../CTools/Utils/Types/Number/_TEST_H_DEPS=${../CTools/Utils/Types/Number/_H_PATH} ${../CTools/Utils/Types/Number/_TEST_H_PATH} 
-PROD_../CTools/Utils/Types/Number/_TEST_O_DEPS=${../CTools/Utils/Types/Number/_O_PATH} ${../CTools/Utils/Types/Number/_TEST_O_PATH} 
-DEV_../CTools/Utils/Types/Number/_TEST_C_DEPS=${../CTools/Utils/Types/Number/_C_PATH} ${../CTools/Utils/Types/Number/_TEST_C_PATH} ${../CTools/Utils/Types/Number/_TEST_DRVR_C_PATH} 
-DEV_../CTools/Utils/Types/Number/_TEST_H_DEPS=${../CTools/Utils/Types/Number/_H_PATH} ${../CTools/Utils/Types/Number/_TEST_H_PATH} ${../CTools/Utils/Types/Number/_TEST_DRVR_H_PATH} 
-DEV_../CTools/Utils/Types/Number/_TEST_O_DEPS=${../CTools/Utils/Types/Number/_O_PATH} ${../CTools/Utils/Types/Number/_TEST_O_PATH} ${../CTools/Utils/Types/Number/_TEST_DRVR_O_PATH} 
-DEV_../CTools/Utils/Types/Number/_TEST_C_FILES=${../CTools/Utils/Types/Number/_C_PATH} ${../CTools/Utils/Types/Number/_TEST_C_PATH} ${../CTools/Utils/Types/Number/_TEST_DRVR_C_PATH} 
-DEV_../CTools/Utils/Types/Number/_TEST_H_FILES=${../CTools/Utils/Types/Number/_H_PATH} ${../CTools/Utils/Types/Number/_TEST_H_PATH} ${../CTools/Utils/Types/Number/_TEST_DRVR_H_PATH} 
-DEV_../CTools/Utils/Types/Number/_TEST_O_FILES=${../CTools/Utils/Types/Number/_O_PATH} ${../CTools/Utils/Types/Number/_TEST_O_PATH} ${../CTools/Utils/Types/Number/_TEST_DRVR_O_PATH} 
-PROD_../CTools/Utils/Types/Number/_TEST_C_FILES=${../CTools/Utils/Types/Number/_C_PATH} ${../CTools/Utils/Types/Number/_TEST_C_PATH} 
-PROD_../CTools/Utils/Types/Number/_TEST_H_FILES=${../CTools/Utils/Types/Number/_H_PATH} ${../CTools/Utils/Types/Number/_TEST_H_PATH} 
-PROD_../CTools/Utils/Types/Number/_TEST_O_FILES=${../CTools/Utils/Types/Number/_O_PATH} ${../CTools/Utils/Types/Number/_TEST_O_PATH} 
-../CTools/Utils/Types/Number/_TEST_DEV_FILES= ${DEV_../CTools/Utils/Types/Number/_TEST_C_FILES} ${DEV_../CTools/Utils/Types/Number/_TEST_H_FILES} ${DEV_../CTools/Utils/Types/Number/_TEST_O_FILES} 
+CTOOLS_UTILS_TYPES_NUMBER_DIR=./CTools/Utils/Types/Number/
+CTOOLS_UTILS_TYPES_NUMBER_TEST_DIR=${CTOOLS_UTILS_TYPES_NUMBER_DIR}Test/
+CTOOLS_UTILS_TYPES_NUMBER_C=Number.c
+CTOOLS_UTILS_TYPES_NUMBER_H=Number.h
+CTOOLS_UTILS_TYPES_NUMBER_O=Number.o
+CTOOLS_UTILS_TYPES_NUMBER_TEST_C=Test.c
+CTOOLS_UTILS_TYPES_NUMBER_TEST_H=Test.h
+CTOOLS_UTILS_TYPES_NUMBER_TEST_O=Test.o
+CTOOLS_UTILS_TYPES_NUMBER_TEST_DRVR_C=Drvr.c
+CTOOLS_UTILS_TYPES_NUMBER_TEST_DRVR_H=Drvr.h
+CTOOLS_UTILS_TYPES_NUMBER_TEST_DRVR_O=Drvr.o
+CTOOLS_UTILS_TYPES_NUMBER_C_PATH=${CTOOLS_UTILS_TYPES_NUMBER_DIR}${CTOOLS_UTILS_TYPES_NUMBER_C}
+CTOOLS_UTILS_TYPES_NUMBER_H_PATH=${CTOOLS_UTILS_TYPES_NUMBER_DIR}${CTOOLS_UTILS_TYPES_NUMBER_H}
+CTOOLS_UTILS_TYPES_NUMBER_O_PATH=${CTOOLS_UTILS_TYPES_NUMBER_DIR}${CTOOLS_UTILS_TYPES_NUMBER_O}
+CTOOLS_UTILS_TYPES_NUMBER_TEST_C_PATH=${CTOOLS_UTILS_TYPES_NUMBER_TEST_DIR}${CTOOLS_UTILS_TYPES_NUMBER_TEST_C}
+CTOOLS_UTILS_TYPES_NUMBER_TEST_H_PATH=${CTOOLS_UTILS_TYPES_NUMBER_TEST_DIR}${CTOOLS_UTILS_TYPES_NUMBER_TEST_H}
+CTOOLS_UTILS_TYPES_NUMBER_TEST_O_PATH=${CTOOLS_UTILS_TYPES_NUMBER_TEST_DIR}${CTOOLS_UTILS_TYPES_NUMBER_TEST_O}
+CTOOLS_UTILS_TYPES_NUMBER_TEST_DRVR_C_PATH=${CTOOLS_UTILS_TYPES_NUMBER_TEST_DIR}${CTOOLS_UTILS_TYPES_NUMBER_TEST_DRVR_C}
+CTOOLS_UTILS_TYPES_NUMBER_TEST_DRVR_H_PATH=${CTOOLS_UTILS_TYPES_NUMBER_TEST_DIR}${CTOOLS_UTILS_TYPES_NUMBER_TEST_DRVR_H}
+CTOOLS_UTILS_TYPES_NUMBER_TEST_DRVR_O_PATH=${CTOOLS_UTILS_TYPES_NUMBER_TEST_DIR}${CTOOLS_UTILS_TYPES_NUMBER_TEST_DRVR_O}
+CTOOLS_UTILS_TYPES_NUMBER_TEST_DRVR_C_PATH=${CTOOLS_UTILS_TYPES_NUMBER_TEST_DIR}${CTOOLS_UTILS_TYPES_NUMBER_TEST_DRVR_C}
+CTOOLS_UTILS_TYPES_NUMBER_TEST_DRVR_H_PATH=${CTOOLS_UTILS_TYPES_NUMBER_TEST_DIR}${CTOOLS_UTILS_TYPES_NUMBER_TEST_DRVR_H}
+CTOOLS_UTILS_TYPES_NUMBER_TEST_DRVR_O_PATH=${CTOOLS_UTILS_TYPES_NUMBER_TEST_DIR}${CTOOLS_UTILS_TYPES_NUMBER_TEST_DRVR_O}
+PROD_CTOOLS_UTILS_TYPES_NUMBER_TEST_C_DEPS=${CTOOLS_UTILS_TYPES_NUMBER_C_PATH} ${CTOOLS_UTILS_TYPES_NUMBER_TEST_C_PATH} 
+PROD_CTOOLS_UTILS_TYPES_NUMBER_TEST_H_DEPS=${CTOOLS_UTILS_TYPES_NUMBER_H_PATH} ${CTOOLS_UTILS_TYPES_NUMBER_TEST_H_PATH} 
+PROD_CTOOLS_UTILS_TYPES_NUMBER_TEST_O_DEPS=${CTOOLS_UTILS_TYPES_NUMBER_O_PATH} ${CTOOLS_UTILS_TYPES_NUMBER_TEST_O_PATH} 
+DEV_CTOOLS_UTILS_TYPES_NUMBER_TEST_C_DEPS=${CTOOLS_UTILS_TYPES_NUMBER_C_PATH} ${CTOOLS_UTILS_TYPES_NUMBER_TEST_C_PATH} ${CTOOLS_UTILS_TYPES_NUMBER_TEST_DRVR_C_PATH} 
+DEV_CTOOLS_UTILS_TYPES_NUMBER_TEST_H_DEPS=${CTOOLS_UTILS_TYPES_NUMBER_H_PATH} ${CTOOLS_UTILS_TYPES_NUMBER_TEST_H_PATH} ${CTOOLS_UTILS_TYPES_NUMBER_TEST_DRVR_H_PATH} 
+DEV_CTOOLS_UTILS_TYPES_NUMBER_TEST_O_DEPS=${CTOOLS_UTILS_TYPES_NUMBER_O_PATH} ${CTOOLS_UTILS_TYPES_NUMBER_TEST_O_PATH} ${CTOOLS_UTILS_TYPES_NUMBER_TEST_DRVR_O_PATH} 
+DEV_CTOOLS_UTILS_TYPES_NUMBER_TEST_C_FILES=${CTOOLS_UTILS_TYPES_NUMBER_C_PATH} ${CTOOLS_UTILS_TYPES_NUMBER_TEST_C_PATH} ${CTOOLS_UTILS_TYPES_NUMBER_TEST_DRVR_C_PATH} 
+DEV_CTOOLS_UTILS_TYPES_NUMBER_TEST_H_FILES=${CTOOLS_UTILS_TYPES_NUMBER_H_PATH} ${CTOOLS_UTILS_TYPES_NUMBER_TEST_H_PATH} ${CTOOLS_UTILS_TYPES_NUMBER_TEST_DRVR_H_PATH} 
+DEV_CTOOLS_UTILS_TYPES_NUMBER_TEST_O_FILES=${CTOOLS_UTILS_TYPES_NUMBER_O_PATH} ${CTOOLS_UTILS_TYPES_NUMBER_TEST_O_PATH} ${CTOOLS_UTILS_TYPES_NUMBER_TEST_DRVR_O_PATH} 
+PROD_CTOOLS_UTILS_TYPES_NUMBER_TEST_C_FILES=${CTOOLS_UTILS_TYPES_NUMBER_C_PATH} ${CTOOLS_UTILS_TYPES_NUMBER_TEST_C_PATH} 
+PROD_CTOOLS_UTILS_TYPES_NUMBER_TEST_H_FILES=${CTOOLS_UTILS_TYPES_NUMBER_H_PATH} ${CTOOLS_UTILS_TYPES_NUMBER_TEST_H_PATH} 
+PROD_CTOOLS_UTILS_TYPES_NUMBER_TEST_O_FILES=${CTOOLS_UTILS_TYPES_NUMBER_O_PATH} ${CTOOLS_UTILS_TYPES_NUMBER_TEST_O_PATH} 
+CTOOLS_UTILS_TYPES_NUMBER_TEST_DEV_FILES= ${DEV_CTOOLS_UTILS_TYPES_NUMBER_TEST_C_FILES} ${DEV_CTOOLS_UTILS_TYPES_NUMBER_TEST_H_FILES} ${DEV_CTOOLS_UTILS_TYPES_NUMBER_TEST_O_FILES} 
 
 
-Dev: ${DEV_../CTools/Utils/Types/Number/_TEST_C_DEPS} ${DEV_../CTools/Utils/Types/Number/_TEST_H_DEPS}
-	cd ${../CTools/Utils/Types/Number/_DIR}; gcc -c ${../CTools/Utils/Types/Number/_C}
-	cd ${../CTools/Utils/Types/Number/_TEST_DIR}; gcc -c ${../CTools/Utils/Types/Number/_TEST_C} ${../CTools/Utils/Types/Number/_TEST_DRVR_C}
+DevCToolsUtilsTypesNumber: ${DEV_CTOOLS_UTILS_TYPES_NUMBER_TEST_C_DEPS} ${DEV_CTOOLS_UTILS_TYPES_NUMBER_TEST_H_DEPS}
+	cd ${CTOOLS_UTILS_TYPES_NUMBER_DIR}; gcc -c ${CTOOLS_UTILS_TYPES_NUMBER_C}
+	cd ${CTOOLS_UTILS_TYPES_NUMBER_TEST_DIR}; gcc -c ${CTOOLS_UTILS_TYPES_NUMBER_TEST_C} ${CTOOLS_UTILS_TYPES_NUMBER_TEST_DRVR_C}
 
-Prod: ${PROD_../CTools/Utils/Types/Number/_TEST_C_DEPS} ${PROD_../CTools/Utils/Types/Number/_TEST_H_DEPS}
-	cd ${../CTools/Utils/Types/Number/_DIR}; gcc -c ${../CTools/Utils/Types/Number/_C}
-	cd ${../CTools/Utils/Types/Number/_TEST_DIR}; gcc -c ${../CTools/Utils/Types/Number/_TEST_C}
+ProdCToolsUtilsTypesNumber: ${PROD_CTOOLS_UTILS_TYPES_NUMBER_TEST_C_DEPS} ${PROD_CTOOLS_UTILS_TYPES_NUMBER_TEST_H_DEPS}
+	cd ${CTOOLS_UTILS_TYPES_NUMBER_DIR}; gcc -c ${CTOOLS_UTILS_TYPES_NUMBER_C}
+	cd ${CTOOLS_UTILS_TYPES_NUMBER_TEST_DIR}; gcc -c ${CTOOLS_UTILS_TYPES_NUMBER_TEST_C}
 
-DevClean: ${DEV_../CTools/Utils/Types/Number/_TEST_O_DEPS}
-	cd ${../CTools/Utils/Types/Number/_DIR}; rm -f ${../CTools/Utils/Types/Number/_O}
-	cd ${../CTools/Utils/Types/Number/_TEST_DIR}; rm -f ${../CTools/Utils/Types/Number/_TEST_O} ${../CTools/Utils/Types/Number/_TEST_DRVR_O}
+DevCToolsUtilsTypesNumberClean: ${DEV_CTOOLS_UTILS_TYPES_NUMBER_TEST_O_DEPS}
+	cd ${CTOOLS_UTILS_TYPES_NUMBER_DIR}; rm -f ${CTOOLS_UTILS_TYPES_NUMBER_O}
+	cd ${CTOOLS_UTILS_TYPES_NUMBER_TEST_DIR}; rm -f ${CTOOLS_UTILS_TYPES_NUMBER_TEST_O} ${CTOOLS_UTILS_TYPES_NUMBER_TEST_DRVR_O}
 
-ProdClean: ${PROD_../CTools/Utils/Types/Number/_TEST_O_DEPS}
-	cd ${../CTools/Utils/Types/Number/_DIR}; rm -f ${../CTools/Utils/Types/Number/_O}
-	cd ${../CTools/Utils/Types/Number/_TEST_DIR}; rm -f ${../CTools/Utils/Types/Number/_TEST_O}
+ProdCToolsUtilsTypesNumberClean: ${PROD_CTOOLS_UTILS_TYPES_NUMBER_TEST_O_DEPS}
+	cd ${CTOOLS_UTILS_TYPES_NUMBER_DIR}; rm -f ${CTOOLS_UTILS_TYPES_NUMBER_O}
+	cd ${CTOOLS_UTILS_TYPES_NUMBER_TEST_DIR}; rm -f ${CTOOLS_UTILS_TYPES_NUMBER_TEST_O}
 
-DevLink: ${DEV_../CTools/Utils/Types/Number/_TEST_O_DEPS}
-	(gcc -o devTest ${../CTools/Utils/Types/Number/_O_PATH} ${../CTools/Utils/Types/Number/_TEST_O_PATH} ${../CTools/Utils/Types/Number/_TEST_DRVR_O_PATH})
+DevCToolsUtilsTypesNumberLink: ${DEV_CTOOLS_UTILS_TYPES_NUMBER_TEST_O_DEPS}
+	(gcc -o devTest ${CTOOLS_UTILS_TYPES_NUMBER_O_PATH} ${CTOOLS_UTILS_TYPES_NUMBER_TEST_O_PATH} ${CTOOLS_UTILS_TYPES_NUMBER_TEST_DRVR_O_PATH})
 
-ProdLink: ${PROD_../CTools/Utils/Types/Number/_TEST_O_DEPS}
-	(gcc -o prodTest ${../CTools/Utils/Types/Number/_O_PATH} ${../CTools/Utils/Types/Number/_TEST_O_PATH})
+ProdCToolsUtilsTypesNumberLink: ${PROD_CTOOLS_UTILS_TYPES_NUMBER_TEST_O_DEPS}
+	(gcc -o prodTest ${CTOOLS_UTILS_TYPES_NUMBER_O_PATH} ${CTOOLS_UTILS_TYPES_NUMBER_TEST_O_PATH})
 
-DevRun: ${DEV_../CTools/Utils/Types/Number/_TEST_O_DEPS} ${DEV_../CTools/Utils/Types/Number/_TEST_C_DEPS} ${DEV_../CTools/Utils/Types/Number/_TEST_H_DEPS}
-	make DevClean
-	make Dev
-	make DevLink
+DevCToolsUtilsTypesNumberRun: ${DEV_CTOOLS_UTILS_TYPES_NUMBER_TEST_O_DEPS} ${DEV_CTOOLS_UTILS_TYPES_NUMBER_TEST_C_DEPS} ${DEV_CTOOLS_UTILS_TYPES_NUMBER_TEST_H_DEPS}
+	make DevCToolsUtilsTypesNumberClean
+	make DevCToolsUtilsTypesNumber
+	make DevCToolsUtilsTypesNumberLink
 	./devTest
 
 ########################################################################################################################################
@@ -1078,70 +1078,70 @@ DevRun: ${DEV_../CTools/Utils/Types/Number/_TEST_O_DEPS} ${DEV_../CTools/Utils/T
 
 
 
-../CTools/Utils/Types/String/_DIR=String
-../CTools/Utils/Types/String/_TEST_DIR=${../CTools/Utils/Types/String/_DIR}Test/
-../CTools/Utils/Types/String/_C=String.c.c
-../CTools/Utils/Types/String/_H=String.h.h
-../CTools/Utils/Types/String/_O=String.o.o
-../CTools/Utils/Types/String/_TEST_C=Test.c
-../CTools/Utils/Types/String/_TEST_H=Test.h
-../CTools/Utils/Types/String/_TEST_O=Test.o
-../CTools/Utils/Types/String/_TEST_DRVR_C=Drvr.c
-../CTools/Utils/Types/String/_TEST_DRVR_H=Drvr.h
-../CTools/Utils/Types/String/_TEST_DRVR_O=Drvr.o
-../CTools/Utils/Types/String/_C_PATH=${../CTools/Utils/Types/String/_DIR}${../CTools/Utils/Types/String/_C}
-../CTools/Utils/Types/String/_H_PATH=${../CTools/Utils/Types/String/_DIR}${../CTools/Utils/Types/String/_H}
-../CTools/Utils/Types/String/_O_PATH=${../CTools/Utils/Types/String/_DIR}${../CTools/Utils/Types/String/_O}
-../CTools/Utils/Types/String/_TEST_C_PATH=${../CTools/Utils/Types/String/_TEST_DIR}${../CTools/Utils/Types/String/_TEST_C}
-../CTools/Utils/Types/String/_TEST_H_PATH=${../CTools/Utils/Types/String/_TEST_DIR}${../CTools/Utils/Types/String/_TEST_H}
-../CTools/Utils/Types/String/_TEST_O_PATH=${../CTools/Utils/Types/String/_TEST_DIR}${../CTools/Utils/Types/String/_TEST_O}
-../CTools/Utils/Types/String/_TEST_DRVR_C_PATH=${../CTools/Utils/Types/String/_TEST_DIR}${../CTools/Utils/Types/String/_TEST_DRVR_C}
-../CTools/Utils/Types/String/_TEST_DRVR_H_PATH=${../CTools/Utils/Types/String/_TEST_DIR}${../CTools/Utils/Types/String/_TEST_DRVR_H}
-../CTools/Utils/Types/String/_TEST_DRVR_O_PATH=${../CTools/Utils/Types/String/_TEST_DIR}${../CTools/Utils/Types/String/_TEST_DRVR_O}
-../CTools/Utils/Types/String/_TEST_DRVR_C_PATH=${../CTools/Utils/Types/String/_TEST_DIR}${../CTools/Utils/Types/String/_TEST_DRVR_C}
-../CTools/Utils/Types/String/_TEST_DRVR_H_PATH=${../CTools/Utils/Types/String/_TEST_DIR}${../CTools/Utils/Types/String/_TEST_DRVR_H}
-../CTools/Utils/Types/String/_TEST_DRVR_O_PATH=${../CTools/Utils/Types/String/_TEST_DIR}${../CTools/Utils/Types/String/_TEST_DRVR_O}
-PROD_../CTools/Utils/Types/String/_TEST_C_DEPS=${../CTools/Utils/Types/String/_C_PATH} ${../CTools/Utils/Types/String/_TEST_C_PATH} 
-PROD_../CTools/Utils/Types/String/_TEST_H_DEPS=${../CTools/Utils/Types/String/_H_PATH} ${../CTools/Utils/Types/String/_TEST_H_PATH} 
-PROD_../CTools/Utils/Types/String/_TEST_O_DEPS=${../CTools/Utils/Types/String/_O_PATH} ${../CTools/Utils/Types/String/_TEST_O_PATH} 
-DEV_../CTools/Utils/Types/String/_TEST_C_DEPS=${../CTools/Utils/Types/String/_C_PATH} ${../CTools/Utils/Types/String/_TEST_C_PATH} ${../CTools/Utils/Types/String/_TEST_DRVR_C_PATH} 
-DEV_../CTools/Utils/Types/String/_TEST_H_DEPS=${../CTools/Utils/Types/String/_H_PATH} ${../CTools/Utils/Types/String/_TEST_H_PATH} ${../CTools/Utils/Types/String/_TEST_DRVR_H_PATH} 
-DEV_../CTools/Utils/Types/String/_TEST_O_DEPS=${../CTools/Utils/Types/String/_O_PATH} ${../CTools/Utils/Types/String/_TEST_O_PATH} ${../CTools/Utils/Types/String/_TEST_DRVR_O_PATH} 
-DEV_../CTools/Utils/Types/String/_TEST_C_FILES=${../CTools/Utils/Types/String/_C_PATH} ${../CTools/Utils/Types/String/_TEST_C_PATH} ${../CTools/Utils/Types/String/_TEST_DRVR_C_PATH} 
-DEV_../CTools/Utils/Types/String/_TEST_H_FILES=${../CTools/Utils/Types/String/_H_PATH} ${../CTools/Utils/Types/String/_TEST_H_PATH} ${../CTools/Utils/Types/String/_TEST_DRVR_H_PATH} 
-DEV_../CTools/Utils/Types/String/_TEST_O_FILES=${../CTools/Utils/Types/String/_O_PATH} ${../CTools/Utils/Types/String/_TEST_O_PATH} ${../CTools/Utils/Types/String/_TEST_DRVR_O_PATH} 
-PROD_../CTools/Utils/Types/String/_TEST_C_FILES=${../CTools/Utils/Types/String/_C_PATH} ${../CTools/Utils/Types/String/_TEST_C_PATH} 
-PROD_../CTools/Utils/Types/String/_TEST_H_FILES=${../CTools/Utils/Types/String/_H_PATH} ${../CTools/Utils/Types/String/_TEST_H_PATH} 
-PROD_../CTools/Utils/Types/String/_TEST_O_FILES=${../CTools/Utils/Types/String/_O_PATH} ${../CTools/Utils/Types/String/_TEST_O_PATH} 
-../CTools/Utils/Types/String/_TEST_DEV_FILES= ${DEV_../CTools/Utils/Types/String/_TEST_C_FILES} ${DEV_../CTools/Utils/Types/String/_TEST_H_FILES} ${DEV_../CTools/Utils/Types/String/_TEST_O_FILES} 
+CTOOLS_UTILS_TYPES_STRING_DIR=./CTools/Utils/Types/String/
+CTOOLS_UTILS_TYPES_STRING_TEST_DIR=${CTOOLS_UTILS_TYPES_STRING_DIR}Test/
+CTOOLS_UTILS_TYPES_STRING_C=String.c
+CTOOLS_UTILS_TYPES_STRING_H=String.h
+CTOOLS_UTILS_TYPES_STRING_O=String.o
+CTOOLS_UTILS_TYPES_STRING_TEST_C=Test.c
+CTOOLS_UTILS_TYPES_STRING_TEST_H=Test.h
+CTOOLS_UTILS_TYPES_STRING_TEST_O=Test.o
+CTOOLS_UTILS_TYPES_STRING_TEST_DRVR_C=Drvr.c
+CTOOLS_UTILS_TYPES_STRING_TEST_DRVR_H=Drvr.h
+CTOOLS_UTILS_TYPES_STRING_TEST_DRVR_O=Drvr.o
+CTOOLS_UTILS_TYPES_STRING_C_PATH=${CTOOLS_UTILS_TYPES_STRING_DIR}${CTOOLS_UTILS_TYPES_STRING_C}
+CTOOLS_UTILS_TYPES_STRING_H_PATH=${CTOOLS_UTILS_TYPES_STRING_DIR}${CTOOLS_UTILS_TYPES_STRING_H}
+CTOOLS_UTILS_TYPES_STRING_O_PATH=${CTOOLS_UTILS_TYPES_STRING_DIR}${CTOOLS_UTILS_TYPES_STRING_O}
+CTOOLS_UTILS_TYPES_STRING_TEST_C_PATH=${CTOOLS_UTILS_TYPES_STRING_TEST_DIR}${CTOOLS_UTILS_TYPES_STRING_TEST_C}
+CTOOLS_UTILS_TYPES_STRING_TEST_H_PATH=${CTOOLS_UTILS_TYPES_STRING_TEST_DIR}${CTOOLS_UTILS_TYPES_STRING_TEST_H}
+CTOOLS_UTILS_TYPES_STRING_TEST_O_PATH=${CTOOLS_UTILS_TYPES_STRING_TEST_DIR}${CTOOLS_UTILS_TYPES_STRING_TEST_O}
+CTOOLS_UTILS_TYPES_STRING_TEST_DRVR_C_PATH=${CTOOLS_UTILS_TYPES_STRING_TEST_DIR}${CTOOLS_UTILS_TYPES_STRING_TEST_DRVR_C}
+CTOOLS_UTILS_TYPES_STRING_TEST_DRVR_H_PATH=${CTOOLS_UTILS_TYPES_STRING_TEST_DIR}${CTOOLS_UTILS_TYPES_STRING_TEST_DRVR_H}
+CTOOLS_UTILS_TYPES_STRING_TEST_DRVR_O_PATH=${CTOOLS_UTILS_TYPES_STRING_TEST_DIR}${CTOOLS_UTILS_TYPES_STRING_TEST_DRVR_O}
+CTOOLS_UTILS_TYPES_STRING_TEST_DRVR_C_PATH=${CTOOLS_UTILS_TYPES_STRING_TEST_DIR}${CTOOLS_UTILS_TYPES_STRING_TEST_DRVR_C}
+CTOOLS_UTILS_TYPES_STRING_TEST_DRVR_H_PATH=${CTOOLS_UTILS_TYPES_STRING_TEST_DIR}${CTOOLS_UTILS_TYPES_STRING_TEST_DRVR_H}
+CTOOLS_UTILS_TYPES_STRING_TEST_DRVR_O_PATH=${CTOOLS_UTILS_TYPES_STRING_TEST_DIR}${CTOOLS_UTILS_TYPES_STRING_TEST_DRVR_O}
+PROD_CTOOLS_UTILS_TYPES_STRING_TEST_C_DEPS=${CTOOLS_UTILS_TYPES_STRING_C_PATH} ${CTOOLS_UTILS_TYPES_STRING_TEST_C_PATH} 
+PROD_CTOOLS_UTILS_TYPES_STRING_TEST_H_DEPS=${CTOOLS_UTILS_TYPES_STRING_H_PATH} ${CTOOLS_UTILS_TYPES_STRING_TEST_H_PATH} 
+PROD_CTOOLS_UTILS_TYPES_STRING_TEST_O_DEPS=${CTOOLS_UTILS_TYPES_STRING_O_PATH} ${CTOOLS_UTILS_TYPES_STRING_TEST_O_PATH} 
+DEV_CTOOLS_UTILS_TYPES_STRING_TEST_C_DEPS=${CTOOLS_UTILS_TYPES_STRING_C_PATH} ${CTOOLS_UTILS_TYPES_STRING_TEST_C_PATH} ${CTOOLS_UTILS_TYPES_STRING_TEST_DRVR_C_PATH} 
+DEV_CTOOLS_UTILS_TYPES_STRING_TEST_H_DEPS=${CTOOLS_UTILS_TYPES_STRING_H_PATH} ${CTOOLS_UTILS_TYPES_STRING_TEST_H_PATH} ${CTOOLS_UTILS_TYPES_STRING_TEST_DRVR_H_PATH} 
+DEV_CTOOLS_UTILS_TYPES_STRING_TEST_O_DEPS=${CTOOLS_UTILS_TYPES_STRING_O_PATH} ${CTOOLS_UTILS_TYPES_STRING_TEST_O_PATH} ${CTOOLS_UTILS_TYPES_STRING_TEST_DRVR_O_PATH} 
+DEV_CTOOLS_UTILS_TYPES_STRING_TEST_C_FILES=${CTOOLS_UTILS_TYPES_STRING_C_PATH} ${CTOOLS_UTILS_TYPES_STRING_TEST_C_PATH} ${CTOOLS_UTILS_TYPES_STRING_TEST_DRVR_C_PATH} 
+DEV_CTOOLS_UTILS_TYPES_STRING_TEST_H_FILES=${CTOOLS_UTILS_TYPES_STRING_H_PATH} ${CTOOLS_UTILS_TYPES_STRING_TEST_H_PATH} ${CTOOLS_UTILS_TYPES_STRING_TEST_DRVR_H_PATH} 
+DEV_CTOOLS_UTILS_TYPES_STRING_TEST_O_FILES=${CTOOLS_UTILS_TYPES_STRING_O_PATH} ${CTOOLS_UTILS_TYPES_STRING_TEST_O_PATH} ${CTOOLS_UTILS_TYPES_STRING_TEST_DRVR_O_PATH} 
+PROD_CTOOLS_UTILS_TYPES_STRING_TEST_C_FILES=${CTOOLS_UTILS_TYPES_STRING_C_PATH} ${CTOOLS_UTILS_TYPES_STRING_TEST_C_PATH} 
+PROD_CTOOLS_UTILS_TYPES_STRING_TEST_H_FILES=${CTOOLS_UTILS_TYPES_STRING_H_PATH} ${CTOOLS_UTILS_TYPES_STRING_TEST_H_PATH} 
+PROD_CTOOLS_UTILS_TYPES_STRING_TEST_O_FILES=${CTOOLS_UTILS_TYPES_STRING_O_PATH} ${CTOOLS_UTILS_TYPES_STRING_TEST_O_PATH} 
+CTOOLS_UTILS_TYPES_STRING_TEST_DEV_FILES= ${DEV_CTOOLS_UTILS_TYPES_STRING_TEST_C_FILES} ${DEV_CTOOLS_UTILS_TYPES_STRING_TEST_H_FILES} ${DEV_CTOOLS_UTILS_TYPES_STRING_TEST_O_FILES} 
 
 
-Dev: ${DEV_../CTools/Utils/Types/String/_TEST_C_DEPS} ${DEV_../CTools/Utils/Types/String/_TEST_H_DEPS}
-	cd ${../CTools/Utils/Types/String/_DIR}; gcc -c ${../CTools/Utils/Types/String/_C}
-	cd ${../CTools/Utils/Types/String/_TEST_DIR}; gcc -c ${../CTools/Utils/Types/String/_TEST_C} ${../CTools/Utils/Types/String/_TEST_DRVR_C}
+DevCToolsUtilsTypesString: ${DEV_CTOOLS_UTILS_TYPES_STRING_TEST_C_DEPS} ${DEV_CTOOLS_UTILS_TYPES_STRING_TEST_H_DEPS}
+	cd ${CTOOLS_UTILS_TYPES_STRING_DIR}; gcc -c ${CTOOLS_UTILS_TYPES_STRING_C}
+	cd ${CTOOLS_UTILS_TYPES_STRING_TEST_DIR}; gcc -c ${CTOOLS_UTILS_TYPES_STRING_TEST_C} ${CTOOLS_UTILS_TYPES_STRING_TEST_DRVR_C}
 
-Prod: ${PROD_../CTools/Utils/Types/String/_TEST_C_DEPS} ${PROD_../CTools/Utils/Types/String/_TEST_H_DEPS}
-	cd ${../CTools/Utils/Types/String/_DIR}; gcc -c ${../CTools/Utils/Types/String/_C}
-	cd ${../CTools/Utils/Types/String/_TEST_DIR}; gcc -c ${../CTools/Utils/Types/String/_TEST_C}
+ProdCToolsUtilsTypesString: ${PROD_CTOOLS_UTILS_TYPES_STRING_TEST_C_DEPS} ${PROD_CTOOLS_UTILS_TYPES_STRING_TEST_H_DEPS}
+	cd ${CTOOLS_UTILS_TYPES_STRING_DIR}; gcc -c ${CTOOLS_UTILS_TYPES_STRING_C}
+	cd ${CTOOLS_UTILS_TYPES_STRING_TEST_DIR}; gcc -c ${CTOOLS_UTILS_TYPES_STRING_TEST_C}
 
-DevClean: ${DEV_../CTools/Utils/Types/String/_TEST_O_DEPS}
-	cd ${../CTools/Utils/Types/String/_DIR}; rm -f ${../CTools/Utils/Types/String/_O}
-	cd ${../CTools/Utils/Types/String/_TEST_DIR}; rm -f ${../CTools/Utils/Types/String/_TEST_O} ${../CTools/Utils/Types/String/_TEST_DRVR_O}
+DevCToolsUtilsTypesStringClean: ${DEV_CTOOLS_UTILS_TYPES_STRING_TEST_O_DEPS}
+	cd ${CTOOLS_UTILS_TYPES_STRING_DIR}; rm -f ${CTOOLS_UTILS_TYPES_STRING_O}
+	cd ${CTOOLS_UTILS_TYPES_STRING_TEST_DIR}; rm -f ${CTOOLS_UTILS_TYPES_STRING_TEST_O} ${CTOOLS_UTILS_TYPES_STRING_TEST_DRVR_O}
 
-ProdClean: ${PROD_../CTools/Utils/Types/String/_TEST_O_DEPS}
-	cd ${../CTools/Utils/Types/String/_DIR}; rm -f ${../CTools/Utils/Types/String/_O}
-	cd ${../CTools/Utils/Types/String/_TEST_DIR}; rm -f ${../CTools/Utils/Types/String/_TEST_O}
+ProdCToolsUtilsTypesStringClean: ${PROD_CTOOLS_UTILS_TYPES_STRING_TEST_O_DEPS}
+	cd ${CTOOLS_UTILS_TYPES_STRING_DIR}; rm -f ${CTOOLS_UTILS_TYPES_STRING_O}
+	cd ${CTOOLS_UTILS_TYPES_STRING_TEST_DIR}; rm -f ${CTOOLS_UTILS_TYPES_STRING_TEST_O}
 
-DevLink: ${DEV_../CTools/Utils/Types/String/_TEST_O_DEPS}
-	(gcc -o devTest ${../CTools/Utils/Types/String/_O_PATH} ${../CTools/Utils/Types/String/_TEST_O_PATH} ${../CTools/Utils/Types/String/_TEST_DRVR_O_PATH})
+DevCToolsUtilsTypesStringLink: ${DEV_CTOOLS_UTILS_TYPES_STRING_TEST_O_DEPS}
+	(gcc -o devTest ${CTOOLS_UTILS_TYPES_STRING_O_PATH} ${CTOOLS_UTILS_TYPES_STRING_TEST_O_PATH} ${CTOOLS_UTILS_TYPES_STRING_TEST_DRVR_O_PATH})
 
-ProdLink: ${PROD_../CTools/Utils/Types/String/_TEST_O_DEPS}
-	(gcc -o prodTest ${../CTools/Utils/Types/String/_O_PATH} ${../CTools/Utils/Types/String/_TEST_O_PATH})
+ProdCToolsUtilsTypesStringLink: ${PROD_CTOOLS_UTILS_TYPES_STRING_TEST_O_DEPS}
+	(gcc -o prodTest ${CTOOLS_UTILS_TYPES_STRING_O_PATH} ${CTOOLS_UTILS_TYPES_STRING_TEST_O_PATH})
 
-DevRun: ${DEV_../CTools/Utils/Types/String/_TEST_O_DEPS} ${DEV_../CTools/Utils/Types/String/_TEST_C_DEPS} ${DEV_../CTools/Utils/Types/String/_TEST_H_DEPS}
-	make DevClean
-	make Dev
-	make DevLink
+DevCToolsUtilsTypesStringRun: ${DEV_CTOOLS_UTILS_TYPES_STRING_TEST_O_DEPS} ${DEV_CTOOLS_UTILS_TYPES_STRING_TEST_C_DEPS} ${DEV_CTOOLS_UTILS_TYPES_STRING_TEST_H_DEPS}
+	make DevCToolsUtilsTypesStringClean
+	make DevCToolsUtilsTypesString
+	make DevCToolsUtilsTypesStringLink
 	./devTest
 
 ########################################################################################################################################
@@ -1150,70 +1150,70 @@ DevRun: ${DEV_../CTools/Utils/Types/String/_TEST_O_DEPS} ${DEV_../CTools/Utils/T
 
 
 
-../CTools/Utils/Types/Unicode/_DIR=Unicode
-../CTools/Utils/Types/Unicode/_TEST_DIR=${../CTools/Utils/Types/Unicode/_DIR}Test/
-../CTools/Utils/Types/Unicode/_C=Unicode.c.c
-../CTools/Utils/Types/Unicode/_H=Unicode.h.h
-../CTools/Utils/Types/Unicode/_O=Unicode.o.o
-../CTools/Utils/Types/Unicode/_TEST_C=Test.c
-../CTools/Utils/Types/Unicode/_TEST_H=Test.h
-../CTools/Utils/Types/Unicode/_TEST_O=Test.o
-../CTools/Utils/Types/Unicode/_TEST_DRVR_C=Drvr.c
-../CTools/Utils/Types/Unicode/_TEST_DRVR_H=Drvr.h
-../CTools/Utils/Types/Unicode/_TEST_DRVR_O=Drvr.o
-../CTools/Utils/Types/Unicode/_C_PATH=${../CTools/Utils/Types/Unicode/_DIR}${../CTools/Utils/Types/Unicode/_C}
-../CTools/Utils/Types/Unicode/_H_PATH=${../CTools/Utils/Types/Unicode/_DIR}${../CTools/Utils/Types/Unicode/_H}
-../CTools/Utils/Types/Unicode/_O_PATH=${../CTools/Utils/Types/Unicode/_DIR}${../CTools/Utils/Types/Unicode/_O}
-../CTools/Utils/Types/Unicode/_TEST_C_PATH=${../CTools/Utils/Types/Unicode/_TEST_DIR}${../CTools/Utils/Types/Unicode/_TEST_C}
-../CTools/Utils/Types/Unicode/_TEST_H_PATH=${../CTools/Utils/Types/Unicode/_TEST_DIR}${../CTools/Utils/Types/Unicode/_TEST_H}
-../CTools/Utils/Types/Unicode/_TEST_O_PATH=${../CTools/Utils/Types/Unicode/_TEST_DIR}${../CTools/Utils/Types/Unicode/_TEST_O}
-../CTools/Utils/Types/Unicode/_TEST_DRVR_C_PATH=${../CTools/Utils/Types/Unicode/_TEST_DIR}${../CTools/Utils/Types/Unicode/_TEST_DRVR_C}
-../CTools/Utils/Types/Unicode/_TEST_DRVR_H_PATH=${../CTools/Utils/Types/Unicode/_TEST_DIR}${../CTools/Utils/Types/Unicode/_TEST_DRVR_H}
-../CTools/Utils/Types/Unicode/_TEST_DRVR_O_PATH=${../CTools/Utils/Types/Unicode/_TEST_DIR}${../CTools/Utils/Types/Unicode/_TEST_DRVR_O}
-../CTools/Utils/Types/Unicode/_TEST_DRVR_C_PATH=${../CTools/Utils/Types/Unicode/_TEST_DIR}${../CTools/Utils/Types/Unicode/_TEST_DRVR_C}
-../CTools/Utils/Types/Unicode/_TEST_DRVR_H_PATH=${../CTools/Utils/Types/Unicode/_TEST_DIR}${../CTools/Utils/Types/Unicode/_TEST_DRVR_H}
-../CTools/Utils/Types/Unicode/_TEST_DRVR_O_PATH=${../CTools/Utils/Types/Unicode/_TEST_DIR}${../CTools/Utils/Types/Unicode/_TEST_DRVR_O}
-PROD_../CTools/Utils/Types/Unicode/_TEST_C_DEPS=${../CTools/Utils/Types/Unicode/_C_PATH} ${../CTools/Utils/Types/Unicode/_TEST_C_PATH} 
-PROD_../CTools/Utils/Types/Unicode/_TEST_H_DEPS=${../CTools/Utils/Types/Unicode/_H_PATH} ${../CTools/Utils/Types/Unicode/_TEST_H_PATH} 
-PROD_../CTools/Utils/Types/Unicode/_TEST_O_DEPS=${../CTools/Utils/Types/Unicode/_O_PATH} ${../CTools/Utils/Types/Unicode/_TEST_O_PATH} 
-DEV_../CTools/Utils/Types/Unicode/_TEST_C_DEPS=${../CTools/Utils/Types/Unicode/_C_PATH} ${../CTools/Utils/Types/Unicode/_TEST_C_PATH} ${../CTools/Utils/Types/Unicode/_TEST_DRVR_C_PATH} 
-DEV_../CTools/Utils/Types/Unicode/_TEST_H_DEPS=${../CTools/Utils/Types/Unicode/_H_PATH} ${../CTools/Utils/Types/Unicode/_TEST_H_PATH} ${../CTools/Utils/Types/Unicode/_TEST_DRVR_H_PATH} 
-DEV_../CTools/Utils/Types/Unicode/_TEST_O_DEPS=${../CTools/Utils/Types/Unicode/_O_PATH} ${../CTools/Utils/Types/Unicode/_TEST_O_PATH} ${../CTools/Utils/Types/Unicode/_TEST_DRVR_O_PATH} 
-DEV_../CTools/Utils/Types/Unicode/_TEST_C_FILES=${../CTools/Utils/Types/Unicode/_C_PATH} ${../CTools/Utils/Types/Unicode/_TEST_C_PATH} ${../CTools/Utils/Types/Unicode/_TEST_DRVR_C_PATH} 
-DEV_../CTools/Utils/Types/Unicode/_TEST_H_FILES=${../CTools/Utils/Types/Unicode/_H_PATH} ${../CTools/Utils/Types/Unicode/_TEST_H_PATH} ${../CTools/Utils/Types/Unicode/_TEST_DRVR_H_PATH} 
-DEV_../CTools/Utils/Types/Unicode/_TEST_O_FILES=${../CTools/Utils/Types/Unicode/_O_PATH} ${../CTools/Utils/Types/Unicode/_TEST_O_PATH} ${../CTools/Utils/Types/Unicode/_TEST_DRVR_O_PATH} 
-PROD_../CTools/Utils/Types/Unicode/_TEST_C_FILES=${../CTools/Utils/Types/Unicode/_C_PATH} ${../CTools/Utils/Types/Unicode/_TEST_C_PATH} 
-PROD_../CTools/Utils/Types/Unicode/_TEST_H_FILES=${../CTools/Utils/Types/Unicode/_H_PATH} ${../CTools/Utils/Types/Unicode/_TEST_H_PATH} 
-PROD_../CTools/Utils/Types/Unicode/_TEST_O_FILES=${../CTools/Utils/Types/Unicode/_O_PATH} ${../CTools/Utils/Types/Unicode/_TEST_O_PATH} 
-../CTools/Utils/Types/Unicode/_TEST_DEV_FILES= ${DEV_../CTools/Utils/Types/Unicode/_TEST_C_FILES} ${DEV_../CTools/Utils/Types/Unicode/_TEST_H_FILES} ${DEV_../CTools/Utils/Types/Unicode/_TEST_O_FILES} 
+CTOOLS_UTILS_TYPES_UNICODE_DIR=./CTools/Utils/Types/Unicode/
+CTOOLS_UTILS_TYPES_UNICODE_TEST_DIR=${CTOOLS_UTILS_TYPES_UNICODE_DIR}Test/
+CTOOLS_UTILS_TYPES_UNICODE_C=Unicode.c
+CTOOLS_UTILS_TYPES_UNICODE_H=Unicode.h
+CTOOLS_UTILS_TYPES_UNICODE_O=Unicode.o
+CTOOLS_UTILS_TYPES_UNICODE_TEST_C=Test.c
+CTOOLS_UTILS_TYPES_UNICODE_TEST_H=Test.h
+CTOOLS_UTILS_TYPES_UNICODE_TEST_O=Test.o
+CTOOLS_UTILS_TYPES_UNICODE_TEST_DRVR_C=Drvr.c
+CTOOLS_UTILS_TYPES_UNICODE_TEST_DRVR_H=Drvr.h
+CTOOLS_UTILS_TYPES_UNICODE_TEST_DRVR_O=Drvr.o
+CTOOLS_UTILS_TYPES_UNICODE_C_PATH=${CTOOLS_UTILS_TYPES_UNICODE_DIR}${CTOOLS_UTILS_TYPES_UNICODE_C}
+CTOOLS_UTILS_TYPES_UNICODE_H_PATH=${CTOOLS_UTILS_TYPES_UNICODE_DIR}${CTOOLS_UTILS_TYPES_UNICODE_H}
+CTOOLS_UTILS_TYPES_UNICODE_O_PATH=${CTOOLS_UTILS_TYPES_UNICODE_DIR}${CTOOLS_UTILS_TYPES_UNICODE_O}
+CTOOLS_UTILS_TYPES_UNICODE_TEST_C_PATH=${CTOOLS_UTILS_TYPES_UNICODE_TEST_DIR}${CTOOLS_UTILS_TYPES_UNICODE_TEST_C}
+CTOOLS_UTILS_TYPES_UNICODE_TEST_H_PATH=${CTOOLS_UTILS_TYPES_UNICODE_TEST_DIR}${CTOOLS_UTILS_TYPES_UNICODE_TEST_H}
+CTOOLS_UTILS_TYPES_UNICODE_TEST_O_PATH=${CTOOLS_UTILS_TYPES_UNICODE_TEST_DIR}${CTOOLS_UTILS_TYPES_UNICODE_TEST_O}
+CTOOLS_UTILS_TYPES_UNICODE_TEST_DRVR_C_PATH=${CTOOLS_UTILS_TYPES_UNICODE_TEST_DIR}${CTOOLS_UTILS_TYPES_UNICODE_TEST_DRVR_C}
+CTOOLS_UTILS_TYPES_UNICODE_TEST_DRVR_H_PATH=${CTOOLS_UTILS_TYPES_UNICODE_TEST_DIR}${CTOOLS_UTILS_TYPES_UNICODE_TEST_DRVR_H}
+CTOOLS_UTILS_TYPES_UNICODE_TEST_DRVR_O_PATH=${CTOOLS_UTILS_TYPES_UNICODE_TEST_DIR}${CTOOLS_UTILS_TYPES_UNICODE_TEST_DRVR_O}
+CTOOLS_UTILS_TYPES_UNICODE_TEST_DRVR_C_PATH=${CTOOLS_UTILS_TYPES_UNICODE_TEST_DIR}${CTOOLS_UTILS_TYPES_UNICODE_TEST_DRVR_C}
+CTOOLS_UTILS_TYPES_UNICODE_TEST_DRVR_H_PATH=${CTOOLS_UTILS_TYPES_UNICODE_TEST_DIR}${CTOOLS_UTILS_TYPES_UNICODE_TEST_DRVR_H}
+CTOOLS_UTILS_TYPES_UNICODE_TEST_DRVR_O_PATH=${CTOOLS_UTILS_TYPES_UNICODE_TEST_DIR}${CTOOLS_UTILS_TYPES_UNICODE_TEST_DRVR_O}
+PROD_CTOOLS_UTILS_TYPES_UNICODE_TEST_C_DEPS=${CTOOLS_UTILS_TYPES_UNICODE_C_PATH} ${CTOOLS_UTILS_TYPES_UNICODE_TEST_C_PATH} 
+PROD_CTOOLS_UTILS_TYPES_UNICODE_TEST_H_DEPS=${CTOOLS_UTILS_TYPES_UNICODE_H_PATH} ${CTOOLS_UTILS_TYPES_UNICODE_TEST_H_PATH} 
+PROD_CTOOLS_UTILS_TYPES_UNICODE_TEST_O_DEPS=${CTOOLS_UTILS_TYPES_UNICODE_O_PATH} ${CTOOLS_UTILS_TYPES_UNICODE_TEST_O_PATH} 
+DEV_CTOOLS_UTILS_TYPES_UNICODE_TEST_C_DEPS=${CTOOLS_UTILS_TYPES_UNICODE_C_PATH} ${CTOOLS_UTILS_TYPES_UNICODE_TEST_C_PATH} ${CTOOLS_UTILS_TYPES_UNICODE_TEST_DRVR_C_PATH} 
+DEV_CTOOLS_UTILS_TYPES_UNICODE_TEST_H_DEPS=${CTOOLS_UTILS_TYPES_UNICODE_H_PATH} ${CTOOLS_UTILS_TYPES_UNICODE_TEST_H_PATH} ${CTOOLS_UTILS_TYPES_UNICODE_TEST_DRVR_H_PATH} 
+DEV_CTOOLS_UTILS_TYPES_UNICODE_TEST_O_DEPS=${CTOOLS_UTILS_TYPES_UNICODE_O_PATH} ${CTOOLS_UTILS_TYPES_UNICODE_TEST_O_PATH} ${CTOOLS_UTILS_TYPES_UNICODE_TEST_DRVR_O_PATH} 
+DEV_CTOOLS_UTILS_TYPES_UNICODE_TEST_C_FILES=${CTOOLS_UTILS_TYPES_UNICODE_C_PATH} ${CTOOLS_UTILS_TYPES_UNICODE_TEST_C_PATH} ${CTOOLS_UTILS_TYPES_UNICODE_TEST_DRVR_C_PATH} 
+DEV_CTOOLS_UTILS_TYPES_UNICODE_TEST_H_FILES=${CTOOLS_UTILS_TYPES_UNICODE_H_PATH} ${CTOOLS_UTILS_TYPES_UNICODE_TEST_H_PATH} ${CTOOLS_UTILS_TYPES_UNICODE_TEST_DRVR_H_PATH} 
+DEV_CTOOLS_UTILS_TYPES_UNICODE_TEST_O_FILES=${CTOOLS_UTILS_TYPES_UNICODE_O_PATH} ${CTOOLS_UTILS_TYPES_UNICODE_TEST_O_PATH} ${CTOOLS_UTILS_TYPES_UNICODE_TEST_DRVR_O_PATH} 
+PROD_CTOOLS_UTILS_TYPES_UNICODE_TEST_C_FILES=${CTOOLS_UTILS_TYPES_UNICODE_C_PATH} ${CTOOLS_UTILS_TYPES_UNICODE_TEST_C_PATH} 
+PROD_CTOOLS_UTILS_TYPES_UNICODE_TEST_H_FILES=${CTOOLS_UTILS_TYPES_UNICODE_H_PATH} ${CTOOLS_UTILS_TYPES_UNICODE_TEST_H_PATH} 
+PROD_CTOOLS_UTILS_TYPES_UNICODE_TEST_O_FILES=${CTOOLS_UTILS_TYPES_UNICODE_O_PATH} ${CTOOLS_UTILS_TYPES_UNICODE_TEST_O_PATH} 
+CTOOLS_UTILS_TYPES_UNICODE_TEST_DEV_FILES= ${DEV_CTOOLS_UTILS_TYPES_UNICODE_TEST_C_FILES} ${DEV_CTOOLS_UTILS_TYPES_UNICODE_TEST_H_FILES} ${DEV_CTOOLS_UTILS_TYPES_UNICODE_TEST_O_FILES} 
 
 
-Dev: ${DEV_../CTools/Utils/Types/Unicode/_TEST_C_DEPS} ${DEV_../CTools/Utils/Types/Unicode/_TEST_H_DEPS}
-	cd ${../CTools/Utils/Types/Unicode/_DIR}; gcc -c ${../CTools/Utils/Types/Unicode/_C}
-	cd ${../CTools/Utils/Types/Unicode/_TEST_DIR}; gcc -c ${../CTools/Utils/Types/Unicode/_TEST_C} ${../CTools/Utils/Types/Unicode/_TEST_DRVR_C}
+DevCToolsUtilsTypesUnicode: ${DEV_CTOOLS_UTILS_TYPES_UNICODE_TEST_C_DEPS} ${DEV_CTOOLS_UTILS_TYPES_UNICODE_TEST_H_DEPS}
+	cd ${CTOOLS_UTILS_TYPES_UNICODE_DIR}; gcc -c ${CTOOLS_UTILS_TYPES_UNICODE_C}
+	cd ${CTOOLS_UTILS_TYPES_UNICODE_TEST_DIR}; gcc -c ${CTOOLS_UTILS_TYPES_UNICODE_TEST_C} ${CTOOLS_UTILS_TYPES_UNICODE_TEST_DRVR_C}
 
-Prod: ${PROD_../CTools/Utils/Types/Unicode/_TEST_C_DEPS} ${PROD_../CTools/Utils/Types/Unicode/_TEST_H_DEPS}
-	cd ${../CTools/Utils/Types/Unicode/_DIR}; gcc -c ${../CTools/Utils/Types/Unicode/_C}
-	cd ${../CTools/Utils/Types/Unicode/_TEST_DIR}; gcc -c ${../CTools/Utils/Types/Unicode/_TEST_C}
+ProdCToolsUtilsTypesUnicode: ${PROD_CTOOLS_UTILS_TYPES_UNICODE_TEST_C_DEPS} ${PROD_CTOOLS_UTILS_TYPES_UNICODE_TEST_H_DEPS}
+	cd ${CTOOLS_UTILS_TYPES_UNICODE_DIR}; gcc -c ${CTOOLS_UTILS_TYPES_UNICODE_C}
+	cd ${CTOOLS_UTILS_TYPES_UNICODE_TEST_DIR}; gcc -c ${CTOOLS_UTILS_TYPES_UNICODE_TEST_C}
 
-DevClean: ${DEV_../CTools/Utils/Types/Unicode/_TEST_O_DEPS}
-	cd ${../CTools/Utils/Types/Unicode/_DIR}; rm -f ${../CTools/Utils/Types/Unicode/_O}
-	cd ${../CTools/Utils/Types/Unicode/_TEST_DIR}; rm -f ${../CTools/Utils/Types/Unicode/_TEST_O} ${../CTools/Utils/Types/Unicode/_TEST_DRVR_O}
+DevCToolsUtilsTypesUnicodeClean: ${DEV_CTOOLS_UTILS_TYPES_UNICODE_TEST_O_DEPS}
+	cd ${CTOOLS_UTILS_TYPES_UNICODE_DIR}; rm -f ${CTOOLS_UTILS_TYPES_UNICODE_O}
+	cd ${CTOOLS_UTILS_TYPES_UNICODE_TEST_DIR}; rm -f ${CTOOLS_UTILS_TYPES_UNICODE_TEST_O} ${CTOOLS_UTILS_TYPES_UNICODE_TEST_DRVR_O}
 
-ProdClean: ${PROD_../CTools/Utils/Types/Unicode/_TEST_O_DEPS}
-	cd ${../CTools/Utils/Types/Unicode/_DIR}; rm -f ${../CTools/Utils/Types/Unicode/_O}
-	cd ${../CTools/Utils/Types/Unicode/_TEST_DIR}; rm -f ${../CTools/Utils/Types/Unicode/_TEST_O}
+ProdCToolsUtilsTypesUnicodeClean: ${PROD_CTOOLS_UTILS_TYPES_UNICODE_TEST_O_DEPS}
+	cd ${CTOOLS_UTILS_TYPES_UNICODE_DIR}; rm -f ${CTOOLS_UTILS_TYPES_UNICODE_O}
+	cd ${CTOOLS_UTILS_TYPES_UNICODE_TEST_DIR}; rm -f ${CTOOLS_UTILS_TYPES_UNICODE_TEST_O}
 
-DevLink: ${DEV_../CTools/Utils/Types/Unicode/_TEST_O_DEPS}
-	(gcc -o devTest ${../CTools/Utils/Types/Unicode/_O_PATH} ${../CTools/Utils/Types/Unicode/_TEST_O_PATH} ${../CTools/Utils/Types/Unicode/_TEST_DRVR_O_PATH})
+DevCToolsUtilsTypesUnicodeLink: ${DEV_CTOOLS_UTILS_TYPES_UNICODE_TEST_O_DEPS}
+	(gcc -o devTest ${CTOOLS_UTILS_TYPES_UNICODE_O_PATH} ${CTOOLS_UTILS_TYPES_UNICODE_TEST_O_PATH} ${CTOOLS_UTILS_TYPES_UNICODE_TEST_DRVR_O_PATH})
 
-ProdLink: ${PROD_../CTools/Utils/Types/Unicode/_TEST_O_DEPS}
-	(gcc -o prodTest ${../CTools/Utils/Types/Unicode/_O_PATH} ${../CTools/Utils/Types/Unicode/_TEST_O_PATH})
+ProdCToolsUtilsTypesUnicodeLink: ${PROD_CTOOLS_UTILS_TYPES_UNICODE_TEST_O_DEPS}
+	(gcc -o prodTest ${CTOOLS_UTILS_TYPES_UNICODE_O_PATH} ${CTOOLS_UTILS_TYPES_UNICODE_TEST_O_PATH})
 
-DevRun: ${DEV_../CTools/Utils/Types/Unicode/_TEST_O_DEPS} ${DEV_../CTools/Utils/Types/Unicode/_TEST_C_DEPS} ${DEV_../CTools/Utils/Types/Unicode/_TEST_H_DEPS}
-	make DevClean
-	make Dev
-	make DevLink
+DevCToolsUtilsTypesUnicodeRun: ${DEV_CTOOLS_UTILS_TYPES_UNICODE_TEST_O_DEPS} ${DEV_CTOOLS_UTILS_TYPES_UNICODE_TEST_C_DEPS} ${DEV_CTOOLS_UTILS_TYPES_UNICODE_TEST_H_DEPS}
+	make DevCToolsUtilsTypesUnicodeClean
+	make DevCToolsUtilsTypesUnicode
+	make DevCToolsUtilsTypesUnicodeLink
 	./devTest
 
 ########################################################################################################################################
@@ -1222,18 +1222,18 @@ DevRun: ${DEV_../CTools/Utils/Types/Unicode/_TEST_O_DEPS} ${DEV_../CTools/Utils/
 
 
 
-DEV_TEST_C_DEPS=${DEV_../CTools/_TEST_C_DEPS} ${DEV_../CTools/Automata/_TEST_C_DEPS} ${DEV_../CTools/Combinatorics/_TEST_C_DEPS} ${DEV_../CTools/Crypto/_TEST_C_DEPS} ${DEV_../CTools/Matrix/_TEST_C_DEPS} ${DEV_../CTools/Stats/_TEST_C_DEPS} ${DEV_../CTools/Utils/_TEST_C_DEPS} ${DEV_../CTools/Utils/Assertions/_TEST_C_DEPS} ${DEV_../CTools/Utils/Dictionary/_TEST_C_DEPS} ${DEV_../CTools/Utils/Rand/_TEST_C_DEPS} ${DEV_../CTools/Utils/Types/_TEST_C_DEPS} ${DEV_../CTools/Utils/Types/Array/_TEST_C_DEPS} ${DEV_../CTools/Utils/Types/Float/_TEST_C_DEPS} ${DEV_../CTools/Utils/Types/LinkList/_TEST_C_DEPS} ${DEV_../CTools/Utils/Types/Number/_TEST_C_DEPS} ${DEV_../CTools/Utils/Types/String/_TEST_C_DEPS} ${DEV_../CTools/Utils/Types/Unicode/_TEST_C_DEPS} 
-DEV_TEST_H_DEPS=${DEV_../CTools/_TEST_H_DEPS} ${DEV_../CTools/Automata/_TEST_H_DEPS} ${DEV_../CTools/Combinatorics/_TEST_H_DEPS} ${DEV_../CTools/Crypto/_TEST_H_DEPS} ${DEV_../CTools/Matrix/_TEST_H_DEPS} ${DEV_../CTools/Stats/_TEST_H_DEPS} ${DEV_../CTools/Utils/_TEST_H_DEPS} ${DEV_../CTools/Utils/Assertions/_TEST_H_DEPS} ${DEV_../CTools/Utils/Dictionary/_TEST_H_DEPS} ${DEV_../CTools/Utils/Rand/_TEST_H_DEPS} ${DEV_../CTools/Utils/Types/_TEST_H_DEPS} ${DEV_../CTools/Utils/Types/Array/_TEST_H_DEPS} ${DEV_../CTools/Utils/Types/Float/_TEST_H_DEPS} ${DEV_../CTools/Utils/Types/LinkList/_TEST_H_DEPS} ${DEV_../CTools/Utils/Types/Number/_TEST_H_DEPS} ${DEV_../CTools/Utils/Types/String/_TEST_H_DEPS} ${DEV_../CTools/Utils/Types/Unicode/_TEST_H_DEPS} 
-DEV_TEST_O_DEPS=${DEV_../CTools/_TEST_O_DEPS} ${DEV_../CTools/Automata/_TEST_O_DEPS} ${DEV_../CTools/Combinatorics/_TEST_O_DEPS} ${DEV_../CTools/Crypto/_TEST_O_DEPS} ${DEV_../CTools/Matrix/_TEST_O_DEPS} ${DEV_../CTools/Stats/_TEST_O_DEPS} ${DEV_../CTools/Utils/_TEST_O_DEPS} ${DEV_../CTools/Utils/Assertions/_TEST_O_DEPS} ${DEV_../CTools/Utils/Dictionary/_TEST_O_DEPS} ${DEV_../CTools/Utils/Rand/_TEST_O_DEPS} ${DEV_../CTools/Utils/Types/_TEST_O_DEPS} ${DEV_../CTools/Utils/Types/Array/_TEST_O_DEPS} ${DEV_../CTools/Utils/Types/Float/_TEST_O_DEPS} ${DEV_../CTools/Utils/Types/LinkList/_TEST_O_DEPS} ${DEV_../CTools/Utils/Types/Number/_TEST_O_DEPS} ${DEV_../CTools/Utils/Types/String/_TEST_O_DEPS} ${DEV_../CTools/Utils/Types/Unicode/_TEST_O_DEPS} 
-PROD_TEST_C_DEPS=${PROD_../CTools/_TEST_C_DEPS} ${PROD_../CTools/Automata/_TEST_C_DEPS} ${PROD_../CTools/Combinatorics/_TEST_C_DEPS} ${PROD_../CTools/Crypto/_TEST_C_DEPS} ${PROD_../CTools/Matrix/_TEST_C_DEPS} ${PROD_../CTools/Stats/_TEST_C_DEPS} ${PROD_../CTools/Utils/_TEST_C_DEPS} ${PROD_../CTools/Utils/Assertions/_TEST_C_DEPS} ${PROD_../CTools/Utils/Dictionary/_TEST_C_DEPS} ${PROD_../CTools/Utils/Rand/_TEST_C_DEPS} ${PROD_../CTools/Utils/Types/_TEST_C_DEPS} ${PROD_../CTools/Utils/Types/Array/_TEST_C_DEPS} ${PROD_../CTools/Utils/Types/Float/_TEST_C_DEPS} ${PROD_../CTools/Utils/Types/LinkList/_TEST_C_DEPS} ${PROD_../CTools/Utils/Types/Number/_TEST_C_DEPS} ${PROD_../CTools/Utils/Types/String/_TEST_C_DEPS} ${PROD_../CTools/Utils/Types/Unicode/_TEST_C_DEPS} 
-PROD_TEST_H_DEPS=${PROD_../CTools/_TEST_H_DEPS} ${PROD_../CTools/Automata/_TEST_H_DEPS} ${PROD_../CTools/Combinatorics/_TEST_H_DEPS} ${PROD_../CTools/Crypto/_TEST_H_DEPS} ${PROD_../CTools/Matrix/_TEST_H_DEPS} ${PROD_../CTools/Stats/_TEST_H_DEPS} ${PROD_../CTools/Utils/_TEST_H_DEPS} ${PROD_../CTools/Utils/Assertions/_TEST_H_DEPS} ${PROD_../CTools/Utils/Dictionary/_TEST_H_DEPS} ${PROD_../CTools/Utils/Rand/_TEST_H_DEPS} ${PROD_../CTools/Utils/Types/_TEST_H_DEPS} ${PROD_../CTools/Utils/Types/Array/_TEST_H_DEPS} ${PROD_../CTools/Utils/Types/Float/_TEST_H_DEPS} ${PROD_../CTools/Utils/Types/LinkList/_TEST_H_DEPS} ${PROD_../CTools/Utils/Types/Number/_TEST_H_DEPS} ${PROD_../CTools/Utils/Types/String/_TEST_H_DEPS} ${PROD_../CTools/Utils/Types/Unicode/_TEST_H_DEPS} 
-PROD_TEST_O_DEPS=${PROD_../CTools/_TEST_O_DEPS} ${PROD_../CTools/Automata/_TEST_O_DEPS} ${PROD_../CTools/Combinatorics/_TEST_O_DEPS} ${PROD_../CTools/Crypto/_TEST_O_DEPS} ${PROD_../CTools/Matrix/_TEST_O_DEPS} ${PROD_../CTools/Stats/_TEST_O_DEPS} ${PROD_../CTools/Utils/_TEST_O_DEPS} ${PROD_../CTools/Utils/Assertions/_TEST_O_DEPS} ${PROD_../CTools/Utils/Dictionary/_TEST_O_DEPS} ${PROD_../CTools/Utils/Rand/_TEST_O_DEPS} ${PROD_../CTools/Utils/Types/_TEST_O_DEPS} ${PROD_../CTools/Utils/Types/Array/_TEST_O_DEPS} ${PROD_../CTools/Utils/Types/Float/_TEST_O_DEPS} ${PROD_../CTools/Utils/Types/LinkList/_TEST_O_DEPS} ${PROD_../CTools/Utils/Types/Number/_TEST_O_DEPS} ${PROD_../CTools/Utils/Types/String/_TEST_O_DEPS} ${PROD_../CTools/Utils/Types/Unicode/_TEST_O_DEPS} 
-DEV_TEST_C_FILES=${DEV_../CTools/_TEST_C_FILES} ${DEV_../CTools/Automata/_TEST_C_FILES} ${DEV_../CTools/Combinatorics/_TEST_C_FILES} ${DEV_../CTools/Crypto/_TEST_C_FILES} ${DEV_../CTools/Matrix/_TEST_C_FILES} ${DEV_../CTools/Stats/_TEST_C_FILES} ${DEV_../CTools/Utils/_TEST_C_FILES} ${DEV_../CTools/Utils/Assertions/_TEST_C_FILES} ${DEV_../CTools/Utils/Dictionary/_TEST_C_FILES} ${DEV_../CTools/Utils/Rand/_TEST_C_FILES} ${DEV_../CTools/Utils/Types/_TEST_C_FILES} ${DEV_../CTools/Utils/Types/Array/_TEST_C_FILES} ${DEV_../CTools/Utils/Types/Float/_TEST_C_FILES} ${DEV_../CTools/Utils/Types/LinkList/_TEST_C_FILES} ${DEV_../CTools/Utils/Types/Number/_TEST_C_FILES} ${DEV_../CTools/Utils/Types/String/_TEST_C_FILES} ${DEV_../CTools/Utils/Types/Unicode/_TEST_C_FILES} 
-DEV_TEST_H_FILES=${DEV_../CTools/_TEST_H_FILES} ${DEV_../CTools/Automata/_TEST_H_FILES} ${DEV_../CTools/Combinatorics/_TEST_H_FILES} ${DEV_../CTools/Crypto/_TEST_H_FILES} ${DEV_../CTools/Matrix/_TEST_H_FILES} ${DEV_../CTools/Stats/_TEST_H_FILES} ${DEV_../CTools/Utils/_TEST_H_FILES} ${DEV_../CTools/Utils/Assertions/_TEST_H_FILES} ${DEV_../CTools/Utils/Dictionary/_TEST_H_FILES} ${DEV_../CTools/Utils/Rand/_TEST_H_FILES} ${DEV_../CTools/Utils/Types/_TEST_H_FILES} ${DEV_../CTools/Utils/Types/Array/_TEST_H_FILES} ${DEV_../CTools/Utils/Types/Float/_TEST_H_FILES} ${DEV_../CTools/Utils/Types/LinkList/_TEST_H_FILES} ${DEV_../CTools/Utils/Types/Number/_TEST_H_FILES} ${DEV_../CTools/Utils/Types/String/_TEST_H_FILES} ${DEV_../CTools/Utils/Types/Unicode/_TEST_H_FILES} 
-DEV_TEST_O_FILES=${DEV_../CTools/_TEST_O_FILES} ${DEV_../CTools/Automata/_TEST_O_FILES} ${DEV_../CTools/Combinatorics/_TEST_O_FILES} ${DEV_../CTools/Crypto/_TEST_O_FILES} ${DEV_../CTools/Matrix/_TEST_O_FILES} ${DEV_../CTools/Stats/_TEST_O_FILES} ${DEV_../CTools/Utils/_TEST_O_FILES} ${DEV_../CTools/Utils/Assertions/_TEST_O_FILES} ${DEV_../CTools/Utils/Dictionary/_TEST_O_FILES} ${DEV_../CTools/Utils/Rand/_TEST_O_FILES} ${DEV_../CTools/Utils/Types/_TEST_O_FILES} ${DEV_../CTools/Utils/Types/Array/_TEST_O_FILES} ${DEV_../CTools/Utils/Types/Float/_TEST_O_FILES} ${DEV_../CTools/Utils/Types/LinkList/_TEST_O_FILES} ${DEV_../CTools/Utils/Types/Number/_TEST_O_FILES} ${DEV_../CTools/Utils/Types/String/_TEST_O_FILES} ${DEV_../CTools/Utils/Types/Unicode/_TEST_O_FILES} 
-PROD_TEST_C_FILES=${PROD_../CTools/_TEST_C_FILES} ${PROD_../CTools/Automata/_TEST_C_FILES} ${PROD_../CTools/Combinatorics/_TEST_C_FILES} ${PROD_../CTools/Crypto/_TEST_C_FILES} ${PROD_../CTools/Matrix/_TEST_C_FILES} ${PROD_../CTools/Stats/_TEST_C_FILES} ${PROD_../CTools/Utils/_TEST_C_FILES} ${PROD_../CTools/Utils/Assertions/_TEST_C_FILES} ${PROD_../CTools/Utils/Dictionary/_TEST_C_FILES} ${PROD_../CTools/Utils/Rand/_TEST_C_FILES} ${PROD_../CTools/Utils/Types/_TEST_C_FILES} ${PROD_../CTools/Utils/Types/Array/_TEST_C_FILES} ${PROD_../CTools/Utils/Types/Float/_TEST_C_FILES} ${PROD_../CTools/Utils/Types/LinkList/_TEST_C_FILES} ${PROD_../CTools/Utils/Types/Number/_TEST_C_FILES} ${PROD_../CTools/Utils/Types/String/_TEST_C_FILES} ${PROD_../CTools/Utils/Types/Unicode/_TEST_C_FILES} 
-PROD_TEST_H_FILES=${PROD_../CTools/_TEST_H_FILES} ${PROD_../CTools/Automata/_TEST_H_FILES} ${PROD_../CTools/Combinatorics/_TEST_H_FILES} ${PROD_../CTools/Crypto/_TEST_H_FILES} ${PROD_../CTools/Matrix/_TEST_H_FILES} ${PROD_../CTools/Stats/_TEST_H_FILES} ${PROD_../CTools/Utils/_TEST_H_FILES} ${PROD_../CTools/Utils/Assertions/_TEST_H_FILES} ${PROD_../CTools/Utils/Dictionary/_TEST_H_FILES} ${PROD_../CTools/Utils/Rand/_TEST_H_FILES} ${PROD_../CTools/Utils/Types/_TEST_H_FILES} ${PROD_../CTools/Utils/Types/Array/_TEST_H_FILES} ${PROD_../CTools/Utils/Types/Float/_TEST_H_FILES} ${PROD_../CTools/Utils/Types/LinkList/_TEST_H_FILES} ${PROD_../CTools/Utils/Types/Number/_TEST_H_FILES} ${PROD_../CTools/Utils/Types/String/_TEST_H_FILES} ${PROD_../CTools/Utils/Types/Unicode/_TEST_H_FILES} 
-PROD_TEST_O_FILES=${PROD_../CTools/_TEST_O_FILES} ${PROD_../CTools/Automata/_TEST_O_FILES} ${PROD_../CTools/Combinatorics/_TEST_O_FILES} ${PROD_../CTools/Crypto/_TEST_O_FILES} ${PROD_../CTools/Matrix/_TEST_O_FILES} ${PROD_../CTools/Stats/_TEST_O_FILES} ${PROD_../CTools/Utils/_TEST_O_FILES} ${PROD_../CTools/Utils/Assertions/_TEST_O_FILES} ${PROD_../CTools/Utils/Dictionary/_TEST_O_FILES} ${PROD_../CTools/Utils/Rand/_TEST_O_FILES} ${PROD_../CTools/Utils/Types/_TEST_O_FILES} ${PROD_../CTools/Utils/Types/Array/_TEST_O_FILES} ${PROD_../CTools/Utils/Types/Float/_TEST_O_FILES} ${PROD_../CTools/Utils/Types/LinkList/_TEST_O_FILES} ${PROD_../CTools/Utils/Types/Number/_TEST_O_FILES} ${PROD_../CTools/Utils/Types/String/_TEST_O_FILES} ${PROD_../CTools/Utils/Types/Unicode/_TEST_O_FILES} 
+DEV_TEST_C_DEPS=${DEV_./CTools/_TEST_C_DEPS} ${DEV_./CTools/Automata/_TEST_C_DEPS} ${DEV_./CTools/Combinatorics/_TEST_C_DEPS} ${DEV_./CTools/Crypto/_TEST_C_DEPS} ${DEV_./CTools/Matrix/_TEST_C_DEPS} ${DEV_./CTools/Stats/_TEST_C_DEPS} ${DEV_./CTools/Utils/_TEST_C_DEPS} ${DEV_./CTools/Utils/Assertions/_TEST_C_DEPS} ${DEV_./CTools/Utils/Dictionary/_TEST_C_DEPS} ${DEV_./CTools/Utils/Rand/_TEST_C_DEPS} ${DEV_./CTools/Utils/Types/_TEST_C_DEPS} ${DEV_./CTools/Utils/Types/Array/_TEST_C_DEPS} ${DEV_./CTools/Utils/Types/Float/_TEST_C_DEPS} ${DEV_./CTools/Utils/Types/LinkList/_TEST_C_DEPS} ${DEV_./CTools/Utils/Types/Number/_TEST_C_DEPS} ${DEV_./CTools/Utils/Types/String/_TEST_C_DEPS} ${DEV_./CTools/Utils/Types/Unicode/_TEST_C_DEPS} 
+DEV_TEST_H_DEPS=${DEV_./CTools/_TEST_H_DEPS} ${DEV_./CTools/Automata/_TEST_H_DEPS} ${DEV_./CTools/Combinatorics/_TEST_H_DEPS} ${DEV_./CTools/Crypto/_TEST_H_DEPS} ${DEV_./CTools/Matrix/_TEST_H_DEPS} ${DEV_./CTools/Stats/_TEST_H_DEPS} ${DEV_./CTools/Utils/_TEST_H_DEPS} ${DEV_./CTools/Utils/Assertions/_TEST_H_DEPS} ${DEV_./CTools/Utils/Dictionary/_TEST_H_DEPS} ${DEV_./CTools/Utils/Rand/_TEST_H_DEPS} ${DEV_./CTools/Utils/Types/_TEST_H_DEPS} ${DEV_./CTools/Utils/Types/Array/_TEST_H_DEPS} ${DEV_./CTools/Utils/Types/Float/_TEST_H_DEPS} ${DEV_./CTools/Utils/Types/LinkList/_TEST_H_DEPS} ${DEV_./CTools/Utils/Types/Number/_TEST_H_DEPS} ${DEV_./CTools/Utils/Types/String/_TEST_H_DEPS} ${DEV_./CTools/Utils/Types/Unicode/_TEST_H_DEPS} 
+DEV_TEST_O_DEPS=${DEV_./CTools/_TEST_O_DEPS} ${DEV_./CTools/Automata/_TEST_O_DEPS} ${DEV_./CTools/Combinatorics/_TEST_O_DEPS} ${DEV_./CTools/Crypto/_TEST_O_DEPS} ${DEV_./CTools/Matrix/_TEST_O_DEPS} ${DEV_./CTools/Stats/_TEST_O_DEPS} ${DEV_./CTools/Utils/_TEST_O_DEPS} ${DEV_./CTools/Utils/Assertions/_TEST_O_DEPS} ${DEV_./CTools/Utils/Dictionary/_TEST_O_DEPS} ${DEV_./CTools/Utils/Rand/_TEST_O_DEPS} ${DEV_./CTools/Utils/Types/_TEST_O_DEPS} ${DEV_./CTools/Utils/Types/Array/_TEST_O_DEPS} ${DEV_./CTools/Utils/Types/Float/_TEST_O_DEPS} ${DEV_./CTools/Utils/Types/LinkList/_TEST_O_DEPS} ${DEV_./CTools/Utils/Types/Number/_TEST_O_DEPS} ${DEV_./CTools/Utils/Types/String/_TEST_O_DEPS} ${DEV_./CTools/Utils/Types/Unicode/_TEST_O_DEPS} 
+PROD_TEST_C_DEPS=${PROD_./CTools/_TEST_C_DEPS} ${PROD_./CTools/Automata/_TEST_C_DEPS} ${PROD_./CTools/Combinatorics/_TEST_C_DEPS} ${PROD_./CTools/Crypto/_TEST_C_DEPS} ${PROD_./CTools/Matrix/_TEST_C_DEPS} ${PROD_./CTools/Stats/_TEST_C_DEPS} ${PROD_./CTools/Utils/_TEST_C_DEPS} ${PROD_./CTools/Utils/Assertions/_TEST_C_DEPS} ${PROD_./CTools/Utils/Dictionary/_TEST_C_DEPS} ${PROD_./CTools/Utils/Rand/_TEST_C_DEPS} ${PROD_./CTools/Utils/Types/_TEST_C_DEPS} ${PROD_./CTools/Utils/Types/Array/_TEST_C_DEPS} ${PROD_./CTools/Utils/Types/Float/_TEST_C_DEPS} ${PROD_./CTools/Utils/Types/LinkList/_TEST_C_DEPS} ${PROD_./CTools/Utils/Types/Number/_TEST_C_DEPS} ${PROD_./CTools/Utils/Types/String/_TEST_C_DEPS} ${PROD_./CTools/Utils/Types/Unicode/_TEST_C_DEPS} 
+PROD_TEST_H_DEPS=${PROD_./CTools/_TEST_H_DEPS} ${PROD_./CTools/Automata/_TEST_H_DEPS} ${PROD_./CTools/Combinatorics/_TEST_H_DEPS} ${PROD_./CTools/Crypto/_TEST_H_DEPS} ${PROD_./CTools/Matrix/_TEST_H_DEPS} ${PROD_./CTools/Stats/_TEST_H_DEPS} ${PROD_./CTools/Utils/_TEST_H_DEPS} ${PROD_./CTools/Utils/Assertions/_TEST_H_DEPS} ${PROD_./CTools/Utils/Dictionary/_TEST_H_DEPS} ${PROD_./CTools/Utils/Rand/_TEST_H_DEPS} ${PROD_./CTools/Utils/Types/_TEST_H_DEPS} ${PROD_./CTools/Utils/Types/Array/_TEST_H_DEPS} ${PROD_./CTools/Utils/Types/Float/_TEST_H_DEPS} ${PROD_./CTools/Utils/Types/LinkList/_TEST_H_DEPS} ${PROD_./CTools/Utils/Types/Number/_TEST_H_DEPS} ${PROD_./CTools/Utils/Types/String/_TEST_H_DEPS} ${PROD_./CTools/Utils/Types/Unicode/_TEST_H_DEPS} 
+PROD_TEST_O_DEPS=${PROD_./CTools/_TEST_O_DEPS} ${PROD_./CTools/Automata/_TEST_O_DEPS} ${PROD_./CTools/Combinatorics/_TEST_O_DEPS} ${PROD_./CTools/Crypto/_TEST_O_DEPS} ${PROD_./CTools/Matrix/_TEST_O_DEPS} ${PROD_./CTools/Stats/_TEST_O_DEPS} ${PROD_./CTools/Utils/_TEST_O_DEPS} ${PROD_./CTools/Utils/Assertions/_TEST_O_DEPS} ${PROD_./CTools/Utils/Dictionary/_TEST_O_DEPS} ${PROD_./CTools/Utils/Rand/_TEST_O_DEPS} ${PROD_./CTools/Utils/Types/_TEST_O_DEPS} ${PROD_./CTools/Utils/Types/Array/_TEST_O_DEPS} ${PROD_./CTools/Utils/Types/Float/_TEST_O_DEPS} ${PROD_./CTools/Utils/Types/LinkList/_TEST_O_DEPS} ${PROD_./CTools/Utils/Types/Number/_TEST_O_DEPS} ${PROD_./CTools/Utils/Types/String/_TEST_O_DEPS} ${PROD_./CTools/Utils/Types/Unicode/_TEST_O_DEPS} 
+DEV_TEST_C_FILES=${DEV_./CTools/_TEST_C_FILES} ${DEV_./CTools/Automata/_TEST_C_FILES} ${DEV_./CTools/Combinatorics/_TEST_C_FILES} ${DEV_./CTools/Crypto/_TEST_C_FILES} ${DEV_./CTools/Matrix/_TEST_C_FILES} ${DEV_./CTools/Stats/_TEST_C_FILES} ${DEV_./CTools/Utils/_TEST_C_FILES} ${DEV_./CTools/Utils/Assertions/_TEST_C_FILES} ${DEV_./CTools/Utils/Dictionary/_TEST_C_FILES} ${DEV_./CTools/Utils/Rand/_TEST_C_FILES} ${DEV_./CTools/Utils/Types/_TEST_C_FILES} ${DEV_./CTools/Utils/Types/Array/_TEST_C_FILES} ${DEV_./CTools/Utils/Types/Float/_TEST_C_FILES} ${DEV_./CTools/Utils/Types/LinkList/_TEST_C_FILES} ${DEV_./CTools/Utils/Types/Number/_TEST_C_FILES} ${DEV_./CTools/Utils/Types/String/_TEST_C_FILES} ${DEV_./CTools/Utils/Types/Unicode/_TEST_C_FILES} 
+DEV_TEST_H_FILES=${DEV_./CTools/_TEST_H_FILES} ${DEV_./CTools/Automata/_TEST_H_FILES} ${DEV_./CTools/Combinatorics/_TEST_H_FILES} ${DEV_./CTools/Crypto/_TEST_H_FILES} ${DEV_./CTools/Matrix/_TEST_H_FILES} ${DEV_./CTools/Stats/_TEST_H_FILES} ${DEV_./CTools/Utils/_TEST_H_FILES} ${DEV_./CTools/Utils/Assertions/_TEST_H_FILES} ${DEV_./CTools/Utils/Dictionary/_TEST_H_FILES} ${DEV_./CTools/Utils/Rand/_TEST_H_FILES} ${DEV_./CTools/Utils/Types/_TEST_H_FILES} ${DEV_./CTools/Utils/Types/Array/_TEST_H_FILES} ${DEV_./CTools/Utils/Types/Float/_TEST_H_FILES} ${DEV_./CTools/Utils/Types/LinkList/_TEST_H_FILES} ${DEV_./CTools/Utils/Types/Number/_TEST_H_FILES} ${DEV_./CTools/Utils/Types/String/_TEST_H_FILES} ${DEV_./CTools/Utils/Types/Unicode/_TEST_H_FILES} 
+DEV_TEST_O_FILES=${DEV_./CTools/_TEST_O_FILES} ${DEV_./CTools/Automata/_TEST_O_FILES} ${DEV_./CTools/Combinatorics/_TEST_O_FILES} ${DEV_./CTools/Crypto/_TEST_O_FILES} ${DEV_./CTools/Matrix/_TEST_O_FILES} ${DEV_./CTools/Stats/_TEST_O_FILES} ${DEV_./CTools/Utils/_TEST_O_FILES} ${DEV_./CTools/Utils/Assertions/_TEST_O_FILES} ${DEV_./CTools/Utils/Dictionary/_TEST_O_FILES} ${DEV_./CTools/Utils/Rand/_TEST_O_FILES} ${DEV_./CTools/Utils/Types/_TEST_O_FILES} ${DEV_./CTools/Utils/Types/Array/_TEST_O_FILES} ${DEV_./CTools/Utils/Types/Float/_TEST_O_FILES} ${DEV_./CTools/Utils/Types/LinkList/_TEST_O_FILES} ${DEV_./CTools/Utils/Types/Number/_TEST_O_FILES} ${DEV_./CTools/Utils/Types/String/_TEST_O_FILES} ${DEV_./CTools/Utils/Types/Unicode/_TEST_O_FILES} 
+PROD_TEST_C_FILES=${PROD_./CTools/_TEST_C_FILES} ${PROD_./CTools/Automata/_TEST_C_FILES} ${PROD_./CTools/Combinatorics/_TEST_C_FILES} ${PROD_./CTools/Crypto/_TEST_C_FILES} ${PROD_./CTools/Matrix/_TEST_C_FILES} ${PROD_./CTools/Stats/_TEST_C_FILES} ${PROD_./CTools/Utils/_TEST_C_FILES} ${PROD_./CTools/Utils/Assertions/_TEST_C_FILES} ${PROD_./CTools/Utils/Dictionary/_TEST_C_FILES} ${PROD_./CTools/Utils/Rand/_TEST_C_FILES} ${PROD_./CTools/Utils/Types/_TEST_C_FILES} ${PROD_./CTools/Utils/Types/Array/_TEST_C_FILES} ${PROD_./CTools/Utils/Types/Float/_TEST_C_FILES} ${PROD_./CTools/Utils/Types/LinkList/_TEST_C_FILES} ${PROD_./CTools/Utils/Types/Number/_TEST_C_FILES} ${PROD_./CTools/Utils/Types/String/_TEST_C_FILES} ${PROD_./CTools/Utils/Types/Unicode/_TEST_C_FILES} 
+PROD_TEST_H_FILES=${PROD_./CTools/_TEST_H_FILES} ${PROD_./CTools/Automata/_TEST_H_FILES} ${PROD_./CTools/Combinatorics/_TEST_H_FILES} ${PROD_./CTools/Crypto/_TEST_H_FILES} ${PROD_./CTools/Matrix/_TEST_H_FILES} ${PROD_./CTools/Stats/_TEST_H_FILES} ${PROD_./CTools/Utils/_TEST_H_FILES} ${PROD_./CTools/Utils/Assertions/_TEST_H_FILES} ${PROD_./CTools/Utils/Dictionary/_TEST_H_FILES} ${PROD_./CTools/Utils/Rand/_TEST_H_FILES} ${PROD_./CTools/Utils/Types/_TEST_H_FILES} ${PROD_./CTools/Utils/Types/Array/_TEST_H_FILES} ${PROD_./CTools/Utils/Types/Float/_TEST_H_FILES} ${PROD_./CTools/Utils/Types/LinkList/_TEST_H_FILES} ${PROD_./CTools/Utils/Types/Number/_TEST_H_FILES} ${PROD_./CTools/Utils/Types/String/_TEST_H_FILES} ${PROD_./CTools/Utils/Types/Unicode/_TEST_H_FILES} 
+PROD_TEST_O_FILES=${PROD_./CTools/_TEST_O_FILES} ${PROD_./CTools/Automata/_TEST_O_FILES} ${PROD_./CTools/Combinatorics/_TEST_O_FILES} ${PROD_./CTools/Crypto/_TEST_O_FILES} ${PROD_./CTools/Matrix/_TEST_O_FILES} ${PROD_./CTools/Stats/_TEST_O_FILES} ${PROD_./CTools/Utils/_TEST_O_FILES} ${PROD_./CTools/Utils/Assertions/_TEST_O_FILES} ${PROD_./CTools/Utils/Dictionary/_TEST_O_FILES} ${PROD_./CTools/Utils/Rand/_TEST_O_FILES} ${PROD_./CTools/Utils/Types/_TEST_O_FILES} ${PROD_./CTools/Utils/Types/Array/_TEST_O_FILES} ${PROD_./CTools/Utils/Types/Float/_TEST_O_FILES} ${PROD_./CTools/Utils/Types/LinkList/_TEST_O_FILES} ${PROD_./CTools/Utils/Types/Number/_TEST_O_FILES} ${PROD_./CTools/Utils/Types/String/_TEST_O_FILES} ${PROD_./CTools/Utils/Types/Unicode/_TEST_O_FILES} 
 
 
 ########################################################################################################################################
@@ -1242,7 +1242,7 @@ PROD_TEST_O_FILES=${PROD_../CTools/_TEST_O_FILES} ${PROD_../CTools/Automata/_TES
 
 
 
-ProdTests: ${PROD_../CTools/_TEST_C_DEPS} ,${PROD_../CTools/Automata/_TEST_C_DEPS} ,${PROD_../CTools/Combinatorics/_TEST_C_DEPS} ,${PROD_../CTools/Crypto/_TEST_C_DEPS} ,${PROD_../CTools/Matrix/_TEST_C_DEPS} ,${PROD_../CTools/Stats/_TEST_C_DEPS} ,${PROD_../CTools/Utils/_TEST_C_DEPS} ,${PROD_../CTools/Utils/Assertions/_TEST_C_DEPS} ,${PROD_../CTools/Utils/Dictionary/_TEST_C_DEPS} ,${PROD_../CTools/Utils/Rand/_TEST_C_DEPS} ,${PROD_../CTools/Utils/Types/_TEST_C_DEPS} ,${PROD_../CTools/Utils/Types/Array/_TEST_C_DEPS} ,${PROD_../CTools/Utils/Types/Float/_TEST_C_DEPS} ,${PROD_../CTools/Utils/Types/LinkList/_TEST_C_DEPS} ,${PROD_../CTools/Utils/Types/Number/_TEST_C_DEPS} ,${PROD_../CTools/Utils/Types/String/_TEST_C_DEPS} ,${PROD_../CTools/Utils/Types/Unicode/_TEST_C_DEPS}  ${PROD_../CTools/_TEST_H_DEPS} ,${PROD_../CTools/Automata/_TEST_H_DEPS} ,${PROD_../CTools/Combinatorics/_TEST_H_DEPS} ,${PROD_../CTools/Crypto/_TEST_H_DEPS} ,${PROD_../CTools/Matrix/_TEST_H_DEPS} ,${PROD_../CTools/Stats/_TEST_H_DEPS} ,${PROD_../CTools/Utils/_TEST_H_DEPS} ,${PROD_../CTools/Utils/Assertions/_TEST_H_DEPS} ,${PROD_../CTools/Utils/Dictionary/_TEST_H_DEPS} ,${PROD_../CTools/Utils/Rand/_TEST_H_DEPS} ,${PROD_../CTools/Utils/Types/_TEST_H_DEPS} ,${PROD_../CTools/Utils/Types/Array/_TEST_H_DEPS} ,${PROD_../CTools/Utils/Types/Float/_TEST_H_DEPS} ,${PROD_../CTools/Utils/Types/LinkList/_TEST_H_DEPS} ,${PROD_../CTools/Utils/Types/Number/_TEST_H_DEPS} ,${PROD_../CTools/Utils/Types/String/_TEST_H_DEPS} ,${PROD_../CTools/Utils/Types/Unicode/_TEST_H_DEPS} 
+ProdTests: ${PROD_./CTools/_TEST_C_DEPS} ,${PROD_./CTools/Automata/_TEST_C_DEPS} ,${PROD_./CTools/Combinatorics/_TEST_C_DEPS} ,${PROD_./CTools/Crypto/_TEST_C_DEPS} ,${PROD_./CTools/Matrix/_TEST_C_DEPS} ,${PROD_./CTools/Stats/_TEST_C_DEPS} ,${PROD_./CTools/Utils/_TEST_C_DEPS} ,${PROD_./CTools/Utils/Assertions/_TEST_C_DEPS} ,${PROD_./CTools/Utils/Dictionary/_TEST_C_DEPS} ,${PROD_./CTools/Utils/Rand/_TEST_C_DEPS} ,${PROD_./CTools/Utils/Types/_TEST_C_DEPS} ,${PROD_./CTools/Utils/Types/Array/_TEST_C_DEPS} ,${PROD_./CTools/Utils/Types/Float/_TEST_C_DEPS} ,${PROD_./CTools/Utils/Types/LinkList/_TEST_C_DEPS} ,${PROD_./CTools/Utils/Types/Number/_TEST_C_DEPS} ,${PROD_./CTools/Utils/Types/String/_TEST_C_DEPS} ,${PROD_./CTools/Utils/Types/Unicode/_TEST_C_DEPS}  ${PROD_./CTools/_TEST_H_DEPS} ,${PROD_./CTools/Automata/_TEST_H_DEPS} ,${PROD_./CTools/Combinatorics/_TEST_H_DEPS} ,${PROD_./CTools/Crypto/_TEST_H_DEPS} ,${PROD_./CTools/Matrix/_TEST_H_DEPS} ,${PROD_./CTools/Stats/_TEST_H_DEPS} ,${PROD_./CTools/Utils/_TEST_H_DEPS} ,${PROD_./CTools/Utils/Assertions/_TEST_H_DEPS} ,${PROD_./CTools/Utils/Dictionary/_TEST_H_DEPS} ,${PROD_./CTools/Utils/Rand/_TEST_H_DEPS} ,${PROD_./CTools/Utils/Types/_TEST_H_DEPS} ,${PROD_./CTools/Utils/Types/Array/_TEST_H_DEPS} ,${PROD_./CTools/Utils/Types/Float/_TEST_H_DEPS} ,${PROD_./CTools/Utils/Types/LinkList/_TEST_H_DEPS} ,${PROD_./CTools/Utils/Types/Number/_TEST_H_DEPS} ,${PROD_./CTools/Utils/Types/String/_TEST_H_DEPS} ,${PROD_./CTools/Utils/Types/Unicode/_TEST_H_DEPS} 
 	make ProdCTools
 	make ProdCToolsAutomata
 	make ProdCToolsCombinatorics
@@ -1262,10 +1262,10 @@ ProdTests: ${PROD_../CTools/_TEST_C_DEPS} ,${PROD_../CTools/Automata/_TEST_C_DEP
 	make ProdCToolsUtilsTypesUnicode
 
 
-ProdTestsLink: ${PROD_../CTools/_TEST_O_DEPS} ,${PROD_../CTools/Automata/_TEST_O_DEPS} ,${PROD_../CTools/Combinatorics/_TEST_O_DEPS} ,${PROD_../CTools/Crypto/_TEST_O_DEPS} ,${PROD_../CTools/Matrix/_TEST_O_DEPS} ,${PROD_../CTools/Stats/_TEST_O_DEPS} ,${PROD_../CTools/Utils/_TEST_O_DEPS} ,${PROD_../CTools/Utils/Assertions/_TEST_O_DEPS} ,${PROD_../CTools/Utils/Dictionary/_TEST_O_DEPS} ,${PROD_../CTools/Utils/Rand/_TEST_O_DEPS} ,${PROD_../CTools/Utils/Types/_TEST_O_DEPS} ,${PROD_../CTools/Utils/Types/Array/_TEST_O_DEPS} ,${PROD_../CTools/Utils/Types/Float/_TEST_O_DEPS} ,${PROD_../CTools/Utils/Types/LinkList/_TEST_O_DEPS} ,${PROD_../CTools/Utils/Types/Number/_TEST_O_DEPS} ,${PROD_../CTools/Utils/Types/String/_TEST_O_DEPS} ,${PROD_../CTools/Utils/Types/Unicode/_TEST_O_DEPS} 
-	gcc -o Prod ${PROD_../CTools/_TEST_O_FILES} ,${PROD_../CTools/Automata/_TEST_O_FILES} ,${PROD_../CTools/Combinatorics/_TEST_O_FILES} ,${PROD_../CTools/Crypto/_TEST_O_FILES} ,${PROD_../CTools/Matrix/_TEST_O_FILES} ,${PROD_../CTools/Stats/_TEST_O_FILES} ,${PROD_../CTools/Utils/_TEST_O_FILES} ,${PROD_../CTools/Utils/Assertions/_TEST_O_FILES} ,${PROD_../CTools/Utils/Dictionary/_TEST_O_FILES} ,${PROD_../CTools/Utils/Rand/_TEST_O_FILES} ,${PROD_../CTools/Utils/Types/_TEST_O_FILES} ,${PROD_../CTools/Utils/Types/Array/_TEST_O_FILES} ,${PROD_../CTools/Utils/Types/Float/_TEST_O_FILES} ,${PROD_../CTools/Utils/Types/LinkList/_TEST_O_FILES} ,${PROD_../CTools/Utils/Types/Number/_TEST_O_FILES} ,${PROD_../CTools/Utils/Types/String/_TEST_O_FILES} ,${PROD_../CTools/Utils/Types/Unicode/_TEST_O_FILES} 
+ProdTestsLink: ${PROD_./CTools/_TEST_O_DEPS} ,${PROD_./CTools/Automata/_TEST_O_DEPS} ,${PROD_./CTools/Combinatorics/_TEST_O_DEPS} ,${PROD_./CTools/Crypto/_TEST_O_DEPS} ,${PROD_./CTools/Matrix/_TEST_O_DEPS} ,${PROD_./CTools/Stats/_TEST_O_DEPS} ,${PROD_./CTools/Utils/_TEST_O_DEPS} ,${PROD_./CTools/Utils/Assertions/_TEST_O_DEPS} ,${PROD_./CTools/Utils/Dictionary/_TEST_O_DEPS} ,${PROD_./CTools/Utils/Rand/_TEST_O_DEPS} ,${PROD_./CTools/Utils/Types/_TEST_O_DEPS} ,${PROD_./CTools/Utils/Types/Array/_TEST_O_DEPS} ,${PROD_./CTools/Utils/Types/Float/_TEST_O_DEPS} ,${PROD_./CTools/Utils/Types/LinkList/_TEST_O_DEPS} ,${PROD_./CTools/Utils/Types/Number/_TEST_O_DEPS} ,${PROD_./CTools/Utils/Types/String/_TEST_O_DEPS} ,${PROD_./CTools/Utils/Types/Unicode/_TEST_O_DEPS} 
+	gcc -o Prod ${PROD_./CTools/_TEST_O_FILES} ,${PROD_./CTools/Automata/_TEST_O_FILES} ,${PROD_./CTools/Combinatorics/_TEST_O_FILES} ,${PROD_./CTools/Crypto/_TEST_O_FILES} ,${PROD_./CTools/Matrix/_TEST_O_FILES} ,${PROD_./CTools/Stats/_TEST_O_FILES} ,${PROD_./CTools/Utils/_TEST_O_FILES} ,${PROD_./CTools/Utils/Assertions/_TEST_O_FILES} ,${PROD_./CTools/Utils/Dictionary/_TEST_O_FILES} ,${PROD_./CTools/Utils/Rand/_TEST_O_FILES} ,${PROD_./CTools/Utils/Types/_TEST_O_FILES} ,${PROD_./CTools/Utils/Types/Array/_TEST_O_FILES} ,${PROD_./CTools/Utils/Types/Float/_TEST_O_FILES} ,${PROD_./CTools/Utils/Types/LinkList/_TEST_O_FILES} ,${PROD_./CTools/Utils/Types/Number/_TEST_O_FILES} ,${PROD_./CTools/Utils/Types/String/_TEST_O_FILES} ,${PROD_./CTools/Utils/Types/Unicode/_TEST_O_FILES} 
 
-ProdTestsClean: ${PROD_../CTools/_TEST_O_DEPS} ,${PROD_../CTools/Automata/_TEST_O_DEPS} ,${PROD_../CTools/Combinatorics/_TEST_O_DEPS} ,${PROD_../CTools/Crypto/_TEST_O_DEPS} ,${PROD_../CTools/Matrix/_TEST_O_DEPS} ,${PROD_../CTools/Stats/_TEST_O_DEPS} ,${PROD_../CTools/Utils/_TEST_O_DEPS} ,${PROD_../CTools/Utils/Assertions/_TEST_O_DEPS} ,${PROD_../CTools/Utils/Dictionary/_TEST_O_DEPS} ,${PROD_../CTools/Utils/Rand/_TEST_O_DEPS} ,${PROD_../CTools/Utils/Types/_TEST_O_DEPS} ,${PROD_../CTools/Utils/Types/Array/_TEST_O_DEPS} ,${PROD_../CTools/Utils/Types/Float/_TEST_O_DEPS} ,${PROD_../CTools/Utils/Types/LinkList/_TEST_O_DEPS} ,${PROD_../CTools/Utils/Types/Number/_TEST_O_DEPS} ,${PROD_../CTools/Utils/Types/String/_TEST_O_DEPS} ,${PROD_../CTools/Utils/Types/Unicode/_TEST_O_DEPS} 
+ProdTestsClean: ${PROD_./CTools/_TEST_O_DEPS} ,${PROD_./CTools/Automata/_TEST_O_DEPS} ,${PROD_./CTools/Combinatorics/_TEST_O_DEPS} ,${PROD_./CTools/Crypto/_TEST_O_DEPS} ,${PROD_./CTools/Matrix/_TEST_O_DEPS} ,${PROD_./CTools/Stats/_TEST_O_DEPS} ,${PROD_./CTools/Utils/_TEST_O_DEPS} ,${PROD_./CTools/Utils/Assertions/_TEST_O_DEPS} ,${PROD_./CTools/Utils/Dictionary/_TEST_O_DEPS} ,${PROD_./CTools/Utils/Rand/_TEST_O_DEPS} ,${PROD_./CTools/Utils/Types/_TEST_O_DEPS} ,${PROD_./CTools/Utils/Types/Array/_TEST_O_DEPS} ,${PROD_./CTools/Utils/Types/Float/_TEST_O_DEPS} ,${PROD_./CTools/Utils/Types/LinkList/_TEST_O_DEPS} ,${PROD_./CTools/Utils/Types/Number/_TEST_O_DEPS} ,${PROD_./CTools/Utils/Types/String/_TEST_O_DEPS} ,${PROD_./CTools/Utils/Types/Unicode/_TEST_O_DEPS} 
 	make ProdCToolsClean
 	make ProdCToolsAutomataClean
 	make ProdCToolsCombinatoricsClean
@@ -1285,7 +1285,7 @@ ProdTestsClean: ${PROD_../CTools/_TEST_O_DEPS} ,${PROD_../CTools/Automata/_TEST_
 	make ProdCToolsUtilsTypesUnicodeClean
 
 
-ProdTestsRun: ${PROD_../CTools/_TEST_C_DEPS} ,${PROD_../CTools/Automata/_TEST_C_DEPS} ,${PROD_../CTools/Combinatorics/_TEST_C_DEPS} ,${PROD_../CTools/Crypto/_TEST_C_DEPS} ,${PROD_../CTools/Matrix/_TEST_C_DEPS} ,${PROD_../CTools/Stats/_TEST_C_DEPS} ,${PROD_../CTools/Utils/_TEST_C_DEPS} ,${PROD_../CTools/Utils/Assertions/_TEST_C_DEPS} ,${PROD_../CTools/Utils/Dictionary/_TEST_C_DEPS} ,${PROD_../CTools/Utils/Rand/_TEST_C_DEPS} ,${PROD_../CTools/Utils/Types/_TEST_C_DEPS} ,${PROD_../CTools/Utils/Types/Array/_TEST_C_DEPS} ,${PROD_../CTools/Utils/Types/Float/_TEST_C_DEPS} ,${PROD_../CTools/Utils/Types/LinkList/_TEST_C_DEPS} ,${PROD_../CTools/Utils/Types/Number/_TEST_C_DEPS} ,${PROD_../CTools/Utils/Types/String/_TEST_C_DEPS} ,${PROD_../CTools/Utils/Types/Unicode/_TEST_C_DEPS}  ${PROD_../CTools/_TEST_H_DEPS} ,${PROD_../CTools/Automata/_TEST_H_DEPS} ,${PROD_../CTools/Combinatorics/_TEST_H_DEPS} ,${PROD_../CTools/Crypto/_TEST_H_DEPS} ,${PROD_../CTools/Matrix/_TEST_H_DEPS} ,${PROD_../CTools/Stats/_TEST_H_DEPS} ,${PROD_../CTools/Utils/_TEST_H_DEPS} ,${PROD_../CTools/Utils/Assertions/_TEST_H_DEPS} ,${PROD_../CTools/Utils/Dictionary/_TEST_H_DEPS} ,${PROD_../CTools/Utils/Rand/_TEST_H_DEPS} ,${PROD_../CTools/Utils/Types/_TEST_H_DEPS} ,${PROD_../CTools/Utils/Types/Array/_TEST_H_DEPS} ,${PROD_../CTools/Utils/Types/Float/_TEST_H_DEPS} ,${PROD_../CTools/Utils/Types/LinkList/_TEST_H_DEPS} ,${PROD_../CTools/Utils/Types/Number/_TEST_H_DEPS} ,${PROD_../CTools/Utils/Types/String/_TEST_H_DEPS} ,${PROD_../CTools/Utils/Types/Unicode/_TEST_H_DEPS} 
+ProdTestsRun: ${PROD_./CTools/_TEST_C_DEPS} ,${PROD_./CTools/Automata/_TEST_C_DEPS} ,${PROD_./CTools/Combinatorics/_TEST_C_DEPS} ,${PROD_./CTools/Crypto/_TEST_C_DEPS} ,${PROD_./CTools/Matrix/_TEST_C_DEPS} ,${PROD_./CTools/Stats/_TEST_C_DEPS} ,${PROD_./CTools/Utils/_TEST_C_DEPS} ,${PROD_./CTools/Utils/Assertions/_TEST_C_DEPS} ,${PROD_./CTools/Utils/Dictionary/_TEST_C_DEPS} ,${PROD_./CTools/Utils/Rand/_TEST_C_DEPS} ,${PROD_./CTools/Utils/Types/_TEST_C_DEPS} ,${PROD_./CTools/Utils/Types/Array/_TEST_C_DEPS} ,${PROD_./CTools/Utils/Types/Float/_TEST_C_DEPS} ,${PROD_./CTools/Utils/Types/LinkList/_TEST_C_DEPS} ,${PROD_./CTools/Utils/Types/Number/_TEST_C_DEPS} ,${PROD_./CTools/Utils/Types/String/_TEST_C_DEPS} ,${PROD_./CTools/Utils/Types/Unicode/_TEST_C_DEPS}  ${PROD_./CTools/_TEST_H_DEPS} ,${PROD_./CTools/Automata/_TEST_H_DEPS} ,${PROD_./CTools/Combinatorics/_TEST_H_DEPS} ,${PROD_./CTools/Crypto/_TEST_H_DEPS} ,${PROD_./CTools/Matrix/_TEST_H_DEPS} ,${PROD_./CTools/Stats/_TEST_H_DEPS} ,${PROD_./CTools/Utils/_TEST_H_DEPS} ,${PROD_./CTools/Utils/Assertions/_TEST_H_DEPS} ,${PROD_./CTools/Utils/Dictionary/_TEST_H_DEPS} ,${PROD_./CTools/Utils/Rand/_TEST_H_DEPS} ,${PROD_./CTools/Utils/Types/_TEST_H_DEPS} ,${PROD_./CTools/Utils/Types/Array/_TEST_H_DEPS} ,${PROD_./CTools/Utils/Types/Float/_TEST_H_DEPS} ,${PROD_./CTools/Utils/Types/LinkList/_TEST_H_DEPS} ,${PROD_./CTools/Utils/Types/Number/_TEST_H_DEPS} ,${PROD_./CTools/Utils/Types/String/_TEST_H_DEPS} ,${PROD_./CTools/Utils/Types/Unicode/_TEST_H_DEPS} 
 	make ProdTestsClean
 	make ProdTests
 	make ProdTestsLink
