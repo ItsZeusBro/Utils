@@ -1,18 +1,16 @@
 import fs from 'node:fs'
 
 export class MakeFile{
-    constructor(existingMakeFileobject, makeObjectDescriptor){
-        this.existingMakeFileobject=existingMakeFileobject;
-        this.makeObjectDescriptor=makeObjectDescriptor;
-        this.context(existingMakeFileobject, makeObjectDescriptor)
+    constructor(oldMakeObject, newMakeObject){
+        this.oldMakeObject=oldMakeObject;
+        this.newMakeObject=newMakeObject;
+        this.context(oldMakeObject, newMakeObject)
         //fs.writeFileSync('./makefile', this.makefileOutput);
-
     }
 
-    context(existingMakeFileobject, makeObjectDescriptor){
+    context(oldMakeObject, newMakeObject){
 
     }
-
 
     modify(){
         //copy existing makefile object and change only what the descriptor describes in its actions field

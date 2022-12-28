@@ -1,24 +1,27 @@
     export class ProjectLiterals{
+        constructor(projVars){
+            this.projVars=projVars
+        }
 
         projectMake(){
             return ``+
-            this.devTestCDeps() +
-            this.devTestHDeps() +
-            this.devTestODeps() +
-            this.prodTestCDeps() +
-            this.prodTestHDeps() +
-            this.prodTestODeps() +
-            this.devTestCFiles() +
-            this.devTestHFiles() +
-            this.devTestOFiles() +
-            this.prodTestCFiles() +
-            this.prodTestHFiles() +
-            this.prodTestOFiles() +
+            this.devTestCDeps(this.projVars['devTestCDeps']) +
+            this.devTestHDeps(this.projVars['devTestHDeps']) +
+            this.devTestODeps(this.projVars['devTestODeps']) +
+            this.prodTestCDeps(this.projVars['prodTestCDeps']) +
+            this.prodTestHDeps(this.projVars['prodTestHDeps']) +
+            this.prodTestODeps(this.projVars['prodTestODeps']) +
+            this.devTestCFiles(this.projVars['devTestCFiles']) +
+            this.devTestHFiles(this.projVars['devTestHFiles']) +
+            this.devTestOFiles(this.projVars['devTestOFiles']) +
+            this.prodTestCFiles(this.projVars['prodTestCFiles']) +
+            this.prodTestHFiles(this.projVars['prodTestHFiles']) +
+            this.prodTestOFiles(this.projVars['prodTestOFiles']) +
             this.endOfSection() +       
-            this.prodTests() +
-            this.prodTestsLink() +
-            this.prodTestsClean() +
-            this.prodTestsRun()+
+            this.prodTests(this.projVars['prodTestCDeps'], this.projVars['prodTestHDeps']) +
+            this.prodTestsLink(this.projVars['prodTestODeps'], this.projVars['prodTestOFiles']) +
+            this.prodTestsClean(this.projVars['prodTestODeps']) +
+            this.prodTestsRun(this.projVars['prodTestCDeps'], this.projVars['prodTestHDeps'])+
             this.endOfSection()        
         }
 
@@ -85,6 +88,26 @@
 
     
     export class Literals{
+        constructor(){
+            this.projVars={
+                'devTestCDeps':[],
+                'devTestHDeps':[],
+                'devTestODeps':[],
+                'devTestCFiles':[],
+                'devTestHFiles':[],
+                'devTestOFiles':[],
+                'prodTestCDeps':[],
+                'prodTestHDeps':[],
+                'prodTestODeps':[],
+                'prodTestCFiles':[],
+                'prodTestHFiles':[],
+                'prodTestOFiles':[],
+                'prodTests':[],
+                'prodTestsLink':[],
+                'prodTestsClean':[],
+                'prodTestsRun':[],
+            }
+        }
         moduleMake(name, filename, dir, deps){
             var depsH=``
             var depsC=``
@@ -219,17 +242,17 @@
             return  `########################################################################################################################################\n\n\n\n\n\n`
         }
 
-        devTestCDeps(dir){return `\$\{DEV_${dir}_TEST_C_DEPS\} `}
-        devTestHDeps(dir){return `\$\{DEV_${dir}_TEST_H_DEPS\} `}
-        devTestODeps(dir){return `\$\{DEV_${dir}_TEST_O_DEPS\} `}
-        prodTestCDeps(dir){return `\$\{PROD_${dir}_TEST_C_DEPS\} `}
-        prodTestHDeps(dir){return `\$\{PROD_${dir}_TEST_H_DEPS\} `}
-        prodTestODeps(dir){return `\$\{PROD_${dir}_TEST_O_DEPS\} `}
-        devTestCFiles(dir){return `\$\{DEV_${dir}_TEST_C_FILES\} `}
-        devTestHFiles(dir){return `\$\{DEV_${dir}_TEST_H_FILES\} `}
-        devTestOFiles(dir){return `\$\{DEV_${dir}_TEST_O_FILES\} `}
-        prodTestCFiles(dir){return `\$\{PROD_${dir}_TEST_C_FILES\} `}
-        prodTestHFiles(dir){return `\$\{PROD_${dir}_TEST_H_FILES\} `}
-        prodTestOFiles(dir){return `\$\{PROD_${dir}_TEST_O_FILES\} `}
+        devTestCDeps(dir){this.projVars['devTestCDeps'].push(`\$\{DEV_${dir}_TEST_C_DEPS\} `)}
+        devTestHDeps(dir){this.projVars['devTestHDeps'].push(`\$\{DEV_${dir}_TEST_H_DEPS\} `)}
+        devTestODeps(dir){this.projVars['devTestODeps'].push(`\$\{DEV_${dir}_TEST_O_DEPS\} `)}
+        prodTestCDeps(dir){this.projVars['prodTestCDeps'].push(`\$\{PROD_${dir}_TEST_C_DEPS\} `)}
+        prodTestHDeps(dir){this.projVars['prodTestHDeps'].push(`\$\{PROD_${dir}_TEST_H_DEPS\} `)}
+        prodTestODeps(dir){this.projVars['prodTestODeps'].push(`\$\{PROD_${dir}_TEST_O_DEPS\} `)}
+        devTestCFiles(dir){this.projVars['devTestCFiles'].push(`\$\{DEV_${dir}_TEST_C_FILES\} `)}
+        devTestHFiles(dir){this.projVars['devTestHFiles'].push(`\$\{DEV_${dir}_TEST_H_FILES\} `)}
+        devTestOFiles(dir){this.projVars['devTestOFiles'].push(`\$\{DEV_${dir}_TEST_O_FILES\} `)}
+        prodTestCFiles(dir){this.projVars['prodTestCFiles'].push(`\$\{PROD_${dir}_TEST_C_FILES\} `)}
+        prodTestHFiles(dir){this.projVars['prodTestHFiles'].push(`\$\{PROD_${dir}_TEST_H_FILES\} `)}
+        prodTestOFiles(dir){this.projVars['prodTestOFiles'].push(`\$\{PROD_${dir}_TEST_O_FILES\} `)}
     }
    
