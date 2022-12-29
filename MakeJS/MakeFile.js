@@ -10,14 +10,29 @@ export class MakeFile{
     //5. reset the Modifier object to null in MakeObject.js
     //6. overwrite section of file that exports modifier, without removing other code'
     constructor(makeObject, modifier){
-        this.context_queue= this._context_queue(makeObject, modifier);
-        console.log(this.context_queue)
-        //this.makeFileString = new MakeFileString(this.context_queue).string
+        this.actions= this.action_queue(makeObject, modifier);
+        console.log(this.actions)
+        var [makeFileString, makeObject]=this.modify(makeObject, this.actions)
+        console.log(makeFileString, makeObject)
         // fs.writeFileSync('./makefile', this.string)
         // fs.writeFileSync('./MakeObject/OldMakeObject.js', JSON.stringify(makeObject))
     }
 
-    _context_queue(makeObject, modifier){
+    modify(makeObject, actions){
+        var makeFileString = new MakeFileString(makeObject)
+
+        for(var i = 0; i<actions.length; i++){
+            makeFileString.modify(actions[i])
+        }
+
+
+
+        return [
+            makeFileString.string,
+            makeFileString.makeObject
+        ]
+    }
+    action_queue(makeObject, modifier){
         var add=[]
         var del=[]
         var refactor=[]
