@@ -3,47 +3,40 @@ import { makeObject } from './MakeObject/MakeObject.js';
 import {ModuleLevelMake, ModuleLevelVars, ProjectLevelVars, ProjectLevelMake} from "./MakeFileLiterals.js"
 
 export class MakeFile{
-    constructor(oldMakeObject, newMakeObject){
-        this.oldMakeObject=oldMakeObject;
-        this.newMakeObject=newMakeObject;
-        this.context(oldMakeObject, newMakeObject);
-        //fs.writeFileSync('./makefile', this.makefileOutput);
+    constructor(makeObject, modifier){
+        this.makeObject=makeObject;
+        this.modifier=modifier;
+        this.context_queue= this._context_queue(makeObject, modifier);
+
+        this.makeFileString = new MakeFileString(this.context_queue).string
+
+        // fs.writeFileSync('./makefile', this.string)
+        // fs.writeFileSync('./MakeObject/OldMakeObject.js', JSON.stringify(makeObject))
     }
 
-    context(oldMakeObject, newMakeObject){
-        var _context=this._context(oldMakeObject, newMakeObject)
-        if(_context=='modify'){
-            this.modify(oldMakeObject, newMakeObject)
-        }else if(_context=='create'){
-            this.create(oldMakeObject, newMakeObject)
-        }else if(_context=='refactor'){
-            this.refactor(oldMakeObject, newMakeObject)
-        }else if(_context=='depend'){
-            this.depend(oldMakeObject, newMakeObject)
-        }else if(_context=='add'){
-            this.add(oldMakeObject, newMakeObject)
-        }else{
-            throw new Error('context is undefined')
-        }
-    }
-    _context(oldMakeObject, newMakeObject){
-
+    _context_queue(makeObject, modifier){
+        var keys = Object.keys(modifier);
+       for(var i =0; i<;)
     }
 
-    modify(oldMakeObject, newMakeObject){
-        //copy existing makefile object and change only what the descriptor describes in its actions field
-        //and returns the new makefile object
-    }
 
+    //specifically we are talking about dependencies at the project level when speaking of the 
+    //following actions.
+    //add: if we want to add a module to the makefile its because we want to add a module to the project
+    //refactor: if we want to change a module's name we choose this option, which affects just the makefile in this library
+    //delete: if we want to remove a module, it removes all of the dependencies in other modules that point to the module, 
+    //and also removes the whole module from the makefile
+    //which action comes first? Anytime we delete a module or refactor, we want that to come before add, so
+    //that add can throw an error if some dependency is not present, or if we wish to recreate a module with add after delete
+    //also delete should come before refactor so that refactor can also throw an error if a module is not present
+    //1. delete
+    //2. refactor
+    //3. add 
     create(oldMakeObject, newMakeObject){
 
     }
 
     refactor(oldMakeObject, newMakeObject){
-
-    }
-
-    depend(oldMakeObject, newMakeObject){
 
     }
 
@@ -55,7 +48,7 @@ export class MakeFile{
 class MakeFileString{
     constructor(makeObject){
         this.string = this.makeFileString(makeObject)
-        fs.writeFileSync('./makefile', this.string)
+
     }
     makeFileString(makeObject){
         var mlm = new ModuleLevelMake()
@@ -69,7 +62,6 @@ class MakeFileString{
             var literal=dir.slice().split('/').slice(1).slice(0,-1).join('_').toUpperCase()
             var name = dir.slice().split('/').slice(1).slice(0, -1).join('')
             var fileBase = dir.slice().split('/').slice(-2).join('')
-
             plv.update(literal, plv.projVars)
             plm.update(name, plv.projVars)
             string+=this.moduleVars(mlv, literal, dir, fileBase, dependencies)
@@ -167,5 +159,9 @@ class MakeFileString{
         plm.endOfSection()        
     }
 }
+if(fs.existsSync('./MakeObject/OldMakeObject.js')){
+    new MakeFileString(fs.readFileSync(makeObject, './MakeObject/OldMakeObject.js'))
+}else{
+    new MakeFileString(fs.readFileSync(makeObject)
 
-new MakeFileString(makeObject)
+}
