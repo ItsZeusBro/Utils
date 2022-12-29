@@ -199,11 +199,36 @@ class MakeFileString{
         //and store the string value in the new makeFileString
         makeFileString=makeFileString.split('\n')
         for(var  i=0; i<makeFileString.length; i++){
-
-            var echo = `echo:\n\techo `+makeFileString[i]
+            var line=''
+            if(makeFileString[i].includes('gcc')){
+                line = makeFileString[i].replace(
+                    'gcc', ''
+                ).replace(
+                    '-o', ''
+                ).replace(
+                    'cd', ''
+                ).replace(
+                    ';', ''
+                ).replace(
+                    '-c', ''
+                ).replace(
+                    '(', ''
+                ).replace(
+                    ')', ''
+                ).replace(
+                    'devTest', ''
+                )
+            }else{
+                line = makeFileString[i]
+            }
+            var echo = `echo:\n\techo `+line
             var makeFile=makeFileString.slice(0, i)
             makeFile.push(echo)
             makeFile=makeFile.join('\n')
+
+            var line = makeFileString[i].slice()//.split(/\$\{.*\}/g)
+
+            console.log('echoing', makeFileString[i])
             fs.writeFileSync('./MakeObject/makefile', makeFile)
             console.log(execSync('cd ./MakeObject/; make echo').toString())
             //make a new file and add an echo command to echo the line statement, then capture the output
