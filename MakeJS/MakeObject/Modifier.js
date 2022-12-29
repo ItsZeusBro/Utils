@@ -1,10 +1,25 @@
 
-export var modifier = {
-    'add':{
-        'module':'./CTools/Combinatorics/', 
+export var modifier = [
+    {   
+        "action":"add",
+        "module":"./CTools/Combinatorics/", 
         'dependencies': ["./CTools/Automata/Automata.h"]
+    },
+    {   
+        "action":"delete",
+        "module":"./CTools/Combinatorics/"
+    },
+    {   
+        "action":"refactor",
+        "module":"./CTools/Combinatorics/",
+        "to": "./CTools/Combinatorics1/"
     }
-}
+]
+
+//1. delete
+//2. refactor
+//3. add
+
 
 //it can also be an object
 // "./CTools/Combinatorics/":[],

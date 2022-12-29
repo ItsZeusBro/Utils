@@ -1,22 +1,36 @@
 import fs from 'node:fs'
-import { makeObject } from './MakeObject/MakeObject.js';
 import {ModuleLevelMake, ModuleLevelVars, ProjectLevelVars, ProjectLevelMake} from "./MakeFileLiterals.js"
 
 export class MakeFile{
+    //we need to 
+    //1. consume the modifier object, 
+    //2. turn it into a queue, 
+    //3. run it through MakeFileString class, 
+    //4. output the string to makefile, 
+    //5. reset the Modifier object to null in MakeObject.js
+    //6. overwrite section of file that exports modifier, without removing other code'
     constructor(makeObject, modifier){
-        this.makeObject=makeObject;
-        this.modifier=modifier;
         this.context_queue= this._context_queue(makeObject, modifier);
-
-        this.makeFileString = new MakeFileString(this.context_queue).string
-
+        console.log(this.context_queue)
+        //this.makeFileString = new MakeFileString(this.context_queue).string
         // fs.writeFileSync('./makefile', this.string)
         // fs.writeFileSync('./MakeObject/OldMakeObject.js', JSON.stringify(makeObject))
     }
 
     _context_queue(makeObject, modifier){
-        var keys = Object.keys(modifier);
-       for(var i =0; i<;)
+        var add=[]
+        var del=[]
+        var refactor=[]
+        for(var i=0; i<modifier.length; i++){
+            if(modifier[i]['action']=='add'){
+                add.push(modifier[i])
+            }else if(modifier[i]['action']=='delete'){
+                del.push(modifier[i])
+            }else if(modifier[i]['action']=='refactor'){
+                refactor.push(modifier[i])
+            }
+        }
+        return del.concat(refactor.concat(add))
     }
 
 
@@ -159,9 +173,7 @@ class MakeFileString{
         plm.endOfSection()        
     }
 }
-if(fs.existsSync('./MakeObject/OldMakeObject.js')){
-    new MakeFileString(fs.readFileSync(makeObject, './MakeObject/OldMakeObject.js'))
-}else{
-    new MakeFileString(fs.readFileSync(makeObject)
 
-}
+import { modifier } from './MakeObject/Modifier.js';
+import { makeObject } from './MakeObject/MakeObject.js';
+new MakeFile(makeObject, modifier)
