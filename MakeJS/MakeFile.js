@@ -197,7 +197,9 @@ class MakeFileString{
         //we need to resolve all variables in the makeFileString
         //use a new makefile for each line we need to resolve using all the previous lines to echo the new line
         //and store the string value in the new makeFileString
+        var lines={}
         makeFileString=makeFileString.split('\n')
+        console.log(makeFileString)
         for(var  i=0; i<makeFileString.length; i++){
             var line=''
             if(makeFileString[i].includes('gcc')){
@@ -226,14 +228,15 @@ class MakeFileString{
             makeFile.push(echo)
             makeFile=makeFile.join('\n')
 
-            var line = makeFileString[i].slice()//.split(/\$\{.*\}/g)
+            var line = makeFileString[i].slice()
 
-            console.log('echoing', makeFileString[i])
             fs.writeFileSync('./MakeObject/makefile', makeFile)
-            console.log(execSync('cd ./MakeObject/; make echo').toString())
+            if(line.includes('${')){
+                lines[i]=execSync('cd ./MakeObject/; make echo').toString().replace('echo', '').split('\n').join(' ')
+            }
             //make a new file and add an echo command to echo the line statement, then capture the output
-
         }   
+        console.log(lines)
     }
 
     modify(makeFileString, action){
