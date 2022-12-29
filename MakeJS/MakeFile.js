@@ -1,4 +1,5 @@
 import fs from 'node:fs'
+import { execSync } from 'node:child_process';
 import {ModuleLevelMake, ModuleLevelVars, ProjectLevelVars, ProjectLevelMake} from "./MakeFileLiterals.js"
 
 export class MakeFile{
@@ -11,9 +12,10 @@ export class MakeFile{
     //6. overwrite section of file that exports modifier, without removing other code'
     constructor(makeObject, modifier){
         this.actions= this.action_queue(makeObject, modifier);
-        console.log(this.actions)
-        var [makeFileString, makeObject]=this.modify(makeObject, this.actions)
-        console.log(makeFileString, makeObject)
+        // console.log(this.actions)
+        var makeFileString = new MakeFileString(makeObject)
+        //var [makeFileString, makeObject]=this.modify(makeFileString, this.actions)
+        // console.log(makeFileString, makeObject)
         // fs.writeFileSync('./makefile', this.string)
         // fs.writeFileSync('./MakeObject/OldMakeObject.js', JSON.stringify(makeObject))
     }
@@ -22,7 +24,7 @@ export class MakeFile{
         var makeFileString = new MakeFileString(makeObject)
 
         for(var i = 0; i<actions.length; i++){
-            makeFileString.modify(actions[i])
+            makeFileString.modify(makeFileString, actions[i])
         }
 
 
@@ -36,6 +38,7 @@ export class MakeFile{
         var add=[]
         var del=[]
         var refactor=[]
+        var move = []
         for(var i=0; i<modifier.length; i++){
             if(modifier[i]['action']=='add'){
                 add.push(modifier[i])
@@ -43,9 +46,11 @@ export class MakeFile{
                 del.push(modifier[i])
             }else if(modifier[i]['action']=='refactor'){
                 refactor.push(modifier[i])
+            }else if(modifier[i]['action']=='move'){
+                move.push(modifier[i])
             }
         }
-        return del.concat(refactor.concat(add))
+        return del.concat(refactor.concat(add.concat(move)))
     }
 
 
@@ -76,7 +81,8 @@ export class MakeFile{
 
 class MakeFileString{
     constructor(makeObject){
-        this.string = this.makeFileString(makeObject)
+        this.string=this.makeFileString(makeObject)
+        this.resolved=this.resolve(this.string)
 
     }
     makeFileString(makeObject){
@@ -121,7 +127,6 @@ class MakeFileString{
             depsH+=deps[i].slice(0,-1)+`h `
             depsC+=deps[i].slice(0,-1)+`c `
             depsO+=deps[i].slice(0,-1)+`o `
-            console.log(depsO)
         }
 
         return ``+
@@ -187,7 +192,55 @@ class MakeFileString{
         plm.prodTestsRun(projVars) +
         plm.endOfSection()        
     }
+
+    resolve(makeFileString){
+        //we need to resolve all variables in the makeFileString
+        //use a new makefile for each line we need to resolve using all the previous lines to echo the new line
+        //and store the string value in the new makeFileString
+        makeFileString=makeFileString.split('\n')
+        for(var  i=0; i<makeFileString.length; i++){
+
+            var echo = `echo:\n\techo `+makeFileString[i]
+            var makeFile=makeFileString.slice(0, i)
+            makeFile.push(echo)
+            makeFile=makeFile.join('\n')
+            fs.writeFileSync('./MakeObject/makefile', makeFile)
+            console.log(execSync('cd ./MakeObject/; make echo').toString())
+            //make a new file and add an echo command to echo the line statement, then capture the output
+
+        }   
+    }
+
+    modify(makeFileString, action){
+        if(action['action']=='delete'){
+            var module=action['module']
+
+            //we need to search all modules in the makefile that depend on the module, and remove the dependencies (for project tree class: remove the include statements pertaining to it)
+            //we also need to delete the module in the makefile
+            for(var i = 0; i<string.length; i++){
+                console.log(string[i])
+            }
+            var dependencies;
+        }else if(action['action']=='refactor'){
+
+            var fromModule;
+            var toModule;
+            //
+            //we need to:
+            //1. use the add() function for toModule using the same dependencies as from module (for project tree class: update the include statements to the new module name) 
+            //2. search all modules in the makeFile that use fromModule and delete them, 
+
+        }else if(action['action']=='add'){
+            //we need to:
+            //add the new module and its dependencies to makefile
+        }else if(action['action']=='move'){
+            //we need to:
+            //rename the module in the makefile and change its dependencies to account for the move if necessary
+            return
+        }
+    }
 }
+
 
 import { modifier } from './MakeObject/Modifier.js';
 import { makeObject } from './MakeObject/MakeObject.js';

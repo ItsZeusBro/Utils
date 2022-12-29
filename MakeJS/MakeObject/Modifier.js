@@ -13,6 +13,16 @@ export var modifier = [
         "action":"refactor",
         "module":"./CTools/Combinatorics/",
         "to": "./CTools/Combinatorics1/"
+    },
+    {   
+        "action":"add",
+        "module":"./CTools/Utils/", 
+        'dependencies': []
+    },
+    {   
+        "action":"move",
+        "module":"./CTools/Combinatorics1/",
+        "to": "./CTools/Utils/Combinatorics/"
     }
 ]
 
