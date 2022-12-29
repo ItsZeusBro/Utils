@@ -1,8 +1,0 @@
-#ifndef CTOOLS_UTILS_TYPES_LINKLIST_TEST_TEST
-#define CTOOLS_UTILS_TYPES_LINKLIST_TEST_TEST
-
-#include "../LinkList.h"
-
-int _CTOOLS_UTILS_TYPES_LINKLIST_TEST_TEST(int argc, char *argv[]);
-
-#endif

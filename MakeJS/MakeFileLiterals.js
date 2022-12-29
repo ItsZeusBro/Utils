@@ -34,56 +34,56 @@
         prodTestHFiles(projVars){ return `PROD_TEST_H_FILES=${projVars['prodTestHFiles'].join('')}\n` }
         prodTestOFiles(projVars){ return `PROD_TEST_O_FILES=${projVars['prodTestOFiles'].join('')}\n\n\n` }
 
-        _devTestCDeps(dir, projVars){projVars['devTestCDeps'].push(`\$\{DEV_${dir}_TEST_C_DEPS\} `)}
-        _devTestHDeps(dir, projVars){projVars['devTestHDeps'].push(`\$\{DEV_${dir}_TEST_H_DEPS\} `)}
-        _devTestODeps(dir, projVars){projVars['devTestODeps'].push(`\$\{DEV_${dir}_TEST_O_DEPS\} `)}
-        _prodTestCDeps(dir, projVars){projVars['prodTestCDeps'].push(`\$\{PROD_${dir}_TEST_C_DEPS\} `)}
-        _prodTestHDeps(dir, projVars){projVars['prodTestHDeps'].push(`\$\{PROD_${dir}_TEST_H_DEPS\} `)}
-        _prodTestODeps(dir, projVars){projVars['prodTestODeps'].push(`\$\{PROD_${dir}_TEST_O_DEPS\} `)}
-        _devTestCFiles(dir, projVars){projVars['devTestCFiles'].push(`\$\{DEV_${dir}_TEST_C_FILES\} `)}
-        _devTestHFiles(dir, projVars){projVars['devTestHFiles'].push(`\$\{DEV_${dir}_TEST_H_FILES\} `)}
-        _devTestOFiles(dir, projVars){projVars['devTestOFiles'].push(`\$\{DEV_${dir}_TEST_O_FILES\} `)}
-        _prodTestCFiles(dir, projVars){projVars['prodTestCFiles'].push(`\$\{PROD_${dir}_TEST_C_FILES\} `)}
-        _prodTestHFiles(dir, projVars){projVars['prodTestHFiles'].push(`\$\{PROD_${dir}_TEST_H_FILES\} `)}
-        _prodTestOFiles(dir, projVars){projVars['prodTestOFiles'].push(`\$\{PROD_${dir}_TEST_O_FILES\} `)}
+        _devTestCDeps(literal, projVars){projVars['devTestCDeps'].push(`\$\{DEV_${literal}_TEST_C_DEPS\} `)}
+        _devTestHDeps(literal, projVars){projVars['devTestHDeps'].push(`\$\{DEV_${literal}_TEST_H_DEPS\} `)}
+        _devTestODeps(literal, projVars){projVars['devTestODeps'].push(`\$\{DEV_${literal}_TEST_O_DEPS\} `)}
+        _prodTestCDeps(literal, projVars){projVars['prodTestCDeps'].push(`\$\{PROD_${literal}_TEST_C_DEPS\} `)}
+        _prodTestHDeps(literal, projVars){projVars['prodTestHDeps'].push(`\$\{PROD_${literal}_TEST_H_DEPS\} `)}
+        _prodTestODeps(literal, projVars){projVars['prodTestODeps'].push(`\$\{PROD_${literal}_TEST_O_DEPS\} `)}
+        _devTestCFiles(literal, projVars){projVars['devTestCFiles'].push(`\$\{DEV_${literal}_TEST_C_FILES\} `)}
+        _devTestHFiles(literal, projVars){projVars['devTestHFiles'].push(`\$\{DEV_${literal}_TEST_H_FILES\} `)}
+        _devTestOFiles(literal, projVars){projVars['devTestOFiles'].push(`\$\{DEV_${literal}_TEST_O_FILES\} `)}
+        _prodTestCFiles(literal, projVars){projVars['prodTestCFiles'].push(`\$\{PROD_${literal}_TEST_C_FILES\} `)}
+        _prodTestHFiles(literal, projVars){projVars['prodTestHFiles'].push(`\$\{PROD_${literal}_TEST_H_FILES\} `)}
+        _prodTestOFiles(literal, projVars){projVars['prodTestOFiles'].push(`\$\{PROD_${literal}_TEST_O_FILES\} `)}
 
-        update(dir, projVars){
-            this._devTestCDeps(dir, projVars);
-            this._devTestHDeps(dir, projVars);
-            this._devTestODeps(dir, projVars);
-            this._prodTestCDeps(dir, projVars);
-            this._prodTestHDeps(dir, projVars);
-            this._prodTestODeps(dir, projVars);
-            this._devTestCFiles(dir, projVars);
-            this._devTestHFiles(dir, projVars);
-            this._devTestOFiles(dir, projVars);
-            this._prodTestCFiles(dir, projVars);
-            this._prodTestHFiles(dir, projVars);
-            this._prodTestOFiles(dir, projVars);
+        update(literal, projVars){
+            this._devTestCDeps(literal, projVars);
+            this._devTestHDeps(literal, projVars);
+            this._devTestODeps(literal, projVars);
+            this._prodTestCDeps(literal, projVars);
+            this._prodTestHDeps(literal, projVars);
+            this._prodTestODeps(literal, projVars);
+            this._devTestCFiles(literal, projVars);
+            this._devTestHFiles(literal, projVars);
+            this._devTestOFiles(literal, projVars);
+            this._prodTestCFiles(literal, projVars);
+            this._prodTestHFiles(literal, projVars);
+            this._prodTestOFiles(literal, projVars);
 
         }
         endOfSection(){ return `########################################################################################################################################\n\n\n\n\n\n`}
     }
 
     export class ProjectLevelMake{
-        prodTests(projVars){ return `ProdTests: ${projVars['prodTestCDeps']} ${projVars['prodTestHDeps']}\n`+ `\t${projVars['prodTests'].join('\t')}\n\n`}
-        prodTestsLink(projVars){ return `ProdTestsLink: ${projVars['prodTestODeps']}\n`+`\tgcc -o Prod ${projVars['prodTestOFiles']}\n\n`}
-        prodTestsClean(projVars){ return `ProdTestsClean: ${projVars['prodTestODeps']}\n`+`\t${projVars['prodTestsClean'].join('\t')}\n\n`}
+        prodTests(projVars){ return `ProdTests: ${projVars['prodTestCDeps'].join(' ')} ${projVars['prodTestHDeps'].join(' ')}\n`+ `\t${projVars['prodTests'].join('\t')}\n\n`}
+        prodTestsLink(projVars){ return `ProdTestsLink: ${projVars['prodTestODeps'].join(' ')}\n`+`\tgcc -o Prod ${projVars['prodTestOFiles'].join(' ')}\n\n`}
+        prodTestsClean(projVars){ return `ProdTestsClean: ${projVars['prodTestODeps'].join(' ')}\n`+`\t${projVars['prodTestsClean'].join('\t')}\n\n`}
         prodTestsRun(projVars){
-            return `ProdTestsRun: ${projVars['prodTestCDeps']} ${projVars['prodTestHDeps']}\n`+
+            return `ProdTestsRun: ${projVars['prodTestCDeps'].join(' ')} ${projVars['prodTestHDeps'].join(' ')}\n`+
             `\tmake ProdTestsClean\n`+
             `\tmake ProdTests\n`+
             `\tmake ProdTestsLink\n`+
             `\t./Prod\n\n`
         }
 
-        _prodTests(dir, projVars){projVars['prodTests'].push(`make Prod${dir.split('/').slice(1).slice(0,-1).join('')}\n`)}
-        _prodTestsClean(dir, projVars){projVars['prodTestsClean'].push(`make Prod${dir.split('/').slice(1).slice(0,-1).join('')}Clean\n`)}
+        _prodTests(name, projVars){projVars['prodTests'].push(`make Prod${name}\n`)}
+        _prodTestsClean(name, projVars){projVars['prodTestsClean'].push(`make Prod${name}Clean\n`)}
         
 
-        update(dir, projVars){
-            this._prodTests(dir, projVars);
-            this._prodTestsClean(dir, projVars);
+        update(name, projVars){
+            this._prodTests(name, projVars);
+            this._prodTestsClean(name, projVars);
         }
 
         endOfSection(){ return `########################################################################################################################################\n\n\n\n\n\n`}
@@ -91,36 +91,36 @@
     
     export class ModuleLevelMake{
 
-        devBuild(dir, name){ 
-            return `Dev${name}: \$\{DEV_${dir}_TEST_C_DEPS\} \$\{DEV_${dir}_TEST_H_DEPS\}\n` +
-            `\tcd \$\{${dir}_DIR\}; gcc -c \$\{${dir}_C\}\n` +
-            `\tcd \$\{${dir}_TEST_DIR\}; gcc -c \$\{${dir}_TEST_C\} \$\{${dir}_TEST_DRVR_C\}\n\n`
+        devBuild(literal, name){ 
+            return `Dev${name}: \$\{DEV_${literal}_TEST_C_DEPS\} \$\{DEV_${literal}_TEST_H_DEPS\}\n` +
+            `\tcd \$\{${literal}_DIR\}; gcc -c \$\{${literal}_C\}\n` +
+            `\tcd \$\{${literal}_TEST_DIR\}; gcc -c \$\{${literal}_TEST_C\} \$\{${literal}_TEST_DRVR_C\}\n\n`
         }
-        prodBuild(dir, name){
-            return `Prod${name}: \$\{PROD_${dir}_TEST_C_DEPS\} \$\{PROD_${dir}_TEST_H_DEPS\}\n`+
-            `\tcd \$\{${dir}_DIR\}; gcc -c \$\{${dir}_C\}\n`+
-            `\tcd \$\{${dir}_TEST_DIR\}; gcc -c \$\{${dir}_TEST_C\}\n\n`
+        prodBuild(literal, name){
+            return `Prod${name}: \$\{PROD_${literal}_TEST_C_DEPS\} \$\{PROD_${literal}_TEST_H_DEPS\}\n`+
+            `\tcd \$\{${literal}_DIR\}; gcc -c \$\{${literal}_C\}\n`+
+            `\tcd \$\{${literal}_TEST_DIR\}; gcc -c \$\{${literal}_TEST_C\}\n\n`
         }
-        devBuildClean(dir, name){
-            return `Dev${name}Clean: \$\{DEV_${dir}_TEST_O_DEPS\}\n`+
-            `\tcd \$\{${dir}_DIR\}; rm -f \$\{${dir}_O\}\n`+
-            `\tcd \$\{${dir}_TEST_DIR\}; rm -f \$\{${dir}_TEST_O\} \$\{${dir}_TEST_DRVR_O\}\n\n`
+        devBuildClean(literal, name){
+            return `Dev${name}Clean: \$\{DEV_${literal}_TEST_O_DEPS\}\n`+
+            `\tcd \$\{${literal}_DIR\}; rm -f \$\{${literal}_O\}\n`+
+            `\tcd \$\{${literal}_TEST_DIR\}; rm -f \$\{${literal}_TEST_O\} \$\{${literal}_TEST_DRVR_O\}\n\n`
         }
-        prodBuildClean(dir, name){
-            return `Prod${name}Clean: \$\{PROD_${dir}_TEST_O_DEPS\}\n`+
-            `\tcd \$\{${dir}_DIR\}; rm -f \$\{${dir}_O\}\n`+
-            `\tcd \$\{${dir}_TEST_DIR\}; rm -f \$\{${dir}_TEST_O\}\n\n`
+        prodBuildClean(literal, name){
+            return `Prod${name}Clean: \$\{PROD_${literal}_TEST_O_DEPS\}\n`+
+            `\tcd \$\{${literal}_DIR\}; rm -f \$\{${literal}_O\}\n`+
+            `\tcd \$\{${literal}_TEST_DIR\}; rm -f \$\{${literal}_TEST_O\}\n\n`
         }
-        devBuildLink(dir, name){
-            return `Dev${name}Link: \$\{DEV_${dir}_TEST_O_DEPS\}\n`+
-            `\t(gcc -o devTest \$\{${dir}_O_PATH\} \$\{${dir}_TEST_O_PATH\} \$\{${dir}_TEST_DRVR_O_PATH\})\n\n`
+        devBuildLink(literal, name){
+            return `Dev${name}Link: \$\{DEV_${literal}_TEST_O_DEPS\}\n`+
+            `\t(gcc -o devTest \$\{${literal}_O_PATH\} \$\{${literal}_TEST_O_PATH\} \$\{${literal}_TEST_DRVR_O_PATH\})\n\n`
         }
-        prodBuildLink(dir, name){
-            return `Prod${name}Link: \$\{PROD_${dir}_TEST_O_DEPS\}\n`+
-            `\t(gcc -o prodTest \$\{${dir}_O_PATH\} \$\{${dir}_TEST_O_PATH\})\n\n`
+        prodBuildLink(literal, name){
+            return `Prod${name}Link: \$\{PROD_${literal}_TEST_O_DEPS\}\n`+
+            `\t(gcc -o prodTest \$\{${literal}_O_PATH\} \$\{${literal}_TEST_O_PATH\})\n\n`
         }
-        devBuildRun(dir, name){
-            return `Dev${name}Run: \$\{DEV_${dir}_TEST_O_DEPS\} \$\{DEV_${dir}_TEST_C_DEPS\} \$\{DEV_${dir}_TEST_H_DEPS\}\n`+
+        devBuildRun(literal, name){
+            return `Dev${name}Run: \$\{DEV_${literal}_TEST_O_DEPS\} \$\{DEV_${literal}_TEST_C_DEPS\} \$\{DEV_${literal}_TEST_H_DEPS\}\n`+
             `\tmake Dev${name}Clean\n`+
             `\tmake Dev${name}\n`+
             `\tmake Dev${name}Link\n`+
@@ -130,42 +130,42 @@
     }
 
     export class ModuleLevelVars{
-        path(dir, name){ return`${dir}_DIR=${name}\n` }
-        testPath(dir){ return `${dir}_TEST_DIR=\$\{${dir}_DIR\}Test/\n`}
-        cFile(dir, fileName){ return `${dir}_C=${fileName}.c\n`}
-        hFile(dir, fileName){ return `${dir}_H=${fileName}.h\n`}
-        oFile(dir, fileName){ return `${dir}_O=${fileName}.o\n`}
-        testCFile(dir){ return `${dir}_TEST_C=Test.c\n`}
-        testHFile(dir){ return `${dir}_TEST_H=Test.h\n`}
-        testOFile(dir){ return `${dir}_TEST_O=Test.o\n`}
-        testDrvrCFile(dir){ return `${dir}_TEST_DRVR_C=Drvr.c\n`}
-        testDrvrHFile(dir){ return `${dir}_TEST_DRVR_H=Drvr.h\n`}
-        testDrvrOFile(dir){ return `${dir}_TEST_DRVR_O=Drvr.o\n`}
-        cFilePath(dir){ return `${dir}_C_PATH=\$\{${dir}_DIR\}\$\{${dir}_C\}\n`}
-        hFilePath(dir){ return `${dir}_H_PATH=\$\{${dir}_DIR\}\$\{${dir}_H\}\n`}
-        oFilePath(dir){ return `${dir}_O_PATH=\$\{${dir}_DIR\}\$\{${dir}_O\}\n`}
-        testCFilePath(dir){ return `${dir}_TEST_C_PATH=\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_C\}\n`}
-        testHFilePath(dir){ return `${dir}_TEST_H_PATH=\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_H\}\n`}
-        testOFilePath(dir){ return `${dir}_TEST_O_PATH=\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_O\}\n`}
-        testDrvrCFilePath(dir){ return `${dir}_TEST_DRVR_C_PATH=\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_DRVR_C\}\n`}
-        testDrvrHFilePath(dir){ return `${dir}_TEST_DRVR_H_PATH=\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_DRVR_H\}\n`}
-        testDrvrOFilePath(dir){ return `${dir}_TEST_DRVR_O_PATH=\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_DRVR_O\}\n`}
-        testDrvrCFilePath(dir){ return `${dir}_TEST_DRVR_C_PATH=\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_DRVR_C\}\n`}
-        testDrvrHFilePath(dir){ return `${dir}_TEST_DRVR_H_PATH=\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_DRVR_H\}\n`}
-        testDrvrOFilePath(dir){ return `${dir}_TEST_DRVR_O_PATH=\$\{${dir}_TEST_DIR\}\$\{${dir}_TEST_DRVR_O\}\n`}
-        prodTestCDeps(dir, depsC){ return `PROD_${dir}_TEST_C_DEPS=\$\{${dir}_C_PATH\} \$\{${dir}_TEST_C_PATH\} `+ depsC + `\n`}
-        prodTestHDeps(dir, depsH){ return `PROD_${dir}_TEST_H_DEPS=\$\{${dir}_H_PATH\} \$\{${dir}_TEST_H_PATH\} `+ depsH + `\n`}
-        prodTestODeps(dir, depsO){ return `PROD_${dir}_TEST_O_DEPS=\$\{${dir}_O_PATH\} \$\{${dir}_TEST_O_PATH\} `+ depsO + `\n`}
-        devTestCDeps(dir, depsC){ return `DEV_${dir}_TEST_C_DEPS=\$\{${dir}_C_PATH\} \$\{${dir}_TEST_C_PATH\} \$\{${dir}_TEST_DRVR_C_PATH\} `+ depsC + `\n`}
-        devTestHDeps(dir, depsH){ return `DEV_${dir}_TEST_H_DEPS=\$\{${dir}_H_PATH\} \$\{${dir}_TEST_H_PATH\} \$\{${dir}_TEST_DRVR_H_PATH\} `+ depsH + `\n`}
-        devTestODeps(dir, depsO){ return `DEV_${dir}_TEST_O_DEPS=\$\{${dir}_O_PATH\} \$\{${dir}_TEST_O_PATH\} \$\{${dir}_TEST_DRVR_O_PATH\} `+ depsO + `\n`}
-        devTestCFiles(dir, depsC){ return `DEV_${dir}_TEST_C_FILES=\$\{${dir}_C_PATH\} \$\{${dir}_TEST_C_PATH\} \$\{${dir}_TEST_DRVR_C_PATH\} `+ depsC + `\n`}
-        devTestHFiles(dir, depsH){ return `DEV_${dir}_TEST_H_FILES=\$\{${dir}_H_PATH\} \$\{${dir}_TEST_H_PATH\} \$\{${dir}_TEST_DRVR_H_PATH\} `+ depsH + `\n`}
-        devTestOFiles(dir, depsO){ return `DEV_${dir}_TEST_O_FILES=\$\{${dir}_O_PATH\} \$\{${dir}_TEST_O_PATH\} \$\{${dir}_TEST_DRVR_O_PATH\} `+ depsO + `\n`}
-        prodTestCFiles(dir, depsC){ return `PROD_${dir}_TEST_C_FILES=\$\{${dir}_C_PATH\} \$\{${dir}_TEST_C_PATH\} `+ depsC + `\n`}
-        prodTestHFiles(dir, depsH){ return `PROD_${dir}_TEST_H_FILES=\$\{${dir}_H_PATH\} \$\{${dir}_TEST_H_PATH\} `+ depsH + `\n`}
-        prodTestOFiles(dir, depsO){ return `PROD_${dir}_TEST_O_FILES=\$\{${dir}_O_PATH\} \$\{${dir}_TEST_O_PATH\} `+ depsO + `\n`}
-        devTestFiles(dir){ return `${dir}_TEST_DEV_FILES= \$\{DEV_${dir}_TEST_C_FILES\} \$\{DEV_${dir}_TEST_H_FILES\} \$\{DEV_${dir}_TEST_O_FILES\} \n\n\n`}
+        path(literal, dir){ return`${literal}_DIR=${dir}\n` }
+        testPath(literal){ return `${literal}_TEST_DIR=\$\{${literal}_DIR\}Test/\n`}
+        cFile(literal, fileName){ return `${literal}_C=${fileName}.c\n`}
+        hFile(literal, fileName){ return `${literal}_H=${fileName}.h\n`}
+        oFile(literal, fileName){ return `${literal}_O=${fileName}.o\n`}
+        testCFile(literal){ return `${literal}_TEST_C=Test.c\n`}
+        testHFile(literal){ return `${literal}_TEST_H=Test.h\n`}
+        testOFile(literal){ return `${literal}_TEST_O=Test.o\n`}
+        testDrvrCFile(literal){ return `${literal}_TEST_DRVR_C=Drvr.c\n`}
+        testDrvrHFile(literal){ return `${literal}_TEST_DRVR_H=Drvr.h\n`}
+        testDrvrOFile(literal){ return `${literal}_TEST_DRVR_O=Drvr.o\n`}
+        cFilePath(literal){ return `${literal}_C_PATH=\$\{${literal}_DIR\}\$\{${literal}_C\}\n`}
+        hFilePath(literal){ return `${literal}_H_PATH=\$\{${literal}_DIR\}\$\{${literal}_H\}\n`}
+        oFilePath(literal){ return `${literal}_O_PATH=\$\{${literal}_DIR\}\$\{${literal}_O\}\n`}
+        testCFilePath(literal){ return `${literal}_TEST_C_PATH=\$\{${literal}_TEST_DIR\}\$\{${literal}_TEST_C\}\n`}
+        testHFilePath(literal){ return `${literal}_TEST_H_PATH=\$\{${literal}_TEST_DIR\}\$\{${literal}_TEST_H\}\n`}
+        testOFilePath(literal){ return `${literal}_TEST_O_PATH=\$\{${literal}_TEST_DIR\}\$\{${literal}_TEST_O\}\n`}
+        testDrvrCFilePath(literal){ return `${literal}_TEST_DRVR_C_PATH=\$\{${literal}_TEST_DIR\}\$\{${literal}_TEST_DRVR_C\}\n`}
+        testDrvrHFilePath(literal){ return `${literal}_TEST_DRVR_H_PATH=\$\{${literal}_TEST_DIR\}\$\{${literal}_TEST_DRVR_H\}\n`}
+        testDrvrOFilePath(literal){ return `${literal}_TEST_DRVR_O_PATH=\$\{${literal}_TEST_DIR\}\$\{${literal}_TEST_DRVR_O\}\n`}
+        testDrvrCFilePath(literal){ return `${literal}_TEST_DRVR_C_PATH=\$\{${literal}_TEST_DIR\}\$\{${literal}_TEST_DRVR_C\}\n`}
+        testDrvrHFilePath(literal){ return `${literal}_TEST_DRVR_H_PATH=\$\{${literal}_TEST_DIR\}\$\{${literal}_TEST_DRVR_H\}\n`}
+        testDrvrOFilePath(literal){ return `${literal}_TEST_DRVR_O_PATH=\$\{${literal}_TEST_DIR\}\$\{${literal}_TEST_DRVR_O\}\n`}
+        prodTestCDeps(literal, depsC){ return `PROD_${literal}_TEST_C_DEPS=\$\{${literal}_C_PATH\} \$\{${literal}_TEST_C_PATH\} `+ depsC + `\n`}
+        prodTestHDeps(literal, depsH){ return `PROD_${literal}_TEST_H_DEPS=\$\{${literal}_H_PATH\} \$\{${literal}_TEST_H_PATH\} `+ depsH + `\n`}
+        prodTestODeps(literal, depsO){ return `PROD_${literal}_TEST_O_DEPS=\$\{${literal}_O_PATH\} \$\{${literal}_TEST_O_PATH\} `+ depsO + `\n`}
+        devTestCDeps(literal, depsC){ return `DEV_${literal}_TEST_C_DEPS=\$\{${literal}_C_PATH\} \$\{${literal}_TEST_C_PATH\} \$\{${literal}_TEST_DRVR_C_PATH\} `+ depsC + `\n`}
+        devTestHDeps(literal, depsH){ return `DEV_${literal}_TEST_H_DEPS=\$\{${literal}_H_PATH\} \$\{${literal}_TEST_H_PATH\} \$\{${literal}_TEST_DRVR_H_PATH\} `+ depsH + `\n`}
+        devTestODeps(literal, depsO){ return `DEV_${literal}_TEST_O_DEPS=\$\{${literal}_O_PATH\} \$\{${literal}_TEST_O_PATH\} \$\{${literal}_TEST_DRVR_O_PATH\} `+ depsO + `\n`}
+        devTestCFiles(literal, depsC){ return `DEV_${literal}_TEST_C_FILES=\$\{${literal}_C_PATH\} \$\{${literal}_TEST_C_PATH\} \$\{${literal}_TEST_DRVR_C_PATH\} `+ depsC + `\n`}
+        devTestHFiles(literal, depsH){ return `DEV_${literal}_TEST_H_FILES=\$\{${literal}_H_PATH\} \$\{${literal}_TEST_H_PATH\} \$\{${literal}_TEST_DRVR_H_PATH\} `+ depsH + `\n`}
+        devTestOFiles(literal, depsO){ return `DEV_${literal}_TEST_O_FILES=\$\{${literal}_O_PATH\} \$\{${literal}_TEST_O_PATH\} \$\{${literal}_TEST_DRVR_O_PATH\} `+ depsO + `\n`}
+        prodTestCFiles(literal, depsC){ return `PROD_${literal}_TEST_C_FILES=\$\{${literal}_C_PATH\} \$\{${literal}_TEST_C_PATH\} `+ depsC + `\n`}
+        prodTestHFiles(literal, depsH){ return `PROD_${literal}_TEST_H_FILES=\$\{${literal}_H_PATH\} \$\{${literal}_TEST_H_PATH\} `+ depsH + `\n`}
+        prodTestOFiles(literal, depsO){ return `PROD_${literal}_TEST_O_FILES=\$\{${literal}_O_PATH\} \$\{${literal}_TEST_O_PATH\} `+ depsO + `\n`}
+        devTestFiles(literal){ return `${literal}_TEST_DEV_FILES= \$\{DEV_${literal}_TEST_C_FILES\} \$\{DEV_${literal}_TEST_H_FILES\} \$\{DEV_${literal}_TEST_O_FILES\} \n\n\n`}
         endOfSection(){ return  `########################################################################################################################################\n\n\n\n\n\n`}
     }
    

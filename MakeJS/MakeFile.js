@@ -64,20 +64,22 @@ class MakeFileString{
         var mlv = new ModuleLevelVars()
         var string=``
         for(var i = 0; i<Object.keys(makeObject).length; i++){
-            var dependencies = makeObject[Object.keys(makeObject)[i]]
             var dir = Object.keys(makeObject)[i]
-            plv.update(dir, plv.projVars)
-            plm.update(dir, plv.projVars)
-            string+=this.moduleVars(mlv, dir, dependencies)
-            string+=this.moduleMake(mlm, dir)
+            var dependencies = makeObject[Object.keys(makeObject)[i]]
+            var literal=dir.slice().split('/').slice(1).slice(0,-1).join('_').toUpperCase()
+            var name = dir.slice().split('/').slice(1).slice(0, -1).join('')
+            var fileBase = dir.slice().split('/').slice(-2).join('')
+
+            plv.update(literal, plv.projVars)
+            plm.update(name, plv.projVars)
+            string+=this.moduleVars(mlv, literal, dir, fileBase, dependencies)
+            string+=this.moduleMake(mlm, literal, name)
         }
         string +=this.projectVars(plv, plv.projVars) 
         string +=this.projectMake(plm, plv.projVars)
         return string
     }
-    moduleMake(mlm, dir){
-        var name = dir.slice().split('/').slice(1).slice(0, -1).join('')
-        var literal=dir.split('/').slice(1).slice(0,-1).join('_').toUpperCase()
+    moduleMake(mlm, literal, name){
 
         return ``+
         mlm.devBuild(literal, name)+
@@ -90,7 +92,7 @@ class MakeFileString{
         mlm.endOfSection()
     }
 
-    moduleVars(mlv, dir, deps){
+    moduleVars(mlv, literal, dir, fileBase, deps){
         var depsH=``
         var depsC=``
         var depsO=``
@@ -98,10 +100,8 @@ class MakeFileString{
             depsH+=deps[i].slice(0,-1)+`h `
             depsC+=deps[i].slice(0,-1)+`c `
             depsO+=deps[i].slice(0,-1)+`o `
+            console.log(depsO)
         }
-        var fileBase = dir.slice().split('/').slice(-2).join('')
-        var name = dir.slice().split('/').slice(1).slice(0, -1).join('')
-        var literal=dir.split('/').slice(1).slice(0,-1).join('_').toUpperCase()
 
         return ``+
         mlv.path(literal, dir)+

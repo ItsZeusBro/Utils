@@ -1,4 +1,0 @@
-#ifndef CTOOLS_MATRIX_MATRIX
-#define CTOOLS_MATRIX_MATRIX
-
-#endif
