@@ -6,7 +6,7 @@ export class MakeFile{
     constructor(makeObject, modifier){
         this.actions=this.action_queue(makeObject, modifier);
         var makeFileString=new MakeFileString(makeObject);
-        var [makeFileString, makeObject]=this.modify(makeFileString, this.actions);
+        var [makeFileString, makeObject]=this.modify(makeFileString, this.actions, makeObject);
         var string=''
         var keys = Object.keys(makeFileString.resolved)
         for(var i=0; i<keys.length; i++){
@@ -16,28 +16,22 @@ export class MakeFile{
         // fs.writeFileSync('./MakeObject/OldMakeObject.js', JSON.stringify(makeObject));
     }
 
-    modify(makeFileString, actions){
+    modify(makeFileString, actions, makeObject){
         var resolved=this.resolve(makeFileString)
         for(var i = 0; i<actions.length; i++){ 
-            makeFileString.resolved=this._modify(resolved, actions[i]) 
+            [makeFileString, makeObject]=this._modify(resolved, actions[i], makeObject) 
         }
-        return [makeFileString, this._makeObject(makeFileString)]
+        return [makeFileString, makeObject]
     }
 
-    _modify(resolved, action){
+    _modify(resolved, action, makeObject){
         if(action['action']=='delete'){
-            resolved = this.delete(resolved, action['module'])
-            console.log(resolved)
-        }else if(action['action']=='refactor'){
-            var fromModule;
-            var toModule;
-            //we need to:
-            //1. use the add() function for toModule using the same dependencies as from module (for project tree class: update the include statements to the new module name) 
-            //2. search all modules in the makeFile that use fromModule and delete them, 
-
+            return this.delete(resolved, action['module'], action, makeObject)
         }else if(action['action']=='add'){
             //we need to:
             //add the new module and its dependencies to makefile
+            return this.add(resolved, action['module'], action, makeObject)
+
 
         }else if(action['action']=='move'){
             //we need to:
@@ -46,7 +40,15 @@ export class MakeFile{
         }
         return resolved
     }
-    delete(resolved, _module){
+    add(resolved, _module, action, makeObject){
+        //we want to find a section in the make appropriate to the module
+        //we want to use makeFileLiterals to create a module page
+
+        makeObject[_module]=action['dependencies']
+        var makeFileString = new MakeFileString(makeObject);
+        return [makeFileString, makeObject]
+    }
+    delete(resolved, _module, action, makeObject){
         for(var i=0; i<Object.keys(resolved).length; i++){
             if(resolved[i]&&resolved[i].includes(_module)){
                 var matches = resolved[i].match(new RegExp( `${_module}[^ ]* `, 'g'));
