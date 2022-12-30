@@ -3,7 +3,6 @@ import {ModuleLevelMake, ModuleLevelVars, ProjectLevelVars, ProjectLevelMake} fr
 export class MakeFileString{
     constructor(makeObject){
         this.string=this.makeFileString(makeObject)
-        this.resolved;
     }
     makeFileString(makeObject){
         var mlm = new ModuleLevelMake()
