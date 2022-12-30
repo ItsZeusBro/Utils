@@ -1,12 +1,18 @@
 import fs from 'node:fs'
 
 export class Project{
-
+    constructor(base){
+        this.base=base;
+    }
     refreshProject(makeObject){
-        console.log(makeObject)
 
         var directories=Object.keys(makeObject)
         console.log(directories)
+        for(var i=0; i<directories.length; i++){
+            console.log(this.baseDirectory(directories[i]))
+        }
+
+
         //the project should always resemble the makeObject state
         //files outside the dependencies should not be modified
         //new modules are created with the Project and Module Classes
@@ -49,9 +55,25 @@ export class Project{
         // }
     }
 
+    testC(path){ return this.testDirectory(path)+'Test.c'}
+    testH(path){ return this.testDirectory(path)+'Test.h'}
+    testH(path){ return this.testDirectory(path)+'Test.o'}
+    testDriverC(path){ return this.testDirectory(path)+'Driver.c'}
+    testDriverH(path){ return this.testDirectory(path)+'Driver.h'}
+    testDriverO(path){ return this.testDirectory(path)+'Driver.o'}
+    moduleC(path){ return path+path.split('/').slice(-2)[0]+'.c'}
+    moduleH(path){ return path+path.split('/').slice(-2)[0]+'.h'}
+    moduleO(path){ return path+path.split('/').slice(-2)[0]+'.o'}
+    testExec(path){ return this.testDirectory(path)+'test'}
+    mainExec(path){ return this.baseDirectory(path)+'main'}
+    baseDirectory(path){ return path.slice().split('/').slice(0, 2).join('/')+'/'}
     testDirectory(path){ return path+'Test/' }
-    createDirectory(directory){ if (!fs.existsSync(directory)){ fs.mkdirSync(directory); } }
-    exists(file){ return fs.existsSync(file) }
+
+    createPath(path){ if(!fs.existsSync(path) && this.isProjectPath(path)){return fs.mkdirSync(path);} }
+    deletePath(path){ if(fs.existsSync(path) && this.isProjectPath(path)){return fs.rmdirSync(path)}}
+    createFile(path){ if(!fs.existsSync(path) && this.isProjectPath(path)){return fs.writeFileSync(path, '')}}
+    deleteFile(path){ if(fs.existsSync(path) && this.isProjectPath(path)){return fs.rmSync(path)}}
+    isProjectPath(path){if(this.baseDirectory(path)==this.baseDirectory(this.base)){return true}else{return false}}
 
     updateFileDependencies(file, dependencies){
 
@@ -66,6 +88,32 @@ export class Project{
         }
         return false
     }
+
+    isMainDirectory(dir){
+        if(dir.split('/').length==3){
+            return true
+        }else{
+            return false
+        }
+    }
+
+    createCMainFile(directory, fileBase){
+        if(this.isMainDirectory(directory)&&!this.exists(directory+fileBase+'.c')){
+            var output = 
+            `#include `+`"`+fileBase+'.h'+`"\n`+
+            `#include <stdio.h>\n\n`+
+            `int main(int argc, char *argv[]){\n`+
+            `\tprintf("argc: %d, argv: %s", argc, argv);\n`+
+            `\treturn 0;\n`+`}`
+            fs.writeFileSync(directory+fileBase+'.c', output);
+            return true
+        }else{
+            return false
+        }
+    }
+}
+
+class Module{
 
     createHFile(directory, dependencies){
         if(this.exists(directory+fileBase+'.h')){
@@ -145,29 +193,6 @@ export class Project{
         fs.writeFileSync(directory+'Driver'+'.c', output);
     }
 
-
-    isMainDirectory(dir){
-        if(dir.split('/').length==3){
-            return true
-        }else{
-            return false
-        }
-    }
-
-    createCMainFile(directory, fileBase){
-        if(this.isMainDirectory(directory)&&!this.exists(directory+fileBase+'.c')){
-            var output = 
-            `#include `+`"`+fileBase+'.h'+`"\n`+
-            `#include <stdio.h>\n\n`+
-            `int main(int argc, char *argv[]){\n`+
-            `\tprintf("argc: %d, argv: %s", argc, argv);\n`+
-            `\treturn 0;\n`+`}`
-            fs.writeFileSync(directory+fileBase+'.c', output);
-            return true
-        }else{
-            return false
-        }
-    }
 }
 
 new Project().refreshProject(JSON.parse(fs.readFileSync('./MakeObject/MakeObject.json')))

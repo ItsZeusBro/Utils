@@ -67,14 +67,14 @@ export class ProjectLevelVars{
 
 export class ProjectLevelMake{
     prodTests(projVars){ return `ProdTests: ${projVars['prodTestCDeps'].join(' ')} ${projVars['prodTestHDeps'].join(' ')}\n`+ `\t${projVars['prodTests'].join('\t')}\n\n`}
-    prodTestsLink(projVars){ return `ProdTestsLink: ${projVars['prodTestODeps'].join(' ')}\n`+`\tgcc -o Prod ${projVars['prodTestOFiles'].join(' ')}\n\n`}
+    prodTestsLink(projVars){ return `ProdTestsLink: ${projVars['prodTestODeps'].join(' ')}\n`+`\tgcc -o main ${projVars['prodTestOFiles'].join(' ')}\n\n`}
     prodTestsClean(projVars){ return `ProdTestsClean: ${projVars['prodTestODeps'].join(' ')}\n`+`\t${projVars['prodTestsClean'].join('\t')}\n\n`}
     prodTestsRun(projVars){
         return `ProdTestsRun: ${projVars['prodTestCDeps'].join(' ')} ${projVars['prodTestHDeps'].join(' ')}\n`+
         `\tmake ProdTestsClean\n`+
         `\tmake ProdTests\n`+
         `\tmake ProdTestsLink\n`+
-        `\t./Prod\n\n`
+        `\t./main\n\n`
     }
 
     _prodTests(name, projVars){projVars['prodTests'].push(`make Prod${name}\n`)}
@@ -113,18 +113,18 @@ export class ModuleLevelMake{
     }
     devBuildLink(literal, name){
         return `Dev${name}Link: \$\{DEV_${literal}_TEST_O_DEPS\}\n`+
-        `\t(gcc -o devTest \$\{${literal}_O_PATH\} \$\{${literal}_TEST_O_PATH\} \$\{${literal}_TEST_DRVR_O_PATH\})\n\n`
+        `\t(gcc -o test \$\{${literal}_O_PATH\} \$\{${literal}_TEST_O_PATH\} \$\{${literal}_TEST_DRVR_O_PATH\})\n\n`
     }
     prodBuildLink(literal, name){
         return `Prod${name}Link: \$\{PROD_${literal}_TEST_O_DEPS\}\n`+
-        `\t(gcc -o prodTest \$\{${literal}_O_PATH\} \$\{${literal}_TEST_O_PATH\})\n\n`
+        `\t(gcc -o test \$\{${literal}_O_PATH\} \$\{${literal}_TEST_O_PATH\})\n\n`
     }
     devBuildRun(literal, name){
         return `Dev${name}Run: \$\{DEV_${literal}_TEST_O_DEPS\} \$\{DEV_${literal}_TEST_C_DEPS\} \$\{DEV_${literal}_TEST_H_DEPS\}\n`+
         `\tmake Dev${name}Clean\n`+
         `\tmake Dev${name}\n`+
         `\tmake Dev${name}Link\n`+
-        `\t./devTest\n\n`
+        `\t./test\n\n`
     }
     endOfSection(){ return `########################################################################################################################################\n\n`}
 }
