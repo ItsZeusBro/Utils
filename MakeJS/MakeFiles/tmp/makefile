@@ -84,7 +84,7 @@ PROD_TEST_O_FILES=./CTools/CTools.o ./CTools/Test/Test.o
 
 ProdTests: ./CTools/CTools.c ./CTools/Test/Test.c     ./CTools/CTools.h ./CTools/Test/Test.h    
 	make ProdCTools
-	make ProdCToolsAutomata
+
 
 
 ProdTestsLink: ./CTools/CTools.o ./CTools/Test/Test.o    
@@ -92,7 +92,7 @@ ProdTestsLink: ./CTools/CTools.o ./CTools/Test/Test.o
 
 ProdTestsClean: ./CTools/CTools.o ./CTools/Test/Test.o    
 	make ProdCToolsClean
-	make ProdCToolsAutomataClean
+
 
 
 ProdTestsRun: ./CTools/CTools.c ./CTools/Test/Test.c     ./CTools/CTools.h ./CTools/Test/Test.h    

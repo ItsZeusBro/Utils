@@ -21,14 +21,13 @@ export class MakeFile{
         for(var i = 0; i<actions.length; i++){ 
             makeFileString.resolved=this._modify(resolved, actions[i]) 
         }
-        console.log(makeFileString.resolved)
         return [makeFileString, this._makeObject(makeFileString)]
     }
 
     _modify(resolved, action){
         if(action['action']=='delete'){
             resolved = this.delete(resolved, action['module'])
-
+            console.log(resolved)
         }else if(action['action']=='refactor'){
             var fromModule;
             var toModule;
@@ -56,6 +55,8 @@ export class MakeFile{
                         resolved[i]=resolved[i].replace(matches[j], '');
                     }
                 }
+            }else if(resolved[i]&&resolved[i].includes(_module.split('/').join("").slice(1))){
+                resolved[i]=''
             }
         }
         return this._delete(resolved, _module)
@@ -112,10 +113,7 @@ export class MakeFile{
         var lines=makeFileString.string.split('\n');
         for(var  i=0; i<lines.length; i++){
             var line=''
-            // if(lines[i].includes('gcc')){
-            //     resolved[i]=lines[i]
-                
-            // }else{
+
             line = lines[i]
             var echo = `echo:\n\techo `+line
             var makeFile=lines.slice(0, i)
@@ -126,13 +124,12 @@ export class MakeFile{
             fs.writeFileSync('./tmp/makefile', makeFile)
 
             if(line.includes('${')){
-                resolved[i]=execSync('cd ./tmp/; make echo & > /dev/null').toString()
+                resolved[i]=execSync('cd ./tmp/; make echo &', {'stdio':[]}).toString()
                 resolved[i]=this.format(resolved[i].substring(0, resolved[i].indexOf('\n')).split('\n').join('').replace('echo', ''))
             }else{
                 resolved[i]=this.format(line)
             }
 
-            // }
         }   
         return resolved
     }
