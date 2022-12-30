@@ -7,7 +7,7 @@ export class Project{
         //base could be absolute or relative to the current working directory
         //we want the absolute pth either way ../../base or /some/pth/to/base
         this.base;
-        if(this.isAbsolutepth(base)){
+        if(path.isAbsolute(base)){
             if(base[base.length-1]=='/'){this.base=base}else{this.base=base+'/'}
         }else{
             if(base[base.length-1]=='/'){this.base=path.resolve('../', base)}else{this.base=path.resolve('../', base)+'/'}
@@ -66,27 +66,39 @@ export class Project{
     }
 
 
-    testExec(pth){ if(this.isProjectpth(pth)){return this.testDirectory(this.projectpth(pth))+'test'}}
-    mainExec(pth){ if(this.isProjectpth(pth)){return this.baseDirectory(this.projectpth(pth))+'main'}}
-    createpth(pth){ if(!fs.existsSync(pth) && this.isProjectpth(pth)){return fs.mkdirSync(this.projectpth(pth));} }
-    deletepth(pth){ if(fs.existsSync(pth) && this.isProjectpth(pth)){return fs.rmdirSync(this.projectpth(pth))}}
-    createFile(pth){ if(!fs.existsSync(pth) && this.isProjectpth(pth)){return fs.writeFileSync(this.projectpth(pth), '')}}
-    deleteFile(pth){ if(fs.existsSync(pth) && this.isProjectpth(pth)){return fs.rmSync(this.projectpth(pth))}}
-    
+    createModule(pth){
+        
+    }
+    createPath(pth){ 
+        console.log(pth, this.projectPath(pth))
 
-    moduleC(pth){if(this.isProjectpth(this.projectpth(pth))){return this.projectpth(pth)+this.projectpth(pth).split('/').slice(-2)[0]+'.c'}}
-    moduleH(pth){if(this.isProjectpth(this.projectpth(pth))){return this.projectpth(pth)+this.projectpth(pth).split('/').slice(-2)[0]+'.h'}}
-    moduleO(pth){if(this.isProjectpth(this.projectpth(pth))){return this.projectpth(pth)+this.projectpth(pth).split('/').slice(-2)[0]+'.o'}}
-    testDirectory(pth){ if(this.isProjectpth(this.projectpth(pth))){return this.projectpth(pth)+'Test/' }}
-    testC(pth){ if(this.isProjectpth(this.projectpth(pth))){return this.testDirectory(this.projectpth(pth))+'Test.c'}}
-    testH(pth){ if(this.isProjectpth(this.projectpth(pth))){return this.testDirectory(this.projectpth(pth))+'Test.h'}}
-    testO(pth){ if(this.isProjectpth(this.projectpth(pth))){return this.testDirectory(this.projectpth(pth))+'Test.o'}}
-    testDriverC(pth){ if(this.isProjectpth(this.projectpth(pth))){return this.testDirectory(this.projectpth(pth))+'Driver.c'}}
-    testDriverH(pth){ if(this.isProjectpth(this.projectpth(pth))){return this.testDirectory(this.projectpth(pth))+'Driver.h'}}
-    testDriverO(pth){ if(this.isProjectpth(this.projectpth(pth))){return this.testDirectory(this.projectpth(pth))+'Driver.o'}}
-    isProjectpth(pth){if(pth.includes(this.base)){return true}else{return false}}
-    isAbsolutepth(pth){if(pth[0]=='.'){return false}else if(pth[0]=='/'){return true}}
-    projectpth(pth){return path.resolve(this.base, pth)+'/'}
+        if(!fs.existsSync(this.projectPath(pth))){
+            fs.mkdirSync(this.projectPath(pth));
+            return this.projectPath(pth)
+        }else{
+            return false
+        }
+    }
+    deletePath(pth){ if(fs.existsSync(this.projectPath(pth)) && this.isProjectPath(this.projectPath(pth))){return fs.rmdirSync(this.projectPath(pth))}}
+    createFile(pth){ if(!fs.existsSync(this.projectPath(pth)) && this.isProjectPath(this.projectPath(pth))){return fs.writeFileSync(this.projectPath(pth), '')}}
+    deleteFile(pth){ if(fs.existsSync(this.projectPath(pth)) && this.isProjectPath(this.projectPath(pth))){return fs.rmSync(this.projectPath(pth))}}
+    
+    baseDirectory(){return this.base}
+    testExec(pth){ if(this.isProjectPath(this.projectPath(pth))){return this.testDirectory(this.projectPath(pth))+'test.e'}}
+    mainExec(){ return this.base+'main.e'}
+    moduleC(pth){if(this.isProjectPath(this.projectPath(pth))){return this.projectPath(pth)+this.projectPath(pth).split('/').slice(-2)[0]+'.c'}}
+    moduleH(pth){if(this.isProjectPath(this.projectPath(pth))){return this.projectPath(pth)+this.projectPath(pth).split('/').slice(-2)[0]+'.h'}}
+    moduleO(pth){if(this.isProjectPath(this.projectPath(pth))){return this.projectPath(pth)+this.projectPath(pth).split('/').slice(-2)[0]+'.o'}}
+    testDirectory(pth){ if(this.isProjectPath(this.projectPath(pth))){return this.projectPath(pth)+'Test/' }}
+    testC(pth){ if(this.isProjectPath(this.projectPath(pth))){return this.testDirectory(this.projectPath(pth))+'Test.c'}}
+    testH(pth){ if(this.isProjectPath(this.projectPath(pth))){return this.testDirectory(this.projectPath(pth))+'Test.h'}}
+    testO(pth){ if(this.isProjectPath(this.projectPath(pth))){return this.testDirectory(this.projectPath(pth))+'Test.o'}}
+    testDriverC(pth){ if(this.isProjectPath(this.projectPath(pth))){return this.testDirectory(this.projectPath(pth))+'Driver.c'}}
+    testDriverH(pth){ if(this.isProjectPath(this.projectPath(pth))){return this.testDirectory(this.projectPath(pth))+'Driver.h'}}
+    testDriverO(pth){ if(this.isProjectPath(this.projectPath(pth))){return this.testDirectory(this.projectPath(pth))+'Driver.o'}}
+    isProjectPath(pth){if(pth.includes(this.base)){return true}else{return false}}
+
+    projectPath(pth){return path.resolve(this.base, pth)+'/'}
     // isProjectMain(pth){if(dir.split('/').length==3&&)}
 
 
@@ -213,7 +225,7 @@ class Module{
 
 class Test{
     tests(){
-        this.projectpth()
+        this.projectPath()
         this.testC()
         this.testH()
         this.testO()
@@ -224,83 +236,108 @@ class Test{
         this.moduleH()
         this.moduleO()
         this.testExec()
+
         this.mainExec()
         this.baseDirectory()
         this.testDirectory()
-        this.createpth()
-        this.deletepth()
-        this.createFile()
-        this.deleteFile()
-        this.isProjectpth()
-        this.isAbsolutepth()
+        this.createPath()
+        // this.deletePath()
+        // this.createFile()
+        // this.deleteFile()
+        // this.isProjectPath()
     }
-    projectpth(){
+    projectPath(){
+        console.log('projectpth')
         var project = new Project('./base')
-        assert.equal(project.projectpth('somePath/to/folder'), project.base+'somePath/to/folder/')
-        assert.equal(project.projectpth('somePath/to/folder/'), project.base+'somePath/to/folder/')
+        assert.equal(project.projectPath('somePath/to/folder'), project.base+'somePath/to/folder/')
+        assert.equal(project.projectPath('somePath/to/folder/'), project.base+'somePath/to/folder/')
     }
     testC(){ 
+        console.log('testC')
         var project = new Project('./base')
         assert.equal(project.testC('somePath/to/folder/'), project.base+'somePath/to/folder/Test/'+'Test.c')
         assert.equal(project.testC('somePath/to/folder'), project.base+'somePath/to/folder/Test/'+'Test.c')
 
     }
     testH(){ 
+        console.log('testH')
         var project = new Project('./base')
         assert.equal(project.testH('somePath/to/folder/'), project.base+'somePath/to/folder/Test/'+'Test.h')
         assert.equal(project.testH('somePath/to/folder'), project.base+'somePath/to/folder/Test/'+'Test.h')
     }
     testO(){ 
+        console.log('testO')
         var project = new Project('./base')
         assert.equal(project.testO('somePath/to/folder/'), project.base+'somePath/to/folder/Test/'+'Test.o')
         assert.equal(project.testO('somePath/to/folder'), project.base+'somePath/to/folder/Test/'+'Test.o')
     }
     testDriverC(){ 
+        console.log('testDriverC')
         var project = new Project('./base')
         assert.equal(project.testDriverC('somePath/to/folder/'), project.base+'somePath/to/folder/Test/'+'Driver.c')
         assert.equal(project.testDriverC('somePath/to/folder'), project.base+'somePath/to/folder/Test/'+'Driver.c')
     }
     testDriverH(){ 
+        console.log('testDriverH')
         var project = new Project('./base')
         assert.equal(project.testDriverH('somePath/to/folder/'), project.base+'somePath/to/folder/Test/'+'Driver.h')
         assert.equal(project.testDriverH('somePath/to/folder'), project.base+'somePath/to/folder/Test/'+'Driver.h')
     }
     testDriverO(){
+        console.log('testDriverO')
         var project = new Project('./base')
         assert.equal(project.testDriverO('somePath/to/folder/'), project.base+'somePath/to/folder/Test/'+'Driver.o')
         assert.equal(project.testDriverO('somePath/to/folder'), project.base+'somePath/to/folder/Test/'+'Driver.o')
     }
     moduleC(){ 
+        console.log('moduleC')
         var project = new Project('./base')
         assert.equal(project.moduleC('somePath/to/folder/'), project.base+'somePath/to/folder/'+'folder.c')
         assert.equal(project.moduleC('somePath/to/folder'), project.base+'somePath/to/folder/'+'folder.c')
     }
     moduleH(){
+        console.log('moduleH')
         var project = new Project('./base')
         assert.equal(project.moduleH('somePath/to/folder/'), project.base+'somePath/to/folder/'+'folder.h')
         assert.equal(project.moduleH('somePath/to/folder'), project.base+'somePath/to/folder/'+'folder.h')
     }
     moduleO(){
+        console.log('moduleO')
         var project = new Project('./base')
         assert.equal(project.moduleO('somePath/to/folder/'), project.base+'somePath/to/folder/'+'folder.o')
         assert.equal(project.moduleO('somePath/to/folder'), project.base+'somePath/to/folder/'+'folder.o')
     }
     testExec(){
-
+        console.log('testExec')
+        var project = new Project('./base')
+        assert.equal(project.testExec('somePath/to/folder/'), project.base+'somePath/to/folder/Test/'+'test.e')
+        assert.equal(project.testExec('somePath/to/folder'), project.base+'somePath/to/folder/Test/'+'test.e')
     }
     mainExec(){
-
+        console.log('mainExec')
+        var project = new Project('./base')
+        assert.equal(project.mainExec(), project.base+'main.e')
     }
     baseDirectory(){
-
+        console.log('baseDirectory')
+        var project = new Project('./base')
+        assert.equal(project.baseDirectory(), project.base)
     }
     testDirectory(){
+        console.log('testDirectory')
+        var project = new Project('./base')
+        assert.equal(project.testDirectory('somePath/to/folder'), project.base+'somePath/to/folder/'+'Test/')
+    }
+    createPath(){
+        var project = new Project('./base')
+        assert.equal(fs.existsSync(project.createPath('./')), true)
+        assert.equal(fs.existsSync(project.createPath('./Module1/')), true)
+        assert.equal(fs.existsSync(project.createPath('./Module2')), true)
+        assert.equal(fs.existsSync(project.createPath('./Module1/Module3')), true)
+        fs.rmSync(project.projectPath('./'), {recursive:true})
 
     }
-    createpth(){
-
-    }
-    deletepth(){ 
+    deletePath(){ 
 
     }
     createFile(){
@@ -309,12 +346,13 @@ class Test{
     deleteFile(){
 
     }
-    isProjectpth(){
-
+    isProjectPath(){
+        console.log('isProjectpth')
+        var project = new Project('./base')
+        assert.equal(project.isProjectPath(project.projectPath('somePath/to/folder')), true)
+        assert.equal(project.isProjectPath('somePath/to/folder'), false)
     }
-    isAbsolutepth(){
 
-    }
 
 }
 
