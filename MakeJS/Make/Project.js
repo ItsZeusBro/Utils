@@ -55,25 +55,26 @@ export class Project{
         // }
     }
 
-    testC(path){ return this.testDirectory(path)+'Test.c'}
-    testH(path){ return this.testDirectory(path)+'Test.h'}
-    testH(path){ return this.testDirectory(path)+'Test.o'}
-    testDriverC(path){ return this.testDirectory(path)+'Driver.c'}
-    testDriverH(path){ return this.testDirectory(path)+'Driver.h'}
-    testDriverO(path){ return this.testDirectory(path)+'Driver.o'}
-    moduleC(path){ return path+path.split('/').slice(-2)[0]+'.c'}
-    moduleH(path){ return path+path.split('/').slice(-2)[0]+'.h'}
-    moduleO(path){ return path+path.split('/').slice(-2)[0]+'.o'}
-    testExec(path){ return this.testDirectory(path)+'test'}
-    mainExec(path){ return this.baseDirectory(path)+'main'}
-    baseDirectory(path){ return path.slice().split('/').slice(0, 2).join('/')+'/'}
-    testDirectory(path){ return path+'Test/' }
-
+    testC(path){ if(this.isProjectPath(path)){return this.testDirectory(path)+'Test.c'}}
+    testH(path){ if(this.isProjectPath(path)){return this.testDirectory(path)+'Test.h'}}
+    testH(path){ if(this.isProjectPath(path)){return this.testDirectory(path)+'Test.o'}}
+    testDriverC(path){ if(this.isProjectPath(path)){return this.testDirectory(path)+'Driver.c'}}
+    testDriverH(path){ if(this.isProjectPath(path)){return this.testDirectory(path)+'Driver.h'}}
+    testDriverO(path){ if(this.isProjectPath(path)){return this.testDirectory(path)+'Driver.o'}}
+    moduleC(path){ if(this.isProjectPath(path)){return path+path.split('/').slice(-2)[0]+'.c'}}
+    moduleH(path){ if(this.isProjectPath(path)){return path+path.split('/').slice(-2)[0]+'.h'}}
+    moduleO(path){ if(this.isProjectPath(path)){return path+path.split('/').slice(-2)[0]+'.o'}}
+    testExec(path){ if(this.isProjectPath(path)){return this.testDirectory(path)+'test'}}
+    mainExec(path){ if(this.isProjectPath(path)){return this.baseDirectory(path)+'main'}}
+    baseDirectory(path){ if(this.isProjectPath(path)){return path.slice().split('/').slice(0, 2).join('/')+'/'}}
+    testDirectory(path){ if(this.isProjectPath(path)){return path+'Test/' }}
     createPath(path){ if(!fs.existsSync(path) && this.isProjectPath(path)){return fs.mkdirSync(path);} }
     deletePath(path){ if(fs.existsSync(path) && this.isProjectPath(path)){return fs.rmdirSync(path)}}
     createFile(path){ if(!fs.existsSync(path) && this.isProjectPath(path)){return fs.writeFileSync(path, '')}}
     deleteFile(path){ if(fs.existsSync(path) && this.isProjectPath(path)){return fs.rmSync(path)}}
     isProjectPath(path){if(this.baseDirectory(path)==this.baseDirectory(this.base)){return true}else{return false}}
+
+
 
     updateFileDependencies(file, dependencies){
 
