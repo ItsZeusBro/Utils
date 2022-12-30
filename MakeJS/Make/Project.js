@@ -79,9 +79,17 @@ export class Project{
             return false
         }
     }
-    deletePath(pth){ if(fs.existsSync(this.projectPath(pth)) && this.isProjectPath(this.projectPath(pth))){return fs.rmdirSync(this.projectPath(pth))}}
+    deletePath(pth){ 
+        if(fs.existsSync(this.projectPath(pth))){
+            return fs.rmSync(this.projectPath(pth), {recursive:true})
+        }
+    }
     createFile(pth){ if(!fs.existsSync(this.projectPath(pth)) && this.isProjectPath(this.projectPath(pth))){return fs.writeFileSync(this.projectPath(pth), '')}}
-    deleteFile(pth){ if(fs.existsSync(this.projectPath(pth)) && this.isProjectPath(this.projectPath(pth))){return fs.rmSync(this.projectPath(pth))}}
+    deleteFile(pth){ 
+        if(fs.existsSync(this.projectPath(pth))){
+            return fs.rmSync(this.projectPath(pth), {})
+        }
+    }
     
     baseDirectory(){return this.base}
     testExec(pth){ if(this.isProjectPath(this.projectPath(pth))){return this.testDirectory(this.projectPath(pth))+'test.e'}}
@@ -241,17 +249,20 @@ class Test{
         this.baseDirectory()
         this.testDirectory()
         this.createPath()
-        // this.deletePath()
+        this.deletePath()
+
         // this.createFile()
         // this.deleteFile()
         // this.isProjectPath()
     }
+
     projectPath(){
         console.log('projectpth')
         var project = new Project('./base')
         assert.equal(project.projectPath('somePath/to/folder'), project.base+'somePath/to/folder/')
         assert.equal(project.projectPath('somePath/to/folder/'), project.base+'somePath/to/folder/')
     }
+
     testC(){ 
         console.log('testC')
         var project = new Project('./base')
@@ -259,76 +270,90 @@ class Test{
         assert.equal(project.testC('somePath/to/folder'), project.base+'somePath/to/folder/Test/'+'Test.c')
 
     }
+
     testH(){ 
         console.log('testH')
         var project = new Project('./base')
         assert.equal(project.testH('somePath/to/folder/'), project.base+'somePath/to/folder/Test/'+'Test.h')
         assert.equal(project.testH('somePath/to/folder'), project.base+'somePath/to/folder/Test/'+'Test.h')
     }
+
     testO(){ 
         console.log('testO')
         var project = new Project('./base')
         assert.equal(project.testO('somePath/to/folder/'), project.base+'somePath/to/folder/Test/'+'Test.o')
         assert.equal(project.testO('somePath/to/folder'), project.base+'somePath/to/folder/Test/'+'Test.o')
     }
+
     testDriverC(){ 
         console.log('testDriverC')
         var project = new Project('./base')
         assert.equal(project.testDriverC('somePath/to/folder/'), project.base+'somePath/to/folder/Test/'+'Driver.c')
         assert.equal(project.testDriverC('somePath/to/folder'), project.base+'somePath/to/folder/Test/'+'Driver.c')
     }
+
     testDriverH(){ 
         console.log('testDriverH')
         var project = new Project('./base')
         assert.equal(project.testDriverH('somePath/to/folder/'), project.base+'somePath/to/folder/Test/'+'Driver.h')
         assert.equal(project.testDriverH('somePath/to/folder'), project.base+'somePath/to/folder/Test/'+'Driver.h')
     }
+
     testDriverO(){
         console.log('testDriverO')
         var project = new Project('./base')
         assert.equal(project.testDriverO('somePath/to/folder/'), project.base+'somePath/to/folder/Test/'+'Driver.o')
         assert.equal(project.testDriverO('somePath/to/folder'), project.base+'somePath/to/folder/Test/'+'Driver.o')
     }
+
     moduleC(){ 
         console.log('moduleC')
         var project = new Project('./base')
         assert.equal(project.moduleC('somePath/to/folder/'), project.base+'somePath/to/folder/'+'folder.c')
         assert.equal(project.moduleC('somePath/to/folder'), project.base+'somePath/to/folder/'+'folder.c')
     }
+
     moduleH(){
         console.log('moduleH')
         var project = new Project('./base')
         assert.equal(project.moduleH('somePath/to/folder/'), project.base+'somePath/to/folder/'+'folder.h')
         assert.equal(project.moduleH('somePath/to/folder'), project.base+'somePath/to/folder/'+'folder.h')
     }
+
     moduleO(){
         console.log('moduleO')
         var project = new Project('./base')
         assert.equal(project.moduleO('somePath/to/folder/'), project.base+'somePath/to/folder/'+'folder.o')
         assert.equal(project.moduleO('somePath/to/folder'), project.base+'somePath/to/folder/'+'folder.o')
     }
+
     testExec(){
         console.log('testExec')
         var project = new Project('./base')
         assert.equal(project.testExec('somePath/to/folder/'), project.base+'somePath/to/folder/Test/'+'test.e')
         assert.equal(project.testExec('somePath/to/folder'), project.base+'somePath/to/folder/Test/'+'test.e')
     }
+
     mainExec(){
         console.log('mainExec')
         var project = new Project('./base')
         assert.equal(project.mainExec(), project.base+'main.e')
     }
+
     baseDirectory(){
         console.log('baseDirectory')
         var project = new Project('./base')
         assert.equal(project.baseDirectory(), project.base)
     }
+
     testDirectory(){
         console.log('testDirectory')
         var project = new Project('./base')
         assert.equal(project.testDirectory('somePath/to/folder'), project.base+'somePath/to/folder/'+'Test/')
     }
+
     createPath(){
+        console.log('createPath')
         var project = new Project('./base')
         assert.equal(fs.existsSync(project.createPath('./')), true)
         assert.equal(fs.existsSync(project.createPath('./Module1/')), true)
@@ -337,12 +362,26 @@ class Test{
         fs.rmSync(project.projectPath('./'), {recursive:true})
 
     }
+
     deletePath(){ 
+        console.log('deletePath')
+        var project = new Project('./base')
+        project.createPath('./')
+        project.createPath('./Module1')
+        project.createPath('./Module1/Module2')
+        project.deletePath('./Module1/Module2')
+        assert.equal(fs.existsSync(project.projectPath('./Module1/Module2')), false)
+        project.deletePath('./Module1')
+        assert.equal(fs.existsSync(project.projectPath('./Module1')), false)
+        project.deletePath('./')
+        assert.equal(fs.existsSync(project.projectPath('./')), false)
 
     }
+
     createFile(){
 
     }
+
     deleteFile(){
 
     }
