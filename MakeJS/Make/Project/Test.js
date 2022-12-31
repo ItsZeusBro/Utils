@@ -28,6 +28,8 @@ class Test{
         this.createModule(verbose)
         this.deleteModule(verbose)
         this.modulePath(verbose)
+        this.moduleWrite(verbose)
+        this.moduleRead(verbose)
     }
 
     inProjectBoundary(verbose){
@@ -220,6 +222,25 @@ class Test{
         project.createModule('./Project/Modules/Module1', []);
         assert.equal(project.modulePath('Module1'), project.projectPath('./Project/Modules/Module1'))
     }
+
+    moduleWrite(verbose){
+        if(verbose){console.log('moduleWrite')}
+        var project = new Project('./Project');
+        project.createModule('./Project/Modules/Module1', []);
+        project.moduleHWrite('Module1', 'output', 2)
+        // project.moduleHWrite('Module1', 'output', 2)
+        assert.equal(project.moduleHRead('Module1', 2), 'output')
+    }
+
+    moduleRead(verbose){
+        if(verbose){console.log('moduleRead')}
+        var project = new Project('./Project');
+        project.createModule('./Project/Modules/Module1', []);
+        project.moduleHWrite('Module1', 'output', 2)
+        project.moduleHWrite('Module1', 'output2', 3)
+        assert.equal(project.moduleHRead('Module1', 2), 'output')
+        assert.equal(project.moduleHRead('Module1', 3), 'output2')
+    }
 }
 
-new Test().tests(false)
+new Test().tests(true)

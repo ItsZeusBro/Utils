@@ -16,7 +16,6 @@ export class Project{
     refreshProject(makeObject){
         var directories=Object.keys(makeObject)
         for(var i=0; i<directories.length; i++){
-            // console.log(this.basePath(directories[i]))
         }
 
         //the project should always resemble the makeObject state
@@ -134,7 +133,7 @@ export class Project{
     testExec(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.testPath(this.projectPath(pth))+'test.e'} }
     mainExec(){ return this.base+'main.e'}
     moduleC(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.projectPath(pth)+this.projectPath(pth).split('/').slice(-2)[0]+'.c'} }
-    moduleH(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.projectPath(pth)+this.projectPath(pth).split('/').slice(-2)[0]+'.h'} }
+    moduleH(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.projectPath(pth)+this.projectPath(pth).split('/').slice(-2)[0]+'.h' } }
     moduleO(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.projectPath(pth)+this.projectPath(pth).split('/').slice(-2)[0]+'.o'} }
     testC(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.testPath(this.projectPath(pth))+'Test.c'} }
     testH(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.testPath(this.projectPath(pth))+'Test.h'} }
@@ -145,33 +144,45 @@ export class Project{
     inProjectBoundary(pth){if(pth.includes(this.base)){ return true }else{return false} }
     projectFile(pth){ return path.resolve(this.base, pth) }
     projectFileExists(pth){ return fs.existsSync(this.projectFile(pth)) }
-    relativePath(pth){return path.relative(this.base, pth)}
+    relativePath(pth){ return path.relative(this.base, pth) }
 
-    modulePath(_module){
-        return this.modules[_module]
+    modulePath(_module){ return this.modules[_module] }
+    setModule(_module, path){ this.modules[_module]=path }
+    moduleHWrite(_module, output, atIndex){
+        var moduleH=this.moduleHRead(_module)
+        if(moduleH.length){
+            moduleH=moduleH.split('\n')
+            for(var i=0; i<moduleH.length; i++){
+                if(i==atIndex){ 
+                    moduleH=moduleH.slice(0, i).concat(output).concat(moduleH.slice(i))
+                }
+            }
+            moduleH=moduleH.join('\n')
+        }else{
+            moduleH+=output
+        }
+
+        fs.writeFileSync(this.moduleH(this.modulePath(_module)), moduleH);
     }
 
-    moduleHWrite(pth, output, atIndex){
-        var moduleH=this.moduleHRead(pth)
-        for(var i=0; i<moduleH.length; i++){
-            if(i==atIndex){ moduleH=moduleH.slice(0, i).concat(output).concat(moduleH.slice(i)) }
+    moduleHRead(_module, atIndex){
+        var str = fs.readFileSync(this.moduleH(this.modulePath(_module))).toString()
+        if(atIndex!=undefined){
+            str=str.split('\n')
+            for(var i=0; i<str.length; i++){
+                if(i==atIndex){
+                    return str[i]
+                }
+            }
+        }else{
+            return str
         }
-        fs.writeFileSync(this.moduleH(pth), moduleH.join(''));
-    }
-
-    moduleHRead(pth){
-        var str = fs.readFileSync(this.moduleH(pth)).toString()
-        str = str.split('\n')
-        var output=[]
-        for(var i=0; i<str.length; i++){
-            output.push(str[i])
-        }
-        return output
     }
 
     createModule(pth, dependencies){
         pth=this.projectPath(pth)
-        this.modules[pth.split('/')[pth.split('/').length-2]]=pth
+        this.setModule(pth.split('/')[pth.split('/').length-2], pth)
+
         if(this.inProjectBoundary(pth)){
             this._moduleHFile(pth, dependencies)
             this.moduleCFile(pth, dependencies)
@@ -186,6 +197,7 @@ export class Project{
         pth=this.projectPath(pth)
         delete this.modules[pth.split('/')[pth.split('/').length-1]]
     }
+
     _moduleHFile(pth, dependencies){
         this.createFile(this.moduleH(pth))
         var moduleH=this.relativePath(this.moduleH(pth))
@@ -196,12 +208,13 @@ export class Project{
             output+= `#include `+`"`+dependencies[i]+`"\n`;
         }
         output+=`#endif`;
-        this.moduleHWrite(pth, output, 0)
+        this.moduleHWrite(fileBase, output, 0)
     }
 
     moduleTestHFile(pth, dependencies){
         this.createFile(this.testH(pth))
         var fileBase=this.testH(pth).split('/')[this.testH(pth).split('/').length-2];
+
         // var fileBase=Path.split('/')[Path.split('/').length-3];
         // var fileDescriptor=(Path.split('/').slice(1).join('_')+'Test').toUpperCase();
         // var output2 = `#include "../`+fileBase+`.h"`;

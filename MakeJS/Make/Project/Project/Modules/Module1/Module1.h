@@ -1,4 +1,6 @@
 #ifndef PROJECT_MODULES_MODULE1_MODULE1.H
 #define PROJECT_MODULES_MODULE1_MODULE1.H
+output
+output2
 
 #endif
