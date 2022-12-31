@@ -4,7 +4,6 @@ import fs from 'node:fs'
 import path from "node:path"
 
 class Test{
-
     tests(verbose){
         this.inProjectBoundary(verbose)
         this.projectPath(verbose)
@@ -27,6 +26,8 @@ class Test{
         this.testExec(verbose)
         this.mainExec(verbose)
         this.createModule(verbose)
+        this.deleteModule(verbose)
+        this.modulePath(verbose)
     }
 
     inProjectBoundary(verbose){
@@ -134,7 +135,6 @@ class Test{
         assert.equal(project.moduleO('somePath/to/folder'), project.base+'somePath/to/folder/'+'folder.o')
     }
 
-
     testC(verbose){ 
         if(verbose){console.log('testC')}
         var project = new Project('./base')
@@ -192,8 +192,33 @@ class Test{
 
     createModule(verbose){
         if(verbose){console.log('createModule')}
-        var project = new Project('./Project')
-        project.createModule('./Project/Module1', [])
+        var project = new Project('./Project');
+        project.createModule('./Project/Modules/Module1', []);
+        assert.equal(fs.existsSync(project.projectFile('./Project/Modules/Module1/Module1.h')), true);
+        assert.equal(fs.existsSync(project.projectFile('./Project/Modules/Module1/Module1.c')), true);
+        assert.equal(fs.existsSync(project.projectFile('./Project/Modules/Module1/Test/Test.c')), true);
+        assert.equal(fs.existsSync(project.projectFile('./Project/Modules/Module1/Test/Test.h')), true);
+        assert.equal(fs.existsSync(project.projectFile('./Project/Modules/Module1/Test/Driver.c')), true);
+        assert.equal(fs.existsSync(project.projectFile('./Project/Modules/Module1/Test/Driver.h')), true);
+        project.deleteModule('./Project/Modules/Module1');
+        assert.equal(fs.existsSync(project.projectPath('./Project/Modules/Module1')), false);
+    }
+
+    deleteModule(verbose){
+        if(verbose){console.log('deleteModule')}
+        var project = new Project('./Project');
+        project.createModule('./Project/Modules/Module1', []);
+        project.deleteModule('./Project/Modules/Module1');
+        project.createModule('./Project/Modules', []);
+        project.deleteModule('./Project/Modules');
+        assert.equal(fs.existsSync(project.projectPath('./Project/Modules')), false);
+    }
+
+    modulePath(verbose){
+        if(verbose){console.log('modulePath')}
+        var project = new Project('./Project');
+        project.createModule('./Project/Modules/Module1', []);
+        assert.equal(project.modulePath('Module1'), project.projectPath('./Project/Modules/Module1'))
     }
 }
 

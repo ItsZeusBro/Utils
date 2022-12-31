@@ -8,6 +8,7 @@ export class Project{
         //we want the absolute pth either way ../../base or /some/pth/to/base
         this.makeObject=makeObject;
         this.base;
+        this.modules={}
         if(path.isAbsolute(base)){ if(base[base.length-1]=='/'){this.base=base}else{this.base=base+'/'}}
         else{if(base[base.length-1]=='/'){this.base=path.resolve('../', base)}else{this.base=path.resolve('../', base)+'/'}}
     }
@@ -144,11 +145,35 @@ export class Project{
     inProjectBoundary(pth){if(pth.includes(this.base)){ return true }else{return false} }
     projectFile(pth){ return path.resolve(this.base, pth) }
     projectFileExists(pth){ return fs.existsSync(this.projectFile(pth)) }
+    relativePath(pth){return path.relative(this.base, pth)}
+
+    modulePath(_module){
+        return this.modules[_module]
+    }
+
+    moduleHWrite(pth, output, atIndex){
+        var moduleH=this.moduleHRead(pth)
+        for(var i=0; i<moduleH.length; i++){
+            if(i==atIndex){ moduleH=moduleH.slice(0, i).concat(output).concat(moduleH.slice(i)) }
+        }
+        fs.writeFileSync(this.moduleH(pth), moduleH.join(''));
+    }
+
+    moduleHRead(pth){
+        var str = fs.readFileSync(this.moduleH(pth)).toString()
+        str = str.split('\n')
+        var output=[]
+        for(var i=0; i<str.length; i++){
+            output.push(str[i])
+        }
+        return output
+    }
 
     createModule(pth, dependencies){
         pth=this.projectPath(pth)
+        this.modules[pth.split('/')[pth.split('/').length-2]]=pth
         if(this.inProjectBoundary(pth)){
-            this.moduleHFile(pth, dependencies)
+            this._moduleHFile(pth, dependencies)
             this.moduleCFile(pth, dependencies)
             this.moduleTestHFile(pth, dependencies)
             this.moduleTestCFile(pth, dependencies)
@@ -156,22 +181,22 @@ export class Project{
             this.moduleTestDriverCFile(pth, dependencies)
         }
     }
-    moduleHFile(pth, dependencies){
-        console.log('moduleHFile')
+    deleteModule(pth){
+        this.deletePath(this.projectPath(pth))
+        pth=this.projectPath(pth)
+        delete this.modules[pth.split('/')[pth.split('/').length-1]]
+    }
+    _moduleHFile(pth, dependencies){
         this.createFile(this.moduleH(pth))
-
-        var fileBase=this.moduleH(pth).split('/')[this.moduleH(pth).split('/').length-2];
-        var fileDescriptor=(this.moduleH(pth).split('/').join('_')).toUpperCase();
-        console.log('file descriptor', fileDescriptor)
-        // var output = `#ifndef ${fileDescriptor}\n#define ${fileDescriptor}\n\n`;
-        // for(var i=0; i<dependencies.length; i++){
-        //     var m =this.moduleH(pth).slice().split('/').length-3;
-        //     output+= `#include `+`"`+dependencies[i]+`"\n`;
-        // }
-        // output+=`#endif`;
-        // fs.writeFileSync(this.moduleH(pth)+fileBase+'.h', output);
-
-
+        var moduleH=this.relativePath(this.moduleH(pth))
+        var fileBase=moduleH.split('/')[moduleH.split('/').length-2];
+        var fileDescriptor=(moduleH.split('/').join('_')).toUpperCase();
+        var output = `#ifndef ${fileDescriptor}\n#define ${fileDescriptor}\n\n`;
+        for(var i=0; i<dependencies.length; i++){
+            output+= `#include `+`"`+dependencies[i]+`"\n`;
+        }
+        output+=`#endif`;
+        this.moduleHWrite(pth, output, 0)
     }
 
     moduleTestHFile(pth, dependencies){
