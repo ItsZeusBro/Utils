@@ -192,6 +192,7 @@ export class Project{
             this.moduleTestDriverCFile(pth, dependencies)
         }
     }
+
     deleteModule(pth){
         this.deletePath(this.projectPath(pth))
         pth=this.projectPath(pth)
@@ -279,5 +280,19 @@ export class Project{
     moduleHFile(pth, dependencies){
         this.createFile(this.moduleH(pth))
         var fileBase=this.moduleH(pth).split('/')[this.moduleH(pth).split('/').length-2];
+    }
+
+    find(pth, string){
+        pth = this.projectFile(pth)
+        var file = fs.readFileSync(pth).toString().split('\n')
+        var obj={}
+        for(var i = 0; i<file.length; i++){
+            if(file[i].includes(string)){
+                obj['line#']=i
+                obj['path']=pth
+                obj['data']=file[i]
+                return obj
+            }
+        }
     }
 }

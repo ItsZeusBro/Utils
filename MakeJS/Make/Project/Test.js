@@ -28,8 +28,8 @@ class Test{
         this.createModule(verbose)
         this.deleteModule(verbose)
         this.modulePath(verbose)
-        this.moduleWrite(verbose)
-        this.moduleRead(verbose)
+        this.moduleWriteAndRead(verbose)
+        this.find(verbose)
     }
 
     inProjectBoundary(verbose){
@@ -220,26 +220,28 @@ class Test{
         if(verbose){console.log('modulePath')}
         var project = new Project('./Project');
         project.createModule('./Project/Modules/Module1', []);
-        assert.equal(project.modulePath('Module1'), project.projectPath('./Project/Modules/Module1'))
+        assert.equal(project.modulePath('Module1'), project.projectPath('./Project/Modules/Module1'));
     }
 
-    moduleWrite(verbose){
-        if(verbose){console.log('moduleWrite')}
+    moduleWriteAndRead(verbose){
+        if(verbose){console.log('moduleWriteAndRead')}
         var project = new Project('./Project');
         project.createModule('./Project/Modules/Module1', []);
-        project.moduleHWrite('Module1', 'output', 2)
-        // project.moduleHWrite('Module1', 'output', 2)
-        assert.equal(project.moduleHRead('Module1', 2), 'output')
+        for(var i=2; i<1000; i++){
+            project.moduleHWrite('Module1', i+``, i);
+            assert.equal(project.moduleHRead('Module1', i), i+``);
+            console.log(project.moduleHRead('Module1', i), i+``);
+        }
     }
 
-    moduleRead(verbose){
-        if(verbose){console.log('moduleRead')}
+    find(verbose){
+        if(verbose){console.log('find')}
         var project = new Project('./Project');
         project.createModule('./Project/Modules/Module1', []);
-        project.moduleHWrite('Module1', 'output', 2)
-        project.moduleHWrite('Module1', 'output2', 3)
-        assert.equal(project.moduleHRead('Module1', 2), 'output')
-        assert.equal(project.moduleHRead('Module1', 3), 'output2')
+        for(var i=2; i<1000; i++){
+            project.moduleHWrite('Module1', i+``, i);
+            assert.equal(project.find('./Project/Modules/Module1/Module1.h',``+i)['data'], i+``);
+        }
     }
 }
 
