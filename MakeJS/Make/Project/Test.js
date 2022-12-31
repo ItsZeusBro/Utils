@@ -7,34 +7,27 @@ class Test{
 
     tests(){
         this.inProjectBoundary()
-
         this.projectPath()
         this.basePath()
         this.testPath()
         this.createPath()
         this.deletePath()
         this.projectPathExists()
-
         this.createFile()
         this.deleteFile()
-
         this.moduleC()
         this.moduleH()
         this.moduleO()
-
         this.testC()
         this.testH()
         this.testO()
-
         this.testDriverC()
         this.testDriverH()
         this.testDriverO()
-
         this.testExec()
         this.mainExec()
-
-
     }
+
     inProjectBoundary(){
         console.log('isProjectpth')
         var project = new Project('./base')
@@ -42,7 +35,6 @@ class Test{
         assert.equal(project.inProjectBoundary('somePath/to/folder'), false)
     }
 
-    
     projectPath(){
         console.log('projectpth')
         var project = new Project('./base')
@@ -65,20 +57,10 @@ class Test{
     createPath(){
         console.log('createPath')
         var project = new Project('./base')
-
-        project.createPath('./')
-        assert.equal(fs.existsSync(project.projectPath('./')), true)
-
-        project.createPath('./Module1/')
-        assert.equal(fs.existsSync(project.projectPath('./Module1/')), true)
-
-        project.createPath('./Module2/')
-        assert.equal(fs.existsSync(project.projectPath('./Module2/')), true)
-
         project.createPath('./Module1/Module3')
         assert.equal(fs.existsSync(project.projectPath('./Module1/Module3')), true)
-
         fs.rmSync(project.projectPath('./'), {recursive:true})
+
     }
 
     deletePath(){ 
@@ -95,7 +77,6 @@ class Test{
         assert.equal(fs.existsSync(project.projectPath('./')), false)
     }
 
-
     projectPathExists(){
         console.log('projectPathExists')
         var project = new Project('./base')
@@ -109,9 +90,9 @@ class Test{
         var project = new Project('./base')
         project.createPath('./')
         project.createPath('./Module1')
-        project.createFile('./Module1/module1.c')
-        project.deleteFile('./Module1/module1.c')
-        assert.equal(project.projectFileExists('./Module1/module1.c'), false)
+        project.createFile('./Module1/Module1.c')
+        project.deleteFile('./Module1/Module1.c')
+        assert.equal(project.projectFileExists('./Module1/Module1.c'), false)
         project.deletePath('./Module1')
         assert.equal(project.projectPathExists('./Module1'), false)
         project.deletePath('./')
@@ -195,8 +176,6 @@ class Test{
         assert.equal(project.testDriverO('somePath/to/folder'), project.base+'somePath/to/folder/Test/'+'Driver.o')
     }
 
-
-
     testExec(){
         console.log('testExec')
         var project = new Project('./base')
@@ -209,10 +188,6 @@ class Test{
         var project = new Project('./base')
         assert.equal(project.mainExec(), project.base+'main.e')
     }
-
-
-
-
 }
 
 new Test().tests()
