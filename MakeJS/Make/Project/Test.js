@@ -26,6 +26,7 @@ class Test{
         this.testDriverO()
         this.testExec()
         this.mainExec()
+        this.createModule()
     }
 
     inProjectBoundary(){
@@ -187,6 +188,12 @@ class Test{
         console.log('mainExec')
         var project = new Project('./base')
         assert.equal(project.mainExec(), project.base+'main.e')
+    }
+
+    createModule(){
+        console.log('createModule')
+        var project = new Project('./Project')
+        project.createModule('./Project/Module1', [])
     }
 }
 

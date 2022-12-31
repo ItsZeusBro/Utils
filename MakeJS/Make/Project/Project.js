@@ -180,7 +180,8 @@ export class Project{
 
     moduleTestHFile(pth, dependencies){
         this.createFile(this.testH(pth))
-
+        var fileBase=this.testH(pth).split('/')[this.testH(pth).split('/').length-2];
+        console.log(fileBase)
         // var fileBase=Path.split('/')[Path.split('/').length-3];
         // var fileDescriptor=(Path.split('/').slice(1).join('_')+'Test').toUpperCase();
         // var output2 = `#include "../`+fileBase+`.h"`;
@@ -196,6 +197,8 @@ export class Project{
 
     moduleTestCFile(pth, dependencies){
         this.createFile(this.testC(pth))
+        var fileBase=this.testC(pth).split('/')[this.testC(pth).split('/').length-2];
+        console.log(fileBase)
 
         // var fileBase=Path.split('/')[Path.split('/').length-2];
         // if(this.isMainPath(Path)){
@@ -209,7 +212,8 @@ export class Project{
 
     moduleTestDriverHFile(pth, dependencies){
         this.createFile(this.testDriverH(pth))
-
+        var fileBase=this.testDriverH(pth).split('/')[this.testDriverH(pth).split('/').length-2];
+        console.log(fileBase)
         // var fileDescriptor=(Path.split('/').slice(1).join('_')+'driver').toUpperCase();
         // var output = `#ifndef ${fileDescriptor}\n`+
         // `#define ${fileDescriptor}\n`+
@@ -220,6 +224,8 @@ export class Project{
 
     moduleTestDriverCFile(pth, dependencies){
         this.createFile(this.testDriverC(pth))
+        var fileBase=this.testDriverC(pth).split('/')[this.testDriverC(pth).split('/').length-2];
+        console.log(fileBase)
 
         // var fileDescriptor=(Path.split('/').slice(1).join('_')+'driver').toUpperCase();
         // var output = `#ifndef ${fileDescriptor}\n`+
@@ -231,6 +237,8 @@ export class Project{
 
     moduleCFile(pth, dependencies){
         this.createFile(this.moduleC(pth))
+        var fileBase=this.moduleC(pth).split('/')[this.moduleC(pth).split('/').length-2];
+        console.log(fileBase)
 
         // var fileDescriptor=(Path.split('/').slice(1).join('_')+'Test').toUpperCase();
         // var output = 
@@ -241,6 +249,7 @@ export class Project{
 
     moduleHFile(pth, dependencies){
         this.createFile(this.moduleH(pth))
-
+        var fileBase=this.moduleH(pth).split('/')[this.moduleH(pth).split('/').length-2];
+        console.log(fileBase)
     }
 }
