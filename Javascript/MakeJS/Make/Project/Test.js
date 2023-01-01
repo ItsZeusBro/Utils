@@ -111,15 +111,28 @@ class Test{
         if(verbose){console.log('createPath')}
         var project = new Project('tmp')
         project.createPath('./Module1/Module3')
+        project.deletePath('./Module1/Module3')
+        project.deletePath('./Module1/')
+        project.deletePath('')
 
         project = new Project('.tmp2')
         project.createPath('Module1/Module3')
+        project.deletePath('Module1/Module3')
+        project.deletePath('Module1/')
+        project.deletePath('')
 
         project = new Project('./tmp3')
         project.createPath('/Module1/Module3')
+        project.deletePath('Module1/Module3')
+        project.deletePath('Module1/')
+        project.deletePath('')
 
         project = new Project('../tmp4')
         project.createPath('../Module1/Module3')
+        project.deletePath('Module1/Module3')
+        project.deletePath('Module1/')
+        project.deletePath('')
+
 
         //assert.equal(fs.existsSync(project.projectPath('./Module1/Module3')), true)
         //fs.rmSync(project.projectPath('./'), {recursive:true})

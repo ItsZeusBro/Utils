@@ -37,9 +37,7 @@ export class Project{
 
         }else{
             return this.base+this.stripRelativity(pth)+'/'
-
         }
-
     }
 
     stripRelativity(pth){
