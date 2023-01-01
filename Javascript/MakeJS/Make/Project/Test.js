@@ -14,22 +14,19 @@ class Test{
         this.createFile(verbose)
         this.deleteFile(verbose)
         this.projectFile(verbose)
-        
-        // this.inProjectBoundary(verbose)
-        // this.basePath(verbose)
-        // this.testPath(verbose)
-
-        // this.moduleC(verbose)
-        // this.moduleH(verbose)
-        // this.moduleO(verbose)
-        // this.testC(verbose)
-        // this.testH(verbose)
-        // this.testO(verbose)
-        // this.testDriverC(verbose)
-        // this.testDriverH(verbose)
-        // this.testDriverO(verbose)
-        // this.testExec(verbose)
-        // this.mainExec(verbose)
+        this.basePath(verbose)
+        this.testPath(verbose)
+        this.moduleC(verbose)
+        this.moduleH(verbose)
+        this.moduleO(verbose)
+        this.testC(verbose)
+        this.testH(verbose)
+        this.testO(verbose)
+        this.testDriverC(verbose)
+        this.testDriverH(verbose)
+        this.testDriverO(verbose)
+        this.testExec(verbose)
+        this.mainExec(verbose)
         // this.createModule(verbose)
         // this.deleteModule(verbose)
         // this.modulePath(verbose)
@@ -112,43 +109,28 @@ class Test{
         var project = new Project('tmp')
         console.log(project.base)
         assert.equal(project.exists(''), true)
-        
         project.createPath('./Module1/')
         assert.equal(project.exists('Module1'), true)
-
         project.createPath('./Module1/Module3')
         assert.equal(project.exists('Module1/Module3'), true)
-
         project.createPath('./Module1/Module3/Module4')
         assert.equal(project.exists('Module1/Module3/Module4'), true)
-
         project.deletePath('.')
     }
+
     exists(verbose){
         if(verbose){console.log('exists')}
         var project = new Project('tmp')
         console.log(project.base)
         assert.equal(project.exists(''), true)
-
         project.createPath('./Module1/')
         assert.equal(project.exists('Module1'), true)
-
         project.createPath('./Module1/Module3')
         assert.equal(project.exists('Module1/Module3'), true)
-
         project.createPath('./Module1/Module3/Module4')
         assert.equal(project.exists('Module1/Module3/Module4'), true)
-
         project.deletePath('.')
     }
-
-    inProjectBoundary(verbose){
-        if(verbose){console.log('inProjectBoundary')}
-        var project = new Project('./tmp')
-        assert.equal(project.inProjectBoundary(project.projectPath('somePath/to/folder')), true)
-        assert.equal(project.inProjectBoundary('somePath/to/folder'), false)
-    }
-
 
 
     basePath(verbose){
@@ -162,8 +144,6 @@ class Test{
         var project = new Project('./tmp')
         assert.equal(project.testPath('somePath/to/folder'), project.base+'somePath/to/folder/'+'Test/')
     }
-
-
 
     deletePath(verbose){ 
         if(verbose){console.log('deletePath')}

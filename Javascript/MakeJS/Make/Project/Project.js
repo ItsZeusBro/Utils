@@ -107,20 +107,20 @@ export class Project{
 
 
     basePath(){ return this.base }
-    testPath(pth){ if(this.inProjectBoundary(this.projectPath(pth))){ return this.projectPath(pth)+'Test/' } }
+    testPath(pth){ return this.projectPath(pth)+'Test/' }
+
     deleteFile(pth){ if(fs.existsSync(this.projectFile(pth))){ return fs.rmSync(this.projectFile(pth))} }
-    testExec(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.testPath(this.projectPath(pth))+'test.e'} }
+    testExec(pth){ return this.testPath(pth)+'test.e' }
     mainExec(){ return this.base+'main.e'}
-    moduleC(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.projectPath(pth)+this.projectPath(pth).split('/').slice(-2)[0]+'.c'} }
-    moduleH(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.projectPath(pth)+this.projectPath(pth).split('/').slice(-2)[0]+'.h' } }
-    moduleO(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.projectPath(pth)+this.projectPath(pth).split('/').slice(-2)[0]+'.o'} }
-    testC(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.testPath(this.projectPath(pth))+'Test.c'} }
-    testH(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.testPath(this.projectPath(pth))+'Test.h'} }
-    testO(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.testPath(this.projectPath(pth))+'Test.o'} }
-    testDriverC(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.testPath(this.projectPath(pth))+'Driver.c'} }
-    testDriverH(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.testPath(this.projectPath(pth))+'Driver.h'} }
-    testDriverO(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.testPath(this.projectPath(pth))+'Driver.o'} }
-    inProjectBoundary(pth){if(pth.includes(this.base)){ return true }else{return false} }
+    moduleC(pth){ return this.projectPath(pth)+this.projectPath(pth).split('/').slice(-2)[0]+'.c'} 
+    moduleH(pth){ return this.projectPath(pth)+this.projectPath(pth).split('/').slice(-2)[0]+'.h' } 
+    moduleO(pth){ return this.projectPath(pth)+this.projectPath(pth).split('/').slice(-2)[0]+'.o'} 
+    testC(pth){ return this.testPath(pth)+'Test.c'} 
+    testH(pth){ return this.testPath(pth)+'Test.h'}
+    testO(pth){ return this.testPath(pth)+'Test.o'} 
+    testDriverC(pth){ return this.testPath(pth)+'Driver.c'}
+    testDriverH(pth){ return this.testPath(pth)+'Driver.h'}
+    testDriverO(pth){ return this.testPath(pth)+'Driver.o'}
     relativePath(pth){ return path.relative(this.base, pth) }
 
     modulePath(_module){ return this.modules[_module] }
