@@ -9,45 +9,53 @@ export class Project{
         this.makeObject=makeObject;
         this.base;
         this.modules={}
+        if(base[base.length-1]=='/'){
+            this.base = path.resolve(this.stripRelativity('./'+base))
+        }else{
+            this.base = path.resolve(this.stripRelativity('./'+base))+'/'
+        }
+    }
 
-        if(path.isAbsolute(base)){ 
-            if(base[base.length-1]=='/'){
-                this.base=base
+    projectPath(pth){ 
+        if(pth[pth.length-1]=='/'){
+            return path.resolve(this.base)+'/'+this.stripRelativity(pth)
+
+        }else{
+            return path.resolve(this.base)+'/'+this.stripRelativity(pth)+'/'
+
+        }
+
+    }
+
+    stripRelativity(pth){
+        var _pth=''
+        if(pth[0]=='/'){
+            pth=pth.slice(1)
+        }
+        for(var i =2; i<pth.length;){
+            if(pth[i-2]=='.'&&pth[i-1]=='.'&&pth[i]=='/'){
+                i+=3
+            }else if(pth[i-2]=='.'&&pth[i-1]=='/'){
+                i+=2
             }else{
-                this.base=base+'/'
+                _pth=_pth.concat(pth[i-2])
+                i+=1
             }
         }
-        else{
-            if(base[0]=='.'&&base[1]=='/'&&base[base.length-1]=='/'){
-                //  ./somePath/
-                this.base=path.resolve('./', base)
-
-            }else if(base[0]=='.' && base[1]=='/' && base[base.length-1]!='/'){
-                //  ./somePath
-                this.base=path.resolve('./', base+'/')
-
-            }else if(!(base[0]=='.' && base[1]=='/')&&base[base.length-1]!='/'){
-                //  somePath
-                this.base=path.resolve('./', './'+base)
-
-            }else if(!(base[0]=='.' && base[1]=='/')&&base[base.length-1]!='/'){
-                //  somePath/
-
-                this.base=path.resolve('./', './'+base)
-                
-            }
-        }
+        _pth=_pth.concat(pth[pth.length-2]).concat(pth[pth.length-1])
+        return _pth
     }
 
     createPath(pth){ 
         var paths=pth.split('/')
-        var _paths=''
-        for(var i = 0; i<paths.length; i++){
-            _paths=_paths+paths[i]+'/'
-            if(!fs.existsSync(this.projectPath(_paths))){ 
-                fs.mkdirSync(this.projectPath(_paths))
-            }
-        }
+        console.log(paths)
+        // var _paths=''
+        // for(var i = 0; i<paths.length; i++){
+        //     _paths=_paths+paths[i]+'/'
+        //     if(!fs.existsSync(this.projectPath(_paths))){ 
+        //         fs.mkdirSync(this.projectPath(_paths))
+        //     }
+        // }
     }
 
     createFile(pth){ 
@@ -71,7 +79,6 @@ export class Project{
     }
     basePath(){ return this.base }
     testPath(pth){ if(this.inProjectBoundary(this.projectPath(pth))){ return this.projectPath(pth)+'Test/' } }
-    projectPath(pth){ return path.resolve(this.base, pth)+'/' }
     projectPathExists(pth){ return fs.existsSync(this.projectPath(pth)) }
     deleteFile(pth){ if(fs.existsSync(this.projectFile(pth))){ return fs.rmSync(this.projectFile(pth))} }
     testExec(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.testPath(this.projectPath(pth))+'test.e'} }
