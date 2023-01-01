@@ -39,6 +39,15 @@ export class Project{
             return this.base+this.stripRelativity(pth)+'/'
         }
     }
+    projectFile(pth){ 
+        if(pth.includes('/')){
+            var file = pth.split('/').slice(-1)
+            var path=pth.split('/').slice(0, -1).join('/')
+            return this.projectPath(path)+file
+        }else{
+            return this.base+file
+        }
+    }
 
     stripRelativity(pth){
         var _pth=''
@@ -61,7 +70,6 @@ export class Project{
         _pth=_pth.concat(pth[pth.length-2]).concat(pth[pth.length-1])
         return _pth
     }
-
     createPath(pth){ 
         //sanitize pth and remove base from pth before using it
         pth=this.projectPath(pth)
@@ -76,6 +84,11 @@ export class Project{
                 fs.mkdirSync(_pth)
             }
         }
+    }
+    deletePath(pth){ 
+        if(fs.existsSync(this.projectPath(pth))){ 
+            return fs.rmSync(this.projectPath(pth), {recursive:true}) 
+        } 
     }
 
     createFile(pth){ 
@@ -92,11 +105,7 @@ export class Project{
         fs.writeFileSync(this.projectFile(paths.join('/')), '')
     }
 
-    deletePath(pth){ 
-        if(fs.existsSync(this.projectPath(pth))){ 
-            return fs.rmSync(this.projectPath(pth), {recursive:true}) 
-        } 
-    }
+
     basePath(){ return this.base }
     testPath(pth){ if(this.inProjectBoundary(this.projectPath(pth))){ return this.projectPath(pth)+'Test/' } }
     deleteFile(pth){ if(fs.existsSync(this.projectFile(pth))){ return fs.rmSync(this.projectFile(pth))} }
@@ -112,17 +121,12 @@ export class Project{
     testDriverH(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.testPath(this.projectPath(pth))+'Driver.h'} }
     testDriverO(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.testPath(this.projectPath(pth))+'Driver.o'} }
     inProjectBoundary(pth){if(pth.includes(this.base)){ return true }else{return false} }
-    projectFile(pth){ return path.resolve(this.base, pth) }
-    projectFileExists(pth){ return fs.existsSync(this.projectFile(pth)) }
     relativePath(pth){ return path.relative(this.base, pth) }
 
     modulePath(_module){ return this.modules[_module] }
 
 
-    exists(pth){ 
-
-        return fs.existsSync(this.projectPath(pth)) 
-    }
+    exists(pth){ return fs.existsSync(this.projectPath(pth)) }
 
     find(pth, string){
         pth = this.projectFile(pth)
