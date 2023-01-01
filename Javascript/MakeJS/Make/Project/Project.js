@@ -10,18 +10,18 @@ export class Project{
         this.base;
         this.modules={}
         if(base[base.length-1]=='/'){
-            this.base = path.resolve(this.stripRelativity('./'+base))
+            this.base = path.resolve(this.stripRelativity(base))
         }else{
-            this.base = path.resolve(this.stripRelativity('./'+base))+'/'
+            this.base = path.resolve(this.stripRelativity(base))+'/'
         }
     }
 
     projectPath(pth){ 
         if(pth[pth.length-1]=='/'){
-            return path.resolve(this.base)+'/'+this.stripRelativity(pth)
+            return this.base+this.stripRelativity(pth)
 
         }else{
-            return path.resolve(this.base)+'/'+this.stripRelativity(pth)+'/'
+            return this.base+this.stripRelativity(pth)+'/'
 
         }
 

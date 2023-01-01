@@ -7,7 +7,7 @@ import process from "node:process"
 class Test{
     tests(verbose){
         this.stripRelativity(verbose)
-        // this.projectPath(verbose)
+        this.projectPath(verbose)
 
         // this.createPath(verbose)
         // this.deletePath(verbose)
