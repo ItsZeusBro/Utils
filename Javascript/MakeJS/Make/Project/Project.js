@@ -11,9 +11,9 @@ export class Project{
         this.modules={}
 
         if(base[base.length-1]=='/'){
-            this.base = this.stripRelativity(base)
+            this.base = './'+this.stripRelativity(base)
         }else{
-            this.base = this.stripRelativity(base)+'/'
+            this.base = './'+this.stripRelativity(base)+'/'
         }
         var pth = this.base.split('/')
         pth.pop()
@@ -29,7 +29,7 @@ export class Project{
     }
 
     projectPath(pth){ 
-        if(pth=='./'||pth=='../'||pth==''||pth==' '||pth=='../../'||pth=='/'){
+        if(pth=='./'||pth=='../'||pth==''||pth==' '||pth=='../../'||pth=='/'||pth=='.'){
             return this.base
         }
         if(pth[pth.length-1]=='/'){
@@ -99,7 +99,6 @@ export class Project{
     }
     basePath(){ return this.base }
     testPath(pth){ if(this.inProjectBoundary(this.projectPath(pth))){ return this.projectPath(pth)+'Test/' } }
-    projectPathExists(pth){ return fs.existsSync(this.projectPath(pth)) }
     deleteFile(pth){ if(fs.existsSync(this.projectFile(pth))){ return fs.rmSync(this.projectFile(pth))} }
     testExec(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.testPath(this.projectPath(pth))+'test.e'} }
     mainExec(){ return this.base+'main.e'}
@@ -119,6 +118,11 @@ export class Project{
 
     modulePath(_module){ return this.modules[_module] }
 
+
+    exists(pth){ 
+
+        return fs.existsSync(this.projectPath(pth)) 
+    }
 
     find(pth, string){
         pth = this.projectFile(pth)
