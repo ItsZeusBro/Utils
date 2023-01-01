@@ -9,8 +9,102 @@ export class Project{
         this.makeObject=makeObject;
         this.base;
         this.modules={}
-        if(path.isAbsolute(base)){ if(base[base.length-1]=='/'){this.base=base}else{this.base=base+'/'}}
-        else{if(base[base.length-1]=='/'){this.base=path.resolve('../', base)}else{this.base=path.resolve('../', base)+'/'}}
+
+        if(path.isAbsolute(base)){ 
+            if(base[base.length-1]=='/'){
+                this.base=base
+            }else{
+                this.base=base+'/'
+            }
+        }
+        else{
+            if(base[0]=='.'&&base[1]=='/'&&base[base.length-1]=='/'){
+                //  ./somePath/
+                this.base=path.resolve('./', base)
+
+            }else if(base[0]=='.' && base[1]=='/' && base[base.length-1]!='/'){
+                //  ./somePath
+                this.base=path.resolve('./', base+'/')
+
+            }else if(!(base[0]=='.' && base[1]=='/')&&base[base.length-1]!='/'){
+                //  somePath
+                this.base=path.resolve('./', './'+base)
+
+            }else if(!(base[0]=='.' && base[1]=='/')&&base[base.length-1]!='/'){
+                //  somePath/
+
+                this.base=path.resolve('./', './'+base)
+                
+            }
+        }
+    }
+
+    createPath(pth){ 
+        var paths=pth.split('/')
+        var _paths=''
+        for(var i = 0; i<paths.length; i++){
+            _paths=_paths+paths[i]+'/'
+            if(!fs.existsSync(this.projectPath(_paths))){ 
+                fs.mkdirSync(this.projectPath(_paths))
+            }
+        }
+    }
+
+    createFile(pth){ 
+        var paths=pth.split('/')
+        var file=paths.pop()
+        var _paths=''
+        for(var i = 0; i<paths.length; i++){
+            _paths=_paths+paths[i]+'/'
+            if(!fs.existsSync(this.projectPath(_paths))){ 
+                fs.mkdirSync(this.projectPath(_paths))
+            }
+        }
+        paths.push(file)
+        fs.writeFileSync(this.projectFile(paths.join('/')), '')
+    }
+
+    deletePath(pth){ 
+        if(fs.existsSync(this.projectPath(pth))){ 
+            return fs.rmSync(this.projectPath(pth), {recursive:true}) 
+        } 
+    }
+    basePath(){ return this.base }
+    testPath(pth){ if(this.inProjectBoundary(this.projectPath(pth))){ return this.projectPath(pth)+'Test/' } }
+    projectPath(pth){ return path.resolve(this.base, pth)+'/' }
+    projectPathExists(pth){ return fs.existsSync(this.projectPath(pth)) }
+    deleteFile(pth){ if(fs.existsSync(this.projectFile(pth))){ return fs.rmSync(this.projectFile(pth))} }
+    testExec(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.testPath(this.projectPath(pth))+'test.e'} }
+    mainExec(){ return this.base+'main.e'}
+    moduleC(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.projectPath(pth)+this.projectPath(pth).split('/').slice(-2)[0]+'.c'} }
+    moduleH(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.projectPath(pth)+this.projectPath(pth).split('/').slice(-2)[0]+'.h' } }
+    moduleO(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.projectPath(pth)+this.projectPath(pth).split('/').slice(-2)[0]+'.o'} }
+    testC(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.testPath(this.projectPath(pth))+'Test.c'} }
+    testH(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.testPath(this.projectPath(pth))+'Test.h'} }
+    testO(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.testPath(this.projectPath(pth))+'Test.o'} }
+    testDriverC(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.testPath(this.projectPath(pth))+'Driver.c'} }
+    testDriverH(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.testPath(this.projectPath(pth))+'Driver.h'} }
+    testDriverO(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.testPath(this.projectPath(pth))+'Driver.o'} }
+    inProjectBoundary(pth){if(pth.includes(this.base)){ return true }else{return false} }
+    projectFile(pth){ return path.resolve(this.base, pth) }
+    projectFileExists(pth){ return fs.existsSync(this.projectFile(pth)) }
+    relativePath(pth){ return path.relative(this.base, pth) }
+
+    modulePath(_module){ return this.modules[_module] }
+
+
+    find(pth, string){
+        pth = this.projectFile(pth)
+        var file = fs.readFileSync(pth).toString().split('\n')
+        var obj={}
+        for(var i = 0; i<file.length; i++){
+            if(file[i].includes(string)){
+                obj['line#']=i
+                obj['path']=pth
+                obj['data']=file[i]
+                return obj
+            }
+        }
     }
 
     refreshProject(makeObject){
@@ -60,7 +154,6 @@ export class Project{
         // }
     }
 
-
     updateFileDependencies(file, dependencies){
 
         if(this.exists(file)){
@@ -73,81 +166,14 @@ export class Project{
         }
         return false
     }
+}
 
-    isMainPath(dir){
-        if(dir.split('/').length==3){
-            return true
-        }else{
-            return false
-        }
+export class Module{
+    constructor(base, makeObject){
+        this.project = new Project(base, makeObject)
     }
-
-    createCMainFile(Path, fileBase){
-        if(this.isMainPath(Path)&&!this.exists(Path+fileBase+'.c')){
-            var output = 
-            `#include `+`"`+fileBase+'.h'+`"\n`+
-            `#include <stdio.h>\n\n`+
-            `int main(int argc, char *argv[]){\n`+
-            `\tprintf("argc: %d, argv: %s", argc, argv);\n`+
-            `\treturn 0;\n`+`}`
-            fs.writeFileSync(Path+fileBase+'.c', output);
-            return true
-        }else{
-            return false
-        }
-    }
-
-
-    createPath(pth){ 
-        var paths=pth.split('/')
-        var _paths=''
-        for(var i = 0; i<paths.length; i++){
-            _paths=_paths+paths[i]+'/'
-            if(!fs.existsSync(this.projectPath(_paths))){ 
-                fs.mkdirSync(this.projectPath(_paths))
-            }
-        }
-    }
-
-    createFile(pth){ 
-        var paths=pth.split('/')
-        var file=paths.pop()
-        var _paths=''
-        for(var i = 0; i<paths.length; i++){
-            _paths=_paths+paths[i]+'/'
-            if(!fs.existsSync(this.projectPath(_paths))){ 
-                fs.mkdirSync(this.projectPath(_paths))
-            }
-        }
-        paths.push(file)
-        fs.writeFileSync(this.projectFile(paths.join('/')), '')
-    }
-
-
-    deletePath(pth){ if(fs.existsSync(this.projectPath(pth))){ return fs.rmSync(this.projectPath(pth), {recursive:true}) } }
-    basePath(){ return this.base }
-    testPath(pth){ if(this.inProjectBoundary(this.projectPath(pth))){ return this.projectPath(pth)+'Test/' } }
-    projectPath(pth){ return path.resolve(this.base, pth)+'/' }
-    projectPathExists(pth){ return fs.existsSync(this.projectPath(pth)) }
-    deleteFile(pth){ if(fs.existsSync(this.projectFile(pth))){ return fs.rmSync(this.projectFile(pth))} }
-    testExec(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.testPath(this.projectPath(pth))+'test.e'} }
-    mainExec(){ return this.base+'main.e'}
-    moduleC(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.projectPath(pth)+this.projectPath(pth).split('/').slice(-2)[0]+'.c'} }
-    moduleH(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.projectPath(pth)+this.projectPath(pth).split('/').slice(-2)[0]+'.h' } }
-    moduleO(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.projectPath(pth)+this.projectPath(pth).split('/').slice(-2)[0]+'.o'} }
-    testC(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.testPath(this.projectPath(pth))+'Test.c'} }
-    testH(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.testPath(this.projectPath(pth))+'Test.h'} }
-    testO(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.testPath(this.projectPath(pth))+'Test.o'} }
-    testDriverC(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.testPath(this.projectPath(pth))+'Driver.c'} }
-    testDriverH(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.testPath(this.projectPath(pth))+'Driver.h'} }
-    testDriverO(pth){ if(this.inProjectBoundary(this.projectFile(pth))){ return this.testPath(this.projectPath(pth))+'Driver.o'} }
-    inProjectBoundary(pth){if(pth.includes(this.base)){ return true }else{return false} }
-    projectFile(pth){ return path.resolve(this.base, pth) }
-    projectFileExists(pth){ return fs.existsSync(this.projectFile(pth)) }
-    relativePath(pth){ return path.relative(this.base, pth) }
-
-    modulePath(_module){ return this.modules[_module] }
     setModule(_module, path){ this.modules[_module]=path }
+
     moduleHWrite(_module, output, atIndex){
         var moduleH=this.moduleHRead(_module)
         if(moduleH.length){
@@ -212,22 +238,6 @@ export class Project{
         this.moduleHWrite(fileBase, output, 0)
     }
 
-    moduleTestHFile(pth, dependencies){
-        this.createFile(this.testH(pth))
-        var fileBase=this.testH(pth).split('/')[this.testH(pth).split('/').length-2];
-
-        // var fileBase=Path.split('/')[Path.split('/').length-3];
-        // var fileDescriptor=(Path.split('/').slice(1).join('_')+'Test').toUpperCase();
-        // var output2 = `#include "../`+fileBase+`.h"`;
-        // var output3 = `int _${fileDescriptor}(int argc, char *argv[]);`;
-        // var output = 
-        //     `#ifndef ${fileDescriptor}\n`+
-        //     `#define ${fileDescriptor}\n\n`+
-        //     output2+`\n\n`+
-        //     output3+`\n\n`+
-        //     `#endif`
-        // fs.writeFileSync(Path+'Test'+'.h', output);
-    }
 
     moduleTestCFile(pth, dependencies){
         this.createFile(this.testC(pth))
@@ -282,17 +292,34 @@ export class Project{
         var fileBase=this.moduleH(pth).split('/')[this.moduleH(pth).split('/').length-2];
     }
 
-    find(pth, string){
-        pth = this.projectFile(pth)
-        var file = fs.readFileSync(pth).toString().split('\n')
-        var obj={}
-        for(var i = 0; i<file.length; i++){
-            if(file[i].includes(string)){
-                obj['line#']=i
-                obj['path']=pth
-                obj['data']=file[i]
-                return obj
-            }
+    moduleTestHFile(pth, dependencies){
+        //this.createFile(this.testH(pth))
+        //var fileBase=this.testH(pth).split('/')[this.testH(pth).split('/').length-2];
+        // var fileBase=Path.split('/')[Path.split('/').length-3];
+        // var fileDescriptor=(Path.split('/').slice(1).join('_')+'Test').toUpperCase();
+        // var output2 = `#include "../`+fileBase+`.h"`;
+        // var output3 = `int _${fileDescriptor}(int argc, char *argv[]);`;
+        // var output = 
+        //     `#ifndef ${fileDescriptor}\n`+
+        //     `#define ${fileDescriptor}\n\n`+
+        //     output2+`\n\n`+
+        //     output3+`\n\n`+
+        //     `#endif`
+        // fs.writeFileSync(Path+'Test'+'.h', output);
+    }
+
+    createCMainFile(Path, fileBase){
+        if(this.isMainPath(Path)&&!this.exists(Path+fileBase+'.c')){
+            var output = 
+            `#include `+`"`+fileBase+'.h'+`"\n`+
+            `#include <stdio.h>\n\n`+
+            `int main(int argc, char *argv[]){\n`+
+            `\tprintf("argc: %d, argv: %s", argc, argv);\n`+
+            `\treturn 0;\n`+`}`
+            fs.writeFileSync(Path+fileBase+'.c', output);
+            return true
+        }else{
+            return false
         }
     }
 }
