@@ -9,14 +9,29 @@ export class Project{
         this.makeObject=makeObject;
         this.base;
         this.modules={}
+
         if(base[base.length-1]=='/'){
-            this.base = path.resolve(this.stripRelativity(base))
+            this.base = this.stripRelativity(base)
         }else{
-            this.base = path.resolve(this.stripRelativity(base))+'/'
+            this.base = this.stripRelativity(base)+'/'
+        }
+        var pth = this.base.split('/')
+        pth.pop()
+        var _pth='./'+pth[0]
+
+        if(!fs.existsSync(_pth)){ fs.mkdirSync(_pth) }
+        for(var i=1; i<pth.length;i++){
+            _pth+='/'+pth[i]
+            if(!fs.existsSync(_pth)){
+                fs.mkdirSync(_pth)
+            }
         }
     }
 
     projectPath(pth){ 
+        if(pth=='./'||pth=='../'||pth==''||pth==' '||pth=='../../'||pth=='/'){
+            return this.base
+        }
         if(pth[pth.length-1]=='/'){
             return this.base+this.stripRelativity(pth)
 
@@ -37,7 +52,10 @@ export class Project{
                 i+=3
             }else if(pth[i-2]=='.'&&pth[i-1]=='/'){
                 i+=2
-            }else{
+            }else if(pth[i-2]=='.'&&pth[i-1]!='/'){
+                i+=1
+            }
+            else{
                 _pth=_pth.concat(pth[i-2])
                 i+=1
             }
@@ -47,15 +65,19 @@ export class Project{
     }
 
     createPath(pth){ 
-        var paths=pth.split('/')
-        console.log(paths)
-        // var _paths=''
-        // for(var i = 0; i<paths.length; i++){
-        //     _paths=_paths+paths[i]+'/'
-        //     if(!fs.existsSync(this.projectPath(_paths))){ 
-        //         fs.mkdirSync(this.projectPath(_paths))
-        //     }
-        // }
+        //sanitize pth and remove base from pth before using it
+        pth=this.projectPath(pth)
+        pth = pth.slice(pth.indexOf(this.base)+this.base.length-1).split('/')
+        pth.pop()
+        pth=pth.slice(1)
+        var _pth=this.base.slice(0,-1)
+
+        for(var i=0; i<pth.length;i++){
+            _pth+='/'+pth[i]
+            if(!fs.existsSync(_pth)){
+                fs.mkdirSync(_pth)
+            }
+        }
     }
 
     createFile(pth){ 

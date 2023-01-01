@@ -8,8 +8,7 @@ class Test{
     tests(verbose){
         this.stripRelativity(verbose)
         this.projectPath(verbose)
-
-        // this.createPath(verbose)
+       this.createPath(verbose)
         // this.deletePath(verbose)
 
         // this.projectPathExists(verbose)
@@ -47,7 +46,27 @@ class Test{
     }
     projectPath(verbose){
         if(verbose){console.log('projectPath')}
-        var project = new Project('./tmp/Project/')
+        var project = new Project('../../tmp/Project/')
+        assert.equal(project.projectPath('somePath/to/folder'), project.base+'somePath/to/folder/')
+        assert.equal(project.projectPath('somePath/to/folder/'), project.base+'somePath/to/folder/')
+        assert.equal(project.projectPath('/somePath/to/folder'), project.base+'somePath/to/folder/')
+        assert.equal(project.projectPath('/somePath/to/folder/'), project.base+'somePath/to/folder/')
+        assert.equal(project.projectPath('../somePath/to/folder'), project.base+'somePath/to/folder/')
+        assert.equal(project.projectPath('../somePath/to/folder/'), project.base+'somePath/to/folder/')
+        assert.equal(project.projectPath('../../somePath/to/folder'), project.base+'somePath/to/folder/')
+        assert.equal(project.projectPath('../../somePath/to/folder/'), project.base+'somePath/to/folder/')
+
+        project = new Project('./tmp/Project/')
+        assert.equal(project.projectPath('somePath/to/folder'), project.base+'somePath/to/folder/')
+        assert.equal(project.projectPath('somePath/to/folder/'), project.base+'somePath/to/folder/')
+        assert.equal(project.projectPath('/somePath/to/folder'), project.base+'somePath/to/folder/')
+        assert.equal(project.projectPath('/somePath/to/folder/'), project.base+'somePath/to/folder/')
+        assert.equal(project.projectPath('../somePath/to/folder'), project.base+'somePath/to/folder/')
+        assert.equal(project.projectPath('../somePath/to/folder/'), project.base+'somePath/to/folder/')
+        assert.equal(project.projectPath('../../somePath/to/folder'), project.base+'somePath/to/folder/')
+        assert.equal(project.projectPath('../../somePath/to/folder/'), project.base+'somePath/to/folder/')
+
+        project = new Project('.tmp/Project/')
         assert.equal(project.projectPath('somePath/to/folder'), project.base+'somePath/to/folder/')
         assert.equal(project.projectPath('somePath/to/folder/'), project.base+'somePath/to/folder/')
         assert.equal(project.projectPath('/somePath/to/folder'), project.base+'somePath/to/folder/')
@@ -67,7 +86,7 @@ class Test{
         assert.equal(project.projectPath('../../somePath/to/folder'), project.base+'somePath/to/folder/')
         assert.equal(project.projectPath('../../somePath/to/folder/'), project.base+'somePath/to/folder/')
 
-        project = new Project('/Users/hassan/Projects/Tools/Javascript/MakeJS/Make/Project/tmp/Project/')
+        project = new Project('../tmp/Project/')
         assert.equal(project.projectPath('somePath/to/folder'), project.base+'somePath/to/folder/')
         assert.equal(project.projectPath('somePath/to/folder/'), project.base+'somePath/to/folder/')
         assert.equal(project.projectPath('/somePath/to/folder'), project.base+'somePath/to/folder/')
@@ -77,18 +96,29 @@ class Test{
         assert.equal(project.projectPath('../../somePath/to/folder'), project.base+'somePath/to/folder/')
         assert.equal(project.projectPath('../../somePath/to/folder/'), project.base+'somePath/to/folder/')
 
+        assert.equal(project.projectPath('./'), project.base)        
+        assert.equal(project.projectPath('../'), project.base)        
+        assert.equal(project.projectPath(''), project.base)        
+        assert.equal(project.projectPath(' '), project.base)        
+        assert.equal(project.projectPath('../../'), project.base)        
+        assert.equal(project.projectPath('/'), project.base)        
+
+        project.deletePath('./')
 
     }
 
     createPath(verbose){
         if(verbose){console.log('createPath')}
-        var project = new Project('./tmp')
+        var project = new Project('tmp')
         project.createPath('./Module1/Module3')
 
+        project = new Project('.tmp2')
         project.createPath('Module1/Module3')
 
+        project = new Project('./tmp3')
         project.createPath('/Module1/Module3')
 
+        project = new Project('../tmp4')
         project.createPath('../Module1/Module3')
 
         //assert.equal(fs.existsSync(project.projectPath('./Module1/Module3')), true)
