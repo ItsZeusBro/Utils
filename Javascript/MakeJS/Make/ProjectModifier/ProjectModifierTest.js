@@ -1,22 +1,22 @@
 
-export var modifier = [
+export var ProjectModifier = [
     {   
         "action":"add",
-        "module":"./CTools/",
-        "dependencies": []
+        "module":"./Project/CTools/",
+        "dependencies": ["./Project/CTools/Automata/Automata.h"]
     },
 
     {   
         "action":"add",
-        "module":"./CTools/Automata/",
+        "module":"./Project/CTools/Automata/",
         "dependencies": []
     },
 
 
     {   
         "action":"add",
-        "module":"./CTools/Combinatorics/", 
-        'dependencies': ["./CTools/Automata/Automata.h"]
+        "module":"./Project/CTools/Combinatorics/", 
+        'dependencies': ["./Project/CTools/Automata/Automata.h"]
     },
 
     // {   
