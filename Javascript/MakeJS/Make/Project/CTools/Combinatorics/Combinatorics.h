@@ -1,0 +1,5 @@
+#ifndef PROJECT_CTOOLS_COMBINATORICS_COMBINATORICS.H
+#define PROJECT_CTOOLS_COMBINATORICS_COMBINATORICS.H
+
+#include "./Project/CTools/Automata/Automata.h"
+#endif

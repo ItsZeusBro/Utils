@@ -151,30 +151,31 @@ export class Module{
         if(writeToFile){
             moduleCFile = this.moduleWrite(this.moduleC(pth), moduleCFile, data, index)
         }
-
+        return moduleCFile
     }
 
     moduleWrite(filePath, moduleFile, data, index){
-        console.log('moduleWrite', filePath, moduleFile, data, index)
-        var moduleFile='';
+
         if(fs.existsSync(filePath)&&!this.isDir(filePath)){
-            console.log(filePath)
             moduleFile=fs.readFileSync(filePath).toString()
         }
         for(var i = 0; i<moduleFile.length; i++){
             if(i==index){
+                console.log(moduleFile)
                 moduleFile = moduleFile.slice(0, index)+data+moduleFile.slice(index)
             }
         }
+        console.log('moduleWrite', filePath, moduleFile, data, index)
 
         var queue=this.modulePathQueue(filePath)
         for(var i = 0; i<queue.length; i++){
-            if(!fs.existsSync(queue[i])&&this.isDir(pth)){
-                fs.mkdirSync(pth)
-            }else{
-                fs.writeFileSync(filePath, moduleFile)
+            if(!fs.existsSync(queue[i])&&this.isDir(queue[i])){
+                fs.mkdirSync(queue[i])
             }
         }
+        
+        fs.writeFileSync(filePath, moduleFile)
+        
 
         return moduleFile;
     }
