@@ -27,7 +27,6 @@ class ProjectTest{
     createProject(verbose){
         if(verbose){console.log('createProject')}
         var project = new Project(JSON.parse(JSON.stringify(ProjectModifier)));
-
         //make project level assertions
     }
     moduleDependencies(verbose){

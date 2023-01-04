@@ -11,28 +11,34 @@ export class Project{
 
     createProject(_projectModifier){
         //just create these files for now
+        var queue=[]
+
         for(var i = 0; i<_projectModifier.length; i++){
-            var queue=this.projectPathQueue(_projectModifier[i]['module'])
-            for(var j = 0; j<queue.length; j++){
-                new Module(queue[j], this)
-            }
+            queue=queue.concat(this.projectPathQueue(_projectModifier[i]['module']))
+        }
+
+        queue=Array.from(new Set(queue))
+        console.log(queue)
+        for(var j = 0; j<queue.length; j++){
+            console.log(new Module(queue[j], true, '', 0, this))
         }
     }
     
     projectPathQueue(pth){
         var queue=[]
+        //console.log(pth.split('/'))
         for(var i = 2; i<pth.split('/').length; i++){
-            queue.push('./'+pth.split('/').slice(1, i).join('/'))
+            //console.log('projectPathQueue', './'+pth.split('/').slice(1, i).join('/')+'/')
+            queue.push('./'+pth.split('/').slice(1, i).join('/')+'/')
         }
         return queue
     }
 
 
     moduleDependencies(_module){
-        //console.log(this.projectPath(_module), this.projectPath(this._projectModifier[0]['module']))
         for(var i =0; i<this._projectModifier.length; i++){
             if(this._projectModifier[i]['action']=='add'){
-                if(this.projectPath(_module)==this._projectModifier[i]['module']){
+                if(_module==this._projectModifier[i]['module']){
                     return this._projectModifier[i]['dependencies']
                 }
             }
@@ -65,8 +71,8 @@ export class Project{
         var _paths=''
         for(var i = 0; i<paths.length; i++){
             _paths=_paths+paths[i]+'/'
-            if(!fs.existsSync(this.projectPath(_paths))){ 
-                fs.mkdirSync(this.projectPath(_paths))
+            if(!fs.existsSync(_paths)){ 
+                fs.mkdirSync(_paths)
             }
         }
         paths.push(file)
@@ -97,54 +103,116 @@ export class Project{
 
 
 export class Module{
-    constructor(_module, project){
-        this.project = project
+    constructor(_module, writeToFiles=true, data='', index=0, project){
+        console.log(_module)
         this.modules={}
-        this.createModule(_module)
-    }
-    createModule(_module){
-
-        this.moduleHFile(_module)
-        // this.moduleCFile(pth)
+        this._moduleHFile=this.moduleHFile(_module, writeToFiles, data, index, project)
+        this._moduleCFile=this.moduleCFile(_module, writeToFiles, data, index, project)
         // this.moduleTestHFile(pth)
         // this.moduleTestCFile(pth)
         // this.moduleTestDriverHFile(pth)
         // this.moduleTestDriverCFile(pth)
     }
-    moduleHFile(pth, writeToFile=true){
-        //if it exists, we retrieve it, if it doesnt we the string from the path
-        console.log('moduleHFile', this.moduleH(pth))
 
+    moduleHFile(pth, writeToFile=true, data, index, project){
         var moduleHFile=''
         var fileBase=this.moduleH(pth).split('/')[this.moduleH(pth).split('/').length-2];
         var fileDescriptor=(this.moduleH(pth).split('/').slice(1).join('_')).toUpperCase();
-        console.log(fileBase, fileDescriptor)
-        // if(fs.existsSync(this.moduleH(pth))){
-        //     moduleHFile=fs.readFileSync(this.moduleH(pth)).toString()
+        if(fs.existsSync(this.moduleH(pth))){
+            moduleHFile=fs.readFileSync(this.moduleH(pth)).toString()
+        }else{
+            var moduleHFile=`#ifndef ${fileDescriptor}\n#define ${fileDescriptor}\n\n`;
+            var dependencies=project.moduleDependencies(pth)
+            for(var i=0; i<dependencies.length; i++){
+                moduleHFile+= `#include `+`"`+dependencies[i]+`"\n`;
+            }
+            moduleHFile+=`#endif`;
+        }
 
-        // }else{
-        //     var moduleHFile=`#ifndef ${fileDescriptor}\n#define ${fileDescriptor}\n\n`;
+        if(writeToFile){
+            moduleHFile = this.moduleWrite(this.moduleH(pth), moduleHFile, data, index)
+        }
 
-        //     var dependencies=this.project.moduleDependencies(this.moduleFromPath(pth))
-        //     for(var i=0; i<dependencies.length; i++){
-        //         moduleHFile+= `#include `+`"`+dependencies[i]+`"\n`;
-        //     }
-        //     moduleHFile+=`#endif`;
-        // }
+        return moduleHFile
+    }
+    
+    moduleCFile(pth, writeToFile=true, data, index, project){
+        var dependencies=project.moduleDependencies(pth)
+        var fileBase=this.moduleC(pth).split('/')[this.moduleC(pth).split('/').length-2];
+        var fileDescriptor=(this.moduleC(pth).split('/').slice(1).join('_')).toUpperCase();
+        var moduleCFile=''
+        if(fs.existsSync(this.moduleC(pth))){
+            moduleCFile=fs.readFileSync(this.moduleC(pth)).toString()
+        }else{
+            moduleCFile = `#include `+`"`+'Test'+'.c'+`"\n\n`+
+            `int _${fileDescriptor}(int argc, char *argv[]){\n\n\treturn 0;\n}`;
+        }
 
-        
-        // if(writeToFile){
-        //     this.moduleHWrite(fileBase, moduleHFile, 0)
-        // }
-        // return moduleHFile
+        if(writeToFile){
+            moduleCFile = this.moduleWrite(this.moduleC(pth), moduleCFile, data, index)
+        }
+
+    }
+
+    moduleWrite(filePath, moduleFile, data, index){
+        console.log('moduleWrite', filePath, moduleFile, data, index)
+        var moduleFile='';
+        if(fs.existsSync(filePath)&&!this.isDir(filePath)){
+            console.log(filePath)
+            moduleFile=fs.readFileSync(filePath).toString()
+        }
+        for(var i = 0; i<moduleFile.length; i++){
+            if(i==index){
+                moduleFile = moduleFile.slice(0, index)+data+moduleFile.slice(index)
+            }
+        }
+
+        var queue=this.modulePathQueue(filePath)
+        for(var i = 0; i<queue.length; i++){
+            if(!fs.existsSync(queue[i])&&this.isDir(pth)){
+                fs.mkdirSync(pth)
+            }else{
+                fs.writeFileSync(filePath, moduleFile)
+            }
+        }
+
+        return moduleFile;
+    }
+
+    isDir(_pth){
+        if(_pth[_pth.length-1]=='/'){
+            return true
+        }else{
+            return false
+        }
+    }
+    modulePathQueue(pth){
+        var queue=[]
+        //console.log(pth.split('/'))
+        for(var i = 2; i<pth.split('/').length; i++){
+            //console.log('projectPathQueue', './'+pth.split('/').slice(1, i).join('/')+'/')
+            queue.push('./'+pth.split('/').slice(1, i).join('/')+'/')
+        }
+        return queue
     }
 
     moduleC(pth){ 
-        return pth+pth.split('/').slice(-2)[0]+'.c'
+        if(pth[pth.length-1]=='/'){
+            pth=pth.slice(0, -1)
+        }
+        var file = pth.split('/')[pth.split('/').length-1]
+        if(pth[pth.length-1]!='/'){
+            return pth+'/'+file+'.c'
+        }else{
+            return pth+file+'.c'
+        }
     }
 
     moduleH(pth){ 
-        // possibilities ./something, ../something, ./somePath/to/module
+        // possibilities ./something, ../something, ./somePath/to/module ./something/
+        if(pth[pth.length-1]=='/'){
+            pth=pth.slice(0, -1)
+        }
         var file = pth.split('/')[pth.split('/').length-1]
         if(pth[pth.length-1]!='/'){
             return pth+'/'+file+'.h'
@@ -174,18 +242,6 @@ export class Module{
     }
 
 
-
-    
-    moduleCFile(pth, dependencies){
-        // this.createFile(this.moduleC(pth))
-        // var fileBase=this.moduleC(pth).split('/')[this.moduleC(pth).split('/').length-2];
-        // var fileDescriptor=(Path.split('/').slice(1).join('_')+'Test').toUpperCase();
-        // var output = 
-        // `#include `+`"`+'Test'+'.h'+`"\n\n`+
-        // `int _${fileDescriptor}(int argc, char *argv[]){\n\n\treturn 0;\n}`;
-        // fs.writeFileSync( Path+'Test'+'.c', output);
-    }
-
     moduleIndex(_module){ 
         for(var i = 0; i<this.project._projectModifier.length; i++){
             if(this.project._projectModifier[i]['module']==_module){
@@ -194,36 +250,8 @@ export class Module{
         }
     }
 
-    moduleHWrite(_module, output, atIndex){
-        var moduleH=this.moduleHRead(_module, atIndex)
-        if(moduleH.length){
-            moduleH=moduleH.split('\n')
-            for(var i=0; i<moduleH.length; i++){
-                if(i==atIndex){ 
-                    moduleH=moduleH.slice(0, i).concat(output).concat(moduleH.slice(i))
-                }
-            }
-            moduleH=moduleH.join('\n')
-        }else{
-            moduleH+=output
-        }
 
-        fs.writeFileSync(this.moduleH(_module), moduleH);
-    }
 
-    moduleHRead(_module, atIndex){
-        var str = fs.readFileSync(this.moduleH(_module)).toString()
-        if(atIndex!=undefined){
-            str=str.split('\n')
-            for(var i=0; i<str.length; i++){
-                if(i==atIndex){
-                    return str[i]
-                }
-            }
-        }else{
-            return str
-        }
-    }
 
 
     moduleTestCFile(pth, dependencies){

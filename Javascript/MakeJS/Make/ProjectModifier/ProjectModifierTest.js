@@ -1,5 +1,10 @@
 
 export var ProjectModifier = [
+    {
+        "action":"add",
+        "module":"./Project/",
+        "dependencies": []
+    }, 
     {   
         "action":"add",
         "module":"./Project/CTools/",
